@@ -18,7 +18,7 @@
 			
 			<div class="col-lg-3 col-sm-6 mb-5">
 				<div class="image-tour position-relative">
-					<img src="images/p1.jpg" alt="" class="img-fluid" />
+					<img src="/TaYo/images/p1.jpg" alt="" class="img-fluid" />
 					<p><span class="fa fa-tags"></span> <span>20$</span></p>
 				</div>
 				<div class="package-info">
@@ -32,7 +32,7 @@
 			</div>
 			<div class="col-lg-3 col-sm-6 mb-5">
 				<div class="image-tour position-relative">
-					<img src="images/p2.jpg" alt="" class="img-fluid" />
+					<img src="/TaYo/images/p2.jpg" alt="" class="img-fluid" />
 					<p><span class="fa fa-tags"></span> <span>20$</span></p>
 				</div>
 				<div class="package-info">
@@ -46,7 +46,7 @@
 			</div>
 			<div class="col-lg-3 col-sm-6 mb-5">
 				<div class="image-tour position-relative">
-					<img src="images/p3.jpg" alt="" class="img-fluid" />
+					<img src="/TaYo/images/p3.jpg" alt="" class="img-fluid" />
 					<p><span class="fa fa-tags"></span> <span>20$</span></p>
 				</div>
 				<div class="package-info">
@@ -60,7 +60,7 @@
 			</div>
 			<div class="col-lg-3 col-sm-6 mb-5">
 				<div class="image-tour position-relative">
-					<img src="images/p4.jpg" alt="" class="img-fluid" />
+					<img src="/TaYo/images/p4.jpg" alt="" class="img-fluid" />
 					<p><span class="fa fa-tags"></span> <span>20$</span></p>
 				</div>
 				<div class="package-info">
@@ -75,7 +75,7 @@
 			
 			<div class="col-lg-3 col-sm-6 mb-5">
 				<div class="image-tour position-relative">
-					<img src="images/p1.jpg" alt="" class="img-fluid" />
+					<img src="/TaYo/images/p1.jpg" alt="" class="img-fluid" />
 					<p><span class="fa fa-tags"></span> <span>20$</span></p>
 				</div>
 				<div class="package-info">
@@ -89,7 +89,7 @@
 			</div>
 			<div class="col-lg-3 col-sm-6 mb-5">
 				<div class="image-tour position-relative">
-					<img src="images/p2.jpg" alt="" class="img-fluid" />
+					<img src="/TaYo/images/p2.jpg" alt="" class="img-fluid" />
 					<p><span class="fa fa-tags"></span> <span>20$</span></p>
 				</div>
 				<div class="package-info">
@@ -103,7 +103,7 @@
 			</div>
 			<div class="col-lg-3 col-sm-6 mb-5">
 				<div class="image-tour position-relative">
-					<img src="images/p3.jpg" alt="" class="img-fluid" />
+					<img src="/TaYo/images/p3.jpg" alt="" class="img-fluid" />
 					<p><span class="fa fa-tags"></span> <span>20$</span></p>
 				</div>
 				<div class="package-info">
@@ -117,7 +117,7 @@
 			</div>
 			<div class="col-lg-3 col-sm-6 mb-5">
 				<div class="image-tour position-relative">
-					<img src="images/p4.jpg" alt="" class="img-fluid" />
+					<img src="/TaYo/images/p4.jpg" alt="" class="img-fluid" />
 					<p><span class="fa fa-tags"></span> <span>20$</span></p>
 				</div>
 				<div class="package-info">
@@ -143,7 +143,7 @@
 			<div class="col-md-3 col-sm-6 col-6 destinations-grids text-center">
 				<h4 class="destination mb-3">China</h4>
 				<div class="image-position position-relative">
-					<img src="images/china.jpg" class="img-fluid" alt="">
+					<img src="/TaYo/images/china.jpg" class="img-fluid" alt="">
 					<div class="rating">
 						<ul>
 							<li><span class="fa fa-star"></span></li>
