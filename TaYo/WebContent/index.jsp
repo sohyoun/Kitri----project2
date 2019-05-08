@@ -66,7 +66,7 @@
 								<h4 class="text-wh">새로운 친구들과 함께 여행을 떠나요!</h4>
 								<div class="buttons mt-4">
 									<a href="" class="btn mr-2">About 타요타요</a>
-									<a href="/tayotogether/tayotogether.jsp" class="btn">함께 타기</a>
+									<a href="/TaYo/tayotogether/tayotogether.jsp" class="btn">함께 타기</a>
 								</div>
 							</div>
 						</div>
@@ -93,7 +93,7 @@
 		<div class="row">
 			<div class="col-lg-3 col-sm-6">
 				<div class="image-tour position-relative">
-					<img src="images/p1.jpg" alt="" class="img-fluid" />
+					<img src="/TaYo/images/p1.jpg" alt="" class="img-fluid" />
 					<p><span>100 <span class="fa fa-thumbs-up"> | 12230 <span class="fa fa-eye"> | 19 <span class="fa fa-comment"></span></p>
 				</div>
 				<div class="package-info">
@@ -108,7 +108,7 @@
 			</div>
 			<div class="col-lg-3 col-sm-6">
 				<div class="image-tour position-relative">
-					<img src="images/p2.jpg" alt="" class="img-fluid" />
+					<img src="/TaYo/images/p2.jpg" alt="" class="img-fluid" />
 					<p><span>98 <span class="fa fa-thumbs-up"> | 9917 <span class="fa fa-eye"> | 10 <span class="fa fa-comment"></span></p>
 				</div>
 				<div class="package-info">
@@ -123,7 +123,7 @@
 			</div>
 			<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5">
 				<div class="image-tour position-relative">
-					<img src="images/p3.jpg" alt="" class="img-fluid" />
+					<img src="/TaYo/images/p3.jpg" alt="" class="img-fluid" />
 					<p><span>71 <span class="fa fa-thumbs-up"> | 5560 <span class="fa fa-eye"> | 9 <span class="fa fa-comment"></span></p>
 				</div>
 				<div class="package-info">
@@ -138,7 +138,7 @@
 			</div>
 			<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5">
 				<div class="image-tour position-relative">
-					<img src="images/p4.jpg" alt="" class="img-fluid" />
+					<img src="/TaYo/images/p4.jpg" alt="" class="img-fluid" />
 					<p><span>56 <span class="fa fa-thumbs-up"> | 3726 <span class="fa fa-eye"> | 3 <span class="fa fa-comment"></span></p>
 				</div>
 				<div class="package-info">
@@ -168,7 +168,7 @@
 			<div class="col-md-3 col-sm-6 col-6 destinations-grids text-center">
 				<h4 class="destination mb-3">북촌 한옥마을</h4>
 				<div class="image-position position-relative">
-					<img src="images/china.jpg" class="img-fluid" alt="">
+					<img src="/TaYo/images/china.jpg" class="img-fluid" alt="">
 					<div class="rating">
 						<ul>
 							<li><span class="fa fa-star"></span></li>
@@ -189,7 +189,7 @@
 			<div class="col-md-3 col-sm-6 col-6 destinations-grids text-center">
 				<h4 class="destination mb-3">북촌 한옥마을</h4>
 				<div class="image-position position-relative">
-					<img src="images/china.jpg" class="img-fluid" alt="">
+					<img src="/TaYo/images/china.jpg" class="img-fluid" alt="">
 					<div class="rating">
 						<ul>
 							<li><span class="fa fa-star"></span></li>
@@ -210,7 +210,7 @@
 			<div class="col-md-3 col-sm-6 col-6 destinations-grids text-center">
 				<h4 class="destination mb-3">Malaysia</h4>
 				<div class="image-position position-relative">
-					<img src="images/malaysia.jpg" class="img-fluid" alt="">
+					<img src="/TaYo/images/china.jpg" class="img-fluid" alt="">
 					<div class="rating">
 						<ul>
 							<li><span class="fa fa-star"></span></li>
@@ -231,7 +231,7 @@
 			<div class="col-md-3 col-sm-6 col-6 destinations-grids text-center mt-md-0 mt-4">
 				<h4 class="destination mb-3">Japan</h4>
 				<div class="image-position position-relative">
-					<img src="images/japan.jpg" class="img-fluid" alt="">
+					<img src="/TaYo/images/china.jpg" class="img-fluid" alt="">
 					<div class="rating">
 						<ul>
 							<li><span class="fa fa-star"></span></li>
@@ -252,7 +252,7 @@
 			<div class="col-md-3 col-sm-6 col-6 destinations-grids text-center mt-md-0 mt-4">
 				<h4 class="destination mb-3">Singapore</h4>
 				<div class="image-position position-relative">
-					<img src="images/singapore.jpg" class="img-fluid" alt="">
+					<img src="/TaYo/images/china.jpg" class="img-fluid" alt="">
 					<div class="rating">
 						<ul>
 							<li><span class="fa fa-star"></span></li>
