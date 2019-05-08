@@ -1,0 +1,21 @@
+tayotayo
+    -src
+
+    -webContent
+     index.jsp
+            - js
+            - css
+            - images
+
+            - user
+            - admin
+
+            - temp
+                header.jsp
+                footer.jsp
+
+            - tayoplace
+            - tayoschedule
+            - myschedule
+            - tayotogether
+            - abouttayo
