@@ -2,6 +2,6 @@ package com.kitri.dlatl;
 
 public class Dlatl {
 public static void main(String[] args) {
-	System.out.println("ÀÓ½ÃÆÄÀÏ");
+	System.out.println("ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½");
 }
 }
