@@ -1,0 +1,98 @@
+  <div class="col-md-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-rss"></i> Feed</h3>
+                        </div>
+                        <div class="panel-body feed">
+                            <section class="feed-item">
+                                <div class="icon pull-left">
+                                    <i class="fa fa-comment"></i>
+                                </div>
+                                <div class="feed-item-body">
+                                    <div class="text">
+                                        <a href="#">John Doe</a> commented on <a href="#">What Makes Good Code Good</a>.
+                                    </div>
+                                    <div class="time pull-left">
+                                        3 h
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="feed-item">
+                                <div class="icon pull-left">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                                <div class="feed-item-body">
+                                    <div class="text">
+                                        <a href="#">Merge request #42</a> has been approved by <a href="#">Jessica Lori</a>.
+                                    </div>
+                                    <div class="time pull-left">
+                                        10 h
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="feed-item">
+                                <div class="icon pull-left">
+                                    <i class="fa fa-plus-square-o"></i>
+                                </div>
+                                <div class="feed-item-body">
+                                    <div class="text">
+                                        New user <a href="#">Greg Wilson</a> registered.
+                                    </div>
+                                    <div class="time pull-left">
+                                        Today
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="feed-item">
+                                <div class="icon pull-left">
+                                    <i class="fa fa-bolt"></i>
+                                </div>
+                                <div class="feed-item-body">
+                                    <div class="text">
+                                        Server fail level raises above normal. <a href="#">See logs</a> for details.
+                                    </div>
+                                    <div class="time pull-left">
+                                        Yesterday
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="feed-item">
+                                <div class="icon pull-left">
+                                    <i class="fa fa-archive"></i>
+                                </div>
+                                <div class="feed-item-body">
+                                    <div class="text">
+                                        <a href="#">Database usage report</a> is ready.
+                                    </div>
+                                    <div class="time pull-left">
+                                        Yesterday
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="feed-item">
+                                <div class="icon pull-left">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </div>
+                                <div class="feed-item-body">
+                                    <div class="text">
+                                        <a href="#">Order #233985</a> needs additional processing.
+                                    </div>
+                                    <div class="time pull-left">
+                                        Wednesday
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="feed-item">
+                                <div class="icon pull-left">
+                                    <i class="fa fa-arrow-down"></i>
+                                </div>
+                                <div class="feed-item-body">
+                                    <div class="text">
+                                        <a href="#">Load more...</a>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>

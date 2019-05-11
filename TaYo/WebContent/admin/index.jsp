@@ -1,102 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
-
-<html lang="ko">
-	<head>
-	    <meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <title> Admin </title>
-	    <link rel="stylesheet" type="text/css" href="resource/bootstrap/css/bootstrap.min.css" />
-	    <link rel="stylesheet" type="text/css" href="resource/font-awesome/css/font-awesome.min.css" />
-	    <link rel="stylesheet" type="text/css" href="resource/css/local.css" />
-	    <script type="text/javascript" src="resource/js/jquery-1.10.2.min.js"></script>
-	    <script type="text/javascript" src="resource/bootstrap/js/bootstrap.min.js"></script>
-	    <!-- you need to include the shieldui css and js assets in order for the charts to work -->
-	    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css" />
-	    <link id="gridcss" rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/dark-bootstrap/all.min.css" />
-	    <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
-	    <script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/gridData.js"></script>
-	   
-	</head>
-<body>
-    <div id="wrapper">
-          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="admin.html">관리자 페이지 </a>
-            </div>
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul id="active" class="nav navbar-nav side-nav">
-                    
-                    <li class="selected">
-                    	<a href="admin.html"><i class="fa fa-bullseye"> </i> 메인화면 </a>
-                    </li>
-                    
-                    <li>
-                    	<a href="#"><i class="fa fa-tasks"></i> 회원관리 </a>
-                    </li>
-                    
-                    <li>
-                    	<a href="#"><i class="fa fa-list-ol"></i> 게시판관리 </a>
-                    </li>
-                    
-                    <li>
-                    	<a href="#"><i class="fa fa-table"></i> 통계 </a>
-                   </li>
-                   
-                </ul>
-                
-                <ul class="nav navbar-nav navbar-right navbar-user">
-                    <li class="dropdown messages-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">2</span> <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-header">2 New Messages</li>
-                            <li class="message-preview">
-                                <a href="#">
-                                    <span class="avatar"><i class="fa fa-bell"></i></span>
-                                    <span class="message">Security alert</span>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li class="message-preview">
-                                <a href="#">
-                                    <span class="avatar"><i class="fa fa-bell"></i></span>
-                                    <span class="message">Security alert</span>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="#">Go to Inbox <span class="badge">2</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown user-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Steve Miller<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                            <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
-
-                        </ul>
-                    </li>
-                    <li class="divider-vertical"></li>
-                    <li>
-                        <form class="navbar-search">
-                            <input type="text" placeholder="Search" class="form-control">
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
+    <%@ include file = "/admin/templet/header.jsp" %>
+  
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>메인화면 <small>Statistics and more</small></h1>
+                    <h1>HOME <small>Statistics and more</small></h1>
                     <div class="alert alert-dismissable alert-warning">
                         <button data-dismiss="alert" class="close" type="button">&times;</button>
                         Welcome to the admin dashboard! Feel free to review all pages and modify the layout to your needs. 
@@ -117,167 +27,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-rss"></i> Feed</h3>
-                        </div>
-                        <div class="panel-body feed">
-                            <section class="feed-item">
-                                <div class="icon pull-left">
-                                    <i class="fa fa-comment"></i>
-                                </div>
-                                <div class="feed-item-body">
-                                    <div class="text">
-                                        <a href="#">John Doe</a> commented on <a href="#">What Makes Good Code Good</a>.
-                                    </div>
-                                    <div class="time pull-left">
-                                        3 h
-                                    </div>
-                                </div>
-                            </section>
-                            <section class="feed-item">
-                                <div class="icon pull-left">
-                                    <i class="fa fa-check"></i>
-                                </div>
-                                <div class="feed-item-body">
-                                    <div class="text">
-                                        <a href="#">Merge request #42</a> has been approved by <a href="#">Jessica Lori</a>.
-                                    </div>
-                                    <div class="time pull-left">
-                                        10 h
-                                    </div>
-                                </div>
-                            </section>
-                            <section class="feed-item">
-                                <div class="icon pull-left">
-                                    <i class="fa fa-plus-square-o"></i>
-                                </div>
-                                <div class="feed-item-body">
-                                    <div class="text">
-                                        New user <a href="#">Greg Wilson</a> registered.
-                                    </div>
-                                    <div class="time pull-left">
-                                        Today
-                                    </div>
-                                </div>
-                            </section>
-                            <section class="feed-item">
-                                <div class="icon pull-left">
-                                    <i class="fa fa-bolt"></i>
-                                </div>
-                                <div class="feed-item-body">
-                                    <div class="text">
-                                        Server fail level raises above normal. <a href="#">See logs</a> for details.
-                                    </div>
-                                    <div class="time pull-left">
-                                        Yesterday
-                                    </div>
-                                </div>
-                            </section>
-                            <section class="feed-item">
-                                <div class="icon pull-left">
-                                    <i class="fa fa-archive"></i>
-                                </div>
-                                <div class="feed-item-body">
-                                    <div class="text">
-                                        <a href="#">Database usage report</a> is ready.
-                                    </div>
-                                    <div class="time pull-left">
-                                        Yesterday
-                                    </div>
-                                </div>
-                            </section>
-                            <section class="feed-item">
-                                <div class="icon pull-left">
-                                    <i class="fa fa-shopping-cart"></i>
-                                </div>
-                                <div class="feed-item-body">
-                                    <div class="text">
-                                        <a href="#">Order #233985</a> needs additional processing.
-                                    </div>
-                                    <div class="time pull-left">
-                                        Wednesday
-                                    </div>
-                                </div>
-                            </section>
-                            <section class="feed-item">
-                                <div class="icon pull-left">
-                                    <i class="fa fa-arrow-down"></i>
-                                </div>
-                                <div class="feed-item-body">
-                                    <div class="text">
-                                        <a href="#">Load more...</a>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Traffic Sources One month tracking </h3>
-                        </div>
-                        <div class="panel-body">
-                            <div id="shieldui-grid1"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Logins per week</h3>
-                        </div>
-                        <div class="panel-body">
-                            <div id="shieldui-chart2"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-magnet"></i> Server Overview</h3>
-                        </div>
-                        <div class="panel-body">
-                            <ul class="server-stats">
-                                <li>
-                                    <div class="key pull-right">CPU</div>
-                                    <div class="stat">
-                                        <div class="info">60% / 37°C / 3.3 Ghz</div>
-                                        <div class="progress progress-small">
-                                            <div style="width: 70%;" class="progress-bar progress-bar-danger"></div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="key pull-right">Mem</div>
-                                    <div class="stat">
-                                        <div class="info">29% / 4GB (16 GB)</div>
-                                        <div class="progress progress-small">
-                                            <div style="width: 29%;" class="progress-bar"></div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="key pull-right">LAN</div>
-                                    <div class="stat">
-                                        <div class="info">6 Mb/s <i class="fa fa-caret-down"></i>&nbsp; 3 Mb/s <i class="fa fa-caret-up"></i></div>
-                                        <div class="progress progress-small">
-                                            <div style="width: 48%;" class="progress-bar progress-bar-inverse"></div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-4">
+                
+                  <div class="col-lg-4">
                     <header>
                         <ul class="nav nav-tabs">
                             <li class="active">
@@ -291,7 +42,10 @@
                             </li>
                         </ul>
                     </header>
-                    <div class="body tab-content">
+                </div>
+                
+                
+            		<div class="body tab-content">
                         <div class="tab-pane clearfix active" id="stats">
                             <h5 class="tab-header"><i class="fa fa-calendar-o fa-2x"></i> Last logged-in users</h5>
                             <ul class="news-list">
@@ -477,11 +231,34 @@
                             </ul>
                         </div>
                     </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Traffic Sources One month tracking </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id="shieldui-grid1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Logins per week</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id="shieldui-chart2"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- /#wrapper -->
+
 
     <script type="text/javascript">
         jQuery(function ($) {
@@ -556,5 +333,5 @@
             });            
         });        
     </script>
-</body>
-</html>
+    
+    <%@ include file ="/admin/templet/footer.jsp" %>

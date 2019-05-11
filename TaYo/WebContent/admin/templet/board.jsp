@@ -1,34 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Dark Admin</title>
+<%@ include file = "/admin/templet/header.jsp" %>
 
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/local.css" />
 
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-
-    <style>
-        img {
-            filter: gray; /* IE6-9 */
-            -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
-            -webkit-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
-            -moz-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
-            box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
-            margin-bottom: 20px;
-        }
-        img:hover {
-            filter: none; /* IE6-9 */
-            -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
-        }
-    </style>
-</head>
-<body>
 
     <div id="wrapper">
 
@@ -44,7 +19,7 @@
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li><a href="index.html"><i class="fa fa-bullseye"></i> Dashboard</a></li>
+                    <li><a href="index.jsp"><i class="fa fa-bullseye"></i> Dashboard</a></li>
                     <li class="selected"><a href="portfolio.html"><i class="fa fa-tasks"></i> Portfolio</a></li>
                     <li><a href="blog.html"><i class="fa fa-globe"></i> Blog</a></li>
                     <li><a href="signup.html"><i class="fa fa-list-ol"></i> SignUp</a></li>
@@ -233,5 +208,5 @@
         </div>
     </div>
 
-</body>
-</html>
+<%@ include file ="/admin/templet/footer.jsp" %>
+    
