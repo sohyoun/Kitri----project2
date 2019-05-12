@@ -23,21 +23,6 @@
 <link id="gridcss" rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/dark-bootstrap/all.min.css" />
 <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"> </script>
 <script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/gridData.js"> </script>
-
-  <style>
-        img {
-            filter: gray; /* IE6-9 */
-            -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
-            -webkit-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
-            -moz-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
-            box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
-            margin-bottom: 20px;
-        }
-        img:hover {
-            filter: none; /* IE6-9 */
-            -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
-        }
-    </style>
 </head>
 <body>
 	<div id="wrapper">
@@ -49,16 +34,18 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.jsp">관리자 페이지 </a>
+				<img src ="images/bus.png" width = "50" height ="50"/>
+				<a class="navbar-brand" href="index.jsp">관리자 페이지</a>
 			</div>
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				
 				<ul id="active" class="nav navbar-nav side-nav">
 
 					<li class="selected"><a href="index.jsp"><i class="fa fa-bullseye"> </i> HOME </a></li>
     
 					<li><a href="member.jsp"><i class="fa fa-tasks"> </i> 회원관리</a></li>
 
-					<li><a href="#"><i class="fa fa-list-ol"></i> 게시판관리 </a></li>
+					<li><a href="board.jsp"><i class="fa fa-list-ol"></i> 게시판관리 </a></li>
 
 					<li><a href="#"><i class="fa fa-table"></i> 통계 </a></li>
 
