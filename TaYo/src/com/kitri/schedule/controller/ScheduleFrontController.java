@@ -22,6 +22,8 @@ public class ScheduleFrontController extends HttpServlet {
 		
 		if ("schedule".equals(act)) {
 			MoveURL.redirect(request, response, "/tayoschedule/schedule.jsp");
+		} else if ("newschedule".equals(act)) {
+			MoveURL.redirect(request, response, "/tayoschedule/scheduleDetail.jsp");
 		}
 	}
 	
