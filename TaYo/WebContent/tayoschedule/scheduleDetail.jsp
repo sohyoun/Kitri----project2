@@ -3,6 +3,15 @@
 
 <%@ include file="/temp/header.jsp" %>
 
+<script type="text/javascript" src="<%=root%>/js/httpRequest.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#planSave").click(function() {
+		$("#planSaveModal").modal();
+	});
+});
+</script>
+
 <!-- banner -->
 <section class="banner_inner" id="home">
 	<div class="banner_inner_overlay">
@@ -10,8 +19,7 @@
 			<div class="w3layouts-banner-info" style="padding-top: 8rem;">
 				<h3 class="text-wh">'나만의 일정을 계획해보세요'</h3>
 				<div class="buttons mt-4">
-					<a href="" class="btn pull-right">완료</a>
-					<a href="" class="btn mr-4 pull-right">저장</a>
+					<a class="btn pull-right" id="planSave">저장 / 완료</a>
 				</div>
 			</div>
 		</div>
@@ -57,7 +65,29 @@
 					<table class="table table-bordered table-sm" style="align: center;">
 						<tbody align="center">
 							<tr>
-								<td width="100"><button id="location" name="location" class="btn warning">서울</button></td>
+								<td width="100">
+									<span>
+										<select id="location" size="1" name="location">
+											<option value="서울" selected="selected">서울
+											<option value="경기">경기
+											<option value="강원">강원
+											<option value="충북">충북
+											<option value="충남">충남
+											<option value="전북">전북
+											<option value="전남">전남
+											<option value="경북">경북
+											<option value="경남">경남
+											<option value="세종">세종
+											<option value="부산">부산
+											<option value="대구">대구
+											<option value="인천">인천
+											<option value="광주">광주
+											<option value="대전">대전
+											<option value="울산">울산
+											<option value="제주">제주
+										</select>
+									</span>
+								</td>
 								<td><input type="text" class="form-control" id="place" name="place" value="" placeholder=""></input></td>
 							</tr>
 						</tbody>
@@ -119,6 +149,8 @@
 		</div>
 	</div>	
 </div>
+
+<%@ include file="/tayoschedule/planSave.jsp" %>
 
 <!-- //banner -->
 <%@ include file="/temp/footer.jsp" %>
