@@ -1,134 +1,80 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 
-<%@ include file="/admin/templet/header.jsp"%>
-<style>
-</style>
+<%@ include file = "/admin/templet/header.jsp" %>
 
-<!-- 테이블 영역  -->
+	<style>
 
-<div class="container">
-	<div class="row">
-		<div class="col-sm-9">
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Article Title</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Duis pharetra varius quam sit amet vulputate. Quisque mauris
-						augue, molestie tincidunt condimentum vitae, gravida a libero.
-						Aenean sit amet felis dolor, in sagittis nisi. Sed ac orci quis
-						tortor imperdiet venenatis. Duis elementum auctor accumsan.
-						Aliquam in felis sit amet augue.</p>
-					<div class="text-center">
-						<a href="#"><i class="fa fa-plus"></i>Full Story</a> <a href="#"><i
-							class="fa fa-comment"></i>12 Comments</a> <a href="#"><i
-							class="fa fa-share"></i>11 Shares</a>
-					</div>
-				</div>
-			</div>
-			<hr />
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Article Title</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Duis pharetra varius quam sit amet vulputate. Quisque mauris
-						augue, molestie tincidunt condimentum vitae, gravida a libero.
-						Aenean sit amet felis dolor, in sagittis nisi. Sed ac orci quis
-						tortor imperdiet venenatis. Duis elementum auctor accumsan.
-						Aliquam in felis sit amet augue.</p>
-					<div class="text-center">
-						<a href="#"><i class="fa fa-plus"></i>Full Story</a> <a href="#"><i
-							class="fa fa-comment"></i>2 Comments</a> <a href="#"><i
-							class="fa fa-share"></i>211 Shares</a>
-					</div>
-				</div>
-			</div>
-			<hr />
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Article Title</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Duis pharetra varius quam sit amet vulputate. Quisque mauris
-						augue, molestie tincidunt condimentum vitae, gravida a libero.
-						Aenean sit amet felis dolor, in sagittis nisi. Sed ac orci quis
-						tortor imperdiet venenatis. Duis elementum auctor accumsan.
-						Aliquam in felis sit amet augue.</p>
-					<div class="text-center">
-						<a href="#"><i class="fa fa-plus"></i>Full Story</a> <a href="#"><i
-							class="fa fa-comment"></i>7 Comments</a> <a href="#"><i
-							class="fa fa-share"></i>67 Shares</a>
-					</div>
-				</div>
-			</div>
-			<hr />
-
-			<!-- the comment box -->
-			<div class="well">
-				<h4>Leave a Comment:</h4>
-				<form role="form">
-					<div class="form-group">
-						<textarea class="form-control" rows="3"></textarea>
-					</div>
-					<button type="submit" class="btn btn-primary">Submit</button>
-				</form>
-			</div>
-
-			<hr>
-
-			<!-- the comments -->
-			<h3>
-				Blog contents <small>2014/03/07 11:43 PM</small>
-			</h3>
-			<p>This is a very interesting blog, well structured and
-				organized. Would be great if you included more information on other
-				IT topics as well.</p>
-
-			<h3>
-				Contacts <small>2014/03/09 12:11 PM</small>
-			</h3>
-			<p>I wanted to get in touch with the author of the blog, but I
-				see no way to do this.</p>
-
-		</div>
-		<div class="col-sm-3">
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Side</h2>
-					<div class="panel panel-default">
-						<div class="panel-heading">News</div>
-						<div class="panel-body">Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit. Duis pharetra varius quam sit amet
-							vulputate.</div>
-						<div class="text-center">
-							<a href="#"><i class="fa fa-plus"></i>Full Story</a>
-						</div>
-					</div>
-					<hr />
-					<div class="panel panel-default">
-						<div class="panel-heading">News</div>
-						<div class="panel-body">Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit. Duis pharetra varius quam sit amet
-							vulputate.</div>
-						<div class="text-center">
-							<a href="#"><i class="fa fa-plus"></i>Full Story</a>
-						</div>
-					</div>
-					<hr />
-					<div class="panel panel-default">
-						<div class="panel-heading">News</div>
-						<div class="panel-body">Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit. Duis pharetra varius quam sit amet
-							vulputate.</div>
-						<div class="text-center">
-							<a href="#"><i class="fa fa-plus"></i>Full Story</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		`
+		h2 {
+			padding-left : 20px;
+		}
+		@media only screen and (max-width: 768px) {
+		#table {
+		    margin: 0 -10px;
+		}
+	
+		#header{
+			padding-left : 20px;
+		}
+		
+		tr > th {
+			text-align: center;
+		}
+		
+		tr > td {
+			text-align: center;
+		}
+	</style>
+<section>
+	<div id = "header"> 
+		<h2>회원관리 페이지</h2> 
 	</div>
-</div>
+		<hr/>
+	<div class = "container">
+	<!-- 테이블  -->	
+	<button class = "btn btn-outline-secondary"> 수정 </button>
+	<button class = "btn btn-outline-secondary"> 삭제 </button>
+	<table id = "table" class = "table table-hover">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>나이</th>
+				<th>주소</th>
+				<th>상세주소</th>
+				<th>이메일</th>
+				<th>핸드폰</th>
+				<th>성별</th>
+				<th>등급</th>
+			</tr>
+		</thead>
+		
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>30</td>
+					<td>서울특별시</td>
+					<td>금천구 가산동</td>
+					<td>12.12kimiyeon@gmail.com</td>
+					<td>010-2111-6422</td>
+					<td>남</td>
+					<td>good</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>
+	<hr/>
+	
+	<!-- 페이징 처리 -->
+	<div class="text-center">
+		<ul class = "pagination pagination-lg">
+			<li><a href = "#">1</a></li>
+			<li><a href = "#">2</a></li>
+			<li><a href = "#">3</a></li>
+			<li><a href = "#">4</a></li>
+			<li><a href = "#">5</a></li>
+		</ul>
+	</div>
 
 
-<%@ include file="/admin/templet/footer.jsp"%>
+<%@include file = "/admin/templet/footer.jsp" %>
