@@ -63,8 +63,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 <body>
-
-
 	<nav class="navbar navbar-expand-md bg-light navbar-light ">
 		<div class="container">
 			<!-- bg-light -->
@@ -76,9 +74,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="navbar-collapse collapse" id="navbarCollapse">
 				<ul class="navbar-nav">
 					<li class="nav-item active"><a class="nav-link" href="<%=root%>/head_nav/?act=join">지역추천</a></li>
-					<li class="nav-item"><a class="nav-link" href="<%=root%>/head_nav/?act=join">일정추천</a></li>
-					<li class="nav-item"><a class="nav-link" href="<%=root%>/head_nav/?act=join" data-toggle="collapse">일정짜기</a></li>
-					<li class="nav-item"><a class="nav-link" href="<%=root%>/head_nav/?act=join" data-toggle="collapse">지역추천</a></li>
+					<li class="nav-item"><a class="nav-link" href="<%=root%>/tayotogether/tayotogether.jsp">함께타기</a></li>
+					<li class="nav-item"><a class="nav-link" href="<%=root%>/schedule?act=schedule">일정짜기</a></li>
+					<li class="nav-item"><a class="nav-link" href="<%=root%>/head_nav/?act=join">지역추천</a></li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a class="nav-link" href="<%=root%>/head_nav/?act=join" data-target="#myModal" data-toggle="modal">로그인</a></li>
