@@ -1,10 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<% 
-	String root = request.getContextPath();
-%>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+
+
 <!--
 author: W3layouts
 author URL: http://w3layouts.com
@@ -12,67 +9,100 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <title>Grand Tour Travel Category Flat Bootstrap Responsive Web Template | Home :: w3layouts</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <meta name="keywords" content="Grand Tour Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%
+	String root = request.getContextPath();
+%>
+ <script>
+	addEventListener("load", function() {
+		setTimeout(hideURLbar, 0);
+	}, false);
 
-    <script>
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
+	function hideURLbar() {
+		window.scrollTo(0, 1);
+	}
+</script> 
 
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
+<!-- To be fixed modal window is not opened... -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
-    <!-- To be fixed modal window is not opened... -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-	
-	<!-- css files -->
-    <link href="/TaYo/css/bootstrap.css" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
-    <link href="/TaYo/css/style.css" rel='stylesheet' type='text/css' /><!-- custom css -->
-    <link href="/TaYo/css/font-awesome.min.css" rel="stylesheet"><!-- fontawesome css -->
-	
-	<!-- //css files -->
-	<link href="/TaYo/css/css_slider.css" type="text/css" rel="stylesheet" media="all">
 
-	<!-- google fonts -->
-	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-	<!-- //google fonts -->
-	
+<!-- css files -->
+  <link href="/TaYo/css/bootstrap.css" rel='stylesheet' type='text/css' />  
+<!-- bootstrap css -->
+  <link href="/TaYo/css/style.css" rel='stylesheet' type='text/css' />  
+<!-- custom css -->
+ <link href="/TaYo/css/font-awesome.min.css" rel="stylesheet"> 
+<!-- fontawesome css -->
+
+<!-- //css files -->
+<link href="/TaYo/css/css_slider.css" type="text/css" rel="stylesheet" media="all">
+
+<!-- google fonts -->
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<!-- //google fonts -->
+
+
 </head>
 <body>
 
-<!-- header -->
-<header>
-	<div class="container">
-		<!-- nav -->
-		<nav class="py-md-4 py-3 d-lg-flex">
-			<div id="logo">
-				<h1 class="mt-md-0 mt-2"> <a href="/TaYo/index.jsp"><span><img  src="/TaYo/images/bus.png"></span> TayoTayo </a></h1>
+	<nav class="navbar navbar-expand-md bg-light navbar-light ">
+		<div class="container">
+			<!-- bg-light -->
+			<a class="navbar-brand" href="<%=root%>/head_nav/?act=main">
+			 <img src="<%=root%>/images/bus.png" width="50px" height="50px"> TayoTayo
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="navbar-collapse collapse" id="navbarCollapse">
+				<ul class="navbar-nav">
+					<li class="nav-item active"><a class="nav-link" href="<%=root%>/head_nav/?act=join">지역추천</a></li>
+					<li class="nav-item"><a class="nav-link" href="<%=root%>/head_nav/?act=join">일정추천</a></li>
+					<li class="nav-item"><a class="nav-link" href="<%=root%>/head_nav/?act=join" data-toggle="collapse">일정짜기</a></li>
+					<li class="nav-item"><a class="nav-link" href="<%=root%>/head_nav/?act=join" data-toggle="collapse">지역추천</a></li>
+				</ul>
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" href="<%=root%>/head_nav/?act=join" data-target="#myModal" data-toggle="modal">로그인</a></li>
+					<li class="nav-item"><a class="nav-link" href="<%=root%>/head_nav/?act=join" data-target="#myModal" data-toggle="modal">회원가입</a></li>
+				</ul>
 			</div>
-			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
-			<input type="checkbox" id="drop" />
-			<ul class="menu ml-auto mt-1">
-				<li class=""><a href="">관광지/맛집 추천</a></li>
-				<li class=""><a href="">여행지 일정 추천</a></li>
-				<li class="active"><a href="<%=root%>/schedule?act=schedule">일정 짜기</a></li>
-				<li class=""><a href="/TaYo/tayotogether/tayotogether.jsp">함께 타기</a></li>
-				<li class=""><a href="">About 타요타요</a></li>
-				<li class="booking"><a href="">Login</a></li>
-				<li class="booking"><a href="">회원가입</a></li>
-			</ul>
-		</nav>
-		<!-- //nav -->
-	</div>
-</header>
-<!-- //header -->
+		</div>
+	</nav>
+
+	<!-- header -->
+	<%-- <header>
+		<div class="container">
+			<!-- nav -->
+			<nav class="py-md-4 py-3 d-lg-flex">
+				<div id="logo">
+					<h1 class="mt-md-0 mt-2">
+						<a href="/TaYo/index.jsp"><span><img src="/TaYo/images/bus.png"></span> TayoTayo </a>
+					</h1>
+				</div>
+				<label for="drop" class="toggle"><span class="fa fa-bars"></span></label> <input type="checkbox" id="drop" />
+				<ul class="menu ml-auto mt-1">
+					<li class=""><a href="">관광지/맛집 추천</a></li>
+					<li class=""><a href="">여행지 일정 추천</a></li>
+					<li class="active"><a href="<%=root%>/schedule?act=schedule">일정 짜기</a></li>
+					<li class=""><a href="/TaYo/tayotogether/tayotogether.jsp">함께 타기</a></li>
+					<li class=""><a href="">About 타요타요</a></li>
+					<li class="booking"><a href="">Login</a></li>
+					<li class="booking"><a href="">회원가입</a></li>
+				</ul>
+			</nav>
+			<!-- //nav -->
+		</div>
+	</header> --%>
+	<!-- //header -->
