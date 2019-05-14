@@ -51,27 +51,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <!-- //google fonts -->
 
-<style type="text/css">
-@media (min-width: 1200px).container {
-    max-width: 1140px;
-}
-@media (min-width: 992px).container {
-    max-width: 960px;
-}
-@media (min-width: 768px).container {
-    max-width: 720px;
-}
-@media (min-width: 576px).container {
-    max-width: 540px;
-}
-.container {
-	width: 100%;
-	padding-right: 15px;
-	padding-left: 15px;
-	margin-right: auto;
-	margin-left: auto;
-}
-</style>
 </head>
 
 
