@@ -41,7 +41,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 <!-- css files -->
-
 <link href="/TaYo/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- bootstrap css -->
 <link href="/TaYo/css/style.css" rel='stylesheet' type='text/css' />
@@ -56,11 +55,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <!-- //google fonts -->
-
-
 </head>
-
-
 
 <body>
 	<nav class="navbar navbar-expand-md bg-light navbar-light ">
@@ -73,14 +68,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</button>
 			<div class="navbar-collapse collapse" id="navbarCollapse">
 				<ul class="navbar-nav">
-					<li class="nav-item active"><a class="nav-link" href="<%=root%>/head_nav/?act=join">지역추천</a></li>
-					<li class="nav-item"><a class="nav-link" href="<%=root%>/tayotogether/tayotogether.jsp">함께타기</a></li>
-					<li class="nav-item"><a class="nav-link" href="<%=root%>/schedule?act=schedule">일정짜기</a></li>
-					<li class="nav-item"><a class="nav-link" href="<%=root%>/head_nav/?act=join">지역추천</a></li>
+					<li class="nav-item active"><a class="nav-link text-nowrap" href="<%=root%>/head_nav/?act=join">지역추천</a></li>
+					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/tayotogether/tayotogether.jsp">함께타기</a></li>
+					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/schedule?act=schedule">일정짜기</a></li>
+					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/head_nav/?act=join">지역추천</a></li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="<%=root%>/head_nav/?act=join" data-target="#myModal" data-toggle="modal">로그인</a></li>
-					<li class="nav-item"><a class="nav-link" href="<%=root%>/head_nav/?act=join" data-target="#myModal" data-toggle="modal">회원가입</a></li>
+					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/head_nav/?act=join" data-target="#myModal" data-toggle="modal">로그인</a></li>
+					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/head_nav/?act=join" data-target="#myModal" data-toggle="modal">회원가입</a></li>
 				</ul>
 			</div>
 		</div>
