@@ -118,7 +118,7 @@
 
 <!-- 함께타요 일정 -->
 <!-- 필터 -->
-<div class="container mt-3">
+<div class="container mt-3">https://github.com/sohyoun/Kitri---HTML5.githttps://github.com/sohyoun/Kitri---HTML5.git
 	<h3 class="heading text-capitalize text-center">함께 타요</h3>
 	<p class="text mt-2 mb-5 text-center">타요인들과 함께 여행을 떠나 새로운 추억을 쌓아보세요!</p>
 	<table class="table table-bordered">
