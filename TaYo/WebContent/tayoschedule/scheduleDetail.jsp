@@ -145,7 +145,7 @@ $(document).ready(function() {
 				};
 		
 				var map = new daum.maps.Map(container, options);
-		</script>
+			</script>
 		</div>
 	</div>	
 </div>
