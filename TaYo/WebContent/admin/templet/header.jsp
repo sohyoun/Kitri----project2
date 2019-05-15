@@ -47,7 +47,7 @@
 
 					<li><a href="board.jsp"><i class="fa fa-list-ol"></i> 게시판관리 </a></li>
 
-					<li><a href="#"><i class="fa fa-table"></i> 통계 </a></li>
+					<li><a href="statistics.jsp"><i class="fa fa-table"></i> 통계 </a></li>
 
 				</ul>
 

@@ -12,7 +12,7 @@
 		<div class="col-sm-9">
 			<div class="row">
 				<div class="col-xs-12">
-					<h2>Article Title</h2>
+					<h2>함께가요.</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 						Duis pharetra varius quam sit amet vulputate. Quisque mauris
 						augue, molestie tincidunt condimentum vitae, gravida a libero.
@@ -29,7 +29,7 @@
 			<hr />
 			<div class="row">
 				<div class="col-xs-12">
-					<h2>Article Title</h2>
+					<h2>좋아요.</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 						Duis pharetra varius quam sit amet vulputate. Quisque mauris
 						augue, molestie tincidunt condimentum vitae, gravida a libero.
