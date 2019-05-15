@@ -3,7 +3,28 @@
 <%@ include file="/temp/header.jsp"%>
 <!-- banner -->
 <section class="banner_inner" id="home">
-	<div class="banner_inner_overlay"></div>
+	<div class="banner_inner_overlay">
+		<div class="container">
+			<div class="w3layouts-banner-info" style="padding-top: 8rem;">
+				<h3 class="text-wh">
+					<small>여행 친구를 만들어 </small> '함께 타요'
+				</h3>
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search">
+					<a href="" class="tayo-search"><span class="fa fa-search"></span></a>
+					<!-- 
+					<button class="btn btn-default" type="submit">
+						<div class="image-tour">
+							<p>
+								<i class="fa fa-search"></i>
+							</p>
+						</div>
+					</button>
+					-->
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 <!-- //banner -->
 
@@ -35,7 +56,7 @@
 								(3)</span></li>
 					</ul>
 					<h6 class="mt-1">
-						<span class="fa fa-user-circle"> kkiruk
+						<span class="fa fa-user-circle"> kkiruk 
 					</h6>
 				</div>
 			</div>
@@ -58,7 +79,7 @@
 								(5)</span></li>
 					</ul>
 					<h6 class="mt-1">
-						<span class="fa fa-user-circle"> GoGotpfk
+						<span class="fa fa-user-circle"> GoGotpfk 
 					</h6>
 				</div>
 			</div>
@@ -81,7 +102,7 @@
 								(2)</span></li>
 					</ul>
 					<h6 class="mt-1">
-						<span class="fa fa-user-circle"> sohyoun
+						<span class="fa fa-user-circle"> sohyoun 
 					</h6>
 				</div>
 			</div>
@@ -104,7 +125,7 @@
 								(1)</span></li>
 					</ul>
 					<h6 class="mt-1">
-						<span class="fa fa-user-circle"> lovetayo
+						<span class="fa fa-user-circle"> lovetayo 
 					</h6>
 				</div>
 			</div>
@@ -118,26 +139,28 @@
 
 <!-- 함께타요 일정 -->
 <!-- 필터 -->
-<div class="container mt-3">https://github.com/sohyoun/Kitri---HTML5.githttps://github.com/sohyoun/Kitri---HTML5.git
+<div class="container mt-3">
+	https://github.com/sohyoun/Kitri---HTML5.githttps://github.com/sohyoun/Kitri---HTML5.git
 	<h3 class="heading text-capitalize text-center">함께 타요</h3>
-	<p class="text mt-2 mb-5 text-center">타요인들과 함께 여행을 떠나 새로운 추억을 쌓아보세요!</p>
+	<p class="text mt-2 mb-5 text-center">타요인들과 함께 여행을 떠나 새로운 추억을
+		쌓아보세요!</p>
 	<table class="table table-bordered">
-			<tr>
-				<td>필터</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>여행도시</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>여행일</td>
-				<td><span>1-3일</span><span>4-6일</span></td>
-			</tr>
-			<tr>
-				<td>여행시기</td>
-				<td></td>
-			</tr>
+		<tr>
+			<td>필터</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>여행도시</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>여행일</td>
+			<td><span>1-3일</span><span>4-6일</span></td>
+		</tr>
+		<tr>
+			<td>여행시기</td>
+			<td></td>
+		</tr>
 	</table>
 
 	<p>Note that we start the search in tbody, to prevent filtering the

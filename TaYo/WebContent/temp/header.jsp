@@ -66,7 +66,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li class=""><a href="">관광지/맛집 추천</a></li>
 				<li class=""><a href="">여행지 일정 추천</a></li>
 				<li class="active"><a href="<%=root%>/schedule?act=schedule">일정 짜기</a></li>
-				<li class=""><a href="/TaYo/tayotogether/tayotogether.jsp">함께 타기</a></li>
+				<li class=""><a href="<%=root%>/tayotogether/tayotogether.jsp">함께 타기</a></li>
 				<li class=""><a href="">About 타요타요</a></li>
 				<li class="booking"><a href="">Login</a></li>
 				<li class="booking"><a href="">회원가입</a></li>
