@@ -40,8 +40,8 @@
 <div style="margin-left: 25rem;">
 	<div id="buttons" class="buttons">
 		<a class="btn btn-success mr-4" href="<%=root%>/schedule?act=overall">개요</a>
-		<a class="btn btn-success mr-4">일정표</a>
-		<a class="btn btn-success">지도</a>
+		<a class="btn btn-success mr-4" href="<%=root%>/schedule?act=planTable">일정표</a>
+		<a class="btn btn-success" href="<%=root%>/schedule?act=planMap">지도</a>
 	</div>
 </div>
 
