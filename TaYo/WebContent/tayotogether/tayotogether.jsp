@@ -10,17 +10,8 @@
 					<small>여행 친구를 만들어 </small> '함께 타요'
 				</h3>
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search">
-					<a href="" class="tayo-search"><span class="fa fa-search"></span></a>
-					<!-- 
-					<button class="btn btn-default" type="submit">
-						<div class="image-tour">
-							<p>
-								<i class="fa fa-search"></i>
-							</p>
-						</div>
-					</button>
-					-->
+					<input type="text" class="form-control" placeholder="도시명으로 검색">
+					<a href="" id="tayo-search"><span class="fa fa-search" id="tayo-search-icon"></span></a>
 				</div>
 			</div>
 		</div>
@@ -137,40 +128,179 @@
 </section>
 <!-- 마감임박 -->
 
-<!-- 함께타요 일정 -->
-<!-- 필터 -->
+<!-- 함께타요 -->
 <div class="container mt-3">
-	https://github.com/sohyoun/Kitri---HTML5.githttps://github.com/sohyoun/Kitri---HTML5.git
 	<h3 class="heading text-capitalize text-center">함께 타요</h3>
 	<p class="text mt-2 mb-5 text-center">타요인들과 함께 여행을 떠나 새로운 추억을
 		쌓아보세요!</p>
+<!-- 필터 -->
 	<table class="table table-bordered">
-		<tr>
-			<td>필터</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>여행도시</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>여행일</td>
-			<td><span>1-3일</span><span>4-6일</span></td>
-		</tr>
-		<tr>
-			<td>여행시기</td>
-			<td></td>
-		</tr>
-	</table>
-
-	<p>Note that we start the search in tbody, to prevent filtering the
-		table headers.</p>
-</div>
+	  <tr>
+	  	<td id="filter-title">필터</td>
+	  	<td id="filter-body" colspan="2">
+	  	<button type="button" class="btn btn-light">서울 | <span class="fa fa-remove"></button>
+	  	<button type="button" class="btn btn-light">7-10일 | <span class="fa fa-remove"></button>
+	  	<button type="button" class="btn btn-light">여름 | <span class="fa fa-remove"></button>
+	  	</td>
+	  </tr>	
+      <tr>
+        <td id="filter-title">여행도시</td>
+        <td id="filter-body">
+      	  <button type="button" class="btn btn-light">서울</button>
+		  <button type="button" class="btn btn-light">부산</button>
+	 	  <button type="button" class="btn btn-light">인천</button>
+ 		  <button type="button" class="btn btn-light">대전</button>
+ 		  <button type="button" class="btn btn-light">대구</button>
+ 		  <div id="city-toggle" class="collapse">
+ 		  <button type="button" class="btn btn-light">광주</button>
+ 		  <button type="button" class="btn btn-light">울산</button>
+ 		  <button type="button" class="btn btn-light">세종특별자치시</button>
+ 		  <button type="button" class="btn btn-light">가평군</button>
+ 		  <button type="button" class="btn btn-light">고양시</button>
+ 		  <button type="button" class="btn btn-light">과천시</button>
+ 		  <button type="button" class="btn btn-light">광명시</button>
+ 		  <button type="button" class="btn btn-light">광주시(경기)</button>
+ 		  <button type="button" class="btn btn-light">구리시</button>
+ 		  <button type="button" class="btn btn-light">군포시</button>
+ 		  </div>
+        </td>
+        <td width="4%"><span class="fa fa-chevron-down" data-toggle="collapse" data-target="#city-toggle"></td>
+      </tr>
+      <tr>
+        <td id="filter-title">여행일</td>
+        <td id="filter-body"  colspan="2">
+        	<button type="button" class="btn btn-light">1-3일</button>
+			<button type="button" class="btn btn-light">4-6일</button>
+			<button type="button" class="btn btn-light">7-10일</button>
+ 			<button type="button" class="btn btn-light">11-15일</button>
+ 			<button type="button" class="btn btn-light">15일 이상</button>
+        </td>
+      </tr>
+      <tr>
+        <td id="filter-title">여행시기</td>
+        <td id="filter-body"  colspan="2">
+ 			 <button type="button" class="btn btn-light">봄</button>
+			 <button type="button" class="btn btn-light">여름</button>
+			 <button type="button" class="btn btn-light">가을</button>
+ 			 <button type="button" class="btn btn-light">겨울</button>
+        </td>
+      </tr>
+  </table>
 <!-- 필터 -->
 
-
-
-
 <!-- 함께타요 일정 -->
+<div class="row" id="tayowith-schedule">
+			<div class="col-lg-3 col-sm-6">
+				<div class="image-tour position-relative">
+					<img src="/TaYo/images/p1.jpg" alt="" class="img-fluid" />
+					<p>
+						<span>100 <span class="fa fa-thumbs-up"></span> | 12230 <span
+							class="fa fa-eye"></span> | 19 <span class="fa fa-comment"></span>
+					</p>
+				</div>
+				<div class="package-info">
+					<h6 class="mt-1">
+						<span class="fa fa-map-marker mr-2"></span>부산
+					</h6>
+					<h5 class="my-2">모녀 부산여행</h5>
+					<p class="">가족여행</p>
+					<ul class="listing mt-3">
+						<li><span class="fa fa-clock-o mr-2"></span><span>2019.05.01~2019.05.03
+								(3)</span></li>
+					</ul>
+					<h6 class="mt-1">
+						<span class="fa fa-user-circle"> kkiruk 
+					</h6>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="image-tour position-relative">
+					<img src="/TaYo/images/p2.jpg" alt="" class="img-fluid" />
+					<p>
+						<span>98 <span class="fa fa-thumbs-up"> | 9917 <span
+								class="fa fa-eye"> | 10 <span class="fa fa-comment"></span>
+					</p>
+				</div>
+				<div class="package-info">
+					<h6 class="mt-1">
+						<span class="fa fa-map-marker mr-2"></span>전주, 여수
+					</h6>
+					<h5 class="my-2">전라도 먹방 여행</h5>
+					<p class="">우정여행</p>
+					<ul class="listing mt-3">
+						<li><span class="fa fa-clock-o mr-2"></span><span>2019.04.03~2019.05.07
+								(5)</span></li>
+					</ul>
+					<h6 class="mt-1">
+						<span class="fa fa-user-circle"> GoGotpfk 
+					</h6>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5">
+				<div class="image-tour position-relative">
+					<img src="/TaYo/images/p3.jpg" alt="" class="img-fluid" />
+					<p>
+						<span>71 <span class="fa fa-thumbs-up"> | 5560 <span
+								class="fa fa-eye"> | 9 <span class="fa fa-comment"></span>
+					</p>
+				</div>
+				<div class="package-info">
+					<h6 class="mt-1">
+						<span class="fa fa-map-marker mr-2"></span>강릉
+					</h6>
+					<h5 class="my-2">바다로 호캉스</h5>
+					<p class="">커플여행</p>
+					<ul class="listing mt-3">
+						<li><span class="fa fa-clock-o mr-2"></span><span>2019.04.21~2019.04.22
+								(2)</span></li>
+					</ul>
+					<h6 class="mt-1">
+						<span class="fa fa-user-circle"> sohyoun 
+					</h6>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5">
+				<div class="image-tour position-relative">
+					<img src="/TaYo/images/p4.jpg" alt="" class="img-fluid" />
+					<p>
+						<span>56 <span class="fa fa-thumbs-up"> | 3726 <span
+								class="fa fa-eye"> | 3 <span class="fa fa-comment"></span>
+					</p>
+				</div>
+				<div class="package-info">
+					<h6 class="mt-1">
+						<span class="fa fa-map-marker mr-2"></span>제천
+					</h6>
+					<h5 class="my-2">생애 첫 패러글라이딩</h5>
+					<p class="">나홀로여행</p>
+					<ul class="listing mt-3">
+						<li><span class="fa fa-clock-o mr-2"></span><span>2019.04.19
+								(1)</span></li>
+					</ul>
+					<h6 class="mt-1">
+						<span class="fa fa-user-circle"> lovetayo 
+					</h6>
+				</div>
+			</div>
+		</div>
+<!-- 함께타요 일정 -->
+
+<!-- 페이지넘김 -->
+<div id="tayowith-paging">
+<ul class="pagination justify-content-center">
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+ </ul>
+</div>
+<!-- 페이지넘김 -->
+
+</div>
+<!-- 함께타요 -->
+
+
+
 
 <%@ include file="/temp/footer.jsp"%>

@@ -38,7 +38,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	<!-- css files -->
     <link href="/TaYo/css/bootstrap.css" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
-    <link href="/TaYo/css/style.css" rel='stylesheet' type='text/css' /><!-- custom css -->
+    <link href="/TaYo/css/style.css" rel='stylesheet' type='text/css' /><!-- Templete custom css -->
+     <link href="/TaYo/css/styletayo.css" rel='stylesheet' type='text/css' /><!-- Tayo custom css -->
     <link href="/TaYo/css/font-awesome.min.css" rel="stylesheet"><!-- fontawesome css -->
 	
 	<!-- //css files -->
