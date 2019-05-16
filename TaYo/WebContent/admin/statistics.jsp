@@ -2,21 +2,13 @@
     pageEncoding="UTF-8"%>
 
 <%@include file = "templet/header.jsp" %>
-<div class="col-lg-4">
-          
-<body class="theme-light">
-    <div id="chart"></div>
 
-<script type="text/javascript">
-    
-</script>
-
-<body class="theme-light">
+<!--  <body class="theme-light">
     <div id="chart"></div>
     <script type="text/javascript">
     
     // 연령별 차트 
-   /*  $(document).ready(function () {
+     $(document).ready(function () {
         var internetUsersPercent = [
             { x: "1994", y: 4.9 },
             { x: "1995", y: 9.2 },
@@ -95,7 +87,7 @@
                     ]
                 }]
             });
-        }); */
+        });  -->
     </script>
     
         <div class="row">
