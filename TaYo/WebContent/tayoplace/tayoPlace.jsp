@@ -63,7 +63,7 @@
 			<div class="col-md-3 col-sm-6 col-6 destinations-grids text-center">
 				<h4 class="destination mb-3">서울</h4>
 				<div class="image-position position-relative">
-					<img src="/TaYo/images/pla1.jpg" class="img-fluid" alt="">
+					<img src="/TaYo/images/tp1.jpg" class="img-fluid" alt="">
 					<div class="rating">
 						<ul>
 							<li><span class="fa fa-star"></span></li>
@@ -76,15 +76,15 @@
 				</div>
 				<div class="destinations-info">
 					<div class="caption mb-lg-3">
-						<h4>China</h4>
-						<a href="booking.html">Book Now</a>
+						<h4>경복궁</h4>
+						<a href="booking.html">자세히보기</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-3 col-sm-6 col-6 destinations-grids text-center">
 				<h4 class="destination mb-3">담양</h4>
 				<div class="image-position position-relative">
-					<img src="/TaYo/images/pla2.jpg" class="img-fluid" alt="">
+					<img src="/TaYo/images/tp2_2.jpg" class="img-fluid" alt="">
 					<div class="rating">
 						<ul>
 							<li><span class="fa fa-star"></span></li>
@@ -97,15 +97,15 @@
 				</div>
 				<div class="destinations-info">
 					<div class="caption mb-lg-3">
-						<h4>Malaysia</h4>
-						<a href="booking.html">Book Now</a>
+						<h4>메타세콰이어길</h4>
+						<a href="booking.html">자세히보기</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-3 col-sm-6 col-6 destinations-grids text-center mt-md-0 mt-4">
 				<h4 class="destination mb-3">부산</h4>
 				<div class="image-position position-relative">
-					<img src="/TaYo/images/pla3.jpg" class="img-fluid" alt="">
+					<img src="/TaYo/images/tp3.jpg" class="img-fluid" alt="">
 					<div class="rating">
 						<ul>
 							<li><span class="fa fa-star"></span></li>
@@ -118,15 +118,15 @@
 				</div>
 				<div class="destinations-info">
 					<div class="caption mb-lg-3">
-						<h4>Japan</h4>
-						<a href="">Book Now</a>
+						<h4>감천문화마을</h4>
+						<a href="">자세히보기</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-3 col-sm-6 col-6 destinations-grids text-center mt-md-0 mt-4">
 				<h4 class="destination mb-3">전주</h4>
 				<div class="image-position position-relative">
-					<img src="/TaYo/images/pla4.jpg" class="img-fluid" alt="">
+					<img src="/TaYo/images/tp4.jpg" class="img-fluid" alt="">
 					<div class="rating">
 						<ul>
 							<li><span class="fa fa-star"></span></li>
@@ -139,8 +139,8 @@
 				</div>
 				<div class="destinations-info">
 					<div class="caption mb-lg-3">
-						<h4>Singapore</h4>
-						<a href="">Book Now</a>
+						<h4>한옥마을</h4>
+						<a href="">자세히보기</a>
 					</div>
 				</div>
 			</div>
@@ -163,7 +163,7 @@
 </div>
 
 <button type="button" class="btn btn-primary active">Active Primary</button>
-<button type="button" class="btn btn-primary" disabled>Disabled Primary</button>
+<button type="button" class="btn btn-primary active" >Disabled Primary</button>
 <a href="#" class="btn btn-primary disabled">Disabled Link</a>
 
 
