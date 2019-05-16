@@ -90,8 +90,21 @@
            			<label><strong>여행 일자</strong></label>
            		</div>
            		<div class="input-group" align="center">
-           			<span><input type="text" class="form-control" id="start" name="start" placeholder="20XX.XX.XX"></span> ~ 
-           			<span><input type="text" class="form-control" id="end" name="end" placeholder="20XX.XX.XX"></span>
+           			<div class="row">
+           				<div class="col-sm-5" style="margin: auto;">
+           					<div class="d-inline-flex p-2 text-white">
+								<input type="text" class="form-control" id="start" name="start" placeholder="20XX.XX.XX" style="display: inline-block;">
+								<img src="<%=root%>/images/calendar.png" width="38" height="38">
+							</div>
+       					</div>
+        				<div class="col-sm-1" style="margin: auto;" align="center">~</div>
+        				<div class="col-sm-5" style="margin: auto;">
+	        				<div class="d-inline-flex p-2 text-white">
+	        					<input type="text" class="form-control" id="end" name="end" placeholder="20XX.XX.XX" style="display: inline-block;">
+	        					<img src="<%=root%>/images/calendar.png" width="38" height="38">
+							</div>
+           				</div>
+         			</div>
            		</div>
            		<br>
            		<div class="row">

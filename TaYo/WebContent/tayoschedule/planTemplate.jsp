@@ -27,11 +27,6 @@
 		<div class="container">
 			<div class="w3layouts-banner-info" style="padding-top: 8rem;">
 			<h3 class="text-wh">'~~~님이 계획한 일정입니다.'</h3>
-<!-- 				<div class="buttons mt-4"> -->
-<!-- 					<a class="btn btn-info mr-4">개요</a> -->
-<!-- 					<a class="btn btn-info mr-4">일정표</a> -->
-<!-- 					<a class="btn btn-info">지도</a> -->
-<!-- 				</div> -->
 			</div>
 		</div>
 	</div>
