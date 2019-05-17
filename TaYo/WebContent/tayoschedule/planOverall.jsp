@@ -20,11 +20,60 @@
 		
 		<div class="col-sm-7">
 			<ul class="list-group">
-				<li class="list-group-item">First item</li>
-				<li class="list-group-item">Second item</li>
-				<li class="list-group-item">Third item</li>
-				<li class="list-group-item">Fourth item</li>
-				<li class="list-group-item">Fifth item</li>
+				<li class="list-group-item">
+					<div class="d-inline-flex p-2 text-black">
+						<label class="label label-default">DAY1</label>
+						<label class="label label-primary">서울</label>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<div class="d-inline-flex p-2 text-black">
+						<label class="label label-default">DAY1</label>
+						<label class="label label-primary">서울</label>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<div class="d-inline-flex p-2 text-black">
+						<label class="label label-default">DAY1</label>
+						<label class="label label-primary">서울</label>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<div class="d-inline-flex p-2 text-black">
+						<label class="label label-default">DAY2</label>
+						<label class="label label-primary">부산</label>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<div class="d-inline-flex p-2 text-black">
+						<label class="label label-default">DAY2</label>
+						<label class="label label-primary">부산</label>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<div class="d-inline-flex p-2 text-black">
+						<label class="label label-default">DAY3</label>
+						<label class="label label-primary">대구</label>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<div class="d-inline-flex p-2 text-black">
+						<label class="label label-default">DAY3</label>
+						<label class="label label-primary">대구</label>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<div class="d-inline-flex p-2 text-black">
+						<label class="label label-default">DAY3</label>
+						<label class="label label-primary">대구</label>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<div class="d-inline-flex p-2 text-black">
+						<label class="label label-default">DAY3</label>
+						<label class="label label-primary">대구</label>
+					</div>
+				</li>
 			</ul>
 		</div>
 		
