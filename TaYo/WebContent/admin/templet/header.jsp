@@ -12,7 +12,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>관리자 페이지</title>
-
 <link rel="stylesheet" type="text/css" href="resource/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="resource/font-awesome/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="resource/css/local.css" />
@@ -23,6 +22,21 @@
 <link id="gridcss" rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/dark-bootstrap/all.min.css" />
 <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"> </script>
 <script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/gridData.js"> </script>
+
+
+	<!-- internal style sheet -->
+	<style>
+		ul#active > li > a{
+	
+			text-align: left;
+			font-family: 맑은고딕;
+			font-size: x-large;
+			
+		}
+	
+	</style>
+
+
 </head>
 <body>
 	<div id="wrapper">
@@ -35,7 +49,7 @@
 						class="icon-bar"></span>
 				</button>
 				<img src ="images/bus.png" width = "50" height ="50"/>
-				<a class="navbar-brand" href="index.jsp">관리자 페이지</a>
+				<a class="navbar-brand" href="index.jsp">Administrator</a>
 			</div>
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				
