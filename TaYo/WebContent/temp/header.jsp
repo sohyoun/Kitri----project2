@@ -44,6 +44,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="/TaYo/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- bootstrap css -->
 <link href="/TaYo/css/style.css" rel='stylesheet' type='text/css' />
+<link href="/TaYo/css/styletayo.css" rel='stylesheet' type='text/css' />
 <!-- custom css -->
 <link href="/TaYo/css/font-awesome.min.css" rel="stylesheet">
 <!-- fontawesome css -->
@@ -82,5 +83,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/head_nav/?act=join" data-target="#myModal" data-toggle="modal">회원가입</a></li>
 				</ul>
 			</div>
+
 		</div>
 	</nav>
+
