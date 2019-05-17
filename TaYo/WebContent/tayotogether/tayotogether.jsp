@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/temp/header.jsp"%>
+<script>
+$(function(){
+	var planDiv = $("#tayowithschedule001");
+	$(planDiv).click(function(){
+		location.href="/TaYo/tayotogether/ttPlan.jsp";
+	});
+});
+</script>
+
+
 <!-- banner -->
 <section class="banner_inner" id="home">
 	<div class="banner_inner_overlay">
@@ -28,7 +38,7 @@
 		</h3>
 		<p class="text mt-2 mb-5 text-center">마감이 얼마 남지 않았어요! 서두르세요!</p>
 		<div class="row">
-			<div class="col-lg-3 col-sm-6">
+			<div class="col-lg-3 col-sm-6" id="tayowithschedule001">
 				<div class="image-tour position-relative">
 					<img src="/TaYo/images/p1.jpg" alt="" class="img-fluid" />
 					<p>
@@ -134,7 +144,7 @@
 	<p class="text mt-2 mb-5 text-center">타요인들과 함께 여행을 떠나 새로운 추억을
 		쌓아보세요!</p>
 <!-- 필터 -->
-	<table class="table table-bordered">
+	<table class="table table-bordered" id="tayowith-filter">
 	  <tr>
 	  	<td id="filter-title">필터</td>
 	  	<td id="filter-body" colspan="2">
@@ -189,7 +199,7 @@
 <!-- 필터 -->
 
 <!-- 함께타요 일정 -->
-<div class="row" id="tayowith-schedule">
+<div class="row">
 			<div class="col-lg-3 col-sm-6">
 				<div class="image-tour position-relative">
 					<img src="/TaYo/images/p1.jpg" alt="" class="img-fluid" />
