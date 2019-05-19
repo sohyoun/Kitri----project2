@@ -6,13 +6,13 @@
 <style>
 	#daylist {
 		overflow-x: hidden;
-		overflow-y: scroll;
+		overflow-y: auto;
 		height: 30rem;
 	}
 	
 	#placelist {
 		overflow-x: hidden;
-		overflow-y: scroll;
+		overflow-y: auto;
 		height: 26rem;
 	}
 	
