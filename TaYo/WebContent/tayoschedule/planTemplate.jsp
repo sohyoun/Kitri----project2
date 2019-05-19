@@ -32,7 +32,7 @@
 	</div>
 </section>
 
-<div style="margin-left: 25rem;">
+<div style="margin-left: 25rem; margin-bottom: 1rem;">
 	<div id="buttons" class="buttons">
 		<a class="btn btn-success mr-4" href="<%=root%>/schedule?act=overall">개요</a>
 		<a class="btn btn-success mr-4" href="<%=root%>/schedule?act=planTable">일정표</a>

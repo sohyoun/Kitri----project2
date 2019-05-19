@@ -30,6 +30,8 @@ public class ScheduleFrontController extends HttpServlet {
 			MoveURL.redirect(request, response, "/tayoschedule/planTable.jsp");
 		} else if ("planMap".equals(act)) {
 			MoveURL.redirect(request, response, "/tayoschedule/planMap.jsp");
+		} else if ("myschedule".equals(act)) {
+			MoveURL.redirect(request, response, "/tayoschedule/planTemplate.jsp");
 		}
 	}
 	
