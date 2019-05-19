@@ -6,22 +6,21 @@ $(function(){
 	var start = $("#start");
 	var end = $("#end");
 	
+	$.datepicker.setDefaults({
+		dateFormat: 'yy.mm.dd',
+		showOtherMonths: true,
+		showMonthAfterYear:true,
+		buttonImageOnly: true,
+		changeYear: true,
+		changeMonth: true,
+		yearSuffix: "년",
+		monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+		monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+		dayNamesMin: ['일','월','화','수','목','금','토'],
+		dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일']
+	});
+	
 	$(start).click(function(){
-// 		$(start).datepicker({
-// 			dateFormat: 'yy.mm.dd',
-// 			showOtherMonths: true,
-// 			showMonthAfterYear:true,
-// 			showOn: 'button',
-<%-- 			buttonImage: '<%=root%>/images/calendar.png', --%>
-// 			buttonImageOnly: true,
-// 			changeYear: true,
-// 			changeMonth: true,
-// 			yearSuffix: "년",
-// 			monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-// 			monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-// 			dayNamesMin: ['일','월','화','수','목','금','토'],
-// 			dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일']
-// 		});
 		$(start).datepicker();
 	});
 	
@@ -140,7 +139,7 @@ $(function(){
 						<button type="button" class="btn btn-warning btn-block">취소</button>           			
            			</div>
            			<div class="col-sm-4">
-           				<button type="button" class="btn btn-info btn-block">저장</button>
+           				<button type="button" class="btn btn-info btn-block">임시 저장</button>
            			</div>
            			<div class="col-sm-4">
            				<button type="button" class="btn btn-success btn-block">완료</button>

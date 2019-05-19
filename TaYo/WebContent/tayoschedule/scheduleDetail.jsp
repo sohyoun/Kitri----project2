@@ -29,6 +29,15 @@ $(document).ready(function() {
 	$("#planSave").click(function() {
 		$("#planSaveModal").modal();
 	});
+	
+	$("#daylist").sortable({axis: "y", revert: true, revertDuration: 0});
+ 	$(".list-group").sortable({axis: "y", revert: true, revertDuration: 0});
+	
+	$(".placeclass").draggable({
+		connectToSortable: $(".list-group"),
+		helper: "clone",
+		revert: "invalid"
+	});
 });
 </script>
 
@@ -115,7 +124,7 @@ $(document).ready(function() {
 			<div class="col-sm-4">
 				<div>
 					<div>
-						<table class="table table-bordered table-sm" style="align: center;">
+						<table class="table table-sm" style="align: center;">
 							<tbody align="center">
 								<tr>
 									<td width="100">
@@ -149,55 +158,107 @@ $(document).ready(function() {
 							<tbody id="tablebody" align="center">
 								<tr>
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>명동</td>
+									<td>
+										<ul class="placeclass">
+											<li class="list-group-item" style="padding: 0.3rem;">명동</li>
+										</ul>
+									</td>
 								</tr>
 								<tr>
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>인사동</td>
+									<td>
+										<ul class="placeclass">
+											<li class="list-group-item" style="padding: 0.3rem;">인사동</li>
+										</ul>
+									</td>
 								</tr>
 								<tr>
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>N 남산 타워</td>
+									<td>
+										<ul class="placeclass">
+											<li class="list-group-item" style="padding: 0.3rem;">N 남산 타워</li>
+										</ul>
+									</td>
 								</tr>
 								<tr>
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>이태원</td>
+									<td>
+										<ul class="placeclass">
+											<li class="list-group-item" style="padding: 0.3rem;">이태원</li>
+										</ul>
+									</td>
 								</tr>
 								<tr>
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>호수공원</td>
+									<td>
+										<ul class="placeclass">
+											<li class="list-group-item" style="padding: 0.3rem;">호수공원</li>
+										</ul>
+									</td>
 								</tr>
 								<tr>
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>종로</td>
+									<td>
+										<ul class="placeclass">
+											<li class="list-group-item" style="padding: 0.3rem;">종로</li>
+										</ul>
+									</td>
 								</tr>
 								<tr>
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>광장시장</td>
+									<td>
+										<ul class="placeclass">
+											<li class="list-group-item" style="padding: 0.3rem;">광장시장</li>
+										</ul>
+									</td>
 								</tr>
 								<tr>
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>청계천</td>
+									<td>
+										<ul class="placeclass">
+											<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
+										</ul>
+									</td>
 								</tr>
 								<tr>
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>청계천</td>
+									<td>
+										<ul class="placeclass">
+											<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
+										</ul>
+									</td>
 								</tr>
 								<tr>
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>청계천</td>
+									<td>
+										<ul class="placeclass">
+											<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
+										</ul>
+									</td>
 								</tr>
 								<tr>
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>청계천</td>
+									<td>
+										<ul class="placeclass">
+											<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
+										</ul>
+									</td>
 								</tr>
 								<tr>
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>청계천</td>
+									<td>
+										<ul class="placeclass">
+											<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
+										</ul>
+									</td>
 								</tr>
 								<tr>
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>청계천</td>
+									<td>
+										<ul class="placeclass">
+											<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
+										</ul>
+									</td>
 								</tr>
 							</tbody>
 						</table>
