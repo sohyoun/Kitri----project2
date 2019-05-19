@@ -1,36 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<script>
-$(function(){
-	var start = $("#start");
-	var end = $("#end");
-	
-	$(start).click(function(){
-// 		$(start).datepicker({
-// 			dateFormat: 'yy.mm.dd',
-// 			showOtherMonths: true,
-// 			showMonthAfterYear:true,
-// 			showOn: 'button',
-<%-- 			buttonImage: '<%=root%>/images/calendar.png', --%>
-// 			buttonImageOnly: true,
-// 			changeYear: true,
-// 			changeMonth: true,
-// 			yearSuffix: "년",
-// 			monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-// 			monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-// 			dayNamesMin: ['일','월','화','수','목','금','토'],
-// 			dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일']
-// 		});
-		$(start).datepicker();
-	});
-	
-	$(end).click(function(){
-		$(end).datepicker();
-	});
-});
-</script>
-
 <div id="planSaveModal" class="modal fade" role="dialog">
 	<h5 class="modal-title" id="myModalLabel">지역선택</h5>
 	<div class="modal-dialog modal-xs">
@@ -123,13 +93,15 @@ $(function(){
            			<div class="row">
            				<div class="col-sm-5" style="margin: auto;">
            					<div class="d-inline-flex p-2 text-white">
-								<input type="text" class="form-control" id="start" name="start" placeholder="20XX.XX.XX" style="display: inline-block;" readonly="readonly">
+								<input type="text" class="form-control" id="start" name="start" placeholder="20XX.XX.XX" style="display: inline-block;">
+								<img src="<%=root%>/images/calendar.png" width="38" height="38">
 							</div>
        					</div>
         				<div class="col-sm-1" style="margin: auto;" align="center">~</div>
         				<div class="col-sm-5" style="margin: auto;">
 	        				<div class="d-inline-flex p-2 text-white">
-	        					<input type="text" class="form-control" id="end" name="end" placeholder="20XX.XX.XX" style="display: inline-block;" readonly="readonly">
+	        					<input type="text" class="form-control" id="end" name="end" placeholder="20XX.XX.XX" style="display: inline-block;">
+	        					<img src="<%=root%>/images/calendar.png" width="38" height="38">
 							</div>
            				</div>
          			</div>
