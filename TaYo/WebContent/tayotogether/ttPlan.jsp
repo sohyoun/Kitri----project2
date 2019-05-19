@@ -52,19 +52,27 @@
 		</div>
 		<div class="tab-content">
     		<div id="home" class="container tab-pane active"><br>
-    		<div>
+    		<div class="daymap"><div class="daymapcontent">Map</div></div>
+    		<div class="daycontent">
       			<div class="daytitle">
-      				<span class="daynum">DAY1</span>
-      				<span class="daycontent"><div class="daydate">2015.08.09 (일)</div><div class="daycplace">부산</div></span>
+      				<div class="daynum">DAY1</div>
+      				<div class="daytitlecontent"><div class="daydate">2015.08.09 (일)</div><div class="daycplace">부산</div></div>
       			</div>
-      			<div>
-      				<span>1</span>
-      				<span><img>서울역 모임</span>
+      			<div class="daydetail">
+      				<div class="daydetailnum"><span class="daydetailnumcont">1</span></div>
+      				<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
+      				<div class="daydetailcontent">서울역 모임<span class="badge">버스역</span></div>
+      				<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
+      				<div>[소요시간] 장안동에서 인천국제공항 공항철도까지 2시간 소요 -12:05 공항리무진</div>
+      				<div>[도착 예정시간] 14:00</div>
+      				<div>[예상비용] 점심 15,000원</div>
+					<div>[체크리스트]</div>
       			</div>
       			<div>추천경로</div>
-      			<div>
-      				<span>2</span>
-      				<span><img>부산역 도착</span>
+      			<div class="daydetail">
+      				<div class="daydetailnum"><span class="daydetailnumcont">2</span></div>
+      				<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
+      				<div class="daydetailcontent">부산역 도착  </div>
       			</div>
       		</div>	
     		</div>

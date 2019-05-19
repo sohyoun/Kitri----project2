@@ -87,14 +87,84 @@
 	display: inline;
 	
 }
+.daymap{
+	width: 35%;
+	float: right;
+	height: 300px;
+	
+}
+.daymapcontent{
+	margin-left: 10px;
+	border: 1px solid;
+	height: 300px;
+}
+.daycontent{
+	width: 65%;
+}
+.daytitle{
+	height: 70px;
+}
 .daynum{
 	background-color: navy;
 	color: white;
 	padding: 20px;
 	font-size: 20px;
 	font-weight: bold;
+	width: 20%;
+	float: left;
+	text-align: center;
 }
-
+.daytitlecontent{
+	border-style: solid;
+	border-width: 1px 1px 0px 1px;
+	border-color: #BDBDBD;
+	width:80%;
+	
+	padding: 8px;
+	float: left;
+}
+.daydetail{
+	height: 160px;
+	border: 1px solid;
+	border-color: #BDBDBD;
+}
+.daydate{
+	color: #A4A4A4;
+	font-weight: bold;
+	font-size: 15px;
+}
+.daycplace{
+	font-size: 20px;
+	font-weight: bold;
+}
+.daydetailnum{
+	width: 20%;
+	float: left;
+	text-align: center;
+	margin-top: 30px;
+}
+.daydetailnumcont{
+	border-radius: 100px;
+	border: 1px solid;
+	background-color: navy;
+	color: white;
+}
+.daydetailimg{
+	width: 10%;
+	padding-top: 10px;
+	float: left;
+}
+.daydetailcontent{
+	width:60%;
+	padding: 10px;
+	float: left;
+	font-size: 18px;
+	font-weight: bold;
+}
+.daydetailfa{
+	width: 10%;
+	float:right;
+}
 
 
 
