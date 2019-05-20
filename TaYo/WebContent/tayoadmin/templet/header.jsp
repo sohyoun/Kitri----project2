@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%
-	String root = request.getContextPath();
+String root = request.getContextPath();
 %>
-
 <!DOCTYPE html>
 
 <html lang="ko">
@@ -12,7 +10,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>관리자 페이지</title>
-
 <link rel="stylesheet" type="text/css" href="resource/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="resource/font-awesome/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="resource/css/local.css" />

@@ -1,5 +1,5 @@
 
-/*-- //tayo --*/
+/*-- //tayo with--*/
 #tayo-search {
 	background: #007bff;
 	color : #fff;
@@ -26,11 +26,148 @@
 	margin-top: 20px;
 }
 
-#tayowith-schedule{
-	margin-top: 60px;
-	margin-bottom: 100px;
+#tayowith-filter{
+	margin-bottom: 60px;
+	
 }
 
 #tayowith-paging{
+	margin-top: 100px;
 	margin-bottom: 200px;
+}
+
+
+/*-- //tayo with Plan Detail--*/
+.twplandetail{
+	width: 100%; height: 400px;
+}
+.pdheader{
+	background-image:url("/TaYo/images/p1.jpg");
+	background-repeat:no-repeat;
+	background-size:100%;
+	display: table;
+	width: 100%; height: 100%;
+	
+}
+
+.pdheaderdetail{
+	color: white;
+	display: table-cell;
+	vertical-align: bottom;
+}
+
+.pdheaderdetailcontent{
+	padding: 20px 90px 20px 20px;
+	background-color: rgba(0, 0, 0, 0.4);
+	font-size: 18px;
+}
+.pname{
+	font-size: 30px;
+	font-weight: bold;
+}
+.twppeople{
+	font-weight: bold;
+}
+.pcontent{
+	text-align: right;
+	font-size: 23px;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.pdmenu{
+	margin-top: 20px;
+}
+.joinbtnlist{
+	text-align: right;
+	width: 60%;
+	padding-right: 0px;
+}
+.joinbtnlist>li{
+	display: inline;
+	
+}
+.daymap{
+	width: 35%;
+	float: right;
+	height: 300px;
+	
+}
+.daymapcontent{
+	margin-left: 10px;
+	border: 1px solid;
+	height: 300px;
+}
+.daycontent{
+	width: 65%;
+}
+.daytitle{
+	height: 70px;
+}
+.daynum{
+	background-color: navy;
+	color: white;
+	padding: 20px;
+	font-size: 20px;
+	font-weight: bold;
+	width: 20%;
+	float: left;
+	text-align: center;
+}
+.daytitlecontent{
+	border-style: solid;
+	border-width: 1px 1px 0px 1px;
+	border-color: #BDBDBD;
+	width:80%;
+	
+	padding: 8px;
+	float: left;
+}
+.daydetail{
+	height: 160px;
+	border: 1px solid;
+	border-color: #BDBDBD;
+}
+.daydate{
+	color: #A4A4A4;
+	font-weight: bold;
+	font-size: 15px;
+}
+.daycplace{
+	font-size: 20px;
+	font-weight: bold;
+}
+.daydetailnum{
+	width: 20%;
+	float: left;
+	text-align: center;
+	margin-top: 30px;
+}
+.daydetailnumcont{
+	border-radius: 100px;
+	border: 1px solid;
+	background-color: navy;
+	color: white;
+}
+.daydetailimg{
+	width: 10%;
+	padding-top: 10px;
+	float: left;
+}
+.daydetailcontent{
+	width:60%;
+	padding: 10px;
+	float: left;
+	font-size: 18px;
+	font-weight: bold;
+}
+.daydetailfa{
+	width: 10%;
+	float:right;
+}
+
+
+
+.rrrrrrr{
+	height: 1000px;
 }
