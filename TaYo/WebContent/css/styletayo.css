@@ -142,12 +142,7 @@
 	float: left;
 	text-align: center;
 	margin-top: 30px;
-}
-.daydetailnumcont{
-	border-radius: 100px;
-	border: 1px solid;
-	background-color: navy;
-	color: white;
+	height:130px;
 }
 .daydetailimg{
 	width: 10%;
@@ -156,6 +151,7 @@
 }
 .daydetailcontent{
 	width:60%;
+	height: 60px;
 	padding: 10px;
 	float: left;
 	font-size: 18px;
@@ -163,7 +159,16 @@
 }
 .daydetailfa{
 	width: 10%;
+	height: 60px;
 	float:right;
+}
+.daydetailfa>span{
+	font-size: 30px;
+	color : #007bff;
+	padding-top: 10px;
+}
+.daydetailsub{
+	font-size: 13px;
 }
 
 
