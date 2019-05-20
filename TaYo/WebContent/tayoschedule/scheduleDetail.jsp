@@ -30,9 +30,8 @@ $(document).ready(function() {
 		$("#planSaveModal").modal();
 	});
 	
-	$("#daylist").sortable({axis: "y", revert: true, revertDuration: 0});
- 	$(".list-group").sortable({axis: "y", revert: true, revertDuration: 0, cancel: ".list-group-item-1"});
- 	$(".list-group").droppable({cancle: ".list-group-item-1"});
+	$("#daylist").sortable({axis: "y", revert: false, revertDuration: 0});
+ 	$(".list-group").sortable({axis: "y", revert: false, revertDuration: 0, cancel: ".list-group-item-1"});
  	
 	$(".placeclass").draggable({
 		connectToSortable: $(".list-group"),
