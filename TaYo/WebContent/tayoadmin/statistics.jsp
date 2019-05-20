@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@include file="/tayoadmin/templet/header.jsp"%>
+<style>
 
-<script type="text/javascript"
-	src="https://www.gstatic.com/charts/loader.js"></script>
+</style>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 	google.charts.load('current', {
 		'packages' : [ 'corechart' ]
@@ -63,7 +63,7 @@
 	}
 </script>
 
-<<script type="text/javascript">
+<script type="text/javascript">
 google.charts.load("current", {
 	packages : [ "corechart" ]
 });
@@ -146,19 +146,31 @@ function drawChart() {
 </script>
 
 
+<div class="row">
+          <div class="col-lg-12">
+            <div class="page-header">
+            </div>
+            <div class="bs-example">
+              <div class="jumbotron">
+                <h1>통계</h1>
+                <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                
+              </div>
+            </div>
+          </div>
+</div><!-- /.row -->
 
-<!-- 차트 TITLE 영역  -->
+<!-- 차트 시작 영역  -->
 <div class="col-lg-12">
 	<div class="panel panel-primary" style="height: 491px;">
 		<div class="panel-heading">
-			<h4 class="text-center">
-				? <span class="glyphicon glyphicon-screenshot pull-right"></span>
-			</h4>
+			<h3 class="text-center"> ????? <span class="glyphicon glyphicon-screenshot pull-right"></span>
+			</h3>
 		</div>
 		<div id="chart1" class="shield-chart">
 			<div id="shielddw" class="shield-container"
 				style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
-				<div id="chart_div1" style="width: 500; height: 500px;"></div>
+				<div id="chart_div1" style="width: 100%; height: 500px;"></div>
 			</div>
 		</div>
 	</div>
@@ -182,6 +194,7 @@ function drawChart() {
 </div>
 <!-- 끝 영역 -->
 
+<!-- 차트 시작 영역  -->
 <div class="col-lg-12">
 	<div class="panel panel-primary" style="height: 491px;">
 		<div class="panel-heading">
@@ -196,7 +209,9 @@ function drawChart() {
 		</div>
 	</div>
 </div>
+<!-- 끝 영역 -->
 
+<!-- 차트 시작 영역  -->
 <div class="col-lg-12">
 	<div class="panel panel-primary" style="height: 491px;">
 		<div class="panel-heading">
@@ -211,6 +226,5 @@ function drawChart() {
 		</div>
 	</div>
 </div>
-
-
+<!-- 끝 영역 -->
 <%@include file="/tayoadmin/templet/footer.jsp"%>
