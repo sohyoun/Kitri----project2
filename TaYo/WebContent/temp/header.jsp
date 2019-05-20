@@ -29,21 +29,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	}
 </script>
 
-
-
-
-<!-- To be fixed modal window is not opened... -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
+<!--  datepicker from Bootstrap -->
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/> -->
+<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script> -->
+<!--  datepicker from JQuery UI -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
 
 <!-- css files -->
 <link href="/TaYo/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- bootstrap css -->
 <link href="/TaYo/css/style.css" rel='stylesheet' type='text/css' />
+<link href="/TaYo/css/styletayo.css" rel='stylesheet' type='text/css' />
 <!-- custom css -->
 <link href="/TaYo/css/font-awesome.min.css" rel="stylesheet">
 <!-- fontawesome css -->
@@ -57,7 +61,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //google fonts -->
 </head>
 <style type="text/css">
-nav ul {
+#navbarCollapse>ul {
     float: none;
 }
 </style>
@@ -65,22 +69,24 @@ nav ul {
 	<nav class="navbar navbar-expand-md bg-light navbar-light ">
 		<div class="container">
 			<!-- bg-light -->
-			<a class="navbar-brand" href="<%=root%>/head_nav/?act=main"> <img src="<%=root%>/images/bus.png" width="50px" height="50px"> TayoTayo
+			<a class="navbar-brand" href="<%=root%>/index.jsp"> <img src="<%=root%>/images/bus.png" width="50px" height="50px"> TayoTayo
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="navbar-collapse collapse" id="navbarCollapse">
 				<ul class="navbar-nav">
-					<li class="nav-item active"><a class="nav-link text-nowrap" href="<%=root%>/head_nav/?act=join">지역추천</a></li>
-					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/tayotogether/tayotogether.jsp">함께타기</a></li>
-					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/schedule?act=schedule">일정짜기</a></li>
-					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/head_nav/?act=join">지역추천</a></li>
+					<li class="nav-item active"><a class="nav-link text-nowrap" href="<%=root%>">여행지추천</a></li>
+					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/tayotogether/tayotogether.jsp">함께타요</a></li>
+					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/schedule?act=schedule">일정만들기</a></li>
+					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/tayorecomand/recomand.jsp">여행일정추천</a></li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/head_nav/?act=join" data-target="#myModal" data-toggle="modal">로그인</a></li>
 					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/head_nav/?act=join" data-target="#myModal" data-toggle="modal">회원가입</a></li>
 				</ul>
 			</div>
+
 		</div>
 	</nav>
+
