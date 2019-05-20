@@ -1,4 +1,4 @@
-package com.kitri.api.tour;
+package com.kitri.api.tour.service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 //참고사이트: https://shlee0882.tistory.com/2?category=729958
-public class TourService {
+public class TourPositionService {
 	
 	public String getPosition(String x, String y, String radius) throws IOException{
 		StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList"); /*URL*/
