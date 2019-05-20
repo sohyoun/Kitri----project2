@@ -31,8 +31,9 @@ $(document).ready(function() {
 	});
 	
 	$("#daylist").sortable({axis: "y", revert: true, revertDuration: 0});
- 	$(".list-group").sortable({axis: "y", revert: true, revertDuration: 0});
-	
+ 	$(".list-group").sortable({axis: "y", revert: true, revertDuration: 0, cancel: ".list-group-item-1"});
+ 	$(".list-group").droppable({cancle: ".list-group-item-1"});
+ 	
 	$(".placeclass").draggable({
 		connectToSortable: $(".list-group"),
 		helper: "clone",
@@ -60,54 +61,54 @@ $(document).ready(function() {
 		<div class="row">
 			<div id="daylist" class="col-sm-2">
 				<ul class="list-group">
-					<li class="list-group-item" style="background-color:steelblue; color: white; padding: 0.3rem;">1일차</li>
+					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">1일차</li>
 					<li class="list-group-item" style="padding: 0.3rem;">명동</li>
 					<li class="list-group-item" style="padding: 0.3rem;">인사동</li>
 					<li class="list-group-item" style="padding: 0.3rem;">N 남산 타워</li>
 					<li class="list-group-item" style="padding: 0.3rem;">이태원</li>
 				</ul>
 				<ul class="list-group">
-					<li class="list-group-item" style="background-color:steelblue; color: white; padding: 0.3rem;">2일차</li>
+					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">2일차</li>
 					<li class="list-group-item" style="padding: 0.3rem;">호수공원</li>
 					<li class="list-group-item" style="padding: 0.3rem;">종로</li>
 				</ul>
 				<ul class="list-group">
-					<li class="list-group-item" style="background-color:steelblue; color: white; padding: 0.3rem;">3일차</li>
+					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">3일차</li>
 					<li class="list-group-item" style="padding: 0.3rem;">광장시장</li>
 					<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
 					<li class="list-group-item" style="padding: 0.3rem;">관악산</li>
 					<li class="list-group-item" style="padding: 0.3rem;">이태원</li>
 				</ul>
 				<ul class="list-group">
-					<li class="list-group-item" style="background-color:steelblue; color: white; padding: 0.3rem;">4일차</li>
+					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">4일차</li>
 					<li class="list-group-item" style="padding: 0.3rem;">광장시장</li>
 					<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
 					<li class="list-group-item" style="padding: 0.3rem;">관악산</li>
 					<li class="list-group-item" style="padding: 0.3rem;">이태원</li>
 				</ul>
 				<ul class="list-group">
-					<li class="list-group-item" style="background-color:steelblue; color: white; padding: 0.3rem;">5일차</li>
+					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">5일차</li>
 					<li class="list-group-item" style="padding: 0.3rem;">광장시장</li>
 					<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
 					<li class="list-group-item" style="padding: 0.3rem;">관악산</li>
 					<li class="list-group-item" style="padding: 0.3rem;">이태원</li>
 				</ul>
 				<ul class="list-group">
-					<li class="list-group-item" style="background-color:steelblue; color: white; padding: 0.3rem;">6일차</li>
+					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">6일차</li>
 					<li class="list-group-item" style="padding: 0.3rem;">광장시장</li>
 					<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
 					<li class="list-group-item" style="padding: 0.3rem;">관악산</li>
 					<li class="list-group-item" style="padding: 0.3rem;">이태원</li>
 				</ul>
 				<ul class="list-group">
-					<li class="list-group-item" style="background-color:steelblue; color: white; padding: 0.3rem;">7일차</li>
+					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">7일차</li>
 					<li class="list-group-item" style="padding: 0.3rem;">광장시장</li>
 					<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
 					<li class="list-group-item" style="padding: 0.3rem;">관악산</li>
 					<li class="list-group-item" style="padding: 0.3rem;">이태원</li>
 				</ul>
 				<ul class="list-group">
-					<li class="list-group-item" style="background-color:steelblue; color: white; padding: 0.3rem;">8일차</li>
+					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">8일차</li>
 					<li class="list-group-item" style="padding: 0.3rem;">광장시장</li>
 					<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
 					<li class="list-group-item" style="padding: 0.3rem;">관악산</li>
