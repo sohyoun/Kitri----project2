@@ -12,7 +12,7 @@
 		<div class="col-sm-9">
 			<div class="row">
 				<div class="col-xs-12">
-					<h2>함께가요.</h2>
+					<h2>1</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 						Duis pharetra varius quam sit amet vulputate. Quisque mauris
 						augue, molestie tincidunt condimentum vitae, gravida a libero.
@@ -29,7 +29,7 @@
 			<hr />
 			<div class="row">
 				<div class="col-xs-12">
-					<h2>좋아요.</h2>
+					<h2>2</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 						Duis pharetra varius quam sit amet vulputate. Quisque mauris
 						augue, molestie tincidunt condimentum vitae, gravida a libero.
@@ -46,7 +46,7 @@
 			<hr />
 			<div class="row">
 				<div class="col-xs-12">
-					<h2>Article Title</h2>
+					<h2>3</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 						Duis pharetra varius quam sit amet vulputate. Quisque mauris
 						augue, molestie tincidunt condimentum vitae, gravida a libero.
@@ -64,7 +64,7 @@
 
 			<!-- the comment box -->
 			<div class="well">
-				<h4>Leave a Comment:</h4>
+				<h4>4</h4>
 				<form role="form">
 					<div class="form-group">
 						<textarea class="form-control" rows="3"></textarea>
@@ -174,7 +174,7 @@
 				<div class="row">
 					<ul class="col-6 links">
 						<li><a href="" class="scroll">회사 소개</a></li>
-						<li><a href="" class="scroll">F&Q</a></li>
+						<li><a href="" class="scroll">F&amp;Q</a></li>
 					</ul>
 				</div>
 			</div>
@@ -198,7 +198,7 @@
 
 <!-- copyright -->
 <div class="copyright py-3 text-center">
-	<p>© 2019 TaYoTaYo - The Bus Trip Planner | Design by 이재운 / 김의연 / 형태희 / 박소현 / 고세라 </a></p>
+	<p>© 2019 TaYoTaYo - The Bus Trip Planner | Design by 이재운 / 김의연 / 형태희 / 박소현 / 고세라</p>
 </div>
 <!-- //copyright -->
 

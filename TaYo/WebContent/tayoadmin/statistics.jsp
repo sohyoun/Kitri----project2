@@ -227,4 +227,5 @@ function drawChart() {
 	</div>
 </div>
 <!-- 끝 영역 -->
+
 <%@include file="/tayoadmin/templet/footer.jsp"%>
