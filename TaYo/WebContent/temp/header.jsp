@@ -111,7 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 						<!-- Modal Header -->
 						<div class="modal-header">
-							<h4 class="modal-title">Tayo 로그인</h4>
+							<h4 class="modal-title"><img src="<%=root%>/images/bus.png" width="50px" height="50px">    Tayo 로그인</h4>
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 
@@ -129,7 +129,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						
 						<div class="modal-body">
-							<span>비밀번호 찾기</span> | <span>회원가입</span>
+							<button type="button" class="btn">비밀번호 찾기</button> | <button type="button" class="btn btn-link">회원가입</button>
 						</div>
 
 					</div>
@@ -143,7 +143,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 						<!-- Modal Header -->
 						<div class="modal-header">
-							<h4 class="modal-title">Tayo 회원가입</h4>
+							<h4 class="modal-title"><img src="<%=root%>/images/bus.png" width="50px" height="50px">    Tayo 회원가입</h4>
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 
@@ -155,13 +155,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   							<input type="text" class="form-control" id="usremail" placeholder="example@email.com">
   							<label for="usrpwd">비밀번호 : </label>
   							<input type="password" class="form-control" id="usrpwd" placeholder="password">
-  							<input type="radio" class="form-check-input" name="optradio">남
-  							<input type="radio" class="form-check-input" name="optradio">여
+  							<div class="form-check-inline">
+  								<label class="form-check-label">
+    								<input type="radio" class="form-check-input" name="optradio">남
+  								</label>
+							</div>
+							<div class="form-check-inline">
+  								<label class="form-check-label">
+    								<input type="radio" class="form-check-input" name="optradio">여
+  								</label>
+							</div>
 						</div>
 
 						<!-- Modal footer -->
 						<div class="modal-footer">
 							<button type="button" class="btn btn-primary btn-block" data-dismiss="modal">회원가입</button>
+						</div>
+						
+						<div class="modal-body">
+							<label>이미 회원이신가요?</label>
+							<button type="button" class="btn btn-link">로그인</button>
+							<div class="form-check">
+  								<label class="form-check-label">
+    								<input type="checkbox" class="form-check-input" value="">타요타요에 가입하면서 이용약관 과 개인정보 취급방침을 확인하고 이에 동의합니다.
+  								</label>
+							</div>
 						</div>
 
 					</div>
