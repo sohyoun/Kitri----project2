@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ include file="/admin/templet/header.jsp"%>
+<%@ include file="/tayoadmin/templet/header.jsp"%>
 <style>
 </style>
 
@@ -131,4 +131,4 @@
 </div>
 
 
-<%@ include file="/admin/templet/footer.jsp"%>
+<%@ include file="/tayoadmin/templet/footer.jsp"%>

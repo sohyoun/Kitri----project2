@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<%@ include file="/admin/templet/header.jsp"%>
+<%@ include file="/tayoadmin/templet/header.jsp"%>
 
 <style>
 	button{
@@ -59,4 +59,4 @@
 </div>
 
 
-<%@include file="/admin/templet/footer.jsp"%>
+<%@include file="/tayoadmin/templet/footer.jsp"%>
