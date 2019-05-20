@@ -52,7 +52,7 @@
 		</div>
 		<div class="tab-content">
     		<div id="home" class="container tab-pane active"><br>
-    		<div class="daymap"><div class="daymapcontent">Map</div></div>
+    		<div class="daymap"><div class="daymapcontent">Map들어감</div></div>
     		<div class="daycontent">
       			<div class="daytitle">
       				<div class="daynum">DAY1</div>
