@@ -36,6 +36,7 @@ public class AdminDaoImpl implements AdminDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
+		// DB 연결 
 		try {
 			conn = DBConnection.makeConnection();
 		} catch (SQLException e) {
