@@ -6,7 +6,8 @@
 </style>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
-	google.charts.load('current', {
+	
+	google.charts.load('current', {// google chart1 start
 		'packages' : [ 'corechart' ]
 	});
 	google.charts.setOnLoadCallback(drawVisualization);
@@ -39,11 +40,11 @@
 		};
 
 		var chart = new google.visualization.ComboChart(document
-				.getElementById('chart_div1'));
+				.getElementById('googlechart1'));
 		chart.draw(data, options);
-	}
+	} // end
 
-	google.charts.load("current", {
+	google.charts.load("current", { //begin
 		packages : [ "corechart" ]
 	});
 	google.charts.setOnLoadCallback(drawChart);
@@ -58,9 +59,10 @@
 		};
 
 		var chart = new google.visualization.PieChart(document
-				.getElementById('piechart_3d'));
+				.getElementById('googlechart2'));
 		chart.draw(data, options);
-	}
+	}//end
+	
 </script>
 
 <script type="text/javascript">
@@ -115,7 +117,7 @@ function drawChart() {
 	};
 
 	var chart = new google.visualization.Histogram(document
-			.getElementById('chart_div2'));
+			.getElementById('googlechart3'));
 	chart.draw(data, options);
 }
 </script>
@@ -139,7 +141,7 @@ function drawChart() {
     isStacked: true
   };
 
-  var chart = new google.visualization.SteppedAreaChart(document.getElementById('chart_div3'));
+  var chart = new google.visualization.SteppedAreaChart(document.getElementById('googlechart4'));
 
   chart.draw(data, options);
 }
@@ -161,6 +163,7 @@ function drawChart() {
 </div><!-- /.row -->
 
 <!-- 차트 시작 영역  -->
+
 <div class="col-lg-12">
 	<div class="panel panel-primary" style="height: 491px;">
 		<div class="panel-heading">
@@ -170,12 +173,11 @@ function drawChart() {
 		<div id="chart1" class="shield-chart">
 			<div id="shielddw" class="shield-container"
 				style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
-				<div id="chart_div1" style="width: 100%; height: 500px;"></div>
+				<div id="google_chart1" style="width: 100%; height: 500px;"></div>
 			</div>
 		</div>
 	</div>
-</div>
-<!-- 끝 영역 -->
+</div><!-- 끝 영역 -->
 
 <!-- 차트 시작 영역  -->
 <div class="col-lg-12">
@@ -188,7 +190,7 @@ function drawChart() {
 		<div id="chart1" class="shield-chart"></div>
 		<div id="shielddw" class="shield-container"
 			style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
-			<div id="piechart_3d" style="width: 500; height: 500px;"></div>
+			<div id="googlechart2" style="width: 500; height: 500px;"></div>
 		</div>
 	</div>
 </div>
@@ -205,7 +207,7 @@ function drawChart() {
 		<div id="chart1" class="shield-chart"></div>
 		<div id="shielddw" class="shield-container"
 			style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
-			<div id="chart_div2" style="width: 500; height: 500px;"></div>
+			<div id="googlechart3" style="width: 500; height: 500px;"></div>
 		</div>
 	</div>
 </div>
@@ -222,7 +224,7 @@ function drawChart() {
 		<div id="chart1" class="shield-chart"></div>
 		<div id="shielddw" class="shield-container"
 			style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
-			 <div id="chart_div3" style="width: 500; height: 500px;"></div>
+			 <div id="googlechart4" style="width: 500; height: 500px;"></div>
 		</div>
 	</div>
 </div>
