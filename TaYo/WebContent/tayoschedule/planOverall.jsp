@@ -98,7 +98,7 @@ $(function(){
       				<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
       				<div class="daydetailsub">[소요시간] 장안동에서 인천국제공항 공항철도까지 2시간 소요 -12:05 공항리무진</div>
       				<div class="daydetailsub">[도착 예정시간] 14:00</div>
-      				<div class="daydetailsub">[예상비용] 점심 15,000원</div>
+      				<div class="daydetailsub">[예상비용]  15,000원</div>
 					<div class="daydetailsub">[체크리스트] </div>
       			</div>
       			<div><li class="btn-path"><button class="btn-to-path">경로 탐색</button></li></div>
