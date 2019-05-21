@@ -37,14 +37,10 @@ public class TourPositionServlet extends HttpServlet {
 		String result =tourService.getPosition(x, y, radius);
 		System.out.println("TourAPI"+result);
 		request.setAttribute("result", result);
-		String path = "/doc/apitest/positionresult.jsp";
+		String path = "/apitour/positionresult.jsp";
 		MoveURL.forward(request, response, path);
 	}
 
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
 
 }

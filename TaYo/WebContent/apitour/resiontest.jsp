@@ -13,18 +13,12 @@
 <script>
 $(function() {	
 	$("button").click(function() {
-		var vurl= '/tourresion';
+		
 		$.ajax({          
-		    	url  : vurl,
+		  		url  : "<%=root%>/tourresion",
 				type : 'get',
-				data : {
-					x : "126.981611",
-					y : "37.568477",
-					radius : "2000" /* 반경 (m) */
-				},
 				success : function(xml) {
 					/* console.log(xml.trim()); */
-
 					parser = new DOMParser();
 					xmlDoc = parser.parseFromString(xml.trim(), "text/xml");
 					console.log(xmlDoc);
