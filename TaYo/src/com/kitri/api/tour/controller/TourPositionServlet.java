@@ -13,24 +13,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kitri.api.tour.TourService;
+import com.kitri.api.tour.service.TourPositionService;
 import com.kitri.util.MoveURL;
 
 /**
  * Servlet implementation class TourAPI
  */
-@WebServlet("/tourAPI")
-public class TourAPI extends HttpServlet {
+@WebServlet("/tourposition")
+public class TourPositionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	TourService tourService;
+	TourPositionService tourService;
 	@Override
 	public void init() throws ServletException {
-		tourService = new TourService();
+		tourService = new TourPositionService();
 
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		System.out.println("tourAPI get");
 		String x= request.getParameter("x");
 		String y= request.getParameter("y");
