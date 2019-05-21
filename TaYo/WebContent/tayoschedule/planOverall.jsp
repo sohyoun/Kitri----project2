@@ -26,10 +26,11 @@
 	.circle {
 		width: 2rem;
 		height: 2rem;
-		background-color: navy;
+		background-color: #223b68;
 		color: white;
 		border-radius: 50%;
 		text-align: center;
+		font-weight: bold;
 		line-height: 2rem;
 		/* margin-left: 1rem; */
 		display: inline-block; 
@@ -46,8 +47,7 @@
 	.btn-to-path {
 		width: 10rem;
 		height: 1.5rem;
-		background-color: #007bff;
-		color: white;
+		color: #ff9320;
 	}
 	
 	
@@ -80,9 +80,11 @@ $(function(){
 	<div class="row">
 		<div id="dayinfo" class="col-sm-1">
 			<div class="btn-group-vertical">
+				<span class="fa fa-chevron-up"/>
 				<a class="nav-link" href="#day1">1일차</a>
 				<a class="nav-link" href="#day2">2일차</a>
 				<a class="nav-link" href="#day3">3일차</a>
+				<span class="fa fa-chevron-down"/>
 			</div>
 		</div>
 
@@ -101,7 +103,7 @@ $(function(){
       				<div class="daydetailsub">[예상비용]  15,000원</div>
 					<div class="daydetailsub">[체크리스트] </div>
       			</div>
-      			<div><li class="btn-path"><button class="btn-to-path">경로 탐색</button></li></div>
+      			<div><li class="btn-path"><button class="btn btn-outline-secondary">경로 탐색</button></li></div>
       			<div class="daydetail">
       				<div class="daydetailnum"><span class="circle">2</span></div>
       				<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
