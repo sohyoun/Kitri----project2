@@ -4,17 +4,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
 <%
 	String root = request.getContextPath();
 %>
 <script>
 $(function() {	
 	$("button").click(function() {
+		var vurl= '/tourresion';
 		$.ajax({          
-		    	url  : "<%=root%>
-	/tourposition",
+		    	url  : vurl,
 				type : 'get',
 				data : {
 					x : "126.981611",
@@ -46,16 +47,16 @@ $(function() {
 						});
 						console.log(contentStr)
 						//                      $("#after").append(contentStr);
-					}
-				},//end success
-				error : function(err) {
-					console.log(err);
-				}
-			});//end ajax
-			return false;
-		});//end a.click
+					}//end if
+			},//end success
+			error : function(err) {
+				console.log(err);
+			}//end error
+		});//end ajax
+	return false;
+	});//end a.click
 
-	});
+});
 </script>
 
 </head>
