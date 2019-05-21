@@ -61,8 +61,5 @@ $(function() {
 <hr>
 버튼을 누르고 console을 확인해주세요.<br>
 필수 입력값: MobileOS, MobileApp, ServiceKey,mapX, mapY, radius
-
-	
-	
 </body>
 </html>
