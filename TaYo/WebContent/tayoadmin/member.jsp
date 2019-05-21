@@ -8,35 +8,31 @@
 	button{
 		width : 20em;
 	}
+	
+	div.container > table th{
+		text-align: center;
+	}
+	
 </style>
-
-	<div class="container">
+<div class="container">
 		<!-- 테이블  -->
-  <h2>테이블</h2>
-  <p>The .thead-dark class adds a black background to table headers, and the .thead-light class adds a grey background to table headers:</p>
+  <h2 style = "text-align: left; margin-left: 5%">테이블</h2>
+  <p>추가 정보</p>
   <table class = "table">
     <thead class = "thead-dark">
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+      	<th>이메일</th><th>이름</th><th>나이</th><th>등급</th><th>성별</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
+      	<td>12.12kimiyeon@gmail.com</td><td>김의연</td><td>31</td><td>good</td><td>M</td>
       </tr>
       <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
+        <td>Mary</td><td>Moe</td><td>mary@example.com</td><td>""</td><td>""</td>
       </tr>
       <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
+		<td>July</td><td>Dooley</td><td>july@example.com</td><td>""</td><td>""</td>
       </tr>
     </tbody>
   </table>

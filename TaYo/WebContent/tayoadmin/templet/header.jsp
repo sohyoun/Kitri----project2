@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-String root = request.getContextPath();
+	String root = request.getContextPath();
 %>
 <!DOCTYPE html>
 
@@ -9,17 +9,28 @@ String root = request.getContextPath();
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>관리자 페이지</title>
-<link rel="stylesheet" type="text/css" href="resource/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="resource/font-awesome/css/font-awesome.min.css" />
+<title>TayoTayo</title>
+<link rel="stylesheet" type="text/css"
+	href="resource/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="resource/font-awesome/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="resource/css/local.css" />
 <script type="text/javascript" src="resource/js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="resource/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="resource/bootstrap/js/bootstrap.min.js"></script>
 <!-- you need to include the shieldui css and js assets in order for the charts to work -->
-<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css" />
-<link id="gridcss" rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/dark-bootstrap/all.min.css" />
-<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"> </script>
-<script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/gridData.js"> </script>
+<link rel="stylesheet" type="text/css"
+	href="http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css" />
+<link id="gridcss" rel="stylesheet" type="text/css"
+	href="http://www.shieldui.com/shared/components/latest/css/dark-bootstrap/all.min.css" />
+<script type="text/javascript"
+	src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js">
+	
+</script>
+<script type="text/javascript"
+	src="http://www.prepbootstrap.com/Content/js/gridData.js">
+	
+</script>
 </head>
 <body>
 	<div id="wrapper">
@@ -27,25 +38,27 @@ String root = request.getContextPath();
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target=".navbar-ex1-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
+					<span class="sr-only">Toggle navigation</span> 
+					<span class="icon-bar"> </span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<img src ="images/bus.png" width = "50" height ="50"/>
-				<a class="navbar-brand" href="index.jsp">관리자 페이지</a>
+				<img src="images/bus.png" width="50" height="50" /> <a
+					class="navbar-brand" href="index.jsp">TayoTayo</a>
 			</div>
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				
+					
 				<ul id="active" class="nav navbar-nav side-nav">
 
-					<li class="selected"><a href="index.jsp"><i class="fa fa-bullseye"> </i> HOME </a></li>
-    
-					<li><a href="member.jsp"><i class="fa fa-tasks"> </i> 회원관리</a></li>
+					<li class="selected"><a href="index.jsp"><i
+							class="fa fa-bullseye"> </i> HOME </a></li>
 
-					<li><a href="board.jsp"><i class="fa fa-list-ol"></i> 게시판관리 </a></li>
+					<li><a href="member.jsp"><i class="fa fa-tasks"> </i>Member</a></li>
 
-					<li><a href="statistics.jsp"><i class="fa fa-table"></i> 통계 </a></li>
+					<li><a href="board.jsp"><i class="fa fa-list-ol"></i>
+							Board </a></li>
 
+					<li><a href="statistics.jsp"><i class="fa fa-table"></i>
+							Statistics </a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right navbar-user">
@@ -69,14 +82,15 @@ String root = request.getContextPath();
 						</ul></li>
 					<li class="dropdown user-dropdown"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"><i
-							class="fa fa-user"></i> Steve Miller<b class="caret"></b></a>
+							class="fa fa-user"></i>Admin<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
 							<li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
 							<li class="divider"></li>
 							<li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
 
-						</ul></li>
+						</ul>
+					</li>
 					<li class="divider-vertical"></li>
 					<li>
 						<form class="navbar-search">
