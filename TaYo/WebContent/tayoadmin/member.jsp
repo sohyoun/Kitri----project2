@@ -39,15 +39,15 @@
 			var age = td.eq(2).text();
 			var grade = td.eq(3).text();
 			var gender = td.eq(4).text();
-			
-			str +=	" * 클릭된 Row의 td값 = 이메일 : <font color='red'>" + email + "</font>" +
+								
+		/* 	str +=	" * 클릭된 Row의 td값 = 이메일 : <font color='red'>" + email + "</font>" +
 					", 이름 : <font color='red'>" + name + "</font>" +
 					", 나이 : <font color='red'>" + age + "</font>" +
 					", 등급 : <font color='red'>" + grade + "</font>" +
-					", 성별 : <font color='red'>" + gender + "</font>";
+					", 성별 : <font color='red'>" + gender + "</font>"; */
 					
 			$("#result").html(" * 클릭한 Row의 모든 데이터 = " + tr.text());		
-			$("#result").html(str);
+		/* 	$("#result").html(str); */
 		});
 	});
 
@@ -78,11 +78,11 @@
   </table>
  </div>
 	<form class = "text-center">
-		<textarea id = "result" rows="10" cols="30">
+		<textarea id = "result" rows="10" cols="100">
 		
 		</textarea>
-		<button class="btn btn-success btn-sm">수정</button>
-		<button class="btn btn-success btn-sm">삭제</button>
+		<!-- <button class="btn btn-success btn-sm">수정</button>
+		<button class="btn btn-success btn-sm">삭제</button> -->
 	</form>
 <hr />
 	

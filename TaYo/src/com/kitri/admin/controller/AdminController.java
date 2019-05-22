@@ -13,14 +13,11 @@ public class AdminController extends HttpServlet {
  
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
 			String act = request.getParameter("act");
-		
 			if("".equals(act)) {
 				
 			}
 	}
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("utf-8");
