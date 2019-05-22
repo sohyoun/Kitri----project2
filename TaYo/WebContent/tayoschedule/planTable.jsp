@@ -1,20 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<div style="margin: 2rem;" align="center">
-	<div class="container">
+<div class="container mb-4" data-spy="scroll" data-target="#dayinfo"
+	data-offset="10">
 		<div class="row">
-			<div id="daylist" class="col-sm-1">
-				<div>
-					<button class="btn btn-info">1일차</button>
-				</div>
-				<div>
-					<button class="btn btn-info">2일차</button>
-				</div>
-				<div>
-					<button class="btn btn-info">3일차</button>
-				</div>
+			<div id="dayinfo" class="col-sm-1">
+			<div class="btn-group-vertical">
+				<span class="fa fa-chevron-up"/>
+				<a class="nav-link" href="#day1">1일차</a>
+				<a class="nav-link" href="#day2">2일차</a>
+				<a class="nav-link" href="#day3">3일차</a>
+				<span class="fa fa-chevron-down"/>
 			</div>
+		</div>
 			
 			<div class="col-sm-11">
 				<table class="table">
@@ -53,5 +51,5 @@
 				</table>
 			</div>
 		</div>
-	</div>
+	
 </div>

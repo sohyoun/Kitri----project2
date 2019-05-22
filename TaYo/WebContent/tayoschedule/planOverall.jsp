@@ -103,7 +103,7 @@ $(function(){
       				<div class="daydetailsub">[예상비용]  15,000원</div>
 					<div class="daydetailsub">[체크리스트] </div>
       			</div>
-      			<div><li class="btn-path"><button class="btn btn-outline-secondary">경로 탐색</button></li></div>
+      			<div><li class="btn-path"><button class="btn btn btn-light">경로 탐색</button></li></div>
       			<div class="daydetail">
       				<div class="daydetailnum"><span class="circle">2</span></div>
       				<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
@@ -114,7 +114,7 @@ $(function(){
       				<div class="daydetailsub">[예상비용] 점심 15,000원</div>
 					<div class="daydetailsub">[체크리스트] </div>
       			</div>
-      			<div>추천경로</div>
+      			<div><li class="btn-path"><button class="btn btn btn-light">경로 탐색</button></li></div>
       			<div class="daytitle">
       				<div class="daynum" id="day2">DAY2</div>
       				<div class="daytitlecontent"><div class="daydate">2015.08.10 (월)</div><div class="daycplace">부산</div></div>
@@ -129,7 +129,7 @@ $(function(){
       				<div class="daydetailsub">[예상비용] 점심 15,000원</div>
 					<div class="daydetailsub">[체크리스트] </div>
       			</div>
-      			<div>추천경로</div>
+      			<div><li class="btn-path"><button class="btn btn btn-light">경로 탐색</button></li></div>
       			<div class="daydetail">
       				<div class="daydetailnum"><span class="circle">2</span></div>
       				<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>

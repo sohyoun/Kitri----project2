@@ -199,6 +199,16 @@
 	text-align: center;
 	background-color: light;
 }
+.btn-group-vertical{
+	border-top: 5px solid;
+	border-top-color: #223b68;
+	border-bottom: 5px solid;
+	border-bottom-color: #223b68;
+	background-color: #f8f9fa;
+	align-items: center;
+	color: #343a40;
+	width: 100%;
+}
 
 .rrrrrrr{
 	height: 1000px;
