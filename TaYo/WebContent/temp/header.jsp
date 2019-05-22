@@ -33,14 +33,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
 <!--  datepicker from Bootstrap -->
 <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/> -->
@@ -83,8 +79,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<nav class="navbar navbar-expand-md bg-light navbar-light ">
 		<div class="container">
 			<!-- bg-light -->
-			<a class="navbar-brand" href="<%=root%>/index.jsp"> <img
-				src="<%=root%>/images/bus.png" width="50px" height="50px">
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp"> <img
+				src="${pageContext.request.contextPath}/images/bus.png" width="50px" height="50px">
 				TayoTayo
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -94,14 +90,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="navbar-collapse collapse" id="navbarCollapse">
 				<ul class="navbar-nav">
 					<li class="nav-item active"><a class="nav-link text-nowrap"
-						href="<%=root%>">여행지추천</a></li>
-					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/tayotogether/tayotogether.jsp">함께타요</a></li>
-					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/schedule?act=schedule">일정만들기</a></li>
-					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/tayorecomand/recomand.jsp">여행일정추천</a></li>
+						href="${pageContext.request.contextPath}">여행지추천</a></li>
+					<li class="nav-item"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/tayotogether/tayotogether.jsp">함께타요</a></li>
+					<li class="nav-item"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/schedule?act=schedule">일정만들기</a></li>
+					<li class="nav-item"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/tayorecomand/recomand.jsp">여행일정추천</a></li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/head_nav/?act=join" data-target="#loginModal" data-toggle="modal">로그인</a></li>
-					<li class="nav-item"><a class="nav-link text-nowrap" href="<%=root%>/head_nav/?act=join" data-target="#registerModal" data-toggle="modal">회원가입</a></li>
+					<li class="nav-item"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/head_nav/?act=join" data-target="#loginModal" data-toggle="modal">로그인</a></li>
+					<li class="nav-item"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/head_nav/?act=join" data-target="#registerModal" data-toggle="modal">회원가입</a></li>
 				</ul>
 			</div>
 			<!--  login Modal -->
@@ -111,7 +107,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 						<!-- Modal Header -->
 						<div class="modal-header">
-							<h4 class="modal-title"><img src="<%=root%>/images/bus.png" width="50px" height="50px">    Tayo 로그인</h4>
+							<h4 class="modal-title"><img src="${pageContext.request.contextPath}/images/bus.png" width="50px" height="50px">    Tayo 로그인</h4>
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 
@@ -143,7 +139,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 						<!-- Modal Header -->
 						<div class="modal-header">
-							<h4 class="modal-title"><img src="<%=root%>/images/bus.png" width="50px" height="50px">    Tayo 회원가입</h4>
+							<h4 class="modal-title"><img src="${pageContext.request.contextPath}/images/bus.png" width="50px" height="50px">    Tayo 회원가입</h4>
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 

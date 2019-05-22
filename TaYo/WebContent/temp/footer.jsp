@@ -28,11 +28,12 @@
 				</div>
 				<div class="row">
 					<ul class="col-6 links">
+			
 						<li><a href="" class="scroll">관광지 추천</a></li>
 						<li><a href="" class="scroll">여행지 추천</a></li>
 						<li><a href="" class="scroll">여행 일정 추천</a></li>
-						<li><a href="<%=root%>/schedule?act=schedule" class="scroll">일정 만들기</a></li>
-						<li><a href="<%=root%>/tayotogether/tayotogether.jsp" class="scroll">함께타요</a></li>
+						<li><a href="${pageContext.request.contextPath}/schedule?act=schedule" class="scroll">일정 만들기</a></li>
+						<li><a href="${pageContext.request.contextPath}/tayotogether/tayotogether.jsp" class="scroll">함께타요</a></li>
 						<li><a href="" class="scroll">My Page</a></li>
 					</ul>
 				</div>
