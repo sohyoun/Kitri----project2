@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <%@ include file="/tayoadmin/templet/header.jsp"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
 <style>
 	button{
@@ -14,11 +15,50 @@
 	}
 	
 </style>
+
+<!-- 테이블 클릭했을 경우 데이터 불러오기   -->
+<script>
+	$(function(){
+		$("#table").click(function(){
+			var str = "";
+			var tdArr = new Array();
+			
+			var tr = $(this);
+			var td = tr.children();
+			
+			// 클릭된 행의 모든 값을 가져온다.
+			// console.log("클릭한 row의 모든 데이터 :" + tr.text());
+			
+			// 반복문을 사용하여 배열에 값을 담아 사용할 수 있다.
+			td.each(function(i){
+				tdArr.push(td.eq(i).text());
+			});
+			console.log("배열에 담긴 값 : " + tdArr);
+			var email = td.eq(0).text();
+			var name = td.eq(1).text();
+			var age = td.eq(2).text();
+			var grade = td.eq(3).text();
+			var gender = td.eq(4).text();
+			
+			str +=	" * 클릭된 Row의 td값 = 이메일 : <font color='red'>" + email + "</font>" +
+					", 이름 : <font color='red'>" + name + "</font>" +
+					", 나이 : <font color='red'>" + age + "</font>" +
+					", 등급 : <font color='red'>" + grade + "</font>" +
+					", 성별 : <font color='red'>" + gender + "</font>";
+					
+			$("#result").html(" * 클릭한 Row의 모든 데이터 = " + tr.text());		
+			$("#result").html(str);
+		});
+	});
+
+</script>
+
+
+<!-- 테이블  -->
 <div class="container">
-		<!-- 테이블  -->
   <h2 style = "text-align: left; margin-left: 5%">테이블</h2>
   <p>추가 정보</p>
-  <table class = "table">
+  <table id = "table" class = "table table-bordered table-hover text-center">
     <thead class = "thead-dark">
       <tr>
       	<th>이메일</th><th>이름</th><th>나이</th><th>등급</th><th>성별</th>
@@ -38,6 +78,9 @@
   </table>
  </div>
 	<form class = "text-center">
+		<textarea id = "result" rows="10" cols="30">
+		
+		</textarea>
 		<button class="btn btn-success btn-sm">수정</button>
 		<button class="btn btn-success btn-sm">삭제</button>
 	</form>
