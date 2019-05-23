@@ -21,22 +21,105 @@
 		width: 100%;
 		height: 100%;
 	}
+	
+	.list-group {
+		margin-bottom: 0.5rem;
+	}
+	
+	button[name="placebtn"], button[name="planbtn"], button[name="addplacebtn"] {
+		float: right;
+		width: 2rem;
+		height : 2rem;
+		text-align: center;
+	}
 </style>
 
 <script type="text/javascript" src="<%=root%>/js/httpRequest.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
+$(function() {
 	$("#planSave").click(function() {
 		$("#planSaveModal").modal();
 	});
 	
-	$("#daylist").sortable({axis: "y", revert: false, revertDuration: 0});
- 	$(".list-group").sortable({axis: "y", revert: false, revertDuration: 0, cancel: ".list-group-item-1"});
+	// Sorting dayplan
+	function sortlist() {
+		var lists = $(".list-group");
+		var length = lists.length;
+		
+		for (var i = 0; i < length; i++) {
+			$(lists[i]).find(".list-group-item-1").text((i+1) + '일차');
+		}
+	}
+	
+	// drag & drop and sorting
+	$("#daylist").sortable({
+		axis: "y",
+		revert: false,
+		revertDuration: 0,
+		items: ".list-group:not(#controlday)",
+		update: function(event, ui) {
+			sortlist();
+		}
+	});
+ 	$(".list-group").sortable({
+ 		axis: "y",
+ 		revert: false,
+ 		revertDuration: 0,
+ 		items: ".list-group-item:not(.list-group-item-1)",
+ 		connectWith: ".list-group"
+	});
  	
-	$(".placeclass").draggable({
-		connectToSortable: $(".list-group"),
-		helper: "clone",
-		revert: "invalid"
+ 	// Create dayplan (with drag & drop and sorting : also applied dynamically created elements)
+	var buttons = $("#controlday>button");
+	$(buttons[0]).click(function() {
+		var length = $(".list-group").length;
+		var obj = $("<ul class='list-group ui-sortable-handle'><li class='list-group-item-1' style='background-color:steelblue; color: white; padding: 0.3rem;'>" + (length + 1) + "일차</li></ul>");
+		$(obj).sortable({
+	 		axis: "y",
+	 		revert: false,
+	 		revertDuration: 0,
+	 		items: ".list-group-item:not(.list-group-item-1)",
+	 		connectWith: ".list-group"
+		});
+		$("#daylist").append(obj);
+	});
+	$(buttons[1]).click(function() {
+		var length = $(".list-group").length;
+		if (length != 1) {
+			$("#daylist>ul:last").remove();
+		} else {
+			$("#daylist>ul:first").remove();
+			var obj = $("<ul class='list-group ui-sortable-handle'><li class='list-group-item-1' style='background-color:steelblue; color: white; padding: 0.3rem;'>1일차</li></ul>");
+			$(obj).sortable({
+		 		axis: "y",
+		 		revert: false,
+		 		revertDuration: 0,
+		 		items: ".list-group-item:not(.list-group-item-1)",
+		 		connectWith: ".list-group"
+			});
+			$("#daylist").append(obj);
+		}
+	});
+	
+	// Add/Remove place to specified dayplan
+	var place = "";
+	$("#tablebody").on('click', "tr>td>ul>li>button[name='placebtn']", function(){
+		$("#daylist>ul>li.list-group-item-1").append("<button class='btn btn-sm btn-primary' name='addplacebtn'>+</button>");
+		place = $(this).parent().attr("value");
+		$("#tablebody>tr>td>ul>li>button[name='placebtn']").remove();
+		return false;
+	});
+	
+	$("#daylist").on('click', "ul>li>button[name='planbtn']", function(){
+		$(this).parent().remove();
+		return false;
+	});
+	
+	$("#daylist").on('click', "ul>li.list-group-item-1>button[name='addplacebtn']", function() {
+		$(this).parent().parent().append("<li class='list-group-item ui-sortable-handle' style='padding: 0.3rem;' value='" + place + "'>" + place + "<button class='btn btn-sm btn-primary' name='planbtn'>-</button></li>");
+		$("[name='addplacebtn']").remove();
+		$(".placeclass>li.list-group-item").append("<button class='btn btn-sm btn-primary' name='placebtn'>+</button>");
+		return false;
 	});
 });
 </script>
@@ -59,66 +142,22 @@ $(document).ready(function() {
 	<div class="container">
 		<div class="row">
 			<div id="daylist" class="col-sm-2">
+				<div id="controlday">
+					<button type="button" class="btn mr-4 btn-outline-primary">+</button>
+					<button type="button" class="btn btn-outline-primary">-</button>
+					<pre><br></pre>
+				</div>
+				
 				<ul class="list-group">
 					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">1일차</li>
-					<li class="list-group-item" style="padding: 0.3rem;">명동</li>
-					<li class="list-group-item" style="padding: 0.3rem;">인사동</li>
-					<li class="list-group-item" style="padding: 0.3rem;">N 남산 타워</li>
-					<li class="list-group-item" style="padding: 0.3rem;">이태원</li>
+					<li class="list-group-item" style="padding: 0.3rem;">명동<button class="btn btn-sm btn-primary" name="planbtn">-</button></li>
+					<li class="list-group-item" style="padding: 0.3rem;">인사동<button class="btn btn-sm btn-primary" name="planbtn">-</button></li>
 				</ul>
 				<ul class="list-group">
 					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">2일차</li>
-					<li class="list-group-item" style="padding: 0.3rem;">호수공원</li>
-					<li class="list-group-item" style="padding: 0.3rem;">종로</li>
+					<li class="list-group-item" style="padding: 0.3rem;">호수공원<button class="btn btn-sm btn-primary" name="planbtn">-</button></li>
+					<li class="list-group-item" style="padding: 0.3rem;">종로<button class="btn btn-sm btn-primary" name="planbtn">-</button></li>
 				</ul>
-				<ul class="list-group">
-					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">3일차</li>
-					<li class="list-group-item" style="padding: 0.3rem;">광장시장</li>
-					<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
-					<li class="list-group-item" style="padding: 0.3rem;">관악산</li>
-					<li class="list-group-item" style="padding: 0.3rem;">이태원</li>
-				</ul>
-				<ul class="list-group">
-					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">4일차</li>
-					<li class="list-group-item" style="padding: 0.3rem;">광장시장</li>
-					<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
-					<li class="list-group-item" style="padding: 0.3rem;">관악산</li>
-					<li class="list-group-item" style="padding: 0.3rem;">이태원</li>
-				</ul>
-				<ul class="list-group">
-					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">5일차</li>
-					<li class="list-group-item" style="padding: 0.3rem;">광장시장</li>
-					<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
-					<li class="list-group-item" style="padding: 0.3rem;">관악산</li>
-					<li class="list-group-item" style="padding: 0.3rem;">이태원</li>
-				</ul>
-				<ul class="list-group">
-					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">6일차</li>
-					<li class="list-group-item" style="padding: 0.3rem;">광장시장</li>
-					<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
-					<li class="list-group-item" style="padding: 0.3rem;">관악산</li>
-					<li class="list-group-item" style="padding: 0.3rem;">이태원</li>
-				</ul>
-				<ul class="list-group">
-					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">7일차</li>
-					<li class="list-group-item" style="padding: 0.3rem;">광장시장</li>
-					<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
-					<li class="list-group-item" style="padding: 0.3rem;">관악산</li>
-					<li class="list-group-item" style="padding: 0.3rem;">이태원</li>
-				</ul>
-				<ul class="list-group">
-					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">8일차</li>
-					<li class="list-group-item" style="padding: 0.3rem;">광장시장</li>
-					<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
-					<li class="list-group-item" style="padding: 0.3rem;">관악산</li>
-					<li class="list-group-item" style="padding: 0.3rem;">이태원</li>
-				</ul>
-				
-				<div>
-					<br>
-					<button type="button" class="btn mr-4 btn-outline-primary">+</button>
-					<button type="button" class="btn btn-outline-primary">-</button>
-				</div>
 			</div>
 			
 			<div class="col-sm-4">
@@ -160,7 +199,7 @@ $(document).ready(function() {
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
 									<td>
 										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;">명동</li>
+											<li class="list-group-item" style="padding: 0.3rem;" value="명동">명동<button class="btn btn-primary" name="placebtn">+</button></li>
 										</ul>
 									</td>
 								</tr>
@@ -168,7 +207,7 @@ $(document).ready(function() {
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
 									<td>
 										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;">인사동</li>
+											<li class="list-group-item" style="padding: 0.3rem;" value="인사동">인사동<button class="btn btn-primary" name="placebtn">+</button></li>
 										</ul>
 									</td>
 								</tr>
@@ -176,7 +215,7 @@ $(document).ready(function() {
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
 									<td>
 										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;">N 남산 타워</li>
+											<li class="list-group-item" style="padding: 0.3rem;" value="N 남산 타워">N 남산 타워<button class="btn btn-primary" name="placebtn">+</button></li>
 										</ul>
 									</td>
 								</tr>
@@ -184,7 +223,7 @@ $(document).ready(function() {
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
 									<td>
 										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;">이태원</li>
+											<li class="list-group-item" style="padding: 0.3rem;" value="이태원">이태원<button class="btn btn-primary" name="placebtn">+</button></li>
 										</ul>
 									</td>
 								</tr>
@@ -192,7 +231,7 @@ $(document).ready(function() {
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
 									<td>
 										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;">호수공원</li>
+											<li class="list-group-item" style="padding: 0.3rem;" value="호수공원">호수공원<button class="btn btn-primary" name="placebtn">+</button></li>
 										</ul>
 									</td>
 								</tr>
@@ -200,7 +239,7 @@ $(document).ready(function() {
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
 									<td>
 										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;">종로</li>
+											<li class="list-group-item" style="padding: 0.3rem;" value="종로">종로<button class="btn btn-primary" name="placebtn">+</button></li>
 										</ul>
 									</td>
 								</tr>
@@ -208,7 +247,7 @@ $(document).ready(function() {
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
 									<td>
 										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;">광장시장</li>
+											<li class="list-group-item" style="padding: 0.3rem;" value="광장시장">광장시장<button class="btn btn-primary" name="placebtn">+</button></li>
 										</ul>
 									</td>
 								</tr>
@@ -216,47 +255,7 @@ $(document).ready(function() {
 									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
 									<td>
 										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
-										</ul>
-									</td>
-								</tr>
-								<tr>
-									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>
-										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
-										</ul>
-									</td>
-								</tr>
-								<tr>
-									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>
-										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
-										</ul>
-									</td>
-								</tr>
-								<tr>
-									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>
-										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
-										</ul>
-									</td>
-								</tr>
-								<tr>
-									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>
-										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
-										</ul>
-									</td>
-								</tr>
-								<tr>
-									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>
-										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;">청계천</li>
+											<li class="list-group-item" style="padding: 0.3rem;" value="청계천">청계천<button class="btn btn-primary" name="placebtn">+</button></li>
 										</ul>
 									</td>
 								</tr>
