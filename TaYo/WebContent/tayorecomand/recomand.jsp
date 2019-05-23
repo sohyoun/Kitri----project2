@@ -14,52 +14,22 @@
 </script>
 
 
-<!-- 	backup -->
-<div class="container h-100 pt-3">
 
-
-	<table class="table table-bordered" id="tayo_plans">
-		<tr>
-			<th class="text-nowrap ph-1">필터</th>
-			<td> </td>
-		</tr>
-		<tr>
-			<th class="text-nowrap ph-1">여행지</th>
-			<td><span class="text-nowrap px-3 ">서울</span> <span class="text-nowrap px-3 ">대전</span> <span class="text-nowrap px-3 ">대구</span> <span class="text-nowrap px-3 ">부산</span></td>
-		</tr>
-		<tr>
-			<th>여행기간</th>
-			<td><span>1-3일</span> <span>7-10일</span> <span>11-15일</span></td>
-		</tr>
-		<tr>
-			<th>여행시기</th>
-			<td><span>봄</span> <span>여름</span> <span>가을</span><span>겨울</span></td>
-		</tr>
-		<tr>
-			<th>여행테마</th>
-			<td><span>가족여행</span> <span>나홀로여행</span> <span>함께타요</span> <span>커플여행</span> <span>친구와함께</span></td>
-		</tr>
-	</table>
-	
-</div>
-<!-- backup -->
 <hr>
 	
 <!-- 필터 -->
 <div class="container h-100 pt-3">
-	<div class="row">
+	<div class="row pb-3">
 		<div class="col-sm-2 text-nowrap heading">
 			<h3>여행자들의 일정보기</h3>
 		</div>
 	</div>
 <!-- 필터 -->
-	<table class="table table-bordered" id="tayowith-filter">
+	<table class="table table-bordered ">
 	  <tr style="display: none">
 	  	<td class="filter_title">필터</td>
 	  	<td class="filter_body" colspan="2" >
-	  	<button type="button" class="btn btn-light">서울 | <span class="fa fa-remove"></span></button>
-	  	<button type="button" class="btn btn-light">7-10일 | <span class="fa fa-remove"></span></button>
-	  	<button type="button" class="btn btn-light">여름 | <span class="fa fa-remove"></span></button>
+	  	<!-- <button type="button" class="btn btn-light">서울 | <span class="fa fa-remove"></span></button> -->
 	  	</td>
 	  </tr>	
       <tr>
@@ -70,7 +40,7 @@
 	 	  <button type="button" class="btn btn-light">인천</button>
  		  <button type="button" class="btn btn-light">대전</button>
  		  <button type="button" class="btn btn-light">대구</button>
- 		  <div  class="collapse city_toggle" id="city_toggle">
+ 		  <div class="collapse city_toggle" id="city_toggle">
  		  <button type="button" class="btn btn-light">광주</button>
  		  <button type="button" class="btn btn-light">울산</button>
  		  <button type="button" class="btn btn-light">세종특별자치시</button>
@@ -108,7 +78,35 @@
 
 <!-- 필터 -->
 	
+	<!-- 	backup -->
+<div class="container h-100 pt-3">
+
+
+	<table class="table table-bordered" id="tayo_plans">
+		<tr>
+			<th class="text-nowrap ph-1">필터</th>
+			<td> </td>
+		</tr>
+		<tr>
+			<th class="text-nowrap ph-1">여행지</th>
+			<td><span class="text-nowrap px-3 ">서울</span> <span class="text-nowrap px-3 ">대전</span> <span class="text-nowrap px-3 ">대구</span> <span class="text-nowrap px-3 ">부산</span></td>
+		</tr>
+		<tr>
+			<th>여행기간</th>
+			<td><span>1-3일</span> <span>7-10일</span> <span>11-15일</span></td>
+		</tr>
+		<tr>
+			<th>여행시기</th>
+			<td><span>봄</span> <span>여름</span> <span>가을</span><span>겨울</span></td>
+		</tr>
+		<tr>
+			<th>여행테마</th>
+			<td><span>가족여행</span> <span>나홀로여행</span> <span>함께타요</span> <span>커플여행</span> <span>친구와함께</span></td>
+		</tr>
+	</table>
 	
+</div>
+<!-- backup -->
 
 <hr>
 <div class="container h-100 pt-5 pb-2">

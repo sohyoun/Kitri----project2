@@ -7,7 +7,7 @@ import java.net.*;
 import com.kitri.api.tour.controller.*;
 import com.kitri.util.SiteContance;
 
-public class TourCateService {
+public class TourCateGoryService {
 	
 	public String getTourCate() throws IOException {
 		StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/categoryCode"); /*URL*/
