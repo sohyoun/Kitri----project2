@@ -16,6 +16,7 @@
 	text-align: center;
 	width: 10%;
 	font-weight: bold;
+	white-space: nowrap;
 }
 
 #filter-body >button {
