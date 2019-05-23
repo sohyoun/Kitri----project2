@@ -26,9 +26,6 @@
    			<li class="nav-item">
     			<a class="nav-link" data-toggle="tab" href="#menu2">지도</a>
    			</li>
-   			<li class="nav-item">
-    			<a class="nav-link" data-toggle="tab" href="#menu3">댓글</a>
-   			</li>
    			<div class="joinbtnlist">
 		<%!int twBtn = 1; %>
 		<%if(twBtn == 1) { %>

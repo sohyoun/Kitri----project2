@@ -24,14 +24,16 @@
 	}
 	
 	.circle {
-		width: 3rem;
-		height: 2.5rem;
-		background-color: lightgreen;
+		width: 2rem;
+		height: 2rem;
+		background-color: #223b68;
+		color: white;
 		border-radius: 50%;
 		text-align: center;
-		line-height: 2.5rem;
-		margin-left: 1rem;
-		display: inline-block;
+		font-weight: bold;
+		line-height: 2rem;
+		/* margin-left: 1rem; */
+		display: inline-block; 
 	}
 	
 	.nav-link {
@@ -45,14 +47,10 @@
 	.btn-to-path {
 		width: 10rem;
 		height: 1.5rem;
-		background-color: brown;
-		color: white;
+		color: #ff9320;
 	}
 	
-	img {
-		display: inline-block;
-		margin-left: 1rem;
-	}
+	
 </style>
 
 <script>
@@ -82,248 +80,66 @@ $(function(){
 	<div class="row">
 		<div id="dayinfo" class="col-sm-1">
 			<div class="btn-group-vertical">
+				<span class="fa fa-chevron-up"/>
 				<a class="nav-link" href="#day1">1일차</a>
 				<a class="nav-link" href="#day2">2일차</a>
 				<a class="nav-link" href="#day3">3일차</a>
+				<span class="fa fa-chevron-down"/>
 			</div>
 		</div>
 
-		<div class="col-sm-7" style="overflow-y: auto; height: 31rem;">
-			<ul class="list-group">
-				<li class="list-group-item" id="day1">
-					<label class="labelday">DAY1</label>
-					<label class="labellocation">서울</label>
-					<font>관광지1</font><br>
-					<div class="circle">1</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY1</label>
-					<label class="labellocation">서울</label>
-					<font>관광지1</font><br>
-					<div class="circle">2</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY1</label>
-					<label class="labellocation">서울</label>
-					<font>관광지1</font><br>
-					<div class="circle">3</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY1</label>
-					<label class="labellocation">서울</label>
-					<font>관광지1</font><br>
-					<div class="circle">4</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY1</label>
-					<label class="labellocation">서울</label>
-					<font>관광지1</font><br>
-					<div class="circle">5</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY1</label>
-					<label class="labellocation">서울</label>
-					<font>관광지1</font><br>
-					<div class="circle">6</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY1</label>
-					<label class="labellocation">서울</label>
-					<font>관광지1</font><br>
-					<div class="circle">7</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY1</label>
-					<label class="labellocation">서울</label>
-					<font>관광지1</font><br>
-					<div class="circle">8</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY1</label>
-					<label class="labellocation">서울</label>
-					<font>관광지1</font><br>
-					<div class="circle">9</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item" id="day2">
-					<label class="labelday">DAY2</label>
-					<label class="labellocation">부산</label>
-					<font>관광지3</font><br>
-					<div class="circle">1</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY2</label>
-					<label class="labellocation">부산</label>
-					<font>관광지3</font><br>
-					<div class="circle">2</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY2</label>
-					<label class="labellocation">부산</label>
-					<font>관광지3</font><br>
-					<div class="circle">3</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY2</label>
-					<label class="labellocation">부산</label>
-					<font>관광지3</font><br>
-					<div class="circle">4</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY2</label>
-					<label class="labellocation">부산</label>
-					<font>관광지3</font><br>
-					<div class="circle">5</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY2</label>
-					<label class="labellocation">부산</label>
-					<font>관광지3</font><br>
-					<div class="circle">6</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY2</label>
-					<label class="labellocation">부산</label>
-					<font>관광지3</font><br>
-					<div class="circle">7</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY2</label>
-					<label class="labellocation">부산</label>
-					<font>관광지3</font><br>
-					<div class="circle">8</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item" id="day3">
-					<label class="labelday">DAY3</label>
-					<label class="labellocation">대구</label>
-					<font>관광지3</font><br>
-					<div class="circle">1</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY3</label>
-					<label class="labellocation">대구</label>
-					<font>관광지3</font><br>
-					<div class="circle">2</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY3</label>
-					<label class="labellocation">대구</label>
-					<font>관광지3</font><br>
-					<div class="circle">3</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY3</label>
-					<label class="labellocation">대구</label>
-					<font>관광지3</font><br>
-					<div class="circle">4</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY3</label>
-					<label class="labellocation">대구</label>
-					<font>관광지3</font><br>
-					<div class="circle">5</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY3</label>
-					<label class="labellocation">대구</label>
-					<font>관광지3</font><br>
-					<div class="circle">6</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY3</label>
-					<label class="labellocation">대구</label>
-					<font>관광지3</font><br>
-					<div class="circle">7</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY3</label>
-					<label class="labellocation">대구</label>
-					<font>관광지3</font><br>
-					<div class="circle">8</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-				<li class="btn-path"><button class="btn-to-path">경로 탐색</button></li>
-				<li class="list-group-item">
-					<label class="labelday">DAY3</label>
-					<label class="labellocation">대구</label>
-					<font>관광지3</font><br>
-					<div class="circle">9</div>
-					<img alt="Sample image" src="/TaYo/images/bus.png" width="80" height="40">
-					<label class="description">설명 입력</label>
-				</li>
-			</ul>
+		<div class="col-sm-7" style="overflow-y: auto; height: 100rem;">
+				<div class="daytitle">
+      				<div class="daynum" id="day1">DAY1</div>
+      				<div class="daytitlecontent"><div class="daydate">2015.08.09 (일)</div><div class="daycplace">부산</div></div>
+      			</div>
+      			<div class="daydetail">
+      				<div class="daydetailnum"><span class="circle">1</span></div>
+      				<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
+      				<div class="daydetailcontent">서울역 모임<span class="badge">버스역</span></div>
+      				<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
+      				<div class="daydetailsub">[소요시간] 장안동에서 인천국제공항 공항철도까지 2시간 소요 -12:05 공항리무진</div>
+      				<div class="daydetailsub">[도착 예정시간] 14:00</div>
+      				<div class="daydetailsub">[예상비용]  15,000원</div>
+					<div class="daydetailsub">[체크리스트] </div>
+      			</div>
+      			<div><li class="btn-path"><button class="btn btn btn-light">경로 탐색</button></li></div>
+      			<div class="daydetail">
+      				<div class="daydetailnum"><span class="circle">2</span></div>
+      				<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
+      				<div class="daydetailcontent">부산역 도착<span class="badge">버스역</span></div>
+      				<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
+      				<div class="daydetailsub">[소요시간] 장안동에서 인천국제공항 공항철도까지 2시간 소요 -12:05 공항리무진</div>
+      				<div class="daydetailsub">[도착 예정시간] 14:00</div>
+      				<div class="daydetailsub">[예상비용] 점심 15,000원</div>
+					<div class="daydetailsub">[체크리스트] </div>
+      			</div>
+      			<div><li class="btn-path"><button class="btn btn btn-light">경로 탐색</button></li></div>
+      			<div class="daytitle">
+      				<div class="daynum" id="day2">DAY2</div>
+      				<div class="daytitlecontent"><div class="daydate">2015.08.10 (월)</div><div class="daycplace">부산</div></div>
+      			</div>
+      			<div class="daydetail">
+      				<div class="daydetailnum"><span class="circle">1</span></div>
+      				<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
+      				<div class="daydetailcontent">해운대<span class="badge">관광지</span></div>
+      				<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
+      				<div class="daydetailsub">[소요시간] 장안동에서 인천국제공항 공항철도까지 2시간 소요 -12:05 공항리무진</div>
+      				<div class="daydetailsub">[도착 예정시간] 14:00</div>
+      				<div class="daydetailsub">[예상비용] 점심 15,000원</div>
+					<div class="daydetailsub">[체크리스트] </div>
+      			</div>
+      			<div><li class="btn-path"><button class="btn btn btn-light">경로 탐색</button></li></div>
+      			<div class="daydetail">
+      				<div class="daydetailnum"><span class="circle">2</span></div>
+      				<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
+      				<div class="daydetailcontent">해운대카페거리<span class="badge">관광지</span></div>
+      				<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
+      				<div class="daydetailsub">[소요시간] 장안동에서 인천국제공항 공항철도까지 2시간 소요 -12:05 공항리무진</div>
+      				<div class="daydetailsub">[도착 예정시간] 14:00</div>
+      				<div class="daydetailsub">[예상비용] 점심 15,000원</div>
+					<div class="daydetailsub">[체크리스트] </div>
+      			</div>
 		</div>
 
 		<!-- Load Map dynamically -->
