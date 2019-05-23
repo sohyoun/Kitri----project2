@@ -79,6 +79,92 @@
 .common_menu {
 	color: YELLOW;
 }
+
+/* 
+.attraction_menu{
+	width:100%;
+	padding-top:15px;
+} */
+.attraction_cate {
+	height: 33px;
+	line-height: 33px;
+	width: 117px;
+	border-left: 1px solid #b8b8ba;
+	border-top: 1px solid #b8b8ba;
+	text-align: center;
+	float: left;
+	cursor: pointer;
+	color: #555555;
+	font-size: 13px;
+}
+
+.attraction_cate.on {
+	background: #ff9320;
+	color: white;
+}
+
+.attraction_cate.last {
+	border-right: 1px solid #b8b8ba;
+}
+
+.category_list {
+	width: 100%;
+	margin-bottom: 12px;
+	border: 1px solid #bbbbbd;
+}
+
+.category_box {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	color: #808080;
+	font-size: 13px;
+	text-align: left;
+	border-top: 1px solid #e5e5e6;
+}
+
+.category_box.first {
+	border-top: none;
+}
+
+.category_box.hide {
+	display: none;
+}
+
+.category_btn {
+	float: left;
+	width: 25%;
+	padding-left: 45px;
+	cursor: pointer;
+	background: url('/res/img/city/tag_check_null.png') no-repeat;
+	background-position: 7% center;
+}
+
+.category_btn.on {
+	background: url('/res/img/city/tag_check_checked.png') no-repeat;
+	background-position: 7% center;
+}
+
+.category_more {
+	width: 100%;
+	text-align: center;
+	background: #ebebed;
+	border-top: 1px solid #dcdcdd;
+	height: 40px;
+	line-height: 40px;
+	color: #555555;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+.category_more img {
+	margin-left: 3px;
+}
+
+
+.pagination{
+	margin-right: 450px; 
+}
 </style>
 
 
@@ -144,10 +230,10 @@
 			</tr>
 		</table>
 		<!-- 필터 -->
-	
-	<br>
 
+		<br>
 
+		<!-- 인기여행지 best -->
 		<h3 class="heading text-capitalize text-center">인기 여행지 BEST</h3>
 		<p class="text mt-2 mb-5 text-center">타요인들의 가장 많은 좋아요를 받은 여행지입니다.
 		</p>
@@ -259,9 +345,27 @@
 
 
 
+		<div class="wrap">
+			<div class="attraction_menu">
+				<div class="attraction_cate on" data-id="">전체</div>
+				<div class="attraction_cate " data-id="301">관광지</div>
+				<div class="attraction_cate " data-id="302">레저/액티비티</div>
+				<div class="attraction_cate " data-id="303">나이트라이프</div>
+				<div class="attraction_cate last" data-id="tip">여행TIP</div>
+				<div class="clear"></div>
+			</div>
+			<div class="category_list">
+				<div class="category_box"></div>
+				<div class="category_more">
+					카테고리 더보기<img src="/res/img/city/spot_list/category_more.gif" alt="" />
+				</div>
+			</div>
+		</div>
+
+
 		<!-- 여행지 상세 선택 분류2 -->
 		<nav>
-			<div class="nav nav-tabs" id="nav-tab" role="tablist">
+			<div class="nav nav-tabs">
 				<a class="nav-item nav-link active" id="nav-home-tab"
 					data-toggle="tab" href="#nav-home" role="tab"
 					aria-controls="nav-home" aria-selected="true">전체</a> <a
@@ -281,6 +385,52 @@
 				aria-labelledby="nav-contact-tab">내용</div>
 		</div>
 		<!-- 여행지 상세 선택 분류2 -->
+
+
+
+
+
+		<div class="card text-center1">
+			<div class="card-header1">
+				<ul class="nav nav-tabs card-header-tabs1">
+					<li class="nav-item1"><a class="nav-link active1" href="#">Active</a>
+					</li>
+					<li class="nav-item1"><a class="nav-link1" href="#">Link</a></li>
+					<li class="nav-item1"><a class="nav-link disabled1" href="#">Disabled</a>
+					</li>
+				</ul>
+			</div>
+			<div class="card-body1">
+				<h5 class="card-title1">Special title treatment</h5>
+				<p class="card-text1">With supporting text below as a natural
+					lead-in to additional content.</p>
+				<a href="#" class="btn btn-primary1">Go somewhere</a>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -367,6 +517,23 @@
 		<!-- 관광지  박스 -->
 		<br>
 
+
+
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<li class="page-item"><a class="page-link" href="#"
+					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						<span class="sr-only">Previous</span>
+				</a></li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#"
+					aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+						class="sr-only">Next</span>
+				</a></li>
+			</ul>
+		</nav>
 	</div>
 </section>
 
