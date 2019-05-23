@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ include file="/tayoadmin/templet/header.jsp"%>
 
 <div class="row">
@@ -10,11 +9,8 @@
 		</h1>
 		<div class="alert alert-dismissable alert-warning">
 			<button data-dismiss="alert" class="close" type="button">&times;</button>
-			Welcome to the admin dashboard! Feel free to review all pages and
-			modify the layout to your needs. <br /> This theme uses the <a
-				href="https://www.shieldui.com">ShieldUI</a> JavaScript library for
-			the additional data visualization and presentation functionality
-			illustrated here.
+				Welcome to the admin dashboard! 
+			<br />  
 		</div>
 	</div>
 </div>
@@ -349,7 +345,6 @@
 		});
 	});
 </script>
-
 <footer>
 	<section class="footer footer_w3layouts_section_1its py-5">
 		<div class="container py-lg-4 py-3">

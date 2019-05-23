@@ -33,7 +33,7 @@
 			td.each(function(i){
 				tdArr.push(td.eq(i).text());
 			});
-			console.log("배열에 담긴 값 : " + tdArr);
+			// console.log("배열에 담긴 값 : " + tdArr);
 			var email = td.eq(0).text();
 			var name = td.eq(1).text();
 			var age = td.eq(2).text();
@@ -46,7 +46,7 @@
 					", 등급 : <font color='red'>" + grade + "</font>" +
 					", 성별 : <font color='red'>" + gender + "</font>"; */
 					
-			$("#result").html(" * 클릭한 Row의 모든 데이터 = " + tr.text());		
+			$("#result").html(" * 클릭한 Row의 모든 데이터 = " + tr.text().trim());		
 		/* 	$("#result").html(str); */
 		});
 	});
