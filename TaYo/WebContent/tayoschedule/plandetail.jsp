@@ -36,7 +36,7 @@
 		<div class="pdmenu">
 		<ul class="nav nav-tabs" role="tablist">
    			<li class="nav-item">
-     			<a class="nav-link active" data-toggle="tab" href="<%=root%>/schedule?act=overall">개요</a>
+     			<a class="nav-link" data-toggle="tab" href="<%=root%>/schedule?act=overall">개요</a>
     		</li>
     		<li class="nav-item">
      			<a class="nav-link" data-toggle="tab" href="<%=root%>/schedule?act=planTable">일정표</a>
