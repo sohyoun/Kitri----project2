@@ -9,9 +9,7 @@
 	</div>
 </section>
 
-<script>
 
-</script>
 
 
 
@@ -53,6 +51,7 @@
  		  <button type="button" class="btn btn-light">군포시</button>
  		  </div>
         </td>
+		<!--버튼 -->
         <td width="4%"><span class="fa fa-chevron-down" data-toggle="collapse" data-target="#city_toggle"></span></td>
       </tr>
       <tr>
