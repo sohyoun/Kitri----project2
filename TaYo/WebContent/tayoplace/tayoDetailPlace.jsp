@@ -92,6 +92,14 @@ h1, h2, h3, h4, h5 {
 	background-color: #e9ecef;
 	border-radius: 0.3rem;
 }
+
+.spot_like_ico{
+   float:right;
+   width: 60px;
+   height: 60px;
+   margin: inherit;
+   margin-top: 10px;
+}
 </style>
 
 
@@ -101,11 +109,14 @@ h1, h2, h3, h4, h5 {
 
 
 	<!-- 관광지 이름,주소부분 -->
-	<div class="spot_name">
-		N 서울 타워 <span> N Seoul Tower</span>
+	<div class="spot">
+		<div class="spot_name">
+			N 서울 타워 <span> N Seoul Tower</span>
+			<img class="spot_like_ico" src="/TaYo/images/heart.png">
+		</div>
+		<div class="spot_addr">126 Namsangongwon-gil, Yongsan-gu, Seoul,
+			South Korea</div>
 	</div>
-	<div class="spot_addr">126 Namsangongwon-gil, Yongsan-gu, Seoul,
-		South Korea</div>
 	<!-- 관광지 이름,주소부분  -->
 
 	<br>
@@ -186,7 +197,8 @@ h1, h2, h3, h4, h5 {
 
 
 
-	<hr><br> 
+	<hr>
+	<br>
 	<!-- 인기여행지 best -->
 	<h4 class="heading text-capitalize text-bold">이 장소와 함께 일정에 포함된
 		인기장소</h4>
@@ -281,10 +293,11 @@ h1, h2, h3, h4, h5 {
 	</div>
 	<!-- 인기여행지 best -->
 
-	<br> 
+	<br>
 
 
-	<hr><br> 
+	<hr>
+	<br>
 	<!-- 함께타요 일정 -->
 	<h4 class="heading text-capitalize text-bold">타요 추천 여행일정!</h4>
 	<div class="row" id="tayowith-schedule">

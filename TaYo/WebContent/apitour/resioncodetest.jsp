@@ -49,7 +49,7 @@ $(function() {
 
 </head>
 <body>
-	<button>카테고리 얻어오기</button>
+	<button>지역코드 얻어오기</button>
 	<hr>
 	버튼을 누르고 console을 확인해주세요.
 	<br> 필수 입력값: MobileOS, MobileApp, ServiceKey
