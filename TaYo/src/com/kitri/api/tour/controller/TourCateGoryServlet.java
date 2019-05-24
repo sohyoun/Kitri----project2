@@ -7,18 +7,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kitri.api.tour.service.TourCateService;
+import com.kitri.api.tour.service.TourCateGoryService;
 import com.kitri.util.MoveURL;
 
 
-@WebServlet("/tourcate")
-public class TourCateServlet extends HttpServlet {
+@WebServlet("/tourcategory")
+public class TourCateGoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	TourCateService tourcateService; 
+	TourCateGoryService tourcateService; 
     
-    public TourCateServlet() {
+    public TourCateGoryServlet() {
         super();
-        tourcateService= new TourCateService();
+        tourcateService= new TourCateGoryService();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("tourcate doGet");
@@ -26,7 +26,7 @@ public class TourCateServlet extends HttpServlet {
 	    String result = tourcateService.getTourCate();
 	    request.setAttribute("result",result);
 	    
-	    String path="/apitour/catetestresult.jsp";
+	    String path="/apitour/categorytresult.jsp";
 		MoveURL.forward(request, response, path );
 
 	}

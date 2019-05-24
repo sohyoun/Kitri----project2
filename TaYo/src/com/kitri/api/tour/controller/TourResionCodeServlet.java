@@ -7,33 +7,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kitri.api.tour.service.TourPositionService;
-import com.kitri.api.tour.service.TourResionService;
+import com.kitri.api.tour.service.TourResionCodeService;
 import com.kitri.util.MoveURL;
 
-/**
- * Servlet implementation class TourResionServlet
- */
-@WebServlet("/tourresion")
-public class TourResionServlet extends HttpServlet {
+@WebServlet("/tourresioncode")
+public class TourResionCodeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	TourResionService tourService;
-	@Override
-	public void init() throws ServletException {
-		tourService = new TourResionService();
+	TourResionCodeService service;
 
-	}
+    public TourResionCodeServlet() {
+    	service= new TourResionCodeService();
+    }
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("TourResionServlet get");
+		System.out.println("TourResionCodeServlet get");
 
-		String result =tourService.getResion();
-		System.out.println("TourResionServlet"+result);
+		String result =service.getResionCode();
+		System.out.println("TourResionCodeServlet"+result);
 		request.setAttribute("result", result);
-		String path = "/apitour/resionresult.jsp";
+		String path = "/apitour/resioncoderesult.jsp";
 		MoveURL.forward(request, response, path);
 	}
-
-	
-
 }

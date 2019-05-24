@@ -1,6 +1,6 @@
 
 /*-- //tayo with--*/
-#tayo-search {
+.tayo_search {
 	background: #007bff;
 	color : #fff;
 	margin: 0px;
@@ -12,27 +12,28 @@
 	text-align: center;
 }
 
-#filter-title {
+.filter_title {
 	text-align: center;
 	width: 10%;
 	font-weight: bold;
 	white-space: nowrap;
+
 }
 
-#filter-body >button {
+.filter_body >button {
 	margin-right: 25px;
 } 
 
-#city-toggle {
+.city_toggle {
 	margin-top: 20px;
 }
 
-#tayowith-filter{
+.tayowith_filter{
 	margin-bottom: 60px;
 	
 }
 
-#tayowith-paging{
+.tayowith_paging{
 	margin-top: 100px;
 	margin-bottom: 200px;
 }
