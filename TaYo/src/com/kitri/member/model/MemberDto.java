@@ -9,6 +9,25 @@ public class MemberDto {
 	private int grade; // 등급
 	private String gender; // 성별
 	private MemberDetailDto memberDetailDto;
+	
+	// 기본 생성자
+	public MemberDto() {
+		
+	}
+
+	
+	public MemberDto(String email, String name, String pass, int age, int grade, String gender, MemberDetailDto memberDetailDto) {
+		super();
+		this.email = email;
+		this.name = name;
+		this.pass = pass;
+		this.age = age;
+		this.grade = grade;
+		this.gender = gender;
+		this.memberDetailDto = memberDetailDto;
+	}
+
+
 
 	public String getEmail() {
 		return email;

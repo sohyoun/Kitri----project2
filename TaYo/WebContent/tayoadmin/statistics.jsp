@@ -2,15 +2,26 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/tayoadmin/templet/header.jsp"%>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<style>
+	.row{
+		margin-top: 100;
+	}
+
+</style>
+
+
 <script type="text/javascript">
 
-// 반응형 차트
-$(window).resize(function(){ 
-	ComboChart();
-	PieChart();
-	Histogram();
-	SteppedAreaChart();
-}); 
+
+
+
+	// 반응형 차트
+	$(window).resize(function(){ 
+		ComboChart();
+		PieChart();
+		Histogram();
+		SteppedAreaChart();
+	}); 
 
 	google.charts.load('current', {//start
 		'packages' : [ 'corechart' ]
@@ -160,13 +171,13 @@ $(window).resize(function(){
             </div>
           </div>
 </div><!-- /.row -->
-
-<div class="col-lg-12">
+<div class = "row">
+<div class="col-xs-6">
 	<div class="panel panel-primary" style="height: 491px;">
 		<div class="panel-heading">
 			<h4 class="text-center">연도별</h4>
 		</div>
-		<div id="chart1" class="charts"><!-- 차트 시작 영역  -->
+		<div id="ComboChart" class="charts"><!-- 차트 시작 영역  -->
 			<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
 				<div id = "ComboChart" class ="ComboChart" style="width: 100%; height: 500px;"></div>
 			</div>
@@ -174,25 +185,28 @@ $(window).resize(function(){
 	</div>
 </div>
 
-<div class="col-lg-12">
+
+<div class="col-xs-6">
 	<div class="panel panel-primary" style="height: 491px;">
 		<div class="panel-heading">
 			<h4 class="text-center">지역별 </h4>
 		</div>
-		<div id="chart2" class="charts"><!-- 차트 시작 영역  -->
+		<div id="PieChart" class="charts"><!-- 차트 시작 영역  -->
 			<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
 				<div id = "PieChart" class ="PieChart" style="width: 500; height: 500px;"></div>
 			</div>
 		</div><!-- 끝 영역 -->
 	</div>
 </div>
+</div>
 
-<div class="col-lg-12">
+<div class = "row">
+<div class="col-xs-6">
 	<div class="panel panel-primary" style="height: 491px;">
 		<div class="panel-heading">
 			<h4 class="text-center">??? </h4>
 		</div>
-		<div id="chart3" class="charts"><!-- 차트 시작 영역  -->
+		<div id="Histogram" class="charts"><!-- 차트 시작 영역  -->
 			<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
 				<div id ="Histogram" class ="Histogram" style="width: 500; height: 500px;"></div>
 			</div>
@@ -200,17 +214,17 @@ $(window).resize(function(){
 	</div>
 </div>
 
-<div class="col-lg-12">
+<div class="col-xs-6">
 	<div class="panel panel-primary" style="height: 491px;">
 		<div class="panel-heading">
 			<h4 class="text-center">?</h4>
 		</div>
-		<div id="chart4" class="charts"><!-- 차트 시작 영역  -->
+		<div id="SteppedAreaChart" class="charts"><!-- 차트 시작 영역  -->
 			<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
 				 <div id ="SteppedAreaChart" class ="SteppedAreaChart" style="width: 500; height: 500px;"></div>
 			</div>
 		</div> <!-- 끝 영역 -->
 	</div>
 </div>
-
+</div>
 <%@include file="/tayoadmin/templet/footer.jsp"%>

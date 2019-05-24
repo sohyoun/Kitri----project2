@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.kitri.admin.model.AdminDto;
 import com.kitri.member.model.MemberDetailDto;
 import com.kitri.util.DBConnection;
 
@@ -27,10 +28,11 @@ public class AdminDaoImpl implements AdminDao{
 	}
 	
 	
-	// 회원 정보 얻기 
+	// 로그인 정보 
 	@Override
-	public List<MemberDetailDto> getMemberList(Map<String, String> map) {
-		List<MemberDetailDto> list = new ArrayList<MemberDetailDto>();
+	public  AdminDto selectByEmail(String email) {
+	
+		AdminDto adminDto = new AdminDto();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -39,12 +41,63 @@ public class AdminDaoImpl implements AdminDao{
 		// DB 연결 
 		try {
 			conn = DBConnection.makeConnection();
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("SELECT * " + 
+							"FROM user_tayo \n" +
+							"WHERE email = ? \n");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+
+			pstmt.setString(1, email);
+				
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				adminDto.setAdminEmail(rs.getString("email"));
+				adminDto.setAdminName(rs.getString("name"));
+				adminDto.setAdminPass(rs.getString("pass"));
+				
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(rs != null)
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+			if(pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+			if(conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
 		}
 		
-		return list;
+		return adminDto;
 	}
 
+	public static void main(String[] args) {
+		AdminDaoImpl adminDaoImpl = new AdminDaoImpl();
+		String email = "12.12kimiyeon@gmail.com";
+
+		System.out.println(adminDaoImpl.selectByEmail(email));
+		
+		
+	}
+	
+	
 }

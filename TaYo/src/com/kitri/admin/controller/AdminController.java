@@ -10,18 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/admin")
 public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			String act = request.getParameter("act");
-			if("".equals(act)) {
-				
-			}
-	}
+
+		String email = request.getParameter("email");
+		String pass = request.getParameter("pass");
+		
+		
+		
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setCharacterEncoding("utf-8");
-		doGet(request, response);
 	}
 
 }
