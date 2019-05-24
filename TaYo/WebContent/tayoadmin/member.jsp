@@ -6,14 +6,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
 <style>
-	button{
-		width : 20em;
-	}
-	
-	div.container > table th{
-		text-align: center;
-	}
-	
 </style>
 
 <!-- 테이블 클릭했을 경우 데이터 불러오기   -->
@@ -56,8 +48,6 @@
 
 <!-- 테이블  -->
 <div class="container">
-  <h2 style = "text-align: left; margin-left: 5%">테이블</h2>
-  <p>추가 정보</p>
   <table id = "table" class = "table table-bordered table-hover text-center">
     <thead class = "thead-dark">
       <tr>
@@ -79,7 +69,6 @@
  </div>
 	<form class = "text-center">
 		<textarea id = "result" rows="10" cols="100">
-		
 		</textarea>
 		<!-- <button class="btn btn-success btn-sm">수정</button>
 		<button class="btn btn-success btn-sm">삭제</button> -->
