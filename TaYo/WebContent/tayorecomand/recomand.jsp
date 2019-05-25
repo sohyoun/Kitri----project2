@@ -82,7 +82,7 @@
 				<div class="image-tour position-relative">
 					<img src="/TaYo/images/p1.jpg" alt="" class="img-fluid" />
 					<p>
-						<span>100 <span class="fa fa-thumbs-up"> | 12230 <span class="fa fa-eye"> | 19 <span class="fa fa-comment"></span>
+						<span>100 </span><span class="fa fa-thumbs-up"> </span>| 12230 <span class="fa fa-eye"></span> | 19 <span class="fa fa-comment"></span>
 					</p>
 				</div>
 				<div class="package-info">
@@ -95,7 +95,7 @@
 						<li><span class="fa fa-clock-o mr-2"></span><span>2019.05.01~2019.05.03 (3)</span></li>
 					</ul>
 					<h6 class="mt-1">
-						<span class="fa fa-user-circle"> kkiruk 
+						<span class="fa fa-user-circle"> kkiruk </span>
 					</h6>
 				</div>
 			</div>
@@ -103,7 +103,7 @@
 				<div class="image-tour position-relative">
 					<img src="/TaYo/images/p2.jpg" alt="" class="img-fluid" />
 					<p>
-						<span>98 <span class="fa fa-thumbs-up"> | 9917 <span class="fa fa-eye"> | 10 <span class="fa fa-comment"></span>
+						<span>98 </span><span class="fa fa-thumbs-up"> | 9917</span> <span class="fa fa-eye"> | 10 </span><span class="fa fa-comment"></span>
 					</p>
 				</div>
 				<div class="package-info">
@@ -116,7 +116,7 @@
 						<li><span class="fa fa-clock-o mr-2"></span><span>2019.04.03~2019.05.07 (5)</span></li>
 					</ul>
 					<h6 class="mt-1">
-						<span class="fa fa-user-circle"> GoGotpfk 
+						<span class="fa fa-user-circle"> GoGotpfk </span>
 					</h6>
 				</div>
 			</div>
@@ -124,7 +124,7 @@
 				<div class="image-tour position-relative">
 					<img src="/TaYo/images/p3.jpg" alt="" class="img-fluid" />
 					<p>
-						<span>71 <span class="fa fa-thumbs-up"> | 5560 <span class="fa fa-eye"> | 9 <span class="fa fa-comment"></span>
+						<span>71 </span><span class="fa fa-thumbs-up"> | 5560 </span><span class="fa fa-eye"> | 9 </span><span class="fa fa-comment"></span>
 					</p>
 				</div>
 				<div class="package-info">
@@ -137,7 +137,7 @@
 						<li><span class="fa fa-clock-o mr-2"></span><span>2019.04.21~2019.04.22 (2)</span></li>
 					</ul>
 					<h6 class="mt-1">
-						<span class="fa fa-user-circle"> sohyoun 
+						<span class="fa fa-user-circle"> sohyoun </span>
 					</h6>
 				</div>
 			</div>
@@ -145,7 +145,7 @@
 				<div class="image-tour position-relative">
 					<img src="/TaYo/images/p4.jpg" alt="" class="img-fluid" />
 					<p>
-						<span>56 <span class="fa fa-thumbs-up"> | 3726 <span class="fa fa-eye"> | 3 <span class="fa fa-comment"></span>
+						<span>56 </span><span class="fa fa-thumbs-up"> | 3726 </span><span class="fa fa-eye"> | 3 </span><span class="fa fa-comment"></span>
 					</p>
 				</div>
 				<div class="package-info">
@@ -158,7 +158,7 @@
 						<li><span class="fa fa-clock-o mr-2"></span><span>2019.04.19 (1)</span></li>
 					</ul>
 					<h6 class="mt-1">
-						<span class="fa fa-user-circle"> lovetayo 
+						<span class="fa fa-user-circle"> lovetayo </span>
 					</h6>
 				</div>
 			</div>

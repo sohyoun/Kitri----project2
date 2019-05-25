@@ -89,15 +89,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</button>
 			<div class="navbar-collapse collapse" id="navbarCollapse">
 				<ul class="navbar-nav">
-					<li class="nav-item active"><a class="nav-link text-nowrap"
-						href="${pageContext.request.contextPath}">여행지추천</a></li>
-					<li class="nav-item"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/tayotogether/tayotogether.jsp">함께타요</a></li>
-					<li class="nav-item"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/schedule?act=schedule">일정만들기</a></li>
-					<li class="nav-item"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/tayorecomand/recomand.jsp">여행일정추천</a></li>
+					<li class="nav-item active"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}">여행지추천</a></li>
+					<li class="nav-item active"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/tayotogether/tayotogether.jsp">함께타요</a></li>
+					<li class="nav-item active"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/schedule?act=schedule">일정만들기</a></li>
+					<li class="nav-item active"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/tayorecomand/recomand.jsp">여행일정추천</a></li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/head_nav/?act=join" data-target="#loginModal" data-toggle="modal">로그인</a></li>
-					<li class="nav-item"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/head_nav/?act=join" data-target="#registerModal" data-toggle="modal">회원가입</a></li>
+					<li class="nav-item active"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/head_nav/?act=join" data-target="#loginModal" data-toggle="modal">로그인</a></li>
+					<li class="nav-item active"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/head_nav/?act=join" data-target="#registerModal" data-toggle="modal">회원가입</a></li>
 				</ul>
 			</div>
 			<!--  login Modal -->
