@@ -4,182 +4,221 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <style>
 	.row{
-		margin-top: 100;
+		margin : 0 auto;
+		margin-bottom: 10%;
 	}
 
 </style>
 
-
 <script type="text/javascript">
-
-
-
 
 	// 반응형 차트
 	$(window).resize(function(){ 
-		ComboChart();
-		PieChart();
-		Histogram();
-		SteppedAreaChart();
+		$("#basicpie");
+		$("#rangeBarchart");
+		$("#chart");
+		$("#chart2");
 	}); 
 
-	google.charts.load('current', {//start
-		'packages' : [ 'corechart' ]
-	});
-	google.charts.setOnLoadCallback(ComboChart);
+	$(function () {
+        $("#basicpie").shieldChart({
+            theme: "dark",
+            exportOptions: {
+                image: false,
+                print: false
+            },
+            primaryHeader: {
+                text: "Browsers Popularity amongst Users"
+            },
+            chartLegend: {
+                enabled: true
+            },
+            seriesSettings: {
+                pie: {
+                    enablePointSelection: true        
+                }
+            },
+            dataSeries: [{
+                seriesType: "pie",
+                collectionAlias: "Usage",
+                data: [
+                    ["IE", 9.0],                        
+                    { collectionAlias: "Firefox", y: 26.8, selected: true },
+                    ["Chrome", 55.8],
+                    ["Safari", 3.8],
+                    ["Opera", 1.9]
+                ]
+            }]
+        });
+    });
 
-	function ComboChart() {
-		// Some raw data (not necessarily accurate)
-		var data = google.visualization.arrayToDataTable([
-				[ 'Month', 'Bolivia', 'Ecuador', 'Madagascar',
-						'Papua New Guinea', 'Rwanda', 'Average' ],
-				[ '2004/05', 165, 938, 522, 998, 450, 614.6 ],
-				[ '2005/06', 135, 1120, 599, 1268, 288, 682 ],
-				[ '2006/07', 157, 1167, 587, 807, 397, 623 ],
-				[ '2007/08', 139, 1110, 615, 968, 215, 609.4 ],
-				[ '2008/09', 136, 691, 629, 1026, 366, 569.6 ] ]);
-		
-		var options = {
-			title : '사용자별',
-			vAxis : {
-			},
-			hAxis : {
-				title : 'Month'
-			},
-			seriesType : 'bars',
-			series : {
-				5 : {
-					type : 'line'
-				}
-			}
-		};
-		
-		var chart = new google.visualization.ComboChart(document
-				.getElementById('ComboChart'));
-		chart.draw(data, options);
-	} // end
-
-	google.charts.load("current", { //begin
-		packages : [ "corechart" ]
-	});
-	google.charts.setOnLoadCallback(PieChart);
+	  $(function () {
+          $("#rangeBarchart").shieldChart({
+              theme: "light",
+              axisX: {
+                  axisType: 'datetime'
+              },
+              tooltipSettings: {
+                  customPointText: 'Low Value: <b>{point.low}</b><br/>High Value:<b>{point.high}</b>'
+              },
+              primaryHeader: {
+                  text: "Fuel Price Fluctuations"
+              },
+              dataSeries: [
+		    {
+                      seriesType: 'rangebar',
+                      dataStart: Date.UTC(2010, 1, 1),
+                      dataStep: 24 * 3600 * 1000, // one day
+                      collectionAlias: 'Price',
+                      data: [
+                          [3.923, 3.993],
+                          [3.973, 3.983],
+                          [3.996, 4.12],
+                          [3.997, 4.56],
+                          [3.98, 4.23],
+                          [3.929, 4.11],
+                          [3.889, 4],
+                          [3.849, 4.34],
+                          [3.814, 4.45],
+                          [3.773, 4.32],
+                          [3.728, 4.11],
+                          [3.671, 4.04],
+                          [3.629, 4.7],
+                          [3.589, 4.345],
+                          [3.494, 4.543],
+                          [3.415, 4.43],
+                          [3.469, 4.345],
+                          [3.485, 4.765],
+                          [3.554, 4.567],
+                          [3.568, 4.123],
+                          [3.702, 4.432],
+                          [3.779, 4.23],
+                          [3.803, 4.33],
+                          [3.837, 4.44],
+                          [3.903, 4.43],
+                          [3.907, 4.45],
+                          [3.939, 4.65],
+                          [3.889, 4.56],
+                          [3.866, 4.65],
+                          [3.914, 4.12],
+                          [3.886, 4.32],
+                          [3.756, 4.34],
+                          [3.638, 4.45],
+                          [3.563, 4.32],
+                          [3.518, 4.21],
+                          [3.497, 4],
+                          [3.505, 4.12],
+                          [3.463, 4.43],
+                          [3.419, 4.23],
+                          [3.324, 4.89],
+                          [3.328, 4.98],
+                          [3.369, 4.67],
+                          [3.373, 4.34],
+                          [3.377, 4.56],
+                          [3.386, 4.57],
+                          [3.427, 4.77],
+                          [3.604, 4.88],
+                          [3.677, 4.45],
+                          [3.812, 4.67],
+                          [3.851, 4.78],
+                          [3.826, 4.88],
+                          [3.779, 4.23],
+                          [3.764, 4.34],
+                          [3.746, 4.12],
+                          [3.714, 4.07],
+                          [3.676, 4.12],
+                          [3.611, 4.77]
+                      ]
+                  }
+		]
+          });
+      });
 	
-	function PieChart(){
-		var data = google.visualization.arrayToDataTable([
-				[ 'Task', 'Hours per Day' ], [ 'Work', 11 ], [ 'Eat', 2 ],
-				[ 'Commute', 2 ], [ 'Watch TV', 2 ], [ 'Sleep', 7 ] ]);
-
-		var options = {
-			title : 'My Daily Activities',
-			is3D : true,
-		};
-
-		var chart = new google.visualization.PieChart(document
-				.getElementById('PieChart'));
-		chart.draw(data, options);
-	}//end
 	
+	 $(function () {
+         $("#chart").shieldChart({
+             theme: "dark",
+             zoomMode: 'xy',
+             exportOptions: {
+                 image: false,
+                 print: false
+             },
+             axisX: {
+                 categoricalValues: ['2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012']
+             },
+             axisY: {
+                 title: {
+                     text: "Price (EUR per kWh)"
+                 }
+             },
+             tooltipSettings: {
+                 axisMarkers: {
+                     enabled: true,
+                     mode: 'x',
+                     width: 1,
+                     zIndex: 3
+                 }
+             },
+             primaryHeader: {
+                 text: "Electricity prices"
+             },
+             dataSeries: [{
+                 seriesType: 'line',
+                 collectionAlias: 'Households',
+                 data: [0.164, 0.173, 0.184, 0.167, 0.177, 0.189, 0.180, 0.183, 0.188, 0.160, 0.176, 0.178]
+             }, {
+                 seriesType: 'line',
+                 collectionAlias: 'Industry',
+                 data: [0.103, 0.105, 0.112, 0.111, 0.102, 0.099, 0.110, 0.113, 0.117, 0.119, 0.123, 0.117]
+             }]
+         });
+     });
 	
-	google.charts.load("current", {
-		packages : [ "corechart" ]
-	});
-	google.charts.setOnLoadCallback(Histogram);
-	function Histogram() {
-		var data = google.visualization.arrayToDataTable([
-				[ 'Dinosaur', 'Length' ],
-				[ 'Acrocanthosaurus (top-spined lizard)', 12.2 ],
-				[ 'Albertosaurus (Alberta lizard)', 9.1 ],
-				[ 'Allosaurus (other lizard)', 12.2 ],
-				[ 'Apatosaurus (deceptive lizard)', 22.9 ],
-				[ 'Archaeopteryx (ancient wing)', 0.9 ],
-				[ 'Argentinosaurus (Argentina lizard)', 36.6 ],
-				[ 'Baryonyx (heavy claws)', 9.1 ],
-				[ 'Brachiosaurus (arm lizard)', 30.5 ],
-				[ 'Ceratosaurus (horned lizard)', 6.1 ],
-				[ 'Coelophysis (hollow form)', 2.7 ],
-				[ 'Compsognathus (elegant jaw)', 0.9 ],
-				[ 'Deinonychus (terrible claw)', 2.7 ],
-				[ 'Diplodocus (double beam)', 27.1 ],
-				[ 'Dromicelomimus (emu mimic)', 3.4 ],
-				[ 'Gallimimus (fowl mimic)', 5.5 ],
-				[ 'Mamenchisaurus (Mamenchi lizard)', 21.0 ],
-				[ 'Megalosaurus (big lizard)', 7.9 ],
-				[ 'Microvenator (small hunter)', 1.2 ],
-				[ 'Ornithomimus (bird mimic)', 4.6 ],
-				[ 'Oviraptor (egg robber)', 1.5 ],
-				[ 'Plateosaurus (flat lizard)', 7.9 ],
-				[ 'Sauronithoides (narrow-clawed lizard)', 2.0 ],
-				[ 'Seismosaurus (tremor lizard)', 45.7 ],
-				[ 'Spinosaurus (spiny lizard)', 12.2 ],
-				[ 'Supersaurus (super lizard)', 30.5 ],
-				[ 'Tyrannosaurus (tyrant lizard)', 15.2 ],
-				[ 'Ultrasaurus (ultra lizard)', 30.5 ],
-				[ 'Velociraptor (swift robber)', 1.8 ] ]);
-
-		var options = {
-			title : 'Country Populations',
-			legend : {
-				position : 'none'
-			},
-			colors : [ '#e7711c' ],
-			histogram : {
-				lastBucketPercentile : 5
-			},
-			vAxis : {
-				scaleType : 'mirrorLog'
-			}
-		};
-
-		var chart = new google.visualization.Histogram(document
-				.getElementById('Histogram'));
-		chart.draw(data, options);
-	}
-	
-	google.charts.load('current', {'packages':['corechart']});
-	google.charts.setOnLoadCallback(SteppedAreaChart);
-
-	function SteppedAreaChart() {
-	  var data = google.visualization.arrayToDataTable([
-	    ['Director (Year)',  'Rotten Tomatoes', 'IMDB'],
-	    ['Alfred Hitchcock (1935)', 8.4,         7.9],
-	    ['Ralph Thomas (1959)',     6.9,         6.5],
-	    ['Don Sharp (1978)',        6.5,         6.4],
-	    ['James Hawes (2008)',      4.4,         6.2]
-	  ]);
-
-	  var options = {
-	    title: 'The decline of \'The 39 Steps\'',
-	    vAxis: {title: 'Accumulated Rating'},
-	    isStacked: true
-	  };
-
-	  var chart = new google.visualization.SteppedAreaChart(document.getElementById('SteppedAreaChart'));
-
-	  chart.draw(data, options);
-	}
+	 $(function () {
+         $("#chart2").shieldChart({
+             theme: "dark",
+             axisX: {
+                 categoricalValues: ["2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011"]
+             },
+             axisY: {
+                 title: {
+                     text: "Percentage statistics"
+                 }
+             },
+             primaryHeader: {
+                 text: "Gross domestic product growth /GDP annual %/"
+             },
+             dataSeries: [{
+                 seriesType: "bar",
+                 collectionAlias: "India",
+                 data: [3.907, 7.943, 7.848, 9.284, 9.263, 9.801, 3.890, 8.238, 9.552, 6.855]
+             }, {
+                 seriesType: "bar",
+                 collectionAlias: "Russian Federation",
+                 data: [4.743, 7.295, 7.175, 6.376, 8.153, 8.535, 5.247, -7.832, 4.3, 4.3]
+             }, {
+                 seriesType: "bar",
+                 collectionAlias: "Germany",
+                 data: [0.010, -0.375, 1.161, 0.684, 3.7, 3.269, 1.083, -5.127, 3.690, 2.995]
+             }]
+         });
+     });
 </script>
+<div class="page-header">
+             <h3>통계</h3>
+</div>
+  <div class="bs-example">
+  </div>
 
-<div class="row">
-          <div class="col-lg-12">
-            <div class="page-header">
-            </div>
-            <div class="bs-example">
-              <div class="jumbotron">
-                <h1>통계</h1>
-                <p></p>
-              </div>
-            </div>
-          </div>
-</div><!-- /.row -->
 <div class = "row">
-<div class="col-xs-6">
-	<div class="panel panel-primary" style="height: 491px;">
-		<div class="panel-heading">
-			<h4 class="text-center">연도별</h4>
-		</div>
-		<div id="ComboChart" class="charts"><!-- 차트 시작 영역  -->
-			<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
-				<div id = "ComboChart" class ="ComboChart" style="width: 100%; height: 500px;"></div>
+	<div class="col-xs-6">
+		<div class="panel panel-primary" style="height: 491px;">
+			<div class="panel-heading">
+				<h4 class="text-center">연령별</h4>
+			</div>
+			<div id="ComboChart" class="charts"><!-- 차트 시작 영역  -->
+				<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
+					<div id = "basicpie"></div>
 			</div>
 		</div><!-- 끝 영역 -->
 	</div>
@@ -191,24 +230,24 @@
 		<div class="panel-heading">
 			<h4 class="text-center">지역별 </h4>
 		</div>
-		<div id="PieChart" class="charts"><!-- 차트 시작 영역  -->
-			<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
-				<div id = "PieChart" class ="PieChart" style="width: 500; height: 500px;"></div>
-			</div>
-		</div><!-- 끝 영역 -->
+			<div id="PieChart" class="charts"><!-- 차트 시작 영역  -->
+				<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
+					<div id ="rangeBarchart" style = "height : 100%;"></div>
+				</div>
+			</div><!-- 끝 영역 -->
+		</div>
 	</div>
-</div>
 </div>
 
 <div class = "row">
 <div class="col-xs-6">
 	<div class="panel panel-primary" style="height: 491px;">
 		<div class="panel-heading">
-			<h4 class="text-center">??? </h4>
+			<h4 class="text-center">관광지 테마별</h4>
 		</div>
 		<div id="Histogram" class="charts"><!-- 차트 시작 영역  -->
 			<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
-				<div id ="Histogram" class ="Histogram" style="width: 500; height: 500px;"></div>
+				<div id = "chart"></div>
 			</div>
 		</div><!-- 끝 영역 -->
 	</div>
@@ -217,11 +256,11 @@
 <div class="col-xs-6">
 	<div class="panel panel-primary" style="height: 491px;">
 		<div class="panel-heading">
-			<h4 class="text-center">?</h4>
+			<h4 class="text-center">연도별</h4>
 		</div>
 		<div id="SteppedAreaChart" class="charts"><!-- 차트 시작 영역  -->
 			<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
-				 <div id ="SteppedAreaChart" class ="SteppedAreaChart" style="width: 500; height: 500px;"></div>
+				 <div id ="chart2" style = "height: 100%;"></div>
 			</div>
 		</div> <!-- 끝 영역 -->
 	</div>

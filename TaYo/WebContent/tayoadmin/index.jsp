@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/tayoadmin/templet/header.jsp"%>
 
 <div class="row">
@@ -346,7 +345,7 @@
 	});
 </script>
 <footer>
-	<section class="footer footer_w3layouts_section_1its py-5">
+	<section class="footer footer_w3layouts_section_1its py-5 text-center">
 		<div class="container py-lg-4 py-3">
 			<div class="row footer-top">
 				<div class="col-lg-3 col-sm-6 footer-grid_section_1its_w3">
