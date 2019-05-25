@@ -539,6 +539,12 @@ p.count-text {
 /*-- book --*/
 
 /*--footer--*/
+footer {
+	display: inline-block;
+	white-space: nowrap;
+	width: 100%;
+	padding-top: 3rem;
+}
 
 .footer_w3layouts_section_1its{
 	background: #151515;
@@ -678,9 +684,12 @@ ul.links li a{
     font-size: 15px;
     letter-spacing: .5px;
 }
+
 ul.links li a:hover{
     color: #999;
 }
+
+
 .footer-title a i {
     font-size: 1em;
     width: 55px;
