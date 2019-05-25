@@ -86,7 +86,7 @@
 			<button type="button" class="btn btn-light">인천</button>
 			<button type="button" class="btn btn-light">대전</button>
 			<button type="button" class="btn btn-light">대구</button>
-			<div class="collapse city_toggle" id="city_toggle">
+			<div class="city_toggle collapse" id="city_toggle"><!-- 버튼누르면 값이 여기에 생긴다. -->
 				<table style="width:100%">
 					<tr>
 						<td>
@@ -110,7 +110,7 @@
 			</div>
 		</td>
 		<td width="4%">
-			<span class="fa fa-chevron-down" data-toggle="collapse" data-target="#city_toggle"> </span>
+			<span class="fa fa-chevron-down" data-toggle="collapse" data-target="#city_toggle"></span>
 		</td>
 	</tr>
 	<tr>
