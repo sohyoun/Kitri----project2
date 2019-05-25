@@ -10,16 +10,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TayoTayo</title>
-<link rel="stylesheet" type="text/css" href="resource/bootstrap/css/bootstrap.min.css" />
+ 
 <link rel="stylesheet" type="text/css" href="resource/font-awesome/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="resource/css/local.css" />
 <script type="text/javascript" src="resource/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src ="resource/bootstrap/js/bootstrap.js"></script>
 
+
+
 <!-- you need to include the shieldui css and js assets in order for the charts to work -->
 <link id="gridcss" rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/dark-bootstrap/all.min.css" />
-<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
-
+<script type="text/javascript" src="resource/bootstrap/js/chart.js"></script> 
+<style>
+body{
+	overflow-x:hidden;
+}
+</style>
 </head>
 <body>
 	<div id="wrapper">
@@ -39,7 +45,7 @@
 				<ul id="active" class="nav navbar-nav side-nav">
 
 					<li class="selected"><a href="index.jsp"><i
-							class="fa fa-bullseye"> </i> HOME </a></li>
+							class="fa fa-bullseye"> </i> 홈 </a></li>
 
 					<li><a href="member.jsp"><i class="fa fa-tasks"> </i>Member</a></li>
 

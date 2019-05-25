@@ -269,9 +269,10 @@ to {
 }
 
 @
--moz-document url-prefix (){ . sui-datepicker, .sui-monthyearpicker,
-	.sui-timepicker, .sui-datetimepicker {
-	padding: 0 1.7em 0 0
+-moz-document url-prefix (){ .
+	sui-datepicker
+		,.sui-monthyearpicker,.sui-timepicker,.sui-datetimepicker{padding: 0
+		1.7em 0 0
 }
 
 }
@@ -392,7 +393,7 @@ to {
 @media all and (min-width:0) {
 	.sui-datepicker .sui-icon-wrapper, .sui-monthyearpicker .sui-icon-wrapper,
 		.sui-timepicker .sui-icon-wrapper, .sui-datetimepicker .sui-icon-wrapper,
-		.sui-datetimepicker .sui-time-icon-wrapper, #googlechart1{
+		.sui-datetimepicker .sui-time-icon-wrapper {
 		line-height: 0
 	}
 }
@@ -401,7 +402,6 @@ to {
 	.sui-timepicker .sui-icon-wrapper, .sui-datetimepicker .sui-icon-wrapper,
 	.sui-datetimepicker .sui-time-icon-wrapper {
 	line-height: 0\0
-
 }
 
 .sui-datepicker .sui-calendar-icon, .sui-monthyearpicker .sui-calendar-icon,
@@ -448,11 +448,11 @@ to {
 
 @
 -moz-document url-prefix (){ .sui-datepicker
-	.sui-calendar-icon, .sui-monthyearpicker
-	.sui-calendar-icon, .sui-timepicker
-	.sui-calendar-icon, .sui-datetimepicker
-	.sui-calendar-icon, .sui-datetimepicker .sui-time-icon {
-	line-height: 1px
+	.sui-calendar-icon,.sui-monthyearpicker
+	.sui-calendar-icon,.sui-timepicker
+	.sui-calendar-icon,.sui-datetimepicker
+	.sui-calendar-icon,.sui-datetimepicker .sui-time-icon{line-height:1px
+	
 }
 
 .sui-datepicker .sui-picker-input, .sui-monthyearpicker .sui-picker-input,
@@ -3246,47 +3246,10 @@ ul.sui-menu.sui-button-split-menu, .sui-menu.sui-button-split-menu {
 	z-index: 1120
 }
 
-.sui-menu
-
-
-:not
-
- 
-
-(
-.sui-menu-top
-
- 
-
-){
-box-shadow
-
-
-:
-
- 
-
-1
-px
-
- 
-
-1
-px
-
- 
-
-2
-px
-
- 
-
-#5d5e63
-
-
-
-
+.sui-menu:not (.sui-menu-top ){
+	box-shadow: 1px 1px 2px #5d5e63
 }
+
 ul.sui-menu-focus, .sui-menu-focus {
 	
 }
@@ -4644,9 +4607,9 @@ a.sui-tagcloud-link, a.sui-tagcloud-link:link, a.sui-tagcloud-link:visited,
 }
 
 @
--moz-document url-prefix (){ .sui-rtl .sui-datepicker, .sui-rtl
-	.sui-monthyearpicker, .sui-rtl .sui-timepicker {
-	padding: 0001.7em
+-moz-document url-prefix (){ .sui-rtl .sui-datepicker,.sui-rtl
+	.sui-monthyearpicker,.sui-rtl .sui-timepicker{padding:0001.7em
+	
 }
 
 }
