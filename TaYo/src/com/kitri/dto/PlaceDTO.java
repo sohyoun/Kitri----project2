@@ -11,6 +11,9 @@ public class PlaceDTO {
 	private Date placeTime;		//장소영업시간
 	private String placeWay;	//장소가는방법
 	private String placeInfo;	//장소세부정보
+	
+	public LocationDTO locationDTO = new LocationDTO();
+	
 	public String getPlaceId() {
 		return placeId;
 	}

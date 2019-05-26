@@ -7,6 +7,9 @@ public class TripDetailDTO {
 	private String image;			//이미지
 	private String detailTitle;		//일정제목
 	private String detailContent;	//일정설명
+	
+	public PlaceDTO placeDTO = new PlaceDTO();
+	
 	public int getTripSeq() {
 		return tripSeq;
 	}

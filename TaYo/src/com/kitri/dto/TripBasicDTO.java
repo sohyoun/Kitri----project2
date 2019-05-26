@@ -12,6 +12,9 @@ public class TripBasicDTO {
 	private Date endDate;		//종료일
 	private int viewCount;		//조회수
 	private int likeCount;		//추천수
+	
+	public TripDetailDTO tripDetailDTO = new TripDetailDTO();
+	
 	public int getTripSeq() {
 		return tripSeq;
 	}

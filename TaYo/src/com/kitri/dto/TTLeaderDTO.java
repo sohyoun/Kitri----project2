@@ -5,6 +5,8 @@ public class TTLeaderDTO {
 	private String partyEmail;	//참여자이메일
 	private int tripNum;		//여행정원
 	private int partyOK;		//가입수락여부
+	public TripBasicDTO tripBasicDTO = new TripBasicDTO();
+	
 	public int getTripSeq() {
 		return tripSeq;
 	}
