@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kitri.admin.model.AdminDto;
 import com.kitri.admin.model.service.AdminService;
 
-@WebServlet("/loginadmin")
+@WebServlet("/login")
 public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -34,7 +34,7 @@ public class AdminController extends HttpServlet {
 		
 		request.setAttribute("loginInfo", login);
 		
-		String path = "/loginresult.jsp";
+		String path = "/tayoadmin/loginresult.jsp";
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
