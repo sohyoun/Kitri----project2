@@ -9,13 +9,13 @@
 		//console.log("success")
 		var arr = $("form > div > span > button");
 		$(arr).click(function(){
-			alert("아이디 입력 클릭");			
 			$.ajax({
-				url : '/loginadmin',
+				url : '/TaYo/login',
 				method : 'get',
 				data : $(arr).serialize(),
-				success : function(){
-					console.log("데이터 보내기 성공");
+				success : function(result){
+					//console.log(result);
+					//$("section").html(result.trim());
 				},
 				error : function(){
 					console.log("실패");
@@ -44,8 +44,10 @@
 			<form class="col-lg-12">
 				<div class="input-group"
 					style="width: 340px; text-align: center; margin: 0 auto;">
-					<input value = "loginInfo" class="form-control input-lg" title="Confidential signup."
+					<input name = "email" class="form-control input-lg" title="Confidential signup."
 						placeholder="Enter your email address" required type="text"> 
+					<input name = "pass" class="form-control input-lg" title="Confidential signup."
+						placeholder="Enter your password" required="required" type="text"> 
 						<span class="input-group-btn">
 							<button class="btn btn-lg btn-primary" type="button">OK</button>
 						</span>
@@ -72,6 +74,5 @@
 
 </div>
 <!-- /#page-wrapper -->
-</div>
 
 <%@ include file="/tayoadmin/templet/footer.jsp"%>

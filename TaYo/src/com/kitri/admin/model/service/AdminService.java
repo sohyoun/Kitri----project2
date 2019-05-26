@@ -7,6 +7,7 @@ public class AdminService {
 	public AdminService() {
 		
 	}
+	
 	public AdminDto login(String email, String pass) {
 	
 		return AdminDaoImpl.getAdminDao().selectByEmail(email);
