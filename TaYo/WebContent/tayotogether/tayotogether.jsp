@@ -50,8 +50,8 @@ $(function(){
 					<h6 class="mt-1">
 						<span class="fa fa-map-marker mr-2"></span>부산
 					</h6>
-					<h5 class="my-2">모녀 부산여행</h5>
-					<p class="">가족여행</p>
+					<h5 class="my-2">다같이 부산여행</h5>
+					<p class="">정원 : 25/30</p>
 					<ul class="listing mt-3">
 						<li><span class="fa fa-clock-o mr-2"></span><span>2019.05.01~2019.05.03
 								(3)</span></li>
