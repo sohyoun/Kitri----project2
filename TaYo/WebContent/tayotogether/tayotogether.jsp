@@ -43,7 +43,7 @@ $(function(){
 					<img src="/TaYo/images/p1.jpg" alt="" class="img-fluid" />
 					<p>
 						<span>100 <span class="fa fa-thumbs-up"></span> | 12230 <span
-							class="fa fa-eye"></span> | 19 <span class="fa fa-comment"></span>
+							class="fa fa-eye"></span></span>
 					</p>
 				</div>
 				<div class="package-info">
@@ -66,7 +66,7 @@ $(function(){
 					<img src="/TaYo/images/p2.jpg" alt="" class="img-fluid" />
 					<p>
 						<span>98 <span class="fa fa-thumbs-up"> | 9917 <span
-								class="fa fa-eye"> | 10 <span class="fa fa-comment"></span>
+								class="fa fa-eye"></span>
 					</p>
 				</div>
 				<div class="package-info">
@@ -89,7 +89,7 @@ $(function(){
 					<img src="/TaYo/images/p3.jpg" alt="" class="img-fluid" />
 					<p>
 						<span>71 <span class="fa fa-thumbs-up"> | 5560 <span
-								class="fa fa-eye"> | 9 <span class="fa fa-comment"></span>
+								class="fa fa-eye"></span>
 					</p>
 				</div>
 				<div class="package-info">
@@ -112,7 +112,7 @@ $(function(){
 					<img src="/TaYo/images/p4.jpg" alt="" class="img-fluid" />
 					<p>
 						<span>56 <span class="fa fa-thumbs-up"> | 3726 <span
-								class="fa fa-eye"> | 3 <span class="fa fa-comment"></span>
+								class="fa fa-eye"></span>
 					</p>
 				</div>
 				<div class="package-info">
@@ -205,7 +205,7 @@ $(function(){
 					<img src="/TaYo/images/p1.jpg" alt="" class="img-fluid" />
 					<p>
 						<span>100 <span class="fa fa-thumbs-up"></span> | 12230 <span
-							class="fa fa-eye"></span> | 19 <span class="fa fa-comment"></span>
+							class="fa fa-eye"></span></span>
 					</p>
 				</div>
 				<div class="package-info">
@@ -228,7 +228,7 @@ $(function(){
 					<img src="/TaYo/images/p2.jpg" alt="" class="img-fluid" />
 					<p>
 						<span>98 <span class="fa fa-thumbs-up"> | 9917 <span
-								class="fa fa-eye"> | 10 <span class="fa fa-comment"></span>
+								class="fa fa-eye"></span>
 					</p>
 				</div>
 				<div class="package-info">
@@ -251,7 +251,7 @@ $(function(){
 					<img src="/TaYo/images/p3.jpg" alt="" class="img-fluid" />
 					<p>
 						<span>71 <span class="fa fa-thumbs-up"> | 5560 <span
-								class="fa fa-eye"> | 9 <span class="fa fa-comment"></span>
+								class="fa fa-eye"></span>
 					</p>
 				</div>
 				<div class="package-info">
@@ -274,7 +274,7 @@ $(function(){
 					<img src="/TaYo/images/p4.jpg" alt="" class="img-fluid" />
 					<p>
 						<span>56 <span class="fa fa-thumbs-up"> | 3726 <span
-								class="fa fa-eye"> | 3 <span class="fa fa-comment"></span>
+								class="fa fa-eye"></span>
 					</p>
 				</div>
 				<div class="package-info">
