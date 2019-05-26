@@ -104,7 +104,7 @@ $(function() {
 	// Add/Remove place to specified dayplan
 	var place = "";
 	$("#tablebody").on('click', "tr>td>ul>li>button[name='placebtn']", function(){
-		$("#daylist>ul>li.list-group-item-1").append("<button class='btn btn-sm btn-primary' name='addplacebtn'>+</button>");
+		$("#daylist>ul>li.list-group-item-1").append("<button class='btn btn-sm btn-success' name='addplacebtn'>+</button>");
 		place = $(this).parent().attr("value");
 		$("#tablebody>tr>td>ul>li>button[name='placebtn']").remove();
 		return false;
@@ -116,7 +116,7 @@ $(function() {
 	});
 	
 	$("#daylist").on('click', "ul>li.list-group-item-1>button[name='addplacebtn']", function() {
-		$(this).parent().parent().append("<li class='list-group-item ui-sortable-handle' style='padding: 0.3rem;' value='" + place + "'>" + place + "<button class='btn btn-sm btn-primary' name='planbtn'>-</button></li>");
+		$(this).parent().parent().append("<li class='list-group-item ui-sortable-handle' style='padding: 0.3rem;' value='" + place + "'>" + place + "<button class='btn btn-sm btn-secondary' name='planbtn'>-</button></li>");
 		$("[name='addplacebtn']").remove();
 		$(".placeclass>li.list-group-item").append("<button class='btn btn-sm btn-primary' name='placebtn'>+</button>");
 		return false;
@@ -150,13 +150,13 @@ $(function() {
 				
 				<ul class="list-group">
 					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">1일차</li>
-					<li class="list-group-item" style="padding: 0.3rem;">명동<button class="btn btn-sm btn-primary" name="planbtn">-</button></li>
-					<li class="list-group-item" style="padding: 0.3rem;">인사동<button class="btn btn-sm btn-primary" name="planbtn">-</button></li>
+					<li class="list-group-item" style="padding: 0.3rem;">명동<button class="btn btn-sm btn-secondary" name="planbtn">-</button></li>
+					<li class="list-group-item" style="padding: 0.3rem;">인사동<button class="btn btn-sm btn-secondary" name="planbtn">-</button></li>
 				</ul>
 				<ul class="list-group">
 					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">2일차</li>
-					<li class="list-group-item" style="padding: 0.3rem;">호수공원<button class="btn btn-sm btn-primary" name="planbtn">-</button></li>
-					<li class="list-group-item" style="padding: 0.3rem;">종로<button class="btn btn-sm btn-primary" name="planbtn">-</button></li>
+					<li class="list-group-item" style="padding: 0.3rem;">호수공원<button class="btn btn-sm btn-secondary" name="planbtn">-</button></li>
+					<li class="list-group-item" style="padding: 0.3rem;">종로<button class="btn btn-sm btn-secondary" name="planbtn">-</button></li>
 				</ul>
 			</div>
 			
