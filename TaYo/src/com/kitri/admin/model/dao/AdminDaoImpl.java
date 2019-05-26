@@ -44,8 +44,8 @@ public class AdminDaoImpl implements AdminDao{
 			StringBuffer sql = new StringBuffer();
 			
 			sql.append("SELECT * " + 
-							"FROM user_tayo \n" +
-							"WHERE email = ? \n");
+						"FROM user_tayo \n" +
+						"WHERE email = ? \n");
 			
 			pstmt = conn.prepareStatement(sql.toString());
 
@@ -91,11 +91,10 @@ public class AdminDaoImpl implements AdminDao{
 	}
 
 	public static void main(String[] args) {
+		//SELECT TEST
 		AdminDaoImpl adminDaoImpl = new AdminDaoImpl();
 		String email = "12.12kimiyeon@gmail.com";
-
 		System.out.println(adminDaoImpl.selectByEmail(email));
-		
 		
 	}
 	

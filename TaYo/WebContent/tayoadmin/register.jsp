@@ -1,25 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/tayoadmin/templet/header.jsp"%>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Register - Dark Admin</title>
-<link rel="stylesheet" type="text/css"
-	href="resource/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="resource/font-awesome/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="resource/css/local.css" />
-
-<script type="text/javascript" src="resource/js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="resource/bootstrap/js/bootstrap.min.js"></script>
-
-<style>
-</style>
-</head>
-<body>
-
-	<div id="wrapper">
 		<div>
 			<div class="row text-center">
 				<h2>New Registration</h2>
@@ -51,5 +32,5 @@
 			</div>
 		</div>
 	</div>
-</body>
-</html>
+
+<%@ include file="/tayoadmin/templet/footer.jsp"%>
