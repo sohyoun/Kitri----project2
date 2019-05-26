@@ -1473,7 +1473,7 @@ th {
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,
 	.table>tbody>tr>td, .table>tfoot>tr>td {
 	padding: 8px;
-	line-height: 1.42857143;
+	line-height: 2.428571;
 	vertical-align: top;
 	border-top: 1px solid #282828;
 }
@@ -1687,7 +1687,7 @@ input[type="search"] {
 }
 
 input[type="radio"], input[type="checkbox"] {
-	margin: 4px 0 0;
+	margin: 10px 0 0;
 	margin-top: 1px \9;
 	/* IE8-9 */
 	line-height: normal;
@@ -3444,6 +3444,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 }
 
 .btn-group>.btn+.dropdown-toggle {
+	height : 6.4%;
 	padding-left: 8px;
 	padding-right: 8px;
 }
