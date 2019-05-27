@@ -37,6 +37,20 @@
 <script type="text/javascript" src="<%=root%>/js/httpRequest.js"></script>
 <script type="text/javascript">
 $(function() {
+	// Search tour result variables
+	var titles;
+	var xs;
+	var ys;
+	var count;
+	
+	// Daylist variables
+	var x = new Array();
+	var y = new Array();
+	x.push(new Array());
+	y.push(new Array());
+	
+	
+	// Modal window
 	$("#planSave").click(function() {
 		$("#planSaveModal").modal();
 	});
@@ -82,8 +96,14 @@ $(function() {
 	 		connectWith: ".list-group"
 		});
 		$("#daylist").append(obj);
+		
+		$(x).splice(x.length, 1);
+		$(y).splice(y.length, 1);
 	});
 	$(buttons[1]).click(function() {
+		$(x).splice(x.length, 1);
+		$(y).splice(y.length, 1);
+		
 		var length = $(".list-group").length;
 		if (length != 1) {
 			$("#daylist>ul:last").remove();
@@ -98,6 +118,9 @@ $(function() {
 		 		connectWith: ".list-group"
 			});
 			$("#daylist").append(obj);
+			
+			x.push(new Array());
+			y.push(new Array());
 		}
 	});
 	
@@ -125,6 +148,11 @@ $(function() {
 	
 	$("#place").keydown(function(key) {
 		if (key.keyCode == 13) {
+			titles = new Array();
+			xs = new Array();
+			ys = new Array();
+			count = 0;
+			
 			$.ajax({
 				url: '${pageContext.request.contextPath}/schedule',
 				data: 'act=searchTour&location=' + $("#location").val() + '&place=' + $("#place").val(),
@@ -140,12 +168,19 @@ $(function() {
 					
 					$(xml).find("item").each(function() {
 						var title = $(this).find("title").text();
+						var mapx = $(this).find("mapx").text();
+						var mapy = $(this).find("mapy").text();
 						
 						if (prevTitle != title) {
 							prevTitle = title;
 							var image = $(this).find("firstimage2").text();
 							
 							html += "<tr><td width='100'><img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='80' height='40'/></td><td><ul class='placeclass'><li class='list-group-item' style='padding: 0.3rem;' value='" + title + "'>" + title + "<button class='btn btn-primary' name='placebtn'>+</button></li></ul></td></tr>";
+							
+							titles[count] = title;
+							xs[count] = mapx; 
+							ys[count] = mapy;
+							count++;
 						}
 					});
 					

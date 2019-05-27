@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/temp/header.jsp" %>
+<script>
+
+</script>
 <!-- banner -->
 <section class="banner_w3lspvt" id="home">
 	<div class="csslider infinity" id="slider1">
@@ -21,7 +24,7 @@
 									<a href="${pageContext.request.contextPath}/schedule?act=schedule" class="btn">일정 짜러 가기</a>
 								</div>
 							</div>
-						</div>
+						</div>d
 					</div>
 				</div>
 			</li>
