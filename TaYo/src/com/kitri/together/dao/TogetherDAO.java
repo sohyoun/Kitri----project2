@@ -24,9 +24,8 @@ public class TogetherDAO {
 			
 			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "project2", "project2");
 			
-			String selectPlanSQL = "select tt.trip_seq, tt.party_email, tt.trip_num, tt.party_ok, "
-					+ "tb.email, tb.trip_title, tb.start_date, tb.end_date, tb.viewCount, tb.likeCount, "
-					+ "l.loc_name " + 
+			String selectPlanSQL = "select tt.trip_seq, tt.trip_num, tt.now_num, "
+					+ "tb.email, tb.trip_title, tb.start_date, tb.end_date, tb.viewCount, tb.likeCount, l.loc_name \r\n" + 
 					"from tt_leader tt, trip_basic tb, trip_detail td, place p, location l " + 
 					"where tt.trip_seq = tb.trip_seq " + 
 					"and tb.trip_seq = td.trip_seq " + 
@@ -39,15 +38,16 @@ public class TogetherDAO {
 			while(rs.next()) {
 				TTLeaderDTO ttLeaderDTO = new TTLeaderDTO();
 				ttLeaderDTO.setTripSeq(rs.getInt("trip_seq"));
-				ttLeaderDTO.setPartyEmail(rs.getString("party_email"));	//null
 				ttLeaderDTO.setTripNum(rs.getInt("trip_num"));
-				ttLeaderDTO.setPartyOK(rs.getInt("party_ok"));			//null
+				ttLeaderDTO.setNowNum(rs.getInt("now_num"));
+
 				ttLeaderDTO.tripBasicDTO.setEmail(rs.getString("email"));
 				ttLeaderDTO.tripBasicDTO.setTripTitle(rs.getString("trip_title"));
 				ttLeaderDTO.tripBasicDTO.setStartDate(rs.getDate("start_date"));
 				ttLeaderDTO.tripBasicDTO.setEndDate(rs.getDate("end_date"));
 				ttLeaderDTO.tripBasicDTO.setViewCount(rs.getInt("viewCount"));
 				ttLeaderDTO.tripBasicDTO.setLikeCount(rs.getInt("likeCount"));
+				
 				ttLeaderDTO.tripBasicDTO.tripDetailDTO.placeDTO.locationDTO.setLocName(rs.getString("loc_name"));
 				
 				list.add(ttLeaderDTO);
