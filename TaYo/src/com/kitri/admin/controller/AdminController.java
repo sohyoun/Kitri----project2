@@ -32,9 +32,12 @@ public class AdminController extends HttpServlet {
 
 		AdminDto login = adminService.login(email, pass);
 		
+		if(email != null)
+		
+		//System.out.println(login.getAdminEmail());
 		request.setAttribute("loginInfo", login);
 		
-		String path = "/tayoadmin/loginresult.jsp";
+		String path = "/tayoadmin/index.jsp";
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
