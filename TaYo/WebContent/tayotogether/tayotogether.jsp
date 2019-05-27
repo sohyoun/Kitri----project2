@@ -13,9 +13,10 @@ $(function(){
 		url : url,
 		method: 'post',
 		success : function(result) {
-			
+			$(".bestcontents").html(result.trim());
 		}
 	});
+	return false;
 });
 </script>
 
@@ -46,6 +47,7 @@ $(function(){
 			<span class="fa fa-warning"></span> 마감임박 함께 타요
 		</h3>
 		<p class="text mt-2 mb-5 text-center">마감이 얼마 남지 않았어요! 서두르세요!</p>
+		<div class="bestcontents">
 		<div class="row">
 			<div class="col-lg-3 col-sm-6" id="tayowithschedule001">
 				<div class="image-tour position-relative">
@@ -139,6 +141,7 @@ $(function(){
 					</h6>
 				</div>
 			</div>
+		</div>
 		</div>
 		<div class="view-package text-center mt-4">
 			<a href="">더 많은 일정 보러가기</a>
