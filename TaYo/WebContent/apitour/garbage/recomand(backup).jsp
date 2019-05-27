@@ -12,7 +12,7 @@
 	
 <!-- 필터 -->
 
-<jsp:include page="/tayorecomand/filter.jsp"></jsp:include>
+
 
 
 <hr>

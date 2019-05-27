@@ -24,10 +24,10 @@ public class TourResionServlet extends HttpServlet {
 		tourService = new TourResionService();
 
 	}
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {				
 		System.out.println("TourResionServlet get");
-
-		String result =tourService.getResion();
+		String code =request.getParameter("city");
+		String result =tourService.getResion( code);
 		System.out.println("TourResionServlet"+result);
 		request.setAttribute("result", result);
 		String path = "/apitour/resionresult.jsp";

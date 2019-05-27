@@ -31,7 +31,7 @@ $(function() {
 					if (listLength) {
 						var contentStr = "";
 						$(xmlData).each(function() {
-							/* contentStr += $(this).find("contentid").text(); */
+							 /* contentStr += $(this).find("name").text(); */ 
 						});
 						console.log(contentStr)
 						//                      $("#after").append(contentStr);

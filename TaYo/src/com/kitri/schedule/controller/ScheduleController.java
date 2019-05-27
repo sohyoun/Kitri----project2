@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kitri.schedule.service.ScheduleService;
 import com.kitri.util.MoveURL;
 import com.kitri.util.SiteContance;
 
@@ -15,6 +16,13 @@ import com.kitri.util.SiteContance;
 @WebServlet("/schedule")
 public class ScheduleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private ScheduleService service;
+	
+	public ScheduleController() {
+		service = new ScheduleService();
+	}
+	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String act = request.getParameter("act");
@@ -32,6 +40,14 @@ public class ScheduleController extends HttpServlet {
 			MoveURL.redirect(request, response, "/tayoschedule/planMap.jsp");
 		} else if ("myschedule".equals(act)) {
 			MoveURL.redirect(request, response, "/tayoschedule/planTemplate.jsp");
+		} else if ("searchTour".equals(act)) {
+			String location = request.getParameter("location");
+			String place = request.getParameter("place");
+			
+			String result = service.getKeywordSearch(location, place);
+			request.setAttribute("result", result);
+			
+			MoveURL.forward(request, response, "/tayoschedule/searchTourResult.jsp");
 		}
 	}
 	

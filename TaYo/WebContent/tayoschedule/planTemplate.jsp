@@ -49,10 +49,10 @@ $(function(){
 <section class="packages py-5">
 	<div class="container py-lg-4 py-sm-3">
 		<div class="row">
-			<div class="col-lg-3 col-sm-6" id="tayoschedule001">
+			<div class="col-lg-3 col-sm-6" id="tayoschedule001" style="cursor:pointer">
 				<div class="image-tour position-relative">
 					<img src="/TaYo/images/p1.jpg" alt="" class="img-fluid" />
-					<p><span>100 <span class="fa fa-thumbs-up"> | 12230 <span class="fa fa-eye"> | 19 <span class="fa fa-comment"></span></p>
+					<p><span>100 </span><span class="fa fa-thumbs-up"> | 12230 </span><span class="fa fa-eye"> | 19 </span><span class="fa fa-comment"></span></p>
 				</div>
 				<div class="package-info">
 					<h6 class="mt-1"><span class="fa fa-map-marker mr-2"></span>부산</h6>
