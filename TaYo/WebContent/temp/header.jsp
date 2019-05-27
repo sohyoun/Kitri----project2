@@ -89,7 +89,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</button>
 			<div class="navbar-collapse collapse" id="navbarCollapse">
 				<ul class="navbar-nav">
-					<li class="nav-item active"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}">여행지추천</a></li>
+					<li class="nav-item active"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/tayoplace/tayoPlace.jsp">여행지추천</a></li>
 					<li class="nav-item active"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/tayotogether/tayotogether.jsp">함께타요</a></li>
 					<li class="nav-item active"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/schedule?act=schedule">일정만들기</a></li>
 					<li class="nav-item active"><a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/tayorecomand/recomand.jsp">여행일정추천</a></li>
