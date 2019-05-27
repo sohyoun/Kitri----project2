@@ -154,9 +154,76 @@
 	margin-left: 3px;
 }
 
+.pagination {
+	margin-right: 450px;
+}
 
-.pagination{
-	margin-right: 450px; 
+/* The container */
+.container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 22px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+	background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+	background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+	display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+	left: 9px;
+	top: 5px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
 }
 </style>
 
@@ -189,10 +256,10 @@
 		<!-- 크기 맞춰주는 DIV -->
 
 
-
+	<jsp:include page="filter.jsp"></jsp:include>
 
 		<!-- 필터 -->
-		<table class="table table-bordered" id="filter">
+		<!-- <table class="table table-bordered" id="filter">
 			<tr>
 				<td id="filter-title">여행도시</td>
 				<td id="filter-body">
@@ -220,8 +287,8 @@
 				</td>
 				<td width="4%"><span class="fa fa-chevron-down" data-toggle="collapse" data-target="#city-toggle"></span></td>
 			</tr>
-		</table>
-		<!-- 필터 -->
+		</table>-->
+		<!-- 필터 
 
 		<br>
 
@@ -349,7 +416,7 @@
 			<div class="category_list">
 				<div class="category_box"></div>
 				<div class="category_more">
-					카테고리 더보기<img src="/res/img/city/spot_list/category_more.gif" alt="" />
+<!-- 					카테고리 더보기<img src="/res/img/city/spot_list/category_more.gif" alt="" /> -->
 				</div>
 			</div>
 		</div>
@@ -370,11 +437,49 @@
 		</nav>
 		<div class="tab-content" id="nav-tabContent">
 			<div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-				aria-labelledby="nav-home-tab">내용</div>
+				aria-labelledby="nav-home-tab">
+
+
+				<h1>Custom Checkboxes</h1>
+				<label class="container">One <input type="checkbox"
+					checked="checked"> <span class="checkmark"></span>
+				</label> <label class="container">Two <input type="checkbox">
+					<span class="checkmark"></span>
+				</label> <label class="container">Three <input type="checkbox">
+					<span class="checkmark"></span>
+				</label> <label class="container">Four <input type="checkbox">
+					<span class="checkmark"></span>
+				</label>
+
+
+			</div>
 			<div class="tab-pane fade" id="nav-profile" role="tabpanel"
-				aria-labelledby="nav-profile-tab">내용</div>
+				aria-labelledby="nav-profile-tab">
+				<h1>Custom Checkboxes</h1>
+				<label class="container">One <input type="checkbox"
+					checked="checked"> <span class="checkmark"></span>
+				</label> <label class="container">Two <input type="checkbox">
+					<span class="checkmark"></span>
+				</label> <label class="container">Three <input type="checkbox">
+					<span class="checkmark"></span>
+				</label> <label class="container">Four <input type="checkbox">
+					<span class="checkmark"></span>
+				</label>
+
+			</div>
 			<div class="tab-pane fade" id="nav-contact" role="tabpanel"
-				aria-labelledby="nav-contact-tab">내용</div>
+				aria-labelledby="nav-contact-tab">
+				<h1>Custom Checkboxes</h1>
+				<label class="container">One <input type="checkbox"
+					checked="checked"> <span class="checkmark"></span>
+				</label> <label class="container">Two <input type="checkbox">
+					<span class="checkmark"></span>
+				</label> <label class="container">Three <input type="checkbox">
+					<span class="checkmark"></span>
+				</label> <label class="container">Four <input type="checkbox">
+					<span class="checkmark"></span>
+				</label>
+			</div>
 		</div>
 		<!-- 여행지 상세 선택 분류2 -->
 
@@ -382,7 +487,34 @@
 
 
 
-		<div class="card text-center1">
+
+
+
+
+
+
+		<!-- 
+		<h1>Custom Checkboxes</h1>
+		<label class="container">One <input type="checkbox"
+			checked="checked"> <span class="checkmark"></span>
+		</label> <label class="container">Two <input type="checkbox">
+			<span class="checkmark"></span>
+		</label> <label class="container">Three <input type="checkbox">
+			<span class="checkmark"></span>
+		</label> <label class="container">Four <input type="checkbox">
+			<span class="checkmark"></span>
+		</label>
+
+ -->
+
+
+
+
+
+
+
+<!--
+			<div class="card text-center1">
 			<div class="card-header1">
 				<ul class="nav nav-tabs card-header-tabs1">
 					<li class="nav-item1"><a class="nav-link active1" href="#">Active</a>
@@ -399,7 +531,7 @@
 				<a href="#" class="btn btn-primary1">Go somewhere</a>
 			</div>
 		</div>
-
+ --> 
 
 
 

@@ -1,11 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-
-<style>
-.table.table-bordered button{
-	margin-right: 25px;
-}
-</style>
 <script>
 	var isfilter;
 	$(function() {
@@ -18,16 +12,16 @@
 				xmlParser = new DOMParser(); // DOMParser console 확인용 객체 생성.
 				xmlDoc = xmlParser.parseFromString(xml, "text/xml");
 				console.log('-xml 파시용 데이터-');
-				console.log(xmlDoc);
-				
+// 				console.log(xmlDoc);
+// 				console.log(xml);
 				/* jquery*/
 				var xmlData = $(xml).find("item");//아이템 배열
 				for(var i =0;i<xmlData.length; i++){
-					if(i<5){ //항상보일 아이템			
-						$('body > div.container.h-100.pt-3 > table > tbody > tr:nth-child(2) > td.filter_body.si > div.allways_show').append(
+					if(i<5){ //항상보일 아이템	
+						$('#destinations > div > div.container.h-100.pt-3 > table > tbody > tr:nth-child(1) > td.filter_body.si > div.allways_show').append(
 								'<button class="btn btn-light"><div data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</span></button>');
 					}else{ //토글에 넣을 아이템
-						$('body > div.container.h-100.pt-3 > table > tbody > tr:nth-child(2) > td.filter_body.si > div.city_toggle.collapse').append(
+						$('#destinations > div > div.container.h-100.pt-3 > table > tbody > tr:nth-child(1) > td.filter_body.si > div.city_toggle.collapse').append(
 								'<button class="btn btn-light"><div data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</span></button>');
 					}
 				}
@@ -37,50 +31,34 @@
 			}//end error
 		});//end ajax 도시버튼 추가
 		
-		//도시버튼 클릭 이벤트 추가(동적)
-		var filterbody =$('body > div.container.h-100.pt-3 > table > tbody > tr:nth-child(1) > td.filter_body');
-		$(document).on("click", ".filter_body.si button",function() {			
-			addFilterBtn(this);//필터 버튼  추가		
+		
+		//도시버튼 클릭 이벤트 추가(동적)// > div.allways_show >
+		$(document).on("click", "#destinations > div > div.container.h-100.pt-3 > table > tbody > tr > td.filter_body.si  button",function() {
+			console.log(this);
+
+			var div= $(this).children();
+			var data_type = $(div).attr("data-type");
+			var data = $(div).attr("data");
+			$.ajax({
+			url : "${pageContext.request.contextPath}/tourresion",
+			type : 'get',
+			data:{
+				city:data
+			},
+			success : function(xml) {
+				/* console.log(xml.trim()); */
+				parser = new DOMParser();
+				xmlDoc = parser.parseFromString(xml.trim(), "text/xml");
+				console.log(xmlDoc);
+				/* jquery*/
+// 				console.log(xml);
+			},//end success
+			error : function(err) {
+				console.log(err);
+			}//end error
+		});//end ajax 도시버튼 추가
 		});
 		
-		//도시 외 아이템들 이벤트 추가
-		$('body > div.container.h-100.pt-3 > table > tbody > tr button').
-		click(function() {
-			addFilterBtn(this);//필터 버튼  추가
-		});
-		
-		//필터 버튼 추가
-		function addFilterBtn(item){	//부모 tr 안보이게
-			var parentTr =$(item).closest('tr');
-			parentTr.css("display", "none");
-			//아이템생성
-			var filterItem= $(item).clone();
-			
-			$(filterItem).children("div").css("float", "left");
-			$(filterItem).html(filterItem.html()+' | <span class="fa fa-remove"></span>');
-			$(filterItem).on("click", function() { //필터아이템 이벤트
-				parentTr.css("display", "table-row");
-				$(this).remove();
-				//필터 안의 값들 출력
-				outFilter();
-			});			
-			//필터에 추가
-			filterbody.append(filterItem);
-			//필터 안의 값들 출력
-			outFilter();
-		}//end setFilterBtnEvent
-		
-		function outFilter(){
-			//필터 안의 값들 출력
-			var filterArr= filterbody.children();	
-			
-			for(var i =0; i<filterArr.length;i++){
-				console.log(filterArr[i]);	
-// 				class="filter_value" data-type="season"
-				console.log($(filterArr[i]).children().attr("data-type"));
-			}
-			
-		}
 		
 		
 	});//end onload
@@ -95,42 +73,17 @@
 			</div>
 		</div>
 		<table class="table table-bordered ">
-			<tr> <!-- style="display: none" -->
-				<td class="filter_title">필터</td>
-				<td class="filter_body" colspan="2">
-				</td>
-			</tr>
 			<tr>
-			
 				<td class="filter_title">여행도시</td>
 				<td class="filter_body si">
+					<div class="allways_show">
+					</div>
 					<div class="city_toggle collapse"><!-- 버튼을 누르면 여기에 값이 나옵니다. --> 
 					</div>
 				</td>
 				<td width="4%">
 					<span class="fa fa-chevron-down" data-toggle="collapse" data-target=".city_toggle"> <!-- 버튼 -->
 					</span>
-				</td>
-				
-			</tr>
-
-			<tr>
-				<td class="filter_title">여행기간</td>
-				<td class="filter_body" colspan="2">
-					<button class="btn btn-light"> <div data-type="day" data-value="1">1-3일</div></button>
-					<button class="btn btn-light"> <div data-type="day" data-value="2">4-6일</div></button>
-					<button class="btn btn-light"> <div data-type="day" data-value="3">7-10일</div></button>
-					<button class="btn btn-light"> <div data-type="day" data-value="4">11-15일</div></button>
-					<button class="btn btn-light"> <div data-type="day" data-value="5">15일 이상</div></button>
-				</td>
-			</tr>
-			<tr>
-				<td class="filter_title">여행시기</td>
-				<td class="filter_body" colspan="2">
-					<button class="btn btn-light"><span  data-type="season" data-value="1">봄</span></button>
-					<button class="btn btn-light"><span  data-type="season" data-value="2">여름</span></button>
-					<button class="btn btn-light"><span  data-type="season" data-value="3">가을</span></button>
-					<button class="btn btn-light"><span  data-type="season" data-value="4">겨울</span></button>
 				</td>
 			</tr>
 		</table><!-- 필터 -->
