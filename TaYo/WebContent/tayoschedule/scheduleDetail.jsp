@@ -121,6 +121,43 @@ $(function() {
 		$(".placeclass>li.list-group-item").append("<button class='btn btn-sm btn-primary' name='placebtn'>+</button>");
 		return false;
 	});
+	
+	
+	$("#place").keydown(function(key) {
+		if (key.keyCode == 13) {
+			$.ajax({
+				url: '${pageContext.request.contextPath}/schedule',
+				data: 'act=searchTour&location=' + $("#location").val() + '&place=' + $("#place").val(),
+				method: 'post',
+				success: function(xml) {
+					parser = new DOMParser();
+					xmlDoc = parser.parseFromString(xml.trim(), "text/xml");
+
+					var html;
+					var prevTitle = "";
+					
+					$("#tablebody").empty();
+					
+					$(xml).find("item").each(function() {
+						var title = $(this).find("title").text();
+						
+						if (prevTitle != title) {
+							prevTitle = title;
+							var image = $(this).find("firstimage2").text();
+							
+							html += "<tr><td width='100'><img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='80' height='40'/></td><td><ul class='placeclass'><li class='list-group-item' style='padding: 0.3rem;' value='" + title + "'>" + title + "<button class='btn btn-primary' name='placebtn'>+</button></li></ul></td></tr>";
+						}
+					});
+					
+					$("#tablebody").html(html);
+				},
+				error: function(error) {
+					console.log(error);
+				}
+			});
+			return false;
+		}
+	});
 });
 </script>
 
@@ -141,7 +178,7 @@ $(function() {
 <div style="margin: 2rem;" align="center">
 	<div class="container">
 		<div class="row">
-			<div id="daylist" class="col-sm-2">
+			<div id="daylist" class="col-sm-3">
 				<div id="controlday">
 					<button type="button" class="btn mr-4 btn-outline-primary">+</button>
 					<button type="button" class="btn btn-outline-primary">-</button>
@@ -150,17 +187,10 @@ $(function() {
 				
 				<ul class="list-group">
 					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">1일차</li>
-					<li class="list-group-item" style="padding: 0.3rem;">명동<button class="btn btn-sm btn-secondary" name="planbtn">-</button></li>
-					<li class="list-group-item" style="padding: 0.3rem;">인사동<button class="btn btn-sm btn-secondary" name="planbtn">-</button></li>
-				</ul>
-				<ul class="list-group">
-					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">2일차</li>
-					<li class="list-group-item" style="padding: 0.3rem;">호수공원<button class="btn btn-sm btn-secondary" name="planbtn">-</button></li>
-					<li class="list-group-item" style="padding: 0.3rem;">종로<button class="btn btn-sm btn-secondary" name="planbtn">-</button></li>
 				</ul>
 			</div>
 			
-			<div class="col-sm-4">
+			<div class="col-sm-5">
 				<div>
 					<div>
 						<table class="table table-sm" style="align: center;">
@@ -168,23 +198,23 @@ $(function() {
 								<tr>
 									<td width="100">
 										<select id="location" size="1" name="location">
-											<option value="서울" selected="selected">서울
-											<option value="경기">경기
-											<option value="강원">강원
-											<option value="충북">충북
-											<option value="충남">충남
-											<option value="전북">전북
-											<option value="전남">전남
-											<option value="경북">경북
-											<option value="경남">경남
-											<option value="세종">세종
-											<option value="부산">부산
-											<option value="대구">대구
-											<option value="인천">인천
-											<option value="광주">광주
-											<option value="대전">대전
-											<option value="울산">울산
-											<option value="제주">제주
+											<option value="1">서울
+											<option value="2">인천
+											<option value="3">대전
+											<option value="4">대구
+											<option value="5">광주
+											<option value="6">부산
+											<option value="7">울산
+											<option value="8">세종
+											<option value="31">경기
+											<option value="32">강원
+											<option value="33">충북
+											<option value="34">충남
+											<option value="35">경북
+											<option value="36">경남
+											<option value="37">전북
+											<option value="38">전남
+											<option value="39">제주
 										</select>
 									</td>
 									<td><input type="text" class="form-control" id="place" name="place" value="" placeholder=""></input></td>
@@ -195,84 +225,21 @@ $(function() {
 					<div id="placelist">
 						<table class="table table-bordered table-sm">
 							<tbody id="tablebody" align="center">
-								<tr>
-									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>
-										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;" value="명동">명동<button class="btn btn-primary" name="placebtn">+</button></li>
-										</ul>
-									</td>
-								</tr>
-								<tr>
-									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>
-										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;" value="인사동">인사동<button class="btn btn-primary" name="placebtn">+</button></li>
-										</ul>
-									</td>
-								</tr>
-								<tr>
-									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>
-										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;" value="N 남산 타워">N 남산 타워<button class="btn btn-primary" name="placebtn">+</button></li>
-										</ul>
-									</td>
-								</tr>
-								<tr>
-									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>
-										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;" value="이태원">이태원<button class="btn btn-primary" name="placebtn">+</button></li>
-										</ul>
-									</td>
-								</tr>
-								<tr>
-									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>
-										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;" value="호수공원">호수공원<button class="btn btn-primary" name="placebtn">+</button></li>
-										</ul>
-									</td>
-								</tr>
-								<tr>
-									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>
-										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;" value="종로">종로<button class="btn btn-primary" name="placebtn">+</button></li>
-										</ul>
-									</td>
-								</tr>
-								<tr>
-									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>
-										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;" value="광장시장">광장시장<button class="btn btn-primary" name="placebtn">+</button></li>
-										</ul>
-									</td>
-								</tr>
-								<tr>
-									<td width="100"><img alt="Sample image" src="<%=root%>/images/bus.png" width="80" height="40"></td>
-									<td>
-										<ul class="placeclass">
-											<li class="list-group-item" style="padding: 0.3rem;" value="청계천">청계천<button class="btn btn-primary" name="placebtn">+</button></li>
-										</ul>
-									</td>
-								</tr>
+								
 							</tbody>
 						</table>
 					</div>
 				</div>
 			</div>
 			
-			<div class="col-sm-6">
+			<div class="col-sm-4">
 				<div id="map" style="width: 100%; height: 100%; min-width: 50%; min-height: 50%"></div>
 				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d388e7ffead01bfd5045bc218f8e8830"></script>
 				<script>
 					var container = document.getElementById('map');
 					var options = {
 						center: new daum.maps.LatLng(33.450701, 126.570667),
-						level: 3
+						level: 8
 					};
 			
 					var map = new daum.maps.Map(container, options);
