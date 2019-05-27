@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/temp/header.jsp"%>
+
+
 <!-- banner -->
 <section class="banner_inner" id="home">
 	<div class="banner_inner_overlay">
@@ -8,11 +10,12 @@
 		</div>
 	</div>
 </section>
-<hr>
-	
-<!-- 필터 -->
 
+<hr>	
+<!-- 필터 -->
 <jsp:include page="filter.jsp"></jsp:include>
+
+
 
 
 <hr>

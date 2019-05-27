@@ -2,13 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/temp/header.jsp"%>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
 <style type="text/css">
 .form-inline {
 	position: relative;
@@ -225,8 +218,7 @@
 						<button type="button" class="btn btn-light">군포시</button>
 					</div>
 				</td>
-				<td width="4%"><span class="fa fa-chevron-down"
-					data-toggle="collapse" data-target="#city-toggle"></td>
+				<td width="4%"><span class="fa fa-chevron-down" data-toggle="collapse" data-target="#city-toggle"></span></td>
 			</tr>
 		</table>
 		<!-- 필터 -->

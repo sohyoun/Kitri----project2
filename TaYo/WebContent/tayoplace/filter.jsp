@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
-
+<style>
+.table.table-bordered button{
+	margin-right: 25px;
+}
+</style>
 <script>
 	var isfilter;
-
 	$(function() {
 		//도시버튼 추가 (글자, 이벤트)
 		$.ajax({
@@ -15,7 +18,7 @@
 				xmlParser = new DOMParser(); // DOMParser console 확인용 객체 생성.
 				xmlDoc = xmlParser.parseFromString(xml, "text/xml");
 				console.log('-xml 파시용 데이터-');
-				console.log(xml);
+				console.log(xmlDoc);
 				
 				/* jquery*/
 				var xmlData = $(xml).find("item");//아이템 배열
@@ -70,13 +73,13 @@
 		function outFilter(){
 			//필터 안의 값들 출력
 			var filterArr= filterbody.children();	
+			
 			for(var i =0; i<filterArr.length;i++){
 				console.log(filterArr[i]);	
 // 				class="filter_value" data-type="season"
 				console.log($(filterArr[i]).children().attr("data-type"));
-				console.log($(filterArr[i]).children().text());
 			}
-			//필터값에 대한 갱신
+			
 		}
 		
 		
@@ -101,8 +104,6 @@
 			
 				<td class="filter_title">여행도시</td>
 				<td class="filter_body si">
-					<div class="allways_show">
-					</div>
 					<div class="city_toggle collapse"><!-- 버튼을 누르면 여기에 값이 나옵니다. --> 
 					</div>
 				</td>
