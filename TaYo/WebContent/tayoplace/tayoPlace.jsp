@@ -263,10 +263,10 @@
 		<!-- 크기 맞춰주는 DIV -->
 
 
-
+	<jsp:include page="filter.jsp"></jsp:include>
 
 		<!-- 필터 -->
-		<table class="table table-bordered" id="filter">
+		<!-- <table class="table table-bordered" id="filter">
 			<tr>
 				<td id="filter-title">여행도시</td>
 				<td id="filter-body">
@@ -295,8 +295,8 @@
 				<td width="4%"><span class="fa fa-chevron-down"
 					data-toggle="collapse" data-target="#city-toggle"></td>
 			</tr>
-		</table>
-		<!-- 필터 -->
+		</table>-->
+		<!-- 필터 
 
 		<br>
 
@@ -424,7 +424,7 @@
 			<div class="category_list">
 				<div class="category_box"></div>
 				<div class="category_more">
-					카테고리 더보기<img src="/res/img/city/spot_list/category_more.gif" alt="" />
+<!-- 					카테고리 더보기<img src="/res/img/city/spot_list/category_more.gif" alt="" /> -->
 				</div>
 			</div>
 		</div>
