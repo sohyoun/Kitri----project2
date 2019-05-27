@@ -1,6 +1,6 @@
 package com.kitri.tripbasic.dao;
 
-import com.kitri.dto.TripBasicDTO;
+import com.kitri.dto.TripBasicDto;
 
 public class TripBasicDao {
 	private static TripBasicDao tripBasicDao; 
@@ -11,7 +11,7 @@ public class TripBasicDao {
 		return tripBasicDao;
 	}
 	
-	public TripBasicDTO selectAll() {
+	public TripBasicDto selectAll() {
 		
 		return null;
 	}

@@ -2,16 +2,16 @@ package com.kitri.dto;
 
 import java.util.Date;
 
-public class TripBasicDTO {
-	private int tripSeq;		//¿©Çà¾ÆÀÌµð
-	private String email;		//ÀÌ¸ÞÀÏ
-	private String tripTitle;	//¿©ÇàÀÌ¸§
-	private String tripTheme;	//¿©ÇàÅ×¸¶
-	private String tripSeason;	//¿©Çà½ÃÁð
-	private Date startDate;		//Ãâ¹ßÀÏ
-	private Date endDate;		//Á¾·áÀÏ
-	private int viewCount;		//Á¶È¸¼ö
-	private int likeCount;		//ÃßÃµ¼ö
+public class TripBasicDto {
+	private int tripSeq;		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½
+	private String email;		//ï¿½Ì¸ï¿½ï¿½ï¿½
+	private String tripTitle;	//ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
+	private String tripTheme;	//ï¿½ï¿½ï¿½ï¿½ï¿½×¸ï¿½
+	private String tripSeason;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Date startDate;		//ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Date endDate;		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int viewCount;		//ï¿½ï¿½È¸ï¿½ï¿½
+	private int likeCount;		//ï¿½ï¿½Ãµï¿½ï¿½
 	
 	public TripDetailDTO tripDetailDTO = new TripDetailDTO();
 	

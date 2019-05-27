@@ -1,27 +1,28 @@
 package com.kitri.dto;
 
-public class MemberDTO {
-	private String email;	//ÀÌ¸ŞÀÏ
-	private String name;	//ÀÌ¸§
-	private String pass;	//ºñ¹Ğ¹øÈ£
-	private int age;		//³ªÀÌ
-	private int grade;		//µî±Ş
-	private String gender;	//¼ºº°
-
+public class MemberDto {
+	private String email;	//ì´ë©”ì¼
+	private String name;	//ì´ë¦„
+	private String pass;	//ë¹„ë°€ë²ˆí˜¸
+	private int age;		//ë‚˜ì´
+	private int grade;		//ë“±ê¸‰
+	private String gender;	//ì„±ë³„
+	MemberDetailDto memberDetailDto;
 	
-	public MemberDTO() {
-		
+	public MemberDto() {
+		memberDetailDto= new MemberDetailDto();
 	}
 
-	public MemberDTO(String email, String name, String pass, int age, int grade, String gender) {
+	public MemberDto(String email, String name, String pass, int age, int grade, String gender) {
 		super();
+		memberDetailDto= new MemberDetailDto();
 		this.email = email;
 		this.name = name;
 		this.pass = pass;
 		this.age = age;
 		this.grade = grade;
 		this.gender = gender;
-
+		
 	}
 
 	public String getEmail() {

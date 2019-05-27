@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.kitri.admin.model.AdminDto;
-import com.kitri.dto.MemberDetailDTO;
+import com.kitri.dto.MemberDetailDto;
 import com.kitri.util.DBConnection;
 
 public class AdminDaoImpl implements AdminDao{

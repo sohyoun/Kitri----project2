@@ -1,14 +1,14 @@
 package com.kitri.dto;
 
 public class FoodDTO {
-	private String foodId;		//À½½ÄÄÚµå
-	private int locId;			//Áö¿ªÄÚµå
-	private String foodName;	//À½½ÄÁ¡ÀÌ¸§
-	private String foodCtg;		//À½½ÄÁ¡Á¾·ù
-	private int foodPrice;		//À½½Ä°¡°Ý
-	private String foodTime;	//À½½Ä¿µ¾÷½Ã°£
-	private String foodWay;		//À½½Ä°¡´Â¹æ¹ý
-	private String foodInfo;	//À½½Ä¼¼ºÎÁ¤º¸
+	private String foodId;		//ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
+	private int locId;			//ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
+	private String foodName;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
+	private String foodCtg;		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int foodPrice;		//ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½
+	private String foodTime;	//ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½Ã°ï¿½
+	private String foodWay;		//ï¿½ï¿½ï¿½Ä°ï¿½ï¿½Â¹ï¿½ï¿½
+	private String foodInfo;	//ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String getFoodId() {
 		return foodId;
 	}
