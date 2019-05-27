@@ -7,6 +7,15 @@ $(function(){
 	$(planDiv).click(function(){
 		location.href="/TaYo/tayotogether/ttPlan.jsp";
 	});
+	
+	
+	$.ajax({
+		url : url,
+		method: 'post',
+		success : function(result) {
+			
+		}
+	});
 });
 </script>
 
