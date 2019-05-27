@@ -2,6 +2,7 @@ package com.kitri.dto;
 
 public class MemberDto {
 	private String email;	//이메일
+	private String emaildomain;//이메일 도메인
 	private String name;	//이름
 	private String pass;	//비밀번호
 	private int age;		//나이

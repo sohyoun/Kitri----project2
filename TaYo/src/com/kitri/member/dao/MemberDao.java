@@ -23,6 +23,7 @@ public class MemberDao {
 	
 	public static void main(String[] args) {
 		
-		MemberDto member= new MemberDto();
+		MemberDto memberDto= new MemberDto();
+		String result = MemberDao.getInstance().insertMember();
 	}
 }
