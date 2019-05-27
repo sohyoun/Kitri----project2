@@ -13,19 +13,17 @@
 			success : function(xml) {
 				/* 콘솔확이용 xml 파싱*/
 				xmlParser = new DOMParser(); // DOMParser console 확인용 객체 생성.
-				xmlDoc = xmlParser.parseFromString(xml, "text/xml");
+				xmlDoc = xmlParser.parseFromString(xml.trim(), "text/xml");
 				console.log('-xml 파시용 데이터-');
-
 				console.log(xmlDoc);
-				console.log(xml);
 				/* jquery*/
 				var xmlData = $(xml).find("item");//아이템 배열
 				for(var i =0;i<xmlData.length; i++){
-					if(i<5){ //항상보일 아이템			
-						$('body > div.container.h-100.pt-3 > table > tbody > tr:nth-child(2) > td.filter_body.si > div.allways_show').append(
+					if(i<5){ //항상보일 아이템  /* .h-100.pt-4 > table > tbody > tr:nth-child(2) > */
+						$('body > div.container  td.filter_body.si > div.allways_show').append(
 								'<button class="btn btn-light"><div data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</span></button>');
-					}else{ //토글에 넣을 아이템
-						$('body > div.container.h-100.pt-3 > table > tbody > tr:nth-child(2) > td.filter_body.si > div.city_toggle.collapse').append(
+					}else{ //토글에 넣을 아이템			/* .h-100.pt-4 > table > tbody > tr:nth-child(2) >  */			
+						$('body > div.container td.filter_body.si > div.city_toggle.collapse').append(
 								'<button class="btn btn-light"><div data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</span></button>');
 					}
 				}
@@ -36,7 +34,7 @@
 		});//end ajax 도시버튼 추가
 		
 		//도시버튼 클릭 이벤트 추가(동적)
-		var filterbody =$('body > div.container.h-100.pt-3 > table > tbody > tr:nth-child(1) > td.filter_body');
+		var filterbody =$('body > div.container.h-100.pt-4 > table > tbody > tr:nth-child(1) > td.filter_body');
 		$(document).on("click", ".filter_body.si button",function() {			
 			addFilterBtn(this);//필터 버튼  추가		
 		});
@@ -77,7 +75,8 @@
 				console.log($(filterArr[i]).children().attr("data-type"));
 				console.log($(filterArr[i]).children().text());
 			}
-			//필터값에 대한 갱신
+			//필터값에 대한 데이터 갱신
+			
 		}
 		
 		
@@ -85,7 +84,7 @@
 </script>
 
 
-	<div class="container h-100 pt-3">
+	<div class="container h-100 pt-4">
 		<!-- 필터 -->
 		<div class="row pb-3">
 			<div class="col-sm-2 text-nowrap heading">
