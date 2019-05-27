@@ -4,12 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import com.kitri.admin.model.AdminDto;
-import com.kitri.member.model.MemberDetailDto;
+import com.kitri.dto.MemberDetailDTO;
 import com.kitri.util.DBConnection;
 
 public class AdminDaoImpl implements AdminDao{
@@ -44,8 +41,8 @@ public class AdminDaoImpl implements AdminDao{
 			StringBuffer sql = new StringBuffer();
 			
 			sql.append("SELECT * " + 
-							"FROM user_tayo \n" +
-							"WHERE email = ? \n");
+						"FROM user_tayo \n" +
+						"WHERE email = ? \n");
 			
 			pstmt = conn.prepareStatement(sql.toString());
 
@@ -91,11 +88,10 @@ public class AdminDaoImpl implements AdminDao{
 	}
 
 	public static void main(String[] args) {
+		//SELECT TEST
 		AdminDaoImpl adminDaoImpl = new AdminDaoImpl();
 		String email = "12.12kimiyeon@gmail.com";
-
 		System.out.println(adminDaoImpl.selectByEmail(email));
-		
 		
 	}
 	

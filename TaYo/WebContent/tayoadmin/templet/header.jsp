@@ -47,13 +47,11 @@ body{
 					<li class="selected"><a href="index.jsp"><i
 							class="fa fa-bullseye"> </i> 홈 </a></li>
 
-					<li><a href="member.jsp"><i class="fa fa-tasks"> </i>Member</a></li>
+					<li><a href="member.jsp"><i class="fa fa-tasks"> </i>회원 관리</a></li>
 
-					<li><a href="board.jsp"><i class="fa fa-list-ol"></i>
-							Board </a></li>
+					<li><a href="board.jsp"><i class="fa fa-list-ol"></i>게시판 관리 </a></li>
 
-					<li><a href="statistics.jsp"><i class="fa fa-table"></i>
-							Statistics </a></li>
+					<li><a href="statistics.jsp"><i class="fa fa-table"></i>통계</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right navbar-user">

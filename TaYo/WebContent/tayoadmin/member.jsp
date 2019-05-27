@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/tayoadmin/templet/header.jsp"%>
 
+<style>
+	.pagination{
+		margin: 0 auto;
+	}
+</style>
+
+
+
+
 <!-- jquery  --> 
 <!-- <script type="text/javascript">
 /*스크롤바 막기  */
@@ -12,12 +21,6 @@ $('html, body').css({'overflow': 'hidden', 'height': '100%'});
 });
 </script> -->
 <!--선택영역-->
-<style>
-	.pagination{
-		margin: 0 auto;
-	}
-</style>
-
 
 <!--테이블 -->
 

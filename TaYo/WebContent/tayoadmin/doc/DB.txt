@@ -1,5 +1,4 @@
 
-크리에이트
 // USER_TAYO
 CREATE TABLE user_tayo (
 	email VARCHAR2(35) NOT NULL,
@@ -21,6 +20,13 @@ CREATE TABLE userdetail_tayo(
 CONSTRAINT email_fk FOREIGN KEY (email) REFERENCES user_tayo(email)
 );
 
-인서트
+
 INSERT INTO user_tayo (email, name, pass, age, grade, gender)
 VALUES ('12.12kimiyeon@gmail.com', 'eui', '1234', 31, 1, 'M');
+
+INSERT INTO userdetail_tayo (email, address, joindate, outdate)
+VALUES ('12.12kimiyeon@gmail.com', '서울시', sysdate, 'null');
+
+SELECT *
+FROM user_tayo u, userdetail_tayo ud
+WHERE u.email = ud.email;

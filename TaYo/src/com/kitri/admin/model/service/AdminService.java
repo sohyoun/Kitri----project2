@@ -1,19 +1,15 @@
 package com.kitri.admin.model.service;
-
 import com.kitri.admin.model.AdminDto;
-import com.kitri.admin.model.dao.AdminDao;
+import com.kitri.admin.model.dao.AdminDaoImpl;
 
 public class AdminService {
 
 	public AdminService() {
 		
 	}
-	public String login(String email, String pass) {
 	
-		AdminDto adminDto = new AdminDto();
-		
-		
-		
-		return "";
+	public AdminDto login(String email, String pass) {
+	
+		return AdminDaoImpl.getAdminDao().selectByEmail(email);
 	}
 }

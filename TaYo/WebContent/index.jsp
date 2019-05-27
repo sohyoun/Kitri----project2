@@ -18,7 +18,7 @@
 								<h4 class="text-wh">타요타요</h4>
 								<div class="buttons mt-4">
 									<a href="" class="btn mr-2">About타요타요</a>
-									<a href="<%=root%>/schedule?act=schedule" class="btn">일정 짜러 가기</a>
+									<a href="${pageContext.request.contextPath}/schedule?act=schedule" class="btn">일정 짜러 가기</a>
 								</div>
 							</div>
 						</div>
@@ -310,7 +310,6 @@
 		</div>
 	</div>
 </section>
-<br><br><br><br><br><br><br>
 <!-- //how to book -->
 
 <%@ include file="/temp/footer.jsp" %>
