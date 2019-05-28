@@ -1,212 +1,281 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <%@ include file="/tayoadmin/templet/header.jsp"%>
 <style>
+label {
+	background-color: pink;
+	border: 1px solid;
+	padding: 10;
+}
+
+#selectallchkbox {
+	margin: 10px;
+}
+
+.pagination {
+	display: block;
+	text-align: center;
+}
+
+.pagination>li>a {
+	float: none;
+}
+
+th {
+	text-align: center;
+}
+
+td {
+	text-align: center;
+}
+
+#danger {
+	padding: 0;
+}
 </style>
+<script>
+	$(document).ready(function() { /*Handler For SelectAll Checkbox*/
+		$("#selectallchkbox").change(function() {
+			$('.bdchkbox').prop("checked", $(this).prop("checked"));
+		}); /*Handler For rest of the checkbox*/
+		$('.bdchkbox').change(function() {
+			if ($('.bdchkbox').length == $('.bdchkboxchecked').length) {
+				$("#selectallchkbox").prop("checked", true);
+			} else {
+				$("#selectallchkbox").prop("checked", false);
+			}
+		});
+
+		var arr = $("tbody > tr > td > button");
+		$(arr[1]).click(function() {
+			//console.log("click")
+			//alert("click")
+			location.href = '/TaYo/tayoadmin/boardresult.jsp';
+		});
+	});
+</script>
+
+<div class="row">
+	<div class="col-lg-1"></div>
+	<div class="col-lg-10">
+		<h1>
+			<small>Board</small>
+		</h1>
+		<div class="alert alert-dismissable alert-danger">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<p>그룹선택, 게시판선택, 게시물엔 원글, 제목, 내용등으로 검색을 할 수가 있습니다.</p>
+			<strong>그룹 검색 목록을 선택하거나 검색어를 입력</strong>하여 <strong>여러 게시판을
+				동시에 검색</strong> 할 수 있습니다. <strong>그룹검색 시 데이터가 많은 경우</strong> 느려질 수 있습니다.
+		</div>
+		<button class="btn btn-primary">전체 목록</button>
+		<button class="btn btn-info">게시물 수</button>
+		<button class="btn btn-success disabled">건</button>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle"
+				data-toggle="dropdown">
+				그룹 (대분류) <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="#">나의 여행일정</a></li>
+				<li><a href="#">나의 함께타요</a></li>
+				<li><a href="#">마이페이지</a></li>
+			</ul>
+		</div>
+
+		<!-- /btn-group -->
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle"
+				data-toggle="dropdown">
+				게시판 (중분류) <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="#">관광지추천</a></li>
+				<li><a href="#">여행지추천</a></li>
+				<li><a href="#">여행 일정추천</a></li>
+				<li><a href="<%=root%>/tayoschedule/schedule.jsp">일정만들기 </a></li>
+			</ul>
+		</div>
+
+		<div class="btn-group">
+			<button type="button" class="btn btn-info dropdown-toggle"
+				data-toggle="dropdown">
+				기능 (소분류) <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="#">공지</a></li>
+				<li><a href="#">신고</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<br />
+<!-- 드롭다운 메뉴  -->
+<!-- /btn-group -->
+<br />
 
 <!-- 테이블 영역  -->
-
-<div class="container">
-	<div class="row">
-		<div class="col-sm-9">
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>1</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Duis pharetra varius quam sit amet vulputate. Quisque mauris
-						augue, molestie tincidunt condimentum vitae, gravida a libero.
-						Aenean sit amet felis dolor, in sagittis nisi. Sed ac orci quis
-						tortor imperdiet venenatis. Duis elementum auctor accumsan.
-						Aliquam in felis sit amet augue.</p>
-					<div class="text-center">
-						<a href="#"><i class="fa fa-plus"></i>Full Story</a> <a href="#"><i
-							class="fa fa-comment"></i>12 Comments</a> <a href="#"><i
-							class="fa fa-share"></i>11 Shares</a>
-					</div>
-				</div>
-			</div>
-			<hr />
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>2</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Duis pharetra varius quam sit amet vulputate. Quisque mauris
-						augue, molestie tincidunt condimentum vitae, gravida a libero.
-						Aenean sit amet felis dolor, in sagittis nisi. Sed ac orci quis
-						tortor imperdiet venenatis. Duis elementum auctor accumsan.
-						Aliquam in felis sit amet augue.</p>
-					<div class="text-center">
-						<a href="#"><i class="fa fa-plus"></i>Full Story</a> <a href="#"><i
-							class="fa fa-comment"></i>2 Comments</a> <a href="#"><i
-							class="fa fa-share"></i>211 Shares</a>
-					</div>
-				</div>
-			</div>
-			<hr />
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>3</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Duis pharetra varius quam sit amet vulputate. Quisque mauris
-						augue, molestie tincidunt condimentum vitae, gravida a libero.
-						Aenean sit amet felis dolor, in sagittis nisi. Sed ac orci quis
-						tortor imperdiet venenatis. Duis elementum auctor accumsan.
-						Aliquam in felis sit amet augue.</p>
-					<div class="text-center">
-						<a href="#"><i class="fa fa-plus"></i>Full Story</a> <a href="#"><i
-							class="fa fa-comment"></i>7 Comments</a> <a href="#"><i
-							class="fa fa-share"></i>67 Shares</a>
-					</div>
-				</div>
-			</div>
-			<hr />
-
-			<!-- the comment box -->
-			<div class="well">
-				<h4>4</h4>
-				<form role="form">
-					<div class="form-group">
-						<textarea class="form-control" rows="3"></textarea>
-					</div>
-					<button type="submit" class="btn btn-primary">Submit</button>
-				</form>
-			</div>
-
-			<hr>
-
-			<!-- the comments -->
-			<h3>
-				Blog contents <small>2014/03/07 11:43 PM</small>
-			</h3>
-			<p>This is a very interesting blog, well structured and
-				organized. Would be great if you included more information on other
-				IT topics as well.</p>
-
-			<h3>
-				Contacts <small>2014/03/09 12:11 PM</small>
-			</h3>
-			<p>I wanted to get in touch with the author of the blog, but I
-				see no way to do this.</p>
-
+<div class="row">
+	<div class="col-lg-1"></div>
+	<div class="col-lg-10">
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th><input type="checkbox" name="chkInfo"
+							id="selectallchkbox" value="" /></th>
+						<th>번호</th>
+						<th>그룹</th>
+						<th>게시판</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>등록일</th>
+						<th>조회수</th>
+						<th>추천</th>
+						<th>관리</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input class="bdchkbox" type="checkbox" name="chkInfo"
+							id="check1" value="" /></td>
+						<td>1</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>
+							<button type="submit" class="btn btn-info">수정</button>
+							<button type="submit" class="btn btn-info">삭제</button>
+						</td>
+					</tr>
+					<tr>
+						<td><input class="bdchkbox" type="checkbox" name="chkInfo"
+							id="check2" value="" /></td>
+						<td>2</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td><button type="submit" class="btn btn-info">수정</button>
+							<button type="submit" class="btn btn-info">삭제</button>
+					</tr>
+					<tr>
+						<td><input class="bdchkbox" type="checkbox" name="chkInfo"
+							id="check3" value="" /></td>
+						<td>3</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td><button type="submit" class="btn btn-info">수정</button>
+							<button type="submit" class="btn btn-info">삭제</button>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-		<div class="col-sm-3">
-			<div class="row">
-				<div class="col-xs-12">
-					<h2>Side</h2>
-					<div class="panel panel-default">
-						<div class="panel-heading">News</div>
-						<div class="panel-body">Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit. Duis pharetra varius quam sit amet
-							vulputate.</div>
-						<div class="text-center">
-							<a href="#"><i class="fa fa-plus"></i>Full Story</a>
-						</div>
-					</div>
-					<hr />
-					<div class="panel panel-default">
-						<div class="panel-heading">News</div>
-						<div class="panel-body">Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit. Duis pharetra varius quam sit amet
-							vulputate.</div>
-						<div class="text-center">
-							<a href="#"><i class="fa fa-plus"></i>Full Story</a>
-						</div>
-					</div>
-					<hr />
-					<div class="panel panel-default">
-						<div class="panel-heading">News</div>
-						<div class="panel-body">Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit. Duis pharetra varius quam sit amet
-							vulputate.</div>
-						<div class="text-center">
-							<a href="#"><i class="fa fa-plus"></i>Full Story</a>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">News</div>
-						<div class="panel-body">Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit. Duis pharetra varius quam sit amet
-							vulputate.</div>
-						<div class="text-center">
-							<a href="#"><i class="fa fa-plus"></i>Full Story</a>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">News</div>
-						<div class="panel-body">Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit. Duis pharetra varius quam sit amet
-							vulputate.</div>
-						<div class="text-center">
-							<a href="#"><i class="fa fa-plus"></i>Full Story</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		`
+		<div class="col-lg-1"></div>
 	</div>
+
+</div>
+<div class="row">
+	<div class="col-lg-1"></div>
+	<div class="col-lg-10">
+		<h1>
+			<small>User &amp; Member</small>
+		</h1>
+		<div class="alert alert-dismissable alert-warning">
+			<button data-dismiss="alert" class="close" type="button">&times;</button>
+			Welcome to the admin dashboard!
+		</div>
+	
+	</div>
+	<div class="col-lg-1"></div>
 </div>
 
-<footer>
-<section class="footer footer_w3layouts_section_1its py-5">
-	<div class="container py-lg-4 py-3">
-		<div class="row footer-top">
-			<div class="col-lg-3 col-sm-6 footer-grid_section_1its_w3">
-				<div class="footer-title">
-					<h3>TaYoTaYo</h3>
-				</div>
-				<div class="row">
-					<ul class="col-6 links">
-						<li><a href="" class="scroll">관광지 추천</a></li>
-						<li><a href="" class="scroll">여행지 추천</a></li>
-						<li><a href="" class="scroll">여행 일정 추천</a></li>
-						<li><a href="<%=root%>/schedule?act=schedule" class="scroll">일정 만들기</a></li>
-						<li><a href="<%=root%>/tayotogether/tayotogether.jsp" class="scroll">함께타요</a></li>
-						<li><a href="" class="scroll">My Page</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-3 col-sm-6 footer-grid_section mt-sm-0 mt-4">
-				<div class="footer-title">
-					<h3>TaYoTaYo의 이야기</h3>
-				</div>
-				<div class="row">
-					<ul class="col-6 links">
-						<li><a href="" class="scroll">회사 소개</a></li>
-						<li><a href="" class="scroll">F&amp;Q</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-3 col-sm-6 mt-lg-0 mt-4 footer-grid_section_1its_w3">
-				<div class="footer-title">
-					<h3>My TaYo</h3>
-				</div>
-				<div class="row">
-					<ul class="col-6 links">
-						<li><a href="" class="scroll">나의 여행일정</a></li>
-						<li><a href="" class="scroll">나의 함께타요</a></li>
-						<li><a href="" class="scroll">My Page</a></li>
-					</ul>
-				</div>
-			</div>
+<!-- 유저 테이블  -->
+<div class="row">
+	<div class="col-lg-1"></div>
+	<div class="col-lg-10">
+		<form action="">
+			<input type="text" placeholder="Email Search" class="form-control" />
+			<input type="text" placeholder="Name Search" class="form-control" />
+				<ul class="list-group">
+					<li class="list-group-item"><span class="badge">14</span> 가입 회원
+						수</li>
+					<li class="list-group-item"><span class="badge">2</span> 탈퇴 회원 수
+					</li>
+					<li class="list-group-item"><span class="badge">1</span> 블랙 회원 수
+					</li>
+				</ul>
+		</form>
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>index</th>
+						<th>Email</th>
+						<th>name</th>
+						<th>address</th>
+						<th>address_detail</th>
+						<th>gender</th>
+						<th>grade</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
-</section>
-</footer>
-<!-- //footer -->
-
-<!-- copyright -->
-<div class="copyright py-3 text-center">
-	<p>© 2019 TaYoTaYo - The Bus Trip Planner | Design by 이재운 / 김의연 / 형태희 / 박소현 / 고세라</p>
+	<div class="col-lg-1"></div>
 </div>
-<!-- //copyright -->
 
-<!-- move top -->
-<div class="move-top text-right">
-	<a href="#home" class="move-top"> 
-		<span class="fa fa-angle-up  mb-3" aria-hidden="true"></span>
-	</a>
-</div>
+<ul class="pagination">
+	<!--페이징 처리-->
+	<li class="disabled"><a href="#">&laquo;</a></li>
+	<li class="active"><a href="#">1</a></li>
+	<li><a href="#">2</a></li>
+	<li><a href="#">3</a></li>
+	<li><a href="#">4</a></li>
+	<li><a href="#">5</a></li>
+	<li><a href="#">&raquo;</a></li>
+</ul>
 
 <%@ include file="/tayoadmin/templet/footer.jsp"%>

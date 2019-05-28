@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+
+
+
+<!--footer -->
+<footer>
 <!-- text -->
 <section class="text-content">
 	<div class="overlay-inner py-5">
@@ -16,9 +21,6 @@
 	</div>
 </section>
 <!-- //text -->
-
-<!--footer -->
-<footer>
 <section class="footer footer_w3layouts_section_1its py-5">
 	<div class="container py-lg-4 py-3">
 		<div class="row footer-top">

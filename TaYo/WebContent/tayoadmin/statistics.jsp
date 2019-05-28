@@ -5,8 +5,13 @@
 <style>
 	.row{
 		margin : 0 auto;
-		margin-bottom: 10%;
 	}
+
+	label{
+		font-size: 20px;
+	
+	}
+
 
 </style>
 
@@ -22,7 +27,7 @@
 
 	$(function () {
         $("#basicpie").shieldChart({
-            theme: "dark",
+            theme: "light",
             exportOptions: {
                 image: false,
                 print: false
@@ -137,7 +142,7 @@
 	
 	 $(function () {
          $("#chart").shieldChart({
-             theme: "dark",
+             theme: "light",
              zoomMode: 'xy',
              exportOptions: {
                  image: false,
@@ -176,7 +181,7 @@
 	
 	 $(function () {
          $("#chart2").shieldChart({
-             theme: "dark",
+             theme: "light",
              axisX: {
                  categoricalValues: ["2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011"]
              },
@@ -204,17 +209,22 @@
          });
      });
 </script>
-<div class="page-header">
-             <h3>통계</h3>
+<div class="row">
+	<div class="col-lg-12">
+		<h1><small>Statistics</small></h1>
+		<div class="alert alert-dismissable alert-warning">
+			<button data-dismiss="alert" class="close" type="button">&times;</button>
+				Welcome to the admin dashboard! 
+			<br />  
+		</div>
+	</div>
 </div>
-  <div class="bs-example">
-  </div>
 
 <div class = "row">
 	<div class="col-xs-6">
 		<div class="panel panel-primary" style="height: 491px;">
 			<div class="panel-heading">
-				<h4 class="text-center">연령별</h4>
+				<label>연령별</label>
 			</div>
 			<div id="ComboChart" class="charts"><!-- 차트 시작 영역  -->
 				<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
@@ -228,7 +238,7 @@
 <div class="col-xs-6">
 	<div class="panel panel-primary" style="height: 491px;">
 		<div class="panel-heading">
-			<h4 class="text-center">지역별 </h4>
+			<label>지역별 </label>
 		</div>
 			<div id="PieChart" class="charts"><!-- 차트 시작 영역  -->
 				<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
@@ -243,7 +253,7 @@
 <div class="col-xs-6">
 	<div class="panel panel-primary" style="height: 491px;">
 		<div class="panel-heading">
-			<h4 class="text-center">관광지 테마별</h4>
+			<label>관광지 테마별</label>
 		</div>
 		<div id="Histogram" class="charts"><!-- 차트 시작 영역  -->
 			<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
@@ -256,7 +266,7 @@
 <div class="col-xs-6">
 	<div class="panel panel-primary" style="height: 491px;">
 		<div class="panel-heading">
-			<h4 class="text-center">연도별</h4>
+			<label>연도별</label>
 		</div>
 		<div id="SteppedAreaChart" class="charts"><!-- 차트 시작 영역  -->
 			<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">

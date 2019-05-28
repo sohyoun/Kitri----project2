@@ -29,14 +29,14 @@
 			<div class="pcontent">" 신나게 떠나봅시다 "</div>
 			<div class="ptime">2019.05.17~2019.05.20 (3)</div>
 			<div class="twppeople">정원 : 25/30</div>
-			<div class="pleader"><span class="fa fa-user-circle"> Kkiruk</div>
+			<div class="pleader"><span class="fa fa-user-circle"> Kkiruk</span></div>
 		</div>
 		</div>
 		</div>
 		<div class="pdmenu">
 		<ul class="nav nav-tabs" role="tablist">
    			<li class="nav-item">
-     			<a class="nav-link" data-toggle="tab" href="<%=root%>/schedule?act=overall">개요</a>
+     			<a class="nav-link text-nowrap " data-toggle="tab" href="<%=root%>/schedule?act=overall">개요</a>
     		</li>
     		<li class="nav-item">
      			<a class="nav-link" data-toggle="tab" href="<%=root%>/schedule?act=planTable">일정표</a>
