@@ -61,3 +61,7 @@ membermvc
     loginfail.jsp
    
     index.jsp 
+
+   회원가입 >> 로그인 >> 로그아웃 >> 메인페이지 및 관리자 페이지로 이동 >> DB 구현 
+   	>>
+    

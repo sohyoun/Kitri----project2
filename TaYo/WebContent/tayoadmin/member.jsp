@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/tayoadmin/templet/header.jsp"%>
 
+<<<<<<< HEAD
+<!-- jquery  --> 
+=======
 <style>
 	.pagination{
 		margin: 0 auto;
 	}
 </style>
+>>>>>>> branch 'master' of https://github.com/sohyoun/Kitri----project2.git
 
+<<<<<<< HEAD
+=======
 
 
 
@@ -20,82 +26,72 @@ $('html, body').css({'overflow': 'hidden', 'height': '100%'});
 	return false;
 });
 </script> -->
+>>>>>>> branch 'master' of https://github.com/sohyoun/Kitri----project2.git
 <!--선택영역-->
 
 <!--테이블 -->
 
-<div class="row">
-	<div class="col-lg-12">
-		<h1><small>User &amp; Member</small></h1>
-		<div class="alert alert-dismissable alert-warning">
-			<button data-dismiss="alert" class="close" type="button">&times;</button>
-				Welcome to the admin dashboard! 
-			<br />  
+
+<<<<<<< HEAD
+<footer> <!-- footer   -->
+	<section class="footer footer_w3layouts_section_1its py-5 text-center">
+		<div class="container py-lg-4 py-3">
+			<div class="row footer-top">
+				<div class="col-lg-3 col-sm-6 footer-grid_section_1its_w3">
+					<div class="footer-title">
+						<h3>TaYoTaYo</h3>
+					</div>
+				<div class="row">
+					<ul class="col-6 links">
+						<li><a href="" class="scroll">관광지 추천</a></li>
+						<li><a href="" class="scroll">여행지 추천</a></li>
+						<li><a href="" class="scroll">여행 일정 추천</a></li>
+						<li><a href="<%=root%>/schedule?act=schedule" class="scroll">일정 만들기</a></li>
+						<li><a href="<%=root%>/tayotogether/tayotogether.jsp" class="scroll">함께타요</a></li>
+						<li><a href="" class="scroll">My Page</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6 footer-grid_section mt-sm-0 mt-4">
+				<div class="footer-title">
+					<h3>TaYoTaYo의 이야기</h3>
+				</div>
+				<div class="row">
+					<ul class="col-6 links">
+						<li><a href="" class="scroll">회사 소개</a></li>
+						<li><a href="" class="scroll">F&amp;Q</a></li>
+					</ul>
+				</div>
+			</div>
+				<div class="col-lg-3 col-sm-6 mt-lg-0 mt-4 footer-grid_section_1its_w3">
+						<div class="footer-title">
+							<h3>My TaYo</h3>
+						</div>
+					<div class="row">
+						<ul class="col-6 links">
+							<li><a href="" class="scroll">나의 여행일정</a></li>
+							<li><a href="" class="scroll">나의 함께타요</a></li>
+							<li><a href="" class="scroll">My Page</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="table-responsive">
-			 	<form action="">
-					<input type ="text" placeholder = "Email Search" class = "form-control"/>
-				</form>
-		  <table class="table">
-		    <thead>
-		      <tr>
-				<th>#</th><th>Email</th>
-				<th>Table heading</th>
-				<th>Table heading</th>
-				<th>Table heading</th>
-				<th>Table heading</th>
-				<th>Table heading</th>
-		      </tr>
-		    </thead>
-		    <tbody>
-		      <tr>
-				<td>1</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-		      </tr>
-		      <tr>
-				<td>2</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-		      </tr>
-		      <tr>
-				<td>3</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-		      </tr>
-		    </tbody>
-		  </table>
-		</div>
-		
-	<div class="row"> <!--페이징 처리-->
-         <div class="col-lg-4">
-           <div class="bs-example">
-             <ul class="pagination">
-               <li class="disabled"><a href="#">&laquo;</a></li>
-               <li class="active"><a href="#">1</a></li>
-               <li><a href="#">2</a></li>
-               <li><a href="#">3</a></li>
-               <li><a href="#">4</a></li>
-               <li><a href="#">5</a></li>
-               <li><a href="#">&raquo;</a></li>
-             </ul>
-           </div>
-         </div>
-		</div>
-	</div>
+	</section>
+</footer><!-- //footer -->
+
+<div class="copyright py-3 text-center"><!-- copyright -->
+	<p>© 2019 TaYoTaYo - The Bus Trip Planner | Design by 이재운 / 김의연 / 형태희 / 박소현 / 고세라</p>
+</div> <!-- //copyright -->
+
+<div class="move-top text-right"><!-- move top -->
+	<a href="#home" class="move-top"> 
+		<span class="fa fa-angle-up  mb-3" aria-hidden="true"></span>
+	</a>
 </div>
 
+=======
+
 	
+>>>>>>> branch 'master' of https://github.com/sohyoun/Kitri----project2.git
 <%@include file="/tayoadmin/templet/footer.jsp"%>

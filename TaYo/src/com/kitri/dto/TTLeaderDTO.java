@@ -1,9 +1,9 @@
 package com.kitri.dto;
 
 public class TTLeaderDTO {
-	private int tripSeq;		//ÇÔ²²Å¸¿äid
-	private int tripNum;		//¿©ÇàÁ¤¿ø
-	private int nowNum;			//ÇöÀçÁ¤¿ø
+	private int tripSeq;		//í•¨ê»˜íƒ€ìš” ì—¬í–‰id
+	private int tripNum;		//ì—¬í–‰ì •ì›
+	private int nowNum;			//í˜„ì¬ Num
 	
 	public TripBasicDTO tripBasicDTO = new TripBasicDTO();
 	
@@ -26,6 +26,12 @@ public class TTLeaderDTO {
 	}
 	public void setNowNum(int nowNum) {
 		this.nowNum = nowNum;
+	}
+	public TripBasicDTO getTripBasicDTO() {
+		return tripBasicDTO;
+	}
+	public void setTripBasicDTO(TripBasicDTO tripBasicDTO) {
+		this.tripBasicDTO = tripBasicDTO;
 	}
 	
 	

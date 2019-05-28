@@ -1,8 +1,8 @@
 package com.kitri.dto;
 
 public class LocationDTO {
-	private int locId;		//Áö¿ªÄÚµå
-	private String locName;	//Áö¿ª¸íÄª
+	private int locId;		//ì§€ì—­ì•„ì´ë””
+	private String locName;	//ì§€ì—­ì´ë¦„
 	
 	public int getLocId() {
 		return locId;

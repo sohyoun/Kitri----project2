@@ -30,3 +30,10 @@ VALUES ('12.12kimiyeon@gmail.com', '서울시', sysdate, 'null');
 SELECT *
 FROM user_tayo u, userdetail_tayo ud
 WHERE u.email = ud.email;
+
+INSERT ALL
+			 INTO user_tayo (email, name, pass, age, grade, gender)
+			 VALUES ('이메일','이름','패스워드','31',1,'M')
+			 INTO userdetail_tayo (email, address, address_detail, joindate, outdate)
+			 VALUES('이메일','주소','상세주소',sysdate,null)
+SELECT * FROM DUAL;

@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<style>
+	.row footer-top{
+		background-color: #151515;
+	}
+</style>
+
 
 <!-- /#wrapper -->
-<footer>
+<%-- <footer>
 	<!-- footer   -->
 	<section class="footer footer_w3layouts_section_1its py-5 text-center">
 		<div class="container py-lg-4 py-3">
@@ -67,7 +73,7 @@
 	<a href="#home" class="move-top"> <span
 		class="fa fa-angle-up  mb-3" aria-hidden="true"></span>
 	</a>
-</div>
+</div> --%>
 </div>
 </body>
 </html>

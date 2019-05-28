@@ -7,6 +7,12 @@
 		margin : 0 auto;
 	}
 
+	label{
+		font-size: 20px;
+	
+	}
+
+
 </style>
 
 <script type="text/javascript">
@@ -218,7 +224,7 @@
 	<div class="col-xs-6">
 		<div class="panel panel-primary" style="height: 491px;">
 			<div class="panel-heading">
-				<h4 class="text-center">연령별</h4>
+				<label>연령별</label>
 			</div>
 			<div id="ComboChart" class="charts"><!-- 차트 시작 영역  -->
 				<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
@@ -232,7 +238,7 @@
 <div class="col-xs-6">
 	<div class="panel panel-primary" style="height: 491px;">
 		<div class="panel-heading">
-			<h4 class="text-center">지역별 </h4>
+			<label>지역별 </label>
 		</div>
 			<div id="PieChart" class="charts"><!-- 차트 시작 영역  -->
 				<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
@@ -247,7 +253,7 @@
 <div class="col-xs-6">
 	<div class="panel panel-primary" style="height: 491px;">
 		<div class="panel-heading">
-			<h4 class="text-center">관광지 테마별</h4>
+			<label>관광지 테마별</label>
 		</div>
 		<div id="Histogram" class="charts"><!-- 차트 시작 영역  -->
 			<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
@@ -260,7 +266,7 @@
 <div class="col-xs-6">
 	<div class="panel panel-primary" style="height: 491px;">
 		<div class="panel-heading">
-			<h4 class="text-center">연도별</h4>
+			<label>연도별</label>
 		</div>
 		<div id="SteppedAreaChart" class="charts"><!-- 차트 시작 영역  -->
 			<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">

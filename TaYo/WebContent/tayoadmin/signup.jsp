@@ -1,37 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/tayoadmin/templet/header.jsp"%>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
 <script>
 
 	$(function(){
 		//console.log("success")
-		var arr = $("form > div > span > button");
-		$(arr).click(function(){
+		var arr = $("form");
+		$("button").click(function(){
+			console.log("들어옴")
 			$.ajax({
 				url : '/TaYo/login',
 				method : 'get',
 				data : $(arr).serialize(),
 				success : function(result){
-					//console.log(result);
-					//$("section").html(result.trim());
+					console.log(result);
+					$("section").html(result.trim());
 				},
 				error : function(){
 					console.log("실패");
 				} 
 				
 			});
+			return false;
 		});
-		return false;
 	});
 
 
 
 </script>
-
+<section></section>
 <div id="page-wrapper">
-
 	<div class="row">
 
 		<div class="col-lg-12 text-center v-center">
@@ -49,7 +49,7 @@
 					<input name = "pass" class="form-control input-lg" title="Confidential signup."
 						placeholder="Enter your password" required="required" type="text"> 
 						<span class="input-group-btn">
-							<button class="btn btn-lg btn-primary" type="button">OK</button>
+							<button class="btn btn-lg btn-primary" >OK</button>
 						</span>
 				</div>
 			</form>
@@ -71,8 +71,6 @@
 
 	</div>
 	<!-- /.row -->
-
 </div>
 <!-- /#page-wrapper -->
 
-<%@ include file="/tayoadmin/templet/footer.jsp"%>

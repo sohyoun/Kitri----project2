@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kitri.admin.model.AdminDto;
 import com.kitri.admin.model.service.AdminService;
+import com.kitri.dto.AdminDTO;
 
 @WebServlet("/login")
 public class AdminController extends HttpServlet {
@@ -30,11 +31,14 @@ public class AdminController extends HttpServlet {
 		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
 
-		AdminDto login = adminService.login(email, pass);
+		AdminDTO login = adminService.login(email, pass);
 		
+		if(email != null)
+		
+		//System.out.println(login.getAdminEmail());
 		request.setAttribute("loginInfo", login);
 		
-		String path = "/tayoadmin/loginresult.jsp";
+		String path = "/tayoadmin/index.jsp";
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);

@@ -2,13 +2,24 @@ package com.kitri.dto;
 
 import java.util.Date;
 
-public class MemberDetailDTO {
-	private String email;
-	private String address;			//ÁÖ¼Ò
-	private String addressDetail;	//»ó¼¼ÁÖ¼Ò
-	private Date joindate;			//°¡ÀÔÀÏ
-	private Date outdate;			//Å»ÅğÀÏ
+public class MemberDetailDTO extends MemberDTO{
+	private String email;			//ì´ë©”ì¼
+	private String address;			//ì£¼ì†Œ
+	private String addressDetail;	//ìƒì„¸ì£¼ì†Œ
+	private Date joindate;			//ê°€ì…ì¼
+	private Date outdate;			//íƒˆí‡´ì¼
 	
+	public MemberDetailDTO() {
+	
+	}
+	public MemberDetailDTO(String email, String address, String addressDetail, Date joindate, Date outdate) {
+		super();
+		this.email = email;
+		this.address = address;
+		this.addressDetail = addressDetail;
+		this.joindate = joindate;
+		this.outdate = outdate;
+	}
 	
 	public String getEmail() {
 		return email;
@@ -40,6 +51,10 @@ public class MemberDetailDTO {
 	public void setOutdate(Date outdate) {
 		this.outdate = outdate;
 	}
-	
+	@Override
+	public String toString() {
+		return "MemberDetailDto [email=" + email + ", address=" + address + ", addressDetail=" + addressDetail
+				+ ", joindate=" + joindate + ", outdate=" + outdate + "]";
+	}
 	
 }

@@ -1,6 +1,9 @@
 create SEQUENCE sq_tripbasic_tripseq;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/heads/test
 ALTER TABLE Trip_Detail
 	DROP
 		CONSTRAINT FK_Place_TO_Trip_Detail

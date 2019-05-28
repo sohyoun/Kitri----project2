@@ -44,13 +44,8 @@ body{
 
 				<ul id="active" class="nav navbar-nav side-nav">
 
-					<li class="selected"><a href="index.jsp"><i
-							class="fa fa-bullseye"> </i> 홈 </a></li>
-
-					<li><a href="member.jsp"><i class="fa fa-tasks"> </i>회원 관리</a></li>
-
-					<li><a href="board.jsp"><i class="fa fa-list-ol"></i>게시판 관리 </a></li>
-
+					<li class="selected"><a href="index.jsp"><i class="fa fa-bullseye"> </i>홈</a></li>
+					<li><a href="board.jsp"><i class="fa fa-list-ol"></i>관리</a></li>
 					<li><a href="statistics.jsp"><i class="fa fa-table"></i>통계</a></li>
 				</ul>
 
@@ -80,15 +75,9 @@ body{
 							<li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
 							<li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
 							<li class="divider"></li>
-							<li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
+							<li><a href="<%=root %>/index.jsp"><i class="fa fa-power-off"></i> Log Out</a></li>
 
 						</ul></li>
-					<li class="divider-vertical"></li>
-					<li>
-						<form class="navbar-search">
-							<input type="text" placeholder="Search" class="form-control">
-						</form>
-					</li>
 				</ul>
 			</div>
 		</nav>
