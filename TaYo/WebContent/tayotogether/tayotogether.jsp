@@ -17,7 +17,6 @@ $(function(){
 			$(".bestcontents").html(result.trim());
 		}
 	});
-	return false;
 });
 
 </script>
