@@ -34,9 +34,19 @@
 	}
 </style>
 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d388e7ffead01bfd5045bc218f8e8830"></script>
 <script type="text/javascript" src="<%=root%>/js/httpRequest.js"></script>
 <script type="text/javascript">
 $(function() {
+	// Map
+	var container = document.getElementById('map');
+	var options = {
+		center: new daum.maps.LatLng(33.450701, 126.570667),
+		level: 7
+	};
+	var map = new daum.maps.Map(container, options);
+	
+	
 	// Modal window
 	$("#planSave").click(function() {
 		$("#planSaveModal").modal();
@@ -127,6 +137,43 @@ $(function() {
 		return false;
 	});
 	
+	var polyline = null;
+	var isFirst = true;
+	$("#daylist").on('click', "ul>li.list-group-item-1", function() {
+		var items = $(this).parent().find(".list-group-item");
+		if (items.length == 0) {
+			return false;
+		}
+		
+		var LatLng = new Array();
+		$(items).each(function() {
+			LatLng.push(new daum.maps.LatLng($(this).attr("axisy"), $(this).attr("axisx")));
+		});
+		
+		// Draw line to map
+		map.panTo(LatLng[LatLng.length - 1]);
+		
+		if (isFirst != true) {
+			polyline.setMap(null);
+		} else {
+			isFirst = false;
+		}
+		
+		for (var idx = 0; idx < LatLng.length - 1; idx++) {
+			polyline = new daum.maps.Polyline({
+				map: map, 
+				path: LatLng.slice(idx, idx + 2),
+				endArrow: true,
+				strokeWeight: 3,
+				strokeColor: '#FF00FF',
+				strokeOpacity: 0.9,
+				strokeStyle: 'solid'
+			});
+		}
+		return false;
+	});
+	
+	
 	// When press enter key
 	$("#place").keydown(function(key) {
 		if (key.keyCode == 13) {
@@ -149,7 +196,6 @@ $(function() {
 						if (prevTitle != title) {
 							prevTitle = title;
 							var image = $(this).find("firstimage2").text();
-
 							var axisx = $(this).find("mapx").text();
 							var axisy = $(this).find("mapy").text();
 							
@@ -242,16 +288,6 @@ $(function() {
 			
 			<div class="col-sm-4">
 				<div id="map" style="width: 100%; height: 100%; min-width: 50%; min-height: 50%"></div>
-				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d388e7ffead01bfd5045bc218f8e8830"></script>
-				<script>
-					var container = document.getElementById('map');
-					var options = {
-						center: new daum.maps.LatLng(33.450701, 126.570667),
-						level: 8
-					};
-			
-					var map = new daum.maps.Map(container, options);
-				</script>
 			</div>
 		</div>
 	</div>
