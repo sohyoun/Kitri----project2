@@ -4,30 +4,31 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 
 import com.kitri.admin.model.AdminDto;
 import com.kitri.dto.MemberDTO;
 import com.kitri.dto.MemberDetailDTO;
 import com.kitri.util.DBConnection;
 
-public class AdminDaoImpl implements AdminDao {
+public class AdminDAOImpl implements AdminDAO {
 
 	// 싱글톤 적용
-	private static AdminDao adminDao;
+	private static AdminDAO adminDao;
 
 	static {
-		adminDao = new AdminDaoImpl();
+		adminDao = new AdminDAOImpl();
 	}
 
-	private AdminDaoImpl() {
+	private AdminDAOImpl() {
 	}
 
-	public static AdminDao getAdminDao() {
+	public static AdminDAO getAdminDao() {
 		return adminDao;
 	}
 
 	// 로그인 정보
-	@Override
 	public AdminDto selectByEmail(String email) {
 		AdminDto adminDto = new AdminDto();
 
@@ -123,6 +124,12 @@ public class AdminDaoImpl implements AdminDao {
 		// String email = "12.12kimiyeon@gmail.com";
 		// System.out.println(adminDaoImpl.selectByEmail(email));
 
+	}
+
+	@Override
+	public List<MemberDetailDTO> getMemberList(Map<String, String> map) {
+		
+		return null;
 	}
 
 }
