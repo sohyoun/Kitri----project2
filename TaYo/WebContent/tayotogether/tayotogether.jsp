@@ -3,6 +3,15 @@
 <%@ include file="/temp/header.jsp"%>
 <script>
 $(function(){
+	$.ajax({
+		url : '${pageContext.request.contextPath}/together',
+		method: 'post',
+		success : function(result) {
+			$("div.bestcontents").html(result.trim());
+		}
+	});
+	
+	
 	var planDiv = $("#tayowithschedule001");
 	$(planDiv).click(function(){
 		location.href="/TaYo/tayotogether/ttPlan.jsp";
@@ -10,13 +19,6 @@ $(function(){
 	
 	
 	
-	$.ajax({
-		url : 'together',
-		method: 'post',
-		success : function(result) {
-			$(".bestcontents").html(result.trim());
-		}
-	});
 });
 
 </script>

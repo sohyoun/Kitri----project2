@@ -12,7 +12,7 @@ import com.kitri.dto.TTLeaderDTO;
 import com.kitri.util.DBClose;
 
 public class TogetherDAO {
-	//ÇÔ²²Å¸¿ä ÀÏÁ¤ ¸®½ºÆ® ºÒ·¯¿À±â (¸¶°¨ÀÓ¹Ú¼ø)
+	//í•¨ê»˜íƒ€ìš” ë§ˆê°ì„ë°•ìˆœ select
 	public List<TTLeaderDTO> selectPlan() {
 		List<TTLeaderDTO> list = new ArrayList<>();
 		Connection con = null;
@@ -31,7 +31,7 @@ public class TogetherDAO {
 					"and tb.trip_seq = td.trip_seq " + 
 					"and p.place_id = td.place_id " + 
 					"and p.loc_id = l.loc_id " + 
-					"and tb.trip_theme = 'ÇÔ²²Å¸¿ä' " +
+					"and tb.trip_theme = 'í•¨ê»˜íƒ€ìš”' " +
 					"order by tt.now_num/tt.trip_num";
 			
 			pstmt = con.prepareStatement(selectPlanSQL);
@@ -66,7 +66,7 @@ public class TogetherDAO {
 		return list;
 	}
 
-	//¸¶°¨ÀÓ¹Úbest4
+	//í•¨ê»˜íƒ€ìš”best4
 	public List<TTLeaderDTO> selectbest4() {
 		List<TTLeaderDTO> list = new ArrayList<>();
 		Connection con = null;
@@ -85,7 +85,7 @@ public class TogetherDAO {
 					"and tb.trip_seq = td.trip_seq " + 
 					"and p.place_id = td.place_id " + 
 					"and p.loc_id = l.loc_id " + 
-					"and tb.trip_theme = 'ÇÔ²²Å¸¿ä' " + 
+					"and tb.trip_theme = 'í•¨ê»˜íƒ€ìš”' " + 
 					"order by tt.now_num/tt.trip_num desc) t " + 
 					"where rownum <= 4";
 			
