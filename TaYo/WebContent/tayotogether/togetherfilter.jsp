@@ -12,7 +12,7 @@
 				/* 콘솔확이용 xml 파싱*/
 				xmlParser = new DOMParser(); // DOMParser console 확인용 객체 생성.
 				xmlDoc = xmlParser.parseFromString(xml.trim(), "text/xml");
-				console.log('-xml 파시용 데이터-');
+				console.log('-xml 파시용 데이터-');  
 				console.log(xmlDoc);
 				/* jquery*/
 				var xmlData = $(xml).find("item");//아이템 배열
