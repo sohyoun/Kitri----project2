@@ -51,6 +51,10 @@ public class MemberDetailDto {
 	public void setOutdate(Date outdate) {
 		this.outdate = outdate;
 	}
-	
+	@Override
+	public String toString() {
+		return "MemberDetailDto [email=" + email + ", address=" + address + ", addressDetail=" + addressDetail
+				+ ", joindate=" + joindate + ", outdate=" + outdate + "]";
+	}
 	
 }

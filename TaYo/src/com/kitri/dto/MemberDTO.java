@@ -1,29 +1,36 @@
 package com.kitri.dto;
 
-public class MemberDto {
+public class MemberDTO {
 	private String email;	//이메일
-	private String emaildomain;//이메일 도메인
 	private String name;	//이름
 	private String pass;	//비밀번호
 	private int age;		//나이
 	private int grade;		//등급
 	private String gender;	//성별
-	MemberDetailDto memberDetailDto;
+	private MemberDetailDto memberDetailDto; //상세정보
 	
-	public MemberDto() {
-		memberDetailDto= new MemberDetailDto();
+	public MemberDTO() {
+		super();
 	}
 
-	public MemberDto(String email, String name, String pass, int age, int grade, String gender) {
+	public MemberDTO(String email, String name, String pass, int age, int grade, String gender,
+			MemberDetailDto memberDetailDto) {
 		super();
-		memberDetailDto= new MemberDetailDto();
 		this.email = email;
 		this.name = name;
 		this.pass = pass;
 		this.age = age;
 		this.grade = grade;
 		this.gender = gender;
-		
+		this.memberDetailDto = memberDetailDto;
+	}
+
+	public MemberDetailDto getMemberDetailDto() {
+		return memberDetailDto;
+	}
+
+	public void setMemberDetailDto(MemberDetailDto memberDetailDto) {
+		this.memberDetailDto = memberDetailDto;
 	}
 
 	public String getEmail() {
@@ -72,6 +79,12 @@ public class MemberDto {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberDto [email=" + email + ", name=" + name + ", pass=" + pass + ", age=" + age + ", grade=" + grade
+				+ ", gender=" + gender + ", memberDetailDto=" + memberDetailDto + "]";
 	}	
 	
 	
