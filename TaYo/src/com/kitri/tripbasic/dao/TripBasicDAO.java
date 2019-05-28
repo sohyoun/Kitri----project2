@@ -9,13 +9,13 @@ import com.kitri.dto.TripBasicDTO;
 import com.kitri.util.DBClose;
 import com.kitri.util.DBConnection;
 
-public class TripBasicDao implements DbDml{
-	private static TripBasicDao tripBasicDao; 
+public class TripBasicDAO implements DbDml{
+	private static TripBasicDAO tripBasicDao; 
 	static {
-		tripBasicDao = new TripBasicDao();
+		tripBasicDao = new TripBasicDAO();
 	}
 	@Override
-	public TripBasicDao getInstance() {
+	public TripBasicDAO getInstance() {
 		return tripBasicDao;
 	}
 	@Override

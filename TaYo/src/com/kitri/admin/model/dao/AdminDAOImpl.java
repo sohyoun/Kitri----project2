@@ -11,18 +11,18 @@ import com.kitri.dto.MemberDetailDTO;
 import com.kitri.util.DBConnection;
 
 
-public class AdminDaoImpl implements AdminDao{
+public class AdminDAOImpl implements AdminDAO{
 
 	// 싱글톤 적용 
-	private static AdminDao adminDao;
+	private static AdminDAO adminDao;
 	
 	static {
-		adminDao = new AdminDaoImpl();
+		adminDao = new AdminDAOImpl();
 	}
 	
-	private AdminDaoImpl () {}
+	private AdminDAOImpl () {}
 
-	public static AdminDao getAdminDao() {
+	public static AdminDAO getAdminDao() {
 		return adminDao;
 	}
 	
