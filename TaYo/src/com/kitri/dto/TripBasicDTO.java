@@ -3,16 +3,36 @@ package com.kitri.dto;
 import java.util.Date;
 
 public class TripBasicDTO {
-	private int tripSeq;		//¿©Çà¾ÆÀÌµğ
-	private String email;		//ÀÌ¸ŞÀÏ
-	private String tripTitle;	//¿©ÇàÀÌ¸§
-	private String tripTheme;	//¿©ÇàÅ×¸¶
-	private String tripSeason;	//¿©Çà½ÃÁğ
-	private Date startDate;		//Ãâ¹ßÀÏ
-	private Date endDate;		//Á¾·áÀÏ
-	private int viewCount;		//Á¶È¸¼ö
-	private int likeCount;		//ÃßÃµ¼ö
+	private int tripSeq;		//ì—¬í–‰ì•„ì´ë””
+	private String email;		//ì´ë©”ì¼
+	private String tripTitle;	//ì—¬í–‰ì´ë¦„
+	private String tripTheme;	//ì—¬í–‰í…Œë§ˆ
+	private String tripSeason;	//ì—¬í–‰ì‹œì¦Œ
+	private Date startDate;		//ì¶œë°œì¼
+	private Date endDate;		//ì¢…ë£Œì¼
+	private int viewCount;		//ì¡°íšŒìˆ˜
+	private int likeCount;		//ì¶”ì²œìˆ˜
+	TripDetailDTO tripDeTailDto;
 	
+	
+	
+	public TripBasicDTO() {
+		super();
+	}
+	public TripBasicDTO(int tripSeq, String email, String tripTitle, String tripTheme, String tripSeason,
+			Date startDate, Date endDate, int viewCount, int likeCount, TripDetailDTO tripDetailDTO) {
+		super();
+		this.tripSeq = tripSeq;
+		this.email = email;
+		this.tripTitle = tripTitle;
+		this.tripTheme = tripTheme;
+		this.tripSeason = tripSeason;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.viewCount = viewCount;
+		this.likeCount = likeCount;
+		this.tripDetailDTO = tripDetailDTO;
+	}
 	public TripDetailDTO tripDetailDTO = new TripDetailDTO();
 	
 	public int getTripSeq() {
@@ -69,6 +89,11 @@ public class TripBasicDTO {
 	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
 	}
-	
+	@Override
+	public String toString() {
+		return "TripBasicDto [tripSeq=" + tripSeq + ", email=" + email + ", tripTitle=" + tripTitle + ", tripTheme="
+				+ tripTheme + ", tripSeason=" + tripSeason + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", viewCount=" + viewCount + ", likeCount=" + likeCount + ", tripDetailDTO=" + tripDetailDTO + "]";
+	}
 	
 }

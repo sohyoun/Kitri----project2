@@ -1,19 +1,20 @@
 package com.kitri.dto;
 
 public class MemberDTO {
-	private String email;	//ÀÌ¸ŞÀÏ
-	private String name;	//ÀÌ¸§
-	private String pass;	//ºñ¹Ğ¹øÈ£
-	private int age;		//³ªÀÌ
-	private int grade;		//µî±Ş
-	private String gender;	//¼ºº°
-
+	private String email;	//ì´ë©”ì¼
+	private String name;	//ì´ë¦„
+	private String pass;	//ë¹„ë°€ë²ˆí˜¸
+	private int age;		//ë‚˜ì´
+	private int grade;		//ë“±ê¸‰
+	private String gender;	//ì„±ë³„
+	private MemberDetailDto memberDetailDto; //ìƒì„¸ì •ë³´
 	
 	public MemberDTO() {
-		
+		super();
 	}
 
-	public MemberDTO(String email, String name, String pass, int age, int grade, String gender) {
+	public MemberDTO(String email, String name, String pass, int age, int grade, String gender,
+			MemberDetailDto memberDetailDto) {
 		super();
 		this.email = email;
 		this.name = name;
@@ -21,7 +22,15 @@ public class MemberDTO {
 		this.age = age;
 		this.grade = grade;
 		this.gender = gender;
+		this.memberDetailDto = memberDetailDto;
+	}
 
+	public MemberDetailDto getMemberDetailDto() {
+		return memberDetailDto;
+	}
+
+	public void setMemberDetailDto(MemberDetailDto memberDetailDto) {
+		this.memberDetailDto = memberDetailDto;
 	}
 
 	public String getEmail() {
@@ -70,6 +79,12 @@ public class MemberDTO {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberDto [email=" + email + ", name=" + name + ", pass=" + pass + ", age=" + age + ", grade=" + grade
+				+ ", gender=" + gender + ", memberDetailDto=" + memberDetailDto + "]";
 	}	
 	
 	
