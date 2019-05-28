@@ -3,14 +3,14 @@ package com.kitri.dto;
 import java.util.Date;
 
 public class PlaceDTO {
-	private String placeId;		//Àå¼ÒÄÚµå
-	private int locId;			//Áö¿ªÄÚµå
-	private String placeName;	//Àå¼ÒÀÌ¸§
-	private String placeCtg;	//Àå¼ÒÁ¾·ù
-	private int placePrice;		//Àå¼ÒÀÔÀå·á
-	private Date placeTime;		//Àå¼Ò¿µ¾÷½Ã°£
-	private String placeWay;	//Àå¼Ò°¡´Â¹æ¹ı
-	private String placeInfo;	//Àå¼Ò¼¼ºÎÁ¤º¸
+	private String placeId;		//ì¥ì†Œid
+	private int locId;			//ì§€ì—­id
+	private String placeName;	//ì¥ì†Œì´ë¦„
+	private String placeCtg;	//ì¥ì†Œì¹´í…Œê³ ë¦¬
+	private int placePrice;		//ì¥ì†Œê°€ê²©
+	private Date placeTime;		//ì¥ì†Œì´ìš©ì‹œê°„
+	private String placeWay;	//ê°€ëŠ”ë°©ë²•
+	private String placeInfo;	//ì¥ì†Œì •ë³´
 	
 	public LocationDTO locationDTO = new LocationDTO();
 	
@@ -61,6 +61,12 @@ public class PlaceDTO {
 	}
 	public void setPlaceInfo(String placeInfo) {
 		this.placeInfo = placeInfo;
+	}
+	public LocationDTO getLocationDTO() {
+		return locationDTO;
+	}
+	public void setLocationDTO(LocationDTO locationDTO) {
+		this.locationDTO = locationDTO;
 	}
 	
 	

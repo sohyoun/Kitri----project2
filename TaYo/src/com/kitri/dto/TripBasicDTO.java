@@ -12,8 +12,8 @@ public class TripBasicDTO {
 	private Date endDate;		//종료일
 	private int viewCount;		//조회수
 	private int likeCount;		//추천수
-	TripDetailDTO tripDeTailDto;
 	
+	public TripDetailDTO tripDetailDTO = new TripDetailDTO();
 	
 	
 	public TripBasicDTO() {
@@ -33,7 +33,6 @@ public class TripBasicDTO {
 		this.likeCount = likeCount;
 		this.tripDetailDTO = tripDetailDTO;
 	}
-	public TripDetailDTO tripDetailDTO = new TripDetailDTO();
 	
 	public int getTripSeq() {
 		return tripSeq;
@@ -89,6 +88,15 @@ public class TripBasicDTO {
 	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
 	}
+	
+	
+	public TripDetailDTO getTripDetailDTO() {
+		return tripDetailDTO;
+	}
+	public void setTripDetailDTO(TripDetailDTO tripDetailDTO) {
+		this.tripDetailDTO = tripDetailDTO;
+	}
+	
 	@Override
 	public String toString() {
 		return "TripBasicDto [tripSeq=" + tripSeq + ", email=" + email + ", tripTitle=" + tripTitle + ", tripTheme="

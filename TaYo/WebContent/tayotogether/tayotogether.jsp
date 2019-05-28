@@ -16,19 +16,7 @@ $(function(){
 	$(planDiv).click(function(){
 		location.href="/TaYo/tayotogether/ttPlan.jsp";
 	});
-<<<<<<< HEAD
-	$.ajax({
-		url : 'together',
-		method: 'post',
-		success : function(result) {
-			$(".bestcontents").html(result.trim());
-		}
-	});
-=======
-	
-	
-	
->>>>>>> branch 'master' of https://github.com/sohyoun/Kitri----project2.git
+
 });
 
 </script>

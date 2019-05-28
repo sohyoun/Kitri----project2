@@ -1,12 +1,12 @@
 package com.kitri.dto;
 
 public class TripDetailDTO {
-	private int tripSeq;			//咯青酒捞叼
-	private String placeId;			//厘家内靛
-	private int Day;				//老瞒
-	private String image;			//捞固瘤
-	private String detailTitle;		//老沥力格
-	private String detailContent;	//老沥汲疙
+	private int tripSeq;			//鞐枆id
+	private String placeId;			//鞛レ唽id
+	private int Day;				//鞚检瀽
+	private String image;			//靷
+	private String detailTitle;		//靹鸽秬鞝滊
+	private String detailContent;	//靹鸽秬雮挫毄
 	
 	public PlaceDTO placeDTO = new PlaceDTO();
 	
@@ -46,6 +46,13 @@ public class TripDetailDTO {
 	public void setDetailContent(String detailContent) {
 		this.detailContent = detailContent;
 	}
+	public PlaceDTO getPlaceDTO() {
+		return placeDTO;
+	}
+	public void setPlaceDTO(PlaceDTO placeDTO) {
+		this.placeDTO = placeDTO;
+	}
+	
 	
 	
 }
