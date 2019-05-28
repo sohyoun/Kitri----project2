@@ -1,14 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <%@ include file="/tayoadmin/templet/header.jsp"%>
 
+<<<<<<< HEAD
 <!-- jquery  --> 
+=======
+<style>
+	.pagination{
+		margin: 0 auto;
+	}
+</style>
+>>>>>>> branch 'master' of https://github.com/sohyoun/Kitri----project2.git
 
+<<<<<<< HEAD
+=======
+
+
+
+<!-- jquery  --> 
+<!-- <script type="text/javascript">
+/*스크롤바 막기  */
+$('html, body').css({'overflow': 'hidden', 'height': '100%'});
+	$('#element').on('scroll touchmove mousewheel', function(event) {
+	event.preventDefault();
+	event.stopPropagation();
+	return false;
+});
+</script> -->
+>>>>>>> branch 'master' of https://github.com/sohyoun/Kitri----project2.git
 <!--선택영역-->
 
 <!--테이블 -->
 
 
+<<<<<<< HEAD
 <footer> <!-- footer   -->
 	<section class="footer footer_w3layouts_section_1its py-5 text-center">
 		<div class="container py-lg-4 py-3">
@@ -66,4 +90,8 @@
 	</a>
 </div>
 
+=======
+
+	
+>>>>>>> branch 'master' of https://github.com/sohyoun/Kitri----project2.git
 <%@include file="/tayoadmin/templet/footer.jsp"%>

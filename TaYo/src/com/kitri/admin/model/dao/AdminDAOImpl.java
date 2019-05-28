@@ -6,31 +6,29 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
-
-import com.kitri.admin.model.AdminDto;
-import com.kitri.dto.MemberDTO;
+import com.kitri.dto.AdminDTO;
 import com.kitri.dto.MemberDetailDTO;
 import com.kitri.util.DBConnection;
 
 public class AdminDAOImpl implements AdminDAO {
 
 	// 싱글톤 적용
-	private static AdminDAO adminDao;
+	private static AdminDAO adminDAO;
 
 	static {
-		adminDao = new AdminDAOImpl();
+		adminDAO = new AdminDAOImpl();
 	}
 
 	private AdminDAOImpl() {
 	}
 
-	public static AdminDAO getAdminDao() {
-		return adminDao;
+	public static AdminDAO getAdminDAO() {
+		return adminDAO;
 	}
 
 	// 로그인 정보
-	public AdminDto selectByEmail(String email) {
-		AdminDto adminDto = new AdminDto();
+	public AdminDTO selectByEmail(String email) {
+		AdminDTO adminDTO = new AdminDTO();
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -46,19 +44,18 @@ public class AdminDAOImpl implements AdminDAO {
 			pstmt = conn.prepareStatement(sql.toString());
 
 			pstmt.setString(1, email);
-			System.out.println(email);
+			// System.out.println(email);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
 
-				adminDto.setAdminEmail(rs.getString("email"));
-				adminDto.setAdminName(rs.getString("name"));
-				adminDto.setAdminPass(rs.getString("pass"));
+				adminDTO.setEmail(rs.getString("email"));
+				adminDTO.setName(rs.getString("name"));
+				adminDTO.setPass(rs.getString("pass"));
 				// System.out.println(rs.getString(1));
 
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 		} finally {
 			if (rs != null)
 				try {
@@ -83,15 +80,15 @@ public class AdminDAOImpl implements AdminDAO {
 				}
 		}
 
-		return adminDto;
+		return adminDTO;
 	}
 
 	public int registerUser(MemberDetailDTO memberDetailDTO) {
+		
 		int cnt = -1;
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		MemberDTO memberDTO = new MemberDTO();
 
 		try {
 			conn = DBConnection.makeConnection();
@@ -109,13 +106,22 @@ public class AdminDAOImpl implements AdminDAO {
 			int index = 0;
 
 			pstmt.setString(++index, memberDetailDTO.getEmail());
+			pstmt.setString(++index, memberDetailDTO.getName());
+			pstmt.setString(++index, memberDetailDTO.getPass());
+			pstmt.setInt(++index, memberDetailDTO.getAge());
+			pstmt.setString(++index, memberDetailDTO.getGender());
+			pstmt.setString(++index, memberDetailDTO.getAddress());
+			pstmt.setString(++index, memberDetailDTO.getAddressDetail());
 
+			cnt = pstmt.executeUpdate();
+			
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
 
-		return 0;
+		return cnt;
 	}
 
 	public static void main(String[] args) {
@@ -128,8 +134,7 @@ public class AdminDAOImpl implements AdminDAO {
 
 	@Override
 	public List<MemberDetailDTO> getMemberList(Map<String, String> map) {
-		
+		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

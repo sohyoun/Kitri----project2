@@ -1,6 +1,6 @@
 package com.kitri.admin.model.service;
-import com.kitri.admin.model.AdminDto;
 import com.kitri.admin.model.dao.AdminDAOImpl;
+import com.kitri.dto.AdminDTO;
 
 public class AdminService {
 
@@ -8,8 +8,8 @@ public class AdminService {
 		
 	}
 	
-	public AdminDto login(String email, String pass) {
+	public AdminDTO login(String email, String pass) {
 	
-		return AdminDAOImpl.getAdminDao().selectByEmail(email);
+		return AdminDAOImpl.getAdminDAO().selectByEmail(email);
 	}
 }
