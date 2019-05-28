@@ -1,10 +1,15 @@
 package com.kitri.admin.model.dao;
 
-import com.kitri.admin.model.AdminDto;
+import java.util.List;
+import java.util.Map;
+
 import com.kitri.dto.MemberDetailDTO;
+
+
 
 public interface AdminDAO {
 
-	AdminDto selectByEmail(String email);
+	public List<MemberDetailDTO> getMemberList(Map<String, String> map);
+
 	
 }

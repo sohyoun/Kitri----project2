@@ -3,16 +3,24 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <%@ include file="/tayoadmin/templet/header.jsp"%>
 <style>
-
 label {
 	background-color: pink;
 	border: 1px solid;
 	padding: 10;
 }
-#selectallchkbox{
-	margin : 10px;
+
+#selectallchkbox {
+	margin: 10px;
 }
 
+.pagination {
+	display: block;
+	text-align: center;
+}
+
+.pagination>li>a {
+	float: none;
+}
 
 th {
 	text-align: center;
@@ -38,65 +46,67 @@ td {
 				$("#selectallchkbox").prop("checked", false);
 			}
 		});
-		
+
 		var arr = $("tbody > tr > td > button");
-		$(arr[1]).click(function(){
+		$(arr[1]).click(function() {
 			//console.log("click")
 			//alert("click")
 			location.href = '/TaYo/tayoadmin/boardresult.jsp';
 		});
 	});
-	
 </script>
 
 <div class="row">
-	<div class="col-lg-12">
-		<h1><small>Board</small></h1>
-			<div class="alert alert-dismissable alert-danger">
-				<button type="button" class="close" data-dismiss="alert">&times;</button>
-				<p>그룹선택, 게시판선택, 게시물엔 원글, 제목, 내용등으로 검색을 할 수가 있습니다.</p>
-				<strong>그룹 검색 목록을 선택하거나 검색어를 입력</strong>하여 <strong>여러 게시판을
+	<div class="col-lg-1"></div>
+	<div class="col-lg-10">
+		<h1>
+			<small>Board</small>
+		</h1>
+		<div class="alert alert-dismissable alert-danger">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<p>그룹선택, 게시판선택, 게시물엔 원글, 제목, 내용등으로 검색을 할 수가 있습니다.</p>
+			<strong>그룹 검색 목록을 선택하거나 검색어를 입력</strong>하여 <strong>여러 게시판을
 				동시에 검색</strong> 할 수 있습니다. <strong>그룹검색 시 데이터가 많은 경우</strong> 느려질 수 있습니다.
-			</div>
-				<button class="btn btn-primary">전체 목록</button>
-				<button class="btn btn-info">게시물 수</button>
-				<button class="btn btn-success disabled">건</button>
-			<div class="btn-group">
-			   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-			    그룹 (대분류)
-			     <span class="caret"></span>
-			   </button>
-				   <ul class="dropdown-menu">
-				     <li><a href="#">나의 여행일정</a></li>
-				     <li><a href="#">나의 함께타요</a></li>
-				     <li><a href="#">마이페이지</a></li>
-				    </ul>
-			</div>
-			
-			<!-- /btn-group -->
-			<div class="btn-group">
-			   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-			    게시판 (중분류)
-			     <span class="caret"></span>
-			   </button>
-				   <ul class="dropdown-menu">
-				     <li><a href="#">관광지추천</a></li>
-				     <li><a href="#">여행지추천</a></li>
-				     <li><a href="#">여행 일정추천</a></li>
-				     <li><a href="<%=root%>/tayoschedule/schedule.jsp">일정만들기 </a></li>
-				    </ul>
-			</div>
-			
-			<div class="btn-group">
-			   <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-			    공지 (소분류)
-			     <span class="caret"></span>
-			   </button>
-				   <ul class="dropdown-menu">
-				     <li><a href="#">공지</a></li>
-				     <li><a href="#">신고</a></li>
-				    </ul>
-			</div>
+		</div>
+		<button class="btn btn-primary">전체 목록</button>
+		<button class="btn btn-info">게시물 수</button>
+		<button class="btn btn-success disabled">건</button>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle"
+				data-toggle="dropdown">
+				그룹 (대분류) <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="#">나의 여행일정</a></li>
+				<li><a href="#">나의 함께타요</a></li>
+				<li><a href="#">마이페이지</a></li>
+			</ul>
+		</div>
+
+		<!-- /btn-group -->
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle"
+				data-toggle="dropdown">
+				게시판 (중분류) <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="#">관광지추천</a></li>
+				<li><a href="#">여행지추천</a></li>
+				<li><a href="#">여행 일정추천</a></li>
+				<li><a href="<%=root%>/tayoschedule/schedule.jsp">일정만들기 </a></li>
+			</ul>
+		</div>
+
+		<div class="btn-group">
+			<button type="button" class="btn btn-info dropdown-toggle"
+				data-toggle="dropdown">
+				기능 (소분류) <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="#">공지</a></li>
+				<li><a href="#">신고</a></li>
+			</ul>
+		</div>
 	</div>
 </div>
 
@@ -106,160 +116,166 @@ td {
 <br />
 
 <!-- 테이블 영역  -->
-<div class="table-responsive">
-	<table class="table">
-		<thead>
-			<tr>
-				<th><input type="checkbox" name="chkInfo" id ="selectallchkbox" value="" /></th>
-				<th>번호</th>
-				<th>그룹</th>
-				<th>게시판</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>등록일</th>
-				<th>조회수</th>
-				<th>추천</th>
-				<th>관리</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><input class = "bdchkbox" type="checkbox" name="chkInfo" id = "check1" value="" /></td>
-				<td>1</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>
-					<button type="submit" class="btn btn-info">수정</button>
-					<button type="submit" class="btn btn-info">보기</button>
-					<button type="submit" class="btn btn-info">목록</button>
-				</td>
-			</tr>
-			<tr>
-				<td><input class = "bdchkbox" type="checkbox" name="chkInfo" id = "check2"  value="" /></td>
-				<td>2</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td><button type="submit" class="btn btn-info">수정</button>
-					<button type="submit" class="btn btn-info">보기</button>
-					<button type="submit" class="btn btn-info">목록</button></td>
-
-
-			</tr>
-			<tr>
-				<td><input class = "bdchkbox" type="checkbox" name="chkInfo" id = "check3"  value="" /></td>
-				<td>3</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td><button type="submit" class="btn btn-info">수정</button>
-					<button type="submit" class="btn btn-info">보기</button>
-					<button type="submit" class="btn btn-info">목록</button></td>
-
-			</tr>
-		</tbody>
-	</table>
-</div>
-
 <div class="row">
-	<div class="col-lg-12">
-		<h1><small>User &amp; Member</small></h1>
+	<div class="col-lg-1"></div>
+	<div class="col-lg-10">
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th><input type="checkbox" name="chkInfo"
+							id="selectallchkbox" value="" /></th>
+						<th>번호</th>
+						<th>그룹</th>
+						<th>게시판</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>등록일</th>
+						<th>조회수</th>
+						<th>추천</th>
+						<th>관리</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input class="bdchkbox" type="checkbox" name="chkInfo"
+							id="check1" value="" /></td>
+						<td>1</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>
+							<button type="submit" class="btn btn-info">수정</button>
+							<button type="submit" class="btn btn-info">삭제</button>
+						</td>
+					</tr>
+					<tr>
+						<td><input class="bdchkbox" type="checkbox" name="chkInfo"
+							id="check2" value="" /></td>
+						<td>2</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td><button type="submit" class="btn btn-info">수정</button>
+							<button type="submit" class="btn btn-info">삭제</button>
+					</tr>
+					<tr>
+						<td><input class="bdchkbox" type="checkbox" name="chkInfo"
+							id="check3" value="" /></td>
+						<td>3</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td><button type="submit" class="btn btn-info">수정</button>
+							<button type="submit" class="btn btn-info">삭제</button>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-lg-1"></div>
+	</div>
+
+</div>
+<div class="row">
+	<div class="col-lg-1"></div>
+	<div class="col-lg-10">
+		<h1>
+			<small>User &amp; Member</small>
+		</h1>
 		<div class="alert alert-dismissable alert-warning">
 			<button data-dismiss="alert" class="close" type="button">&times;</button>
-				Welcome to the admin dashboard! 
+			Welcome to the admin dashboard!
 		</div>
-			<form action="">
-					<input type ="text" placeholder = "Email Search" class = "form-control"/>
-			</form>
-			
-         <ul class="list-group">
-           <li class="list-group-item">
-             <span class="badge">14</span>
-             Cras justo odio
-           </li>
-           <li class="list-group-item">
-             <span class="badge">2</span>
-             Dapibus ac facilisis in
-           </li>
-           <li class="list-group-item">
-             <span class="badge">1</span>
-             Morbi leo risus
-           </li>
-         </ul>
+	
 	</div>
+	<div class="col-lg-1"></div>
 </div>
-<br />  
+
+<!-- 유저 테이블  -->
+<div class="row">
+	<div class="col-lg-1"></div>
+	<div class="col-lg-10">
+		<form action="">
+			<input type="text" placeholder="Email Search" class="form-control" />
+			<input type="text" placeholder="Name Search" class="form-control" />
+				<ul class="list-group">
+					<li class="list-group-item"><span class="badge">14</span> 가입 회원
+						수</li>
+					<li class="list-group-item"><span class="badge">2</span> 탈퇴 회원 수
+					</li>
+					<li class="list-group-item"><span class="badge">1</span> 블랙 회원 수
+					</li>
+				</ul>
+		</form>
 		<div class="table-responsive">
-		  <table class="table">
-		    <thead>
-		      <tr>
-				<th>#</th><th>Email</th>
-				<th>Table heading</th>
-				<th>Table heading</th>
-				<th>Table heading</th>
-				<th>Table heading</th>
-				<th>Table heading</th>
-		      </tr>
-		    </thead>
-		    <tbody>
-		      <tr>
-				<td>1</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-		      </tr>
-		      <tr>
-				<td>2</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-		      </tr>
-		      <tr>
-				<td>3</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-				<td>Table cell</td>
-		      </tr>
-		    </tbody>
-		  </table>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>index</th>
+						<th>Email</th>
+						<th>name</th>
+						<th>address</th>
+						<th>address_detail</th>
+						<th>gender</th>
+						<th>grade</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-		
-	<div class="row"> <!--페이징 처리-->
-         <div class="col-lg-4">
-           <div class="bs-example">
-             <ul class="pagination">
-               <li class="disabled"><a href="#">&laquo;</a></li>
-               <li class="active"><a href="#">1</a></li>
-               <li><a href="#">2</a></li>
-               <li><a href="#">3</a></li>
-               <li><a href="#">4</a></li>
-               <li><a href="#">5</a></li>
-               <li><a href="#">&raquo;</a></li>
-             </ul>
-           </div>
-         </div>
-		</div>
+	</div>
+	<div class="col-lg-1"></div>
+</div>
+
+<ul class="pagination">
+	<!--페이징 처리-->
+	<li class="disabled"><a href="#">&laquo;</a></li>
+	<li class="active"><a href="#">1</a></li>
+	<li><a href="#">2</a></li>
+	<li><a href="#">3</a></li>
+	<li><a href="#">4</a></li>
+	<li><a href="#">5</a></li>
+	<li><a href="#">&raquo;</a></li>
+</ul>
 
 <%@ include file="/tayoadmin/templet/footer.jsp"%>

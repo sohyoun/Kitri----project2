@@ -58,7 +58,8 @@ public class MemberDao implements DbDml {
 
 		return result;
 	}
-
+	
+	@Override
 	public List<MemberDTO> selectAll() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
