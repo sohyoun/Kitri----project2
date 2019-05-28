@@ -7,14 +7,14 @@ public class MemberDTO {
 	private int age;		//나이
 	private int grade;		//등급
 	private String gender;	//성별
-	private MemberDetailDto memberDetailDto; //상세정보
+	private MemberDetailDTO memberDetailDto; //상세정보
 	
 	public MemberDTO() {
 		super();
 	}
 
 	public MemberDTO(String email, String name, String pass, int age, int grade, String gender,
-			MemberDetailDto memberDetailDto) {
+			MemberDetailDTO memberDetailDto) {
 		super();
 		this.email = email;
 		this.name = name;
@@ -25,11 +25,11 @@ public class MemberDTO {
 		this.memberDetailDto = memberDetailDto;
 	}
 
-	public MemberDetailDto getMemberDetailDto() {
+	public MemberDetailDTO getMemberDetailDto() {
 		return memberDetailDto;
 	}
 
-	public void setMemberDetailDto(MemberDetailDto memberDetailDto) {
+	public void setMemberDetailDto(MemberDetailDTO memberDetailDto) {
 		this.memberDetailDto = memberDetailDto;
 	}
 

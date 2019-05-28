@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kitiri.impl.DbDml;
-import com.kitri.dto.MemberDetailDto;
+import com.kitri.dto.MemberDetailDTO;
 import com.kitri.dto.MemberDTO;
 import com.kitri.util.DBClose;
 import com.kitri.util.DBConnection;
@@ -82,7 +82,7 @@ public class MemberDao implements DbDml {
 				String addressDetail = rs.getString("address_detail");
 				Date joindate = rs.getDate("joindate");
 				Date outdate = rs.getDate("outdate");
-				MemberDetailDto memberDetailDto = new MemberDetailDto(email, address, addressDetail, joindate, outdate);
+				MemberDetailDTO memberDetailDto = new MemberDetailDTO(email, address, addressDetail, joindate, outdate);
 				memberDto = new MemberDTO(email, name, pass, age, grade, gender, memberDetailDto);
 				list.add(memberDto);
 //				System.out.println("MemberDao select all" +list);

@@ -2,17 +2,17 @@ package com.kitri.dto;
 
 import java.util.Date;
 
-public class MemberDetailDto {
+public class MemberDetailDTO {
 	private String email;			//이메일
 	private String address;			//주소
 	private String addressDetail;	//상세주소
 	private Date joindate;			//가입일
 	private Date outdate;			//탈퇴일
 	
-	public MemberDetailDto() {
+	public MemberDetailDTO() {
 	
 	}
-	public MemberDetailDto(String email, String address, String addressDetail, Date joindate, Date outdate) {
+	public MemberDetailDTO(String email, String address, String addressDetail, Date joindate, Date outdate) {
 		super();
 		this.email = email;
 		this.address = address;

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import com.kitri.admin.model.AdminDto;
 import com.kitri.dto.MemberDTO;
-import com.kitri.dto.MemberDetailDto;
+import com.kitri.dto.MemberDetailDTO;
 import com.kitri.util.DBConnection;
 
 
@@ -89,7 +89,7 @@ public class AdminDaoImpl implements AdminDao{
 		return adminDto;
 	}
 
-	public int registerUser(MemberDetailDto memberDetailDTO) {
+	public int registerUser(MemberDetailDTO memberDetailDTO) {
 		int cnt = -1;
 		
 		Connection conn = null;
