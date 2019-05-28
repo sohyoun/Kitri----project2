@@ -1,6 +1,5 @@
 create SEQUENCE sq_tripbasic_tripseq;
 
-
 ALTER TABLE Trip_Detail
 	DROP
 		CONSTRAINT FK_Place_TO_Trip_Detail

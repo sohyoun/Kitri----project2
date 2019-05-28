@@ -5,7 +5,7 @@ public class TTLeaderDTO {
 	private int tripNum;		//��������
 	private int nowNum;			//��������
 	
-	public TripBasicDto tripBasicDTO = new TripBasicDto();
+	public TripBasicDTO tripBasicDTO = new TripBasicDTO();
 	
 	public int getTripSeq() {
 		return tripSeq;
