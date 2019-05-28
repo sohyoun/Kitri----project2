@@ -7,9 +7,6 @@ $(function(){
 	$(planDiv).click(function(){
 		location.href="/TaYo/tayotogether/ttPlan.jsp";
 	});
-	
-	
-	
 	$.ajax({
 		url : 'together',
 		method: 'post',
@@ -17,7 +14,6 @@ $(function(){
 			$(".bestcontents").html(result.trim());
 		}
 	});
-	return false;
 });
 
 </script>
