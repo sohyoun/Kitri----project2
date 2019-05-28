@@ -105,7 +105,7 @@ public class TogetherDAO {
 				ttLeaderDTO.tripBasicDTO.setViewCount(rs.getInt("viewCount"));
 				ttLeaderDTO.tripBasicDTO.setLikeCount(rs.getInt("likeCount"));
 				
-				ttLeaderDTO.tripBasicDTO.tripDetailDTO.placeDTO.locationDTO.setLocName(rs.getString("loc_name"));
+				ttLeaderDTO.tripBasicDTO.tripDetailDTO.placeDTO.locationDTO.setLocName(rs.getString("loc_name"));  
 				
 				list.add(ttLeaderDTO);
 			}
