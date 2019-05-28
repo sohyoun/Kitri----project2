@@ -87,7 +87,7 @@ public class TogetherDAO {
 					"and p.loc_id = l.loc_id " + 
 					"and tb.trip_theme = '함께타요' " + 
 					"order by tt.now_num/tt.trip_num desc) t " + 
-					"where rownum <= 4";
+					"where rownum <= 4";  
 			
 			pstmt = con.prepareStatement(selectbestSQL);
 			rs = pstmt.executeQuery();
