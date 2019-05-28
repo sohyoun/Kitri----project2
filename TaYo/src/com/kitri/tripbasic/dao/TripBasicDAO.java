@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kitiri.impl.DbDml;
+import com.kitri.db.impl.DbDml;
 import com.kitri.dto.TripBasicDTO;
 import com.kitri.util.DBClose;
 import com.kitri.util.DBConnection;
