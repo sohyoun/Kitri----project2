@@ -1,5 +1,7 @@
 package com.kitri.dto;
 
+import java.util.List;
+
 public class MemberDTO {
 	private String email;	//이메일
 	private String name;	//이름
@@ -8,6 +10,7 @@ public class MemberDTO {
 	private int grade;		//등급
 	private String gender;	//성별
 	private MemberDetailDTO memberDetailDto; //상세정보
+	List<TripBasicDTO> tripbasicDto;
 	
 	public MemberDTO() {
 		super();

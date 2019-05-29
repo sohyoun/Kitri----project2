@@ -8,6 +8,20 @@ public class TripDetailDTO {
 	private String detailTitle;		//세부제목
 	private String detailContent;	//세부내용
 	
+	public TripDetailDTO() {
+		super();
+	}
+	public TripDetailDTO(int tripSeq, String placeId, int day, String image, String detailTitle, String detailContent,
+			PlaceDTO placeDTO) {
+		super();
+		this.tripSeq = tripSeq;
+		this.placeId = placeId;
+		Day = day;
+		this.image = image;
+		this.detailTitle = detailTitle;
+		this.detailContent = detailContent;
+		this.placeDTO = placeDTO;
+	}
 	public PlaceDTO placeDTO = new PlaceDTO();
 	
 	public int getTripSeq() {
