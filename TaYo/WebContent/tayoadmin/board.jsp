@@ -44,11 +44,7 @@ label {
 	float: none;
 }
 
-th {
-	text-align: center;
-}
-
-td {
+th, td {
 	text-align: center;
 }
 
@@ -79,10 +75,38 @@ td {
 
 		$(arr[1]).click(function() {
 			//	console.log("삭제")
-			//	alert("삭제")
+				alert("삭제")
+			
+			
 		});
 	});
 </script>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 
 <div class="row">
 	<div class="col-lg-1"></div>
@@ -141,6 +165,7 @@ td {
 <div class="col-lg-1"></div>
 <div class="row">
 	<input id="title" type="text" placeholder="title & contents" />
+	<button type ="submit" class = "btn btn-info">검색</button> 
 </div>
 <!-- 드롭다운 메뉴  -->
 <!-- /btn-group -->
@@ -148,29 +173,20 @@ td {
 
 <!-- 테이블 영역  -->
 <div class="row">
-	<div class="col-lg-1"></div>
+<div class="col-lg-1"></div>
 	<div class="col-lg-10">
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
 					<tr>
-						<th><input type="checkbox" name="chkInfo"
-							id="selectallchkbox" value="" /></th>
-						<th>번호</th>
-						<th>그룹</th>
-						<th>게시판</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>등록일</th>
-						<th>조회수</th>
-						<th>추천</th>
-						<th>관리</th>
+						<th><input type="checkbox" name="chkInfo" id="selectallchkbox" value="" /></th>
+						<th>번호</th><th>그룹</th><th>게시판</th><th>제목</th><th>작성자</th><th>등록일</th><th>조회수</th><th>추천</th><th>관리</th>
 					</tr>
 				</thead>
+				
 				<tbody>
 					<tr>
-						<td><input class="bdchkbox" type="checkbox" name="chkInfo"
-							id="check1" value="" /></td>
+						<td><input class="bdchkbox" type="checkbox" name="chkInfo" id="check1" value="" /></td>
 						<td>1</td>
 						<td>Table cell</td>
 						<td>Table cell</td>
@@ -251,7 +267,8 @@ td {
 				</tbody>
 			</table>
 		</div>
-		<div class="col-lg-1"></div>
+	<div class="col-lg-1"></div>
+		
 		<ul class="pagination">
 			<!--페이징 처리-->
 			<li class="disabled"><a href="#">&laquo;</a></li>
@@ -298,25 +315,19 @@ td {
 					수</li>
 			</ul>
 		</form>
-		<div class="table-responsive">
-			<table id="memberlist" class="table">
-				<thead>
-					<tr>
-						<th>Index</th>
-						<th>Email</th>
-						<th>name</th>
-						<th>Address</th>
-						<th>Address_detail</th>
-						<th>Gender</th>
-						<th>Grade</th>
-					</tr>
-				</thead>
-				<tbody>
-
-				</tbody>
-			</table>
+		<!-- 회원테이블 시작 부분 -->
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Index</th><th>Email</th><th>name</th><th>Address</th><th>Address_detail</th><th>Gender</th><th>Grade</th>
+						</tr>
+					</thead>
+						<tbody>
+						</tbody>
+				</table>
+			</div> <!-- 회원 목록 테이블 끝나는 부분 -->
 		</div>
-	</div>
 	<div class="col-lg-1"></div>
 </div>
 

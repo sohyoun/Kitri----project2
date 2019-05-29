@@ -30,6 +30,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	function hideURLbar() {
 		window.scrollTo(0, 1);
 	}
+	
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
