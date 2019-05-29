@@ -6,17 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kitri.dto.MemberDetailDTO;
-import com.kitri.db.impl.DbDml;
+import com.kitri.db.impl.BasicDao;
 import com.kitri.dto.MemberDTO;
 import com.kitri.util.DBClose;
 import com.kitri.util.DBConnection;
 
-public class MemberDao implements DbDml {
+public class MemberDao implements BasicDao {
 	private static MemberDao MemberDao;
 	static {
 		MemberDao = new MemberDao();
 	}
-	@Override
+
 	public MemberDao getInstance() {
 		return MemberDao;
 	}

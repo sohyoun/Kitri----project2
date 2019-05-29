@@ -1,22 +1,20 @@
 package com.kitri.tripbasic.dao;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+
 import java.util.List;
 
-import com.kitri.db.impl.DbDml;
+import com.kitri.db.impl.BasicDao;
 import com.kitri.dto.TripBasicDTO;
-import com.kitri.util.DBConnection;
 
-public class TripBasicDao implements DbDml<TripBasicDTO>{
-	static TripBasicDTO tripBasicDTO;
+
+public class TripBasicDao implements BasicDao<TripBasicDTO>{
+	static TripBasicDao tripBasicDao;
 	static{
-		tripBasicDTO = new TripBasicDTO();
-	}
-	
-	@Override
-	public TripBasicDTO getInstance() {
-		return tripBasicDTO;
+		tripBasicDao = new TripBasicDao();
+	}	
+
+	public TripBasicDao getInstance() {
+		return tripBasicDao;
 	}
 	
 	@Override
