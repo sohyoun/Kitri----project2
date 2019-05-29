@@ -38,7 +38,7 @@
 		$(document).on("click", ".filter_body.si button",function() {			
 			addFilterBtn(this);//필터 버튼  추가		
 		});
-		
+		 
 		//도시 외 아이템들 이벤트 추가
 		$('body > div.container.h-100.pt-3 > table > tbody > tr button').
 		click(function() {
