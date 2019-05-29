@@ -132,8 +132,8 @@ public class AdminDAOImpl implements AdminDAO {
 		// System.out.println(adminDaoImpl.selectByEmail(email));
 		
 		// SELECT ALL 
-		AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
-		System.out.println(adminDAOImpl.selectAll());
+	//	AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
+	//	System.out.println(adminDAOImpl.selectAll());
 
 	}
 		
@@ -160,12 +160,16 @@ public class AdminDAOImpl implements AdminDAO {
 			rs = pstmt.executeQuery();
 			
 				while(rs.next()) {
+					
 					MemberDetailDTO memberDetailDTO = new MemberDetailDTO();
+					
 					memberDetailDTO.setEmail(rs.getString("email"));
 					memberDetailDTO.setName(rs.getString("name"));
 					memberDetailDTO.setAge(rs.getInt("age"));
 					memberDetailDTO.setAddress(rs.getString("address"));
-					memberDetailDTO.setAddressDetail(rs.getString("addressDetail"));
+					memberDetailDTO.setAddressDetail(rs.getString("address_detail"));
+					memberDetailDTO.setJoindate(rs.getDate("joindate"));
+					memberDetailDTO.setOutdate(rs.getDate("outdate"));
 					memberDetailDTO.setGender(rs.getString("gender"));
 					memberDetailDTO.setGrade(rs.getInt("grade"));
 					

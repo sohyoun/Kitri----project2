@@ -1,14 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <%@ include file="/tayoadmin/templet/header.jsp"%>
+<!-- 회원 테이블이 목록에 뜹니다.  -->
+<script>
+	$(function() {
+		$.ajax({
+			url : '${pageContext.request.contextPath}/memberlist',
+			method : 'post',
+			success : function(result) {
+				$("table#memberlist").html(result.trim());
+			}
+		});
+	});
+</script>
+
 <style>
-#title{
-	border-radius : 4px;
-	height : 38px;
-	margin-top : 2em;
-	text-align : center;
+#title {
+	border-radius: 4px;
+	height: 38px;
+	margin-top: 2em;
+	text-align: center;
 }
+
 label {
 	background-color: pink;
 	border: 1px solid;
@@ -60,10 +76,10 @@ td {
 			//alert("click")
 			location.href = '/TaYo/tayoadmin/boardresult.jsp';
 		});
-		
-		$(arr[1]).click(function(){
-		//	console.log("삭제")
-		//	alert("삭제")
+
+		$(arr[1]).click(function() {
+			//	console.log("삭제")
+			//	alert("삭제")
 		});
 	});
 </script>
@@ -122,10 +138,10 @@ td {
 	</div>
 </div>
 
-	<div class = "col-lg-1"></div>
-		<div class = "row">
-			<input id = "title" type = "text" placeholder="title & contents"/>
-	</div>
+<div class="col-lg-1"></div>
+<div class="row">
+	<input id="title" type="text" placeholder="title & contents" />
+</div>
 <!-- 드롭다운 메뉴  -->
 <!-- /btn-group -->
 <br />
@@ -165,7 +181,7 @@ td {
 						<td>Table cell</td>
 						<td>
 							<button type="submit" class="btn btn-info">수정</button>
-							<button type="submit" id = "removeBtn" class="btn btn-info">삭제</button>
+							<button type="submit" id="removeBtn" class="btn btn-info">삭제</button>
 						</td>
 					</tr>
 					<tr>
@@ -247,8 +263,8 @@ td {
 			<li><a href="#">&raquo;</a></li>
 		</ul>
 	</div>
-	
-	
+
+
 
 </div>
 <div class="row">
@@ -261,7 +277,7 @@ td {
 			<button data-dismiss="alert" class="close" type="button">&times;</button>
 			Welcome to the admin dashboard!
 		</div>
-	
+
 	</div>
 	<div class="col-lg-1"></div>
 </div>
@@ -273,17 +289,17 @@ td {
 		<form action="">
 			<input type="text" placeholder="Email Search" class="form-control" />
 			<input type="text" placeholder="Name Search" class="form-control" />
-				<ul class="list-group">
-					<li class="list-group-item"><span class="badge">14</span> 가입 회원
-						수</li>
-					<li class="list-group-item"><span class="badge">2</span> 탈퇴 회원 수
-					</li>
-					<li class="list-group-item"><span class="badge">1</span> 블랙 회원 수
-					</li>
-				</ul>
+			<ul class="list-group">
+				<li class="list-group-item"><span class="badge">14</span> 가입 회원
+					수</li>
+				<li class="list-group-item"><span class="badge">2</span> 탈퇴 회원
+					수</li>
+				<li class="list-group-item"><span class="badge">1</span> 블랙 회원
+					수</li>
+			</ul>
 		</form>
 		<div class="table-responsive">
-			<table class="table">
+			<table id="memberlist" class="table">
 				<thead>
 					<tr>
 						<th>Index</th>
@@ -296,51 +312,7 @@ td {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-					</tr>
-					<tr>
-						<td>5</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-					</tr>
+
 				</tbody>
 			</table>
 		</div>

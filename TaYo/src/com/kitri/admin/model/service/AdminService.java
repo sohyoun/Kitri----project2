@@ -12,13 +12,11 @@ public class AdminService {
 	}
 	
 	public AdminDTO login(String email, String pass) {
-	
 		return AdminDAOImpl.getAdminDAO().selectByEmail(email);
 	}
 	
-	public List<MemberDetailDTO> memeberAll(String email, String address, String addressDetail, String gender, String grade){
+	public List<MemberDetailDTO> memeberAll(){
 		return AdminDAOImpl.getAdminDAO().selectAll();
 	}
-	
 	
 }
