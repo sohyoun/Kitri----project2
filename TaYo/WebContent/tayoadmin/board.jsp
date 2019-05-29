@@ -3,6 +3,12 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <%@ include file="/tayoadmin/templet/header.jsp"%>
 <style>
+#title{
+	border-radius : 4px;
+	height : 38px;
+	margin-top : 2em;
+	text-align : center;
+}
 label {
 	background-color: pink;
 	border: 1px solid;
@@ -47,11 +53,17 @@ td {
 			}
 		});
 
+		//게시판 목록에서 수정버튼을 클릭했을 때 나오는 화면
 		var arr = $("tbody > tr > td > button");
-		$(arr[1]).click(function() {
+		$(arr[0]).click(function() {
 			//console.log("click")
 			//alert("click")
 			location.href = '/TaYo/tayoadmin/boardresult.jsp';
+		});
+		
+		$(arr[1]).click(function(){
+		//	console.log("삭제")
+		//	alert("삭제")
 		});
 	});
 </script>
@@ -110,7 +122,10 @@ td {
 	</div>
 </div>
 
-<br />
+	<div class = "col-lg-1"></div>
+		<div class = "row">
+			<input id = "title" type = "text" placeholder="title & contents"/>
+	</div>
 <!-- 드롭다운 메뉴  -->
 <!-- /btn-group -->
 <br />
@@ -150,7 +165,7 @@ td {
 						<td>Table cell</td>
 						<td>
 							<button type="submit" class="btn btn-info">수정</button>
-							<button type="submit" class="btn btn-info">삭제</button>
+							<button type="submit" id = "removeBtn" class="btn btn-info">삭제</button>
 						</td>
 					</tr>
 					<tr>
@@ -164,8 +179,10 @@ td {
 						<td>Table cell</td>
 						<td>Table cell</td>
 						<td>Table cell</td>
-						<td><button type="submit" class="btn btn-info">수정</button>
+						<td>
+							<button type="submit" class="btn btn-info">수정</button>
 							<button type="submit" class="btn btn-info">삭제</button>
+						</td>
 					</tr>
 					<tr>
 						<td><input class="bdchkbox" type="checkbox" name="chkInfo"
@@ -178,14 +195,60 @@ td {
 						<td>Table cell</td>
 						<td>Table cell</td>
 						<td>Table cell</td>
-						<td><button type="submit" class="btn btn-info">수정</button>
+						<td>
+							<button type="submit" class="btn btn-info">수정</button>
 							<button type="submit" class="btn btn-info">삭제</button>
+						</td>
+					</tr>
+					<tr>
+						<td><input class="bdchkbox" type="checkbox" name="chkInfo"
+							id="check3" value="" /></td>
+						<td>4</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>
+							<button type="submit" class="btn btn-info">수정</button>
+							<button type="submit" class="btn btn-info">삭제</button>
+						</td>
+					</tr>
+					<tr>
+						<td><input class="bdchkbox" type="checkbox" name="chkInfo"
+							id="check3" value="" /></td>
+						<td>5</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>
+							<button type="submit" class="btn btn-info">수정</button>
+							<button type="submit" class="btn btn-info">삭제</button>
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<div class="col-lg-1"></div>
+		<ul class="pagination">
+			<!--페이징 처리-->
+			<li class="disabled"><a href="#">&laquo;</a></li>
+			<li class="active"><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">&raquo;</a></li>
+		</ul>
 	</div>
+	
+	
 
 </div>
 <div class="row">
@@ -223,13 +286,13 @@ td {
 			<table class="table">
 				<thead>
 					<tr>
-						<th>index</th>
+						<th>Index</th>
 						<th>Email</th>
 						<th>name</th>
-						<th>address</th>
-						<th>address_detail</th>
-						<th>gender</th>
-						<th>grade</th>
+						<th>Address</th>
+						<th>Address_detail</th>
+						<th>Gender</th>
+						<th>Grade</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -253,6 +316,24 @@ td {
 					</tr>
 					<tr>
 						<td>3</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+						<td>Table cell</td>
+					</tr>
+					<tr>
+						<td>5</td>
 						<td>Table cell</td>
 						<td>Table cell</td>
 						<td>Table cell</td>

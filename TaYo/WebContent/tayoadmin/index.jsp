@@ -320,8 +320,7 @@
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<h3 class="panel-title">
-						<i class="fa fa-bar-chart-o"></i> Traffic Sources One month
-						tracking
+						<i class="fa fa-bar-chart-o"></i> 방문자 기록
 					</h3>
 				</div>
 				<div class="panel-body">
