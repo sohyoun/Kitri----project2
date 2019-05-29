@@ -32,52 +32,61 @@ $(function(){
 		$(end).datepicker().show();
 	});
 	
-	$("#cancel").click(function() {
+	function closeModal() {
 		$("#planSaveModal").modal("hide");
 		$("#planName").val('');
 		$(start).val('');
 		$(end).val('');
+	}
+	
+	$("#cancel").click(function() {
+		closeModal();
 	});
 	
-	$("tempsave").click(function() {
-		var lists = $(".list-group");
-		var places = new Array();
-		var orders = new Array();
-		var locations = new Array();
-		var xs = new Array();
-		var ys = new Array();
+	var daylists;
+	$("#tempsave").click(function() {
+		daylists = $(".list-group");
 		
-		for (var i = 0; i < list.length; i++) {
-			var items = $(lists[i]).find(".list-group-item");
-			var itemslength = item.length;
-			
-			var subplace = new Array();
-			var suborder = new Array();
-			var sublocation = new Array();
-			var subx = new Array();
-			var suby = new Array();
+		var plandata = new Array();
+		var plandatastr = "";
+		var idx = 0;
+		
+		if ((daylists.length == 1) && ($(daylists).find(".list-group-item").length == 0)) {
+			alert("저장을 위해서는 최소 하나 이상의 일정이 있어야 합니다.");
+			closeModal();
+			return false;
+		}
+		
+		for (var i = 0; i < daylists.length; i++) {
+			var items = $(daylists[i]).find(".list-group-item");
+			var itemslength = items.length;
 			
 			for(var j = 0; j < itemslength; j++) {
-				subplace.push($(items[j]).attr("value"));
-				suborder.push(j);
-				sublocation.push($(items[j]).attr("areaCode"));
-				subx.push($(items[j]).attr("axisx"));
-				suby.push($(items[j]).attr("axisy"));
+				var tempArray = new Array();
+				
+				tempArray.push(i + 1);
+				tempArray.push(j + 1);
+				tempArray.push($(items[j]).attr("value"));
+				tempArray.push($(items[j]).attr("areaCode"));
+				tempArray.push($(items[j]).attr("axisx"));
+				tempArray.push($(items[j]).attr("axisy"));
+				
+				plandata[idx++] = tempArray;
 			}
-			
-			places.push(subplace);
-			orders.push(suborder);
-			locations.push(sublocation);
-			xs.push(subx);
-			ys.push(suby);
 		}
-			
+
+		for(var k = 0; k < plandata.length; k++) {
+			plandatastr += ('&plandata=' + plandata[k]);
+		}
+		
 		$.ajax({
 			url: '${pageContext.request.contextPath}/schedule',
-			data: 'act=tempSave&daylength=' + list.length + '&places=' + places + '&orders=' + orders + '&locations=' + locations + '&xs=' + xs + '&ys=' + ys + '&title=' + $("#planName").val() + '&theme=' + $("input[name='theme']:checked").val() + '&season=' + $("input[name='season']:checked").val() + '&start=' + $("#start").val() + '&end=' + $("#end").val(),
+			data: 'act=tempSave' + plandatastr + '&title=' + $("#planName").val() + '&theme=' + $("input[name='theme']:checked").val() + '&season=' + $("input[name='season']:checked").val() + '&start=' + $("#start").val() + '&end=' + $("#end").val(),
 			method: 'post',
 			success: function(result) {
 				alert("임시저장 되었습니다.");
+				closeModal();
+				location.href='${pageContext.request.contextPath}/schedule?act=myschedule';
 			},
 			error: function(error) {
 				alert("임시저장 처리 중 서버 오류가 발생하였습니다.");

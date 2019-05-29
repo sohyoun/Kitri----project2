@@ -17,9 +17,11 @@ import com.kitri.util.SiteContance;
 public class ScheduleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	private ScheduleBackendController backendController;
 	private ScheduleService service;
 	
 	public ScheduleController() {
+		backendController = new ScheduleBackendController();
 		service = new ScheduleService();
 	}
 	
@@ -49,7 +51,7 @@ public class ScheduleController extends HttpServlet {
 			
 			MoveURL.forward(request, response, "/tayoschedule/searchTourResult.jsp");
 		} else if ("tempSave".equals(act)) {
-			
+			backendController.temporarySavePlan(request, response);
 			
 			MoveURL.redirect(request, response, "/tayoschedule/planTemplate.jsp");
 		}

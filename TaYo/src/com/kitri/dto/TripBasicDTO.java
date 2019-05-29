@@ -17,6 +17,7 @@ public class TripBasicDTO {
 	private int viewCount;		//조회수
 	private int likeCount;		//추천수
 	private Date lastUpDate;		//최종수정일
+	private String isComplete;		//완료여부
 	List<TripDetailDTO> detailList;	//상세일정리스트
 	
 	public TripBasicDTO() {
@@ -28,7 +29,7 @@ public class TripBasicDTO {
 	public String toString() {
 		return "TripBasicDTO [tripSeq=" + tripSeq + ", email=" + email + ", tripTitle=" + tripTitle + ", tripTheme="
 				+ tripTheme + ", tripSeason=" + tripSeason + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", viewCount=" + viewCount + ", likeCount=" + likeCount + ", lastUpDate=" + lastUpDate
+				+ ", viewCount=" + viewCount + ", likeCount=" + likeCount + ", lastUpDate=" + lastUpDate + ", isComplete=" + isComplete
 				+ ", detailList=" + detailList + "]";
 	}
 
@@ -37,7 +38,7 @@ public class TripBasicDTO {
 
 	
 	public TripBasicDTO(int tripSeq, String email, String tripTitle, String tripTheme, String tripSeason,
-			Date startDate, Date endDate, int viewCount, int likeCount, Date lastUpDate, List<TripDetailDTO> detailList) {
+			Date startDate, Date endDate, int viewCount, int likeCount, Date lastUpDate, String isComplete, List<TripDetailDTO> detailList) {
 		super();
 		this.tripSeq = tripSeq;
 		this.email = email;
@@ -49,28 +50,23 @@ public class TripBasicDTO {
 		this.viewCount = viewCount;
 		this.likeCount = likeCount;
 		this.lastUpDate = lastUpDate;
-		this.detailList= detailList; 
-	
+		this.isComplete = isComplete;
+		this.detailList = detailList; 
 	}
 
+	
 	public List<TripDetailDTO> getDetailList() {
 		return detailList;
 	}
-
 	public void setDetailList(List<TripDetailDTO> detailList) {
 		this.detailList = detailList;
 	}
-
-
 	public Date getLastUpDate() {
 		return lastUpDate;
 	}
-
-
 	public void setLastUpDate(Date lastUpDate) {
 		this.lastUpDate = lastUpDate;
 	}
-
 	public int getTripSeq() {
 		return tripSeq;
 	}
@@ -125,11 +121,15 @@ public class TripBasicDTO {
 	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
 	}
-	
+	public String getIsComplete() {
+		return isComplete;
+	}
+	public void setIsComplete(String isComplete) {
+		this.isComplete = isComplete;
+	}
 	public List<TripDetailDTO> getTripDetailDTO() {
 		return detailList;
 	}
-
 	public void setTripDetailDTO(List<TripDetailDTO> tripDetailDTO) {
 		this.detailList = tripDetailDTO;
 	}

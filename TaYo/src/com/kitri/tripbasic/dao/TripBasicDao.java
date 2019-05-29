@@ -32,7 +32,7 @@ public class TripBasicDao {
 		List<TripBasicDTO> basiclist = new ArrayList<TripBasicDTO>();
 		try {
 			conn = DBConnection.makeConnection();
-			String sql = "select trip_seq, email, trip_title, trip_theme, trip_season, start_date, end_date, viewcount, likeCount ,lastupdate\n" + 
+			String sql = "select trip_seq, email, trip_title, trip_theme, trip_season, start_date, end_date, viewcount, likeCount, lastupdate, isComplete\n" + 
 					"from trip_basic";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -45,10 +45,11 @@ public class TripBasicDao {
 				String tripSeason = rs.getString("trip_season");
 				Date startDate = rs.getDate("start_date");
 				Date endDate = rs.getDate("end_date");
-				int viewCount= rs.getInt("viewcount");
+				int viewCount = rs.getInt("viewcount");
 				int likeCount = rs.getInt("likecount");
-				Date lastUpDate =rs.getDate("lastUpDate");
-				TripBasicDTO dto = new TripBasicDTO(trip_seq, email, tripTitle, tripTheme, tripSeason, startDate, endDate, viewCount, likeCount, lastUpDate, null);
+				Date lastUpDate = rs.getDate("lastUpDate");
+				String isComplete = rs.getString("isComplete");
+				TripBasicDTO dto = new TripBasicDTO(trip_seq, email, tripTitle, tripTheme, tripSeason, startDate, endDate, viewCount, likeCount, lastUpDate, isComplete, null);
 				basiclist.add(dto);
 			}
 		} catch (SQLException e) {
