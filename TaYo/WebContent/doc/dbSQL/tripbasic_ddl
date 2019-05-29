@@ -28,7 +28,7 @@ CREATE TABLE Trip_Basic (
 	viewCount NUMBER, /* 조회수 */
 	likeCount NUMBER, /* 추천수 */
 	lastUpDate DATE NOT NULL /* 최종수정일 */,
-	isComplete VARCHAR(1) NOT NULL /* 완료여부 */
+	isComplete VARCHAR2(1) NOT NULL /* 완료여부 */
 );
 
 COMMENT ON TABLE Trip_Basic IS '여행일정';
