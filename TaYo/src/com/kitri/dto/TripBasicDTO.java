@@ -1,6 +1,6 @@
 package com.kitri.dto;
 
-import java.util.Date;
+import java.util.*;
 
 public class TripBasicDTO {
 	private int tripSeq;		//여행아이디
@@ -12,15 +12,16 @@ public class TripBasicDTO {
 	private Date endDate;		//종료일
 	private int viewCount;		//조회수
 	private int likeCount;		//추천수
+	private int lastUpDate;		//최종수정일
 	
-	public TripDetailDTO tripDetailDTO = new TripDetailDTO();
-	
+	List<TripDetailDTO> tripDetailDTO;
 	
 	public TripBasicDTO() {
 		super();
 	}
+
 	public TripBasicDTO(int tripSeq, String email, String tripTitle, String tripTheme, String tripSeason,
-			Date startDate, Date endDate, int viewCount, int likeCount, TripDetailDTO tripDetailDTO) {
+			Date startDate, Date endDate, int viewCount, int likeCount, int lastUpDate, TripDetailDTO tripDetailDTO) {
 		super();
 		this.tripSeq = tripSeq;
 		this.email = email;
@@ -31,9 +32,20 @@ public class TripBasicDTO {
 		this.endDate = endDate;
 		this.viewCount = viewCount;
 		this.likeCount = likeCount;
-		this.tripDetailDTO = tripDetailDTO;
+		this.lastUpDate = lastUpDate;
+		this.tripDetailDTO = new ArrayList<TripDetailDTO>();
 	}
+
 	
+	public int getLastUpDate() {
+		return lastUpDate;
+	}
+
+
+	public void setLastUpDate(int lastUpDate) {
+		this.lastUpDate = lastUpDate;
+	}
+
 	public int getTripSeq() {
 		return tripSeq;
 	}
@@ -88,20 +100,5 @@ public class TripBasicDTO {
 	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
 	}
-	
-	
-	public TripDetailDTO getTripDetailDTO() {
-		return tripDetailDTO;
-	}
-	public void setTripDetailDTO(TripDetailDTO tripDetailDTO) {
-		this.tripDetailDTO = tripDetailDTO;
-	}
-	
-	@Override
-	public String toString() {
-		return "TripBasicDto [tripSeq=" + tripSeq + ", email=" + email + ", tripTitle=" + tripTitle + ", tripTheme="
-				+ tripTheme + ", tripSeason=" + tripSeason + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", viewCount=" + viewCount + ", likeCount=" + likeCount + ", tripDetailDTO=" + tripDetailDTO + "]";
-	}
-	
+
 }
