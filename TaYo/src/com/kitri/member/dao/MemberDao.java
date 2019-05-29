@@ -16,7 +16,7 @@ public class MemberDao implements DbDml {
 	static {
 		MemberDao = new MemberDao();
 	}
-	
+	@Override
 	public MemberDao getInstance() {
 		return MemberDao;
 	}
@@ -96,6 +96,16 @@ public class MemberDao implements DbDml {
 		return list;
 	}
 
+	@Override
+	public int insert(Object obj) {
+		return -1;
+	}
+
+	@Override
+	public String select(Object id) {
+		return null;
+	}
+	
 	public static void main(String[] args) {
 
 //		MemberDao.getInstance().insertMember("name1", "email1", "pass", 20, 1, "M", "address", "address_detail",new java.util.Date(), new java.util.Date());
@@ -108,14 +118,7 @@ public class MemberDao implements DbDml {
 
 	}
 
-	@Override
-	public int insert() {
-		return -1;
-	}
 
-	@Override
-	public String select(Object id) {
-		return null;
-	}
+
 
 }

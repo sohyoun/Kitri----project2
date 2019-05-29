@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface DbDml <T> {
 
-	int insert();
+	int insert(T obj);
 
 	String select(T id);
 
