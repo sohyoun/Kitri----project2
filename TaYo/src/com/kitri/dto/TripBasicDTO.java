@@ -17,11 +17,23 @@ public class TripBasicDTO {
 	private int viewCount;		//조회수
 	private int likeCount;		//추천수
 	private Date lastUpDate;		//최종수정일
-	List<TripDetailDTO> detailList;
+	List<TripDetailDTO> detailList;	//상세일정리스트
 	
 	public TripBasicDTO() {
 		super();
 	}
+
+
+	@Override
+	public String toString() {
+		return "TripBasicDTO [tripSeq=" + tripSeq + ", email=" + email + ", tripTitle=" + tripTitle + ", tripTheme="
+				+ tripTheme + ", tripSeason=" + tripSeason + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", viewCount=" + viewCount + ", likeCount=" + likeCount + ", lastUpDate=" + lastUpDate
+				+ ", detailList=" + detailList + "]";
+	}
+
+
+	
 
 	
 	public TripBasicDTO(int tripSeq, String email, String tripTitle, String tripTheme, String tripSeason,

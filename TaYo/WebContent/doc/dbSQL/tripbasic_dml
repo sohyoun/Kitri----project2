@@ -1,9 +1,8 @@
-//삽입
-insert into trip_Basic
- (trip_seq, email, trip_title, trip_theme, trip_season, start_date, end_date, viewCount, likeCount )
-  values (sq_tripbasic_tripseq.nextval, 'email', 'title','theme','시즌',sysdate ,sysdate, 0, 0);
+-- trip_Basic 삽입
+insert into trip_Basic (trip_seq, email, trip_title, trip_theme, trip_season, start_date, end_date, viewCount, likeCount ,lastupdate )
+  values (sq_tripbasic_tripseq.nextval, 'email', 'title','theme','시즌',sysdate ,sysdate,0,0, sysdate);
  
  
- //탐색
- select trip_seq, email, trip_title, trip_theme, trip_season, start_date, end_date, viewcount, likecount 
+ --탐색
+ select trip_seq, email, trip_title, trip_theme, trip_season, start_date, end_date, viewCount, likeCount ,lastupdate 
  from trip_Basic;

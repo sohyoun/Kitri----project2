@@ -9,8 +9,9 @@ public class MemberDetailDTO extends MemberDTO{
 	private Date joindate;			//가입일
 	private Date outdate;			//탈퇴일
 	
-	public MemberDetailDTO() {
 	
+	public MemberDetailDTO() {
+		super();
 	}
 	public MemberDetailDTO(String email, String address, String addressDetail, Date joindate, Date outdate) {
 		super();
@@ -20,7 +21,6 @@ public class MemberDetailDTO extends MemberDTO{
 		this.joindate = joindate;
 		this.outdate = outdate;
 	}
-	
 	public String getEmail() {
 		return email;
 	}
@@ -51,10 +51,6 @@ public class MemberDetailDTO extends MemberDTO{
 	public void setOutdate(Date outdate) {
 		this.outdate = outdate;
 	}
-	@Override
-	public String toString() {
-		return "MemberDetailDto [email=" + email + ", address=" + address + ", addressDetail=" + addressDetail
-				+ ", joindate=" + joindate + ", outdate=" + outdate + "]";
-	}
+
 	
 }
