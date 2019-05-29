@@ -138,6 +138,7 @@ $(function() {
 	});
 	
 	var polyline = null;
+	var marker = null;
 	var isFirst = true;
 	$("#daylist").on('click', "ul>li.list-group-item-1", function() {
 		var items = $(this).parent().find(".list-group-item");
@@ -149,27 +150,41 @@ $(function() {
 		$(items).each(function() {
 			LatLng.push(new daum.maps.LatLng($(this).attr("axisy"), $(this).attr("axisx")));
 		});
+		var LatLngLength = LatLng.length;
 		
 		// Draw line to map
-		map.panTo(LatLng[LatLng.length - 1]);
+		map.panTo(LatLng[LatLngLength - 1]);
 		
 		if (isFirst != true) {
 			polyline.setMap(null);
+			marker.setMap(null);
 		} else {
 			isFirst = false;
 		}
 		
-		for (var idx = 0; idx < LatLng.length - 1; idx++) {
+		for (var idx = 0; idx < LatLngLength - 1; idx++) {
 			polyline = new daum.maps.Polyline({
 				map: map, 
 				path: LatLng.slice(idx, idx + 2),
 				endArrow: true,
-				strokeWeight: 3,
+				strokeWeight: 2,
 				strokeColor: '#FF00FF',
 				strokeOpacity: 0.9,
 				strokeStyle: 'solid'
 			});
 		}
+		
+		var markerImage = new daum.maps.MarkerImage("http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png", new daum.maps.Size(24, 35));
+		
+		for (var idx = 0; idx < LatLngLength; idx++) {
+			marker = new daum.maps.Marker({
+				map: map,
+				position: LatLng[idx],
+				title: $(items[idx]).attr("value"),
+				image : markerImage
+			});
+		}
+		
 		return false;
 	});
 	

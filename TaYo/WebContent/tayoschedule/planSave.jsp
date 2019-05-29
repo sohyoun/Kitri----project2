@@ -31,6 +31,13 @@ $(function(){
 	$(end).click(function(){
 		$(end).datepicker().show();
 	});
+	
+	$("#cancel").click(function() {
+		$("#planSaveModal").modal("hide");
+		$("#planName").val('');
+		$(start).val('');
+		$(end).val('');
+	});
 });
 </script>
 
@@ -140,7 +147,7 @@ $(function(){
            		<br>
            		<div class="row">
            			<div class="col-sm-4">
-						<button type="button" class="btn btn-warning btn-block">취소</button>           			
+						<button type="button" class="btn btn-warning btn-block" id="cancel">취소</button>           			
            			</div>
            			<div class="col-sm-4">
            				<button type="button" class="btn btn-info btn-block">임시 저장</button>
