@@ -38,11 +38,7 @@
 		$(document).on("click", ".filter_body.si button",function() {			
 			addFilterBtn(this);//필터 버튼  추가		
 		});
-<<<<<<< HEAD
-	
-=======
-		 
->>>>>>> branch 'master' of https://github.com/sohyoun/Kitri----project2.git
+
 		//도시 외 아이템들 이벤트 추가
 		$('div.container> table > tbody > tr button').
 		click(function() {

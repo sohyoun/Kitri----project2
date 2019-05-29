@@ -6,12 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kitri.dto.MemberDetailDTO;
-import com.kitri.db.impl.BasicDao;
 import com.kitri.dto.MemberDTO;
 import com.kitri.util.DBClose;
 import com.kitri.util.DBConnection;
 
-public class MemberDao implements BasicDao {
+public class MemberDao {
 	private static MemberDao MemberDao;
 	static {
 		MemberDao = new MemberDao();
@@ -59,7 +58,7 @@ public class MemberDao implements BasicDao {
 		return result;
 	}
 	
-	@Override
+
 	public List<MemberDTO> selectAll() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -96,12 +95,12 @@ public class MemberDao implements BasicDao {
 		return list;
 	}
 
-	@Override
+
 	public int insert(Object obj) {
 		return -1;
 	}
 
-	@Override
+
 	public String select(Object id) {
 		return null;
 	}
