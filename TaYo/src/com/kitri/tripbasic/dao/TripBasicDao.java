@@ -48,8 +48,8 @@ public class TripBasicDao implements BasicDao<TripBasicDTO>{
 				int likeCount = rs.getInt("likecount");
 				
 				List<TripDetailDTO> detaillist= new ArrayList<TripDetailDTO>();
-				TripBasicDTO dto = new TripBasicDTO(tripSeq, email, tripTitle, tripTheme, tripSeason, startDate, endDate, viewCount, likeCount, lastUpDate, tripDetailDTO)
-				list.add(dto);
+//				TripBasicDTO dto = new TripBasicDTO(tripSeq, email, tripTitle, tripTheme, tripSeason, startDate, endDate, viewCount, likeCount, lastUpDate, tripDetailDTO)
+//				list.add(dto);
 				
 //				System.out.println("MemberDao select all" +list);
 			}

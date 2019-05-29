@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import com.kitri.dto.AdminDTO;
@@ -129,12 +130,53 @@ public class AdminDAOImpl implements AdminDAO {
 		// AdminDaoImpl adminDaoImpl = new AdminDaoImpl();
 		// String email = "12.12kimiyeon@gmail.com";
 		// System.out.println(adminDaoImpl.selectByEmail(email));
+		
+		// SELECT ALL 
+		AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
+		System.out.println(adminDAOImpl.selectAll());
 
 	}
-
+		
 	@Override
-	public List<MemberDetailDTO> getMemberList(Map<String, String> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MemberDetailDTO> selectAll() {
+		
+		List<MemberDetailDTO> list = new ArrayList<MemberDetailDTO>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBConnection.makeConnection();
+			
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("SELECT * \n");
+			sql.append("FROM user_tayo ut, userdetail_tayo udt \n");
+			sql.append("WHERE ut.email = udt.email \n");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			
+			rs = pstmt.executeQuery();
+			
+				while(rs.next()) {
+					MemberDetailDTO memberDetailDTO = new MemberDetailDTO();
+					memberDetailDTO.setEmail(rs.getString("email"));
+					memberDetailDTO.setName(rs.getString("name"));
+					memberDetailDTO.setAge(rs.getInt("age"));
+					memberDetailDTO.setAddress(rs.getString("address"));
+					memberDetailDTO.setAddressDetail(rs.getString("addressDetail"));
+					memberDetailDTO.setGender(rs.getString("gender"));
+					memberDetailDTO.setGrade(rs.getInt("grade"));
+					
+					list.add(memberDetailDTO);
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBClose.close(conn, pstmt, rs);
+		}
+		return list;
 	}
 }
