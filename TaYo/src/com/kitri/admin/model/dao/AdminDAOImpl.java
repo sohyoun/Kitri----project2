@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import com.kitri.dto.AdminDTO;
 import com.kitri.dto.MemberDetailDTO;
+import com.kitri.util.DBClose;
 import com.kitri.util.DBConnection;
 
 public class AdminDAOImpl implements AdminDAO {
@@ -79,12 +80,11 @@ public class AdminDAOImpl implements AdminDAO {
 					e.printStackTrace();
 				}
 		}
-
 		return adminDTO;
 	}
 
 	public int registerUser(MemberDetailDTO memberDetailDTO) {
-		
+
 		int cnt = -1;
 
 		Connection conn = null;
@@ -114,13 +114,13 @@ public class AdminDAOImpl implements AdminDAO {
 			pstmt.setString(++index, memberDetailDTO.getAddressDetail());
 
 			cnt = pstmt.executeUpdate();
-			
-			
+
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		} finally {
+			DBClose.close(conn, pstmt);
 		}
-
 		return cnt;
 	}
 
