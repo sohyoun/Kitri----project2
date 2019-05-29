@@ -38,6 +38,53 @@ $(function(){
 		$(start).val('');
 		$(end).val('');
 	});
+	
+	$("tempsave").click(function() {
+		var lists = $(".list-group");
+		var places = new Array();
+		var orders = new Array();
+		var locations = new Array();
+		var xs = new Array();
+		var ys = new Array();
+		
+		for (var i = 0; i < list.length; i++) {
+			var items = $(lists[i]).find(".list-group-item");
+			var itemslength = item.length;
+			
+			var subplace = new Array();
+			var suborder = new Array();
+			var sublocation = new Array();
+			var subx = new Array();
+			var suby = new Array();
+			
+			for(var j = 0; j < itemslength; j++) {
+				subplace.push($(items[j]).attr("value"));
+				suborder.push(j);
+				sublocation.push($(items[j]).attr("areaCode"));
+				subx.push($(items[j]).attr("axisx"));
+				suby.push($(items[j]).attr("axisy"));
+			}
+			
+			places.push(subplace);
+			orders.push(suborder);
+			locations.push(sublocation);
+			xs.push(subx);
+			ys.push(suby);
+		}
+			
+		$.ajax({
+			url: '${pageContext.request.contextPath}/schedule',
+			data: 'act=tempSave&daylength=' + list.length + '&places=' + places + '&orders=' + orders + '&locations=' + locations + '&xs=' + xs + '&ys=' + ys + '&title=' + $("#planName").val() + '&theme=' + $("input[name='theme']:checked").val() + '&season=' + $("input[name='season']:checked").val() + '&start=' + $("#start").val() + '&end=' + $("#end").val(),
+			method: 'post',
+			success: function(result) {
+				alert("임시저장 되었습니다.");
+			},
+			error: function(error) {
+				alert("임시저장 처리 중 서버 오류가 발생하였습니다.");
+			}
+		});
+		return false;
+	});
 });
 </script>
 
@@ -64,29 +111,29 @@ $(function(){
            		<div class="row">
 					<div class="col-sm-3">
 						<div class="form-check-inline">
-							<label class="form-check-label"> <input type="radio"
-								class="form-check-input" name="theme" value="나홀로" checked="checked">나홀로
+							<label class="form-check-label">
+								<input type="radio" class="form-check-input" name="theme" value="나홀로" checked="checked">나홀로
 							</label>
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="form-check-inline">
-							<label class="form-check-label"> <input type="radio"
-								class="form-check-input" name="theme" value="친구">친구
+							<label class="form-check-label">
+								<input type="radio" class="form-check-input" name="theme" value="친구">친구
 							</label>
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="form-check-inline">
-							<label class="form-check-label"> <input type="radio"
-								class="form-check-input" name="theme" value="커플">커플
+							<label class="form-check-label">
+								<input type="radio" class="form-check-input" name="theme" value="커플">커플
 							</label>
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="form-check-inline">
-							<label class="form-check-label"> <input type="radio"
-								class="form-check-input" name="theme" value="가족">가족
+							<label class="form-check-label">
+								<input type="radio"	class="form-check-input" name="theme" value="가족">가족
 							</label>
 						</div>
 					</div>
@@ -98,29 +145,29 @@ $(function(){
            		<div class="row">
 					<div class="col-sm-3">
 						<div class="form-check-inline">
-							<label class="form-check-label"> <input type="radio"
-								class="form-check-input" name="season" value="봄" checked="checked">봄
+							<label class="form-check-label">
+								<input type="radio" class="form-check-input" name="season" value="봄" checked="checked">봄
 							</label>
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="form-check-inline">
-							<label class="form-check-label"> <input type="radio"
-								class="form-check-input" name="season" value="여름">여름
+							<label class="form-check-label">
+								<input type="radio" class="form-check-input" name="season" value="여름">여름
 							</label>
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="form-check-inline">
-							<label class="form-check-label"> <input type="radio"
-								class="form-check-input" name="season" value="가을">가을
+							<label class="form-check-label">
+								<input type="radio" class="form-check-input" name="season" value="가을">가을
 							</label>
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="form-check-inline">
-							<label class="form-check-label"> <input type="radio"
-								class="form-check-input" name="season" value="겨울">겨울
+							<label class="form-check-label">
+								<input type="radio" class="form-check-input" name="season" value="겨울">겨울
 							</label>
 						</div>
 					</div>
@@ -150,10 +197,10 @@ $(function(){
 						<button type="button" class="btn btn-warning btn-block" id="cancel">취소</button>           			
            			</div>
            			<div class="col-sm-4">
-           				<button type="button" class="btn btn-info btn-block">임시 저장</button>
+           				<button type="button" class="btn btn-info btn-block" id="tempsave">임시 저장</button>
            			</div>
            			<div class="col-sm-4">
-           				<button type="button" class="btn btn-success btn-block">완료</button>
+           				<button type="button" class="btn btn-success btn-block" id="complete">완료</button>
            			</div>
            		</div>
             </div>
