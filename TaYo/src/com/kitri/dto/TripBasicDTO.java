@@ -2,6 +2,10 @@ package com.kitri.dto;
 
 import java.util.*;
 
+/**
+ * @author user
+ *
+ */
 public class TripBasicDTO {
 	private int tripSeq;		//여행아이디
 	private String email;		//이메일
@@ -12,16 +16,16 @@ public class TripBasicDTO {
 	private Date endDate;		//종료일
 	private int viewCount;		//조회수
 	private int likeCount;		//추천수
-	private int lastUpDate;		//최종수정일
-	
-	List<TripDetailDTO> tripDetailDTO;
+	private Date lastUpDate;		//최종수정일
+	List<TripDetailDTO> detailList;
 	
 	public TripBasicDTO() {
 		super();
 	}
 
+	
 	public TripBasicDTO(int tripSeq, String email, String tripTitle, String tripTheme, String tripSeason,
-			Date startDate, Date endDate, int viewCount, int likeCount, int lastUpDate, TripDetailDTO tripDetailDTO) {
+			Date startDate, Date endDate, int viewCount, int likeCount, Date lastUpDate, List<TripDetailDTO> detailList) {
 		super();
 		this.tripSeq = tripSeq;
 		this.email = email;
@@ -33,16 +37,25 @@ public class TripBasicDTO {
 		this.viewCount = viewCount;
 		this.likeCount = likeCount;
 		this.lastUpDate = lastUpDate;
-		this.tripDetailDTO = new ArrayList<TripDetailDTO>();
+		this.detailList= detailList; 
+	
 	}
 
-	
-	public int getLastUpDate() {
+	public List<TripDetailDTO> getDetailList() {
+		return detailList;
+	}
+
+	public void setDetailList(List<TripDetailDTO> detailList) {
+		this.detailList = detailList;
+	}
+
+
+	public Date getLastUpDate() {
 		return lastUpDate;
 	}
 
 
-	public void setLastUpDate(int lastUpDate) {
+	public void setLastUpDate(Date lastUpDate) {
 		this.lastUpDate = lastUpDate;
 	}
 
@@ -100,5 +113,12 @@ public class TripBasicDTO {
 	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
 	}
+	
+	public List<TripDetailDTO> getTripDetailDTO() {
+		return detailList;
+	}
 
+	public void setTripDetailDTO(List<TripDetailDTO> tripDetailDTO) {
+		this.detailList = tripDetailDTO;
+	}
 }
