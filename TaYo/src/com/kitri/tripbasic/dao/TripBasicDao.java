@@ -27,7 +27,7 @@ public class TripBasicDao implements BasicDao<TripBasicDTO>{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		TripBasicDTO dto = null;
+		
 		List<TripBasicDTO> list = new ArrayList<TripBasicDTO>();
 		try {
 			conn = DBConnection.makeConnection();
@@ -36,21 +36,21 @@ public class TripBasicDao implements BasicDao<TripBasicDTO>{
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				String tripSeq = rs.getString("trip_seq");
+				int tripSeq = rs.getInt("trip_seq");
 				String email = rs.getString("email");
-				String tiprTitle = rs.getString("trip_title");
+				String tripTitle = rs.getString("trip_title");
 				String tripTheme = rs.getString("trip_theme");
 				String tripSeason = rs.getString("trip_season");
+				
 				Date startDate = rs.getDate("start_date");
 				Date endDate = rs.getDate("end_date");
 				int viewCount= rs.getInt("viewcount");
 				int likeCount = rs.getInt("likecount");
+				Date lastUpDate =rs.getDate("lastUpDate");
+				List<TripDetailDTO> detailList= new ArrayList<TripDetailDTO>();
 				
-				TripDetailDTO detailDto = new TripDetailDTO(tripSeq, placeId, day, image, detailTitle, detailContent, placeDTO);
-				TripBasicDTO dto = new TripBasicDTO(tripSeq,email,tiprTitle,tripTheme,tripSeason,startDate,endDate,viewCount,likeCount,detailDto );
-				memberDto = new MemberDTO(email, name, pass, age, grade, gender, memberDetailDto);
-				list.add(memberDto);
-//				System.out.println("MemberDao select all" +list);
+				TripBasicDTO dto = new TripBasicDTO(tripSeq, email, tripTitle, tripTheme, tripSeason, startDate, endDate, viewCount, likeCount, lastUpDate, detailList);
+				list.add(dto);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

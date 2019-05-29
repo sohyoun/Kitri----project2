@@ -113,11 +113,13 @@ $(function() {
 	});
 	
 	// Add/Remove place to specified dayplan
+	var areaCode = "";
 	var place = "";
 	var x = "";
 	var y = "";
 	$("#tablebody").on('click', "tr>td>ul>li>button[name='placebtn']", function(){
 		$("#daylist>ul>li.list-group-item-1").append("<button class='btn btn-sm btn-success' name='addplacebtn'>+</button>");
+		areaCode = $(this).parent().attr("areaCode");
 		place = $(this).parent().attr("value");
 		x = $(this).parent().attr("axisx");
 		y = $(this).parent().attr("axisy");
@@ -131,7 +133,7 @@ $(function() {
 	});
 	
 	$("#daylist").on('click', "ul>li.list-group-item-1>button[name='addplacebtn']", function() {
-		$(this).parent().parent().append("<li class='list-group-item ui-sortable-handle' style='padding: 0.3rem;' value='" + place + "' axisx='" + x + "' axisy='" + y + "'>" + place + "<button class='btn btn-sm btn-secondary' name='planbtn'>-</button></li>");
+		$(this).parent().parent().append("<li class='list-group-item ui-sortable-handle' style='padding: 0.3rem;' value='" + place + "' axisx='" + x + "' axisy='" + y + "' areaCode='" + areaCode + "'>" + place + "<button class='btn btn-sm btn-secondary' name='planbtn'>-</button></li>");
 		$("[name='addplacebtn']").remove();
 		$(".placeclass>li.list-group-item").append("<button class='btn btn-sm btn-primary' name='placebtn'>+</button>");
 		return false;
@@ -213,8 +215,9 @@ $(function() {
 							var image = $(this).find("firstimage2").text();
 							var axisx = $(this).find("mapx").text();
 							var axisy = $(this).find("mapy").text();
+							var areaCode = $(this).find("areaCode").text();
 							
-							html += "<tr><td width='100'><img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='80' height='40'/></td><td><ul class='placeclass'><li class='list-group-item' style='padding: 0.3rem;' value='" + title + "' axisx='" + axisx + "' axisy='" + axisy + "'>" + title + "<button class='btn btn-primary' name='placebtn'>+</button></li></ul></td></tr>";
+							html += "<tr><td width='100'><img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='80' height='40'/></td><td><ul class='placeclass'><li class='list-group-item' style='padding: 0.3rem;' value='" + title + "' axisx='" + axisx + "' axisy='" + axisy + "' areaCode='" + areaCode + "'>" + title + "<button class='btn btn-primary' name='placebtn'>+</button></li></ul></td></tr>";
 						}
 					});
 					

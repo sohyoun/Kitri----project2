@@ -34,13 +34,17 @@
 		});//end ajax 도시버튼 추가
 		
 		//도시버튼 클릭 이벤트 추가(동적)
-		var filterbody =$('body > div.container.h-100.pt-4 > table > tbody > tr:nth-child(1) > td.filter_body');
+		var filterbody =$('body > div.container > table > tbody > tr:nth-child(1) > td.filter_body');
 		$(document).on("click", ".filter_body.si button",function() {			
 			addFilterBtn(this);//필터 버튼  추가		
 		});
-		
+<<<<<<< HEAD
+	
+=======
+		 
+>>>>>>> branch 'master' of https://github.com/sohyoun/Kitri----project2.git
 		//도시 외 아이템들 이벤트 추가
-		$('body > div.container.h-100.pt-3 > table > tbody > tr button').
+		$('div.container> table > tbody > tr button').
 		click(function() {
 			addFilterBtn(this);//필터 버튼  추가
 		});

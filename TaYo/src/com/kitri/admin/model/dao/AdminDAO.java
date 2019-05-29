@@ -1,3 +1,4 @@
+
 package com.kitri.admin.model.dao;
 import java.util.List;
 
@@ -11,3 +12,4 @@ public interface AdminDAO {
 	List<MemberDetailDTO> selectAll();
 
 }
+
