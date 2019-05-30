@@ -75,6 +75,18 @@ $(function(){
 			return false;
 		}
 		
+		if ($("#planName").val().trim() == '') {
+			alert("여행 제목을 입력하세요.");
+			closeModal();
+			return false;
+		}
+		
+		if ($("#person").val() < 1) {
+			alert("최소 인원은 1명 입니다.");
+			closeModal();
+			return false;
+		}
+		
 		for (var i = 0; i < daylists.length; i++) {
 			var items = $(daylists[i]).find(".list-group-item");
 			var itemslength = items.length;

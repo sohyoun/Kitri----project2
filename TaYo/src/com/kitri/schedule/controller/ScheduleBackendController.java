@@ -1,5 +1,6 @@
 package com.kitri.schedule.controller;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,11 +13,26 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kitri.dto.TripBasicDTO;
 import com.kitri.dto.TripDetailDTO;
+import com.kitri.schedule.service.ScheduleService;
 
 
 public class ScheduleBackendController {
 	
-	public void temporarySavePlan(HttpServletRequest request, HttpServletResponse response) {
+	private ScheduleService service;
+	
+	public ScheduleBackendController() {
+		service = new ScheduleService();
+	}
+	
+	
+	public String getKeywordSearch(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String location = request.getParameter("location");
+		String place = request.getParameter("place");
+		
+		return service.getKeywordSearch(location, place);
+	}
+	
+	public int temporarySavePlan(HttpServletRequest request, HttpServletResponse response) {
 		StringTokenizer st;
 		List<TripDetailDTO> list = new ArrayList<TripDetailDTO>();
 		
@@ -66,6 +82,6 @@ public class ScheduleBackendController {
 		
 		basicDTO.setDetailList(list);
 		
-		// to be called service
+		return service.insert(basicDTO);
 	}
 }
