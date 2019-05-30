@@ -1,3 +1,4 @@
+--여행 DB 생성
 create SEQUENCE sq_tripbasic_tripseq;
 ALTER TABLE Trip_Basic
 	DROP

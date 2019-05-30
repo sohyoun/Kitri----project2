@@ -1,3 +1,4 @@
+--여행상세 테이블 생성
 ALTER TABLE Trip_Detail
 	DROP
 		CONSTRAINT FK_Trip_Basic_TO_Trip_Detail
