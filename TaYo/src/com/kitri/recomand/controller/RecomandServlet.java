@@ -1,6 +1,7 @@
-package com.kitri.recomand;
+package com.kitri.recomand.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -13,6 +14,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import com.kitri.dto.TripBasicDTO;
+import com.kitri.tripbasic.dao.TripBasicDao;
+import com.kitri.util.MoveURL;
 
 
 
@@ -51,11 +56,15 @@ public class RecomandServlet extends HttpServlet {
 			String theme = (String) jsonObj.get("theme");
 			String city = (String) jsonObj.get("city");
 			String day = (String) jsonObj.get("day");
-			System.out.println("RecomandServlet"+ season +" "+ theme+" "+city+" "+day);			
+			System.out.println("RecomandServlet"+ season +" "+ theme+" "+city+" "+day);
+			List<TripBasicDTO> list =TripBasicDao.getInstance().select(season,theme,city,day);
+			request.setAttribute("filteredList", list);
+			
 		} catch (ParseException e) {
 			e.printStackTrace();
-		}
-		
+		}		
+		String path = "/recomand_filter_result.jsp";
+		MoveURL.forward(request, response, path);
 	}
 
 }

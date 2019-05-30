@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-
-
 <script>
 	var isfilter;
-
 	$(function() {
 		//도시버튼 추가 (글자, 이벤트)
 		$.ajax({
@@ -69,7 +66,6 @@
 		function outFilter(){
 			//ajax에서는 planobject 전달 가능
 			var data = {};
-			
 			//필터 안의 값들 출력
 			var filterArr= filterbody.children();	
 			for(var i =0; i<filterArr.length;i++){
@@ -77,7 +73,6 @@
 				var value =$(filterArr[i]).children().text();
 				data[key] = value;
 			}
-			
 			//필터값에 대한 데이터리스트 갱신
 			$.ajax({
 				url : "${pageContext.request.contextPath}/recomand",
@@ -91,71 +86,68 @@
 				}				
 			});
 		}//end outFilter
-		
-		
-		
 	});//end onload
 </script>
 
 
-	<div class="container h-100 pt-4">
-		<!-- 필터 -->
-		<div class="row pb-3">
-			<div class="col-sm-2 text-nowrap heading">
-				<h3>여행자들의 일정보기</h3>
-			</div>
+<div class="container h-100 pt-4">
+	<!-- 필터 -->
+	<div class="row pb-3">
+		<div class="col-sm-2 text-nowrap heading">
+			<h3>여행자들의 일정보기</h3>
 		</div>
-		<table class="table table-bordered ">
-			<tr> <!-- style="display: none" -->
-				<td class="filter_title">필터</td>
-				<td class="filter_body" colspan="2">
-				</td>
-			</tr>
-			<tr>
+	</div>
+	<table class="table table-bordered ">
+		<tr> <!-- style="display: none" -->
+			<td class="filter_title">필터</td>
+			<td class="filter_body" colspan="2">
+			</td>
+		</tr>
+		<tr>
+		
+			<td class="filter_title">여행도시</td>
+			<td class="filter_body si">
+				<div class="allways_show">
+				</div>
+				<div class="city_toggle collapse"><!-- 버튼을 누르면 여기에 값이 나옵니다. --> 
+				</div>
+			</td>
+			<td width="4%">
+				<span class="fa fa-chevron-down" data-toggle="collapse" data-target=".city_toggle"> <!-- 버튼 -->
+				</span>
+			</td>
 			
-				<td class="filter_title">여행도시</td>
-				<td class="filter_body si">
-					<div class="allways_show">
-					</div>
-					<div class="city_toggle collapse"><!-- 버튼을 누르면 여기에 값이 나옵니다. --> 
-					</div>
-				</td>
-				<td width="4%">
-					<span class="fa fa-chevron-down" data-toggle="collapse" data-target=".city_toggle"> <!-- 버튼 -->
-					</span>
-				</td>
-				
-			</tr>
+		</tr>
 
-			<tr>
-				<td class="filter_title">여행기간</td>
-				<td class="filter_body" colspan="2">
-					<button class="btn btn-light"> <div data-type="day" data-value="1">1-3일</div></button>
-					<button class="btn btn-light"> <div data-type="day" data-value="2">4-6일</div></button>
-					<button class="btn btn-light"> <div data-type="day" data-value="3">7-10일</div></button>
-					<button class="btn btn-light"> <div data-type="day" data-value="4">11-15일</div></button>
-					<button class="btn btn-light"> <div data-type="day" data-value="5">15일 이상</div></button>
-				</td>
-			</tr>
-			<tr>
-				<td class="filter_title">여행시기</td>
-				<td class="filter_body" colspan="2">
-					<button class="btn btn-light"><span  data-type="season" data-value="1">봄</span></button>
-					<button class="btn btn-light"><span  data-type="season" data-value="2">여름</span></button>
-					<button class="btn btn-light"><span  data-type="season" data-value="3">가을</span></button>
-					<button class="btn btn-light"><span  data-type="season" data-value="4">겨울</span></button>
-				</td>
-			</tr>
-			<tr>
-				<td class="filter_title">여행테마</td>
-				<td class="filter_body" colspan="2">
-					<button class="btn btn-light"><span  data-type="theme" data-value="나홀로">나홀로</span></button>
-					<button class="btn btn-light"><span  data-type="theme" data-value="친구">친구</span></button>
-					<button class="btn btn-light"><span  data-type="theme" data-value="커플">커플</span></button>
-					<button class="btn btn-light"><span  data-type="theme" data-value="함께타요">함께타요</span></button>
-				</td>
-			</tr>
-		</table><!-- 필터 -->
+		<tr>
+			<td class="filter_title">여행기간</td>
+			<td class="filter_body" colspan="2">
+				<button class="btn btn-light"> <div data-type="day" data-value="1">1-3일</div></button>
+				<button class="btn btn-light"> <div data-type="day" data-value="2">4-6일</div></button>
+				<button class="btn btn-light"> <div data-type="day" data-value="3">7-10일</div></button>
+				<button class="btn btn-light"> <div data-type="day" data-value="4">11-15일</div></button>
+				<button class="btn btn-light"> <div data-type="day" data-value="5">15일 이상</div></button>
+			</td>
+		</tr>
+		<tr>
+			<td class="filter_title">여행시기</td>
+			<td class="filter_body" colspan="2">
+				<button class="btn btn-light"><span  data-type="season" data-value="1">봄</span></button>
+				<button class="btn btn-light"><span  data-type="season" data-value="2">여름</span></button>
+				<button class="btn btn-light"><span  data-type="season" data-value="3">가을</span></button>
+				<button class="btn btn-light"><span  data-type="season" data-value="4">겨울</span></button>
+			</td>
+		</tr>
+		<tr>
+			<td class="filter_title">여행테마</td>
+			<td class="filter_body" colspan="2">
+				<button class="btn btn-light"><span  data-type="theme" data-value="나홀로">나홀로</span></button>
+				<button class="btn btn-light"><span  data-type="theme" data-value="친구">친구</span></button>
+				<button class="btn btn-light"><span  data-type="theme" data-value="커플">커플</span></button>
+				<button class="btn btn-light"><span  data-type="theme" data-value="함께타요">함께타요</span></button>
+			</td>
+		</tr>
+	</table><!-- 필터 -->
 		
 		<!--내용 -->
-	</div> <!-- container -->
+</div> <!-- container -->

@@ -1,5 +1,9 @@
 package com.kitri.util;
 
+import java.io.IOException;
+import java.io.Reader;
+import java.sql.SQLException;
+
 public class SiteContance {
 
 	public static final String ENCODE = "UTF-8";
@@ -15,4 +19,9 @@ public class SiteContance {
 	public static final String SERVICE_KEY = "qtc%2Bc5kjFD5ZL52A5hc9Gl9K7R19TiwhA2aX76hrsj7NHyOSJD56dtN4t7G1RHxKfmXAxI%2Fn8c18V0FbmoIWFA%3D%3D";
 	
 	public static final String TOUR_REQUEST_SITE = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/";
+	
+	
+	
+
+		
 }

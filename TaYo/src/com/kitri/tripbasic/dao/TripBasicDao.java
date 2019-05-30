@@ -1,42 +1,40 @@
 package com.kitri.tripbasic.dao;
 
-
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.kitri.dto.*;
 import com.kitri.tripdetail.dao.TripDetailDao;
-import com.kitri.util.DBClose;
-import com.kitri.util.DBConnection;
-
+import com.kitri.util.*;
 
 public class TripBasicDao {
 	static TripBasicDao tripBasicDao;
-	static{
+	static {
 		tripBasicDao = new TripBasicDao();
-	}	
+	}
 
-	private TripBasicDao() {}
+	private TripBasicDao() {
+	}
+
 	public static TripBasicDao getInstance() {
 		return tripBasicDao;
 	}
-	
-
 
 	public List<TripBasicDTO> selectAll() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		List<TripBasicDTO> basiclist = new ArrayList<TripBasicDTO>();
 		try {
 			conn = DBConnection.makeConnection();
-			String sql = "select trip_seq, email, trip_title, trip_theme, trip_season, trip_num, start_date, end_date, viewcount, likeCount, lastupdate, isComplete\n" + 
-					"from trip_basic";
+			String sql = "select trip_seq, email, trip_title, trip_theme, trip_season, trip_num, start_date, end_date, viewcount, likeCount, lastupdate, isComplete\n"
+					+ "from trip_basic";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			
+
 			while (rs.next()) {
 				int trip_seq = rs.getInt("trip_seq");
 				String email = rs.getString("email");
@@ -50,7 +48,8 @@ public class TripBasicDao {
 				int likeCount = rs.getInt("likecount");
 				Date lastUpDate = rs.getDate("lastUpDate");
 				String isComplete = rs.getString("isComplete");
-				TripBasicDTO dto = new TripBasicDTO(trip_seq, email, tripTitle, tripTheme, tripSeason, tripNum, startDate, endDate, viewCount, likeCount, lastUpDate, isComplete, null);
+				TripBasicDTO dto = new TripBasicDTO(trip_seq, email, tripTitle, tripTheme, tripSeason, tripNum,
+						startDate, endDate, viewCount, likeCount, lastUpDate, isComplete, null);
 				basiclist.add(dto);
 			}
 		} catch (SQLException e) {
@@ -65,24 +64,36 @@ public class TripBasicDao {
 		return -1;
 	}
 
-	
 	public String select(int id) {
 		return null;
 	}
-
-
+	
+	public List<TripBasicDTO> select(String season, String theme, String city, String day) {
+		
+		return null;
+	}
 
 	public static void main(String[] args) {
+
 		List<TripBasicDTO> basicList = TripBasicDao.getInstance().selectAll();
-		for(TripBasicDTO basicDto : basicList) {
+
+		for (TripBasicDTO basicDto : basicList) {
 			System.out.println("====================");
 			System.out.println(basicDto.toString());
-			
 			List<TripDetailDTO> detailList = TripDetailDao.getInstance().select(basicDto.getTripSeq());
-			for(TripDetailDTO detailDto : detailList) {	
-			System.out.println(detailDto.toString());
+			for (TripDetailDTO detailDto : detailList) {
+				System.out.println(detailDto.toString());
+//				Clob clob = detailDto.getDetail_content();
+//				try {
+//					System.out.println("clob : " + Util.readCLOB(clob));
+//				} catch (IOException | SQLException e) {
+//					e.printStackTrace();
+//				}
 			}
+
 			System.out.println("====================");
 		}
-	}//end main
+	}// end main
+
+
 }
