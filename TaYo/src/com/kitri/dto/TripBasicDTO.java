@@ -12,6 +12,7 @@ public class TripBasicDTO {
 	private String tripTitle;	//여행이름
 	private String tripTheme;	//여행테마
 	private String tripSeason;	//여행시즌
+	private int tripNum;
 	private Date startDate;		//출발일
 	private Date endDate;		//종료일
 	private int viewCount;		//조회수
@@ -19,25 +20,13 @@ public class TripBasicDTO {
 	private Date lastUpDate;		//최종수정일
 	private String isComplete;		//완료여부
 	List<TripDetailDTO> detailList;	//상세일정리스트
+
 	
 	public TripBasicDTO() {
 		super();
 	}
 
-
-	@Override
-	public String toString() {
-		return "TripBasicDTO [tripSeq=" + tripSeq + ", email=" + email + ", tripTitle=" + tripTitle + ", tripTheme="
-				+ tripTheme + ", tripSeason=" + tripSeason + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", viewCount=" + viewCount + ", likeCount=" + likeCount + ", lastUpDate=" + lastUpDate + ", isComplete=" + isComplete
-				+ ", detailList=" + detailList + "]";
-	}
-
-
-	
-
-	
-	public TripBasicDTO(int tripSeq, String email, String tripTitle, String tripTheme, String tripSeason,
+	public TripBasicDTO(int tripSeq, String email, String tripTitle, String tripTheme, String tripSeason, int tripNum,
 			Date startDate, Date endDate, int viewCount, int likeCount, Date lastUpDate, String isComplete, List<TripDetailDTO> detailList) {
 		super();
 		this.tripSeq = tripSeq;
@@ -45,6 +34,7 @@ public class TripBasicDTO {
 		this.tripTitle = tripTitle;
 		this.tripTheme = tripTheme;
 		this.tripSeason = tripSeason;
+		this.tripNum = tripNum;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.viewCount = viewCount;
@@ -54,6 +44,14 @@ public class TripBasicDTO {
 		this.detailList = detailList; 
 	}
 
+	
+	@Override
+	public String toString() {
+		return "TripBasicDTO [tripSeq=" + tripSeq + ", email=" + email + ", tripTitle=" + tripTitle + ", tripTheme="
+				+ tripTheme + ", tripSeason=" + tripSeason + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", viewCount=" + viewCount + ", likeCount=" + likeCount + ", lastUpDate=" + lastUpDate + ", isComplete=" + isComplete
+				+ ", detailList=" + detailList + "]";
+	}
 	
 	public List<TripDetailDTO> getDetailList() {
 		return detailList;
@@ -96,6 +94,12 @@ public class TripBasicDTO {
 	}
 	public void setTripSeason(String tripSeason) {
 		this.tripSeason = tripSeason;
+	}
+	public int getTripNum() {
+		return tripNum;
+	}
+	public void setTripNum(int tripNum) {
+		this.tripNum = tripNum;
 	}
 	public Date getStartDate() {
 		return startDate;
