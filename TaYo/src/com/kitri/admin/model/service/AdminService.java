@@ -11,23 +11,13 @@ public class AdminService {
 	public AdminService() {
 		
 	}
-<<<<<<< HEAD
-	
-	//관리자 로그인 
-=======
-
->>>>>>> branch 'master' of https://github.com/sohyoun/Kitri----project2.git
+	//로그인 
 	public AdminDTO login(String email, String pass) {
 		return AdminDAOImpl.getAdminDAO().selectByEmail(email);
 	}
 	
-<<<<<<< HEAD
 	//회원 목록 
-	public List<MemberDetailDTO> memeberAll(String email, String address, String addressDetail, String gender, String grade){
-=======
-
 	public List<MemberDetailDTO> memeberAll(){
->>>>>>> branch 'master' of https://github.com/sohyoun/Kitri----project2.git
 		return AdminDAOImpl.getAdminDAO().selectAll();
 	}
 
