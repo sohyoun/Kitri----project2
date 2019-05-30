@@ -67,6 +67,7 @@
 		}//end setFilterBtnEvent
 		
 		function outFilter(){
+			HashMap<String,String> map;
 			//필터 안의 값들 출력
 			var filterArr= filterbody.children();	
 			for(var i =0; i<filterArr.length;i++){
@@ -74,10 +75,26 @@
 // 				class="filter_value" data-type="season"
 				console.log($(filterArr[i]).children().attr("data-type"));
 				console.log($(filterArr[i]).children().text());
+				map.put($(filterArr[i]).children().attr("data-type"),$(filterArr[i]).children().text());
 			}
+			console.log(map);
 			//필터값에 대한 데이터 갱신
-			
-		}
+			$.ajax({
+				url : "${pageContext.request.contextPath}/recomand",
+				type : 'post',
+				data: {
+					
+				},
+				success : function(xml) {
+				
+				},
+				error: function(err){
+					
+				}
+				
+			});
+		}//end outFilter
+		
 		
 		
 	});//end onload
@@ -136,5 +153,3 @@
 		
 		<!--내용 -->
 	</div> <!-- container -->
-
-
