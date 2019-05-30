@@ -1,3 +1,4 @@
+--memberDetail 테이블 생성
 ALTER TABLE Member_detail
 	DROP
 		CONSTRAINT FK_Member_TO_Member_detail

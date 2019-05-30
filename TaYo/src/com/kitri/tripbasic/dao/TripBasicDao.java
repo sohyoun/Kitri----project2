@@ -5,75 +5,84 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kitri.db.impl.BasicDao;
 import com.kitri.dto.*;
+import com.kitri.tripdetail.dao.TripDetailDao;
 import com.kitri.util.DBClose;
 import com.kitri.util.DBConnection;
 
 
-public class TripBasicDao implements BasicDao<TripBasicDTO>{
+public class TripBasicDao {
 	static TripBasicDao tripBasicDao;
 	static{
 		tripBasicDao = new TripBasicDao();
 	}	
 
-	public TripBasicDao getInstance() {
+	private TripBasicDao() {}
+	public static TripBasicDao getInstance() {
 		return tripBasicDao;
 	}
 	
 
-	@Override
+
 	public List<TripBasicDTO> selectAll() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		TripBasicDTO dto = null;
-		List<TripBasicDTO> list = new ArrayList<TripBasicDTO>();
+		
+		List<TripBasicDTO> basiclist = new ArrayList<TripBasicDTO>();
 		try {
 			conn = DBConnection.makeConnection();
-			String sql = " select trip_seq, email, trip_title, trip_theme, trip_season, start_date, end_date, viewcount, likecount \n" + 
-					" from trip_Basic;";
+			String sql = "select trip_seq, email, trip_title, trip_theme, trip_season, trip_num, start_date, end_date, viewcount, likeCount, lastupdate, isComplete\n" + 
+					"from trip_basic";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
+			
 			while (rs.next()) {
-				String tripSeq = rs.getString("trip_seq");
+				int trip_seq = rs.getInt("trip_seq");
 				String email = rs.getString("email");
-				String tiprTitle = rs.getString("trip_title");
+				String tripTitle = rs.getString("trip_title");
 				String tripTheme = rs.getString("trip_theme");
 				String tripSeason = rs.getString("trip_season");
+				int tripNum = rs.getInt("trip_num");
 				Date startDate = rs.getDate("start_date");
 				Date endDate = rs.getDate("end_date");
-				int viewCount= rs.getInt("viewcount");
+				int viewCount = rs.getInt("viewcount");
 				int likeCount = rs.getInt("likecount");
-				
-				TripDetailDTO detailDto = new TripDetailDTO(tripSeq, placeId, day, image, detailTitle, detailContent, placeDTO);
-				TripBasicDTO dto = new TripBasicDTO(tripSeq,email,tiprTitle,tripTheme,tripSeason,startDate,endDate,viewCount,likeCount,detailDto );
-				memberDto = new MemberDTO(email, name, pass, age, grade, gender, memberDetailDto);
-				list.add(memberDto);
-//				System.out.println("MemberDao select all" +list);
+				Date lastUpDate = rs.getDate("lastUpDate");
+				String isComplete = rs.getString("isComplete");
+				TripBasicDTO dto = new TripBasicDTO(trip_seq, email, tripTitle, tripTheme, tripSeason, tripNum, startDate, endDate, viewCount, likeCount, lastUpDate, isComplete, null);
+				basiclist.add(dto);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBClose.close(conn, pstmt, rs);
 		}
-		return list;
+		return basiclist;
 	}
 
-	@Override
 	public int insert(TripBasicDTO dto) {
 		return -1;
 	}
 
-	@Override
-	public String select(TripBasicDTO id) {
+	
+	public String select(int id) {
 		return null;
 	}
 
 
 
 	public static void main(String[] args) {
-		TripBasicDao dao = new TripBasicDao();
-		dao.selectAll();
-	}
+		List<TripBasicDTO> basicList = TripBasicDao.getInstance().selectAll();
+		for(TripBasicDTO basicDto : basicList) {
+			System.out.println("====================");
+			System.out.println(basicDto.toString());
+			
+			List<TripDetailDTO> detailList = TripDetailDao.getInstance().select(basicDto.getTripSeq());
+			for(TripDetailDTO detailDto : detailList) {	
+			System.out.println(detailDto.toString());
+			}
+			System.out.println("====================");
+		}
+	}//end main
 }

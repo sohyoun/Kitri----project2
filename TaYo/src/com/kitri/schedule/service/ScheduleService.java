@@ -7,11 +7,20 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import com.kitri.dto.TripBasicDTO;
+import com.kitri.schedule.dao.ScheduleDao;
 import com.kitri.util.SiteContance;
 
 
 public class ScheduleService {
 
+	private ScheduleDao dao;
+	
+	public ScheduleService() {
+		dao = new ScheduleDao();
+	}
+	
+	
 	public String getKeywordSearch(String location, String place) throws IOException {
 		StringBuilder urlString = new StringBuilder();
 		StringBuilder result = new StringBuilder();
@@ -49,5 +58,9 @@ public class ScheduleService {
         conn.disconnect();
 		
 		return result.toString();
+	}
+
+	public int insert(TripBasicDTO basicDTO) {
+		return dao.insert(basicDTO);
 	}
 }

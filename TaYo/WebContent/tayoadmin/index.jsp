@@ -8,10 +8,10 @@
 <!-- jquery chart area!!!  -->
 <script type="text/javascript">
 	jQuery(function($) {
-		var performance = [ 12, 43, 34, 22, 12, 33, 4, 17, 22, 34, 54, 67 ], visits = [
+		var performance = [ 100, 43, 34, 22, 12, 33, 4, 17, 22, 34, 54, 67 ], visits = [
 				123, 323, 443, 32 ], traffic = [ {
 			Source : "Direct",
-			Amount : 323,
+			Amount : 600,
 			Change : 53,
 			Percent : 23,
 			Target : 600
@@ -45,7 +45,7 @@
 			theme : "dark",
 
 			primaryHeader : {
-				text : "Visitors"
+				text : "방문자"
 			},
 			exportOptions : {
 				image : false,
@@ -61,10 +61,10 @@
 		$("#shieldui-chart2").shieldChart({
 			theme : "dark",
 			primaryHeader : {
-				text : "Traffic Per week"
+				text : "접속 비율"
 			},
 			exportOptions : {
-				image : false,
+				image : true,
 				print : false
 			},
 			dataSeries : [ {
@@ -81,7 +81,7 @@
 			sorting : {
 				multiple : true
 			},
-			rowHover : false,
+			rowHover : true,
 			paging : false,
 			columns : [ {
 				field : "Source",
@@ -89,6 +89,7 @@
 				title : "Source"
 			}, {
 				field : "Amount",
+				width : "170px",
 				title : "Amount"
 			}, {
 				field : "Percent",
@@ -108,7 +109,7 @@
 		<h1><small>WellCome</small></h1>
 		<div class="alert alert-dismissable alert-warning">
 			<button data-dismiss="alert" class="close" type="button">&times;</button>
-				Welcome to the admin dashboard! 
+				관리자 홈페이지 입니다. 
 			<br />  
 		</div>
 	</div>

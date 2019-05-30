@@ -132,8 +132,8 @@ public class AdminDAOImpl implements AdminDAO {
 		// System.out.println(adminDaoImpl.selectByEmail(email));
 		
 		// SELECT ALL 
-		AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
-		System.out.println(adminDAOImpl.selectAll());
+	//	AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
+	//	System.out.println(adminDAOImpl.selectAll());
 
 	}
 		

@@ -1,4 +1,4 @@
--- 입력
+-- member입력
 insert into member (email, pass, name,age,grade, gender)
 values('email', 'pass', 'name', 20, 1,'M');
 

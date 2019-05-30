@@ -14,12 +14,12 @@ import com.kitri.admin.model.service.AdminService;
 import com.kitri.dto.AdminDTO;
 
 @WebServlet("/login")
-public class AdminController extends HttpServlet {
+public class AdminLoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private AdminService adminService;
 	
-	public AdminController(	) {
+	public AdminLoginController(	) {
 		adminService = new AdminService();
 	}
 	
@@ -32,8 +32,6 @@ public class AdminController extends HttpServlet {
 		String pass = request.getParameter("pass");
 
 		AdminDTO login = adminService.login(email, pass);
-		
-		if(email != null)
 		
 		//System.out.println(login.getAdminEmail());
 		request.setAttribute("loginInfo", login);

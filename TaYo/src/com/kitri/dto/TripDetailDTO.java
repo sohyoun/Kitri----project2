@@ -1,46 +1,74 @@
 package com.kitri.dto;
 
+import java.sql.Clob;
+
 public class TripDetailDTO {
-	private int tripSeq;			//여행id
-	private String placeId;			//장소id
-	private int Day;				//일자
-	private String image;			//사진
-	private String detailTitle;		//세부제목
-	private String detailContent;	//세부내용
+	private int trip_order; 		//순서
+	private int trip_day;			//일자
+	private int trip_seq;			//여행id
+	private String place_name;		//장소 이름
+	private int loc_id;				//지역코드
+	private String image;			//이미지
+	private String detail_title;	//세부제목
+	private Clob detail_content;	//세부내용
+	private float posX;				//x좌표
+	private float posY;				//y좌표
 	
 	public TripDetailDTO() {
 		super();
 	}
-	public TripDetailDTO(int tripSeq, String placeId, int day, String image, String detailTitle, String detailContent,
-			PlaceDTO placeDTO) {
+
+	@Override
+	public String toString() {
+		return "TripDetailDTO [trip_order=" + trip_order + ", trip_day=" + trip_day + ", trip_seq=" + trip_seq
+				+ ", place_name=" + place_name + ", loc_id=" + loc_id + ", image=" + image + ", detail_title="
+				+ detail_title + ", detail_content=" + detail_content + ", posX=" + posX + ", posY=" + posY + "]";
+	}
+
+	public TripDetailDTO(int trip_order, int trip_day, int trip_seq, String place_name, int loc_id, String image,
+			String detail_title, Clob detail_content, float posX, float posY) {
 		super();
-		this.tripSeq = tripSeq;
-		this.placeId = placeId;
-		Day = day;
+		this.trip_order = trip_order;
+		this.trip_day = trip_day;
+		this.trip_seq = trip_seq;
+		this.place_name = place_name;
+		this.loc_id = loc_id;
 		this.image = image;
-		this.detailTitle = detailTitle;
-		this.detailContent = detailContent;
-		this.placeDTO = placeDTO;
+		this.detail_title = detail_title;
+		this.detail_content = detail_content;
+		this.posX = posX;
+		this.posY = posY;
 	}
-	public PlaceDTO placeDTO = new PlaceDTO();
 	
-	public int getTripSeq() {
-		return tripSeq;
+	public int getTrip_order() {
+		return trip_order;
 	}
-	public void setTripSeq(int tripSeq) {
-		this.tripSeq = tripSeq;
+	public void setTrip_order(int trip_order) {
+		this.trip_order = trip_order;
 	}
-	public String getPlaceId() {
-		return placeId;
+	public int getTrip_day() {
+		return trip_day;
 	}
-	public void setPlaceId(String placeId) {
-		this.placeId = placeId;
+	public void setTrip_day(int trip_day) {
+		this.trip_day = trip_day;
 	}
-	public int getDay() {
-		return Day;
+	public int getTrip_seq() {
+		return trip_seq;
 	}
-	public void setDay(int day) {
-		Day = day;
+	public void setTrip_seq(int trip_seq) {
+		this.trip_seq = trip_seq;
+	}
+	public String getPlace_name() {
+		return place_name;
+	}
+	public void setPlace_name(String place_name) {
+		this.place_name = place_name;
+	}
+	public int getLoc_id() {
+		return loc_id;
+	}
+	public void setLoc_id(int loc_id) {
+		this.loc_id = loc_id;
 	}
 	public String getImage() {
 		return image;
@@ -48,24 +76,37 @@ public class TripDetailDTO {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public String getDetailTitle() {
-		return detailTitle;
+	public String getDetail_title() {
+		return detail_title;
 	}
-	public void setDetailTitle(String detailTitle) {
-		this.detailTitle = detailTitle;
+	public void setDetail_title(String detail_title) {
+		this.detail_title = detail_title;
 	}
-	public String getDetailContent() {
-		return detailContent;
+	
+	public Clob getDetail_content() {
+		return detail_content;
 	}
-	public void setDetailContent(String detailContent) {
-		this.detailContent = detailContent;
+
+	public void setDetail_content(Clob detail_content) {
+		this.detail_content = detail_content;
 	}
-	public PlaceDTO getPlaceDTO() {
-		return placeDTO;
+
+	public float getPosX() {
+		return posX;
 	}
-	public void setPlaceDTO(PlaceDTO placeDTO) {
-		this.placeDTO = placeDTO;
+	public void setPosX(float posX) {
+		this.posX = posX;
 	}
+	public float getPosY() {
+		return posY;
+	}
+	public void setPosY(float posY) {
+		this.posY = posY;
+	}
+	
+
+	
+
 	
 	
 	

@@ -1,14 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <%@ include file="/tayoadmin/templet/header.jsp"%>
+<!-- 회원 테이블이 목록에 뜹니다.  -->
+<script>
+	$(function() {
+		$.ajax({
+			url : '${pageContext.request.contextPath}/memberlist',
+			method : 'post',
+			success : function(result) {
+				$("table#memberlist").html(result.trim());
+			}
+		});
+	});
+</script>
+
 <style>
-#title{
-	border-radius : 4px;
-	height : 38px;
-	margin-top : 2em;
-	text-align : center;
+#title {
+	border-radius: 4px;
+	height: 38px;
+	margin-top: 2em;
+	text-align: center;
 }
+
 label {
 	background-color: pink;
 	border: 1px solid;
@@ -28,11 +44,7 @@ label {
 	float: none;
 }
 
-th {
-	text-align: center;
-}
-
-td {
+th, td {
 	text-align: center;
 }
 
@@ -60,13 +72,41 @@ td {
 			//alert("click")
 			location.href = '/TaYo/tayoadmin/boardresult.jsp';
 		});
-		
-		$(arr[1]).click(function(){
-		//	console.log("삭제")
-		//	alert("삭제")
+
+		$(arr[1]).click(function() {
+			//	console.log("삭제")
+				alert("삭제")
+			
+			
 		});
 	});
 </script>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 
 <div class="row">
 	<div class="col-lg-1"></div>
@@ -122,39 +162,31 @@ td {
 	</div>
 </div>
 
-	<div class = "col-lg-1"></div>
-		<div class = "row">
-			<input id = "title" type = "text" placeholder="title & contents"/>
-	</div>
+<div class="col-lg-1"></div>
+<div class="row">
+	<input id="title" type="text" placeholder="title & contents" />
+	<button type ="submit" class = "btn btn-info">검색</button> 
+</div>
 <!-- 드롭다운 메뉴  -->
 <!-- /btn-group -->
 <br />
 
 <!-- 테이블 영역  -->
 <div class="row">
-	<div class="col-lg-1"></div>
+<div class="col-lg-1"></div>
 	<div class="col-lg-10">
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
 					<tr>
-						<th><input type="checkbox" name="chkInfo"
-							id="selectallchkbox" value="" /></th>
-						<th>번호</th>
-						<th>그룹</th>
-						<th>게시판</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>등록일</th>
-						<th>조회수</th>
-						<th>추천</th>
-						<th>관리</th>
+						<th><input type="checkbox" name="chkInfo" id="selectallchkbox" value="" /></th>
+						<th>번호</th><th>그룹</th><th>게시판</th><th>제목</th><th>작성자</th><th>등록일</th><th>조회수</th><th>추천</th><th>관리</th>
 					</tr>
 				</thead>
+				
 				<tbody>
 					<tr>
-						<td><input class="bdchkbox" type="checkbox" name="chkInfo"
-							id="check1" value="" /></td>
+						<td><input class="bdchkbox" type="checkbox" name="chkInfo" id="check1" value="" /></td>
 						<td>1</td>
 						<td>Table cell</td>
 						<td>Table cell</td>
@@ -165,7 +197,7 @@ td {
 						<td>Table cell</td>
 						<td>
 							<button type="submit" class="btn btn-info">수정</button>
-							<button type="submit" id = "removeBtn" class="btn btn-info">삭제</button>
+							<button type="submit" id="removeBtn" class="btn btn-info">삭제</button>
 						</td>
 					</tr>
 					<tr>
@@ -235,7 +267,8 @@ td {
 				</tbody>
 			</table>
 		</div>
-		<div class="col-lg-1"></div>
+	<div class="col-lg-1"></div>
+		
 		<ul class="pagination">
 			<!--페이징 처리-->
 			<li class="disabled"><a href="#">&laquo;</a></li>
@@ -247,8 +280,8 @@ td {
 			<li><a href="#">&raquo;</a></li>
 		</ul>
 	</div>
-	
-	
+
+
 
 </div>
 <div class="row">
@@ -261,7 +294,7 @@ td {
 			<button data-dismiss="alert" class="close" type="button">&times;</button>
 			Welcome to the admin dashboard!
 		</div>
-	
+
 	</div>
 	<div class="col-lg-1"></div>
 </div>
@@ -273,78 +306,28 @@ td {
 		<form action="">
 			<input type="text" placeholder="Email Search" class="form-control" />
 			<input type="text" placeholder="Name Search" class="form-control" />
-				<ul class="list-group">
-					<li class="list-group-item"><span class="badge">14</span> 가입 회원
-						수</li>
-					<li class="list-group-item"><span class="badge">2</span> 탈퇴 회원 수
-					</li>
-					<li class="list-group-item"><span class="badge">1</span> 블랙 회원 수
-					</li>
-				</ul>
+			<ul class="list-group">
+				<li class="list-group-item"><span class="badge">14</span> 가입 회원
+					수</li>
+				<li class="list-group-item"><span class="badge">2</span> 탈퇴 회원
+					수</li>
+				<li class="list-group-item"><span class="badge">1</span> 블랙 회원
+					수</li>
+			</ul>
 		</form>
-		<div class="table-responsive">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Index</th>
-						<th>Email</th>
-						<th>name</th>
-						<th>Address</th>
-						<th>Address_detail</th>
-						<th>Gender</th>
-						<th>Grade</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-					</tr>
-					<tr>
-						<td>5</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-					</tr>
-				</tbody>
-			</table>
+		<!-- 회원테이블 시작 부분 -->
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Index</th><th>Email</th><th>name</th><th>Address</th><th>Address_detail</th><th>Gender</th><th>Grade</th>
+						</tr>
+					</thead>
+						<tbody>
+						</tbody>
+				</table>
+			</div> <!-- 회원 목록 테이블 끝나는 부분 -->
 		</div>
-	</div>
 	<div class="col-lg-1"></div>
 </div>
 

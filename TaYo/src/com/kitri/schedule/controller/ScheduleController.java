@@ -17,10 +17,10 @@ import com.kitri.util.SiteContance;
 public class ScheduleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private ScheduleService service;
+	private ScheduleBackendController backendController;
 	
 	public ScheduleController() {
-		service = new ScheduleService();
+		backendController = new ScheduleBackendController();
 	}
 	
 	
@@ -41,13 +41,14 @@ public class ScheduleController extends HttpServlet {
 		} else if ("myschedule".equals(act)) {
 			MoveURL.redirect(request, response, "/tayoschedule/planTemplate.jsp");
 		} else if ("searchTour".equals(act)) {
-			String location = request.getParameter("location");
-			String place = request.getParameter("place");
-			
-			String result = service.getKeywordSearch(location, place);
+			String result = backendController.getKeywordSearch(request, response);
 			request.setAttribute("result", result);
 			
 			MoveURL.forward(request, response, "/tayoschedule/searchTourResult.jsp");
+		} else if ("savePlan".equals(act)) {
+			int result = backendController.temporarySavePlan(request, response);
+			
+			MoveURL.redirect(request, response, "/tayoschedule/planTemplate.jsp");
 		}
 	}
 	
