@@ -77,12 +77,15 @@
 			$.ajax({
 				url : "${pageContext.request.contextPath}/recomand",
 				type : 'post',
-				data: {jsonData : JSON.stringify(data)},
-				dataType: "json",
+				data: {
+					jsonData : JSON.stringify(data)
+				},
 				success : function(data) {
-					console.log(data)
+					console.log(data);
 				},
 				error: function(err){
+					console.log("recomand call error");
+					console.log(err);
 				}				
 			});
 		}//end outFilter

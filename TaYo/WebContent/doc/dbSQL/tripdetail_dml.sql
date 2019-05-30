@@ -1,6 +1,5 @@
 delete from trip_detail;
 
-
 --sq_tripbasic_tripseq.currval
 --trip_detail 입력
 insert into trip_detail (trip_seq, place_name, loc_id , trip_order, trip_day, image, detail_title, detail_content, posx, posy)

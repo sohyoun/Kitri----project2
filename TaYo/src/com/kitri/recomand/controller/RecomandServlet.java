@@ -62,8 +62,12 @@ public class RecomandServlet extends HttpServlet {
 			
 		} catch (ParseException e) {
 			e.printStackTrace();
-		}		
-		String path = "/recomand_filter_result.jsp";
+		}
+		//테스트용 리스트
+		List<TripBasicDTO> list = TripBasicDao.getInstance().selectAll();
+		System.out.println("RecomandServlet listSize: " +list.size());
+		request.setAttribute("filteredList", list);
+		String path = "/tayorecomand/recomand_filter_result.jsp";
 		MoveURL.forward(request, response, path);
 	}
 

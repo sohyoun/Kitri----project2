@@ -2,14 +2,35 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-<c:set var="list" value="${requestScope.filteredList}" />
-<c:forEach var="filter" items="${list}">
+<c:forEach var="tripBasicDto" items="${requestScope.filteredList}">
 	
+	여행아이디: ${tripBasicDto.tripSeq} <br>
+	이메일: ${tripBasicDto.email}<br>
+	여행이름: ${tripBasicDto.tripTitle}<br>
+	여행테마: ${tripBasicDto.tripTheme}<br>
+	여행시즌: ${tripBasicDto.tripSeason}<br>
+	종료일: ${tripBasicDto.endDate}<br>
+	조회수: ${tripBasicDto.viewCount}<br>
+	추천수: ${tripBasicDto.likeCount}<br>
+	최종수정일: ${tripBasicDto.lastUpDate}<br>
+	완료여부: ${tripBasicDto.isComplete}<br>
+<%-- 	<c:forEach var="tripDetailDto" items="${tripBasicDto.detailList }"> --%>
+<!-- 		private int trip_order; 		//순서 -->
+<!-- 	private int trip_day;			//일자 -->
+<!-- 	private int trip_seq;			//여행id -->
+<!-- 	private String place_name;		//장소 이름 -->
+<!-- 	private int loc_id;				//지역코드 -->
+<!-- 	private String image;			//이미지 -->
+<!-- 	private String detail_title;	//세부제목 -->
+<!-- 	private Clob detail_content;	//세부내용 -->
+<!-- 	private float posX;				//x좌표 -->
+<!-- 	private float posY;				//y좌표 -->
+<%-- 	</c:forEach> --%>
 </c:forEach>
 
+
 <!-- 여행일정 -->
-<div class="container py-lg-4 py-sm-3">
+<!-- <div class="container py-lg-4 py-sm-3">
 	<h3 class="heading text-capitalize text-center">
 	베스트 여행일정
 	</h3>
@@ -36,6 +57,6 @@
 		</div>
 	</div>
 </div>
-
+ -->
 
     
