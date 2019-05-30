@@ -20,11 +20,11 @@ DROP TABLE Trip_Detail
 CREATE TABLE Trip_Detail (
 	trip_order NUMBER NOT NULL, /* 순서 */
 	trip_day NUMBER NOT NULL, /* 일차 */
+	trip_seq NUMBER NOT NULL, /* 여행id */
 	place_name VARCHAR2(50) NOT NULL, /* 장소이름 */
 	loc_id NUMBER NOT NULL, /* 지역코드 */
-	trip_seq NUMBER, /* 여행id */
 	image VARCHAR2(200), /* 이미지 */
-	detail_title VARCHAR2(50) NOT NULL, /* 일정제목 */
+	detail_title VARCHAR2(50), /* 일정제목 */
 	detail_content CLOB, /* 일정설명 */
 	posx FLOAT, /* x좌표 */
 	posy FLOAT /* y좌표 */
@@ -54,6 +54,7 @@ COMMENT ON COLUMN Trip_Detail.posy IS 'y좌표';
 
 CREATE UNIQUE INDEX PK_Trip_Detail
 	ON Trip_Detail (
+		trip_seq ASC,
 		trip_order ASC,
 		trip_day ASC
 	);
@@ -63,7 +64,8 @@ ALTER TABLE Trip_Detail
 		CONSTRAINT PK_Trip_Detail
 		PRIMARY KEY (
 			trip_order,
-			trip_day
+			trip_day,
+			trip_seq
 		);
 
 ALTER TABLE Trip_Detail
