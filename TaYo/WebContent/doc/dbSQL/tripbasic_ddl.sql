@@ -24,11 +24,12 @@ CREATE TABLE Trip_Basic (
 	trip_title VARCHAR2(50) NOT NULL, /* 여행이름 */
 	trip_theme VARCHAR2(15) NOT NULL, /* 여행테마 */
 	trip_season VARCHAR2(4) NOT NULL, /* 여행시즌 */
+	trip_num NUMBER(3) NOT NULL, /* 여행정원 */
 	start_date DATE DEFAULT sysdate NOT NULL, /* 출발일 */
 	end_date DATE DEFAULT sysdate NOT NULL, /* 종료일 */
 	viewCount NUMBER, /* 조회수 */
 	likeCount NUMBER, /* 추천수 */
-	lastUpDate DATE NOT NULL /* 최종수정일 */,
+	lastUpDate DATE NOT NULL, /* 최종수정일 */
 	isComplete VARCHAR2(1) NOT NULL /* 완료여부 */
 );
 
@@ -53,6 +54,8 @@ COMMENT ON COLUMN Trip_Basic.viewCount IS '조회수';
 COMMENT ON COLUMN Trip_Basic.likeCount IS '추천수';
 
 COMMENT ON COLUMN Trip_Basic.lastUpDate IS '최종수정일';
+
+COMMENT ON COLUMN Trip_Basic.trip_num IS '여행정원';
 
 COMMENT ON COLUMN Trip_Basic.isComplete IS '완료여부';
 

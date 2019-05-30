@@ -32,11 +32,20 @@ $(function(){
 		$(end).datepicker().show();
 	});
 	
+	$("input[name='theme']").click(function() {
+		if ($("#solo").is(':checked')) {
+			$("#personlb").show();			
+		} else {
+			$("#personlb").hide();
+		}
+	});
+	
 	function closeModal() {
 		$("#planSaveModal").modal("hide");
 		$("#planName").val('');
 		$(start).val('');
 		$(end).val('');
+		$("#person").val('1');
 	}
 	
 	$("#cancel").click(function() {
@@ -44,7 +53,16 @@ $(function(){
 	});
 	
 	var daylists;
-	$("#tempsave").click(function() {
+	$("button[name='save']").click(function() {
+		var savetype;
+		if ($(this).attr("value") == 'tempsave') {
+			savetype = 'N';
+		} else if ($(this).attr("value") == 'complete') {
+			savetype = 'Y';
+		} else {
+			savetype = 'Unknown';
+		}
+		
 		daylists = $(".list-group");
 		
 		var plandata = new Array();
@@ -53,6 +71,18 @@ $(function(){
 		
 		if ((daylists.length == 1) && ($(daylists).find(".list-group-item").length == 0)) {
 			alert("저장을 위해서는 최소 하나 이상의 일정이 있어야 합니다.");
+			closeModal();
+			return false;
+		}
+		
+		if ($("#planName").val().trim() == '') {
+			alert("여행 제목을 입력하세요.");
+			closeModal();
+			return false;
+		}
+		
+		if ($("#person").val() < 1) {
+			alert("최소 인원은 1명 입니다.");
 			closeModal();
 			return false;
 		}
@@ -81,7 +111,7 @@ $(function(){
 		
 		$.ajax({
 			url: '${pageContext.request.contextPath}/schedule',
-			data: 'act=tempSave' + plandatastr + '&title=' + $("#planName").val() + '&theme=' + $("input[name='theme']:checked").val() + '&season=' + $("input[name='season']:checked").val() + '&start=' + $("#start").val() + '&end=' + $("#end").val(),
+			data: 'act=savePlan' + plandatastr + '&savetype=' + savetype + '&person=' + $("#person").val() + '&title=' + $("#planName").val() + '&theme=' + $("input[name='theme']:checked").val() + '&season=' + $("input[name='season']:checked").val() + '&start=' + $("#start").val() + '&end=' + $("#end").val(),
 			method: 'post',
 			success: function(result) {
 				alert("임시저장 되었습니다.");
@@ -99,7 +129,7 @@ $(function(){
 
 <div id="planSaveModal" class="modal fade" role="dialog">
 	<h5 class="modal-title" id="myModalLabel">지역선택</h5>
-	<div class="modal-dialog modal-xs">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header text-center">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -118,33 +148,43 @@ $(function(){
            			<label><strong>여행 테마</strong></label>
            		</div>
            		<div class="row">
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 						<div class="form-check-inline">
 							<label class="form-check-label">
-								<input type="radio" class="form-check-input" name="theme" value="나홀로" checked="checked">나홀로
+								<input type="radio" class="form-check-input" name="theme" value="나홀로" id="solo">나홀로
 							</label>
 						</div>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 						<div class="form-check-inline">
 							<label class="form-check-label">
 								<input type="radio" class="form-check-input" name="theme" value="친구">친구
 							</label>
 						</div>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 						<div class="form-check-inline">
 							<label class="form-check-label">
 								<input type="radio" class="form-check-input" name="theme" value="커플">커플
 							</label>
 						</div>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 						<div class="form-check-inline">
 							<label class="form-check-label">
-								<input type="radio"	class="form-check-input" name="theme" value="가족">가족
+								<input type="radio" class="form-check-input" name="theme" value="가족">가족
 							</label>
 						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="form-check-inline">
+							<label class="form-check-label">
+								<input type="radio" class="form-check-input" name="theme" value="함께타요" checked="checked">함께타요
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<label id="personlb">인원 : <input type="text" id="person" name="person" value="1" placeholder="1" size="2" style="text-align: center;"/> 명</label>
 					</div>
 				</div>
 				<br>
@@ -186,7 +226,7 @@ $(function(){
            			<label><strong>여행 일자</strong></label>
            		</div>
            		<div class="input-group" align="center">
-           			<div class="row">
+           			<div class="row" style="margin: auto;">
            				<div class="col-sm-5" style="margin: auto;">
            					<div class="d-inline-flex p-2 text-white">
 								<input type="text" class="form-control" id="start" name="start" placeholder="20XX.XX.XX" style="display: inline-block;" readonly="readonly">
@@ -206,10 +246,10 @@ $(function(){
 						<button type="button" class="btn btn-warning btn-block" id="cancel">취소</button>           			
            			</div>
            			<div class="col-sm-4">
-           				<button type="button" class="btn btn-info btn-block" id="tempsave">임시 저장</button>
+           				<button type="button" class="btn btn-info btn-block" name="save" value="tempsave">임시 저장</button>
            			</div>
            			<div class="col-sm-4">
-           				<button type="button" class="btn btn-success btn-block" id="complete">완료</button>
+           				<button type="button" class="btn btn-success btn-block" name="save" value="complete">완료</button>
            			</div>
            		</div>
             </div>

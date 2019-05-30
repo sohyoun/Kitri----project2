@@ -67,31 +67,28 @@
 		}//end setFilterBtnEvent
 		
 		function outFilter(){
-			HashMap<String,String> map;
+			//ajax에서는 planobject 전달 가능
+			var data = {};
+			
 			//필터 안의 값들 출력
 			var filterArr= filterbody.children();	
 			for(var i =0; i<filterArr.length;i++){
-				console.log(filterArr[i]);	
-// 				class="filter_value" data-type="season"
-				console.log($(filterArr[i]).children().attr("data-type"));
-				console.log($(filterArr[i]).children().text());
-				map.put($(filterArr[i]).children().attr("data-type"),$(filterArr[i]).children().text());
+				var key =$(filterArr[i]).children().attr("data-type");
+				var value =$(filterArr[i]).children().text();
+				data[key] = value;
 			}
-			console.log(map);
-			//필터값에 대한 데이터 갱신
+			
+			//필터값에 대한 데이터리스트 갱신
 			$.ajax({
 				url : "${pageContext.request.contextPath}/recomand",
 				type : 'post',
-				data: {
-					
-				},
-				success : function(xml) {
-				
+				data: {jsonData : JSON.stringify(data)},
+				dataType: "json",
+				success : function(data) {
+					console.log(data)
 				},
 				error: function(err){
-					
-				}
-				
+				}				
 			});
 		}//end outFilter
 		
@@ -147,6 +144,15 @@
 					<button class="btn btn-light"><span  data-type="season" data-value="2">여름</span></button>
 					<button class="btn btn-light"><span  data-type="season" data-value="3">가을</span></button>
 					<button class="btn btn-light"><span  data-type="season" data-value="4">겨울</span></button>
+				</td>
+			</tr>
+			<tr>
+				<td class="filter_title">여행테마</td>
+				<td class="filter_body" colspan="2">
+					<button class="btn btn-light"><span  data-type="theme" data-value="나홀로">나홀로</span></button>
+					<button class="btn btn-light"><span  data-type="theme" data-value="친구">친구</span></button>
+					<button class="btn btn-light"><span  data-type="theme" data-value="커플">커플</span></button>
+					<button class="btn btn-light"><span  data-type="theme" data-value="함께타요">함께타요</span></button>
 				</td>
 			</tr>
 		</table><!-- 필터 -->

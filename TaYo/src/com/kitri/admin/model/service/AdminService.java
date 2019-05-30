@@ -11,12 +11,12 @@ public class AdminService {
 	public AdminService() {
 		
 	}
-
+	//로그인 
 	public AdminDTO login(String email, String pass) {
 		return AdminDAOImpl.getAdminDAO().selectByEmail(email);
 	}
 	
-
+	//회원 목록 
 	public List<MemberDetailDTO> memeberAll(){
 		return AdminDAOImpl.getAdminDAO().selectAll();
 	}

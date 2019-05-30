@@ -9,6 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+
+
 /**
  * Servlet implementation class recomand
  */
@@ -28,12 +35,27 @@ public class RecomandServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Map<String, String[]> map= request.getParameterMap();
-		for(String key : map.keySet()) {
-			String values[] =map.get(key);
+		request.setCharacterEncoding("UTF-8");
+		System.out.println("RecomandServlet doPost");
+		
+		String jsonStr = request.getParameter("jsonData");
+		System.out.println(jsonStr);
+		
+        JSONParser jsonParser = new JSONParser();
+        
+        JSONObject jsonObj = null;
+		try {
+			jsonObj = (JSONObject) jsonParser.parse(jsonStr);
+			System.out.println(jsonObj.toJSONString());
+			String season = (String) jsonObj.get("season");
+			String theme = (String) jsonObj.get("theme");
+			String city = (String) jsonObj.get("city");
+			String day = (String) jsonObj.get("day");
+			System.out.println("RecomandServlet"+ season +" "+ theme+" "+city+" "+day);			
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
 		
-		doGet(request, response);
 	}
 
 }
