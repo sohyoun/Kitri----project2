@@ -227,6 +227,76 @@
 }
 </style>
 
+<script type="text/javascript" src="<%=root%>/js/httpRequest.js"></script>
+<script type="text/javascript">
+	
+
+$(function() {
+	// Search tour result variables
+	var titles;
+	var addr2;
+	var readcount;
+	
+	
+	$("#place").keydown(function(key) {
+		if (key.keyCode == 13) {
+			titles = new Array();
+	
+			$.ajax({
+				url: '${pageContext.request.contextPath}/place',
+// 				data: 'act=searchTour&location=' + $("#location").val() + '&place=' + $("#place").val(),
+// 				data: 'act=location=' + $("#location").val(),
+				method: 'post',
+				success: function(xml) {
+					parser = new DOMParser();
+					xmlDoc = parser.parseFromString(xml.trim(), "text/xml");
+
+
+					var html;
+					var prevTitle = "";
+					
+					$("#tablebody").empty();
+					
+					$(xml).find("item").each(function() {
+						var title = $(this).find("title").text();
+						var addr1 = $(this).find("addr1").text();
+						var addr2 = $(this).find("addr2").text();
+				
+					
+						
+						if (prevTitle != title) {
+							prevTitle = title;
+							var image = $(this).find("firstimage2").text();
+							
+					
+							html += "<div class='card' style='display: flex; position: relative;'> "
+							html += "<img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png' style='width: 400px;height: 200px;'>"
+							html += "<div class='card-body' style='display: inline;'>"
+							html += "	<h5 class='card-title'>" + title + "</h5>"
+							html += "	<p class='card-text'>"+ addr1 + addr2 +"</p>"
+								html += "	<p class='card-text'></p>"
+									html += "	<a href=''#' class='btn btn-primary'>상세보기</a>"
+									html += "</div>"
+										html += "</div>";
+						}
+					});
+					
+					$("#tablebody").html(html);
+				},
+				error: function(error) {
+					console.log(error);
+				}
+			});
+			return false;
+		}
+	});
+});
+	
+	
+	
+	
+	
+</script>
 
 
 <!-- banner -->
@@ -256,12 +326,7 @@
 		<!-- 크기 맞춰주는 DIV -->
 
 
-	<!-- 필터 -->
-	<jsp:include page="filter.jsp"></jsp:include>
-	<!-- 필터 -->
-	
-	
-	
+
 
 		<!-- 필터 -->
 		<!-- <table class="table table-bordered" id="filter">
@@ -392,6 +457,8 @@
 		<!-- 인기여행지 best -->
 
 
+		<jsp:include page="filter.jsp"></jsp:include>
+
 		<br> <br> <br> <br>
 		<h3 class="heading text-capitalize ">Seoul</h3>
 
@@ -409,6 +476,7 @@
 
 
 
+		<!-- 여행지 상세 선택 분류 벤치마킹 -->
 		<div class="wrap">
 			<div class="attraction_menu">
 				<div class="attraction_cate on" data-id="">전체</div>
@@ -421,10 +489,11 @@
 			<div class="category_list">
 				<div class="category_box"></div>
 				<div class="category_more">
-<!-- 					카테고리 더보기<img src="/res/img/city/spot_list/category_more.gif" alt="" /> -->
+					<!-- 					카테고리 더보기<img src="/res/img/city/spot_list/category_more.gif" alt="" /> -->
 				</div>
 			</div>
 		</div>
+		<!-- 여행지 상세 선택 분류 벤치마킹 -->
 
 
 		<!-- 여행지 상세 선택 분류2 -->
@@ -440,141 +509,42 @@
 					role="tab" aria-controls="nav-contact" aria-selected="false">액티비티</a>
 			</div>
 		</nav>
-		<div class="tab-content" id="nav-tabContent">
-			<div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-				aria-labelledby="nav-home-tab">
-
-
-				<h1>Custom Checkboxes</h1>
-				<label class="container">One <input type="checkbox"
-					checked="checked"> <span class="checkmark"></span>
-				</label> <label class="container">Two <input type="checkbox">
-					<span class="checkmark"></span>
-				</label> <label class="container">Three <input type="checkbox">
-					<span class="checkmark"></span>
-				</label> <label class="container">Four <input type="checkbox">
-					<span class="checkmark"></span>
-				</label>
-
-
-			</div>
-			<div class="tab-pane fade" id="nav-profile" role="tabpanel"
-				aria-labelledby="nav-profile-tab">
-				<h1>Custom Checkboxes</h1>
-				<label class="container">One <input type="checkbox"
-					checked="checked"> <span class="checkmark"></span>
-				</label> <label class="container">Two <input type="checkbox">
-					<span class="checkmark"></span>
-				</label> <label class="container">Three <input type="checkbox">
-					<span class="checkmark"></span>
-				</label> <label class="container">Four <input type="checkbox">
-					<span class="checkmark"></span>
-				</label>
-
-			</div>
-			<div class="tab-pane fade" id="nav-contact" role="tabpanel"
-				aria-labelledby="nav-contact-tab">
-				<h1>Custom Checkboxes</h1>
-				<label class="container">One <input type="checkbox"
-					checked="checked"> <span class="checkmark"></span>
-				</label> <label class="container">Two <input type="checkbox">
-					<span class="checkmark"></span>
-				</label> <label class="container">Three <input type="checkbox">
-					<span class="checkmark"></span>
-				</label> <label class="container">Four <input type="checkbox">
-					<span class="checkmark"></span>
-				</label>
-			</div>
-		</div>
 		<!-- 여행지 상세 선택 분류2 -->
 
 
+		<!-- 여행지 상세 선택 분류 -->
+		<!-- <div class="tab-content" id="nav-tabContent">
+			<div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+				aria-labelledby="nav-home-tab">
+				<h1>Custom Checkboxes</h1>
+				<label class="container">One <input type="checkbox"
+					checked="checked"> <span class="checkmark"></span>
+				</label> <label class="container">Two <input type="checkbox">
+					<span class="checkmark"></span>
+				</label> <label class="container">Three <input type="checkbox">
+					<span class="checkmark"></span>
+				</label> <label class="container">Four <input type="checkbox">
+					<span class="checkmark"></span>
+				</label>
 
-<div id="placelist">
-				
-					<table class="table table-bordered table-sm">
-						<tbody id="tablebody" align="center">
-							
-							
-							
-							
+			</div> -->
+		<!-- 여행지 상세 선택 분류2 -->
 
-						</tbody>
-					</table>
+
+	<br><br><br><br>
+	 
+				<div id="tablebody" align="center">
+
+
 				</div>
-				
 
+<!-- 
+		<table class="table table-bordered table-sm">
+			<tbody id="tablebody" align="center">
 
-
-
-
-
-
-
-		<!-- 
-		<h1>Custom Checkboxes</h1>
-		<label class="container">One <input type="checkbox"
-			checked="checked"> <span class="checkmark"></span>
-		</label> <label class="container">Two <input type="checkbox">
-			<span class="checkmark"></span>
-		</label> <label class="container">Three <input type="checkbox">
-			<span class="checkmark"></span>
-		</label> <label class="container">Four <input type="checkbox">
-			<span class="checkmark"></span>
-		</label>
-
+			</tbody>
+		</table>
  -->
-
-
-
-
-
-
-
-<!--
-			<div class="card text-center1">
-			<div class="card-header1">
-				<ul class="nav nav-tabs card-header-tabs1">
-					<li class="nav-item1"><a class="nav-link active1" href="#">Active</a>
-					</li>
-					<li class="nav-item1"><a class="nav-link1" href="#">Link</a></li>
-					<li class="nav-item1"><a class="nav-link disabled1" href="#">Disabled</a>
-					</li>
-				</ul>
-			</div>
-			<div class="card-body1">
-				<h5 class="card-title1">Special title treatment</h5>
-				<p class="card-text1">With supporting text below as a natural
-					lead-in to additional content.</p>
-				<a href="#" class="btn btn-primary1">Go somewhere</a>
-			</div>
-		</div>
- --> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 		<br> <br> <br>
 
@@ -678,8 +648,6 @@
 		</nav>
 	</div>
 </section>
-
-
 
 
 <%@ include file="/temp/footer.jsp"%>

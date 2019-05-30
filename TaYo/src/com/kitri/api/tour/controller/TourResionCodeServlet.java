@@ -24,6 +24,8 @@ public class TourResionCodeServlet extends HttpServlet {
 
 		String result =service.getResionCode();
 		System.out.println("TourResionCodeServlet"+result);
+		
+		
 		request.setAttribute("result", result);
 		String path = "/apitour/resioncoderesult.jsp";
 		MoveURL.forward(request, response, path);
