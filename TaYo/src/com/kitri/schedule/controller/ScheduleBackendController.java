@@ -22,7 +22,9 @@ public class ScheduleBackendController {
 		
 		Date start = null;
 		Date end = null;
+		int person = Integer.parseInt(request.getParameter("person"));
 		String email = "test@kitri.re.kr";
+		String saveType = request.getParameter("savetype");
 		String title = request.getParameter("title");
 		String theme = request.getParameter("theme");
 		String season = request.getParameter("season");
@@ -39,9 +41,10 @@ public class ScheduleBackendController {
 		basicDTO.setTripTitle(title);
 		basicDTO.setTripTheme(theme);
 		basicDTO.setTripSeason(season);
+		basicDTO.setTripNum(person);
 		basicDTO.setStartDate(start);
 		basicDTO.setEndDate(end);
-		basicDTO.setIsComplete("N");
+		basicDTO.setIsComplete(saveType);
 		
 		TripDetailDTO detailDTO = null;
 		
