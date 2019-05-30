@@ -72,7 +72,6 @@ public class TripBasicDao {
 
 
 	public static void main(String[] args) {
-		
 		List<TripBasicDTO> basicList = TripBasicDao.getInstance().selectAll();
 		for(TripBasicDTO basicDto : basicList) {
 			System.out.println("====================");

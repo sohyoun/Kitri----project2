@@ -73,9 +73,10 @@ public class TripDetailDao {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("1");
+	
 		TripDetailDao dao = new TripDetailDao();
-		List<TripDetailDTO> list = dao.select(22);
+		
+		List<TripDetailDTO> list = dao.select(0);
 		for(TripDetailDTO dto: list) {
 			System.out.println(dto.toString());
 		}
