@@ -14,6 +14,7 @@
 		overflow-x: hidden;
 		overflow-y: auto;
 		height: 26rem;
+		
 	}
 	
 	#location {
@@ -42,6 +43,7 @@ $(function() {
 	// Search tour result variables
 	var titles;
 	var addr2;
+	var readcount;
 	
 	
 	$("#place").keydown(function(key) {
@@ -56,6 +58,7 @@ $(function() {
 					parser = new DOMParser();
 					xmlDoc = parser.parseFromString(xml.trim(), "text/xml");
 
+
 					var html;
 					var prevTitle = "";
 					
@@ -64,15 +67,24 @@ $(function() {
 					$(xml).find("item").each(function() {
 						var title = $(this).find("title").text();
 						var addr2 = $(this).find("addr2").text();
+						var readcount = $(this).find("readcount").text();
 					
 						
 						if (prevTitle != title) {
 							prevTitle = title;
 							var image = $(this).find("firstimage2").text();
 							
-							html += "<tr><td width='100'><img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='80' height='40'/></td><td><ul class='placeclass'><li class='list-group-item' style='padding: 0.3rem;' value='" + title + "'>" + title + addr2+ "<button class='btn btn-primary' name='placebtn'>+</button></li></ul></td></tr>";
-							
-					
+							/* html += "<tr><td width='100'><img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='80' height='40'/></td><td><ul class='placeclass'><li class='list-group-item' style='padding: 0.3rem;' value='" + title + "'>" + title + addr2 + readcount+ "<button class='btn btn-primary' name='placebtn'>+</button></li></ul></td></tr>"; */
+						 	
+							html += "<tr><td><div class='card' style='width: 70rem; display: flex;'> "
+							html += "<img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png' style='width: 400px;height: 200px;'>"
+							html += "<div class='card-body' style='display: inline;'>"
+							html += "	<h5 class='card-title'>" + title + "</h5>"
+							html += "	<p class='card-text'>"+ addr2 +"</p>"
+								html += "	<p class='card-text'>" + readcount +"</p>"
+									html += "	<a href=''#' class='btn btn-primary'>상세보기</a>"
+									html += "</div>"
+										html += "</div></td></tr>";
 						}
 					});
 					
@@ -130,12 +142,44 @@ $(function() {
 					</table>
 				</div>
 				<div id="placelist">
+				
 					<table class="table table-bordered table-sm">
 						<tbody id="tablebody" align="center">
 							
+							
+							
+							
+
 						</tbody>
 					</table>
 				</div>
+				
+				
+				
+		<!-- 관광지  박스 -->
+		<br>
+		<div class="card" style="width: 70rem; display: flex;">
+			<img src="/TaYo/images/tp2_2.jpg" style="width: 400px;height: 200px;">
+			<div class="card-body" style="display: inline;">
+				<h5 class="card-title">인천국제공항</h5>
+				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South
+					Korea 지도보기</p>
+				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의
+					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p>
+				<a href="#" class="btn btn-primary">상세보기</a>
+			</div>
+		</div>
+		<br>
+		<!-- 관광지  박스 -->
+				
+<!-- 				"<tr><td width='100'> -->
+<%-- 				<img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='80' height='40'/> --%>
+<!-- 				</td><td><ul class='placeclass'> -->
+<!-- 				<li class='list-group-item' style='padding: 0.3rem;' value='" + title + "'> -->
+<!-- 				" + title + addr2 + readcount+ "<button class='btn btn-primary' name='placebtn'>+</button></li></ul></td></tr>";  -->
+				
+				
+				
 			</div>
 		</div>
 </div>
