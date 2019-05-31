@@ -3,8 +3,7 @@ package com.kitri.admin.model.service;
 import java.util.List;
 
 import com.kitri.admin.model.dao.AdminDAOImpl;
-import com.kitri.dto.AdminDTO;
-import com.kitri.dto.MemberDetailDTO;
+import com.kitri.dto.*;
 
 public class AdminService {
 
@@ -17,7 +16,7 @@ public class AdminService {
 	}
 	
 	//회원 목록 
-	public List<MemberDetailDTO> memeberAll(){
+	public List<MemberBoard> memeberAll(){
 		return AdminDAOImpl.getAdminDAO().selectAll();
 	}
 	
