@@ -32,7 +32,7 @@ public class ScheduleBackendController {
 		return service.getKeywordSearch(location, place);
 	}
 	
-	public int temporarySavePlan(HttpServletRequest request, HttpServletResponse response) {
+	public int savePlan(HttpServletRequest request, HttpServletResponse response) {
 		StringTokenizer st;
 		List<TripDetailDTO> list = new ArrayList<TripDetailDTO>();
 		

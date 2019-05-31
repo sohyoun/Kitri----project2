@@ -46,7 +46,7 @@ public class ScheduleController extends HttpServlet {
 			
 			MoveURL.forward(request, response, "/tayoschedule/searchTourResult.jsp");
 		} else if ("savePlan".equals(act)) {
-			int result = backendController.temporarySavePlan(request, response);
+			int result = backendController.savePlan(request, response);
 			
 			MoveURL.redirect(request, response, "/tayoschedule/planTemplate.jsp");
 		}
