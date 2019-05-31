@@ -130,13 +130,17 @@ $(function(){
 		for(var k = 0; k < plandata.length; k++) {
 			plandatastr += ('&plandata=' + plandata[k]);
 		}
-		
+
 		$.ajax({
 			url: '${pageContext.request.contextPath}/schedule',
 			data: 'act=savePlan' + plandatastr + '&savetype=' + savetype + '&person=' + $("#person").val() + '&title=' + $("#planName").val() + '&theme=' + $("input[name='theme']:checked").val() + '&season=' + $("input[name='season']:checked").val() + '&start=' + $("#start").val() + '&end=' + $("#end").val(),
 			method: 'post',
 			success: function(result) {
-				alert("임시저장 되었습니다.");
+				if (savetype == 'N') {
+					alert("임시저장이 " + result.trim());
+				} else {
+					alert("저장이 " + result.trim());
+				}
 				closeModal();
 				location.href='${pageContext.request.contextPath}/schedule?act=myschedule';
 			},

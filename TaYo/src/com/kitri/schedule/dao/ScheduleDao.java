@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.kitri.dto.TripBasicDTO;
@@ -94,5 +95,90 @@ public class ScheduleDao {
 		}
 		
 		return result;
+	}
+
+	public List<TripBasicDTO> search(String email, String type) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<TripBasicDTO> basicList = new ArrayList<TripBasicDTO>();
+		List<TripDetailDTO> detailList = null;
+		
+		try {
+			conn = DBConnection.makeConnection();
+
+			// Search Trip_Basic
+			StringBuffer searchSQL = new StringBuffer();
+			searchSQL.append("SELECT trip_seq, email, trip_title, trip_theme, trip_season, trip_num, start_date, end_date, viewCount, likeCount ");
+			searchSQL.append("FROM trip_basic ");
+			searchSQL.append("WHERE email = ? and isComplete = ?");
+			
+			pstmt = conn.prepareStatement(searchSQL.toString());
+			
+			int idx = 1;
+			pstmt.setString(idx++, email);
+			pstmt.setString(idx, type);
+			rs = pstmt.executeQuery();
+			
+			TripBasicDTO basicDTO = null;
+			while (rs.next()) {
+				basicDTO = new TripBasicDTO();
+				basicDTO.setTripSeq(rs.getInt("trip_seq"));
+				basicDTO.setEmail(rs.getString("email"));
+				basicDTO.setTripTitle(rs.getString("trip_title"));
+				basicDTO.setTripTheme(rs.getString("trip_theme"));
+				basicDTO.setTripSeason(rs.getString("trip_season"));
+				basicDTO.setTripNum(rs.getInt("trip_num"));
+				basicDTO.setStartDate(rs.getDate("start_date"));
+				basicDTO.setEndDate(rs.getDate("end_date"));
+				basicDTO.setViewCount(rs.getInt("viewCount"));
+				basicDTO.setLikeCount(rs.getInt("likeCount"));
+				
+				basicList.add(basicDTO);
+			}
+
+			rs.close();
+			pstmt.close();
+			
+			// Search Trip_Detail
+			for (TripBasicDTO basic : basicList) {
+				searchSQL.setLength(0);
+				searchSQL.append("SELECT trip_seq, trip_day, trip_order, place_name, loc_id, posx, posy ");
+				searchSQL.append("FROM trip_detail ");
+				searchSQL.append("WHERE trip_seq = ?");
+				
+				pstmt = conn.prepareStatement(searchSQL.toString());
+				
+				pstmt.setInt(1, basic.getTripSeq());
+				rs = pstmt.executeQuery();
+				
+				detailList = new ArrayList<TripDetailDTO>();
+				TripDetailDTO detailDTO = null;
+				while (rs.next()) {
+					detailDTO = new TripDetailDTO();
+					detailDTO.setTrip_seq(rs.getInt("trip_seq"));
+					detailDTO.setTrip_day(rs.getInt("trip_day"));
+					detailDTO.setTrip_order(rs.getInt("trip_order"));
+					detailDTO.setPlace_name(rs.getString("place_name"));
+					detailDTO.setLoc_id(rs.getInt("loc_id"));
+					detailDTO.setPosX(rs.getFloat("posx"));
+					detailDTO.setPosY(rs.getFloat("posy"));
+					
+					detailList.add(detailDTO);
+				}
+				
+				basic.setDetailList(detailList);
+				
+				rs.close();
+				pstmt.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(conn, pstmt, rs);
+		}
+		
+		return basicList;
 	}
 }
