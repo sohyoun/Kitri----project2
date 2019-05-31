@@ -72,6 +72,7 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
+				int board_seq = rs.getInt("board_seq");
 				String name = rs.getString("name");
 				String email = rs.getString("email");
 				String pass = rs.getString("pass");

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import com.kitri.dto.AdminDTO;
+import com.kitri.dto.MemberBoard;
 import com.kitri.dto.MemberDetailDTO;
 import com.kitri.util.DBClose;
 import com.kitri.util.DBConnection;
@@ -22,6 +23,7 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	private AdminDAOImpl() {
+		
 	}
 
 	public static AdminDAO getAdminDAO() {
@@ -182,4 +184,89 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return list;
 	}
+
+	@Override
+	public List<MemberBoard> selectByRows(int startRow, int endRow) {
+		List<MemberBoard> list = new ArrayList<MemberBoard>();
+		
+				 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBConnection.makeConnection();
+
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("SELECT * " + 
+					"	FROM(SELECT rownum r, user_tayo.*, userdetail_tayo.* \n" +
+					"	START WITH parent_seq = 0 \n" +
+					"	CONNECT BY PRIOR board_seq = parent_seq \n" +
+					"	ORDER SIBLINGS BY board_seq DESC \n" +
+					"WHERE r BETWEEN ? AND ? ");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MemberBoard memberBoard = new MemberBoard();
+				
+				memberBoard.setBoard_seq(rs.getInt("board_seq"));
+				memberBoard.setParent_seq(rs.getInt("parent_seq"));
+				memberBoard.setEmail(rs.getString("email"));
+				memberBoard.setName(rs.getString("name"));
+				memberBoard.setAge(rs.getInt("age"));
+				memberBoard.setAddress(rs.getString("address"));
+				memberBoard.setAddressDetail(rs.getString("address_detail"));
+				memberBoard.setGender(rs.getString("gender"));
+				memberBoard.setGrade(rs.getInt("grade"));
+				
+				list.add(memberBoard);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBClose.close(conn, pstmt, rs);
+		}
+		
+		return list;
+	}
+	
+	public int selectTotalCnt() {
+		int totalCnt = -1;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBConnection.makeConnection();
+			
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("SELECT COUNT(*) \n" +
+					   "FROM memberboard \n");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				totalCnt = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBClose.close(conn, pstmt, rs);
+		}
+		return totalCnt;
+	}
+	
 }

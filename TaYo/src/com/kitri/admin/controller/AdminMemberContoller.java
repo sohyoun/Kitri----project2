@@ -24,11 +24,11 @@ public class AdminMemberContoller extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 System.out.println("servlet == 들어옴");
+		//System.out.println("servlet == 들어옴");
 		List<MemberDetailDTO> list = adminService.memeberAll();
 		request.setAttribute("memberlist", list);
 		
-		System.out.println("list == " + list);
+		//System.out.println("list == " + list);
 		String path = "/tayoadmin/memberresult.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);

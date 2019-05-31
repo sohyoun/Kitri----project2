@@ -20,5 +20,9 @@ public class AdminService {
 	public List<MemberDetailDTO> memeberAll(){
 		return AdminDAOImpl.getAdminDAO().selectAll();
 	}
+	
+	//게시글 목록
+	
+	
 
 }
