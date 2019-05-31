@@ -59,7 +59,7 @@ $(function(){
 		// to be implemented
 	});
 	
-	$("button[class='btn-to-path']").click(function() {
+	$("button[class='btn btn btn-light']").click(function() {
 		$("#pathModal").modal();
 
 		$("#pathModal").on('shown.bs.modal', function() {

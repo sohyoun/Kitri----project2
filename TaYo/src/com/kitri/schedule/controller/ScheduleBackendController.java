@@ -84,4 +84,12 @@ public class ScheduleBackendController {
 		
 		return service.insert(basicDTO);
 	}
+
+
+	public List<TripBasicDTO> searchPlan(HttpServletRequest request, HttpServletResponse response) {
+		String type = request.getParameter("type");
+		String email = request.getParameter("email");
+		
+		return service.searchPlan(email, type);
+	}
 }

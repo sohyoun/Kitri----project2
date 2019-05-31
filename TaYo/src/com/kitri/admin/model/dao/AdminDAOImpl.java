@@ -38,7 +38,7 @@ public class AdminDAOImpl implements AdminDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		// DB 연결
+	// DB 연결
 		try {
 			conn = DBConnection.makeConnection();
 			StringBuffer sql = new StringBuffer();
@@ -61,27 +61,7 @@ public class AdminDAOImpl implements AdminDAO {
 			}
 		} catch (SQLException e) {
 		} finally {
-			if (rs != null)
-				try {
-					rs.close();
-				} catch (SQLException e) {
-
-					e.printStackTrace();
-				}
-			if (pstmt != null)
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-
-					e.printStackTrace();
-				}
-			if (conn != null)
-				try {
-					conn.close();
-				} catch (SQLException e) {
-
-					e.printStackTrace();
-				}
+			DBClose.close(conn, pstmt, rs);
 		}
 		return adminDTO;
 	}
@@ -138,11 +118,12 @@ public class AdminDAOImpl implements AdminDAO {
 		//System.out.println(adminDAOImpl.selectAll());
 
 	}
-		
+	
+	// 회원관리 게시판 
 	@Override
-	public List<MemberDetailDTO> selectAll() {
+	public List<MemberBoard> selectAll() {
 		
-		List<MemberDetailDTO> list = new ArrayList<MemberDetailDTO>();
+		List<MemberBoard> list = new ArrayList<MemberBoard>();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -163,18 +144,20 @@ public class AdminDAOImpl implements AdminDAO {
 			
 				while(rs.next()) {
 					
-					MemberDetailDTO memberDetailDTO = new MemberDetailDTO();
-					memberDetailDTO.setEmail(rs.getString("email"));
-					memberDetailDTO.setName(rs.getString("name"));
-					memberDetailDTO.setAge(rs.getInt("age"));
-					memberDetailDTO.setAddress(rs.getString("address"));
-					memberDetailDTO.setAddressDetail(rs.getString("addressDetail"));
-					memberDetailDTO.setJoindate(rs.getDate("joindate"));
-					memberDetailDTO.setOutdate(rs.getDate("outdate"));
-					memberDetailDTO.setGender(rs.getString("gender"));
-					memberDetailDTO.setGrade(rs.getInt("grade"));
+				MemberBoard memberBoard = new MemberBoard();
+				memberBoard.setBoard_seq(rs.getInt("board_seq"));
+				memberBoard.setParent_seq(rs.getInt("parent_seq"));
+				memberBoard.setEmail(rs.getString("email"));
+				memberBoard.setName(rs.getString("name"));
+				memberBoard.setAge(rs.getInt("age"));
+				memberBoard.setAddress(rs.getString("address"));
+				memberBoard.setAddressDetail(rs.getString("addressDetail"));
+				memberBoard.setJoindate(rs.getDate("joindate"));
+				memberBoard.setOutdate(rs.getDate("outdate"));
+				memberBoard.setGender(rs.getString("gender"));
+				memberBoard.setGrade(rs.getInt("grade"));
 					
-					list.add(memberDetailDTO);
+					list.add(memberBoard);
 				}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -185,6 +168,8 @@ public class AdminDAOImpl implements AdminDAO {
 		return list;
 	}
 
+	
+	//회원목록 테이블 페이징처리 
 	@Override
 	public List<MemberBoard> selectByRows(int startRow, int endRow) {
 		List<MemberBoard> list = new ArrayList<MemberBoard>();
