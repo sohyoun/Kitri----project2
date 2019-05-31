@@ -8,6 +8,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 import com.kitri.dto.TripBasicDTO;
+import com.kitri.schedule.dao.ScheduleDao;
 import com.kitri.util.SiteContance;
 
 
