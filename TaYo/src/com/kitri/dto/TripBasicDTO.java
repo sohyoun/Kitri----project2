@@ -12,7 +12,7 @@ public class TripBasicDTO {
 	private String tripTitle;	//여행이름
 	private String tripTheme;	//여행테마
 	private String tripSeason;	//여행시즌
-	private int tripNum;
+	private int tripNum;		//여행정원
 	private Date startDate;		//출발일
 	private Date endDate;		//종료일
 	private int viewCount;		//조회수
@@ -22,6 +22,14 @@ public class TripBasicDTO {
 	List<TripDetailDTO> detailList;	//상세일정리스트
 
 	
+	@Override
+	public String toString() {
+		return "TripBasicDTO [tripSeq=" + tripSeq + ", email=" + email + ", tripTitle=" + tripTitle + ", tripTheme="
+				+ tripTheme + ", tripSeason=" + tripSeason + ", tripNum=" + tripNum + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", viewCount=" + viewCount + ", likeCount=" + likeCount + ", lastUpDate="
+				+ lastUpDate + ", isComplete=" + isComplete + ", detailList=" + detailList + "]";
+	}
+
 	public TripBasicDTO() {
 		super();
 	}
@@ -45,14 +53,7 @@ public class TripBasicDTO {
 	}
 
 	
-	@Override
-	public String toString() {
-		return "TripBasicDTO [tripSeq=" + tripSeq + ", email=" + email + ", tripTitle=" + tripTitle + ", tripTheme="
-				+ tripTheme + ", tripSeason=" + tripSeason + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", viewCount=" + viewCount + ", likeCount=" + likeCount + ", lastUpDate=" + lastUpDate + ", isComplete=" + isComplete
-				+ ", detailList=" + detailList + "]";
-	}
-	
+
 	public List<TripDetailDTO> getDetailList() {
 		return detailList;
 	}
