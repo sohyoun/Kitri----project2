@@ -130,8 +130,10 @@ public class TripBasicDao {
 				int likeCount = rs.getInt("likecount");
 				Date lastUpDate = rs.getDate("lastUpDate");
 				String isComplete = rs.getString("isComplete");
+				
+				List<TripDetailDTO> detailList = TripDetailDao.getInstance().select(trip_seq);
 				TripBasicDTO dto = new TripBasicDTO(trip_seq, email, tripTitle, tripTheme, tripSeason, tripNum,
-						startDate, endDate, viewCount, likeCount, lastUpDate, isComplete, null);
+						startDate, endDate, viewCount, likeCount, lastUpDate, isComplete, detailList);
 				basiclist.add(dto);
 			}
 		} catch (SQLException e) {
@@ -162,12 +164,6 @@ public class TripBasicDao {
 			List<TripDetailDTO> detailList = TripDetailDao.getInstance().select(basicDto.getTripSeq());
 			for (TripDetailDTO detailDto : detailList) {
 				System.out.println(detailDto.toString());
-//				Clob clob = detailDto.getDetail_content();
-//				try {
-//					System.out.println("clob : " + Util.readCLOB(clob));
-//				} catch (IOException | SQLException e) {
-//					e.printStackTrace();
-//				}
 			}
 
 			System.out.println("====================");
@@ -177,56 +173,6 @@ public class TripBasicDao {
 		
 	}// end main
 
-	public void insertTest() {
-		StringTokenizer st;
-		List<TripDetailDTO> list = new ArrayList<TripDetailDTO>();
-		
-		Date start = null;
-		Date end = null;
-		int person = 1;
-		String email = "eamil";
-		String saveType = "N";
-		String title = "title";
-		String theme = "theme";
-		String season = "season";
-		String[] plandata = {"a","ㅁ"};//request.getParameterValues("plandata");
-		try {
-			start = new SimpleDateFormat("yyyy-MM-dd").parse("2109.05.31".replace('.', '-'));
-			end = new SimpleDateFormat("yyyy-MM-dd").parse("2109.05.31".replace('.', '-'));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		TripBasicDTO basicDTO = new TripBasicDTO();
-		basicDTO.setEmail(email);
-		basicDTO.setTripTitle(title);
-		basicDTO.setTripTheme(theme);
-		basicDTO.setTripSeason(season);
-		basicDTO.setTripNum(person);
-		basicDTO.setStartDate(start);
-		basicDTO.setEndDate(end);
-		basicDTO.setIsComplete(saveType);
-		
-		TripDetailDTO detailDTO = null;
-		
-		for (String plan : plandata) {
-			detailDTO = new TripDetailDTO();
-			st = new StringTokenizer(plan, ",");
-			
-			while (st.hasMoreTokens()) {
-				detailDTO.setTrip_day(Integer.parseInt(st.nextToken()));
-				detailDTO.setTrip_order(Integer.parseInt(st.nextToken()));
-				detailDTO.setPlace_name(st.nextToken());
-				detailDTO.setLoc_id(Integer.parseInt(st.nextToken()));
-				detailDTO.setPosX(Float.parseFloat(st.nextToken()));
-				detailDTO.setPosY(Float.parseFloat(st.nextToken()));
-			}
-			
-			list.add(detailDTO);
-		}
-		
-		basicDTO.setDetailList(list);
-		
-	}
+
 
 }

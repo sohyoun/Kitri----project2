@@ -12,6 +12,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <head>
 <title>Grand Tour Travel Category Flat Bootstrap Responsive Web
 	Template | Home :: w3layouts</title>
+<link rel="shortcut icon" href="">
 <meta charset="utf-8">
 <meta name="keywords"
 	content="Grand Tour Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
