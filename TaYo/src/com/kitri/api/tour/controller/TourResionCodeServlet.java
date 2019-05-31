@@ -20,10 +20,10 @@ public class TourResionCodeServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("TourResionCodeServlet get");
+//		System.out.println("TourResionCodeServlet get");
 
 		String result =service.getResionCode();
-		System.out.println("TourResionCodeServlet"+result);
+//		System.out.println("TourResionCodeServlet"+result);
 		request.setAttribute("result", result);
 		String path = "/apitour/resioncoderesult.jsp";
 		MoveURL.forward(request, response, path);

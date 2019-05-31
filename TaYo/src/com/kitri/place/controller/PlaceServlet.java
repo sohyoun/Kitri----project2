@@ -31,8 +31,10 @@ public class PlaceServlet extends HttpServlet {
 		
 		if ("searchTour".equals(act)) {
 			String location = request.getParameter("location");
-			String place = request.getParameter("place");
+			String place = request.getParameter("place");			
+			String addr1 = request.getParameter("addr1");
 			String addr2 = request.getParameter("addr2");
+			
 		
 			
 			
@@ -42,6 +44,11 @@ public class PlaceServlet extends HttpServlet {
 			MoveURL.forward(request, response, "/tayoplace/searchPlaceResult.jsp");
 		}
 	}
+	
+	
+	
+	
+	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding(SiteContance.ENCODE);

@@ -1,5 +1,6 @@
 package com.kitri.schedule.controller;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,17 +13,34 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kitri.dto.TripBasicDTO;
 import com.kitri.dto.TripDetailDTO;
+import com.kitri.schedule.service.ScheduleService;
 
 
 public class ScheduleBackendController {
 	
-	public void temporarySavePlan(HttpServletRequest request, HttpServletResponse response) {
+	private ScheduleService service;
+	
+	public ScheduleBackendController() {
+		service = new ScheduleService();
+	}
+	
+	
+	public String getKeywordSearch(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String location = request.getParameter("location");
+		String place = request.getParameter("place");
+		
+		return service.getKeywordSearch(location, place);
+	}
+	
+	public int savePlan(HttpServletRequest request, HttpServletResponse response) {
 		StringTokenizer st;
 		List<TripDetailDTO> list = new ArrayList<TripDetailDTO>();
 		
 		Date start = null;
 		Date end = null;
+		int person = Integer.parseInt(request.getParameter("person"));
 		String email = "test@kitri.re.kr";
+		String saveType = request.getParameter("savetype");
 		String title = request.getParameter("title");
 		String theme = request.getParameter("theme");
 		String season = request.getParameter("season");
@@ -39,9 +57,10 @@ public class ScheduleBackendController {
 		basicDTO.setTripTitle(title);
 		basicDTO.setTripTheme(theme);
 		basicDTO.setTripSeason(season);
+		basicDTO.setTripNum(person);
 		basicDTO.setStartDate(start);
 		basicDTO.setEndDate(end);
-		basicDTO.setIsComplete("N");
+		basicDTO.setIsComplete(saveType);
 		
 		TripDetailDTO detailDTO = null;
 		
@@ -63,6 +82,6 @@ public class ScheduleBackendController {
 		
 		basicDTO.setDetailList(list);
 		
-		// to be called service
+		return service.insert(basicDTO);
 	}
 }

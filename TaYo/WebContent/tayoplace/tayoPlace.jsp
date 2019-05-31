@@ -256,7 +256,12 @@
 		<!-- 크기 맞춰주는 DIV -->
 
 
+	<!-- 필터 -->
 	<jsp:include page="filter.jsp"></jsp:include>
+	<!-- 필터 -->
+	
+	
+	
 
 		<!-- 필터 -->
 		<!-- <table class="table table-bordered" id="filter">
@@ -485,6 +490,19 @@
 
 
 
+<div id="placelist">
+				
+					<table class="table table-bordered table-sm">
+						<tbody id="tablebody" align="center">
+							
+							
+							
+							
+
+						</tbody>
+					</table>
+				</div>
+				
 
 
 
