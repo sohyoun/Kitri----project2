@@ -41,10 +41,10 @@ public class RecomandServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		System.out.println("RecomandServlet doPost");
+//		System.out.println("RecomandServlet doPost");
 		
 		String jsonStr = request.getParameter("jsonData");
-		System.out.println(jsonStr);
+//		System.out.println(jsonStr);
 		
         JSONParser jsonParser = new JSONParser();
         
@@ -65,7 +65,7 @@ public class RecomandServlet extends HttpServlet {
 		}
 		//테스트용 리스트
 		List<TripBasicDTO> list = TripBasicDao.getInstance().selectAll();
-		System.out.println("RecomandServlet listSize: " +list.size());
+//		System.out.println("RecomandServlet listSize: " +list.size());
 		request.setAttribute("filteredList", list);
 		String path = "/tayorecomand/recomand_filter_result.jsp";
 		MoveURL.forward(request, response, path);

@@ -22,21 +22,38 @@ $(function(){
 	});
 	
 	var startDate = $(start).datepicker();
-	var endDate = $(end).datepicker();
 		
 	$(start).click(function(){
 		$(start).datepicker().show();
 	});
 	
 	$(end).click(function(){
-		$(end).datepicker().show();
+		var sDate = $("#start").val().split('.');
+		var newDate = new Date(sDate[0], sDate[1] - 1, sDate[2]);
+		console.log(newDate);
+		newDate.setDate(newDate.getDate() + ($(".list-group").length - 1));
+		console.log(newDate);
+		var year = newDate.getFullYear();
+		var month = newDate.getMonth() + 1;
+		var currDay = newDate.getDate();
+		
+		if (month < 10) {
+			month = '0' + month;
+		}
+		
+		if (currDay < 10) {
+			currDay = '0' + currDay;
+		}
+		
+		$(this).val(year + '.' + month + '.' + currDay);
 	});
 	
 	$("input[name='theme']").click(function() {
 		if ($("#solo").is(':checked')) {
-			$("#personlb").show();			
+			$("#person").val('1');
+			$("#personlb").hide();			
 		} else {
-			$("#personlb").hide();
+			$("#personlb").show();
 		}
 	});
 	
@@ -60,7 +77,9 @@ $(function(){
 		} else if ($(this).attr("value") == 'complete') {
 			savetype = 'Y';
 		} else {
-			savetype = 'Unknown';
+			alert("오류 발생");
+			closeModal();
+			return false;
 		}
 		
 		daylists = $(".list-group");
@@ -72,6 +91,21 @@ $(function(){
 		if ((daylists.length == 1) && ($(daylists).find(".list-group-item").length == 0)) {
 			alert("저장을 위해서는 최소 하나 이상의 일정이 있어야 합니다.");
 			closeModal();
+			return false;
+		}
+		
+		if ($("#planName").val().trim() == '') {
+			alert("여행 제목을 입력하세요.");
+			return false;
+		}
+		
+		if ($("#person").val() < 1) {
+			alert("최소 인원은 1명 입니다.");
+			return false;
+		}
+		
+		if ($("#start").val() == '' || $("#end").val() == '') {
+			alert("출발 일자 및 종료 일자를 선택하세요.");
 			return false;
 		}
 		

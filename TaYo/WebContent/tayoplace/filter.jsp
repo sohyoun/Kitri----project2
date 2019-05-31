@@ -46,9 +46,40 @@
 				city:data
 			},
 			success : function(xml) {
-				/* console.log(xml.trim()); */
+			
 				parser = new DOMParser();
 				xmlDoc = parser.parseFromString(xml.trim(), "text/xml");
+				
+				var html;
+				var prevTitle = "";
+				
+				$("#tablebody").empty();
+				
+			
+				$(xml).find("item").each(function() {
+					var title = $(this).find("title").text();
+					var addr2 = $(this).find("addr2").text();
+					var readcount = $(this).find("readcount").text();
+				
+					if (prevTitle != title) {
+						prevTitle = title;
+						var image = $(this).find("firstimage2").text();
+						
+						/* html += "<tr><td width='100'><img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='80' height='40'/></td><td><ul class='placeclass'><li class='list-group-item' style='padding: 0.3rem;' value='" + title + "'>" + title + addr2 + readcount+ "<button class='btn btn-primary' name='placebtn'>+</button></li></ul></td></tr>"; */
+					 	
+						html += "<tr><td><div class='card' style='width: 70rem; display: flex;'> "
+						html += "<img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png' style='width: 400px;height: 200px;'>"
+						html += "<div class='card-body' style='display: inline;'>"
+						html += "	<h5 class='card-title'>" + title + "</h5>"
+						html += "	<p class='card-text'>"+ addr2 +"</p>"
+							html += "	<p class='card-text'>" + readcount +"</p>"
+								html += "	<a href=''#' class='btn btn-primary'>상세보기</a>"
+								html += "</div>"
+									html += "</div></td></tr>";	
+				
+					}
+				});
+				$("#tablebody").html(html);
 				console.log(xmlDoc);
 				/* jquery*/
 // 				console.log(xml);
@@ -67,11 +98,6 @@
 
 	<div class="container h-100 pt-3">
 		<!-- 필터 -->
-		<div class="row pb-3">
-			<div class="col-sm-2 text-nowrap heading">
-				<h3>여행자들의 일정보기</h3>
-			</div>
-		</div>
 		<table class="table table-bordered ">
 			<tr>
 				<td class="filter_title">여행도시</td>

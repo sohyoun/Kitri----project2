@@ -1,4 +1,7 @@
 --여행 DB 생성
+drop SEQUENCE sq_tripbasic_tripseq;
+create SEQUENCE sq_tripbasic_tripseq;
+
 ALTER TABLE Trip_Basic
 	DROP
 		CONSTRAINT FK_Member_TO_Trip_Basic
