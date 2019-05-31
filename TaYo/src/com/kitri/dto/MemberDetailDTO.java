@@ -14,6 +14,7 @@ public class MemberDetailDTO extends MemberDTO{
 	public MemberDetailDTO() {
 		super();
 	}
+	
 	public MemberDetailDTO(String email, String address, String addressDetail, Date joindate, Date outdate) {
 		super();
 		this.email = email;

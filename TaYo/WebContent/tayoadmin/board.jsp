@@ -317,7 +317,7 @@ th, td {
 		</form>
 		<!-- 회원테이블 시작 부분 -->
 			<div class="table-responsive">
-				<table class="table">
+				<table id = "memberlist" class="table">
 					<thead>
 						<tr>
 							<th>Index</th><th>Email</th><th>name</th><th>Address</th><th>Address_detail</th><th>Gender</th><th>Grade</th>
