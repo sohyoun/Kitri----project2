@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.List;
 
 import com.kitri.dto.TripBasicDTO;
 import com.kitri.schedule.dao.ScheduleDao;
@@ -62,5 +63,10 @@ public class ScheduleService {
 
 	public int insert(TripBasicDTO basicDTO) {
 		return dao.insert(basicDTO);
+	}
+
+
+	public List<TripBasicDTO> searchPlan(String email, String type) {
+		return dao.search(email, type);
 	}
 }

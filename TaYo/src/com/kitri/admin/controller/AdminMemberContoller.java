@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kitri.admin.model.service.AdminService;
+import com.kitri.dto.MemberBoard;
 import com.kitri.dto.MemberDetailDTO;
 
 @WebServlet("/memberlist")
@@ -25,7 +26,7 @@ public class AdminMemberContoller extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//System.out.println("servlet == 들어옴");
-		List<MemberDetailDTO> list = adminService.memeberAll();
+		List<MemberBoard> list = adminService.memeberAll();
 		request.setAttribute("memberlist", list);
 		
 		//System.out.println("list == " + list);
