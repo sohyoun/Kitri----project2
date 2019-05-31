@@ -28,7 +28,7 @@ public class AdminMemberContoller extends HttpServlet {
 		List<MemberDetailDTO> list = adminService.memeberAll();
 		request.setAttribute("memberlist", list);
 		
-		System.out.println("list == " + list);
+		//System.out.println("list == " + list);
 		String path = "/tayoadmin/memberresult.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);

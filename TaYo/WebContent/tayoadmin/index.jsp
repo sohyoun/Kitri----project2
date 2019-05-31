@@ -206,7 +206,7 @@
 								<i class="fa fa-phone"></i> Call
 							</button>
 							<button class="btn btn-xs btn-warning">
-								<i class="fa fa-envelope-o"></i> Message
+						-		<i class="fa fa-envelope-o"></i> Message
 							</button>
 						</div>
 					</div></li>

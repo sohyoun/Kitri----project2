@@ -133,7 +133,7 @@ public class AdminDAOImpl implements AdminDAO {
 		
 		// SELECT ALL 
 	//	AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
-	//	System.out.println(adminDAOImpl.selectAll());
+		//System.out.println(adminDAOImpl.selectAll());
 
 	}
 		
@@ -151,7 +151,7 @@ public class AdminDAOImpl implements AdminDAO {
 			
 			StringBuffer sql = new StringBuffer();
 			
-			sql.append("SELECT * \n");
+			sql.append("SELECT rownum, * \n");
 			sql.append("FROM user_tayo ut, userdetail_tayo udt \n");
 			sql.append("WHERE ut.email = udt.email \n");
 			
