@@ -68,7 +68,9 @@
 						/* html += "<tr><td width='100'><img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='80' height='40'/></td><td><ul class='placeclass'><li class='list-group-item' style='padding: 0.3rem;' value='" + title + "'>" + title + addr2 + readcount+ "<button class='btn btn-primary' name='placebtn'>+</button></li></ul></td></tr>"; */
 					 	
 						html += "<tr><td><div class='card' style='width: 70rem; display: flex;'> "
+						if(image!=''){
 						html += "<img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png' style='width: 400px;height: 200px;'>"
+						}
 						html += "<div class='card-body' style='display: inline;'>"
 						html += "	<h5 class='card-title'>" + title + "</h5>"
 						html += "	<p class='card-text'>"+ addr2 +"</p>"
