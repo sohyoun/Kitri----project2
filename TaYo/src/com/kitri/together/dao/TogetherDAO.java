@@ -113,4 +113,7 @@ public class TogetherDAO {
 		return list;
 	}
 	
+	//함께타요 일정 상세 페이지 보여주기
+	
+	
 }
