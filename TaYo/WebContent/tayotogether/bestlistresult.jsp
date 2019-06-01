@@ -1,18 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<c:set var="list" value="${requestScope.list}"/>
 <script>
 $(function(){
-	$.ajax({
-		
+	$("div.col-lg-3.col-sm-6.twplan").click(function(){
+		var tripseq = $(this).find("button.tripseq").val();
+		$.ajax({
+			url : "${pageContext.request.contextPath}/togetherdetail",
+			method : "get",
+			data : 'tripseq=' + tripseq,
+			success : function(result){
+				$("section.banner_inner").html(result.trim());
+			}
+		});
+		return false;
 	});
 });
 </script>
-<c:set var="list" value="${requestScope.list}"/>
-		<div class="row">
+
+<div class="row bestcontentsdetail">
 		<c:forEach var="tt" items="${list}">
 		<c:set var="tb" value="${tt.tripBasicDTO}"/>
-			<div class="col-lg-3 col-sm-6">
+			<div class="col-lg-3 col-sm-6 twplan">
 				<div class="image-tour position-relative">
 					<img src="/TaYo/images/p1.jpg" alt="" class="img-fluid" />
 					<p>
@@ -32,8 +42,9 @@ $(function(){
 					</ul>
 					<h6 class="mt-1">
 						<span class="fa fa-user-circle"> ${tb.email} </span>
+						<button class="tripseq" value="${tt.tripSeq}" style="display:none;">${tt.tripSeq}</button>			
 					</h6>
 				</div>
 			</div>
 		</c:forEach>
-		</div>
+</div>
