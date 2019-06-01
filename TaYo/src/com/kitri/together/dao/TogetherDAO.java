@@ -66,7 +66,7 @@ public class TogetherDAO {
 		List<TTLeaderDTO> list = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		ResultSet rs = null; 
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
