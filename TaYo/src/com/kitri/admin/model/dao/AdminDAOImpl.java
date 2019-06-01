@@ -6,10 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.TEST_DB.DBConnection;
 import com.kitri.dto.AdminDTO;
 import com.kitri.dto.MemberBoard;
 import com.kitri.dto.MemberDetailDTO;
 import com.kitri.util.DBClose;
+import com.sun.org.apache.bcel.internal.generic.BALOAD;
 
 public class AdminDAOImpl implements AdminDAO {
 
@@ -121,6 +124,22 @@ public class AdminDAOImpl implements AdminDAO {
 		//AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
 		//System.out.println("memberlist == " +adminDAOImpl.selectAll());
 
+		//회원목록테이블 가입 수 반환하기
+		//AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
+		//int result = adminDAOImpl.joindateTotalCnt();
+		//System.out.println(result);
+		
+		//회원목록 테이블 페이지 개수 반환하기
+		//AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
+		//int count = adminDAOImpl.selectTotalCnt();
+		//System.out.println(count);
+		
+		//회원목록테이블 페이징 개수 구하기 
+		AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
+		int startRow = 1;
+		int endRow = 10;
+		System.out.println(adminDAOImpl.selectByRows(startRow, endRow));
+		
 	}
 	
 	// 회원관리 게시판 
@@ -148,6 +167,7 @@ public class AdminDAOImpl implements AdminDAO {
 				while(rs.next()) {
 					
 				MemberBoard memberBoard = new MemberBoard();
+				
 				memberBoard.setBoard_seq(rs.getInt("board_seq"));
 				memberBoard.setParent_seq(rs.getInt("parent_seq"));
 				memberBoard.setEmail(rs.getString("email"));
@@ -187,11 +207,12 @@ public class AdminDAOImpl implements AdminDAO {
 			StringBuffer sql = new StringBuffer();
 			
 			sql.append("SELECT * " + 
-					"	FROM(SELECT rownum r, user_tayo.*, userdetail_tayo.* \n" +
-					"	START WITH parent_seq = 0 \n" +
-					"	CONNECT BY PRIOR board_seq = parent_seq \n" +
-					"	ORDER SIBLINGS BY board_seq DESC \n" +
-					"WHERE r BETWEEN ? AND ? ");
+					   "FROM(SELECT rownum r, memberlist.* \n" +
+					   "	FROM memberlist \n"	+
+					   "	START WITH parent_seq = 0 \n" +
+					   "	CONNECT BY PRIOR board_seq = parent_seq \n" +
+					   "	ORDER SIBLINGS BY board_seq DESC) \n" +
+					   "WHERE r BETWEEN ? AND ? ");
 			
 			pstmt = conn.prepareStatement(sql.toString());
 			
@@ -225,6 +246,7 @@ public class AdminDAOImpl implements AdminDAO {
 		return list;
 	}
 	
+	//회원테이블 총
 	public int selectTotalCnt() {
 		int totalCnt = -1;
 		
@@ -238,7 +260,7 @@ public class AdminDAOImpl implements AdminDAO {
 			StringBuffer sql = new StringBuffer();
 			
 			sql.append("SELECT COUNT(*) \n" +
-					   "FROM memberboard \n");
+					   "FROM memberlist \n");
 			
 			pstmt = conn.prepareStatement(sql.toString());
 			
@@ -255,5 +277,72 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return totalCnt;
 	}
+	
+	//회원가입한 회원 수 
+	public int joindateTotalCnt() {
+		int totalCnt = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBConnection.makeConnection();
+			
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("SELECT COUNT(joindate) " +
+					   "FROM memberlist ");
+
+			pstmt = conn.prepareStatement(sql.toString());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				totalCnt = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			com.TEST_DB.DBClose.close(conn, pstmt, rs);
+		}
+		return totalCnt;
+	}
+	
+	//블랙회원 수 
+	public int blackTotalCnt() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int blackTotalCnt = 0;
+		
+		try {
+			conn = DBConnection.makeConnection();
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("SELECT COUNT(*) " +
+					   "FROM memberlist " +
+					   "WHERE grade = 0 ");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				blackTotalCnt = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			com.TEST_DB.DBClose.close(conn, pstmt, rs);
+		}
+		return blackTotalCnt;
+	}
+	
+	
 	
 }

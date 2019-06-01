@@ -34,7 +34,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	} */
 
 	$(function() {
-		 alert("메인페이지 들어왔어!");
+		 //alert("메인페이지 들어왔어!");
 			$("button#login").click(function(){
 			 /* 	var $email = $("input#email").val();
 				var $pass = $("input#pass").val();

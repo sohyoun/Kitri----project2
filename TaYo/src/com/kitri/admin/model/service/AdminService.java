@@ -1,7 +1,6 @@
 package com.kitri.admin.model.service;
 
 
-import java.util.List;
 
 import com.kitri.admin.model.dao.AdminDAOImpl;
 import com.kitri.dto.*;

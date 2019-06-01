@@ -9,7 +9,7 @@ public class AdminDTO {
 	public AdminDTO() {
 		super();
 	}
-
+ 
 	
 	public AdminDTO(String admin_email) {
 		super();

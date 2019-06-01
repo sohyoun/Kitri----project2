@@ -20,6 +20,7 @@ CREATE TABLE user_tayo (
 	gender VARCHAR2(10),
 	grade NUMBER NOT NULL,
 CONSTRAINT email_pk PRIMARY KEY (email)
+CONSTRAINT grade_ck CHECK (grade <= 3)
 );
 
 //유저테이블 삭제
@@ -46,6 +47,7 @@ VALUES ('이메일', 'eui', '1234', 31, 1, 'M');
 유저 상세테이블 삽입
 INSERT INTO userdetail_tayo (email, address, address_detail, outdate)
 VALUES ('12.12kimiyeon@gmail.com', '서울시', '금천구', 'null');
+
 
 SELECT *
 FROM user_tayo u, userdetail_tayo ud
@@ -80,15 +82,32 @@ CREATE TABLE memberlist (
 	CONSTRAINT board_seq_pk PRIMARY KEY (board_seq)
 );
 
+회원목록테이블계산 
+SELECT *
+FROM(SELECT rownum r, memberlist.* 
+	 FROM memberlist
+	 START WITH parent_seq = 0 
+	 CONNECT BY PRIOR board_seq = parent_seq 
+	 ORDER SIBLINGS BY board_seq DESC)
+WHERE r BETWEEN ? AND ?;
+
+
+회원목록테이블 가입일을 기준으로 가입 회원수 체크
+SELECT COUNT(joindate)
+FROM memberlist;
+
 //회원목록테이블 삽입
 INSERT INTO memberlist (board_seq, parent_seq, email, name, age, address, address_detail, outdate, grade, gender)
-VALUES (board_seq.nextval, 0, '이메일', '이름', 31, '주소', '상세주소', NULL, 0, 'M');
+VALUES (board_seq.nextval, 0, '1', '2', 31, '3', '4', NULL, 0, 'M');
 
 INSERT INTO memberlist (board_seq, parent_seq, email, name, age, address, address_detail, outdate, grade, gender)
-VALUES (board_seq.nextval, 0, 'EMAIL', 'NAME', 28, 'ADDRESS', 'ADDE', NULL, 1, 'F');
+VALUES (board_seq.nextval, 0, '2', '3', 28, '4', '5', NULL, 1, 'F');
 
 INSERT INTO memberlist (board_seq, parent_seq, email, name, age, address, address_detail, outdate, grade, gender)
-VALUES (board_seq.nextval, 0, '이메', '이', 25, '주', '상세', NULL, 2, 'M');
+VALUES (board_seq.nextval, 0, '3', '4', 25, '5', '6', NULL, 2, 'M');
+
+INSERT INTO memberlist (board_seq, parent_seq, email, name, age, address, address_detail, outdate, grade, gender)
+VALUES (board_seq.nextval, 0, '4', '5', 31, '6', '7', NULL, 3, 'M');
 
 //회원목록테이블 삭제
 DROP TABLE memberlist;

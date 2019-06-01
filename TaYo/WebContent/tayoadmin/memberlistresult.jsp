@@ -7,7 +7,10 @@
 <script>
 </script>
 
-<div id = "boardlist" class="row"><!-- 유저 테이블 시작 -->
+<c:set var = "joincount" value = "${requestScope.joindateTotalCnt}"/>
+<c:set var = "blacklist" value = "${requestScope.backTotalCnt}"></c:set>
+
+<div class="row"><!-- 유저 테이블 시작 -->
 	<div class="col-lg-1"></div>
 	<div class="col-lg-10">
 		<form action="">
@@ -15,11 +18,11 @@
 			<input type="text" placeholder="Name Search" class="form-control" />
 			<button id = "search" class="btn btn-info">검색</button>
 			<ul class="list-group">
-				<li class="list-group-item"><span class="badge">14</span> 가입 회원
+				<li class="list-group-item"><span class="badge">${joincount}</span> 가입 회원
 					수</li>
-				<li class="list-group-item"><span class="badge">2</span> 탈퇴 회원
+				<li class="list-group-item"><span class="badge"></span> 탈퇴 회원
 					수</li>
-				<li class="list-group-item"><span class="badge">1</span> 블랙 회원
+				<li class="list-group-item"><span class="badge">${blacklist}</span> 블랙 회원
 					수</li>
 			</ul>
 		</form>

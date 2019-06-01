@@ -19,20 +19,33 @@ import com.kitri.dto.MemberDetailDTO;
 public class AdminMemberContoller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private MemberListService MemberListService;
+	private MemberListService memberListService;
 	
 	public AdminMemberContoller() {
-		MemberListService = new MemberListService();
+		memberListService = new MemberListService();
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("servlet == 들어옴");
+		//System.out.println("servlet == 들어옴");
 		request.setCharacterEncoding("UTF-8");
 		
-		List<MemberBoard> list = MemberListService.memeberAll();
+		//가입된 총 회원 수 
+		int joindateTotalCnt = memberListService.getJoindateCnt();
+		//System.out.println(joindateTotalCnt);
+		
+		request.setAttribute("joindateTotalCnt", joindateTotalCnt);
+		
+		//블랙리스트 회원 수 
+		int backTotalCnt = memberListService.getBlackCnt();
+		//System.out.println("블랙회원 수 : " + backTotalCnt);
+		
+		request.setAttribute("backTotalCnt", backTotalCnt);
+		
+		//회원목록테이블 
+		List<MemberBoard> list = memberListService.memeberAll();
 		request.setAttribute("memberlist", list);
 		
-		System.out.println("list == " + list);
+		//System.out.println("list == " + list);
 		String path = "/tayoadmin/memberlistresult.jsp";
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path);

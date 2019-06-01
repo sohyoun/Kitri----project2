@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>	
+
+	<c:set var ="login" value = "${sessionScope.loginInfo}"></c:set>
+	
 <%
 	String root = request.getContextPath();
 %>
 <!DOCTYPE html>
-
 <html lang="ko">
 <head>
 <meta charset="utf-8">
@@ -68,8 +71,8 @@ body{
 						</ul></li>
 					<li class="dropdown user-dropdown"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"><i
-							class="fa fa-user"></i>관리자<b class="caret"></b></a>
-						<ul class="dropdown-menu">
+							class="fa fa-user"></i>관리자 : '${login}'님<b class="caret"></b></a>
+						<ul class="dropdown-menu"> 
 							<li class="divider"></li>
 							<li><a href="<%=root %>/index.jsp"><i class="fa fa-power-off"></i> Log Out</a></li>
 

@@ -20,8 +20,6 @@ public class JsonObject {
 		outer.put("univ", jsonObject);
 		json = outer.toJSONString(); // 최종적으로 만들어진 json 객체를 String으로 변환하여 저장
 		
-		
-		
 	}
 
 	public static void main(String[] args) {

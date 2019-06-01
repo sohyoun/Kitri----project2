@@ -5,18 +5,6 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <%@ include file="/tayoadmin/templet/header.jsp"%>
 <!-- 회원 테이블이 목록에 뜹니다.  -->
-<script>
-	$(function() {
-		$.ajax({
-			url : '${pageContext.request.contextPath}/memberlist',
-			method : 'post',
-			success : function(result) {
-				$("#memberlist").html(result.trim());
-			}
-		});
-	});
-</script>
-
 <style>
 #title {
 	border-radius: 4px;
@@ -52,6 +40,35 @@ th, td {
 	padding: 0;
 }
 </style>
+<c:set var="page" value = "${requestScope.boardlist}"/>
+<script>
+	$(function() {
+		$.ajax({
+			url : '${pageContext.request.contextPath}/memberlist',
+			method : 'post',
+			success : function(result) {
+				$("#memberlist").html(result.trim());
+			}
+		});
+		
+		$("ul.pagination").click(function(){
+			var currentPage=$(this).attr("href");
+			alert(currentPage+" 페이지를 보여줍니다!!");
+		$.ajax({
+			url : '${pageContext.request.contextPath}/boardlist',
+			method : 'get',
+			data : 'currentPage=' + currentPage,
+			succes : function(result){
+				console.log("성공");
+				$("#memberlist").html(result.trim());
+			},
+			error : function(){
+				console.log("실패");
+			}
+		});
+	});		
+});
+</script>
 <script>
 	$(document).ready(function() { /*Handler For SelectAll Checkbox*/
 		$("#selectallchkbox").change(function() {
@@ -76,37 +93,38 @@ th, td {
 		$(arr[1]).click(function() {
 			//	console.log("삭제")
 				alert("삭제")
-			
-			
 		});
 	});
 </script>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+
+
+
+<!--   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Open modal
   </button>
 <div class="modal fade" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
       
-        <!-- Modal Header -->
+        Modal Header
         <div class="modal-header">
           <h4 class="modal-title">Modal Heading</h4>
           <button type="button" class="close" data-dismiss="modal">×</button>
         </div>
         
-        <!-- Modal body -->
+        Modal body
         <div class="modal-body">
           Modal body..
         </div>
         
-        <!-- Modal footer -->
+        Modal footer
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
         
       </div>
     </div>
-  </div>
+  </div> -->
 
 <div class="row">
 	<div class="col-lg-1"></div>
@@ -290,16 +308,15 @@ th, td {
 		</h1>
 		<div class="alert alert-dismissable alert-warning">
 			<button data-dismiss="alert" class="close" type="button">&times;</button>
-			Welcome to the admin dashboard!
+			회원 관리 게시판 입니다.
 		</div>
 
 	</div>
 	<div class="col-lg-1"></div>
 </div>
 
-	<!-- 유저 테이블  -->
-	<div id = "memberlist" class="row">
-	</div>
+<!-- 유저 테이블  여기서 보여주는거임 -->
+<div id = "memberlist" class="row"></div>
 
 <ul class="pagination">
 	<!--페이징 처리-->

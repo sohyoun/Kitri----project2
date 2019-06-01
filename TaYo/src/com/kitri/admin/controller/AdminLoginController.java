@@ -21,7 +21,7 @@ public class AdminLoginController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("들어옴?여기 서블릿?");
+		//System.out.println("들어옴?여기 서블릿?");
 		//String root = request.getContextPath();
 		//System.out.println(root);
 		
@@ -30,7 +30,7 @@ public class AdminLoginController extends HttpServlet {
 
 		AdminDTO login = adminService.login(email, pass);
 		HttpSession session = request.getSession();
-	
+
 		session.removeAttribute("email");
 		//System.out.println(login.toString());
 		
@@ -41,8 +41,13 @@ public class AdminLoginController extends HttpServlet {
 			
 			RequestDispatcher rd = request.getRequestDispatcher(path);
 			rd.forward(request, response);
+			
 		} else {
-		
+			System.out.println("로그인 실패했으니 그대로 있으소 !");
+			String path = "/index.jsp";
+			
+			RequestDispatcher rd = request.getRequestDispatcher(path);
+			rd.forward(request, response);
 		}
 	
 	}

@@ -30,9 +30,9 @@ public class BoardListServlet extends HttpServlet {
 		
 		int currentPage = 1;
 		
-			if(cp != null) {
-				currentPage = Integer.parseInt(cp);
-			}
+		/*
+		 * if(cp != null) { currentPage = Integer.parseInt(cp); }
+		 */
 			
 			int cntPage = 10;
 			int totalCnt = memberListService.getTotalCnt();
@@ -40,13 +40,15 @@ public class BoardListServlet extends HttpServlet {
 			
 			String url = "boardlist";
 			MemberListDTO memberListDTO = new MemberListDTO(cntPage, totalCnt, cntPerPageGroup, url, currentPage);
-	
 			
 			List<MemberBoard> list = memberListService.findByRows(memberListDTO.getStartRow(), memberListDTO.getEndRow());
 			memberListDTO.setList(list);
+			System.out.println("페이징처리할 리스트: " +list);
 			request.setAttribute("boardlist", memberListDTO);
+			System.out.println("memberListDTO == " + memberListDTO);
+			//System.out.println(memberListDTO.getStartRow());
 			
-			String path = "/tayoadmin/memberlistresult.jsp";
+			String path = "/tayoadmin/board.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(path);
 			rd.forward(request, response);
 	}
