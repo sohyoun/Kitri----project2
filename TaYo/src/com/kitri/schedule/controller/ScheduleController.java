@@ -51,7 +51,7 @@ public class ScheduleController extends HttpServlet {
 			int result = backendController.savePlan(request, response);
 			String notice = "";
 			
-			if (result == 0) {
+			if (result != 0) {
 				notice = "성공하였습니다.";
 			} else {
 				notice = "실패하였습니다.";
