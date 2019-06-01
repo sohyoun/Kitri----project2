@@ -1,5 +1,6 @@
 package com.kitri.admin.model.service;
 
+
 import java.util.List;
 
 import com.kitri.admin.model.dao.AdminDAOImpl;
@@ -11,17 +12,8 @@ public class AdminService {
 		
 	}
 	//로그인 
-	public AdminDTO login(String email, String pass) {
-		return AdminDAOImpl.getAdminDAO().selectByEmail(email);
+	public AdminDTO login(String admin_email, String admin_pass) {
+		return AdminDAOImpl.getAdminDAO().selectByEmail(admin_email);
 	}
 	
-	//회원 목록 
-	public List<MemberBoard> memeberAll(){
-		return AdminDAOImpl.getAdminDAO().selectAll();
-	}
-	
-	//게시글 목록
-	
-	
-
 }

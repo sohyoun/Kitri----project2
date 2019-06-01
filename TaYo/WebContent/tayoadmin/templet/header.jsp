@@ -16,8 +16,6 @@
 <script type="text/javascript" src="resource/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src ="resource/bootstrap/js/bootstrap.js"></script>
 
-
-
 <!-- you need to include the shieldui css and js assets in order for the charts to work -->
 <link id="gridcss" rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/dark-bootstrap/all.min.css" />
 <script type="text/javascript" src="resource/bootstrap/js/chart.js"></script> 
@@ -70,10 +68,8 @@ body{
 						</ul></li>
 					<li class="dropdown user-dropdown"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"><i
-							class="fa fa-user"></i>Admin<b class="caret"></b></a>
+							class="fa fa-user"></i>관리자<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-							<li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
 							<li class="divider"></li>
 							<li><a href="<%=root %>/index.jsp"><i class="fa fa-power-off"></i> Log Out</a></li>
 

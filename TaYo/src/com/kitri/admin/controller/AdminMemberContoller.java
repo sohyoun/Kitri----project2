@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kitri.admin.model.service.AdminService;
+import com.kitri.admin.model.service.MemberListService;
 import com.kitri.dto.MemberBoard;
 import com.kitri.dto.MemberDetailDTO;
 
@@ -18,20 +19,24 @@ import com.kitri.dto.MemberDetailDTO;
 public class AdminMemberContoller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private AdminService adminService;
+	private MemberListService MemberListService;
 	
 	public AdminMemberContoller() {
-		adminService = new AdminService();
+		MemberListService = new MemberListService();
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//System.out.println("servlet == 들어옴");
-		List<MemberBoard> list = adminService.memeberAll();
+		System.out.println("servlet == 들어옴");
+		request.setCharacterEncoding("UTF-8");
+		
+		List<MemberBoard> list = MemberListService.memeberAll();
 		request.setAttribute("memberlist", list);
 		
-		//System.out.println("list == " + list);
-		String path = "/tayoadmin/memberresult.jsp";
+		System.out.println("list == " + list);
+		String path = "/tayoadmin/memberlistresult.jsp";
+		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
+		
 	}
 }

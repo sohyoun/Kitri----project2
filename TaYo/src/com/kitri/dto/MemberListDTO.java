@@ -8,7 +8,7 @@ public class MemberListDTO {
 	private int cntPage = 10;// 페이지별 목록 수
 	private int startRow = 1; // 시작 행
 	private int endRow = 1;
-	private List<MemberDetailDTO> list; // 회원목록
+	private List<MemberBoard> list; // 회원목록
 	private int totalPage = 1; // 총 페이지 수
 	private int totalCnt; // 총 게시글 수
 	private int cntPerPageGroup = 5;
@@ -81,11 +81,11 @@ public class MemberListDTO {
 		this.currentPage = currentPage;
 	}
 
-	public List<MemberDetailDTO> getList() {
+	public List<MemberBoard> getList() {
 		return list;
 	}
 
-	public void setList(List<MemberDetailDTO> list) {
+	public void setList(List<MemberBoard> list) {
 		this.list = list;
 	}
 

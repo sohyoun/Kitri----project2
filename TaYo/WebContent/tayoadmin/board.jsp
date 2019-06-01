@@ -11,7 +11,7 @@
 			url : '${pageContext.request.contextPath}/memberlist',
 			method : 'post',
 			success : function(result) {
-				$("table#memberlist").html(result.trim());
+				$("#memberlist").html(result.trim());
 			}
 		});
 	});
@@ -70,7 +70,7 @@ th, td {
 		$(arr[0]).click(function() {
 			//console.log("click")
 			//alert("click")
-			location.href = '/TaYo/tayoadmin/boardresult.jsp';
+			location.href = '/TaYo/tayoadmin/boardListresult.jsp';
 		});
 
 		$(arr[1]).click(function() {
@@ -171,8 +171,8 @@ th, td {
 <!-- /btn-group -->
 <br />
 
-<!-- 테이블 영역  -->
-<div class="row">
+<!-- 게시판 테이블 영역  -->
+<div id = "boardlist" class="row">
 <div class="col-lg-1"></div>
 	<div class="col-lg-10">
 		<div class="table-responsive">
@@ -281,8 +281,6 @@ th, td {
 		</ul>
 	</div>
 
-
-
 </div>
 <div class="row">
 	<div class="col-lg-1"></div>
@@ -299,37 +297,9 @@ th, td {
 	<div class="col-lg-1"></div>
 </div>
 
-<!-- 유저 테이블  -->
-<div class="row">
-	<div class="col-lg-1"></div>
-	<div class="col-lg-10">
-		<form action="">
-			<input type="text" placeholder="Email Search" class="form-control" />
-			<input type="text" placeholder="Name Search" class="form-control" />
-			<ul class="list-group">
-				<li class="list-group-item"><span class="badge">14</span> 가입 회원
-					수</li>
-				<li class="list-group-item"><span class="badge">2</span> 탈퇴 회원
-					수</li>
-				<li class="list-group-item"><span class="badge">1</span> 블랙 회원
-					수</li>
-			</ul>
-		</form>
-		<!-- 회원테이블 시작 부분 -->
-			<div class="table-responsive">
-				<table id = "memberlist" class="table">
-					<thead>
-						<tr>
-							<th>Index</th><th>Email</th><th>name</th><th>Address</th><th>Address_detail</th><th>Gender</th><th>Grade</th>
-						</tr>
-					</thead>
-						<tbody>
-						</tbody>
-				</table>
-			</div> <!-- 회원 목록 테이블 끝나는 부분 -->
-		</div>
-	<div class="col-lg-1"></div>
-</div>
+	<!-- 유저 테이블  -->
+	<div id = "memberlist" class="row">
+	</div>
 
 <ul class="pagination">
 	<!--페이징 처리-->

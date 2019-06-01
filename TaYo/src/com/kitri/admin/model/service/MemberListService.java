@@ -15,4 +15,15 @@ public class MemberListService {
 	public List<MemberBoard> findByRows(int startRow, int endRow){
 		return AdminDAOImpl.getAdminDAO().selectByRows(startRow, endRow);
 	}
+	
+	//회원 목록 
+	public List<MemberBoard> memeberAll(){
+		return AdminDAOImpl.getAdminDAO().selectAll();
+	}
+	
+	//게시글 목록
+	public int getTotalCnt(){
+		return AdminDAOImpl.getAdminDAO().selectTotalCnt();
+	}
+	
 }
