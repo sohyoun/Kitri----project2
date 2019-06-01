@@ -8,8 +8,8 @@ $(function(){
 		var tripseq = $(this).find("button.tripseq").val();
 		$.ajax({
 			url : "${pageContext.request.contextPath}/togetherdetail",
-			method : "get",
-			data : 'tripseq=' + tripseq,
+			method:'post',
+			data:$(this).serialize(),
 			success : function(result){
 				$("section.banner_inner").html(result.trim());
 			}
