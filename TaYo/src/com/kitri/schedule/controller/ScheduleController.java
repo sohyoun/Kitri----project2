@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kitri.api.tour.service.TourResionCodeService;
 import com.kitri.dto.TripBasicDTO;
 import com.kitri.schedule.service.ScheduleService;
 import com.kitri.util.MoveURL;
@@ -20,9 +21,11 @@ public class ScheduleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private ScheduleBackendController backendController;
+	private TourResionCodeService codeService;
 	
 	public ScheduleController() {
 		backendController = new ScheduleBackendController();
+		codeService = new TourResionCodeService();
 	}
 	
 	
@@ -60,6 +63,9 @@ public class ScheduleController extends HttpServlet {
 			
 			MoveURL.forward(request, response, "/tayoschedule/savePlanResult.jsp");
 		} else if ("searchPlan".equals(act)) {
+			String areaCodes = codeService.getResionCode();
+			request.setAttribute("areaCodes", areaCodes);
+			
 			List<TripBasicDTO> list = backendController.searchPlan(request, response);
 			request.setAttribute("TripBasicDTO", list);
 			
