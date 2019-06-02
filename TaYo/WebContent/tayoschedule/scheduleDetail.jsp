@@ -248,7 +248,7 @@ $(function() {
 </section>
 
 <div style="margin: 2rem;" align="center">
-	<div class="container">
+	<div class="scheduleBody">
 		<div class="row">
 			<div id="daylist" class="col-sm-3">
 				<div id="controlday">
@@ -262,7 +262,7 @@ $(function() {
 				</ul>
 			</div>
 			
-			<div class="col-sm-5">
+			<div class="col-sm-4">
 				<div>
 					<div>
 						<table class="table table-sm" style="align: center;">
@@ -304,7 +304,7 @@ $(function() {
 				</div>
 			</div>
 			
-			<div class="col-sm-4">
+			<div class="col-sm-5">
 				<div id="map" style="width: 100%; height: 100%; min-width: 50%; min-height: 50%"></div>
 			</div>
 		</div>
