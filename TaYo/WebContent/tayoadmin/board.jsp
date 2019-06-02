@@ -138,55 +138,29 @@ th, td {
 			<strong>그룹 검색 목록을 선택하거나 검색어를 입력</strong>하여 <strong>여러 게시판을
 				동시에 검색</strong> 할 수 있습니다. <strong>그룹검색 시 데이터가 많은 경우</strong> 느려질 수 있습니다.
 		</div>
-		<button class="btn btn-primary">전체 목록</button>
-		<button class="btn btn-info">게시물 수</button>
-		<button class="btn btn-success disabled">건</button>
 		<div class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown">
-				그룹 (대분류) <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu">
-				<li><a href="#">나의 여행일정</a></li>
-				<li><a href="#">나의 함께타요</a></li>
-				<li><a href="#">마이페이지</a></li>
-			</ul>
-		</div>
-
-		<!-- /btn-group -->
-		<div class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown">
-				게시판 (중분류) <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu">
-				<li><a href="#">관광지추천</a></li>
-				<li><a href="#">여행지추천</a></li>
-				<li><a href="#">여행 일정추천</a></li>
-				<li><a href="<%=root%>/tayoschedule/schedule.jsp">일정만들기 </a></li>
-			</ul>
-		</div>
-
-		<div class="btn-group">
-			<button type="button" class="btn btn-info dropdown-toggle"
-				data-toggle="dropdown">
-				기능 (소분류) <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu">
-				<li><a href="#">공지</a></li>
-				<li><a href="#">신고</a></li>
-			</ul>
+			<form action="" method = "get" class = "form-inline my-2 my-lg-0">
+				<select name ="" class = "form-control mx-1 mt-2">
+					<option value = "일정">일정</option> 
+					<option value = "이름">함께타요</option> 
+				</select>
+				<select name ="" class = "form-control mx-1 mt-2">
+				
+					<option value = "관광지">관광지</option> 
+					<option value = "여행지">여행지</option> 
+				</select>
+				<select name ="" class = "form-control mx-1 mt-2">
+					<option value = "신고">신고</option> 
+					<option value = "공지">공지</option> 
+				</select>
+					<input type="text" name="search" placeholder="search" class="form-control mr-sm-2" />
+					<button id = "search" class="btn btn-info">검색</button>
+			</form>
 		</div>
 	</div>
 </div>
 
 <div class="col-lg-1"></div>
-<div class="row">
-	<input id="title" type="text" placeholder="title & contents" />
-	<button type ="submit" class = "btn btn-info">검색</button> 
-</div>
-<!-- 드롭다운 메뉴  -->
-<!-- /btn-group -->
 <br />
 
 <!-- 게시판 테이블 영역  -->
