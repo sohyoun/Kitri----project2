@@ -12,15 +12,7 @@
 		<c:set var="index" value="1" />
 		<c:forEach var="tripBasicDto" items="${requestScope.filteredList}">
 			<c:forEach var="tripDetailDto" items="${tripBasicDto.detailList}" varStatus="status">
-				<%--개수는 1부터 시작  개수: ${(status.count-1)%4}--%>
-				<%-- 				<c:choose> --%>
-				<%-- 					<c:when test="${(status.count-1)%4<=2 }"><!--0,1/  4,5--> --%>
-
-				<%-- 					</c:when> --%>
-				<%-- 					<c:otherwise><!--2,3/ 6,7  --> --%>
-				<!-- 						<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5"> -->
-				<%-- 					</c:otherwise> --%>
-				<%-- 				</c:choose> --%>
+				
 			<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5">
 				<div class="image-tour position-relative" >
 					<img src="/TaYo/images/p4.jpg" alt="" class="img-fluid">
@@ -46,11 +38,20 @@
 				
 				
 			</c:forEach>
-		</c:forEach>
-	</div>
+		</c:forEach><!-- end foreach--> 
 
-	
+	</div>
 </div>
+
+<%--개수는 1부터 시작  개수: ${(status.count-1)%4}--%>
+				<%-- 				<c:choose> --%>
+				<%-- 					<c:when test="${(status.count-1)%4<=2 }"><!--0,1/  4,5--> --%>
+
+				<%-- 					</c:when> --%>
+				<%-- 					<c:otherwise><!--2,3/ 6,7  --> --%>
+				<!-- 						<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5"> -->
+				<%-- 					</c:otherwise> --%>
+				<%-- 				</c:choose> --%>
 
 <%-- 	여행아이디: ${tripBasicDto.tripSeq}<br>
 	이메일: ${tripBasicDto.email}<br>

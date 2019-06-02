@@ -15,7 +15,7 @@
 				console.log(xmlDoc);
 				/* jquery*/
 				var xmlData = $(xml).find("item");//아이템 배열
-				for(var i =0;i<xmlData.length; i++){
+				for(var i =0; i < xmlData.length; i++){
 					if(i<5){ //항상보일 아이템  /* .h-100.pt-4 > table > tbody > tr:nth-child(2) > */
 						$('body > div.container  td.filter_body.si > div.allways_show').append(
 								'<button class="btn btn-light"><div data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</span></button>');
@@ -82,7 +82,7 @@
 				},
 				success : function(data) {
 					$('.filterResult').html(data);
-// 					console.log(data);
+					console.log(data);
 				},
 				error: function(err){
 					console.log("recomand call error");
@@ -155,7 +155,6 @@
 	
 	<!-- 필터결과 -->
 	<div class="filterResult">
-	
 	</div>
 		
 		<!--내용 -->
