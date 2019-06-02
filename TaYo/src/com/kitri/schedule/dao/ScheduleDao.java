@@ -146,7 +146,8 @@ public class ScheduleDao {
 				searchSQL.setLength(0);
 				searchSQL.append("SELECT trip_seq, trip_day, trip_order, place_name, loc_id, posx, posy ");
 				searchSQL.append("FROM trip_detail ");
-				searchSQL.append("WHERE trip_seq = ?");
+				searchSQL.append("WHERE trip_seq = ? ");
+				searchSQL.append("ORDER BY trip_day ASC, trip_order ASC");
 				
 				pstmt = conn.prepareStatement(searchSQL.toString());
 				

@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>	
+
+	<c:set var ="login" value = "${sessionScope.loginInfo}"></c:set>
+	
 <%
 	String root = request.getContextPath();
 %>
 <!DOCTYPE html>
-
 <html lang="ko">
 <head>
 <meta charset="utf-8">
@@ -15,8 +18,6 @@
 <link rel="stylesheet" type="text/css" href="resource/css/local.css" />
 <script type="text/javascript" src="resource/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src ="resource/bootstrap/js/bootstrap.js"></script>
-
-
 
 <!-- you need to include the shieldui css and js assets in order for the charts to work -->
 <link id="gridcss" rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/dark-bootstrap/all.min.css" />
@@ -70,10 +71,8 @@ body{
 						</ul></li>
 					<li class="dropdown user-dropdown"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"><i
-							class="fa fa-user"></i>Admin<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-							<li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+							class="fa fa-user"></i>관리자 : '${login}'님<b class="caret"></b></a>
+						<ul class="dropdown-menu"> 
 							<li class="divider"></li>
 							<li><a href="<%=root %>/index.jsp"><i class="fa fa-power-off"></i> Log Out</a></li>
 

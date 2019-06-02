@@ -15,5 +15,9 @@ public interface AdminDAO {
 	List<MemberBoard> selectByRows(int startRow, int endRow);
 
 	int selectTotalCnt();
+
+	int joindateTotalCnt();
+
+	int blackTotalCnt();
 	
 }

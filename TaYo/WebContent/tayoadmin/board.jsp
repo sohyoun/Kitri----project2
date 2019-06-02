@@ -5,18 +5,6 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <%@ include file="/tayoadmin/templet/header.jsp"%>
 <!-- 회원 테이블이 목록에 뜹니다.  -->
-<script>
-	$(function() {
-		$.ajax({
-			url : '${pageContext.request.contextPath}/memberlist',
-			method : 'post',
-			success : function(result) {
-				$("table#memberlist").html(result.trim());
-			}
-		});
-	});
-</script>
-
 <style>
 #title {
 	border-radius: 4px;
@@ -52,6 +40,35 @@ th, td {
 	padding: 0;
 }
 </style>
+<c:set var="page" value = "${requestScope.boardlist}"/>
+<script>
+	$(function() {
+		$.ajax({
+			url : '${pageContext.request.contextPath}/memberlist',
+			method : 'post',
+			success : function(result) {
+				$("#memberlist").html(result.trim());
+			}
+		});
+		
+		$("ul.pagination").click(function(){
+			var currentPage=$(this).attr("href");
+			alert(currentPage+" 페이지를 보여줍니다!!");
+		$.ajax({
+			url : '${pageContext.request.contextPath}/boardlist',
+			method : 'get',
+			data : 'currentPage=' + currentPage,
+			succes : function(result){
+				console.log("성공");
+				$("#memberlist").html(result.trim());
+			},
+			error : function(){
+				console.log("실패");
+			}
+		});
+	});		
+});
+</script>
 <script>
 	$(document).ready(function() { /*Handler For SelectAll Checkbox*/
 		$("#selectallchkbox").change(function() {
@@ -70,43 +87,44 @@ th, td {
 		$(arr[0]).click(function() {
 			//console.log("click")
 			//alert("click")
-			location.href = '/TaYo/tayoadmin/boardresult.jsp';
+			location.href = '/TaYo/tayoadmin/boardListresult.jsp';
 		});
 
 		$(arr[1]).click(function() {
 			//	console.log("삭제")
 				alert("삭제")
-			
-			
 		});
 	});
 </script>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+
+
+
+<!--   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Open modal
   </button>
 <div class="modal fade" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
       
-        <!-- Modal Header -->
+        Modal Header
         <div class="modal-header">
           <h4 class="modal-title">Modal Heading</h4>
           <button type="button" class="close" data-dismiss="modal">×</button>
         </div>
         
-        <!-- Modal body -->
+        Modal body
         <div class="modal-body">
           Modal body..
         </div>
         
-        <!-- Modal footer -->
+        Modal footer
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
         
       </div>
     </div>
-  </div>
+  </div> -->
 
 <div class="row">
 	<div class="col-lg-1"></div>
@@ -171,8 +189,8 @@ th, td {
 <!-- /btn-group -->
 <br />
 
-<!-- 테이블 영역  -->
-<div class="row">
+<!-- 게시판 테이블 영역  -->
+<div id = "boardlist" class="row">
 <div class="col-lg-1"></div>
 	<div class="col-lg-10">
 		<div class="table-responsive">
@@ -281,8 +299,6 @@ th, td {
 		</ul>
 	</div>
 
-
-
 </div>
 <div class="row">
 	<div class="col-lg-1"></div>
@@ -292,44 +308,15 @@ th, td {
 		</h1>
 		<div class="alert alert-dismissable alert-warning">
 			<button data-dismiss="alert" class="close" type="button">&times;</button>
-			Welcome to the admin dashboard!
+			회원 관리 게시판 입니다.
 		</div>
 
 	</div>
 	<div class="col-lg-1"></div>
 </div>
 
-<!-- 유저 테이블  -->
-<div class="row">
-	<div class="col-lg-1"></div>
-	<div class="col-lg-10">
-		<form action="">
-			<input type="text" placeholder="Email Search" class="form-control" />
-			<input type="text" placeholder="Name Search" class="form-control" />
-			<ul class="list-group">
-				<li class="list-group-item"><span class="badge">14</span> 가입 회원
-					수</li>
-				<li class="list-group-item"><span class="badge">2</span> 탈퇴 회원
-					수</li>
-				<li class="list-group-item"><span class="badge">1</span> 블랙 회원
-					수</li>
-			</ul>
-		</form>
-		<!-- 회원테이블 시작 부분 -->
-			<div class="table-responsive">
-				<table id = "memberlist" class="table">
-					<thead>
-						<tr>
-							<th>Index</th><th>Email</th><th>name</th><th>Address</th><th>Address_detail</th><th>Gender</th><th>Grade</th>
-						</tr>
-					</thead>
-						<tbody>
-						</tbody>
-				</table>
-			</div> <!-- 회원 목록 테이블 끝나는 부분 -->
-		</div>
-	<div class="col-lg-1"></div>
-</div>
+<!-- 유저 테이블  여기서 보여주는거임 -->
+<div id = "memberlist" class="row"></div>
 
 <ul class="pagination">
 	<!--페이징 처리-->

@@ -13,7 +13,7 @@
 			Source : "Direct",
 			Amount : 600,
 			Change : 53,
-			Percent : 23,
+			Percent : 23, 
 			Target : 600
 		}, {
 			Source : "Refer",

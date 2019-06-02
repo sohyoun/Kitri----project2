@@ -10,12 +10,6 @@ $(function(){
 			$("div.bestcontents").html(result.trim());
 		}
 	});
-	
-	
-	var planDiv = $("#tayowithschedule001");
-	$(planDiv).click(function(){
-		location.href="/TaYo/tayotogether/ttPlan.jsp";
-	});
 
 });
 

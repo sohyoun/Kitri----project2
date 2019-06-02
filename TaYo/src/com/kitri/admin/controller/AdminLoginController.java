@@ -5,11 +5,8 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
-import com.kitri.admin.model.AdminDto;
 import com.kitri.admin.model.service.AdminService;
 import com.kitri.dto.AdminDTO;
 
@@ -23,8 +20,8 @@ public class AdminLoginController extends HttpServlet {
 		adminService = new AdminService();
 	}
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//System.out.println("들어옴?여기 서블릿?");
 		//String root = request.getContextPath();
 		//System.out.println(root);
 		
@@ -32,15 +29,26 @@ public class AdminLoginController extends HttpServlet {
 		String pass = request.getParameter("pass");
 
 		AdminDTO login = adminService.login(email, pass);
+		HttpSession session = request.getSession();
+
+		session.removeAttribute("email");
+		//System.out.println(login.toString());
 		
-		//System.out.println(login.getAdminEmail());
-		request.setAttribute("loginInfo", login);
-		
-		String path = "/tayoadmin/index.jsp";
-		
-		RequestDispatcher rd = request.getRequestDispatcher(path);
-		rd.forward(request, response);
-		
+		if(login != null && pass.equals(login.getAdmin_pass())) {
+			System.out.println("로그인 성공이여요!!");
+			session.setAttribute("loginInfo", email);
+			String path = "/tayoadmin/index.jsp";
+			
+			RequestDispatcher rd = request.getRequestDispatcher(path);
+			rd.forward(request, response);
+			
+		} else {
+			System.out.println("로그인 실패했으니 그대로 있으소 !");
+			String path = "/index.jsp";
+			
+			RequestDispatcher rd = request.getRequestDispatcher(path);
+			rd.forward(request, response);
+		}
 	
 	}
 

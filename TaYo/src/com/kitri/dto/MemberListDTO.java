@@ -4,11 +4,11 @@ import java.util.List;
 
 public class MemberListDTO {
 	//자바빈 
-
+	//페이징 처리 하려면 필요한 DTO
+	private List<MemberBoard> list; // 회원목록
 	private int cntPage = 10;// 페이지별 목록 수
 	private int startRow = 1; // 시작 행
-	private int endRow = 1;
-	private List<MemberDetailDTO> list; // 회원목록
+	private int endRow = 1; // 끝 행 
 	private int totalPage = 1; // 총 페이지 수
 	private int totalCnt; // 총 게시글 수
 	private int cntPerPageGroup = 5;
@@ -81,11 +81,11 @@ public class MemberListDTO {
 		this.currentPage = currentPage;
 	}
 
-	public List<MemberDetailDTO> getList() {
+	public List<MemberBoard> getList() {
 		return list;
 	}
 
-	public void setList(List<MemberDetailDTO> list) {
+	public void setList(List<MemberBoard> list) {
 		this.list = list;
 	}
 
@@ -100,4 +100,14 @@ public class MemberListDTO {
 			endPage = totalPage;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "MemberListDTO [list=" + list + ", cntPage=" + cntPage + ", startRow=" + startRow + ", endRow=" + endRow
+				+ ", totalPage=" + totalPage + ", totalCnt=" + totalCnt + ", cntPerPageGroup=" + cntPerPageGroup
+				+ ", startPage=" + startPage + ", endPage=" + endPage + ", url=" + url + ", currentPage=" + currentPage
+				+ "]";
+	}
+	
+	
 }
