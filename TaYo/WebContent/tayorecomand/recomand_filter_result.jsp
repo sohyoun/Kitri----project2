@@ -17,21 +17,20 @@
 				<div class="image-tour position-relative" >
 					<img src="/TaYo/images/p4.jpg" alt="" class="img-fluid">
 					<p>
-						<span>56 <span class="fa fa-thumbs-up"> | 3726 <span class="fa fa-eye"></span>
+						<span>${tripBasicDto.likeCount} <span class="fa fa-thumbs-up"> | ${tripBasicDto.viewCount} <span class="fa fa-eye"></span>
 					</span></span></p>
 				</div>
 				<div class="package-info">
 					<h6 class="mt-1">
-						<span class="fa fa-map-marker mr-2"></span>제천
+						<span class="fa fa-map-marker mr-2"></span>${tripDetailDto.place_name}
 					</h6>
-					<h5 class="my-2">생애 첫 패러글라이딩</h5>
-					<p class="">나홀로여행</p>
+					<h5 class="my-2">${tripBasicDto.tripTitle}</h5>
+					<p class="">${tripBasicDto.tripTheme}</p>
 					<ul class="listing mt-3">
-						<li><span class="fa fa-clock-o mr-2"></span><span>2019.04.19
-								(1)</span></li>
+						<li><span class="fa fa-clock-o mr-2"></span><span>${tripBasicDto.startDate} ~ ${tripBasicDto.endDate}</span></li>
 					</ul>
 					<h6 class="mt-1">
-						<span class="fa fa-user-circle"> lovetayo 
+						<span class="fa fa-user-circle"> ${tripBasicDto.email}
 					</span></h6>
 				</div>
 			</div>
@@ -58,6 +57,7 @@
 	여행이름: ${tripBasicDto.tripTitle}<br>
 	여행테마: ${tripBasicDto.tripTheme}<br>
 	여행시즌: ${tripBasicDto.tripSeason}<br>
+	시작일: ${tripBasicDto.startDate}<br>
 	종료일: ${tripBasicDto.endDate}<br>
 	조회수: ${tripBasicDto.viewCount}<br>
 	추천수: ${tripBasicDto.likeCount}<br>
@@ -67,10 +67,10 @@
 <%-- 순서: ${tripDetailDto.trip_order}<br>
 			일자: ${tripDetailDto.trip_day}<br>
 			여행id: ${tripDetailDto.trip_seq}<br>
-			완료여부: ${tripDetailDto.place_name}<br>
-			완료여부: ${tripDetailDto.loc_id}<br>
-			완료여부: ${tripDetailDto.image}<br>
-			완료여부: ${tripDetailDto.detail_title}<br>
+			장소이름: ${tripDetailDto.place_name}<br>
+			장소코드: ${tripDetailDto.loc_id}<br>
+			이미지: ${tripDetailDto.image}<br>
+			상세제목: ${tripDetailDto.detail_title}<br>
 			완료여부: ${tripDetailDto.detail_content}<br>
 			완료여부: ${tripDetailDto.posX}<br>
 			완료여부: ${tripDetailDto.posY}<br> --%>

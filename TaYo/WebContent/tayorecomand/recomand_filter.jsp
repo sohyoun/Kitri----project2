@@ -126,11 +126,11 @@
 		<tr>
 			<td class="filter_title">여행기간</td>
 			<td class="filter_body" colspan="2">
-				<button class="btn btn-light"> <div data-type="day" data-value="1">1-3일</div></button>
-				<button class="btn btn-light"> <div data-type="day" data-value="2">4-6일</div></button>
-				<button class="btn btn-light"> <div data-type="day" data-value="3">7-10일</div></button>
-				<button class="btn btn-light"> <div data-type="day" data-value="4">11-15일</div></button>
-				<button class="btn btn-light"> <div data-type="day" data-value="5">15일 이상</div></button>
+				<button class="btn btn-light"> <div data-type="day" data-value="A">1-3일</div></button>
+				<button class="btn btn-light"> <div data-type="day" data-value="B">4-6일</div></button>
+				<button class="btn btn-light"> <div data-type="day" data-value="C">7-10일</div></button>
+				<button class="btn btn-light"> <div data-type="day" data-value="D">11-15일</div></button>
+				<button class="btn btn-light"> <div data-type="day" data-value="E">15일 이상</div></button>
 			</td>
 		</tr>
 		<tr>

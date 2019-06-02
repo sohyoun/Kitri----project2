@@ -49,8 +49,10 @@ public class RecomandServlet extends HttpServlet {
 			String theme = (String) jsonObj.get("theme");
 			String city = (String) jsonObj.get("city");
 			String day = (String) jsonObj.get("day");
+			int start_length = (int) jsonObj.get("start_length");
+			int end_length = (int) jsonObj.get("end_length");
 //			System.out.println("RecomandServlet "+ season +" "+ theme+" "+city+" "+day);
-			List<TripBasicDTO> list =TripBasicDao.getInstance().select(season, theme, city, day);
+			List<TripBasicDTO> list =TripBasicDao.getInstance().select(season, theme, city, start_length, end_length);
 			request.setAttribute("filteredList", list);
 			
 		} catch (ParseException e) {
@@ -60,6 +62,7 @@ public class RecomandServlet extends HttpServlet {
 		List<TripBasicDTO> list = TripBasicDao.getInstance().selectAll();
 		System.out.println("RecomandServlet listSize: " +list.size());
 		request.setAttribute("filteredList", list);
+		//결과 출력
 		String path = "/tayorecomand/recomand_filter_result.jsp";
 		MoveURL.forward(request, response, path);
 	}
