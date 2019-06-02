@@ -1,6 +1,7 @@
 package com.kitri.schedule.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kitri.api.tour.service.TourResionCodeService;
+import com.kitri.dto.TripBasicDTO;
 import com.kitri.schedule.service.ScheduleService;
 import com.kitri.util.MoveURL;
 import com.kitri.util.SiteContance;
@@ -18,9 +21,11 @@ public class ScheduleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private ScheduleBackendController backendController;
+	private TourResionCodeService codeService;
 	
 	public ScheduleController() {
 		backendController = new ScheduleBackendController();
+		codeService = new TourResionCodeService();
 	}
 	
 	
@@ -46,9 +51,25 @@ public class ScheduleController extends HttpServlet {
 			
 			MoveURL.forward(request, response, "/tayoschedule/searchTourResult.jsp");
 		} else if ("savePlan".equals(act)) {
-			int result = backendController.temporarySavePlan(request, response);
+			int result = backendController.savePlan(request, response);
+			String notice = "";
 			
-			MoveURL.redirect(request, response, "/tayoschedule/planTemplate.jsp");
+			if (result != 0) {
+				notice = "성공하였습니다.";
+			} else {
+				notice = "실패하였습니다.";
+			}
+			request.setAttribute("notice", notice);
+			
+			MoveURL.forward(request, response, "/tayoschedule/savePlanResult.jsp");
+		} else if ("searchPlan".equals(act)) {
+			String areaCodes = codeService.getResionCode();
+			request.setAttribute("areaCodes", areaCodes);
+			
+			List<TripBasicDTO> list = backendController.searchPlan(request, response);
+			request.setAttribute("TripBasicDTO", list);
+			
+			MoveURL.forward(request, response, "/tayoschedule/searchPlanResult.jsp");
 		}
 	}
 	

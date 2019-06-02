@@ -36,7 +36,8 @@ public class RecomandServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String path = "/tayorecomand/recomand_filter_result.jsp";
+		MoveURL.forward(request, response, path);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

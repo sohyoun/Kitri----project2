@@ -3,6 +3,7 @@ package com.kitri.dto;
 import java.util.List;
 
 public class MemberDTO {
+	//회원 DTO
 	private String email;	//이메일
 	private String name;	//이름
 	private String pass;	//비밀번호

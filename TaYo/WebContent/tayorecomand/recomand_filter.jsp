@@ -81,7 +81,8 @@
 					jsonData : JSON.stringify(data)
 				},
 				success : function(data) {
-					console.log(data);
+					$('.filterResult').html(data);
+// 					console.log(data);
 				},
 				error: function(err){
 					console.log("recomand call error");
@@ -151,6 +152,11 @@
 			</td>
 		</tr>
 	</table><!-- 필터 -->
+	
+	<!-- 필터결과 -->
+	<div class="filterResult">
+	
+	</div>
 		
 		<!--내용 -->
 </div> <!-- container -->

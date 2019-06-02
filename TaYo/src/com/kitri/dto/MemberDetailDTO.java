@@ -3,6 +3,7 @@ package com.kitri.dto;
 import java.util.Date;
 
 public class MemberDetailDTO extends MemberDTO{
+	//회원 상세 DTO
 	private String email;			//이메일
 	private String address;			//주소
 	private String addressDetail;	//상세주소
@@ -13,6 +14,7 @@ public class MemberDetailDTO extends MemberDTO{
 	public MemberDetailDTO() {
 		super();
 	}
+	
 	public MemberDetailDTO(String email, String address, String addressDetail, Date joindate, Date outdate) {
 		super();
 		this.email = email;

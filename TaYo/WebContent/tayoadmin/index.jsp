@@ -13,7 +13,7 @@
 			Source : "Direct",
 			Amount : 600,
 			Change : 53,
-			Percent : 23,
+			Percent : 23, 
 			Target : 600
 		}, {
 			Source : "Refer",
@@ -206,7 +206,7 @@
 								<i class="fa fa-phone"></i> Call
 							</button>
 							<button class="btn btn-xs btn-warning">
-								<i class="fa fa-envelope-o"></i> Message
+						-		<i class="fa fa-envelope-o"></i> Message
 							</button>
 						</div>
 					</div></li>

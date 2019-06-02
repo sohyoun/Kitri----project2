@@ -32,7 +32,7 @@ public class ScheduleBackendController {
 		return service.getKeywordSearch(location, place);
 	}
 	
-	public int temporarySavePlan(HttpServletRequest request, HttpServletResponse response) {
+	public int savePlan(HttpServletRequest request, HttpServletResponse response) {
 		StringTokenizer st;
 		List<TripDetailDTO> list = new ArrayList<TripDetailDTO>();
 		
@@ -83,5 +83,13 @@ public class ScheduleBackendController {
 		basicDTO.setDetailList(list);
 		
 		return service.insert(basicDTO);
+	}
+
+
+	public List<TripBasicDTO> searchPlan(HttpServletRequest request, HttpServletResponse response) {
+		String type = request.getParameter("type");
+		String email = request.getParameter("email");
+		
+		return service.searchPlan(email, type);
 	}
 }

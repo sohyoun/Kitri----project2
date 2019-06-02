@@ -24,24 +24,20 @@ public class TogetherDAO {
 			
 			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "project2", "project2");
 			
-			String selectPlanSQL = "select tt.trip_seq, tt.trip_num, tt.now_num, "
-					+ "tb.email, tb.trip_title, tb.start_date, tb.end_date, tb.viewCount, tb.likeCount, l.loc_name \r\n" + 
-					"from tt_leader tt, trip_basic tb, trip_detail td, place p, location l " + 
+			String selectPlanSQL = "select tt.trip_seq, tt.now_num, tb.trip_num, tb.email, tb.trip_title, tb.start_date, tb.end_date, tb.viewCount, tb.likeCount " + 
+					"from tt_leader tt, trip_basic tb " + 
 					"where tt.trip_seq = tb.trip_seq " + 
-					"and tb.trip_seq = td.trip_seq " + 
-					"and p.place_id = td.place_id " + 
-					"and p.loc_id = l.loc_id " + 
-					"and tb.trip_theme = '함께타요' " +
-					"order by tt.now_num/tt.trip_num";
+					"and tb.trip_theme = '함께타요' " + 
+					"order by tt.now_num/tb.trip_num";
 			
 			pstmt = con.prepareStatement(selectPlanSQL);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				TTLeaderDTO ttLeaderDTO = new TTLeaderDTO();
 				ttLeaderDTO.setTripSeq(rs.getInt("trip_seq"));
-				ttLeaderDTO.setTripNum(rs.getInt("trip_num"));
 				ttLeaderDTO.setNowNum(rs.getInt("now_num"));
-
+				
+				ttLeaderDTO.tripBasicDTO.setTripNum(rs.getInt("trip_num"));
 				ttLeaderDTO.tripBasicDTO.setEmail(rs.getString("email"));
 				ttLeaderDTO.tripBasicDTO.setTripTitle(rs.getString("trip_title"));
 				ttLeaderDTO.tripBasicDTO.setStartDate(rs.getDate("start_date"));
@@ -49,7 +45,6 @@ public class TogetherDAO {
 				ttLeaderDTO.tripBasicDTO.setViewCount(rs.getInt("viewCount"));
 				ttLeaderDTO.tripBasicDTO.setLikeCount(rs.getInt("likeCount"));
 				
-//				ttLeaderDTO.tripBasicDTO.tripDetailDTO.placeDTO.locationDTO.setLocName(rs.getString("loc_name"));
 				
 				list.add(ttLeaderDTO);
 			}
@@ -71,7 +66,7 @@ public class TogetherDAO {
 		List<TTLeaderDTO> list = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		ResultSet rs = null; 
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -79,14 +74,11 @@ public class TogetherDAO {
 			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "project2", "project2");
 			
 			String selectbestSQL = "select rownum, t.* " + 
-					"from(select tt.trip_seq, tt.trip_num, tt.now_num, tb.email, tb.trip_title, tb.start_date, tb.end_date, tb.viewCount, tb.likeCount, l.loc_name " + 
-					"from tt_leader tt, trip_basic tb, trip_detail td, place p, location l " + 
+					"from(select tt.trip_seq, tt.now_num, tb.trip_num, tb.email, tb.trip_title, tb.start_date, tb.end_date, tb.viewCount, tb.likeCount " + 
+					"from tt_leader tt, trip_basic tb " + 
 					"where tt.trip_seq = tb.trip_seq " + 
-					"and tb.trip_seq = td.trip_seq " + 
-					"and p.place_id = td.place_id " + 
-					"and p.loc_id = l.loc_id " + 
 					"and tb.trip_theme = '함께타요' " + 
-					"order by tt.now_num/tt.trip_num desc) t " + 
+					"order by tt.now_num/tb.trip_num desc) t " + 
 					"where rownum <= 4";  
 			
 			pstmt = con.prepareStatement(selectbestSQL);
@@ -95,17 +87,16 @@ public class TogetherDAO {
 				TTLeaderDTO ttLeaderDTO = new TTLeaderDTO();
 				
 				ttLeaderDTO.setTripSeq(rs.getInt("trip_seq"));
-				ttLeaderDTO.setTripNum(rs.getInt("trip_num"));
 				ttLeaderDTO.setNowNum(rs.getInt("now_num"));
-
+				
+				ttLeaderDTO.tripBasicDTO.setTripNum(rs.getInt("trip_num"));
 				ttLeaderDTO.tripBasicDTO.setEmail(rs.getString("email"));
 				ttLeaderDTO.tripBasicDTO.setTripTitle(rs.getString("trip_title"));
 				ttLeaderDTO.tripBasicDTO.setStartDate(rs.getDate("start_date"));
 				ttLeaderDTO.tripBasicDTO.setEndDate(rs.getDate("end_date"));
 				ttLeaderDTO.tripBasicDTO.setViewCount(rs.getInt("viewCount"));
 				ttLeaderDTO.tripBasicDTO.setLikeCount(rs.getInt("likeCount"));
-				
-//				ttLeaderDTO.tripBasicDTO.tripDetailDTO.placeDTO.locationDTO.setLocName(rs.getString("loc_name"));  
+				 
 				
 				list.add(ttLeaderDTO);
 			}
@@ -121,5 +112,9 @@ public class TogetherDAO {
 	
 		return list;
 	}
+	
+	//함께타요 일정 상세 페이지 보여주기
+
+
 	
 }
