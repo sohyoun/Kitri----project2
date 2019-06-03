@@ -19,5 +19,7 @@ public interface AdminDAO {
 	int joindateTotalCnt();
 
 	int blackTotalCnt();
+
+	List<MemberBoard> memberSearch(String searchType, String keyword);
 	
 }

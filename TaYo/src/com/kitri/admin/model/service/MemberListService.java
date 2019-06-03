@@ -4,12 +4,12 @@ import java.util.List;
 
 import com.kitri.admin.model.dao.AdminDAOImpl;
 import com.kitri.dto.MemberBoard;
-import com.kitri.dto.MemberDetailDTO;
 
 public class MemberListService {
 
 	
 	public MemberListService() {
+		
 	}
 	
 	//회원목록테이블 전체목록 출력
@@ -35,6 +35,12 @@ public class MemberListService {
 	//블랙회원 수 
 	public int getBlackCnt() {
 		return AdminDAOImpl.getAdminDAO().blackTotalCnt();
+	}
+
+	//검색된 회원 테이블 출력 
+	public List<MemberBoard> getMemberSearch(String searchType, String keyword) {
+		return AdminDAOImpl.getAdminDAO().memberSearch(searchType, keyword);
+		
 	}
 	
 	

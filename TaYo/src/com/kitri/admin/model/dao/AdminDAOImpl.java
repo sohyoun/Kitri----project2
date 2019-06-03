@@ -350,7 +350,61 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return blackTotalCnt;
 	}
+
+	@Override
+	public List<MemberBoard> memberSearch(String searchType, String keyword) {
+		
+		List<MemberBoard> list = new ArrayList<MemberBoard>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = com.kitri.util.DBConnection.makeConnection();
+			
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("SELECT * " +  
+					   "FROM memberlist ");  
+			
+				if(searchType =="이메일") {
+					sql.append("WHERE " + searchType + "like '%" + keyword + "%' ");
+				}else if(searchType == "이름") {
+					sql.append("WHERE " + searchType + "like '%" + keyword + "%' ");
+				}else if(searchType == "성별") {
+					sql.append("WHERE " + searchType + "like '%" + keyword + "%' ");
+				}
+				
+			pstmt = conn.prepareStatement(sql.toString());
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				MemberBoard memberBoard = new MemberBoard();
+				
+				memberBoard.setBoard_seq(rs.getInt("board_seq"));
+				memberBoard.setEmail(rs.getString("email"));
+				memberBoard.setName(rs.getString("name"));
+				memberBoard.setAge(rs.getInt("age"));
+				memberBoard.setAddress(rs.getString("address"));
+				memberBoard.setAddressDetail(rs.getString("address_detail"));
+				memberBoard.setJoindate(rs.getDate("joindate"));
+				memberBoard.setOutdate(rs.getDate("outdate"));
+				memberBoard.setGender(rs.getString("gender"));
+				memberBoard.setGrade(rs.getInt("grade"));
+				
+				list.add(memberBoard);			
+			}
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBClose.close(conn, pstmt, rs);
+		}
+
+	return list;
 	
-	
-	
+	}
 }

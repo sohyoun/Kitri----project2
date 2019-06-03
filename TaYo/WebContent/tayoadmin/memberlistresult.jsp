@@ -6,40 +6,50 @@
 
 <script>
 	$(function() {
-
-/* 		var $select = $("select[name=select]").val();
-		//alert($select)
-		$.ajax({
-			url : ''
-		}); */
-
+		$("form#memberInfo > button#btSearch").click(function(){
+			//alert("버튼을 클릭했습니다.")
+			var url = "${pageContext.request.contextPath}/tayoadmin/board.jsp";
+			var searchType = $("#searchType").val();
+			var keyword = $("#keyword").val(); 
+			
+			$.ajax({
+				url : '${pageContext.request.contextPath}/searchInfo',
+				method : 'get',
+				data : 'searchType=' + searchType +'&keyword=' + keyword,
+				success : function(result){
+					if(searchType == null || keyword == null){
+						alert("다시 입력 바랍니다용!")
+					}else{
+						$("#memberlist").html(result.trim());
+					}
+					//alert(result)
+				},
+				error : function(){
+					alert("실패")
+				}
+			});
+		});
 	});
 </script>
 
 <c:set var="boardlist" value="${requestScope.boardlist}" />
 <c:set var="pagination" value="${requestScope.pagination}" />
-
-<script>
-	//alert("${requestScope.memberlist}")
-	//alert("${requestScope.boardlist}")
-</script>
-
 <c:set var="joincount" value="${requestScope.joindateTotalCnt}" />
-<c:set var="blacklist" value="${requestScope.backTotalCnt}"></c:set>
+<c:set var="blacklist" value="${requestScope.backTotalCnt}"/>
 
 <div class="row">
 	<!-- 유저 테이블 시작 -->
 	<div class="col-lg-1"></div>
 	<div class="col-lg-10">
-		<form action="" method="get" class="form-inline my-2 my-lg-0">
-			<select name="select" class="form-control mx-1 mt-2">
-				<option value="전체">전체</option>
-				<option value="이메일">이메일</option>
-				<option value="이름">이름</option>
-				<option value="성별">성별</option>
-			</select> <input type="text" name="search" placeholder="Search"
+		<form id = "memberInfo" action="" method="get" class="form-inline my-2 my-lg-0">
+			<select name="searchType" id= "searchType" class="form-control mx-1 mt-2">
+				<option value="all">전체</option>
+				<option value="email">이메일</option>
+				<option value="name">이름</option>
+				<option value="gender">성별</option>
+			</select> <input type="text" name="keyword" id="keyword" placeholder="Search"
 				class="form-control mr-sm-2" />
-			<button id="search" class="btn btn-info">검색</button>
+			<button id="btSearch" class="btn btn-info">검색</button>
 			<ul class="list-group">
 				<li class="list-group-item"><span class="badge">${blacklist}</span>
 					블랙 회원 수</li>
@@ -86,30 +96,26 @@
 			</table>
 			<div class="col-lg-1"></div>
 		</div>
-		<script>
-			alert("${pagination.startPage}")
-			alert("${pagination.endPage}")
-		</script>
-<ul class="pagination">
-			<!--페이징 처리-->
-			<c:if test="${pagination.startPage > 1}">
-				<li class="disabled"><a href="${pagination.startPage - 1}">&laquo;</a></li>
-			</c:if>
-			<c:forEach begin="${pagination.startPage}"
-				end="${pagination.endPage}" var="i">
-				<c:choose>
-					<c:when test="${pagination.currentPage == i}">
-						<li class="active">${i}</li>
-					</c:when>
-					<c:otherwise>
-						<li><a href="${i}">${i}</a></li>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-			<c:if test="${pagination.totalPage > pagination.endPage }">
-				<li><a href="${pagination.endPage + 1 }"></a>다음</li>
-			</c:if>
-</ul> 
+<!--페이징 처리-->
+			<ul class="pagination">
+				<c:if test="${pagination.startPage > 1}">
+					<li class="disabled"><a href="${pagination.startPage - 1}">&laquo;</a></li>
+				</c:if>
+				<c:forEach begin="${pagination.startPage}"
+					end="${pagination.endPage}" var="i">
+					<c:choose>
+						<c:when test="${pagination.currentPage == i}">
+							<li class="active">${i}</li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="${i}">${i}</a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:if test="${pagination.totalPage > pagination.endPage }">
+					<li><a href="${pagination.endPage + 1 }">&raquo;</a></li>
+				</c:if>
+			</ul> 
 	</div>
 </div>
 <!-- 유저 테이블 끗 -->
