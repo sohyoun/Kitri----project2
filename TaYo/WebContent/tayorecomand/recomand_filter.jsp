@@ -35,11 +35,20 @@
 		$(document).on("click", ".filter_body.si button",function() {			
 			addFilterBtn(this);//필터 버튼  추가		
 		});
-
+		
 		//도시 외 아이템들 이벤트 추가
 		$('div.container> table > tbody > tr button').
 		click(function() {
 			addFilterBtn(this);//필터 버튼  추가
+		});
+		
+		//목차 버튼 추가
+		$(document).on("click", "div.mokcha > a",function() {
+			var mokcha =$(this).html();
+			console.log(mokcha);
+			//필터 안의 값들 출력
+			outFilter(mokcha);
+			return false;
 		});
 		
 		//필터 버튼 추가
@@ -63,9 +72,12 @@
 			outFilter();
 		}//end setFilterBtnEvent
 		
-		function outFilter(){
+		function outFilter(mokcha){
+			console.log('mokcha:' +mokcha);
+			
 			//ajax에서는 planobject 전달 가능
 			var data = {};
+			data['current_page']=mokcha;
 			//필터 안의 값들 출력
 			var filterArr= filterbody.children();	
 			for(var i =0; i<filterArr.length;i++){
@@ -82,22 +94,22 @@
 					data[key] = value;
 				}
 			}
-			console.log('data'+data);
-			console.log('json'+JSON.stringify(data));
+// 			console.log('data'+data);
+// 			console.log('json'+JSON.stringify(data));
 			//필터값에 대한 데이터리스트 갱신
 			$.ajax({
 				url : "${pageContext.request.contextPath}/recomand",
-				type : 'post',
+				type : 'get',
 				data: {
 					jsonData : JSON.stringify(data)
 				},
 				success : function(data) {
 					$('.filterResult').html(data);
-					console.log(data);
+// 					console.log(data);
 				},
 				error: function(err){
 					console.log("recomand call error");
-					console.log(err);
+// 					console.log(err);
 				}				
 			});
 		}//end outFilter
