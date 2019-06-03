@@ -152,6 +152,7 @@ public class TripBasicDao {
 		return null;
 	}
 
+	//TODO 개수 관리 필요
 	public List<TripBasicDTO> select(String season, String theme, String city,int start_length, int end_length) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -160,11 +161,11 @@ public class TripBasicDao {
 		List<TripBasicDTO> basiclist = new ArrayList<TripBasicDTO>();
 		try {
 			conn = DBConnection.makeConnection();
-			String sql = "select trip_seq, email, trip_title, trip_theme, trip_season, trip_num, start_date, end_date, viewcount, likeCount, lastupdate, isComplete,\n" + 
-					"					trip_seq, place_name, loc_id , trip_order, trip_day, image, detail_title, detail_content, posx, posy\n" + 
-					"					from trip_basic join trip_detail using(trip_seq)\n" + 
-					"					where trip_season = ? or trip_theme = ? or place_name = ? or\n" + 
-					"					((end_date-start_date)>= ? and (end_date-start_date)<=?)"; 
+			String sql = "select trip_seq, email, trip_title, trip_theme, trip_season, trip_num, start_date, end_date, viewCount, likeCount, lastupdate, isComplete,\n" + 
+					"										trip_seq, place_name, loc_id, trip_seq, trip_order, trip_day, image, detail_title, detail_content, posx, posy\n" + 
+					"										from trip_basic join trip_detail using(trip_seq)\n" + 
+					"										where trip_season = ? or trip_theme = ? or place_name = ? and\n" + 
+					"										((end_date-start_date)>= ? and (end_date-start_date)<=?)"; 
 		
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, season);
@@ -199,11 +200,62 @@ public class TripBasicDao {
 		}
 		return basiclist;
 	}
+	public List<TripBasicDTO> select(String season, String theme, String city,int start_length, int end_length, int startRow, int endRow) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
+		List<TripBasicDTO> basiclist = new ArrayList<TripBasicDTO>();
+		try {
+			conn = DBConnection.makeConnection();
+			String sql = "select  *\n" + 
+					"from (select rownum r ,trip_seq, email, trip_title, trip_theme, trip_season, trip_num, start_date, end_date, viewCount, likeCount, lastupdate, isComplete,\n" + 
+					"										 place_name, loc_id,  trip_order, trip_day, image, detail_title, detail_content, posx, posy\n" + 
+					"										from trip_basic join trip_detail using(trip_seq)\n" + 
+					"										where trip_season = ? or trip_theme = ? or place_name = ? and\n" + 
+					"										((end_date-start_date)>= ? and (end_date-start_date)<=?))  \n" + 
+					"where r between ? and ?"; 
+		
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, season);
+			pstmt.setString(2, theme);
+			pstmt.setString(3, city);
+			pstmt.setInt(4, start_length);
+			pstmt.setInt(5, end_length);
+			pstmt.setInt(6, startRow);
+			pstmt.setInt(7, endRow);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				int trip_seq = rs.getInt("trip_seq");
+				String email = rs.getString("email");
+				String tripTitle = rs.getString("trip_title");
+				String tripTheme = rs.getString("trip_theme");
+				String tripSeason = rs.getString("trip_season");
+				int tripNum = rs.getInt("trip_num");
+				Date startDate = rs.getDate("start_date");
+				Date endDate = rs.getDate("end_date");
+				int viewCount = rs.getInt("viewcount");
+				int likeCount = rs.getInt("likecount");
+				Date lastUpDate = rs.getDate("lastUpDate");
+				String isComplete = rs.getString("isComplete");
+
+				
+				List<TripDetailDTO> detailList = TripDetailDao.getInstance().select(trip_seq);
+				TripBasicDTO dto = new TripBasicDTO(trip_seq, email, tripTitle, tripTheme, tripSeason, tripNum,
+						startDate, endDate, viewCount, likeCount, lastUpDate, isComplete, detailList);
+				basiclist.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return basiclist;
+	
+	}
 	public static void main(String[] args) {
 
 //		List<TripBasicDTO> basicList = TripBasicDao.getInstance().selectAll();
-		List<TripBasicDTO> basicList = TripBasicDao.getInstance().select("여름", null, null, 0, 0);
+		List<TripBasicDTO> basicList = TripBasicDao.getInstance().select("여름", null, null, 0, 0,1,5);
 
 		for (TripBasicDTO basicDto : basicList) {
 			System.out.println("====================");
@@ -212,12 +264,14 @@ public class TripBasicDao {
 			for (TripDetailDTO detailDto : detailList) {
 				System.out.println(detailDto.toString());
 			}
-
 			System.out.println("====================");
 		}
-		
-		
-
 	}// end main
+
+	
+
+	public int selectTotalCnt() {
+		return 0;
+	}
 
 }

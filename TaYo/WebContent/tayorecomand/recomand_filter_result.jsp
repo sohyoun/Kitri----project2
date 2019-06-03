@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:set var="bean" scope="application" value="${requestScope.pagebean}"></c:set>
+<c:set var="jsonData" scope="request" value="${requestScope.jsonStr}"></c:set>
 
 <!-- 여행일정 -->
 <div class="container mt-3">
 	<h3 class="heading text-capitalize text-center">베스트 여행일정</h3>
 	<div class="row">
-
 		<c:set var="index" value="1" />
-		<c:forEach var="tripBasicDto" items="${requestScope.filteredList}">
+		<c:forEach var="tripBasicDto" items="${requestScope.pagebean.list}">
 			<c:forEach var="tripDetailDto" items="${tripBasicDto.detailList}" varStatus="status">
 				
 			<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5">
@@ -36,6 +37,41 @@
 		</c:forEach><!-- end foreach--> 
 	</div>
 </div>
+
+
+
+<div class="mokcha" style="text-align: center">
+<!-- 	기호는 유니코드로 변경하자  -->
+	<c:if test="${(bean.startPage) != 1}">
+		<a href="${pageContext.request.contextPath}/recomand?currentPage=${bean.startPage-1}"><button class="left">◀</button></a>
+	</c:if>
+<!-- 	todo jsonData 필터 값 유지 시켜야한다. -->
+	<c:forEach var="index" begin="${bean.startPage}" end="${bean.endPage}" step="1" >
+		<a href="${pageContext.request.contextPath}/recomand?currentPage=${index}">${index}</a>
+	</c:forEach>
+	<c:if test="${(bean.endPage) !=bean.totalPage}">
+		<a href="${pageContext.request.contextPath}/recomand?currentPage=${bean.endPage+1}"><button class="right">▶</button></a>
+	</c:if>
+</div>
+
+jsonData: ${requestScope.jsonStr}
+currentPage : ${requestScope.bean.currentPage}	
+startRow :${requestScope.pagebean.startRow}
+endRow :${requestScope.pagebean.endRow}
+totalPage :${requestScope.pagebean.totalPage}
+jsonStr :${requestScope.jsonStr}
+
+	<%-- private int cntPerPage = 10; // 페이지별 보여줄 목록수
+	private int startRow = 1; // 시작행
+	private int endRow = 1; // 끝행
+	private List<T> list; // 목록
+	private int totalPage = 1; // 총페이지수
+	private int totalCnt; // 총게시글 수
+	private int cntPerPageGroup = 3; // 페이지그룹에 보여줄 페이지수
+	private int startPage;// 페이지 그룹의 시작페이지
+	private int endPage;// 페이지 그룹의 끝페이지
+	private int currentPage;// 현재 페이지
+	private String url = "";// 페이지링크 클릭시 요청할 url --%>
 
 <%--개수는 1부터 시작  개수: ${(status.count-1)%4}--%>
 				<%-- 				<c:choose> --%>
