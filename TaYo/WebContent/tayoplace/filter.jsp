@@ -15,6 +15,8 @@
 				console.log(xml);
 				/* jquery*/
 				var xmlData = $(xml).find("item");//아이템 배열
+				
+		
 				for(var i =0;i<xmlData.length; i++){
 					if(i<5){ //항상보일 아이템	
 						$('#destinations > div > div.container.h-100.pt-3 > table > tbody > tr:nth-child(1) > td.filter_body.si > div.allways_show').append(
