@@ -41,7 +41,7 @@ public class AdminDAOImpl implements AdminDAO {
 	// DB 연결
 		try {
 			
-			conn = com.TEST_DB.DBConnection.makeConnection();
+			conn = com.kitri.util.DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 
@@ -121,8 +121,8 @@ public class AdminDAOImpl implements AdminDAO {
 		//System.out.println(adminDaoImpl.selectByEmail(admin_email));
 		
 		//회원목록테이블 SELECT ALL 
-		//AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
-		//System.out.println("memberlist == " +adminDAOImpl.selectAll());
+		AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
+		System.out.println("memberlist == " +adminDAOImpl.selectAll());
 
 		//회원목록테이블 가입 수 반환하기
 		//AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
@@ -135,10 +135,10 @@ public class AdminDAOImpl implements AdminDAO {
 		//System.out.println(count);
 		
 		//회원목록테이블 페이징 개수 구하기 
-		AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
-		int startRow = 1;
-		int endRow = 10;
-		System.out.println(adminDAOImpl.selectByRows(startRow, endRow));
+//		AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
+//		int startRow = 1;
+//		int endRow = 10;
+//		System.out.println(adminDAOImpl.selectByRows(startRow, endRow));
 		
 	}
 	
@@ -153,7 +153,7 @@ public class AdminDAOImpl implements AdminDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = com.TEST_DB.DBConnection.makeConnection();
+			conn = com.kitri.util.DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 			
@@ -169,7 +169,6 @@ public class AdminDAOImpl implements AdminDAO {
 				MemberBoard memberBoard = new MemberBoard();
 				
 				memberBoard.setBoard_seq(rs.getInt("board_seq"));
-				memberBoard.setParent_seq(rs.getInt("parent_seq"));
 				memberBoard.setEmail(rs.getString("email"));
 				memberBoard.setName(rs.getString("name"));
 				memberBoard.setAge(rs.getInt("age"));
@@ -186,7 +185,7 @@ public class AdminDAOImpl implements AdminDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			com.TEST_DB.DBClose.close(conn, pstmt, rs);
+			DBClose.close(conn, pstmt, rs);
 		}
 		return list;
 	}
@@ -202,30 +201,38 @@ public class AdminDAOImpl implements AdminDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = com.TEST_DB.DBConnection.makeConnection();
+			conn = com.kitri.util.DBConnection.makeConnection();
 
 			StringBuffer sql = new StringBuffer();
 			
-			sql.append("SELECT * " + 
-					   "FROM(SELECT rownum r, memberlist.* \n" +
-					   "	FROM memberlist \n"	+
-					   "	START WITH parent_seq = 0 \n" +
-					   "	CONNECT BY PRIOR board_seq = parent_seq \n" +
-					   "	ORDER SIBLINGS BY board_seq DESC) \n" +
-					   "WHERE r BETWEEN ? AND ? ");
+			/*
+			 * sql.append("SELECT * " + "FROM(SELECT rownum r, m.* \n" +
+			 * "		 FROM (SELECT * FROM memberlist \n" +
+			 * "				  ORDER BY board_seq DESC) m \n" +
+			 * "		 WHERE rownum <= ?) \n" + "WHERE r >= ? \n");
+			 */
+			
+			sql.append("SELECT *\n" + 
+							"FROM(SELECT rownum r, m.*\n" + 
+									 "FROM(SELECT * FROM memberlist ORDER BY board_seq DESC) m\n" + 
+									 "WHERE rownum <= ?)\n" + 
+							"WHERE r >= ? ");
 			
 			pstmt = conn.prepareStatement(sql.toString());
 			
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+			pstmt.setInt(1, endRow);
+			pstmt.setInt(2, startRow);
+			
+			System.out.println("startRow == " + startRow);
+			System.out.println("endRow == " +endRow);
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				
 				MemberBoard memberBoard = new MemberBoard();
 				
 				memberBoard.setBoard_seq(rs.getInt("board_seq"));
-				memberBoard.setParent_seq(rs.getInt("parent_seq"));
 				memberBoard.setEmail(rs.getString("email"));
 				memberBoard.setName(rs.getString("name"));
 				memberBoard.setAge(rs.getInt("age"));
@@ -236,6 +243,7 @@ public class AdminDAOImpl implements AdminDAO {
 				
 				list.add(memberBoard);
 			}
+			System.out.println(" size " + list.size());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -255,7 +263,7 @@ public class AdminDAOImpl implements AdminDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = com.TEST_DB.DBConnection.makeConnection();
+			conn = com.kitri.util.DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 			
@@ -287,7 +295,7 @@ public class AdminDAOImpl implements AdminDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = DBConnection.makeConnection();
+			conn = com.kitri.util.DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 			
@@ -305,7 +313,7 @@ public class AdminDAOImpl implements AdminDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			com.TEST_DB.DBClose.close(conn, pstmt, rs);
+			DBClose.close(conn, pstmt, rs);
 		}
 		return totalCnt;
 	}
@@ -319,7 +327,7 @@ public class AdminDAOImpl implements AdminDAO {
 		int blackTotalCnt = 0;
 		
 		try {
-			conn = DBConnection.makeConnection();
+			conn = com.kitri.util.DBConnection.makeConnection();
 			StringBuffer sql = new StringBuffer();
 			
 			sql.append("SELECT COUNT(*) " +
@@ -338,7 +346,7 @@ public class AdminDAOImpl implements AdminDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			com.TEST_DB.DBClose.close(conn, pstmt, rs);
+			DBClose.close(conn, pstmt, rs);
 		}
 		return blackTotalCnt;
 	}

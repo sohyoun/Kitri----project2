@@ -1,21 +1,51 @@
 package com.kitri.dto;
 
-import java.util.List;
 
 public class MemberListDTO {
 	//자바빈 
 	//페이징 처리 하려면 필요한 DTO
-	private List<MemberBoard> list; // 회원목록
 	private int cntPage = 10;// 페이지별 목록 수
 	private int startRow = 1; // 시작 행
 	private int endRow = 1; // 끝 행 
-	private int totalPage = 1; // 총 페이지 수
+	private int totalPage; // 총 페이지 수
 	private int totalCnt; // 총 게시글 수
 	private int cntPerPageGroup = 5;
 	private int startPage;
 	private int endPage;
 	private String url;
 	private int currentPage; // 현재 페이지
+	
+	public int getCntPage() {
+		return cntPage;
+	}
+
+	public void setCntPage(int cntPage) {
+		this.cntPage = cntPage;
+	}
+
+	public int getTotalPage() {
+		return totalPage;
+	}
+
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
+	}
+
+	public int getStartPage() {
+		return startPage;
+	}
+
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
+
+	public int getEndPage() {
+		return endPage;
+	}
+
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
+	}
 
 	// 기본 생성자 호출
 	public MemberListDTO() {
@@ -81,15 +111,11 @@ public class MemberListDTO {
 		this.currentPage = currentPage;
 	}
 
-	public List<MemberBoard> getList() {
-		return list;
-	}
-
-	public void setList(List<MemberBoard> list) {
-		this.list = list;
-	}
 
 	public void excute() {
+		
+		totalPage = (totalCnt % cntPage) == 0 ? totalCnt / cntPage : (totalCnt / cntPage) + 1 ;
+		
 		startRow = (currentPage - 1) * cntPage + 1;
 		endRow = currentPage * cntPage;
 
@@ -103,7 +129,7 @@ public class MemberListDTO {
 
 	@Override
 	public String toString() {
-		return "MemberListDTO [list=" + list + ", cntPage=" + cntPage + ", startRow=" + startRow + ", endRow=" + endRow
+		return "MemberListDTO [cntPage=" + cntPage + ", startRow=" + startRow + ", endRow=" + endRow
 				+ ", totalPage=" + totalPage + ", totalCnt=" + totalCnt + ", cntPerPageGroup=" + cntPerPageGroup
 				+ ", startPage=" + startPage + ", endPage=" + endPage + ", url=" + url + ", currentPage=" + currentPage
 				+ "]";
