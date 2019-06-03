@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%@ include file="/temp/header.jsp" %>
 
@@ -24,36 +25,39 @@
 </script>
 
 <!-- Todo -->
-<c:set var="basicDTO" value="${requestScope.TripBasicDTO}"/>
+<c:set var="basicDTO" value="${sessionScope.TripBasicDTO}"/>
+<fmt:parseDate var="startPlanDate" value="${basicDTO.startDate}" pattern="yyyy-MM-dd"/>
+<fmt:parseDate var="endPlanDate" value="${basicDTO.endDate}" pattern="yyyy-MM-dd"/>
+<fmt:parseNumber value="${startPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="startDate"></fmt:parseNumber>
+<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber>
 
 <section class="packages py-5">
 	<div class="container py-lg-4 py-sm-3">
-	<div class="twplandetail">
-		<div class="pdheader">
-		<div class="pdheaderdetail">
-		<div class="pdheaderdetailcontent">
-			<div class="pname">다 함께 부산 먹방여행!!</div>
-			<div class="pcontent">" 신나게 떠나봅시다 "</div>
-			<div class="ptime">2019.05.17~2019.05.20 (3)</div>
-			<div class="twppeople">정원 : 25/30</div>
-			<div class="pleader"><span class="fa fa-user-circle"> Kkiruk</span></div>
+		<div class="twplandetail">
+			<div class="pdheader">
+				<div class="pdheaderdetail">
+					<div class="pdheaderdetailcontent">
+						<div class="pname">${basicDTO.tripTitle}</div>
+						<div class="ptime">${basicDTO.startDate} ~ ${basicDTO.endDate} (${endDate - startDate + 1})</div>
+						<div class="twppeople">정원 : ? / ${basicDTO.tripNum}</div>
+						<div class="pleader"><span class="fa fa-user-circle"> ${basicDTO.email}</span></div>
+					</div>
+				</div>
+			</div>
+			<div class="pdmenu">
+				<ul class="nav nav-tabs" role="tablist">
+		   			<li class="nav-item">
+		     			<a class="nav-link" data-toggle="tab" href="${pageContext.request.contextPath}/schedule?act=overall">개요</a>
+		    		</li>
+		    		<li class="nav-item">
+		     			<a class="nav-link" data-toggle="tab" href="${pageContext.request.contextPath}/schedule?act=planTable">일정표</a>
+		    		</li>
+		   			<li class="nav-item">
+		    			<a class="nav-link" data-toggle="tab" href="${pageContext.request.contextPath}/schedule?act=planMap">지도</a>
+		   			</li>
+		   		</ul>
+			</div>
 		</div>
-		</div>
-		</div>
-		<div class="pdmenu">
-		<ul class="nav nav-tabs" role="tablist">
-   			<li class="nav-item">
-     			<a class="nav-link" data-toggle="tab" href="<%=root%>/schedule?act=overall">개요</a>
-    		</li>
-    		<li class="nav-item">
-     			<a class="nav-link" data-toggle="tab" href="<%=root%>/schedule?act=planTable">일정표</a>
-    		</li>
-   			<li class="nav-item">
-    			<a class="nav-link" data-toggle="tab" href="<%=root%>/schedule?act=planMap">지도</a>
-   			</li>
-   		</ul>
-		</div>
-	</div>
 	</div>
 </section>
 

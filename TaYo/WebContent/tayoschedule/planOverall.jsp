@@ -75,8 +75,7 @@ $(function(){
 });
 </script>
 
-<div class="container mb-4" data-spy="scroll" data-target="#dayinfo"
-	data-offset="10">
+<div class="container mb-4" data-spy="scroll" data-target="#dayinfo" data-offset="10">
 	<div class="row">
 		<div id="dayinfo" class="col-sm-1">
 			<div class="btn-group-vertical">

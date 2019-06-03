@@ -94,7 +94,10 @@ public class ScheduleBackendController {
 	}
 
 
-	public TripBasicDTO findByTitle(String email, String title) {
+	public TripBasicDTO findByTitle(HttpServletRequest request, HttpServletResponse response) {
+		String email = request.getParameter("email");
+		String title = request.getParameter("title");
+		
 		return service.findByTitle(email, title);
 	}
 }
