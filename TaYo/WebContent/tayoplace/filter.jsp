@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <script>
 	var isfilter;
@@ -59,6 +60,7 @@
 			
 				$(xml).find("item").each(function() {
 					var title = $(this).find("title").text();
+					var addr1 = $(this).find("addr1").text();
 					var addr2 = $(this).find("addr2").text();
 					var readcount = $(this).find("readcount").text();
 				
@@ -66,9 +68,10 @@
 						prevTitle = title;
 						var image = $(this).find("firstimage2").text();
 						
+						
 						/* html += "<tr><td width='100'><img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='80' height='40'/></td><td><ul class='placeclass'><li class='list-group-item' style='padding: 0.3rem;' value='" + title + "'>" + title + addr2 + readcount+ "<button class='btn btn-primary' name='placebtn'>+</button></li></ul></td></tr>"; */
 					 	
-						html += "<tr><td><div class='card' style='width: 70rem; display: flex;'> "
+						/* html += "<tr><td><div class='card' style='width: 70rem; display: flex;'> "
 						if(image!=''){
 						html += "<img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png' style='width: 400px;height: 200px;'>"
 						}
@@ -78,7 +81,15 @@
 							html += "	<p class='card-text'>" + readcount +"</p>"
 								html += "	<a href=''#' class='btn btn-primary'>상세보기</a>"
 								html += "</div>"
-									html += "</div></td></tr>";	
+									html += "</div></td></tr>";	 */
+									
+						
+						
+						$("div.card>div.card-body>h5.card-title").html(title);
+						$("div.card>img.card-img-top").html(image);
+						$("div.card>div.card-body>p.card-text").html(addr1);
+						
+						
 				
 					}
 				});
@@ -99,25 +110,26 @@
 </script>
 
 
-	<div class="container h-100 pt-3">
-		<!-- 필터 -->
-		<table class="table table-bordered ">
-			<tr>
-				<td class="filter_title">여행도시</td>
-				<td class="filter_body si">
-					<div class="allways_show">
-					</div>
-					<div class="city_toggle collapse"><!-- 버튼을 누르면 여기에 값이 나옵니다. --> 
-					</div>
-				</td>
-				<td width="4%">
-					<span class="fa fa-chevron-down" data-toggle="collapse" data-target=".city_toggle"> <!-- 버튼 -->
-					</span>
-				</td>
-			</tr>
-		</table><!-- 필터 -->
-		
-		<!--내용 -->
-	</div> <!-- container -->
+<div class="container h-100 pt-3">
+	<!-- 필터 -->
+	<table class="table table-bordered ">
+		<tr>
+			<td class="filter_title">여행도시</td>
+			<td class="filter_body si">
+				<div class="allways_show"></div>
+				<div class="city_toggle collapse">
+					<!-- 버튼을 누르면 여기에 값이 나옵니다. -->
+				</div>
+			</td>
+			<td width="4%"><span class="fa fa-chevron-down"
+				data-toggle="collapse" data-target=".city_toggle"> <!-- 버튼 -->
+			</span></td>
+		</tr>
+	</table>
+	<!-- 필터 -->
+
+	<!--내용 -->
+</div>
+<!-- container -->
 
 

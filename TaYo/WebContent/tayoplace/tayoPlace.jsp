@@ -65,101 +65,19 @@
 	border-radius: 0.25rem;
 }
 /* --------------------관광명소/ 음식점/ 여행일정------------------------------ */
+
+/* 상세보기 버튼 */
 .btn-primary {
 	float: right;
 }
 
-.common_menu {
-	color: YELLOW;
-}
-
-/* 
-.attraction_menu{
-	width:100%;
-	padding-top:15px;
-} */
-.attraction_cate {
-	height: 33px;
-	line-height: 33px;
-	width: 117px;
-	border-left: 1px solid #b8b8ba;
-	border-top: 1px solid #b8b8ba;
-	text-align: center;
-	float: left;
-	cursor: pointer;
-	color: #555555;
-	font-size: 13px;
-}
-
-.attraction_cate.on {
-	background: #ff9320;
-	color: white;
-}
-
-.attraction_cate.last {
-	border-right: 1px solid #b8b8ba;
-}
-
-.category_list {
-	width: 100%;
-	margin-bottom: 12px;
-	border: 1px solid #bbbbbd;
-}
-
-.category_box {
-	width: 100%;
-	height: 40px;
-	line-height: 40px;
-	color: #808080;
-	font-size: 13px;
-	text-align: left;
-	border-top: 1px solid #e5e5e6;
-}
-
-.category_box.first {
-	border-top: none;
-}
-
-.category_box.hide {
-	display: none;
-}
-
-.category_btn {
-	float: left;
-	width: 25%;
-	padding-left: 45px;
-	cursor: pointer;
-	background: url('/res/img/city/tag_check_null.png') no-repeat;
-	background-position: 7% center;
-}
-
-.category_btn.on {
-	background: url('/res/img/city/tag_check_checked.png') no-repeat;
-	background-position: 7% center;
-}
-
-.category_more {
-	width: 100%;
-	text-align: center;
-	background: #ebebed;
-	border-top: 1px solid #dcdcdd;
-	height: 40px;
-	line-height: 40px;
-	color: #555555;
-	font-size: 13px;
-	cursor: pointer;
-}
-
-.category_more img {
-	margin-left: 3px;
-}
-
+/* 페이징처리 버튼 */
 .pagination {
 	margin-right: 450px;
 }
 
-/* The container */
-.container {
+/* -------------------- 체크박스 부분------------------------------ */
+.checkContainer {
 	display: block;
 	position: relative;
 	padding-left: 35px;
@@ -170,10 +88,12 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	display: inline;
+	margin-left: 50px;
 }
 
 /* Hide the browser's default checkbox */
-.container input {
+.checkContainer input {
 	position: absolute;
 	opacity: 0;
 	cursor: pointer;
@@ -181,7 +101,7 @@
 	width: 0;
 }
 
-/* Create a custom checkbox */
+/* 체크 박스 체크부분 */
 .checkmark {
 	position: absolute;
 	top: 0;
@@ -192,12 +112,12 @@
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
+.checkContainer:hover input ~ .checkmark {
 	background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
+.checkContainer input:checked ~ .checkmark {
 	background-color: #2196F3;
 }
 
@@ -209,12 +129,12 @@
 }
 
 /* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
+.checkContainer input:checked ~ .checkmark:after {
 	display: block;
 }
 
 /* Style the checkmark/indicator */
-.container .checkmark:after {
+.checkContainer .checkmark:after {
 	left: 9px;
 	top: 5px;
 	width: 5px;
@@ -225,7 +145,13 @@
 	-ms-transform: rotate(45deg);
 	transform: rotate(45deg);
 }
+/* -------------------- 체크박스 부분------------------------------ */
 </style>
+
+
+
+
+
 
 
 
@@ -256,46 +182,7 @@
 		<!-- 크기 맞춰주는 DIV -->
 
 
-		<!-- 필터 -->
-		<jsp:include page="filter.jsp"></jsp:include>
-		<!-- 필터 -->
 
-
-
-
-		<!-- 필터 -->
-		<!-- <table class="table table-bordered" id="filter">
-			<tr>
-				<td id="filter-title">여행도시</td>
-				<td id="filter-body">
-					<button type="button" class="btn btn-light">서울</button>
-					<button type="button" class="btn btn-light">경기</button>
-					<button type="button" class="btn btn-light">인천</button>
-					<button type="button" class="btn btn-light">부산</button>
-					<button type="button" class="btn btn-light">대구</button>
-					<button type="button" class="btn btn-light">광주</button>
-					<button type="button" class="btn btn-light">대전</button>
-					<button type="button" class="btn btn-light">울산</button>
-					<button type="button" class="btn btn-light">제주</button>
-					<div id="city-toggle" class="collapse">
-						<button type="button" class="btn btn-light">광주</button>
-						<button type="button" class="btn btn-light">울산</button>
-						<button type="button" class="btn btn-light">세종특별자치시</button>
-						<button type="button" class="btn btn-light">가평군</button>
-						<button type="button" class="btn btn-light">고양시</button>
-						<button type="button" class="btn btn-light">과천시</button>
-						<button type="button" class="btn btn-light">광명시</button>
-						<button type="button" class="btn btn-light">광주시(경기)</button>
-						<button type="button" class="btn btn-light">구리시</button>
-						<button type="button" class="btn btn-light">군포시</button>
-					</div>
-				</td>
-				<td width="4%"><span class="fa fa-chevron-down" data-toggle="collapse" data-target="#city-toggle"></span></td>
-			</tr>
-		</table>-->
-		<!-- 필터 
-
-		<br>
 
 		<!-- 인기여행지 best -->
 		<h3 class="heading text-capitalize text-center">인기 여행지 BEST</h3>
@@ -391,8 +278,52 @@
 		</div>
 		<!-- 인기여행지 best -->
 
+		<br> <br>
 
-		<br> <br> <br> <br>
+
+		<!-- 필터 -->
+		<jsp:include page="filter.jsp"></jsp:include>
+		<!-- 필터 -->
+
+
+
+
+		<!-- 필터 -->
+		<table class="table table-bordered" id="filter">
+			<tr>
+				<td id="filter-title">여행도시</td>
+				<td id="filter-body">
+					<button type="button" class="btn btn-light">서울</button>
+					<button type="button" class="btn btn-light">경기</button>
+					<button type="button" class="btn btn-light">인천</button>
+					<button type="button" class="btn btn-light">부산</button>
+					<button type="button" class="btn btn-light">대구</button>
+					<button type="button" class="btn btn-light">광주</button>
+					<button type="button" class="btn btn-light">대전</button>
+					<button type="button" class="btn btn-light">울산</button>
+					<button type="button" class="btn btn-light">제주</button>
+					<div id="city-toggle" class="collapse">
+						<button type="button" class="btn btn-light">광주</button>
+						<button type="button" class="btn btn-light">울산</button>
+						<button type="button" class="btn btn-light">세종특별자치시</button>
+						<button type="button" class="btn btn-light">가평군</button>
+						<button type="button" class="btn btn-light">고양시</button>
+						<button type="button" class="btn btn-light">과천시</button>
+						<button type="button" class="btn btn-light">광명시</button>
+						<button type="button" class="btn btn-light">광주시(경기)</button>
+						<button type="button" class="btn btn-light">구리시</button>
+						<button type="button" class="btn btn-light">군포시</button>
+					</div>
+				</td>
+				<td width="4%"><span class="fa fa-chevron-down"
+					data-toggle="collapse" data-target="#city-toggle"></span></td>
+			</tr>
+		</table>
+
+
+
+
+		<br>
 		<h3 class="heading text-capitalize ">Seoul</h3>
 
 
@@ -407,24 +338,6 @@
 
 		<br>
 
-
-
-		<div class="wrap">
-			<div class="attraction_menu">
-				<div class="attraction_cate on" data-id="">전체</div>
-				<div class="attraction_cate " data-id="301">관광지</div>
-				<div class="attraction_cate " data-id="302">레저/액티비티</div>
-				<div class="attraction_cate " data-id="303">나이트라이프</div>
-				<div class="attraction_cate last" data-id="tip">여행TIP</div>
-				<div class="clear"></div>
-			</div>
-			<div class="category_list">
-				<div class="category_box"></div>
-				<div class="category_more">
-					<!-- 					카테고리 더보기<img src="/res/img/city/spot_list/category_more.gif" alt="" /> -->
-				</div>
-			</div>
-		</div>
 
 
 		<!-- 여행지 상세 선택 분류2 -->
@@ -444,15 +357,13 @@
 			<div class="tab-pane fade show active" id="nav-home" role="tabpanel"
 				aria-labelledby="nav-home-tab">
 
-
-				<h1>Custom Checkboxes</h1>
-				<label class="container">One <input type="checkbox"
-					checked="checked"> <span class="checkmark"></span>
-				</label> <label class="container">Two <input type="checkbox">
+				<br> <label class="checkContainer">One <input
+					type="checkbox"> <span class="checkmark"></span></label> <label
+					class="checkContainer">Two <input type="checkbox">
 					<span class="checkmark"></span>
-				</label> <label class="container">Three <input type="checkbox">
+				</label> <label class="checkContainer">Three <input type="checkbox">
 					<span class="checkmark"></span>
-				</label> <label class="container">Four <input type="checkbox">
+				</label> <label class="checkContainer">Four <input type="checkbox">
 					<span class="checkmark"></span>
 				</label>
 
@@ -460,8 +371,7 @@
 			</div>
 			<div class="tab-pane fade" id="nav-profile" role="tabpanel"
 				aria-labelledby="nav-profile-tab">
-				<h1>Custom Checkboxes</h1>
-				<label class="container">One <input type="checkbox"
+				<label class="containercjec">One <input type="checkbox"
 					checked="checked"> <span class="checkmark"></span>
 				</label> <label class="container">Two <input type="checkbox">
 					<span class="checkmark"></span>
@@ -473,28 +383,34 @@
 
 			</div>
 			<div class="tab-pane fade" id="nav-contact" role="tabpanel"
-				aria-labelledby="nav-contact-tab">
-				<h1>Custom Checkboxes</h1>
-				<label class="container">One <input type="checkbox"
-					checked="checked"> <span class="checkmark"></span>
-				</label> <label class="container">Two <input type="checkbox">
-					<span class="checkmark"></span>
-				</label> <label class="container">Three <input type="checkbox">
-					<span class="checkmark"></span>
-				</label> <label class="container">Four <input type="checkbox">
-					<span class="checkmark"></span>
-				</label>
-			</div>
+				aria-labelledby="nav-contact-tab"></div>
 		</div>
 		<!-- 여행지 상세 선택 분류2 -->
 
 
+		<br>
+		<br>
+
 
 		<div id="placelist">
 
-			<table class="table table-bordered table-sm">
+			<table class="table table-bordered table-sm" >
 				<tbody id="tablebody" align="center">
-
+				
+				
+				
+					<!-- 관광지  박스 -->
+					<div class="card" style="display: none; width: 70rem;">
+						<img class="card-img-top">
+						<div class="card-body" style="display: inline;">
+							<h5 class="card-title"></h5>
+							<p class="card-text"></p>
+							<p class="card-text"></p>
+							<a href="#" class="btn btn-primary">상세보기</a>
+						</div>
+					</div>
+					<br>
+					<!-- 관광지  박스 -->
 
 
 
@@ -502,78 +418,6 @@
 				</tbody>
 			</table>
 		</div>
-
-
-
-
-
-
-
-
-
-		<!-- 
-		<h1>Custom Checkboxes</h1>
-		<label class="container">One <input type="checkbox"
-			checked="checked"> <span class="checkmark"></span>
-		</label> <label class="container">Two <input type="checkbox">
-			<span class="checkmark"></span>
-		</label> <label class="container">Three <input type="checkbox">
-			<span class="checkmark"></span>
-		</label> <label class="container">Four <input type="checkbox">
-			<span class="checkmark"></span>
-		</label>
-
- -->
-
-
-
-
-
-
-
-		<!--
-			<div class="card text-center1">
-			<div class="card-header1">
-				<ul class="nav nav-tabs card-header-tabs1">
-					<li class="nav-item1"><a class="nav-link active1" href="#">Active</a>
-					</li>
-					<li class="nav-item1"><a class="nav-link1" href="#">Link</a></li>
-					<li class="nav-item1"><a class="nav-link disabled1" href="#">Disabled</a>
-					</li>
-				</ul>
-			</div>
-			<div class="card-body1">
-				<h5 class="card-title1">Special title treatment</h5>
-				<p class="card-text1">With supporting text below as a natural
-					lead-in to additional content.</p>
-				<a href="#" class="btn btn-primary1">Go somewhere</a>
-			</div>
-		</div>
- -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 		<br> <br> <br>

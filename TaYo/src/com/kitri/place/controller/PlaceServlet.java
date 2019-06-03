@@ -26,7 +26,7 @@ public class PlaceServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String act = request.getParameter("act");
-		String path = "/index.jsp";
+		/* String path = "/index.jsp"; */
 		
 		
 		if ("searchTour".equals(act)) {

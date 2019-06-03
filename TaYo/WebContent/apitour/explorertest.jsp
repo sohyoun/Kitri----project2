@@ -26,18 +26,6 @@ $(function() {
 						/* $("body").append(items[i].getElementsByTagName("contentid")[0].textContent); */
 						
 					}
-
-					/* jquery 테스트 */
-					var xmlData = $(xml).find("item");
-					var listLength = xmlData.length;
-					if (listLength) {
-						var contentStr = "";
-						$(xmlData).each(function() {
-							contentStr += $(this).find("contentid").text();
-						});
-						console.log(contentStr)
-						//                      $("#after").append(contentStr);
-					}//end if
 			},//end success
 			error : function(err) {
 				console.log(err);
