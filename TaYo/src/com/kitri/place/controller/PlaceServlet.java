@@ -36,22 +36,11 @@ public class PlaceServlet extends HttpServlet {
 			String addr2 = request.getParameter("addr2");
 			
 		
-			
-			
 			String result = service.getKeywordSearch(location, place);
 			request.setAttribute("result", result);
 			
 			MoveURL.forward(request, response, "/tayoplace/searchPlaceResult.jsp");
 		}
 	}
-	
-	
-	
-	
-	
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding(SiteContance.ENCODE);
-		doGet(request, response);
-	}
+
 }

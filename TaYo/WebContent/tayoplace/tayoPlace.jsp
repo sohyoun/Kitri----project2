@@ -60,7 +60,7 @@
 	min-width: 0;
 	word-wrap: break-word;
 	background-color: #fff;
-	background-clip: border-box;
+	background-clip: border-box; /
 	border: 1px solid rgba(0, 0, 0, 0.125);
 	border-radius: 0.25rem;
 }
@@ -256,12 +256,12 @@
 		<!-- 크기 맞춰주는 DIV -->
 
 
-	<!-- 필터 -->
-	<jsp:include page="filter.jsp"></jsp:include>
-	<!-- 필터 -->
-	
-	
-	
+		<!-- 필터 -->
+		<jsp:include page="filter.jsp"></jsp:include>
+		<!-- 필터 -->
+
+
+
 
 		<!-- 필터 -->
 		<!-- <table class="table table-bordered" id="filter">
@@ -421,7 +421,7 @@
 			<div class="category_list">
 				<div class="category_box"></div>
 				<div class="category_more">
-<!-- 					카테고리 더보기<img src="/res/img/city/spot_list/category_more.gif" alt="" /> -->
+					<!-- 					카테고리 더보기<img src="/res/img/city/spot_list/category_more.gif" alt="" /> -->
 				</div>
 			</div>
 		</div>
@@ -490,19 +490,19 @@
 
 
 
-<div id="placelist">
-				
-					<table class="table table-bordered table-sm">
-						<tbody id="tablebody" align="center">
-							
-							
-							
-							
+		<div id="placelist">
 
-						</tbody>
-					</table>
-				</div>
-				
+			<table class="table table-bordered table-sm">
+				<tbody id="tablebody" align="center">
+
+
+
+
+
+				</tbody>
+			</table>
+		</div>
+
 
 
 
@@ -531,7 +531,7 @@
 
 
 
-<!--
+		<!--
 			<div class="card text-center1">
 			<div class="card-header1">
 				<ul class="nav nav-tabs card-header-tabs1">
@@ -549,7 +549,7 @@
 				<a href="#" class="btn btn-primary1">Go somewhere</a>
 			</div>
 		</div>
- --> 
+ -->
 
 
 

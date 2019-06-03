@@ -4,14 +4,7 @@
     
 <!DOCTYPE html>
 <html>
-<style>
-.divcenter{
-	background-color: orange;
 
-}
-
-
-</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
 
@@ -19,18 +12,32 @@
 $(function() {	
 	$("button").click(function() {
 		$.ajax({          
-		  		url  : "${pageContext.request.contextPath}/tourcategory",
+		  		url  : "${pageContext.request.contextPath}/tourexplorer",
 				type : 'get',
 				success : function(xml) {
-					$("div").append(xml.trim()); 
+					$("body").append(xml.trim()); 
+					/* console.log(xml.trim()); */
 					parser = new DOMParser();
 					xmlDoc = parser.parseFromString(xml.trim(), "text/xml");
 					console.log(xmlDoc);
-					
 					/* xml 테스트 */
 					var items = xmlDoc.getElementsByTagName("item");
 					for (var i = 0; i < items.length; i++) {
+						/* $("body").append(items[i].getElementsByTagName("contentid")[0].textContent); */
+						
 					}
+
+					/* jquery 테스트 */
+					var xmlData = $(xml).find("item");
+					var listLength = xmlData.length;
+					if (listLength) {
+						var contentStr = "";
+						$(xmlData).each(function() {
+							contentStr += $(this).find("contentid").text();
+						});
+						console.log(contentStr)
+						//                      $("#after").append(contentStr);
+					}//end if
 			},//end success
 			error : function(err) {
 				console.log(err);
@@ -45,16 +52,11 @@ $(function() {
 </head>
 <body>
 
+
 	<button class="position">지역 데이터 불러오기</button>
 	<hr>
 	버튼을 누르고 console을 확인해주세요.
 	<br> 필수 입력값: MobileOS, MobileApp, ServiceKey
 
-	<div class = "divcenter">
-	여기에 적혀라!
-	
-	
-	
-	</div>
 </body>
 </html>

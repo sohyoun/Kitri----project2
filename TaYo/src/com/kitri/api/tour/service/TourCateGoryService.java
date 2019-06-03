@@ -21,11 +21,13 @@ public class TourCateGoryService {
         urlBuilder.append("&" + URLEncoder.encode("cat1","UTF-8") + "=" + URLEncoder.encode("A01", "UTF-8")); /*대분류코드*/
         urlBuilder.append("&" + URLEncoder.encode("cat2","UTF-8") + "=" + URLEncoder.encode("A0101", "UTF-8")); /*중분류코드(cat1필수)*/
         urlBuilder.append("&" + URLEncoder.encode("cat3","UTF-8") + "=" + URLEncoder.encode("A01010100", "UTF-8")); /*소분류코드(cat1,cat2필수)*/
+        
         URL url = new URL(urlBuilder.toString());
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Content-type", "application/json");
         System.out.println("Response code: " + conn.getResponseCode());
+        
         BufferedReader rd;
         if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
             rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -39,7 +41,7 @@ public class TourCateGoryService {
         }
         rd.close();
         conn.disconnect();
-        System.out.println("TourcateService"+sb.toString());
+        System.out.println("TourcateService = "+sb.toString());
         return sb.toString();
 	}
 }

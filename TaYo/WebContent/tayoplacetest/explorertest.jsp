@@ -19,18 +19,22 @@
 $(function() {	
 	$("button").click(function() {
 		$.ajax({          
-		  		url  : "${pageContext.request.contextPath}/tourcategory",
+		  		url  : "${pageContext.request.contextPath}/tourexplorer",
 				type : 'get',
 				success : function(xml) {
 					$("div").append(xml.trim()); 
+					console.log(xml.trim());
+					console.log("왔다");
+					
 					parser = new DOMParser();
 					xmlDoc = parser.parseFromString(xml.trim(), "text/xml");
 					console.log(xmlDoc);
 					
 					/* xml 테스트 */
-					var items = xmlDoc.getElementsByTagName("item");
+					 var items = xmlDoc.getElementsByTagName("item");
 					for (var i = 0; i < items.length; i++) {
-					}
+		
+					} 
 			},//end success
 			error : function(err) {
 				console.log(err);

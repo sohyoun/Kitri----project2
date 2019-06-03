@@ -24,19 +24,23 @@ public class TourPositionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	TourPositionService tourService;
+	
 	@Override
 	public void init() throws ServletException {
 		tourService = new TourPositionService();
-
 	}
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("tourAPI get");
+		
 		String x= request.getParameter("x");
 		String y= request.getParameter("y");
 		String radius= request.getParameter("radius");
+		
 		String result =tourService.getPosition(x, y, radius);
 		System.out.println("TourAPI"+result);
 		request.setAttribute("result", result);
+		
 		String path = "/apitour/positionresult.jsp";
 		MoveURL.forward(request, response, path);
 	}
