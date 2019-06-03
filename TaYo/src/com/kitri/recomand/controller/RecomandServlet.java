@@ -48,9 +48,10 @@ public class RecomandServlet extends HttpServlet {
 			String season = (String) jsonObj.get("season");
 			String theme = (String) jsonObj.get("theme");
 			String city = (String) jsonObj.get("city");
-			String day = (String) jsonObj.get("day");
-			int start_length = (int) jsonObj.get("start_length");
-			int end_length = (int) jsonObj.get("end_length");
+			
+			int start_length= Integer.parseInt((String) jsonObj.get("start_day"));
+			int end_length = Integer.parseInt((String) jsonObj.get("end_day"));
+			
 //			System.out.println("RecomandServlet "+ season +" "+ theme+" "+city+" "+day);
 			List<TripBasicDTO> list =TripBasicDao.getInstance().select(season, theme, city, start_length, end_length);
 			request.setAttribute("filteredList", list);
