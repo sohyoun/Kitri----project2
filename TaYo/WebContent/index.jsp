@@ -24,7 +24,7 @@
 									<a href="${pageContext.request.contextPath}/schedule?act=schedule" class="btn">일정 짜러 가기</a>
 								</div>
 							</div>
-						</div>d
+						</div>
 					</div>
 				</div>
 			</li>

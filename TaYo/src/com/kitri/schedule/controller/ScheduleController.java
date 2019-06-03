@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kitri.api.tour.service.TourResionCodeService;
 import com.kitri.dto.TripBasicDTO;
-import com.kitri.schedule.service.ScheduleService;
 import com.kitri.util.MoveURL;
 import com.kitri.util.SiteContance;
 
@@ -45,6 +44,8 @@ public class ScheduleController extends HttpServlet {
 			MoveURL.redirect(request, response, "/tayoschedule/planMap.jsp");
 		} else if ("myschedule".equals(act)) {
 			MoveURL.redirect(request, response, "/tayoschedule/planTemplate.jsp");
+		} else if ("showDetail".equals(act)) {
+			MoveURL.forward(request, response, "/tayoschedule/plandetail.jsp");
 		} else if ("searchTour".equals(act)) {
 			String result = backendController.getKeywordSearch(request, response);
 			request.setAttribute("result", result);
@@ -70,6 +71,15 @@ public class ScheduleController extends HttpServlet {
 			request.setAttribute("TripBasicDTO", list);
 			
 			MoveURL.forward(request, response, "/tayoschedule/searchPlanResult.jsp");
+		} else if ("planDetail".equals(act)) {
+			String email = request.getParameter("email");
+			String title = request.getParameter("title");
+			
+			// Todo
+			TripBasicDTO basicDTO = backendController.findByTitle(email, title);
+			request.setAttribute("TripBasicDTO", basicDTO);
+			
+			MoveURL.forward(request, response, "/tayoschedule/plandetail.jsp");
 		}
 	}
 	

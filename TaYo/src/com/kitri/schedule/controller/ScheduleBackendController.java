@@ -39,7 +39,7 @@ public class ScheduleBackendController {
 		Date start = null;
 		Date end = null;
 		int person = Integer.parseInt(request.getParameter("person"));
-		String email = "test@kitri.re.kr";
+		String email = request.getParameter("email");
 		String saveType = request.getParameter("savetype");
 		String title = request.getParameter("title");
 		String theme = request.getParameter("theme");
@@ -91,5 +91,10 @@ public class ScheduleBackendController {
 		String email = request.getParameter("email");
 		
 		return service.searchPlan(email, type);
+	}
+
+
+	public TripBasicDTO findByTitle(String email, String title) {
+		return service.findByTitle(email, title);
 	}
 }

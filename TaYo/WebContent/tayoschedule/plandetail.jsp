@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ include file="/temp/header.jsp" %>
+
 <script>
 	$(function(){
 		var aArr = $(".pdmenu>ul>li>a");
@@ -12,13 +15,17 @@
 				url: vUrl,
 				method: 'post',
 				success: function (result) {
-							$("#content").html(result);
-						 }
+					$("#content").html(result);
+				 }
 			});
 			return false;
 		});
 	});
 </script>
+
+<!-- Todo -->
+<c:set var="basicDTO" value="${requestScope.TripBasicDTO}"/>
+
 <section class="packages py-5">
 	<div class="container py-lg-4 py-sm-3">
 	<div class="twplandetail">
