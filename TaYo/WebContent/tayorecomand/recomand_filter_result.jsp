@@ -3,8 +3,6 @@
 
 
 <!-- 여행일정 -->
-
-
 <div class="container mt-3">
 	<h3 class="heading text-capitalize text-center">베스트 여행일정</h3>
 	<div class="row">
@@ -34,11 +32,8 @@
 					</span></h6>
 				</div>
 			</div>
-				
-				
 			</c:forEach>
 		</c:forEach><!-- end foreach--> 
-
 	</div>
 </div>
 

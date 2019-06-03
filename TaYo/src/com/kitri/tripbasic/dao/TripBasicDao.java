@@ -156,20 +156,22 @@ public class TripBasicDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-//TODO 날짜 계산 필요
+
 		List<TripBasicDTO> basiclist = new ArrayList<TripBasicDTO>();
 		try {
 			conn = DBConnection.makeConnection();
-			String sql = "select trip_seq, email, trip_title, trip_theme, trip_season, trip_num, start_date, end_date, viewcount, likeCount, lastupdate, isComplete,\n"
-					+ "trip_seq, place_name, loc_id , trip_order, trip_day, image, detail_title, detail_content, posx, posy\n"
-					+ "from trip_basic join trip_detail using(trip_seq)\n"
-					+ "where trip_season = ? or trip_theme = ? or place_name = ? or \n"
-					+ "((end_day -start_day)>= start_length and (end_day -start_day)<end_length)"; 
-			/* or (end_date-start+date)< day */
+			String sql = "select trip_seq, email, trip_title, trip_theme, trip_season, trip_num, start_date, end_date, viewcount, likeCount, lastupdate, isComplete,\n" + 
+					"					trip_seq, place_name, loc_id , trip_order, trip_day, image, detail_title, detail_content, posx, posy\n" + 
+					"					from trip_basic join trip_detail using(trip_seq)\n" + 
+					"					where trip_season = ? or trip_theme = ? or place_name = ? or\n" + 
+					"					((end_date-start_date)>= ? and (end_date-start_date)<=?)"; 
+		
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, season);
 			pstmt.setString(2, theme);
 			pstmt.setString(3, city);
+			pstmt.setInt(4, start_length);
+			pstmt.setInt(5, end_length);
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -195,12 +197,13 @@ public class TripBasicDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return basiclist;
 	}
 
 	public static void main(String[] args) {
 
-		List<TripBasicDTO> basicList = TripBasicDao.getInstance().selectAll();
+//		List<TripBasicDTO> basicList = TripBasicDao.getInstance().selectAll();
+		List<TripBasicDTO> basicList = TripBasicDao.getInstance().select("여름", null, null, 0, 0);
 
 		for (TripBasicDTO basicDto : basicList) {
 			System.out.println("====================");
@@ -212,6 +215,8 @@ public class TripBasicDao {
 
 			System.out.println("====================");
 		}
+		
+		
 
 	}// end main
 
