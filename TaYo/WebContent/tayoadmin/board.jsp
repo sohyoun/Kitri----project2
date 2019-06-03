@@ -40,7 +40,6 @@ th, td {
 	padding: 0;
 }
 </style>
-<c:set var="page" value = "${requestScope.boardlist}"/>
 <script>
 	$(function() {
 		$.ajax({
@@ -51,23 +50,24 @@ th, td {
 			}
 		});
 		
-		$("ul.pagination").click(function(){
-			var currentPage=$(this).attr("href");
+		$("ul.pagination > li > a").click(function(){
+			currentPage=$(this).attr("href");
 			alert(currentPage+" 페이지를 보여줍니다!!");
-		$.ajax({
+		});		
+		
+		/* $.ajax({
 			url : '${pageContext.request.contextPath}/boardlist',
 			method : 'get',
-			data : 'currentPage=' + currentPage,
 			succes : function(result){
-				console.log("성공");
+				alert(result)
+				console.log(result);
 				$("#memberlist").html(result.trim());
 			},
 			error : function(){
 				console.log("실패");
 			}
-		});
-	});		
-});
+		}); */
+	});
 </script>
 <script>
 	$(document).ready(function() { /*Handler For SelectAll Checkbox*/
@@ -292,15 +292,8 @@ th, td {
 <!-- 유저 테이블  여기서 보여주는거임 -->
 <div id = "memberlist" class="row"></div>
 
-<ul class="pagination">
-	<!--페이징 처리-->
-	<li class="disabled"><a href="#">&laquo;</a></li>
-	<li class="active"><a href="#">1</a></li>
-	<li><a href="#">2</a></li>
-	<li><a href="#">3</a></li>
-	<li><a href="#">4</a></li>
-	<li><a href="#">5</a></li>
-	<li><a href="#">&raquo;</a></li>
-</ul>
+<%-- <c:forEach var = "memberboard"  items = "${page.list}"> --%>
+
+<%-- </c:forEach> --%>
 
 <%@ include file="/tayoadmin/templet/footer.jsp"%>

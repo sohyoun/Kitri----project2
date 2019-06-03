@@ -6,7 +6,6 @@ public class MemberBoard{
 
 	//회원 목록 테이블 진작에 만들었어야 됬는데.....
 	private int board_seq; //글 번호
-	private int parent_seq; // 부모 글 번호
 	private String email; 
 	private String name;
 	private int age;
@@ -16,18 +15,17 @@ public class MemberBoard{
 	private Date outdate;
 	private String gender;
 	private int grade;
-	
-	
+	private MemberListDTO memberListDTO;
+
 	public MemberBoard() {
 		
 	}
 
 
-	public MemberBoard(int board_seq, int parent_seq, String email, String name, int age, String address,
+	public MemberBoard(int board_seq, String email, String name, int age, String address,
 			String addressDetail, Date joindate, Date outdate, String gender, int grade) {
 		super();
 		this.board_seq = board_seq;
-		this.parent_seq = parent_seq;
 		this.email = email;
 		this.name = name;
 		this.age = age;
@@ -48,17 +46,6 @@ public class MemberBoard{
 	public void setBoard_seq(int board_seq) {
 		this.board_seq = board_seq;
 	}
-
-
-	public int getParent_seq() {
-		return parent_seq;
-	}
-
-
-	public void setParent_seq(int parent_seq) {
-		this.parent_seq = parent_seq;
-	}
-
 
 	public String getEmail() {
 		return email;
@@ -149,10 +136,20 @@ public class MemberBoard{
 		this.grade = grade;
 	}
 
+	
+	public MemberListDTO getMemberListDTO() {
+		return memberListDTO;
+	}
+
+
+	public void setMemberListDTO(MemberListDTO memberListDTO) {
+		this.memberListDTO = memberListDTO;
+	}
+
 
 	@Override
 	public String toString() {
-		return "MemberBoard [board_seq=" + board_seq + ", parent_seq=" + parent_seq + ", email=" + email + ", name="
+		return "MemberBoard [board_seq=" + board_seq  + ", email=" + email + ", name="
 				+ name + ", age=" + age + ", address=" + address + ", addressDetail=" + addressDetail + ", joindate="
 				+ joindate + ", outdate=" + outdate + ", gender=" + gender + ", grade=" + grade + "]";
 	}

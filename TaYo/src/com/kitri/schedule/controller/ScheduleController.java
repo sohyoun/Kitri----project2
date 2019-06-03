@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kitri.api.tour.service.TourResionCodeService;
 import com.kitri.dto.TripBasicDTO;
@@ -37,15 +38,13 @@ public class ScheduleController extends HttpServlet {
 		} else if ("newschedule".equals(act)) {
 			MoveURL.redirect(request, response, "/tayoschedule/scheduleDetail.jsp");
 		} else if ("overall".equals(act)) {
-			MoveURL.redirect(request, response, "/tayoschedule/planOverall.jsp");
+			MoveURL.forward(request, response, "/tayoschedule/planOverall.jsp");
 		} else if ("planTable".equals(act)) {
-			MoveURL.redirect(request, response, "/tayoschedule/planTable.jsp");
+			MoveURL.forward(request, response, "/tayoschedule/planTable.jsp");
 		} else if ("planMap".equals(act)) {
-			MoveURL.redirect(request, response, "/tayoschedule/planMap.jsp");
+			MoveURL.forward(request, response, "/tayoschedule/planMap.jsp");
 		} else if ("myschedule".equals(act)) {
 			MoveURL.redirect(request, response, "/tayoschedule/planTemplate.jsp");
-		} else if ("showDetail".equals(act)) {
-			MoveURL.forward(request, response, "/tayoschedule/plandetail.jsp");
 		} else if ("searchTour".equals(act)) {
 			String result = backendController.getKeywordSearch(request, response);
 			request.setAttribute("result", result);
@@ -71,13 +70,13 @@ public class ScheduleController extends HttpServlet {
 			request.setAttribute("TripBasicDTO", list);
 			
 			MoveURL.forward(request, response, "/tayoschedule/searchPlanResult.jsp");
-		} else if ("planDetail".equals(act)) {
-			String email = request.getParameter("email");
-			String title = request.getParameter("title");
+		} else if ("showDetail".equals(act)) {
+			String areaCodes = codeService.getResionCode();
+			TripBasicDTO basicDTO = backendController.findByTitle(request, response);
 			
-			// Todo
-			TripBasicDTO basicDTO = backendController.findByTitle(email, title);
-			request.setAttribute("TripBasicDTO", basicDTO);
+			HttpSession session = request.getSession();
+			session.setAttribute("TripBasicDTO", basicDTO);
+			session.setAttribute("areaCodes", areaCodes);
 			
 			MoveURL.forward(request, response, "/tayoschedule/plandetail.jsp");
 		}

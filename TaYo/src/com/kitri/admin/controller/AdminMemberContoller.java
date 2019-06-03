@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kitri.admin.model.service.AdminService;
 import com.kitri.admin.model.service.MemberListService;
-import com.kitri.dto.MemberBoard;
-import com.kitri.dto.MemberDetailDTO;
+import com.kitri.dto.*;
 
 @WebServlet("/memberlist")
 public class AdminMemberContoller extends HttpServlet {
@@ -44,12 +43,40 @@ public class AdminMemberContoller extends HttpServlet {
 		//회원목록테이블 
 		List<MemberBoard> list = memberListService.memeberAll();
 		request.setAttribute("memberlist", list);
+		//==================================================
+
+
+		String cp = request.getParameter("currentPage");
 		
-		//System.out.println("list == " + list);
-		String path = "/tayoadmin/memberlistresult.jsp";
+		int currentPage = 1;
+		System.out.println("cp == " + cp );
+//		
+		 if(cp != null) { 
+			 currentPage = Integer.parseInt(cp); 
+			} else {
+				System.out.println("에러");
+			}
 		
-		RequestDispatcher rd = request.getRequestDispatcher(path);
-		rd.forward(request, response);
+			//System.out.println("cp == " + cp);
+			int cntPage = 10;
+			int totalCnt = memberListService.getTotalCnt();
+			int cntPerPageGroup = 5;
+			
+			String url = "boardlist";
+			MemberListDTO memberListDTO = new MemberListDTO(cntPage, totalCnt, cntPerPageGroup, url, currentPage);
+			System.out.println("startPage " + memberListDTO.getStartPage());
+			
+			List<MemberBoard> boardlist = memberListService.findByRows(memberListDTO.getStartRow(), memberListDTO.getEndRow());
+			
+			System.out.println("페이징처리할 리스트: " + boardlist);
+			
+			request.setAttribute("boardlist", boardlist);
+			request.setAttribute("pagination", memberListDTO);
+		
+			//System.out.println("list == " + list);
+			String path = "/tayoadmin/memberlistresult.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(path);
+			rd.forward(request, response);
 		
 	}
 }

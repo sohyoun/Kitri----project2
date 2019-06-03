@@ -1,7 +1,7 @@
 관리자 테이블 생성
 CREATE TABLE admin (
 	admin_email VARCHAR2(35) NOT NULL,
-	admin_name VARCHAR2(20)) NOT NULL,
+	admin_name VARCHAR2(20) NOT NULL,
 	admin_pass VARCHAR(50) NOT NULL,
 CONSTRAINT admin_email_pk PRIMARY KEY (admin_email)
 );
@@ -19,7 +19,7 @@ CREATE TABLE user_tayo (
 	age NUMBER,
 	gender VARCHAR2(10),
 	grade NUMBER NOT NULL,
-CONSTRAINT email_pk PRIMARY KEY (email)
+CONSTRAINT email_pk PRIMARY KEY (email),
 CONSTRAINT grade_ck CHECK (grade <= 3)
 );
 
@@ -64,12 +64,12 @@ SELECT * FROM DUAL;
 //회원목록테이블 글번호 생성
 CREATE SEQUENCE board_seq;
 
-DELETE SEQUENCE board_seq;
+//회원목록테이블 글번호 삭제 
+DROP SEQUENCE board_seq;
 
 //회원목록테이블 생성
 CREATE TABLE memberlist (
 	board_seq number NOT NULL,
-	parent_seq number,
 	email VARCHAR2(35) NOT NULL,
 	name VARCHAR2(10) NOT NULL,
 	age number,
@@ -97,17 +97,27 @@ SELECT COUNT(joindate)
 FROM memberlist;
 
 //회원목록테이블 삽입
-INSERT INTO memberlist (board_seq, parent_seq, email, name, age, address, address_detail, outdate, grade, gender)
-VALUES (board_seq.nextval, 0, '1', '2', 31, '3', '4', NULL, 0, 'M');
+INSERT INTO memberlist (board_seq, email, name, age, address, address_detail, outdate, grade, gender)
+VALUES (board_seq.nextval, '1', '2', 31, '3', '4', NULL, 0, 'M');
 
-INSERT INTO memberlist (board_seq, parent_seq, email, name, age, address, address_detail, outdate, grade, gender)
-VALUES (board_seq.nextval, 0, '2', '3', 28, '4', '5', NULL, 1, 'F');
+INSERT INTO memberlist (board_seq, email, name, age, address, address_detail, outdate, grade, gender)
+VALUES (board_seq.nextval, '2', '3', 28, '4', '5', NULL, 1, 'F');
 
-INSERT INTO memberlist (board_seq, parent_seq, email, name, age, address, address_detail, outdate, grade, gender)
-VALUES (board_seq.nextval, 0, '3', '4', 25, '5', '6', NULL, 2, 'M');
+INSERT INTO memberlist (board_seq, email, name, age, address, address_detail, outdate, grade, gender)
+VALUES (board_seq.nextval, '3', '4', 25, '5', '6', NULL, 2, 'M');
 
-INSERT INTO memberlist (board_seq, parent_seq, email, name, age, address, address_detail, outdate, grade, gender)
-VALUES (board_seq.nextval, 0, '4', '5', 31, '6', '7', NULL, 3, 'M');
+INSERT INTO memberlist (board_seq, email, name, age, address, address_detail, outdate, grade, gender)
+VALUES (board_seq.nextval, '4', '5', 31, '6', '7', NULL, 3, 'M');
 
 //회원목록테이블 삭제
 DROP TABLE memberlist;
+
+
+
+현재페이지//이전//시작페이지///끝페이지//다음 
+1	     X	     1		3	  O
+4	     O       4		6	  O
+7	     O       7		9      	  O
+10	     O	     10		10	  x 
+
+총 페이지 계산 작업이 필요 

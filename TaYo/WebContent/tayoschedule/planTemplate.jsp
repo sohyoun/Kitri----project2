@@ -20,17 +20,7 @@ $(function() {
 	
 	// Show temp/complete tour plan
 	$("div.row").on('click', "div[name='scheduleinfo']", function() {
-		$.ajax({
-			url: '${pageContext.request.contextPath}/schedule',
-			data: 'act=planDetail' + '&email=' + $(this).find("span[class='fa fa-user-circle']").text().trim() + '&title=' + $(this).find("h5[class='my-2']").text().trim(), 
-			method: 'post',
-			success: function(result) {
-				location.href="${pageContext.request.contextPath}/schedule?act=showDetail";
-			},
-			error: function(error) {
-				alert(error);
-			}
-		});
+		location.href= "${pageContext.request.contextPath}/schedule?act=showDetail" + '&email=' + $(this).find("span[class='fa fa-user-circle']").text().trim() + '&title=' + $(this).find("h5[class='my-2']").text().trim();
 		return false;
 	});
 	
@@ -51,7 +41,7 @@ $(function() {
 				$("div.row").html(result);
 			},
 			error: function(error) {
-				
+				alert(error);
 			}
 		});
 		return false;
