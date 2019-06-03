@@ -13,9 +13,14 @@
 <div class="row"><!-- 유저 테이블 시작 -->
 	<div class="col-lg-1"></div>
 	<div class="col-lg-10">
-		<form action="">
-			<input type="search" name="emailsearch" placeholder="Email Search" class="form-control" />
-			<input type="text" placeholder="Name Search" class="form-control" />
+		<form action="" method = "get" class = "form-inline my-2 my-lg-0">
+		<select name ="" class = "form-control mx-1 mt-2">
+			<option value = "전체">전체</option> 
+			<option value = "이메일">이메일</option> 
+			<option value = "이름">이름</option> 
+			<option value = "성별">성별</option> 
+		</select>
+			<input type="text" name="search" placeholder="Email Search" class="form-control mr-sm-2" />
 			<button id = "search" class="btn btn-info">검색</button>
 			<ul class="list-group">
 				<li class="list-group-item"><span class="badge">${joincount}</span> 가입 회원
@@ -45,23 +50,23 @@
 			</tr>
 		</thead>
 <c:set var="list" value="${requestScope.memberlist}" />
-	<c:forEach var="m" items="${list}">
-		<tbody>
-			<tr>
-				<td id="board_seq">${m.board_seq}</td>
-				<td>${m.parent_seq}</td>
-				<td>${m.email}</td>
-				<td>${m.name}</td>
-				<td>${m.age}</td>
-				<td>${m.address }</td>
-				<td>${m.addressDetail}</td>
-				<td>${m.joindate}</td>
-				<td>${m.outdate}</td>
-				<td>${m.gender }</td>
-				<td>${m.grade }</td>
-			</tr>
-		</tbody>
-	</c:forEach>
+		<c:forEach var="m" items="${list}">
+			<tbody>
+				<tr>
+					<td id="board_seq">${m.board_seq}</td>
+					<td>${m.parent_seq}</td>
+					<td>${m.email}</td>
+					<td>${m.name}</td>
+					<td>${m.age}</td>
+					<td>${m.address }</td>
+					<td>${m.addressDetail}</td>
+					<td>${m.joindate}</td>
+					<td>${m.outdate}</td>
+					<td>${m.gender }</td>
+					<td>${m.grade }<img style = "width:25px; height:25px;" src = "/TaYo/tayoadmin/images/0.png"><img style = "width:25px; height:25px;" src = "/TaYo/tayoadmin/images/1.png"><img style = "width:25px; height:25px;" src = "/TaYo/tayoadmin/images/2.png"><img style = "width:25px; height:25px;" src = "/TaYo/tayoadmin/images/3.png"></td>
+				</tr>
+			</tbody>
+		</c:forEach>
 	</table>
 			<div class="col-lg-1"></div>
 		</div>

@@ -27,13 +27,6 @@ import com.kitri.util.MoveURL;
 @WebServlet("/recomand")
 public class RecomandServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
- 
-    public RecomandServlet() {
-        super();
-
-    }
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = "/tayorecomand/recomand_filter_result.jsp";
@@ -45,20 +38,22 @@ public class RecomandServlet extends HttpServlet {
 //		System.out.println("RecomandServlet doPost");
 		
 		String jsonStr = request.getParameter("jsonData");
-//		System.out.println(jsonStr);
+//		System.out.println(RecomandServlet jsonStr);
 		
         JSONParser jsonParser = new JSONParser();
-        
         JSONObject jsonObj = null;
 		try {
 			jsonObj = (JSONObject) jsonParser.parse(jsonStr);
-			System.out.println(jsonObj.toJSONString());
+//			System.out.println(jsonObj.toJSONString());
 			String season = (String) jsonObj.get("season");
 			String theme = (String) jsonObj.get("theme");
 			String city = (String) jsonObj.get("city");
-			String day = (String) jsonObj.get("day");
-			System.out.println("RecomandServlet"+ season +" "+ theme+" "+city+" "+day);
-			List<TripBasicDTO> list =TripBasicDao.getInstance().select(season,theme,city,day);
+			
+			int start_length= Integer.parseInt((String) jsonObj.get("start_day"));
+			int end_length = Integer.parseInt((String) jsonObj.get("end_day"));
+			
+//			System.out.println("RecomandServlet "+ season +" "+ theme+" "+city+" "+day);
+			List<TripBasicDTO> list =TripBasicDao.getInstance().select(season, theme, city, start_length, end_length);
 			request.setAttribute("filteredList", list);
 			
 		} catch (ParseException e) {
@@ -66,8 +61,9 @@ public class RecomandServlet extends HttpServlet {
 		}
 		//테스트용 리스트
 		List<TripBasicDTO> list = TripBasicDao.getInstance().selectAll();
-//		System.out.println("RecomandServlet listSize: " +list.size());
+		System.out.println("RecomandServlet listSize: " +list.size());
 		request.setAttribute("filteredList", list);
+		//결과 출력
 		String path = "/tayorecomand/recomand_filter_result.jsp";
 		MoveURL.forward(request, response, path);
 	}

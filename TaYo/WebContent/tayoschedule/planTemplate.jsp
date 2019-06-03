@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="/temp/header.jsp" %>
+
 <script>
 $(function() {
 	// Search complete tour plan by default 
@@ -19,8 +20,18 @@ $(function() {
 	
 	// Show temp/complete tour plan
 	$("div.row").on('click', "div[name='scheduleinfo']", function() {
-		alert("sdfsfs");
-		//location.href="/TaYo/tayoschedule/plandetail.jsp";
+		$.ajax({
+			url: '${pageContext.request.contextPath}/schedule',
+			data: 'act=planDetail' + '&email=' + $(this).find("span[class='fa fa-user-circle']").text().trim() + '&title=' + $(this).find("h5[class='my-2']").text().trim(), 
+			method: 'post',
+			success: function(result) {
+				location.href="${pageContext.request.contextPath}/schedule?act=showDetail";
+			},
+			error: function(error) {
+				alert(error);
+			}
+		});
+		return false;
 	});
 	
 	// Search temp/complete tour plan

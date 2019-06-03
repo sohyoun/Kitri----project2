@@ -69,4 +69,9 @@ public class ScheduleService {
 	public List<TripBasicDTO> searchPlan(String email, String type) {
 		return dao.search(email, type);
 	}
+
+
+	public TripBasicDTO findByTitle(String email, String title) {
+		return dao.find(email, title);
+	}
 }

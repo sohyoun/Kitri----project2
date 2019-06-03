@@ -15,7 +15,7 @@
 				console.log(xmlDoc);
 				/* jquery*/
 				var xmlData = $(xml).find("item");//아이템 배열
-				for(var i =0;i<xmlData.length; i++){
+				for(var i =0; i < xmlData.length; i++){
 					if(i<5){ //항상보일 아이템  /* .h-100.pt-4 > table > tbody > tr:nth-child(2) > */
 						$('body > div.container  td.filter_body.si > div.allways_show').append(
 								'<button class="btn btn-light"><div data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</span></button>');
@@ -70,9 +70,20 @@
 			var filterArr= filterbody.children();	
 			for(var i =0; i<filterArr.length;i++){
 				var key =$(filterArr[i]).children().attr("data-type");
-				var value =$(filterArr[i]).children().text();
-				data[key] = value;
+				var value;
+				if(key=='day'){
+					console.log($(filterArr[i]).children());
+					var start_day = $(filterArr[i]).children().attr('start-day');
+					var end_day =  $(filterArr[i]).children().attr('end-day');
+					data['start_day'] = start_day;
+					data['end_day'] = end_day;
+				}else{
+					value =$(filterArr[i]).children().text();
+					data[key] = value;
+				}
 			}
+			console.log('data'+data);
+			console.log('json'+JSON.stringify(data));
 			//필터값에 대한 데이터리스트 갱신
 			$.ajax({
 				url : "${pageContext.request.contextPath}/recomand",
@@ -82,7 +93,7 @@
 				},
 				success : function(data) {
 					$('.filterResult').html(data);
-// 					console.log(data);
+					console.log(data);
 				},
 				error: function(err){
 					console.log("recomand call error");
@@ -126,11 +137,11 @@
 		<tr>
 			<td class="filter_title">여행기간</td>
 			<td class="filter_body" colspan="2">
-				<button class="btn btn-light"> <div data-type="day" data-value="1">1-3일</div></button>
-				<button class="btn btn-light"> <div data-type="day" data-value="2">4-6일</div></button>
-				<button class="btn btn-light"> <div data-type="day" data-value="3">7-10일</div></button>
-				<button class="btn btn-light"> <div data-type="day" data-value="4">11-15일</div></button>
-				<button class="btn btn-light"> <div data-type="day" data-value="5">15일 이상</div></button>
+				<button class="btn btn-light"> <div data-type="day" start-day="1" end-day="3">1-3일</div></button>
+				<button class="btn btn-light"> <div data-type="day" start-day="4" end-day="6">4-6일</div></button>
+				<button class="btn btn-light"> <div data-type="day" start-day="7" end-day="10">7-10일</div></button>
+				<button class="btn btn-light"> <div data-type="day" start-day="11" end-day="15">11-15일</div></button>
+				<button class="btn btn-light"> <div data-type="day" start-day="15" >15일 이상</div></button>
 			</td>
 		</tr>
 		<tr>
@@ -155,7 +166,6 @@
 	
 	<!-- 필터결과 -->
 	<div class="filterResult">
-	
 	</div>
 		
 		<!--내용 -->
