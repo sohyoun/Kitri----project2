@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kitri.dto.TTLeaderDTO;
+import com.kitri.dto.TripDetailDTO;
 import com.kitri.util.DBClose;
 
 public class TogetherDAO {
@@ -114,7 +115,52 @@ public class TogetherDAO {
 	}
 	
 	//함께타요 일정 상세 페이지 보여주기
-
+	public List<TripDetailDTO> selectPlanDetail(int tripSeq) {
+		List<TripDetailDTO> list = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null; 
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			
+			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "project2", "project2");
+			
+			String selectPlanDetailSQL = "select * " + 
+									"from trip_detail " + 
+									"where trip_seq = ?";  
+			
+			pstmt = con.prepareStatement(selectPlanDetailSQL);
+			pstmt.setInt(1, tripSeq);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				TripDetailDTO tripDetailDTO = new TripDetailDTO();
+				tripDetailDTO.setTrip_seq(rs.getInt("trip_seq"));
+				tripDetailDTO.setTrip_day(rs.getInt("trip_day"));
+				tripDetailDTO.setTrip_order(rs.getInt("trip_order"));
+				tripDetailDTO.setPlace_name(rs.getString("place_name"));
+				tripDetailDTO.setLoc_id(rs.getInt("loc_id"));
+				tripDetailDTO.setImage(rs.getString("image"));
+				tripDetailDTO.setDetail_title(rs.getString("detail_title"));
+				tripDetailDTO.setDetail_content(rs.getClob("detail_content"));
+				tripDetailDTO.setPosX(rs.getFloat("posx"));
+				tripDetailDTO.setPosY(rs.getFloat("posy"));
+				
+				list.add(tripDetailDTO);
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBClose.close(con, pstmt, rs);
+		}
+	
+		return list;
+	}
+	
 
 	
 }
