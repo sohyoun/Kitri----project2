@@ -121,8 +121,8 @@ public class AdminDAOImpl implements AdminDAO {
 		//System.out.println(adminDaoImpl.selectByEmail(admin_email));
 		
 		//회원목록테이블 SELECT ALL 
-		AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
-		System.out.println("memberlist == " +adminDAOImpl.selectAll());
+		//AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
+		//System.out.println("memberlist == " +adminDAOImpl.selectAll());
 
 		//회원목록테이블 가입 수 반환하기
 		//AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
@@ -179,7 +179,7 @@ public class AdminDAOImpl implements AdminDAO {
 				memberBoard.setGender(rs.getString("gender"));
 				memberBoard.setGrade(rs.getInt("grade"));
 					
-					list.add(memberBoard);
+				list.add(memberBoard);
 				}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -223,8 +223,8 @@ public class AdminDAOImpl implements AdminDAO {
 			pstmt.setInt(1, endRow);
 			pstmt.setInt(2, startRow);
 			
-			System.out.println("startRow == " + startRow);
-			System.out.println("endRow == " +endRow);
+			//System.out.println("startRow == " + startRow);
+			//System.out.println("endRow == " +endRow);
 			
 			rs = pstmt.executeQuery();
 			
@@ -243,7 +243,7 @@ public class AdminDAOImpl implements AdminDAO {
 				
 				list.add(memberBoard);
 			}
-			System.out.println(" size " + list.size());
+			//System.out.println("size == " + list.size());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -365,18 +365,32 @@ public class AdminDAOImpl implements AdminDAO {
 			
 			StringBuffer sql = new StringBuffer();
 			
+			
+			
 			sql.append("SELECT * " +  
 					   "FROM memberlist ");  
 			
-				if(searchType =="이메일") {
-					sql.append("WHERE " + searchType + "like '%" + keyword + "%' ");
-				}else if(searchType == "이름") {
-					sql.append("WHERE " + searchType + "like '%" + keyword + "%' ");
-				}else if(searchType == "성별") {
-					sql.append("WHERE " + searchType + "like '%" + keyword + "%' ");
+				if(searchType.equals("email")) {
+					System.out.println("이메일 == " + searchType);
+					sql.append("WHERE " + searchType + " like '%'||?||'%' ");
+				}else if(searchType.equals("name")) {
+					System.out.println("이름 == " + searchType);
+					sql.append("WHERE " + searchType + " like '%'||?||'%' ");
+				}else if(searchType.equals("gender")) {
+					System.out.println("성별 == " + searchType);
+					sql.append("WHERE " + searchType + " like '%'||?||'%' ");
 				}
 				
 			pstmt = conn.prepareStatement(sql.toString());
+			
+			if(searchType.equals("email")) {
+				pstmt.setString(1, keyword);
+			}else if(searchType.equals("name")) {
+				pstmt.setString(1, keyword);
+			}else if(searchType.equals("gender")) {
+				pstmt.setString(1, keyword);
+			}
+			//System.out.println("keyword == " + keyword);
 			
 			rs = pstmt.executeQuery();
 			

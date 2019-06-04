@@ -17,7 +17,7 @@ $(function() {
 		daum.maps.load(function() {
 			var container = document.getElementById('map');
 			var options = {
-				center: new daum.maps.LatLng(33.450701, 126.570667),
+				center: new daum.maps.LatLng(37.485087, 126.898855),
 				level: 3
 			};
 		

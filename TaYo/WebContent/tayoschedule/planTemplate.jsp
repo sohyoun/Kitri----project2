@@ -68,23 +68,7 @@ $(function() {
 <!-- tour packages -->
 <section class="packages py-5">
 	<div class="container py-lg-4 py-sm-3">
-		<div class="row">
-<!-- 			<div class="col-lg-3 col-sm-6" name="scheduleinfo" style="cursor:pointer"> -->
-<!-- 				<div class="image-tour position-relative"> -->
-<!-- 					<img src="/TaYo/images/p1.jpg" alt="" class="img-fluid" /> -->
-<!-- 					<p><span>100 </span><span class="fa fa-thumbs-up"> | 12230 </span><span class="fa fa-eye"></p> -->
-<!-- 				</div> -->
-<!-- 				<div class="package-info"> -->
-<!-- 					<h6 class="mt-1"><span class="fa fa-map-marker mr-2"></span>부산</h6> -->
-<!-- 					<h5 class="my-2">모녀 부산여행</h5> -->
-<!-- 					<p class="">가족여행</p> -->
-<!-- 					<ul class="listing mt-3"> -->
-<!-- 						<li><span class="fa fa-clock-o mr-2"></span><span>2019.05.01~2019.05.03 (3)</span></li> -->
-<!-- 					</ul> -->
-<!-- 					<h6 class="mt-1"><span class="fa fa-user-circle"> kkiruk</h6> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-		</div>
+		<div class="row"></div>
 	</div>
 </section>
 <!-- tour packages -->

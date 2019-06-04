@@ -45,16 +45,15 @@ public class AdminMemberContoller extends HttpServlet {
 		request.setAttribute("memberlist", list);
 		//==================================================
 
-
 		String cp = request.getParameter("currentPage");
 		
 		int currentPage = 1;
-		System.out.println("cp == " + cp );
+//		System.out.println("cp == " + cp );
 //		
 		 if(cp != null) { 
 			 currentPage = Integer.parseInt(cp); 
 			} else {
-				System.out.println("에러");
+//				System.out.println("에러");
 			}
 		
 			//System.out.println("cp == " + cp);
@@ -62,13 +61,13 @@ public class AdminMemberContoller extends HttpServlet {
 			int totalCnt = memberListService.getTotalCnt();
 			int cntPerPageGroup = 5;
 			
-			String url = "boardlist";
+			String url = "memberlistresult.jsp";
 			MemberListDTO memberListDTO = new MemberListDTO(cntPage, totalCnt, cntPerPageGroup, url, currentPage);
-			System.out.println("startPage " + memberListDTO.getStartPage());
+			//System.out.println("startPage " + memberListDTO.getStartPage());
 			
 			List<MemberBoard> boardlist = memberListService.findByRows(memberListDTO.getStartRow(), memberListDTO.getEndRow());
 			
-			System.out.println("페이징처리할 리스트: " + boardlist);
+			//System.out.println("페이징처리할 리스트: " + boardlist);
 			
 			request.setAttribute("boardlist", boardlist);
 			request.setAttribute("pagination", memberListDTO);

@@ -41,7 +41,7 @@ $(function() {
 	// Map
 	var container = document.getElementById('map');
 	var options = {
-		center: new daum.maps.LatLng(33.450701, 126.570667),
+		center: new daum.maps.LatLng(37.485087, 126.898855),
 		level: 7
 	};
 	var map = new daum.maps.Map(container, options);
@@ -58,7 +58,7 @@ $(function() {
 		var length = lists.length;
 		
 		for (var i = 0; i < length; i++) {
-			$(lists[i]).find(".list-group-item-1").text((i+1) + '일차');
+			$(lists[i]).find(".list-group-item-1").text('DAY' + (i+1));
 		}
 	}
 	
@@ -84,7 +84,7 @@ $(function() {
 	var buttons = $("#controlday>button");
 	$(buttons[0]).click(function() {
 		var length = $(".list-group").length;
-		var obj = $("<ul class='list-group ui-sortable-handle'><li class='list-group-item-1' style='background-color:steelblue; color: white; padding: 0.3rem;'>" + (length + 1) + "일차</li></ul>");
+		var obj = $("<ul class='list-group ui-sortable-handle'><li class='list-group-item-1' style='background-color:steelblue; color: white; padding: 0.3rem;'>" + "DAY" + (length + 1) + "</li></ul>");
 		$(obj).sortable({
 	 		axis: "y",
 	 		revert: false,
@@ -100,7 +100,7 @@ $(function() {
 			$("#daylist>ul:last").remove();
 		} else {
 			$("#daylist>ul:first").remove();
-			var obj = $("<ul class='list-group ui-sortable-handle'><li class='list-group-item-1' style='background-color:steelblue; color: white; padding: 0.3rem;'>1일차</li></ul>");
+			var obj = $("<ul class='list-group ui-sortable-handle'><li class='list-group-item-1' style='background-color:steelblue; color: white; padding: 0.3rem;'>DAY1</li></ul>");
 			$(obj).sortable({
 		 		axis: "y",
 		 		revert: false,
@@ -271,7 +271,7 @@ $(function() {
 				</div>
 				
 				<ul class="list-group">
-					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">1일차</li>
+					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">DAY1</li>
 				</ul>
 			</div>
 			
