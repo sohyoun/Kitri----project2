@@ -3,6 +3,7 @@ package com.kitri.together.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class TogetherDetailServlet extends HttpServlet {
 		String tripSeq = request.getParameter("tripSeq");					//11
 		String tripTitle = request.getParameter("tripTitle");				//부산여행
 		String startDate = request.getParameter("startDate");				//2019-06-06
-		String endDate = request.getParameter("endDate");
+		String endDate = request.getParameter("endDate"); 
 		String nowNum = request.getParameter("nowNum");						//2
 		String tripNum = request.getParameter("tripNum");					//10
 		String email = request.getParameter("email");						//gogo@naver.com
@@ -46,6 +47,7 @@ public class TogetherDetailServlet extends HttpServlet {
 			Date startD = transFormat.parse(startDate);
 			Date endD = transFormat.parse(endDate);
 			long day = endD.getTime()-startD.getTime();
+			Calendar
 			System.out.println(startD);
 			System.out.println(endD);
 			System.out.println(day/1000/60/60/24+1);
