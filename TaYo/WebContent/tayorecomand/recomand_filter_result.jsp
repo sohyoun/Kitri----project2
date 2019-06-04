@@ -1,16 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
+<x:set var="area" value="${requestScope.xml }"/>
+
+
+
+
+
+
 
 <c:set var="bean" scope="application" value="${requestScope.pagebean}"></c:set>
 <c:set var="jsonData" scope="request" value="${requestScope.jsonStr}"></c:set>
+
 
 <!-- 여행일정 -->
 <div class="container mt-3">
 	<h3 class="heading text-capitalize text-center">베스트 여행일정</h3>
 	<div class="row">
 		<c:set var="index" value="1" />
-		<c:forEach var="tripBasicDto" items="${requestScope.pagebean.list}">
-			<c:forEach var="tripDetailDto" items="${tripBasicDto.detailList}" varStatus="status">
+		<c:forEach var="tripBasicDto" items="${requestScope.pagebean.list}" varStatus="status">
+<%-- 			<c:forEach var="tripDetailDto" items="${tripBasicDto.list}"> --%>
+				
+<%-- 			</c:forEach> --%>
+<%-- 			<c:forEach var="tripDetailDto" items="${tripBasicDto.detailList}" > --%>
 				
 			<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5">
 				<div class="image-tour position-relative" >
@@ -21,7 +33,16 @@
 				</div>
 				<div class="package-info">
 					<h6 class="mt-1">
-						<span class="fa fa-map-marker mr-2"></span>${tripDetailDto.place_name}
+					//TODO
+						<span class="fa fa-map-marker mr-2"></span>
+						<x:forEach var="areaCode" select="$area/response/body/items/item">
+							<x:set var="codeValue" select="$areaCode/code"/>
+							<x:set var="locName" select="$areaCode/name"/>
+							<c:set var="loc" value="${tabledays.loc_id}"/>
+							<x:if select="$codeValue = $loc">
+								<td class="planplace"><x:out select="$locName"/></td>
+							</x:if>
+						</x:forEach>
 					</h6>
 					<h5 class="my-2">${tripBasicDto.tripTitle}</h5>
 					<p class="">${tripBasicDto.tripTheme}</p>
@@ -33,8 +54,8 @@
 					</span></h6>
 				</div>
 			</div>
-			</c:forEach>
-		</c:forEach><!-- end foreach--> 
+			</c:forEach><!-- end foreach-->
+<%-- 		</c:forEach>  --%>
 	</div>
 </div>
 
@@ -43,14 +64,14 @@
 <div class="mokcha" style="text-align: center">
 <!-- 	기호는 유니코드로 변경하자  -->
 	<c:if test="${(bean.startPage) != 1}">
-		<a href="${pageContext.request.contextPath}/recomand?currentPage=${bean.startPage-1}"><button class="left">◀</button></a>
+		<a href="${bean.startPage-1}">◀</a>
 	</c:if>
 <!-- 	todo jsonData 필터 값 유지 시켜야한다. -->
 	<c:forEach var="index" begin="${bean.startPage}" end="${bean.endPage}" step="1" >
-		<a href="${pageContext.request.contextPath}/recomand?currentPage=${index}">${index}</a>
+		<a href="${index}">${index}</a>
 	</c:forEach>
 	<c:if test="${(bean.endPage) !=bean.totalPage}">
-		<a href="${pageContext.request.contextPath}/recomand?currentPage=${bean.endPage+1}"><button class="right">▶</button></a>
+		<a href="${bean.endPage+1}">▶</a>
 	</c:if>
 </div>
 

@@ -1,6 +1,9 @@
 package com.kitri.dto;
 
+import java.io.IOException;
 import java.util.*;
+
+import com.kitri.api.tour.service.TourResionCodeService;
 
 /**
  * @author user
@@ -21,7 +24,6 @@ public class TripBasicDTO {
 	private String isComplete;		//완료여부
 	List<TripDetailDTO> detailList;	//상세일정리스트
 
-	
 	@Override
 	public String toString() {
 		return "TripBasicDTO [tripSeq=" + tripSeq + ", email=" + email + ", tripTitle=" + tripTitle + ", tripTheme="

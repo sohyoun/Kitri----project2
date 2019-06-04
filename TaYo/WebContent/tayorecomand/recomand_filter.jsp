@@ -43,8 +43,8 @@
 		});
 		
 		//목차 버튼 추가
-		$(document).on("click", "div.mokcha > a",function() {
-			var mokcha =$(this).html();
+		$(document).on("click", "div.mokcha > a", function() {
+			var mokcha = $(this).attr("href");
 			console.log(mokcha);
 			//필터 안의 값들 출력
 			outFilter(mokcha);
@@ -73,11 +73,14 @@
 		}//end setFilterBtnEvent
 		
 		function outFilter(mokcha){
+			if(mokcha == undefined){
+				mokcha = 1;
+			}
 			console.log('mokcha:' +mokcha);
 			
 			//ajax에서는 planobject 전달 가능
 			var data = {};
-			data['current_page']=mokcha;
+			data['current_page']= ''+mokcha;
 			//필터 안의 값들 출력
 			var filterArr= filterbody.children();	
 			for(var i =0; i<filterArr.length;i++){
@@ -99,7 +102,7 @@
 			//필터값에 대한 데이터리스트 갱신
 			$.ajax({
 				url : "${pageContext.request.contextPath}/recomand",
-				type : 'get',
+				type : 'post',
 				data: {
 					jsonData : JSON.stringify(data)
 				},

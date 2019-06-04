@@ -188,7 +188,6 @@ public class TripBasicDao {
 				int likeCount = rs.getInt("likecount");
 				Date lastUpDate = rs.getDate("lastUpDate");
 				String isComplete = rs.getString("isComplete");
-
 				
 				List<TripDetailDTO> detailList = TripDetailDao.getInstance().select(trip_seq);
 				TripBasicDTO dto = new TripBasicDTO(trip_seq, email, tripTitle, tripTheme, tripSeason, tripNum,
