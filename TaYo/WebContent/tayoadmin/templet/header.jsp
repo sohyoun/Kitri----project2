@@ -18,7 +18,9 @@
 <link rel="stylesheet" type="text/css" href="resource/css/local.css" />
 <script type="text/javascript" src="resource/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src ="resource/bootstrap/js/bootstrap.js"></script>
-
+<script type = "../chart/chart.js"></script>
+<script type = "../chart/chart.min.js"></script>
+<script type = "../chart/utils.js"></script>
 <!-- you need to include the shieldui css and js assets in order for the charts to work -->
 <link id="gridcss" rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/dark-bootstrap/all.min.css" />
 <script type="text/javascript" src="resource/bootstrap/js/chart.js"></script> 

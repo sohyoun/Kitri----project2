@@ -32,12 +32,13 @@ public class SearchMemberListInfo extends HttpServlet {
 		
 		List<MemberBoard> list = memberListService.getMemberSearch(searchType, keyword);
 		
+		System.out.println("list 검색한 리스트 " + list);
 		HttpSession session = request.getSession();
 		
 		session.removeAttribute("searchType");
 		
 		if(searchType != null && keyword != null) {
-			session.setAttribute("list", list);
+			session.setAttribute("searchlist", list);
 		}
 		
 		String path = "/tayoadmin/memberlistresult.jsp";
