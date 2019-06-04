@@ -61,7 +61,7 @@ $(function(){
 		daum.maps.load(function() {
 			var container = document.getElementById('map');
 			var options = {
-				center: new daum.maps.LatLng(33.450701, 126.570667),
+				center: new daum.maps.LatLng(37.485087, 126.898855),
 				level: 3
 			};
 	
@@ -69,22 +69,19 @@ $(function(){
 		}); 
 	});
 	
-	$("label[class='description']").click(function() {
-		// to be implemented
-	});
-	
+	// show path (do not using modal window)
 	$("button[class='btn btn btn-light']").click(function() {
-		$("#pathModal").modal();
+// 		$("#pathModal").modal();
 
-		$("#pathModal").on('shown.bs.modal', function() {
-			var container = document.getElementById('mapModal');
-			var options = {
-				center: new daum.maps.LatLng(33.450701, 126.570667),
-				level: 3
-			};
+// 		$("#pathModal").on('shown.bs.modal', function() {
+// 			var container = document.getElementById('mapModal');
+// 			var options = {
+// 				center: new daum.maps.LatLng(37.485087, 126.898855),
+// 				level: 3
+// 			};
 	
-			var map = new daum.maps.Map(container, options);
-		});
+// 			var map = new daum.maps.Map(container, options);
+// 		});
 	});
 });
 </script>
@@ -98,7 +95,7 @@ $(function(){
 <div class="container mb-4" data-spy="scroll" data-target="#dayinfo" data-offset="10">
 	<div class="row">
 		<div id="dayinfo" class="col-sm-1">
-			<div class="btn-group-vertical">
+			<div class="btn-group-vertical" style="position: sticky; top: 1rem">
 				<span class="fa fa-chevron-up"/>
 				<c:set var="olddays" value="-1"/>
 				<c:forEach var="tabledays" items="${detailDTO}">
@@ -166,34 +163,17 @@ $(function(){
 		</div>
 
 		<!-- Load Map dynamically -->
-		<div class="col-sm-4">
-			<div id="map" style="width: 100%; height: 60%;"></div>
-			<script>
-				$.getScript('http://dapi.kakao.com/v2/maps/sdk.js?appkey=d388e7ffead01bfd5045bc218f8e8830&autoload=false', function () {
-					daum.maps.load(function() {
-						var container = document.getElementById('map');
-						var options = {
-							center: new daum.maps.LatLng(33.450701, 126.570667),
-							level: 3
-						};
-				
-						var map = new daum.maps.Map(container, options); 
-						}); 
-					});
-			</script>
-
+		<div class="col-sm-4">	
+			<div id="map" style="width: 100%; height: 20%; position: sticky; top: 1rem"></div>
 			<br>
-			<div style="border: solid;">
-				<div class="row">
-					<div class="col-sm-4">관광지1</div>
-					<div class="col-sm-4">관광지2</div>
-					<div class="col-sm-4">관광지3</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-4">관광지4</div>
-					<div class="col-sm-4">관광지5</div>
-					<div class="col-sm-4">관광지6</div>
-				</div>
+			<div style="border-width: 2px; position: sticky; top: 22.5rem">
+				<ul class="list-group">
+					<li class="list-group-item">경로1</li>
+					<li class="list-group-item">경로2</li>
+					<li class="list-group-item">경로3</li>
+					<li class="list-group-item">경로4</li>
+					<li class="list-group-item">경로5</li>
+				</ul>
 			</div>
 		</div>
 	</div>
