@@ -41,7 +41,7 @@
 				</thead>
 				<tbody>
 					<c:set var="olddays" value="-1"/>
-					<c:forEach var="tabledays" items="${detailDTO}" varStatus="status">
+					<c:forEach var="tabledays" items="${detailDTO}">
 						<c:if test="${olddays != tabledays.trip_day}">
 							<c:set var="olddays" value="${tabledays.trip_day}"/>
 							<tr id="day${tabledays.trip_day}">
