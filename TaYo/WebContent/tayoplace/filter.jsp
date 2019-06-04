@@ -83,6 +83,8 @@
 								html += "</div>"
 									html += "</div></td></tr>";	 */
 									
+									
+									
 						
 						
 						$("div.card>div.card-body>h5.card-title").html(title);
