@@ -7,6 +7,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix ="x" uri ="http://java.sun.com/jsp/jstl/xml"%>
 
+<style>
+	.nav-link {
+		padding: 0.5rem;
+	}
+</style>
+
 <c:set var="areaCodes" value="${sessionScope.areaCodes}"/>
 <x:parse var="area" xml="${areaCodes}"/>
 
@@ -15,9 +21,10 @@
 
 <div class="container mb-4" data-spy="scroll" data-target="#dayinfo" data-offset="10">
 	<div class="row">
-		<div id="dayinfo" class="col-sm-2">
+		<div id="dayinfo" class="col-sm-1">
 			<div class="btn-group-vertical">
 				<span class="fa fa-chevron-up"/>
+				<c:set var="olddays" value="-1"/>
 				<c:forEach var="tabledays" items="${detailDTO}">
 					<c:if test="${olddays != tabledays.trip_day}">
 						<a class="nav-link" href="#day${tabledays.trip_day}">DAY${tabledays.trip_day}</a>
@@ -28,7 +35,7 @@
 			</div>
 		</div>
 			
-		<div class="col-sm-10">
+		<div class="col-sm-11">
 			<table class="table">
 				<thead class="thead-navy">
 					<tr>

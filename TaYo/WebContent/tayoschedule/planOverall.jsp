@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix ="x" uri ="http://java.sun.com/jsp/jstl/xml"%>
+
 <style>
 	.list-group-item {
 		padding: 0;
@@ -37,7 +40,7 @@
 	}
 	
 	.nav-link {
-		padding: 0;
+		padding: 0.5rem;
 	}
 	
 	.btn-path {
@@ -49,12 +52,23 @@
 		height: 1.5rem;
 		color: #ff9320;
 	}
-	
-	
 </style>
 
 <script>
 $(function(){
+	var map;
+	$.getScript('http://dapi.kakao.com/v2/maps/sdk.js?appkey=d388e7ffead01bfd5045bc218f8e8830&autoload=false', function () {
+		daum.maps.load(function() {
+			var container = document.getElementById('map');
+			var options = {
+				center: new daum.maps.LatLng(33.450701, 126.570667),
+				level: 3
+			};
+	
+			map = new daum.maps.Map(container, options); 
+		}); 
+	});
+	
 	$("label[class='description']").click(function() {
 		// to be implemented
 	});
@@ -75,14 +89,24 @@ $(function(){
 });
 </script>
 
+<c:set var="areaCodes" value="${sessionScope.areaCodes}"/>
+<x:parse var="area" xml="${areaCodes}"/>
+
+<c:set var="basicDTO" value="${sessionScope.TripBasicDTO}"/>
+<c:set var="detailDTO" value="${basicDTO.detailList}"/>
+
 <div class="container mb-4" data-spy="scroll" data-target="#dayinfo" data-offset="10">
 	<div class="row">
 		<div id="dayinfo" class="col-sm-1">
 			<div class="btn-group-vertical">
 				<span class="fa fa-chevron-up"/>
-				<a class="nav-link" href="#day1">1일차</a>
-				<a class="nav-link" href="#day2">2일차</a>
-				<a class="nav-link" href="#day3">3일차</a>
+				<c:set var="olddays" value="-1"/>
+				<c:forEach var="tabledays" items="${detailDTO}">
+					<c:if test="${olddays != tabledays.trip_day}">
+						<a class="nav-link" href="#day${tabledays.trip_day}">DAY${tabledays.trip_day}</a>
+						<c:set var="olddays" value="${tabledays.trip_day}"/>
+					</c:if>
+				</c:forEach>
 				<span class="fa fa-chevron-down"/>
 			</div>
 		</div>

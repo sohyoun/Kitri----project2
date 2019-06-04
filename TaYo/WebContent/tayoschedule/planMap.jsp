@@ -3,6 +3,13 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<style>
+	.nav-link {
+		padding: 0.5rem;
+		
+	}
+</style>
+
 <script>
 $(function() {
 	var map;
@@ -15,8 +22,8 @@ $(function() {
 			};
 		
 			map = new daum.maps.Map(container, options); 
-			}); 
-		});
+		}); 
+	});
 	
 	
 	var isFirst = true;
@@ -106,13 +113,10 @@ $(function() {
 			
 			<div class="col-sm-7">
 				<div id="map" style="width: 100%; height: 100%; min-height: 35rem;"></div>
-				<script>
-					
-				</script>
 			</div>
 			
 			<div class="col-sm-2">
-				<ul class="list-group">
+				<ul class="list-group" style="overflow-y: auto">
 					<c:set var="olddays" value="-1"/>
 					<c:forEach var="tabledays" items="${detailDTO}">
 						<c:if test="${olddays != tabledays.trip_day}">
