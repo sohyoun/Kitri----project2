@@ -6,6 +6,13 @@
 
 <%@ include file="/temp/header.jsp" %>
 
+<style>
+	.nav-link {
+		padding: 0.5rem;
+		
+	}
+</style>
+
 <script>
 	$(function(){
 		var aArr = $(".pdmenu>ul>li>a");
