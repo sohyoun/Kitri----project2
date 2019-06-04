@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <div class="container mb-4" data-spy="scroll" data-target="#dayinfo"
 	data-offset="10">
 		<div class="row">

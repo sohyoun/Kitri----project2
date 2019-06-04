@@ -3,6 +3,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <c:set var="list" value="${requestScope.list}"/>
 <c:set var="dd" value="${requestScope.dd}"/>
+<c:set var="startDate" value="${requestScope.startDate}"/>
+<c:set var="endDate" value="${requestScope.endDate}"/>
 
 <style>
 	.list-group-item {
@@ -40,7 +42,7 @@
 	}
 	
 	.nav-link {
-		padding: 0;
+		padding: 0.5rem;
 	}
 	
 	.btn-path {
@@ -90,12 +92,14 @@ $(function(){
 				<span class="fa fa-chevron-down"></span>
 			</div>
 		</div>
-
+		
 		<div class="col-sm-7" style="overflow-y: auto; height: 100rem;">
+			<c:forEach var="td" items="${list}">	
 				<div class="daytitle">
-      				<div class="daynum" id="day1">DAY1</div>
-      				<div class="daytitlecontent"><div class="daydate">2015.08.09 (일)</div><div class="daycplace">부산</div></div>
+      				<div class="daynum" id="day${td.trip_day}">DAY${td.trip_day}</div>
+      				<div class="daytitlecontent"><div class="daydate">2015.08.09 (일)</div><div class="daycplace">${td.loc_id}</div></div>
       			</div>
+      			<c:forEach var="td" items="${list}">
       			<div class="daydetail">
       				<div class="daydetailnum"><span class="circle">1</span></div>
       				<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
@@ -118,31 +122,8 @@ $(function(){
 					<div class="daydetailsub">[체크리스트] </div>
       			</div>
       			<div><li class="btn-path"><button class="btn btn btn-light">경로 탐색</button></li></div>
-      			<div class="daytitle">
-      				<div class="daynum" id="day2">DAY2</div>
-      				<div class="daytitlecontent"><div class="daydate">2015.08.10 (월)</div><div class="daycplace">부산</div></div>
-      			</div>
-      			<div class="daydetail">
-      				<div class="daydetailnum"><span class="circle">1</span></div>
-      				<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
-      				<div class="daydetailcontent">해운대<span class="badge">관광지</span></div>
-      				<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
-      				<div class="daydetailsub">[소요시간] 장안동에서 인천국제공항 공항철도까지 2시간 소요 -12:05 공항리무진</div>
-      				<div class="daydetailsub">[도착 예정시간] 14:00</div>
-      				<div class="daydetailsub">[예상비용] 점심 15,000원</div>
-					<div class="daydetailsub">[체크리스트] </div>
-      			</div>
-      			<div><li class="btn-path"><button class="btn btn btn-light">경로 탐색</button></li></div>
-      			<div class="daydetail">
-      				<div class="daydetailnum"><span class="circle">2</span></div>
-      				<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
-      				<div class="daydetailcontent">해운대카페거리<span class="badge">관광지</span></div>
-      				<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
-      				<div class="daydetailsub">[소요시간] 장안동에서 인천국제공항 공항철도까지 2시간 소요 -12:05 공항리무진</div>
-      				<div class="daydetailsub">[도착 예정시간] 14:00</div>
-      				<div class="daydetailsub">[예상비용] 점심 15,000원</div>
-					<div class="daydetailsub">[체크리스트] </div>
-      			</div>
+      			</c:forEach>
+      		</c:forEach>	
 		</div>
 
 		<!-- Load Map dynamically -->

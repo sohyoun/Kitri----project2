@@ -28,9 +28,13 @@ public class TogetherOverallServlet extends HttpServlet {
 		System.out.println("여기온것이냔?");
 		int tripSeq = Integer.parseInt(request.getParameter("tripSeq"));
 		String dd = request.getParameter("dd");
+		String startDate = request.getParameter("startDate");
+		String endDate = request.getParameter("endDate");
 		List<TripDetailDTO> list = service.findTripDetail(tripSeq);
 		request.setAttribute("list", list);
 		request.setAttribute("dd", dd);
+		request.setAttribute("startDate", startDate);
+		request.setAttribute("endDate", endDate);
 		String path="/tayotogether/ttOverall.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);

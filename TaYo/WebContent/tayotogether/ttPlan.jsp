@@ -2,6 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <c:set var="tripSeq" value="${requestScope.tripSeq}"/>
+<c:set var="tripTitle" value="${requestScope.tripTitle}"/>
+<c:set var="startDate" value="${requestScope.startDate}"/>
+<c:set var="endDate" value="${requestScope.endDate}"/>
+<c:set var="nowNum" value="${requestScope.nowNum}"/>
+<c:set var="tripNum" value="${requestScope.tripNum}"/>
+<c:set var="email" value="${requestScope.email}"/>
 <c:set var="dd" value="${requestScope.dd}"/>
 <script>
 $(function(){
@@ -11,7 +17,7 @@ $(function(){
 		$.ajax({
 			url : '${pageContext.request.contextPath}/'+$url,
 			method:'get',
-			data:'tripSeq=${tripSeq}&dd=${dd}',
+			data:'tripSeq=${tripSeq}&dd=${dd}&startDate=${startDate}&endDate=${endDate}',
 			success : function(result){
 				$("#Overall").html(result.trim());
 			}
@@ -20,17 +26,21 @@ $(function(){
 	});
 });
 </script>
-
+<style>
+.nav-link {
+		padding: 0.5rem;
+	}
+</style>
 <section class="packages">
 	<div class="container py-sm-3">
 	<div class="twplandetail">
 		<div class="pdheader">
 		<div class="pdheaderdetail">
 		<div class="pdheaderdetailcontent">
-			<div class="pname">${requestScope.tripTitle}</div>
-			<div class="ptime">${requestScope.startDate}~${requestScope.endDate} (${requestScope.dd})</div>
-			<div class="twppeople">정원 : ${requestScope.nowNum}/${requestScope.tripNum}</div>
-			<div class="pleader"><span class="fa fa-user-circle"> ${requestScope.email}</div>
+			<div class="pname">${tripTitle}</div>
+			<div class="ptime">${startDate}~${endDate} (${dd})</div>
+			<div class="twppeople">정원 : ${nowNum}/${tripNum}</div>
+			<div class="pleader"><span class="fa fa-user-circle"> ${email}</div>
 		</div>
 		</div>
 		</div>
@@ -40,13 +50,13 @@ $(function(){
      			<a class="nav-link active" data-toggle="tab" href="togetheroverall">개요</a>
     		</li>
     		<li class="nav-item">
-     			<a class="nav-link" data-toggle="tab" href="#schedule">일정표</a>
+     			<a class="nav-link" data-toggle="tab" href="togetherschedule">일정표</a>
     		</li>
    			<li class="nav-item">
-    			<a class="nav-link" data-toggle="tab" href="#map">지도</a>
+    			<a class="nav-link" data-toggle="tab" href="togethermap">지도</a>
    			</li>
    			<li class="nav-item">
-    			<a class="nav-link" data-toggle="tab" href="#question">문의게시판</a>
+    			<a class="nav-link" data-toggle="tab" href="togetherquestion">문의게시판</a>
    			</li>
    			<div class="joinbtnlist">
 		<%!int twBtn = 1; %>
