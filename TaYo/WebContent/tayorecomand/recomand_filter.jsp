@@ -3,6 +3,7 @@
 <script>
 	var isfilter;
 	$(function() {
+		var cityMap={};
 		//도시버튼 추가 (글자, 이벤트)
 		$.ajax({
 			url : "${pageContext.request.contextPath}/tourresioncode",
@@ -23,8 +24,13 @@
 						$('body > div.container td.filter_body.si > div.city_toggle.collapse').append(
 								'<button class="btn btn-light"><div data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</span></button>');
 					}
+					cityMap[''+$(xmlData[i]).find("code").text()] = $(xmlData[i]).find("name").text();
+					
 				}
+				console.log('citymap');
+				console.log(cityMap);
 			},//end success
+			
 			error : function(err) {
 				console.log(err);
 			}//end error
@@ -43,8 +49,8 @@
 		});
 		
 		//목차 버튼 추가
-		$(document).on("click", "div.mokcha > a",function() {
-			var mokcha =$(this).html();
+		$(document).on("click", "div.mokcha > a", function() {
+			var mokcha = $(this).attr("href");
 			console.log(mokcha);
 			//필터 안의 값들 출력
 			outFilter(mokcha);
@@ -73,33 +79,38 @@
 		}//end setFilterBtnEvent
 		
 		function outFilter(mokcha){
+			if(mokcha == undefined){
+				mokcha = 1;
+			}
 			console.log('mokcha:' +mokcha);
 			
 			//ajax에서는 planobject 전달 가능
-			var data = {};
-			data['current_page']=mokcha;
-			//필터 안의 값들 출력
+			var data = {}; //json을 위한 object
+			data['cityMap']= cityMap;
+			data['current_page']= ''+mokcha;
+			//필터 안의 값들 json형태로
 			var filterArr= filterbody.children();	
 			for(var i =0; i<filterArr.length;i++){
 				var key =$(filterArr[i]).children().attr("data-type");
 				var value;
-				if(key=='day'){
+				if(key=='day'){//일자 일때
 					console.log($(filterArr[i]).children());
 					var start_day = $(filterArr[i]).children().attr('start-day');
 					var end_day =  $(filterArr[i]).children().attr('end-day');
 					data['start_day'] = start_day;
 					data['end_day'] = end_day;
-				}else{
+				}else{//그 외
 					value =$(filterArr[i]).children().text();
 					data[key] = value;
 				}
 			}
-// 			console.log('data'+data);
+			console.log('data');
+ 			console.log(data);
 // 			console.log('json'+JSON.stringify(data));
 			//필터값에 대한 데이터리스트 갱신
 			$.ajax({
 				url : "${pageContext.request.contextPath}/recomand",
-				type : 'get',
+				type : 'post',
 				data: {
 					jsonData : JSON.stringify(data)
 				},

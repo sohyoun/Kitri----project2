@@ -1,5 +1,3 @@
---Member생성
-
 ALTER TABLE Member
 	DROP
 		PRIMARY KEY
@@ -48,8 +46,7 @@ ALTER TABLE Member
 			email
 		);
 		
-		
-----memberDetail 테이블 생성
+		--memberDetail 테이블 생성
 ALTER TABLE Member_detail
 	DROP
 		CONSTRAINT FK_Member_TO_Member_detail
@@ -109,10 +106,10 @@ ALTER TABLE Member_detail
 		REFERENCES Member (
 			email
 		);
-		
-		
---여행 DB 생성
+		--여행 DB 생성
+drop SEQUENCE sq_tripbasic_tripseq;
 create SEQUENCE sq_tripbasic_tripseq;
+
 ALTER TABLE Trip_Basic
 	DROP
 		CONSTRAINT FK_Member_TO_Trip_Basic
@@ -134,6 +131,7 @@ DROP TABLE Trip_Basic
 CREATE TABLE Trip_Basic (
 	trip_seq NUMBER NOT NULL, /* 여행id */
 	email VARCHAR2(35) NOT NULL, /* 이메일 */
+	trip_num NUMBER(3) NOT NULL, /* 여행정원 */
 	trip_title VARCHAR2(50) NOT NULL, /* 여행이름 */
 	trip_theme VARCHAR2(15) NOT NULL, /* 여행테마 */
 	trip_season VARCHAR2(4) NOT NULL, /* 여행시즌 */
@@ -141,7 +139,7 @@ CREATE TABLE Trip_Basic (
 	end_date DATE DEFAULT sysdate NOT NULL, /* 종료일 */
 	viewCount NUMBER, /* 조회수 */
 	likeCount NUMBER, /* 추천수 */
-	lastUpDate DATE NOT NULL /* 최종수정일 */,
+	lastUpDate DATE DEFAULT sysdate NOT NULL, /* 최종수정일 */
 	isComplete VARCHAR2(1) NOT NULL /* 완료여부 */
 );
 
@@ -150,6 +148,8 @@ COMMENT ON TABLE Trip_Basic IS '여행일정';
 COMMENT ON COLUMN Trip_Basic.trip_seq IS '여행id';
 
 COMMENT ON COLUMN Trip_Basic.email IS '이메일';
+
+COMMENT ON COLUMN Trip_Basic.trip_num IS '여행정원';
 
 COMMENT ON COLUMN Trip_Basic.trip_title IS '여행이름';
 
@@ -190,8 +190,7 @@ ALTER TABLE Trip_Basic
 		REFERENCES Member (
 			email
 		);
-		
---여행상세 테이블 생성
+		--여행상세 테이블 생성
 ALTER TABLE Trip_Detail
 	DROP
 		CONSTRAINT FK_Trip_Basic_TO_Trip_Detail
@@ -213,11 +212,11 @@ DROP TABLE Trip_Detail
 CREATE TABLE Trip_Detail (
 	trip_order NUMBER NOT NULL, /* 순서 */
 	trip_day NUMBER NOT NULL, /* 일차 */
+	trip_seq NUMBER NOT NULL, /* 여행id */
 	place_name VARCHAR2(50) NOT NULL, /* 장소이름 */
 	loc_id NUMBER NOT NULL, /* 지역코드 */
-	trip_seq NUMBER, /* 여행id */
 	image VARCHAR2(200), /* 이미지 */
-	detail_title VARCHAR2(50) NOT NULL, /* 일정제목 */
+	detail_title VARCHAR2(50), /* 일정제목 */
 	detail_content CLOB, /* 일정설명 */
 	posx FLOAT, /* x좌표 */
 	posy FLOAT /* y좌표 */
@@ -247,6 +246,7 @@ COMMENT ON COLUMN Trip_Detail.posy IS 'y좌표';
 
 CREATE UNIQUE INDEX PK_Trip_Detail
 	ON Trip_Detail (
+		trip_seq ASC,
 		trip_order ASC,
 		trip_day ASC
 	);
@@ -256,7 +256,8 @@ ALTER TABLE Trip_Detail
 		CONSTRAINT PK_Trip_Detail
 		PRIMARY KEY (
 			trip_order,
-			trip_day
+			trip_day,
+			trip_seq
 		);
 
 ALTER TABLE Trip_Detail

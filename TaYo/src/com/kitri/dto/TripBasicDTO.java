@@ -1,6 +1,9 @@
 package com.kitri.dto;
 
+import java.io.IOException;
 import java.util.*;
+
+import com.kitri.api.tour.service.TourResionCodeService;
 
 /**
  * @author user
@@ -20,8 +23,18 @@ public class TripBasicDTO {
 	private Date lastUpDate;		//최종수정일
 	private String isComplete;		//완료여부
 	List<TripDetailDTO> detailList;	//상세일정리스트
-
 	
+	//set test
+	private Set<Integer> loc_set;
+	
+	public Set<Integer> getLoc_set() {
+		return loc_set;
+	}
+
+	public void setLoc_set(Set<Integer> loc_set) {
+		this.loc_set = loc_set;
+	}
+
 	@Override
 	public String toString() {
 		return "TripBasicDTO [tripSeq=" + tripSeq + ", email=" + email + ", tripTitle=" + tripTitle + ", tripTheme="

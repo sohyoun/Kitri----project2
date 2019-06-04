@@ -1,17 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
 
-<c:set var="bean" scope="application" value="${requestScope.pagebean}"></c:set>
-<c:set var="jsonData" scope="request" value="${requestScope.jsonStr}"></c:set>
+
+
+<c:forEach var="cityMap" items="${requestScope.cityMap}" varStatus="num">
+	<c:if test="${cityMap.key} eq ${loc_id}">
+		${cityMap.value} 
+	</c:if>
+</c:forEach>
+
+
+
+<%-- 맵 값 가져오기 방법 모르겠음 <c:out value="${requestScope.cityMap['1']}"></c:out> --%>
 
 <!-- 여행일정 -->
 <div class="container mt-3">
 	<h3 class="heading text-capitalize text-center">베스트 여행일정</h3>
 	<div class="row">
-		<c:set var="index" value="1" />
-		<c:forEach var="tripBasicDto" items="${requestScope.pagebean.list}">
-			<c:forEach var="tripDetailDto" items="${tripBasicDto.detailList}" varStatus="status">
-				
+	
+		
+		<c:forEach var="tripBasicDto" items="${requestScope.pagebean.list}" varStatus="status">
 			<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5">
 				<div class="image-tour position-relative" >
 					<img src="/TaYo/images/p4.jpg" alt="" class="img-fluid">
@@ -20,8 +29,14 @@
 					</span></span></p>
 				</div>
 				<div class="package-info">
-					<h6 class="mt-1">
-						<span class="fa fa-map-marker mr-2"></span>${tripDetailDto.place_name}
+					<h6 class="mt-1">						
+			 			<c:forEach var="loc_id" items="${tripBasicDto.loc_set}" >
+			 				<c:forEach var="cityMap" items="${requestScope.cityMap}" varStatus="num">
+								<c:if test="${cityMap.key==loc_id}">
+									${cityMap.value} 
+								</c:if>
+						 	</c:forEach> 	 
+			 			 </c:forEach>
 					</h6>
 					<h5 class="my-2">${tripBasicDto.tripTitle}</h5>
 					<p class="">${tripBasicDto.tripTheme}</p>
@@ -33,28 +48,28 @@
 					</span></h6>
 				</div>
 			</div>
-			</c:forEach>
-		</c:forEach><!-- end foreach--> 
+			</c:forEach><!-- end foreach-->
+<%-- 		</c:forEach>  --%>
 	</div>
 </div>
 
 
-
+	<c:set var="index" value="1" />
 <div class="mokcha" style="text-align: center">
 <!-- 	기호는 유니코드로 변경하자  -->
 	<c:if test="${(bean.startPage) != 1}">
-		<a href="${pageContext.request.contextPath}/recomand?currentPage=${bean.startPage-1}"><button class="left">◀</button></a>
+		<a href="${bean.startPage-1}">◀</a>
 	</c:if>
 <!-- 	todo jsonData 필터 값 유지 시켜야한다. -->
 	<c:forEach var="index" begin="${bean.startPage}" end="${bean.endPage}" step="1" >
-		<a href="${pageContext.request.contextPath}/recomand?currentPage=${index}">${index}</a>
+		<a href="${index}">${index}</a>
 	</c:forEach>
 	<c:if test="${(bean.endPage) !=bean.totalPage}">
-		<a href="${pageContext.request.contextPath}/recomand?currentPage=${bean.endPage+1}"><button class="right">▶</button></a>
+		<a href="${bean.endPage+1}">▶</a>
 	</c:if>
 </div>
 
-jsonData: ${requestScope.jsonStr}
+
 currentPage : ${requestScope.bean.currentPage}	
 startRow :${requestScope.pagebean.startRow}
 endRow :${requestScope.pagebean.endRow}
