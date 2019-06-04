@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<c:set var="list" value="${requestScope.list}"/>
+<c:set var="dd" value="${requestScope.dd}"/>
 
 <style>
 	.list-group-item {
@@ -80,11 +83,11 @@ $(function(){
 	<div class="row">
 		<div id="dayinfo" class="col-sm-1">
 			<div class="btn-group-vertical">
-				<span class="fa fa-chevron-up"/>
-				<a class="nav-link" href="#day1">1일차</a>
-				<a class="nav-link" href="#day2">2일차</a>
-				<a class="nav-link" href="#day3">3일차</a>
-				<span class="fa fa-chevron-down"/>
+				<span class="fa fa-chevron-up"></span>
+				<c:forEach begin="1" end="${dd}" var="i">
+				<a class="nav-link" href="#day${i}">${i}일차</a>
+				</c:forEach>
+				<span class="fa fa-chevron-down"></span>
 			</div>
 		</div>
 

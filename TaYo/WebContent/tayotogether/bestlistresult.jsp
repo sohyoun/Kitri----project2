@@ -12,6 +12,7 @@ $(function(){
 		var nowNum = $(this).find("#nowNum").text();
 		var tripNum = $(this).find("#tripNum").text();
 		var email = $(this).find("#email").text();
+		console.log("${pageContext.request.contextPath}/togetherdetail");
 		$.ajax({
 			url : "${pageContext.request.contextPath}/togetherdetail",
 			method:'get',
@@ -25,7 +26,7 @@ $(function(){
 					email : email
 			},
 			success : function(result){
-				$("section.banner_inner").html(result.trim());
+				$("div.tayowithbody").html(result.trim());
 			}
 		});
 		return false;
@@ -51,8 +52,8 @@ $(function(){
 					<h5 class="my-2" id="tripTitle">${tb.tripTitle}</h5>
 					<p class="">Á¤¿ø : <span id="nowNum">${tt.nowNum}</span>/<span id="tripNum">${tb.tripNum}</span></p>
 					<ul class="listing mt-3">
-						<li><span class="fa fa-clock-o mr-2"></span><span id="startDate">${tb.startDate}</span>~<span id="endDate">${tb.endDate}</span>
-								(3)</span></li>
+						<li><span class="fa fa-clock-o mr-2"></span><span id="startDate">${tb.startDate}</span> ~ <span id="endDate">${tb.endDate}</span>
+								</li>
 					</ul>
 					<h6 class="mt-1">
 						<span class="fa fa-user-circle" id="email"> ${tb.email} </span>

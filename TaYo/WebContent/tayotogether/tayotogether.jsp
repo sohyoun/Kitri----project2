@@ -15,7 +15,7 @@ $(function(){
 
 </script>
 
-
+<div class="tayowithbody">
 <!-- banner -->
 <section class="banner_inner" id="home">
 	<div class="banner_inner_overlay">
@@ -172,7 +172,7 @@ $(function(){
 
 </div>
 <!-- 함께타요 -->
-
+</div>
 
 
 
