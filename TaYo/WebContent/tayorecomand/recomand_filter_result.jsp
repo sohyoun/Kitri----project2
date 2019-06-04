@@ -1,29 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
-<x:set var="area" value="${requestScope.xml }"/>
 
 
 
+<c:forEach var="cityMap" items="${requestScope.cityMap}" varStatus="num">
+	<c:if test="${cityMap.key} eq ${loc_id}">
+		${cityMap.value} 
+	</c:if>
+</c:forEach>
 
 
 
-
-<c:set var="bean" scope="application" value="${requestScope.pagebean}"></c:set>
-<c:set var="jsonData" scope="request" value="${requestScope.jsonStr}"></c:set>
-
+<%-- 맵 값 가져오기 방법 모르겠음 <c:out value="${requestScope.cityMap['1']}"></c:out> --%>
 
 <!-- 여행일정 -->
 <div class="container mt-3">
 	<h3 class="heading text-capitalize text-center">베스트 여행일정</h3>
 	<div class="row">
-		<c:set var="index" value="1" />
+	
+		
 		<c:forEach var="tripBasicDto" items="${requestScope.pagebean.list}" varStatus="status">
-<%-- 			<c:forEach var="tripDetailDto" items="${tripBasicDto.list}"> --%>
-				
-<%-- 			</c:forEach> --%>
-<%-- 			<c:forEach var="tripDetailDto" items="${tripBasicDto.detailList}" > --%>
-				
 			<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5">
 				<div class="image-tour position-relative" >
 					<img src="/TaYo/images/p4.jpg" alt="" class="img-fluid">
@@ -32,17 +29,14 @@
 					</span></span></p>
 				</div>
 				<div class="package-info">
-					<h6 class="mt-1">
-					//TODO
-						<span class="fa fa-map-marker mr-2"></span>
-						<x:forEach var="areaCode" select="$area/response/body/items/item">
-							<x:set var="codeValue" select="$areaCode/code"/>
-							<x:set var="locName" select="$areaCode/name"/>
-							<c:set var="loc" value="${tabledays.loc_id}"/>
-							<x:if select="$codeValue = $loc">
-								<td class="planplace"><x:out select="$locName"/></td>
-							</x:if>
-						</x:forEach>
+					<h6 class="mt-1">						
+			 			<c:forEach var="loc_id" items="${tripBasicDto.loc_set}" >
+			 				<c:forEach var="cityMap" items="${requestScope.cityMap}" varStatus="num">
+								<c:if test="${cityMap.key==loc_id}">
+									${cityMap.value} 
+								</c:if>
+						 	</c:forEach> 	 
+			 			 </c:forEach>
 					</h6>
 					<h5 class="my-2">${tripBasicDto.tripTitle}</h5>
 					<p class="">${tripBasicDto.tripTheme}</p>
@@ -60,7 +54,7 @@
 </div>
 
 
-
+	<c:set var="index" value="1" />
 <div class="mokcha" style="text-align: center">
 <!-- 	기호는 유니코드로 변경하자  -->
 	<c:if test="${(bean.startPage) != 1}">
@@ -75,7 +69,7 @@
 	</c:if>
 </div>
 
-jsonData: ${requestScope.jsonStr}
+
 currentPage : ${requestScope.bean.currentPage}	
 startRow :${requestScope.pagebean.startRow}
 endRow :${requestScope.pagebean.endRow}
