@@ -44,7 +44,7 @@
 }
 
 .card-img-top {
-	width: 400px;
+	width: 350px;
 	height: 200px;
 }
 
@@ -155,7 +155,7 @@
 
 
 
-<!-- banner -->
+<!-------------------------------여기부터 banner 들어가는 부분 ------------------------------------------>
 <section class="banner_inner" id="home">
 	<div class="banner_inner_overlay">
 		<div class="container">
@@ -172,7 +172,7 @@
 		</div>
 	</div>
 </section>
-<!-- //banner -->
+<!-------------------------------여기부터 banner 들어가는 부분 ------------------------------------------>
 
 
 <!-- 크기 맞춰주는 DIV -->
@@ -184,7 +184,7 @@
 
 
 
-		<!-- 인기여행지 best -->
+		<!------------------------------- 인기여행지 best  ------------------------------------------>
 		<h3 class="heading text-capitalize text-center">인기 여행지 BEST</h3>
 		<p class="text mt-2 mb-5 text-center">타요인들의 가장 많은 좋아요를 받은 여행지입니다.
 		</p>
@@ -276,127 +276,22 @@
 				</div>
 			</div>
 		</div>
-		<!-- 인기여행지 best -->
+		<!------------------------------- 인기여행지 best  ------------------------------------------>
 
-		<br> <br>
+		<br>
 
 
-		<!-- 필터 -->
+		<!------------------------------- 필터  ------------------------------------------>
 		<jsp:include page="filter.jsp"></jsp:include>
-		<!-- 필터 -->
+		<!------------------------------- 필터  ------------------------------------------>
 
 
-		<!-- 옵션박스 -->
+		<!------------------------------- 옵션박스  ------------------------------------------>
 		<jsp:include page="optionbox.jsp"></jsp:include>
-		<!-- 옵션박스 -->
+		<!------------------------------- 옵션박스  ------------------------------------------>
 
 
-
-
-<!-- 
-		필터
-		<table class="table table-bordered" id="filter">
-			<tr>
-				<td id="filter-title">여행도시</td>
-				<td id="filter-body">
-					<button type="button" class="btn btn-light">서울</button>
-					<button type="button" class="btn btn-light">경기</button>
-					<button type="button" class="btn btn-light">인천</button>
-					<button type="button" class="btn btn-light">부산</button>
-					<button type="button" class="btn btn-light">대구</button>
-					<button type="button" class="btn btn-light">광주</button>
-					<button type="button" class="btn btn-light">대전</button>
-					<button type="button" class="btn btn-light">울산</button>
-					<button type="button" class="btn btn-light">제주</button>
-					<div id="city-toggle" class="collapse">
-						<button type="button" class="btn btn-light">광주</button>
-						<button type="button" class="btn btn-light">울산</button>
-						<button type="button" class="btn btn-light">세종특별자치시</button>
-						<button type="button" class="btn btn-light">가평군</button>
-						<button type="button" class="btn btn-light">고양시</button>
-						<button type="button" class="btn btn-light">과천시</button>
-						<button type="button" class="btn btn-light">광명시</button>
-						<button type="button" class="btn btn-light">광주시(경기)</button>
-						<button type="button" class="btn btn-light">구리시</button>
-						<button type="button" class="btn btn-light">군포시</button>
-					</div>
-				</td>
-				<td width="4%"><span class="fa fa-chevron-down"
-					data-toggle="collapse" data-target="#city-toggle"></span></td>
-			</tr>
-		</table>
- -->
-
-
-
-		<br>
-		<h3 class="heading text-capitalize ">Seoul</h3>
-
-
-
-		<!-- 여행지 상세 선택 분류 -->
-		<div class="common_menu">
-			<a href="naver.com">관광명소</a> <a href="naver.com">음식점</a> <a
-				href="naver.com">여행 일정</a>
-		</div>
-		<!-- 여행지 상세 선택 분류  -->
-
-
-		<br>
-
-
-
-		<!-- 여행지 상세 선택 분류2 -->
-		<nav>
-			<div class="nav nav-tabs">
-				<a class="nav-item nav-link active" id="nav-home-tab"
-					data-toggle="tab" href="#nav-home" role="tab"
-					aria-controls="nav-home" aria-selected="true">전체</a> <a
-					class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
-					href="#nav-profile" role="tab" aria-controls="nav-profile"
-					aria-selected="false">관광지</a> <a class="nav-item nav-link"
-					id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
-					role="tab" aria-controls="nav-contact" aria-selected="false">액티비티</a>
-			</div>
-		</nav>
-		<div class="tab-content" id="nav-tabContent">
-			<div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-				aria-labelledby="nav-home-tab">
-
-				<br> <label class="checkContainer">One <input
-					type="checkbox"> <span class="checkmark"></span></label> <label
-					class="checkContainer">Two <input type="checkbox">
-					<span class="checkmark"></span>
-				</label> <label class="checkContainer">Three <input type="checkbox">
-					<span class="checkmark"></span>
-				</label> <label class="checkContainer">Four <input type="checkbox">
-					<span class="checkmark"></span>
-				</label>
-
-
-			</div>
-			<div class="tab-pane fade" id="nav-profile" role="tabpanel"
-				aria-labelledby="nav-profile-tab">
-				<label class="containercjec">One <input type="checkbox"
-					checked="checked"> <span class="checkmark"></span>
-				</label> <label class="container">Two <input type="checkbox">
-					<span class="checkmark"></span>
-				</label> <label class="container">Three <input type="checkbox">
-					<span class="checkmark"></span>
-				</label> <label class="container">Four <input type="checkbox">
-					<span class="checkmark"></span>
-				</label>
-
-			</div>
-			<div class="tab-pane fade" id="nav-contact" role="tabpanel"
-				aria-labelledby="nav-contact-tab"></div>
-		</div>
-		<!-- 여행지 상세 선택 분류2 -->
-
-
-		<br> <br>
-
-
+<!------------------------------- api  ------------------------------------------>
 		<div id="placelist">
 
 			<table class="table table-bordered table-sm">
@@ -405,7 +300,7 @@
 
 
 					<!-- 관광지  박스 -->
-					<div class="card" style="display: none; width: 70rem;">
+					 <div class="card" style="display: none; width: 70rem;">
 						<img class="card-img-top">
 						<div class="card-body" style="display: inline;">
 							<h5 class="card-title"></h5>
@@ -414,7 +309,7 @@
 							<a href="#" class="btn btn-primary">상세보기</a>
 						</div>
 					</div>
-					<br>
+					<br> 
 					<!-- 관광지  박스 -->
 
 
@@ -423,9 +318,11 @@
 				</tbody>
 			</table>
 		</div>
+<!------------------------------- api  ------------------------------------------>
 
 
-		<br> <br> <br>
+
+<!-- 		<br> <br> <br> -->
 
 
 		<!-- 관광지  박스 -->
@@ -444,7 +341,7 @@
 		<br>
 		<!-- 관광지  박스 -->
 
-		<!-- 관광지  박스 -->
+<!-- 		<!-- 관광지  박스 --> -->
 		<div class="card" style="width: 70rem;">
 			<img class="card-img-top" src="/TaYo/images/tp1.jpg"
 				alt="Card image cap">
@@ -460,53 +357,54 @@
 		<!-- 관광지  박스 -->
 		<br>
 
-		<!-- 관광지  박스 -->
-		<div class="card" style="width: 70rem;">
-			<img class="card-img-top" src="/TaYo/images/tp3.jpg"
-				alt="Card image cap">
-			<div class="card-body" style="display: inline;">
-				<h5 class="card-title">인천국제공항</h5>
-				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South
-					Korea 지도보기</p>
-				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의
-					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p>
-				<a href="#" class="btn btn-primary">상세보기</a>
-			</div>
-		</div>
-		<!-- 관광지  박스 -->
-		<br>
+<!-- 		<!-- 관광지  박스 --> -->
+<!-- 		<div class="card" style="width: 70rem;"> -->
+<!-- 			<img class="card-img-top" src="/TaYo/images/tp3.jpg
+" -->
+<!-- 				alt="Card image cap"> -->
+<!-- 			<div class="card-body" style="display: inline;"> -->
+<!-- 				<h5 class="card-title">인천국제공항</h5> -->
+<!-- 				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South -->
+<!-- 					Korea 지도보기</p> -->
+<!-- 				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의 -->
+<!-- 					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p> -->
+<!-- 				<a href="#" class="btn btn-primary">상세보기</a> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 		<!-- 관광지  박스 --> -->
+<!-- 		<br> -->
 
-		<!-- 관광지  박스 -->
-		<div class="card" style="width: 70rem;">
-			<img class="card-img-top" src="/TaYo/images/tp4.jpg"
-				alt="Card image cap">
-			<div class="card-body" style="display: inline;">
-				<h5 class="card-title">인천국제공항</h5>
-				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South
-					Korea 지도보기</p>
-				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의
-					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p>
-				<a href="#" class="btn btn-primary">상세보기</a>
-			</div>
-		</div>
-		<!-- 관광지  박스 -->
-		<br>
+<!-- 		<!-- 관광지  박스 --> -->
+<!-- 		<div class="card" style="width: 70rem;"> -->
+<!-- 			<img class="card-img-top" src="/TaYo/images/tp4.jpg" -->
+<!-- 				alt="Card image cap"> -->
+<!-- 			<div class="card-body" style="display: inline;"> -->
+<!-- 				<h5 class="card-title">인천국제공항</h5> -->
+<!-- 				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South -->
+<!-- 					Korea 지도보기</p> -->
+<!-- 				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의 -->
+<!-- 					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p> -->
+<!-- 				<a href="#" class="btn btn-primary">상세보기</a> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 		<!-- 관광지  박스 --> -->
+<!-- 		<br> -->
 
-		<!-- 관광지  박스 -->
-		<div class="card" style="width: 70rem;">
-			<img class="card-img-top" src="/TaYo/images/tp2_2.jpg"
-				alt="Card image cap">
-			<div class="card-body" style="display: inline;">
-				<h5 class="card-title">인천국제공항</h5>
-				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South
-					Korea 지도보기</p>
-				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의
-					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p>
-				<a href="#" class="btn btn-primary">상세보기</a>
-			</div>
-		</div>
-		<!-- 관광지  박스 -->
-		<br>
+<!-- 		<!-- 관광지  박스 --> -->
+<!-- 		<div class="card" style="width: 70rem;"> -->
+<!-- 			<img class="card-img-top" src="/TaYo/images/tp2_2.jpg" -->
+<!-- 				alt="Card image cap"> -->
+<!-- 			<div class="card-body" style="display: inline;"> -->
+<!-- 				<h5 class="card-title">인천국제공항</h5> -->
+<!-- 				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South -->
+<!-- 					Korea 지도보기</p> -->
+<!-- 				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의 -->
+<!-- 					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p> -->
+<!-- 				<a href="#" class="btn btn-primary">상세보기</a> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 		<!-- 관광지  박스 --> -->
+<!-- 		<br> -->
 
 
 
