@@ -278,12 +278,9 @@
 		</div>
 		<!-- 인기여행지 best -->
 
-		<br> <br>
-
-
-		<!-- 필터 -->
-		<jsp:include page="filter.jsp"></jsp:include>
-		<!-- 필터 -->
+		<br>
+		<hr>
+		<br>
 
 
 		<!-- 옵션박스 -->
@@ -292,119 +289,13 @@
 
 
 
-
-<!-- 
-		필터
-		<table class="table table-bordered" id="filter">
-			<tr>
-				<td id="filter-title">여행도시</td>
-				<td id="filter-body">
-					<button type="button" class="btn btn-light">서울</button>
-					<button type="button" class="btn btn-light">경기</button>
-					<button type="button" class="btn btn-light">인천</button>
-					<button type="button" class="btn btn-light">부산</button>
-					<button type="button" class="btn btn-light">대구</button>
-					<button type="button" class="btn btn-light">광주</button>
-					<button type="button" class="btn btn-light">대전</button>
-					<button type="button" class="btn btn-light">울산</button>
-					<button type="button" class="btn btn-light">제주</button>
-					<div id="city-toggle" class="collapse">
-						<button type="button" class="btn btn-light">광주</button>
-						<button type="button" class="btn btn-light">울산</button>
-						<button type="button" class="btn btn-light">세종특별자치시</button>
-						<button type="button" class="btn btn-light">가평군</button>
-						<button type="button" class="btn btn-light">고양시</button>
-						<button type="button" class="btn btn-light">과천시</button>
-						<button type="button" class="btn btn-light">광명시</button>
-						<button type="button" class="btn btn-light">광주시(경기)</button>
-						<button type="button" class="btn btn-light">구리시</button>
-						<button type="button" class="btn btn-light">군포시</button>
-					</div>
-				</td>
-				<td width="4%"><span class="fa fa-chevron-down"
-					data-toggle="collapse" data-target="#city-toggle"></span></td>
-			</tr>
-		</table>
- -->
-
-
-
-		<br>
-		<h3 class="heading text-capitalize ">Seoul</h3>
-
-
-
-		<!-- 여행지 상세 선택 분류 -->
-		<div class="common_menu">
-			<a href="naver.com">관광명소</a> <a href="naver.com">음식점</a> <a
-				href="naver.com">여행 일정</a>
-		</div>
-		<!-- 여행지 상세 선택 분류  -->
-
-
-		<br>
-
-
-
-		<!-- 여행지 상세 선택 분류2 -->
-		<nav>
-			<div class="nav nav-tabs">
-				<a class="nav-item nav-link active" id="nav-home-tab"
-					data-toggle="tab" href="#nav-home" role="tab"
-					aria-controls="nav-home" aria-selected="true">전체</a> <a
-					class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
-					href="#nav-profile" role="tab" aria-controls="nav-profile"
-					aria-selected="false">관광지</a> <a class="nav-item nav-link"
-					id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
-					role="tab" aria-controls="nav-contact" aria-selected="false">액티비티</a>
-			</div>
-		</nav>
-		<div class="tab-content" id="nav-tabContent">
-			<div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-				aria-labelledby="nav-home-tab">
-
-				<br> <label class="checkContainer">One <input
-					type="checkbox"> <span class="checkmark"></span></label> <label
-					class="checkContainer">Two <input type="checkbox">
-					<span class="checkmark"></span>
-				</label> <label class="checkContainer">Three <input type="checkbox">
-					<span class="checkmark"></span>
-				</label> <label class="checkContainer">Four <input type="checkbox">
-					<span class="checkmark"></span>
-				</label>
-
-
-			</div>
-			<div class="tab-pane fade" id="nav-profile" role="tabpanel"
-				aria-labelledby="nav-profile-tab">
-				<label class="containercjec">One <input type="checkbox"
-					checked="checked"> <span class="checkmark"></span>
-				</label> <label class="container">Two <input type="checkbox">
-					<span class="checkmark"></span>
-				</label> <label class="container">Three <input type="checkbox">
-					<span class="checkmark"></span>
-				</label> <label class="container">Four <input type="checkbox">
-					<span class="checkmark"></span>
-				</label>
-
-			</div>
-			<div class="tab-pane fade" id="nav-contact" role="tabpanel"
-				aria-labelledby="nav-contact-tab"></div>
-		</div>
-		<!-- 여행지 상세 선택 분류2 -->
-
-
 		<br> <br>
 
-
+<!-------------------------------여기부터 api 들어가는 부분 ------------------------------------------>
 		<div id="placelist">
-
 			<table class="table table-bordered table-sm">
 				<tbody id="tablebody" align="center">
-
-
-
-					<!-- 관광지  박스 -->
+				<!-- 관광지  박스 -->
 					<div class="card" style="display: none; width: 70rem;">
 						<img class="card-img-top">
 						<div class="card-body" style="display: inline;">
@@ -416,18 +307,15 @@
 					</div>
 					<br>
 					<!-- 관광지  박스 -->
-
-
-
-
 				</tbody>
 			</table>
 		</div>
+<!-------------------------------여기부터 api 들어가는 부분 ------------------------------------------>
 
 
-		<br> <br> <br>
 
 
+<!-------------------------------여기부터 샘플데이터 들어가는 부분 ------------------------------------------>
 		<!-- 관광지  박스 -->
 		<div class="card" style="width: 70rem;">
 			<img class="card-img-top" src="/TaYo/images/tp2_2.jpg"
@@ -507,9 +395,13 @@
 		</div>
 		<!-- 관광지  박스 -->
 		<br>
+<!-------------------------------여기부터 샘플데이터 들어가는 부분 ------------------------------------------>
 
 
 
+
+
+<!-------------------------------여기부터 페이징처리 들어가는 부분 ------------------------------------------>
 		<nav aria-label="Page navigation example">
 			<ul class="pagination">
 				<li class="page-item"><a class="page-link" href="#"
@@ -525,6 +417,9 @@
 				</a></li>
 			</ul>
 		</nav>
+<!-------------------------------여기부터 페이징처리 들어가는 부분 ------------------------------------------>
+
+
 	</div>
 </section>
 
