@@ -55,7 +55,7 @@ public class RecomandServlet extends HttpServlet {
 			String season = (String) jsonObj.get("season");
 			String theme = (String) jsonObj.get("theme");
 			String city = (String) jsonObj.get("city");
-			System.out.println("city: "+ city);
+			System.out.println("RecomandServlet city: "+ city);
 			String s_length = (String) jsonObj.get("start_day");
 			String e_length = (String) jsonObj.get("end_day");
 
@@ -70,7 +70,7 @@ public class RecomandServlet extends HttpServlet {
 			//지역코드 맵
 
 			Map<String, Object> cityMap = (Map<String, Object>) jsonObj.get("cityMap");
-			System.out.println("RecomandServlet" + cityMap.toString());
+//			System.out.println("RecomandServlet" + cityMap.toString());
 			int loc_id=-1;
 			for(String key: cityMap.keySet()) {
 //				System.out.println("key: " + key);
@@ -86,7 +86,7 @@ public class RecomandServlet extends HttpServlet {
 		
 			
 			
-
+			System.out.println("RecomandServlet basicList.size():" + basicList.size());
 			int cntPerPage = 2; // 한페이지당 표현할 아이템 개수
 			int totalCnt = basicList.size();// 총 목록 개수
 			int cntPerPageGroup = 4; // 표현할 그룹 개수

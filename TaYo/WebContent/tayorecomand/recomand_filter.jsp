@@ -25,10 +25,12 @@
 								'<button class="btn btn-light"><div data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</span></button>');
 					}
 					cityMap[''+$(xmlData[i]).find("code").text()] = $(xmlData[i]).find("name").text();
-					
 				}
 				console.log('citymap');
 				console.log(cityMap);
+				//여행일정 읽어오기
+				outFilter();
+			
 			},//end success
 			
 			error : function(err) {
@@ -88,6 +90,7 @@
 			var data = {}; //json을 위한 object
 			data['cityMap']= cityMap;
 			data['current_page']= ''+mokcha;
+			
 			//필터 안의 값들 json형태로
 			var filterArr= filterbody.children();	
 			for(var i =0; i<filterArr.length;i++){
@@ -124,6 +127,7 @@
 				}				
 			});
 		}//end outFilter
+	
 	});//end onload
 </script>
 

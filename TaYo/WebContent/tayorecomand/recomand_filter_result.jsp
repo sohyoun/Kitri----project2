@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
 
 
 
@@ -10,9 +9,18 @@
 	</c:if>
 </c:forEach>
 
-
-
 <%-- 맵 값 가져오기 방법 모르겠음 <c:out value="${requestScope.cityMap['1']}"></c:out> --%>
+
+
+<c:forEach var="loc_id" items="${tripBasicDto.loc_set}">
+	<c:forEach var="cityMap" items="${requestScope.cityMap}" varStatus="num">
+		<c:if test="${cityMap.key == loc_id}">
+			${cityMap.value} 
+		</c:if>
+	</c:forEach>
+</c:forEach>
+
+
 
 <!-- 여행일정 -->
 <div class="container mt-3">
