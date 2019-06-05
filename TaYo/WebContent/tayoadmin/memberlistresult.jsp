@@ -20,11 +20,6 @@
 			method : 'get',
 			data : 'searchType=' + searchType + '&keyword=' + keyword,
 			success : function(result) {
-				/* 	if(searchType == null || keyword == null){
-						alert("다시 입력 바랍니다용!")
-					}else{
-						$("#memberlist").html(result.trim());
-					} */
 				alert(result)
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
@@ -34,9 +29,10 @@
 
 			}
 		});
+		return false;
 	});
 		
-	/* 	$("ul.pagination > li > a").click(function(){
+	 	$("ul.pagination > li > a").click(function(){
 			var currentPage=$(this).attr("href");
 			alert(currentPage+"페이지를 보여줍니다.");
 			$.ajax({
@@ -44,15 +40,20 @@
 				method:'post',
 				data:'currentPage='+currentPage,
 				success:function(result){
-					//alert(result)
-					$("table#memberlist").html(result.trim());
+					alert(result)
+					//$("table#memberlist").html(result.trim());
 				},
 				error : function(){
 					console.log("에러")
 				}
 			}); 
 			return false;
-		}); */
+		}); 
+	 	
+	 	
+	 	
+	 	
+	 	
 });
 </script>
 <div class="row">
@@ -92,9 +93,9 @@
 						<th>등급</th>
 					</tr>
 				</thead>
+					<tbody>
 			<c:set var="list" value="${requestScope.boardlist}" />
 				<c:forEach var="m" items="${list}">
-					<tbody>
 						<tr>
 							<td id="board_seq">${m.board_seq}</td>
 							<td>${m.email}</td>
@@ -108,8 +109,8 @@
 							<td><img style="width: 25px; height: 25px;"
 								src="/TaYo/tayoadmin/images/${m.grade}.png"></td>
 						</tr>
-					</tbody>
 				</c:forEach>
+					</tbody>
 			</table>
 			<div class="col-lg-1"></div>
 		</div>

@@ -38,46 +38,29 @@ $(document).ready(function() {
 
  
 <div class="container">
-	<h2>게시글 관리</h2>
+	<h2>게시글 등록</h2>
 	<hr />
 	<form action="/action_page.php" class="was-validated">
 		<div class="form-group">
 			<label for="title">제목</label> <input type="text" class="form-control"
-				id="title" placeholder="제목이 자동으로 설정될꺼임" name="title" required>
+				id="title" placeholder="Title " name="title" required>
 		</div>
 		
 		<div class="form-group">
 			<label for="option">분류</label> <input type="text"
-				class="form-control" id="pwd" placeholder="자동 설정"
+				class="form-control" id="pwd" placeholder="Group"
 				name="pswd" required>
 		</div>
-		
-<!-- 		<div class="form-group">
-			<label for="option">옵션</label> <input type="text"
-				class="form-control" id="pwd" placeholder=""
-				name="pswd" required>
-		</div> -->
 		
 		<div class="form-group">
 			<label for="option">내용</label>
 			<div class="form-group">
-				<textarea name="content" id="summernote" value=""></textarea>
+				<textarea name="content" id="summernote" ></textarea>
 			</div>
 		</div>
-		<!-- <label for="option">첨부파일</label>
-		<div class="form-group">
-			<label>File input 1 </label><input type="file"> <label>File input 2 </label> <input type="file">
-		</div>
-
-		<div class="form-group form-check">
-			<label class="form-check-label"> <input
-				class="form-check-input" type="checkbox" name="remember" required>
-				I agree on blabla.
-			</label>
-		</div> -->
 	</form>
 		 <div style = "margin-bottom: 5em;"class = "row text-center">
-				<button type="submit" class="btn btn-success">수정</button>
+				<button type="submit" class="btn btn-success">등록</button>
 				<button type="submit" id="btBack" class="btn btn-primary">뒤로 가기</button>
 		</div>
 </div>

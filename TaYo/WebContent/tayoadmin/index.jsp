@@ -1,108 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/tayoadmin/templet/header.jsp"%>
-
-<style>
-
-
-</style>
+<script src="../tayoadmin/chart/chart.js"></script>
+<script src="../tayoadmin/chart/utils.js"></script>
 <!-- jquery chart area!!!  -->
 <script type="text/javascript">
-	jQuery(function($) {
-		var performance = [ 100, 43, 34, 22, 12, 33, 4, 17, 22, 34, 54, 67 ], visits = [
-				123, 323, 443, 32 ], traffic = [ {
-			Source : "Direct",
-			Amount : 600,
-			Change : 53,
-			Percent : 23, 
-			Target : 600
-		}, {
-			Source : "Refer",
-			Amount : 345,
-			Change : 34,
-			Percent : 45,
-			Target : 567
-		}, {
-			Source : "Social",
-			Amount : 567,
-			Change : 67,
-			Percent : 23,
-			Target : 456
-		}, {
-			Source : "Search",
-			Amount : 234,
-			Change : 23,
-			Percent : 56,
-			Target : 890
-		}, {
-			Source : "Internal",
-			Amount : 111,
-			Change : 78,
-			Percent : 12,
-			Target : 345
-		} ];
-
-		$("#shieldui-chart1").shieldChart({
-			theme : "dark",
-
-			primaryHeader : {
-				text : "방문자"
-			},
-			exportOptions : {
-				image : false,
-				print : false
-			},
-			dataSeries : [ {
-				seriesType : "area",
-				collectionAlias : "Q Data",
-				data : performance
-			} ]
-		});
-
-		$("#shieldui-chart2").shieldChart({
-			theme : "dark",
-			primaryHeader : {
-				text : "접속 비율"
-			},
-			exportOptions : {
-				image : true,
-				print : false
-			},
-			dataSeries : [ {
-				seriesType : "pie",
-				collectionAlias : "traffic",
-				data : visits
-			} ]
-		});
-
-		$("#shieldui-grid1").shieldGrid({
-			dataSource : {
-				data : traffic
-			},
-			sorting : {
-				multiple : true
-			},
-			rowHover : true,
-			paging : false,
-			columns : [ {
-				field : "Source",
-				width : "170px",
-				title : "Source"
-			}, {
-				field : "Amount",
-				width : "170px",
-				title : "Amount"
-			}, {
-				field : "Percent",
-				title : "Percent",
-				format : "{0} %"
-			}, {
-				field : "Target",
-				title : "Target"
-			}, ]
-		});
-	});
 </script>
-
 
 <div class="row">
 	<div class="col-lg-12">
@@ -124,35 +26,60 @@
 				</h3>
 			</div>
 			<div class="panel-body">
-				<div id="shieldui-chart1"></div>
+				<canvas id="myChart" width="600" height="300"></canvas>
 			</div>
 		</div>
 	</div>
-	
-<header>
-	<div id = "header" class="col-lg-4">
-			<ul class="nav nav-tabs">
-				<li class="active"><a data-toggle="tab" href="#stats">Users</a>
-				</li>
-				<li class=""><a data-toggle="tab" href="#report">Favorites</a>
-				</li>
-				<li class=""><a data-toggle="tab" href="#dropdown1">Commenters</a>
-				</li>
-			</ul>
-	</div>
-</header>
-
-
+<script type="text/javascript">
+var ctx = $("#myChart");
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+    	maintainAspectRatio : false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
 	<div class="body tab-content">
 		<div class="tab-pane clearfix active" id="stats">
 			<h5 class="tab-header">
-				<i class="fa fa-calendar-o fa-2x"></i> Last logged-in users
+				<i class="fa fa-calendar-o fa-2x"></i> 로그인 기록
 			</h5>
 			<ul class="news-list">
 				<li><i class="fa fa-user fa-4x pull-left"></i>
 					<div class="news-item-info">
 						<div class="name">
-							<a href="#">Ivan Gorge</a>
+							<a href="#">김</a>
 						</div>
 						<div class="position">Software Engineer</div>
 						<div class="time">Last logged-in: Mar 12, 11:11</div>
@@ -160,7 +87,7 @@
 				<li><i class="fa fa-user fa-4x pull-left"></i>
 					<div class="news-item-info">
 						<div class="name">
-							<a href="#">Roman Novak</a>
+							<a href="#">이</a>
 						</div>
 						<div class="position">Product Designer</div>
 						<div class="time">Last logged-in: Mar 12, 19:02</div>
@@ -168,7 +95,7 @@
 				<li><i class="fa fa-user fa-4x pull-left"></i>
 					<div class="news-item-info">
 						<div class="name">
-							<a href="#">Teras Uotul</a>
+							<a href="#">형</a>
 						</div>
 						<div class="position">Chief Officer</div>
 						<div class="time">Last logged-in: Jun 16, 2:34</div>
@@ -176,142 +103,18 @@
 				<li><i class="fa fa-user fa-4x pull-left"></i>
 					<div class="news-item-info">
 						<div class="name">
-							<a href="#">Deral Ferad</a>
+							<a href="#">박</a>
 						</div>
 						<div class="position">Financial Assistant</div>
 						<div class="time">Last logged-in: Jun 18, 4:20</div>
 					</div></li>
-				<li><i class="fa fa-user fa-4x pull-left"></i>
+				<li><i class="fa fa-user fa-3x pull-left"></i>
 					<div class="news-item-info">
 						<div class="name">
-							<a href="#">Konrad Polerd</a>
+							<a href="#">고</a>
 						</div>
 						<div class="position">Sales Manager</div>
 						<div class="time">Last logged-in: Jun 18, 5:13</div>
-					</div></li>
-			</ul>
-		</div>
-		<div class="tab-pane" id="report">
-			<h5 class="tab-header">
-				<i class="fa fa-star fa-2x"></i> Popular contacts
-			</h5>
-			<ul class="news-list news-list-no-hover">
-				<li><i class="fa fa-user fa-4x pull-left"></i>
-					<div class="news-item-info">
-						<div class="name">
-							<a href="#">Pol Johnsson</a>
-						</div>
-						<div class="options">
-							<button class="btn btn-xs btn-success">
-								<i class="fa fa-phone"></i> Call
-							</button>
-							<button class="btn btn-xs btn-warning">
-						-		<i class="fa fa-envelope-o"></i> Message
-							</button>
-						</div>
-					</div></li>
-				<li><i class="fa fa-user fa-4x pull-left"></i>
-					<div class="news-item-info">
-						<div class="name">
-							<a href="#">Terry Garel</a>
-						</div>
-						<div class="options">
-							<button class="btn btn-xs btn-success">
-								<i class="fa fa-phone"></i> Call
-							</button>
-							<button class="btn btn-xs btn-warning">
-								<i class="fa fa-envelope-o"></i> Message
-							</button>
-						</div>
-					</div></li>
-				<li><i class="fa fa-user fa-4x pull-left"></i>
-					<div class="news-item-info">
-						<div class="name">
-							<a href="#">Eruos Forkal</a>
-						</div>
-						<div class="options">
-							<button class="btn btn-xs btn-success">
-								<i class="fa fa-phone"></i> Call
-							</button>
-							<button class="btn btn-xs btn-warning">
-								<i class="fa fa-envelope-o"></i> Message
-							</button>
-						</div>
-					</div></li>
-				<li><i class="fa fa-user fa-4x pull-left"></i>
-					<div class="news-item-info">
-						<div class="name">
-							<a href="#">Remus Reier</a>
-						</div>
-						<div class="options">
-							<button class="btn btn-xs btn-success">
-								<i class="fa fa-phone"></i> Call
-							</button>
-							<button class="btn btn-xs btn-warning">
-								<i class="fa fa-envelope-o"></i> Message
-							</button>
-						</div>
-					</div></li>
-				<li><i class="fa fa-user fa-4x pull-left"></i>
-					<div class="news-item-info">
-						<div class="name">
-							<a href="#">Lover Lund</a>
-						</div>
-						<div class="options">
-							<button class="btn btn-xs btn-success">
-								<i class="fa fa-phone"></i> Call
-							</button>
-							<button class="btn btn-xs btn-warning">
-								<i class="fa fa-envelope-o"></i> Message
-							</button>
-						</div>
-					</div></li>
-			</ul>
-		</div>
-		<div class="tab-pane" id="dropdown1">
-			<h5 class="tab-header">
-				<i class="fa fa-comments fa-2x"></i> Top Commenters
-			</h5>
-			<ul class="news-list">
-				<li><i class="fa fa-user fa-4x pull-left"></i>
-					<div class="news-item-info">
-						<div class="name">
-							<a href="#">Edin Garey</a>
-						</div>
-						<div class="comment">Nemo enim ipsam voluptatem quia
-							voluptas sit aspernatur aut odit aut fugit,sed quia</div>
-					</div></li>
-				<li><i class="fa fa-user fa-4x pull-left"></i>
-					<div class="news-item-info">
-						<div class="name">
-							<a href="#">Firel Lund</a>
-						</div>
-						<div class="comment">Duis aute irure dolor in reprehenderit
-							in voluptate velit esse cillum dolore eu fugiat.</div>
-					</div></li>
-				<li><i class="fa fa-user fa-4x pull-left"></i>
-					<div class="news-item-info">
-						<div class="name">
-							<a href="#">Jessica Desingter</a>
-						</div>
-						<div class="comment">Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt.</div>
-					</div></li>
-				<li><i class="fa fa-user fa-4x pull-left"></i>
-					<div class="news-item-info">
-						<div class="name">
-							<a href="#">Novel Forel</a>
-						</div>
-						<div class="comment">Sed ut perspiciatis, unde omnis iste
-							natus error sit voluptatem accusantium doloremque.</div>
-					</div></li>
-				<li><i class="fa fa-user fa-4x pull-left"></i>
-					<div class="news-item-info">
-						<div class="name">
-							<a href="#">Wedol Reier</a>
-						</div>
-						<div class="comment">Laudantium, totam rem aperiam eaque
-							ipsa, quae ab illo inventore veritatis et quasi.</div>
 					</div></li>
 			</ul>
 		</div>
@@ -325,7 +128,6 @@
 					</h3>
 				</div>
 				<div class="panel-body">
-					<div id="shieldui-grid1"></div>
 				</div>
 			</div>
 		</div>
@@ -341,7 +143,6 @@
 					</h3>
 				</div>
 				<div class="panel-body">
-					<div id="shieldui-chart2"></div>
 				</div>
 			</div>
 		</div>
