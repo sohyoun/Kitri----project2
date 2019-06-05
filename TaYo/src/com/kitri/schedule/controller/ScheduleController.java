@@ -70,6 +70,18 @@ public class ScheduleController extends HttpServlet {
 			request.setAttribute("TripBasicDTO", list);
 			
 			MoveURL.forward(request, response, "/tayoschedule/searchPlanResult.jsp");
+		} else if ("deletePlan".equals(act)) {
+			int result = backendController.deletePlan(request, response);
+				String notice = "";
+			
+			if (result != 0) {
+				notice = "성공하였습니다.";
+			} else {
+				notice = "실패하였습니다.";
+			}
+			request.setAttribute("notice", notice);
+			
+			MoveURL.forward(request, response, "/tayoschedule/deletePlanResult.jsp");
 		} else if ("showDetail".equals(act)) {
 			String areaCodes = codeService.getResionCode();
 			TripBasicDTO basicDTO = backendController.findByTitle(request, response);

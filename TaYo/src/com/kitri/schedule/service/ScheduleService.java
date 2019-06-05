@@ -65,11 +65,13 @@ public class ScheduleService {
 		return dao.insert(basicDTO);
 	}
 
-
 	public List<TripBasicDTO> searchPlan(String email, String type) {
 		return dao.search(email, type);
 	}
-
+	
+	public int delete(String email, String title) {
+		return dao.delete(email, title);
+	}
 
 	public TripBasicDTO findByTitle(String email, String title) {
 		return dao.find(email, title);

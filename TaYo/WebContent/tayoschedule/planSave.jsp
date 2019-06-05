@@ -142,7 +142,7 @@ $(function(){
 					alert("저장이 " + result.trim());
 				}
 				closeModal();
-				location.href='${pageContext.request.contextPath}/schedule?act=myschedule';
+				location.href = '${pageContext.request.contextPath}/schedule?act=myschedule';
 			},
 			error: function(error) {
 				alert("임시저장 처리 중 서버 오류가 발생하였습니다.");

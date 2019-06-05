@@ -36,6 +36,25 @@
 			});
 			return false;
 		});
+		
+		//
+		$("#modifyBtn").click(function() {
+			alert("sdfjksdfsdf");
+		});
+		
+		// Delete plan
+		$("#deleteBtn").click(function() {
+			$.ajax({
+				url: '${pageContext.request.contextPath}/schedule',
+				data: 'act=deletePlan' + '&email=' + 'test@kitri.re.kr' + '&title=' + $("div[class='pname']").text().trim(),
+				method: 'post',
+				success: function(result) {
+					alert("여행 일정 삭제가 " + result.trim());
+					location.href = '${pageContext.request.contextPath}/schedule?act=myschedule';
+				}
+			});
+			return false;
+		});
 	});
 </script>
 

@@ -85,14 +85,19 @@ public class ScheduleBackendController {
 		return service.insert(basicDTO);
 	}
 
-
 	public List<TripBasicDTO> searchPlan(HttpServletRequest request, HttpServletResponse response) {
-		String type = request.getParameter("type");
 		String email = request.getParameter("email");
+		String type = request.getParameter("type");
 		
 		return service.searchPlan(email, type);
 	}
 
+	public int deletePlan(HttpServletRequest request, HttpServletResponse response) {
+		String email = request.getParameter("email");
+		String title = request.getParameter("title");
+		
+		return service.delete(email, title);
+	}
 
 	public TripBasicDTO findByTitle(HttpServletRequest request, HttpServletResponse response) {
 		String email = request.getParameter("email");
