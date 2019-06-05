@@ -36,7 +36,8 @@ public class TogetherDetailServlet extends HttpServlet {
 		String nowNum = request.getParameter("nowNum");						//2
 		String tripNum = request.getParameter("tripNum");					//10
 		String email = request.getParameter("email");						//gogo@naver.com
-
+		
+		System.out.println("tripSeq : " + tripSeq);
 		//여행 기간 구하기-----------------------------------
 //		String strTime = "2017-11-13 21:40:15"; 
 //		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
@@ -47,7 +48,6 @@ public class TogetherDetailServlet extends HttpServlet {
 			Date startD = transFormat.parse(startDate);
 			Date endD = transFormat.parse(endDate);
 			long day = endD.getTime()-startD.getTime();
-			Calendar
 			System.out.println(startD);
 			System.out.println(endD);
 			System.out.println(day/1000/60/60/24+1);

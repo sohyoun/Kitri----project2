@@ -16,9 +16,11 @@ public class TogetherService {
 		return dao.selectbest4();
 	}
 	
-	public List<TripDetailDTO> findTripDetail(int tripSeq) {
-		return dao.selectPlanDetail(tripSeq);
+	public List<TripDetailDTO> findTripDetail(int tripSeq, int tripDay) {
+		return dao.selectPlanDetail(tripSeq,tripDay);
 	}
+	
+
 	
 	
 }

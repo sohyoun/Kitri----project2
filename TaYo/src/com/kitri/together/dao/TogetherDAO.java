@@ -115,7 +115,7 @@ public class TogetherDAO {
 	}
 	
 	//함께타요 일정 상세 페이지 보여주기
-	public List<TripDetailDTO> selectPlanDetail(int tripSeq) {
+	public List<TripDetailDTO> selectPlanDetail(int tripSeq, int tripDay) {
 		List<TripDetailDTO> list = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -127,11 +127,13 @@ public class TogetherDAO {
 			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "project2", "project2");
 			
 			String selectPlanDetailSQL = "select * " + 
-									"from trip_detail " + 
-									"where trip_seq = ?";  
+					"from trip_detail " + 
+					"where trip_seq = ? " + 
+					"and trip_day = ?";  
 			
 			pstmt = con.prepareStatement(selectPlanDetailSQL);
 			pstmt.setInt(1, tripSeq);
+			pstmt.setInt(2, tripDay);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				TripDetailDTO tripDetailDTO = new TripDetailDTO();
