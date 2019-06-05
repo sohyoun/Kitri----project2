@@ -25,12 +25,15 @@ public class TogetherOverallServlet extends HttpServlet {
 	}
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("여기온것이냔?");
+//		System.out.println("여기온것이냔?");
 		int tripSeq = Integer.parseInt(request.getParameter("tripSeq"));
 		String dd = request.getParameter("dd");
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
 		
+		List<TripDetailDTO> list = service.findTripDetail(tripSeq);
+		
+		request.setAttribute("list", list);
 		
 		request.setAttribute("tripSeq", tripSeq);
 		request.setAttribute("dd", dd);

@@ -19,7 +19,7 @@ $(function(){
 			method:'get',
 			data:'tripSeq=${tripSeq}&dd=${dd}&startDate=${startDate}&endDate=${endDate}',
 			success : function(result){
-				$("#Overall").html(result.trim());
+				$("#$url").html(result.trim());
 			}
 		});
 		return false;
@@ -80,7 +80,7 @@ $(function(){
  		</ul>
 		</div>
 		<div class="tab-content">
-    		<div id="Overall" class="container tab-pane active"><br>
+    		<div id="togetheroverall" class="container tab-pane active"><br>
     				
     		</div>
     		<div id="schedule" class="container tab-pane fade"><br>

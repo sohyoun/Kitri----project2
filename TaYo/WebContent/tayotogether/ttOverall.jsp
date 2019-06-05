@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<c:set var="list" value="${requestScope.list}"/>
 <c:set var="tripSeq" value="${requestScope.tripSeq}"/>
 <c:set var="dd" value="${requestScope.dd}"/>
 <c:set var="startDate" value="${requestScope.startDate}"/>
@@ -77,18 +78,7 @@ $(function(){
 			var map = new daum.maps.Map(container, options);
 		});
 	});
-	var tripDay = $("#tripDay").text();
-	$.ajax({
-		url : "${pageContext.request.contextPath}/togetheroveralldt",
-		method:'get',
-		data:{
-				tripSeq : tripSeq,
-				tripDay : tripDay
-		},
-		success : function(result){
-			$("div.daydetaillist").html(result.trim());
-		}
-	});
+	
 });
 </script>
 
@@ -112,7 +102,18 @@ $(function(){
       				<div class="daytitlecontent"><div class="daydate">2015.08.09 (일)</div><div class="daycplace">서울,전주</div></div>
       			</div>
       			<div class = "daydetaillist">
-      			
+      			<c:forEach var="td" items="${list}">
+      			<c:if test="${td.trip_day == i}">
+					<div class="daydetail">
+						<div class="daydetailnum"><span class="circle">${td.trip_order}</span></div>
+						<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
+						<div class="daydetailcontent">${td.detail_title}<span class="badge">${td.place_name}</span></div>
+						<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
+						<div class="daydetailsub">${td.detail_content}</div>
+					</div>
+					<div><li class="btn-path"><button class="btn btn btn-light">경로 탐색</button></li></div>
+				</c:if>
+				</c:forEach>
       			</div>
       		</c:forEach>	
 		</div>
