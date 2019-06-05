@@ -9,7 +9,15 @@
 <style>
 	.nav-link {
 		padding: 0.5rem;
-		
+		display: inline-block;
+	}
+	
+	.nav-tabs {
+		display: inline-block;
+	}
+	
+	.nav-item {
+		display: inline-block;
 	}
 </style>
 
@@ -63,6 +71,8 @@
 		    			<a class="nav-link" data-toggle="tab" href="${pageContext.request.contextPath}/schedule?act=planMap">지도</a>
 		   			</li>
 		   		</ul>
+		   		<button id="deleteBtn" class="btn btn-link pull-right">삭제하기</button>
+		   		<button id="modifyBtn" class="btn btn-link pull-right">수정하기</button>
 			</div>
 		</div>
 	</div>
