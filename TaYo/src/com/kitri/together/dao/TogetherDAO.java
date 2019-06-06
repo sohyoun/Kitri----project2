@@ -127,8 +127,9 @@ public class TogetherDAO {
 			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "project2", "project2");
 			
 			String selectPlanDetailSQL = "select * " + 
-									"from trip_detail " + 
-									"where trip_seq = ?";  
+					"from trip_detail " + 
+					"where trip_seq = ? " + 
+					"order by trip_day, trip_order";  
 			
 			pstmt = con.prepareStatement(selectPlanDetailSQL);
 			pstmt.setInt(1, tripSeq);
@@ -142,7 +143,7 @@ public class TogetherDAO {
 				tripDetailDTO.setLoc_id(rs.getInt("loc_id"));
 				tripDetailDTO.setImage(rs.getString("image"));
 				tripDetailDTO.setDetail_title(rs.getString("detail_title"));
-				tripDetailDTO.setDetail_content(rs.getClob("detail_content"));
+				tripDetailDTO.setDetail_content(rs.getString("detail_content"));
 				tripDetailDTO.setPosX(rs.getFloat("posx"));
 				tripDetailDTO.setPosY(rs.getFloat("posy"));
 				

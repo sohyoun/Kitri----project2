@@ -43,30 +43,12 @@ th, td {
 <script>
 	$(function() {
 		$.ajax({
-			url : '${pageContext.request.contextPath}/memberlist',
+			url : '${pageContext.request.contextPath}/memberlist?forward=true',
 			method : 'post',
 			success : function(result) {
-				$("#memberlist").html(result.trim());
+				$("div#memberlist").html(result.trim());
 			}
 		});
-		
-		$("ul.pagination > li > a").click(function(){
-			currentPage=$(this).attr("href");
-			alert(currentPage+" 페이지를 보여줍니다!!");
-		});		
-		
-		/* $.ajax({
-			url : '${pageContext.request.contextPath}/boardlist',
-			method : 'get',
-			succes : function(result){
-				alert(result)
-				console.log(result);
-				$("#memberlist").html(result.trim());
-			},
-			error : function(){
-				console.log("실패");
-			}
-		}); */
 	});
 </script>
 <script>
@@ -141,17 +123,8 @@ th, td {
 		<div class="btn-group">
 			<form action="" method = "get" class = "form-inline my-2 my-lg-0">
 				<select name ="" class = "form-control mx-1 mt-2">
-					<option value = "일정">일정</option> 
-					<option value = "이름">함께타요</option> 
-				</select>
-				<select name ="" class = "form-control mx-1 mt-2">
-				
-					<option value = "관광지">관광지</option> 
-					<option value = "여행지">여행지</option> 
-				</select>
-				<select name ="" class = "form-control mx-1 mt-2">
-					<option value = "신고">신고</option> 
 					<option value = "공지">공지</option> 
+					<option value = "신고">신고</option> 
 				</select>
 					<input type="text" name="search" placeholder="search" class="form-control mr-sm-2" />
 					<button id = "search" class="btn btn-info">검색</button>
@@ -172,7 +145,7 @@ th, td {
 				<thead>
 					<tr>
 						<th><input type="checkbox" name="chkInfo" id="selectallchkbox" value="" /></th>
-						<th>번호</th><th>그룹</th><th>게시판</th><th>제목</th><th>작성자</th><th>등록일</th><th>조회수</th><th>추천</th><th>관리</th>
+						<th>번호</th><th>그룹</th><th>게시판</th><th>제목</th><th>작성자</th><th>등록일</th><th>조회수</th><th>관리</th>
 					</tr>
 				</thead>
 				
@@ -186,9 +159,9 @@ th, td {
 						<td>Table cell</td>
 						<td>Table cell</td>
 						<td>Table cell</td>
-						<td>Table cell</td>
 						<td>
-							<button type="submit" class="btn btn-info">수정</button>
+							<button type="submit" class="btn btn-info">등록</button>
+							<button type="submit" id ="updateBtn" class="btn btn-info">수정</button>
 							<button type="submit" id="removeBtn" class="btn btn-info">삭제</button>
 						</td>
 					</tr>
@@ -202,10 +175,10 @@ th, td {
 						<td>Table cell</td>
 						<td>Table cell</td>
 						<td>Table cell</td>
-						<td>Table cell</td>
 						<td>
-							<button type="submit" class="btn btn-info">수정</button>
-							<button type="submit" class="btn btn-info">삭제</button>
+							<button type="submit" class="btn btn-info">등록</button>
+							<button type="submit" id ="updateBtn" class="btn btn-info">수정</button>
+							<button type="submit" id="removeBtn" class="btn btn-info">삭제</button>
 						</td>
 					</tr>
 					<tr>
@@ -218,10 +191,10 @@ th, td {
 						<td>Table cell</td>
 						<td>Table cell</td>
 						<td>Table cell</td>
-						<td>Table cell</td>
 						<td>
-							<button type="submit" class="btn btn-info">수정</button>
-							<button type="submit" class="btn btn-info">삭제</button>
+							<button type="submit" class="btn btn-info">등록</button>
+							<button type="submit" id ="updateBtn" class="btn btn-info">수정</button>
+							<button type="submit" id="removeBtn" class="btn btn-info">삭제</button>
 						</td>
 					</tr>
 					<tr>
@@ -234,10 +207,10 @@ th, td {
 						<td>Table cell</td>
 						<td>Table cell</td>
 						<td>Table cell</td>
-						<td>Table cell</td>
 						<td>
-							<button type="submit" class="btn btn-info">수정</button>
-							<button type="submit" class="btn btn-info">삭제</button>
+							<button type="submit" class="btn btn-info">등록</button>
+							<button type="submit" id ="updateBtn" class="btn btn-info">수정</button>
+							<button type="submit" id="removeBtn" class="btn btn-info">삭제</button>
 						</td>
 					</tr>
 					<tr>
@@ -250,10 +223,10 @@ th, td {
 						<td>Table cell</td>
 						<td>Table cell</td>
 						<td>Table cell</td>
-						<td>Table cell</td>
 						<td>
-							<button type="submit" class="btn btn-info">수정</button>
-							<button type="submit" class="btn btn-info">삭제</button>
+							<button type="submit" class="btn btn-info">등록</button>
+							<button type="submit" id ="updateBtn" class="btn btn-info">수정</button>
+							<button type="submit" id="removeBtn" class="btn btn-info">삭제</button>
 						</td>
 					</tr>
 				</tbody>

@@ -3,6 +3,8 @@
 
 <%@ include file="/temp/header.jsp" %>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <style>
 	#daylist {
 		overflow-x: hidden;
@@ -245,6 +247,16 @@ $(function() {
 	});
 });
 </script>
+
+<c:set var="basicDTO" value="${sessionScope.TripBasicDTO}"/>
+<c:set var="detailDTO" value="${basicDTO.detailList}"/>
+<c:if test="${empty basicDTO}">
+<%-- session 없을 때--%>
+</c:if>
+<c:if test="${!empty basicDTO}">
+<%-- session 있을 때--%>
+</c:if>
+
 
 <!-- banner -->
 <section class="banner_inner" id="home">

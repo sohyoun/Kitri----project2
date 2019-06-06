@@ -1,6 +1,7 @@
 package com.kitri.admin.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kitri.admin.model.service.AdminService;
+import com.google.gson.*;
 import com.kitri.admin.model.service.MemberListService;
 import com.kitri.dto.*;
 
@@ -27,7 +28,8 @@ public class AdminMemberContoller extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//System.out.println("servlet == 들어옴");
 		request.setCharacterEncoding("UTF-8");
-		
+		response.setContentType("text/html; charset=UTF-8");
+
 		//가입된 총 회원 수 
 		int joindateTotalCnt = memberListService.getJoindateCnt();
 		//System.out.println(joindateTotalCnt);
@@ -61,7 +63,7 @@ public class AdminMemberContoller extends HttpServlet {
 			int totalCnt = memberListService.getTotalCnt();
 			int cntPerPageGroup = 5;
 			
-			String url = "memberlistresult.jsp";
+			String url = "/TaYo/memberlist?forward=false";
 			MemberListDTO memberListDTO = new MemberListDTO(cntPage, totalCnt, cntPerPageGroup, url, currentPage);
 			//System.out.println("startPage " + memberListDTO.getStartPage());
 			
@@ -71,11 +73,26 @@ public class AdminMemberContoller extends HttpServlet {
 			
 			request.setAttribute("boardlist", boardlist);
 			request.setAttribute("pagination", memberListDTO);
+			if("true".equals(request.getParameter("forward"))) {
+				String path = "/tayoadmin/memberlistresult.jsp";
+				RequestDispatcher rd = request.getRequestDispatcher(path);
+				rd.forward(request, response);
+			}else {
+				Gson gson = new Gson();
+				String g = gson.toJson(boardlist);
+				JsonObject jsonObject = new JsonObject();
+				jsonObject.add("boardlist", gson.toJsonTree(boardlist));
+				jsonObject.add("pagination", gson.toJsonTree(memberListDTO));
+				System.out.println("json == " + jsonObject);
+				
+				PrintWriter out = response.getWriter();
+				out.write(g);
+			}
 		
+			
+			
+			
 			//System.out.println("list == " + list);
-			String path = "/tayoadmin/memberlistresult.jsp";
-			RequestDispatcher rd = request.getRequestDispatcher(path);
-			rd.forward(request, response);
-		
+					
 	}
 }

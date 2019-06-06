@@ -238,6 +238,8 @@ public class AdminDAOImpl implements AdminDAO {
 				memberBoard.setAge(rs.getInt("age"));
 				memberBoard.setAddress(rs.getString("address"));
 				memberBoard.setAddressDetail(rs.getString("address_detail"));
+				memberBoard.setJoindate(rs.getDate("joindate"));
+				memberBoard.setOutdate(rs.getDate("outdate"));
 				memberBoard.setGender(rs.getString("gender"));
 				memberBoard.setGrade(rs.getInt("grade"));
 				

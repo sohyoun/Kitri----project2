@@ -35,7 +35,7 @@ public class ScheduleController extends HttpServlet {
 		
 		if ("schedule".equals(act)) {
 			MoveURL.redirect(request, response, "/tayoschedule/schedule.jsp");
-		} else if ("newschedule".equals(act)) {
+		} else if ("newschedule".equals(act) || "modifyPlan".equals(act)) {
 			MoveURL.redirect(request, response, "/tayoschedule/scheduleDetail.jsp");
 		} else if ("overall".equals(act)) {
 			MoveURL.forward(request, response, "/tayoschedule/planOverall.jsp");

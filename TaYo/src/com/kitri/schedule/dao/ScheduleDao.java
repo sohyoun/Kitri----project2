@@ -245,7 +245,7 @@ public class ScheduleDao {
 				detailDTO.setPosX(rs.getFloat("posx"));
 				detailDTO.setPosY(rs.getFloat("posy"));
 				detailDTO.setDetail_title(rs.getString("detail_title"));
-				detailDTO.setDetail_content(rs.getClob("detail_content"));
+				detailDTO.setDetail_content(rs.getString("detail_content"));
 				
 				detailList.add(detailDTO);
 			}

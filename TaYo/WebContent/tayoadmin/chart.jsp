@@ -5,10 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+<script src="../tayoadmin/chart/chart.js"></script>
 </head>
-<canvas id="myChart" width="400" height="400"></canvas>
+<canvas id="myChart" width="100" height="100"></canvas>
 <script type="text/javascript">
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
