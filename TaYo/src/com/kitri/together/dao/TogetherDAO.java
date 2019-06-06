@@ -143,7 +143,7 @@ public class TogetherDAO {
 				tripDetailDTO.setLoc_id(rs.getInt("loc_id"));
 				tripDetailDTO.setImage(rs.getString("image"));
 				tripDetailDTO.setDetail_title(rs.getString("detail_title"));
-				tripDetailDTO.setDetail_content(rs.getClob("detail_content"));
+				tripDetailDTO.setDetail_content(rs.getString("detail_content"));
 				tripDetailDTO.setPosX(rs.getFloat("posx"));
 				tripDetailDTO.setPosY(rs.getFloat("posy"));
 				

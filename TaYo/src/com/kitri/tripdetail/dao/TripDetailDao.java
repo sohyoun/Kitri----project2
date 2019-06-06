@@ -46,7 +46,7 @@ public class TripDetailDao {
 				int trip_day= rs.getInt("trip_day");
 				String image= rs.getString("image");
 				String detail_title= rs.getString("detail_title");
-				Clob detail_content= rs.getClob("detail_content");
+				String detail_content= rs.getString("detail_content");
 				float posX = rs.getFloat("posX");
 				float posY= rs.getFloat("posY");
 				
