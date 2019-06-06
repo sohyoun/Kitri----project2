@@ -35,7 +35,13 @@ public class ScheduleController extends HttpServlet {
 		
 		if ("schedule".equals(act)) {
 			MoveURL.redirect(request, response, "/tayoschedule/schedule.jsp");
-		} else if ("newschedule".equals(act) || "modifyPlan".equals(act)) {
+		} else if ("newschedule".equals(act) || "modify".equals(act)) {
+			if ("newschedule".equals(act)) {
+				HttpSession session = request.getSession();
+				session.removeAttribute("TripBasicDTO");
+				session.removeAttribute("areaCodes");
+			}
+			
 			MoveURL.redirect(request, response, "/tayoschedule/scheduleDetail.jsp");
 		} else if ("overall".equals(act)) {
 			MoveURL.forward(request, response, "/tayoschedule/planOverall.jsp");
@@ -60,6 +66,10 @@ public class ScheduleController extends HttpServlet {
 				notice = "실패하였습니다.";
 			}
 			request.setAttribute("notice", notice);
+			
+			MoveURL.forward(request, response, "/tayoschedule/savePlanResult.jsp");
+		} else if ("modifyPlan".equals(act)) {
+			
 			
 			MoveURL.forward(request, response, "/tayoschedule/savePlanResult.jsp");
 		} else if ("searchPlan".equals(act)) {

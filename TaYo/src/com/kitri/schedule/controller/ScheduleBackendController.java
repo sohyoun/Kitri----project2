@@ -46,8 +46,8 @@ public class ScheduleBackendController {
 		String season = request.getParameter("season");
 		String[] plandata = request.getParameterValues("plandata");
 		try {
-			start = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("start").replace('.', '-'));
-			end = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("end").replace('.', '-'));
+			start = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("start"));
+			end = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("end"));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

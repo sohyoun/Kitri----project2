@@ -39,7 +39,7 @@
 		
 		//
 		$("#modifyBtn").click(function() {
-			location.href = '${pageContext.request.contextPath}/schedule?act=modifyPlan';
+			location.href = '${pageContext.request.contextPath}/schedule?act=modify';
 		});
 		
 		// Delete plan
