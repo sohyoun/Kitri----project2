@@ -34,6 +34,8 @@
 		});//end ajax 도시버튼 추가
 		
 		
+		
+		
 		//도시버튼 클릭 이벤트 추가(동적)// > div.allways_show >
 		$(document).on("click", "#destinations > div > div.container.h-100.pt-3 > table > tbody > tr > td.filter_body.si  button",function() {
 			console.log(this);
@@ -107,7 +109,6 @@
 		
 	});//end onload
 </script>
-
 
 <div class="container h-100 pt-3">
 	<!-- 필터 -->

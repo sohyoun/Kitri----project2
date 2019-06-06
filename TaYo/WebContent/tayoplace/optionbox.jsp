@@ -91,7 +91,8 @@
 					<tbody>
 						<tr>
 							<th class="wHacki8" scope="row">관광타입</th>
-							<td><select name="arrange" id="arran" title="관광타입" onchange="document.getElementById('KeyWord').value= this.options[this.selectedIndex].value">
+							<td><select name="arrange" id="arran" title="관광타입"
+								onchange="document.getElementById('KeyWord').value= this.options[this.selectedIndex].value">
 									<option value="A" selected>타입선택</option>
 									<option value="B">관광지</option>
 									<option value="C">문화시설</option>
@@ -106,7 +107,7 @@
 					</tbody>
 				</table>
 
-<!-- 
+				<!-- 
 				<td>
 					<div class="form-group">
 						<label for="sel1"></label> <select class="choice"
