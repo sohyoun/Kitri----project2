@@ -54,7 +54,7 @@
 							<tr id="day${tabledays.trip_day}">
 								<jsp:useBean id="myDate" class="java.util.Date"/>
 								<fmt:parseDate var="startPlanDate" value="${basicDTO.startDate}" pattern="yyyy-MM-dd"/>
-								<fmt:parseNumber value="${startPlanDate.time + (tabledays.trip_day - 1)*(1000*60*60*24)}" integerOnly="true" var="startDate"></fmt:parseNumber>
+								<fmt:parseNumber value="${startPlanDate.time + (tabledays.trip_day - 1)*(1000*60*60*24)}" integerOnly="true" var="startDate"/>
 								<c:set target="${myDate}" property="time" value="${startDate}"/>
 								<fmt:formatDate var="convertday" value="${myDate}" pattern="yyyy-MM-dd (E)"/>
 
