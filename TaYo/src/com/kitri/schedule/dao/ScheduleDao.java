@@ -18,7 +18,6 @@ public class ScheduleDao {
 	public int insert(TripBasicDTO basicDTO) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		
 		int result = 0;
 		
@@ -57,7 +56,7 @@ public class ScheduleDao {
 			// Insert Trip_Detail
 			for (TripDetailDTO tripDetailDTO : list) {
 				insertSQL.setLength(0);
-				insertSQL.append("INSERT INTO Trip_Detail (trip_seq, trip_day, trip_order, place_name, loc_id, posx, posy) ");
+				insertSQL.append("INSERT INTO trip_detail (trip_seq, trip_day, trip_order, place_name, loc_id, posx, posy) ");
 				insertSQL.append("values (sq_tripbasic_tripseq.currVal, ?, ?, ?, ?, ?, ?)");
 				
 				pstmt = conn.prepareStatement(insertSQL.toString());
@@ -91,7 +90,7 @@ public class ScheduleDao {
 				}
 			}
 		} finally {
-			DBClose.close(conn, pstmt, rs);
+			DBClose.close(conn, pstmt);
 		}
 		
 		return result;
@@ -246,7 +245,7 @@ public class ScheduleDao {
 				detailDTO.setPosX(rs.getFloat("posx"));
 				detailDTO.setPosY(rs.getFloat("posy"));
 				detailDTO.setDetail_title(rs.getString("detail_title"));
-				detailDTO.setDetail_content(rs.getClob("detail_content"));
+				detailDTO.setDetail_content(rs.getString("detail_content"));
 				
 				detailList.add(detailDTO);
 			}
@@ -259,5 +258,114 @@ public class ScheduleDao {
 		}
 		
 		return basicDTO;
+	}
+
+	public int delete(String email, String title) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int result = 0;
+		
+		try {
+			conn = DBConnection.makeConnection();
+			conn.setAutoCommit(false);
+			
+			// Search Trip Sequence from Trip_Basic
+			StringBuffer searchSQL = new StringBuffer();
+			searchSQL.append("SELECT trip_seq ");
+			searchSQL.append("FROM trip_basic ");
+			searchSQL.append("WHERE email = ? and trip_title = ?");
+			
+			pstmt = conn.prepareStatement(searchSQL.toString());
+			
+			int idx = 1;
+			pstmt.setString(idx++, email);
+			pstmt.setString(idx, title);
+			rs = pstmt.executeQuery();
+			
+			int seq = -1;
+			if (rs.next()) {
+				seq = rs.getInt(1);
+			} else {
+				result = 0;
+				conn.rollback();
+				return result;
+			}
+
+			rs.close();
+			pstmt.close();
+			
+			// Count Trip_Detail that matches Trip Sequence
+			searchSQL.setLength(0);
+			searchSQL.append("SELECT count(*) ");
+			searchSQL.append("FROM trip_detail ");
+			searchSQL.append("WHERE trip_seq = ?");
+			
+			pstmt = conn.prepareStatement(searchSQL.toString());
+			pstmt.setInt(1, seq);
+			rs = pstmt.executeQuery();
+			
+			int count = -1;
+			if (rs.next()) {
+				count = rs.getInt(1);
+			} else {
+				result = 0;
+				conn.rollback();
+				return result;
+			}
+			
+			rs.close();
+			pstmt.close();
+			searchSQL = null;
+			
+			// Delete Trip_Detail that matches Trip Sequence
+			StringBuffer deleteSQL = new StringBuffer();
+			deleteSQL.append("DELETE FROM trip_detail ");
+			deleteSQL.append("WHERE trip_seq = ?");
+			
+			pstmt = conn.prepareStatement(deleteSQL.toString());
+			pstmt.setInt(1, seq);
+			result += pstmt.executeUpdate();
+			
+			if (result != count) {
+				result = 0;
+				conn.rollback();
+				return result;
+			}
+			
+			pstmt.close();
+			
+			// Delete Trip_Basic that matches Trip Sequence
+			deleteSQL.setLength(0);
+			deleteSQL.append("DELETE FROM trip_basic ");
+			deleteSQL.append("WHERE trip_seq = ?");
+			
+			pstmt = conn.prepareStatement(deleteSQL.toString());
+			pstmt.setInt(1, seq);
+			result += pstmt.executeUpdate();
+
+			if (result != (count + 1)) {
+				result = 0;
+				conn.rollback();
+			} else {
+				conn.commit();
+			}
+		} catch (SQLException e) {
+			result = 0;
+			
+			e.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		} finally {
+			DBClose.close(conn, pstmt, rs);
+		}
+		
+		return result;
 	}
 }

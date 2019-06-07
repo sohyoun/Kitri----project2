@@ -3,6 +3,8 @@
 
 <%@ include file="/temp/header.jsp" %>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <style>
 	#daylist {
 		overflow-x: hidden;
@@ -246,6 +248,10 @@ $(function() {
 });
 </script>
 
+<!-- for modify plan -->
+<c:set var="basicDTO" value="${sessionScope.TripBasicDTO}"/>
+<c:set var="detailDTO" value="${basicDTO.detailList}"/>
+
 <!-- banner -->
 <section class="banner_inner" id="home">
 	<div class="banner_inner_overlay">
@@ -253,7 +259,7 @@ $(function() {
 			<div class="w3layouts-banner-info" style="padding-top: 8rem;">
 				<h3 class="text-wh">'나만의 일정을 계획해보세요'</h3>
 				<div class="buttons mt-4">
-					<a class="btn pull-right" id="planSave">저장 / 완료</a>
+					<a class="btn pull-right" id="planSave">임시 저장 / 완료</a>
 				</div>
 			</div>
 		</div>
@@ -269,10 +275,29 @@ $(function() {
 					<button type="button" class="btn btn-outline-primary">-</button>
 					<pre><br></pre>
 				</div>
-				
-				<ul class="list-group">
-					<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">DAY1</li>
-				</ul>
+				<!-- new plan -->
+				<c:if test="${empty basicDTO}">
+					<ul class="list-group">
+						<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">DAY1</li>
+					</ul>
+				</c:if>
+				<!-- modify plan -->
+				<c:if test="${!empty basicDTO}">
+					<c:set var="olddays" value="-1"/>
+						<c:forEach var="tabledays" items="${detailDTO}">
+							<c:if test="${olddays != tabledays.trip_day}">
+								<c:set var="olddays" value="${tabledays.trip_day}"/>
+								<ul class='list-group ui-sortable-handle'>
+									<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">DAY${tabledays.trip_day}</li>
+									<c:forEach var="places" items="${detailDTO}">
+										<c:if test="${olddays == places.trip_day}">
+											<li class="list-group-item ui-sortable-handle" style="padding: 0.3rem;" value="${places.place_name}" axisx="${places.posX}" axisy="${places.posY}" areaCode="${places.loc_id}">${places.place_name}<button class="btn btn-sm btn-secondary" name="planbtn">-</button></li>
+										</c:if>
+									</c:forEach>
+								</ul>
+							</c:if>
+					</c:forEach>
+				</c:if>
 			</div>
 			
 			<div class="col-sm-4">

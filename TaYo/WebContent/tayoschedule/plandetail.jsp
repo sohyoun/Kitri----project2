@@ -9,7 +9,15 @@
 <style>
 	.nav-link {
 		padding: 0.5rem;
-		
+		display: inline-block;
+	}
+	
+	.nav-tabs {
+		display: inline-block;
+	}
+	
+	.nav-item {
+		display: inline-block;
 	}
 </style>
 
@@ -25,6 +33,28 @@
 				success: function (result) {
 					$("#content").html(result);
 				 }
+			});
+			return false;
+		});
+		
+		//
+		$("#modifyBtn").click(function() {
+			location.href = '${pageContext.request.contextPath}/schedule?act=modify';
+		});
+		
+		// Delete plan
+		$("#deleteBtn").click(function() {
+			$.ajax({
+				url: '${pageContext.request.contextPath}/schedule',
+				data: 'act=deletePlan' + '&email=' + 'test@kitri.re.kr' + '&title=' + $("div[class='pname']").text().trim(),
+				method: 'post',
+				success: function(result) {
+					alert("여행 일정 삭제가 " + result.trim());
+					location.href = '${pageContext.request.contextPath}/schedule?act=myschedule';
+				},
+				error: function(error) {
+					alert("여행 일정을 삭제하는 중 에러가 발생하였습니다.");
+				}
 			});
 			return false;
 		});
@@ -63,6 +93,8 @@
 		    			<a class="nav-link" data-toggle="tab" href="${pageContext.request.contextPath}/schedule?act=planMap">지도</a>
 		   			</li>
 		   		</ul>
+		   		<button id="deleteBtn" class="btn btn-link pull-right">삭제하기</button>
+		   		<button id="modifyBtn" class="btn btn-link pull-right">수정하기</button>
 			</div>
 		</div>
 	</div>

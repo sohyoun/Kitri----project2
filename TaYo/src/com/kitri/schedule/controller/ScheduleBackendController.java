@@ -46,8 +46,8 @@ public class ScheduleBackendController {
 		String season = request.getParameter("season");
 		String[] plandata = request.getParameterValues("plandata");
 		try {
-			start = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("start").replace('.', '-'));
-			end = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("end").replace('.', '-'));
+			start = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("start"));
+			end = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("end"));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -85,14 +85,19 @@ public class ScheduleBackendController {
 		return service.insert(basicDTO);
 	}
 
-
 	public List<TripBasicDTO> searchPlan(HttpServletRequest request, HttpServletResponse response) {
-		String type = request.getParameter("type");
 		String email = request.getParameter("email");
+		String type = request.getParameter("type");
 		
 		return service.searchPlan(email, type);
 	}
 
+	public int deletePlan(HttpServletRequest request, HttpServletResponse response) {
+		String email = request.getParameter("email");
+		String title = request.getParameter("title");
+		
+		return service.delete(email, title);
+	}
 
 	public TripBasicDTO findByTitle(HttpServletRequest request, HttpServletResponse response) {
 		String email = request.getParameter("email");

@@ -55,7 +55,7 @@ $(function() {
 	<div class="banner_inner_overlay">
 		<div class="container">
 			<div class="w3layouts-banner-info" style="padding-top: 8rem;">
-			<h3 class="text-wh">'~~~님이 계획한 일정입니다.'</h3>
+			<h3 class="text-wh">'현재 계획중이거나 계획한 일정입니다.'</h3>
 			</div>
 		</div>
 	</div>

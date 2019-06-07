@@ -34,6 +34,8 @@
 		});//end ajax 도시버튼 추가
 		
 		
+		
+		
 		//도시버튼 클릭 이벤트 추가(동적)// > div.allways_show >
 		$(document).on("click", "#destinations > div > div.container.h-100.pt-3 > table > tbody > tr > td.filter_body.si  button",function() {
 			console.log(this);
@@ -71,7 +73,7 @@
 						
 						/* html += "<tr><td width='100'><img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='80' height='40'/></td><td><ul class='placeclass'><li class='list-group-item' style='padding: 0.3rem;' value='" + title + "'>" + title + addr2 + readcount+ "<button class='btn btn-primary' name='placebtn'>+</button></li></ul></td></tr>"; */
 					 	
-						/* html += "<tr><td><div class='card' style='width: 70rem; display: flex;'> "
+					 html += "<tr><td><div class='card' style='width: 70rem; display: flex;'> "
 						if(image!=''){
 						html += "<img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png' style='width: 400px;height: 200px;'>"
 						}
@@ -81,15 +83,12 @@
 							html += "	<p class='card-text'>" + readcount +"</p>"
 								html += "	<a href=''#' class='btn btn-primary'>상세보기</a>"
 								html += "</div>"
-									html += "</div></td></tr>";	 */
+									html += "</div></td></tr>";	
 									
 									
-									
-						
-						
-						$("div.card>div.card-body>h5.card-title").html(title);
-						$("div.card>img.card-img-top").html(image);
-						$("div.card>div.card-body>p.card-text").html(addr1);
+				/* 				
+					$("div.card>div.card-body>h5.card-title").html(title);
+					$("div.card>div.card-body>p.card-text").html(addr1); */
 						
 						
 				
@@ -110,7 +109,6 @@
 		
 	});//end onload
 </script>
-
 
 <div class="container h-100 pt-3">
 	<!-- 필터 -->

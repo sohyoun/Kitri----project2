@@ -44,7 +44,7 @@
 }
 
 .card-img-top {
-	width: 350px;
+	width: 400px;
 	height: 200px;
 }
 
@@ -155,7 +155,7 @@
 
 
 
-<!-------------------------------여기부터 banner 들어가는 부분 ------------------------------------------>
+<!-- banner -->
 <section class="banner_inner" id="home">
 	<div class="banner_inner_overlay">
 		<div class="container">
@@ -172,7 +172,7 @@
 		</div>
 	</div>
 </section>
-<!-------------------------------여기부터 banner 들어가는 부분 ------------------------------------------>
+<!-- //banner -->
 
 
 <!-- 크기 맞춰주는 DIV -->
@@ -184,7 +184,7 @@
 
 
 
-		<!------------------------------- 인기여행지 best  ------------------------------------------>
+		<!-- 인기여행지 best -->
 		<h3 class="heading text-capitalize text-center">인기 여행지 BEST</h3>
 		<p class="text mt-2 mb-5 text-center">타요인들의 가장 많은 좋아요를 받은 여행지입니다.
 		</p>
@@ -276,31 +276,27 @@
 				</div>
 			</div>
 		</div>
-		<!------------------------------- 인기여행지 best  ------------------------------------------>
+		<!-- 인기여행지 best -->
 
+		<br>
+		<hr>
 		<br>
 
 
-		<!------------------------------- 필터  ------------------------------------------>
-		<jsp:include page="filter.jsp"></jsp:include>
-		<!------------------------------- 필터  ------------------------------------------>
-
-
-		<!------------------------------- 옵션박스  ------------------------------------------>
+		<!-- 옵션박스 -->
 		<jsp:include page="optionbox.jsp"></jsp:include>
-		<!------------------------------- 옵션박스  ------------------------------------------>
+		<!-- 옵션박스 -->
 
 
-<!------------------------------- api  ------------------------------------------>
+
+		<br> <br>
+
+<!-------------------------------여기부터 api 들어가는 부분 ------------------------------------------>
 		<div id="placelist">
-
 			<table class="table table-bordered table-sm">
 				<tbody id="tablebody" align="center">
-
-
-
-					<!-- 관광지  박스 -->
-					 <div class="card" style="display: none; width: 70rem;">
+				<!-- 관광지  박스 -->
+					<div class="card" style="display: none; width: 70rem;">
 						<img class="card-img-top">
 						<div class="card-body" style="display: inline;">
 							<h5 class="card-title"></h5>
@@ -309,105 +305,103 @@
 							<a href="#" class="btn btn-primary">상세보기</a>
 						</div>
 					</div>
-					<br> 
+					<br>
 					<!-- 관광지  박스 -->
-
-
-
-
 				</tbody>
 			</table>
 		</div>
-<!------------------------------- api  ------------------------------------------>
+<!-------------------------------여기부터 api 들어가는 부분 ------------------------------------------>
 
 
 
-<!-- 		<br> <br> <br> -->
+
+<!-------------------------------여기부터 샘플데이터 들어가는 부분 ------------------------------------------>
+		<!-- 관광지  박스 -->
+		<div class="card" style="width: 70rem;">
+			<img class="card-img-top" src="/TaYo/images/tp2_2.jpg"
+				alt="Card image cap">
+			<div class="card-body" style="display: inline;">
+				<h5 class="card-title">인천국제공항</h5>
+				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South
+					Korea 지도보기</p>
+				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의
+					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p>
+				<a href="#" class="btn btn-primary">상세보기</a>
+			</div>
+		</div>
+		<br>
+		<!-- 관광지  박스 -->
+
+		<!-- 관광지  박스 -->
+		<div class="card" style="width: 70rem;">
+			<img class="card-img-top" src="/TaYo/images/tp1.jpg"
+				alt="Card image cap">
+			<div class="card-body" style="display: inline;">
+				<h5 class="card-title">인천국제공항</h5>
+				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South
+					Korea 지도보기</p>
+				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의
+					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p>
+				<a href="#" class="btn btn-primary">상세보기</a>
+			</div>
+		</div>
+		<!-- 관광지  박스 -->
+		<br>
+
+		<!-- 관광지  박스 -->
+		<div class="card" style="width: 70rem;">
+			<img class="card-img-top" src="/TaYo/images/tp3.jpg"
+				alt="Card image cap">
+			<div class="card-body" style="display: inline;">
+				<h5 class="card-title">인천국제공항</h5>
+				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South
+					Korea 지도보기</p>
+				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의
+					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p>
+				<a href="#" class="btn btn-primary">상세보기</a>
+			</div>
+		</div>
+		<!-- 관광지  박스 -->
+		<br>
+
+		<!-- 관광지  박스 -->
+		<div class="card" style="width: 70rem;">
+			<img class="card-img-top" src="/TaYo/images/tp4.jpg"
+				alt="Card image cap">
+			<div class="card-body" style="display: inline;">
+				<h5 class="card-title">인천국제공항</h5>
+				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South
+					Korea 지도보기</p>
+				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의
+					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p>
+				<a href="#" class="btn btn-primary">상세보기</a>
+			</div>
+		</div>
+		<!-- 관광지  박스 -->
+		<br>
+
+		<!-- 관광지  박스 -->
+		<div class="card" style="width: 70rem;">
+			<img class="card-img-top" src="/TaYo/images/tp2_2.jpg"
+				alt="Card image cap">
+			<div class="card-body" style="display: inline;">
+				<h5 class="card-title">인천국제공항</h5>
+				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South
+					Korea 지도보기</p>
+				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의
+					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p>
+				<a href="#" class="btn btn-primary">상세보기</a>
+			</div>
+		</div>
+		<!-- 관광지  박스 -->
+		<br>
+<!-------------------------------여기부터 샘플데이터 들어가는 부분 ------------------------------------------>
 
 
-<!-- 		<!-- 관광지  박스 --> 
-<!-- 		<div class="card" style="width: 70rem;"> -->
-<!-- 			<img class="card-img-top" src="/TaYo/images/tp2_2.jpg" -->
-<!-- 				alt="Card image cap"> -->
-<!-- 			<div class="card-body" style="display: inline;"> -->
-<!-- 				<h5 class="card-title">인천국제공항</h5> -->
-<!-- 				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South -->
-<!-- 					Korea 지도보기</p> -->
-<!-- 				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의 -->
-<!-- 					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p> -->
-<!-- 				<a href="#" class="btn btn-primary">상세보기</a> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 		<br> -->
-<!-- 관광지  박스 --> 
-
-<!-- 		관광지  박스 -->
-<!-- 		<div class="card" style="width: 70rem;"> -->
-<!-- 			<img class="card-img-top" src="/TaYo/images/tp1.jpg" -->
-<!-- 				alt="Card image cap"> -->
-<!-- 			<div class="card-body" style="display: inline;"> -->
-<!-- 				<h5 class="card-title">인천국제공항</h5> -->
-<!-- 				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South -->
-<!-- 					Korea 지도보기</p> -->
-<!-- 				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의 -->
-<!-- 					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p> -->
-<!-- 				<a href="#" class="btn btn-primary">상세보기</a> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-		<!-- 관광지  박스 --> 
-<!-- 		<br> -->
-
-		<!-- 관광지  박스 --> 
-<!-- 		<div class="card" style="width: 70rem;"> -->
-<!-- 			<img class="card-img-top" src="/TaYo/images/tp3.jpg
-" -->
-<!-- 				alt="Card image cap"> -->
-<!-- 			<div class="card-body" style="display: inline;"> -->
-<!-- 				<h5 class="card-title">인천국제공항</h5> -->
-<!-- 				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South -->
-<!-- 					Korea 지도보기</p> -->
-<!-- 				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의 -->
-<!-- 					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p> -->
-<!-- 				<a href="#" class="btn btn-primary">상세보기</a> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-	<!-- 관광지  박스 -->
-<!-- 		<br> -->
-
-		<!-- 관광지  박스 --> 
-<!-- 		<div class="card" style="width: 70rem;"> -->
-<!-- 			<img class="card-img-top" src="/TaYo/images/tp4.jpg" -->
-<!-- 				alt="Card image cap"> -->
-<!-- 			<div class="card-body" style="display: inline;"> -->
-<!-- 				<h5 class="card-title">인천국제공항</h5> -->
-<!-- 				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South -->
-<!-- 					Korea 지도보기</p> -->
-<!-- 				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의 -->
-<!-- 					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p> -->
-<!-- 				<a href="#" class="btn btn-primary">상세보기</a> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-		<!-- 관광지  박스 --> 
-<!-- 		<br> -->
-
-	<!-- 관광지  박스 --> 
-<!-- 		<div class="card" style="width: 70rem;"> -->
-<!-- 			<img class="card-img-top" src="/TaYo/images/tp2_2.jpg" -->
-<!-- 				alt="Card image cap"> -->
-<!-- 			<div class="card-body" style="display: inline;"> -->
-<!-- 				<h5 class="card-title">인천국제공항</h5> -->
-<!-- 				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South -->
-<!-- 					Korea 지도보기</p> -->
-<!-- 				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의 -->
-<!-- 					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p> -->
-<!-- 				<a href="#" class="btn btn-primary">상세보기</a> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-	<!-- 관광지  박스 --> 
-<!-- 		<br> -->
 
 
 
+<!-------------------------------여기부터 페이징처리 들어가는 부분 ------------------------------------------>
 		<nav aria-label="Page navigation example">
 			<ul class="pagination">
 				<li class="page-item"><a class="page-link" href="#"
@@ -423,6 +417,9 @@
 				</a></li>
 			</ul>
 		</nav>
+<!-------------------------------여기부터 페이징처리 들어가는 부분 ------------------------------------------>
+
+
 	</div>
 </section>
 

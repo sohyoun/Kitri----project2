@@ -35,7 +35,13 @@ public class ScheduleController extends HttpServlet {
 		
 		if ("schedule".equals(act)) {
 			MoveURL.redirect(request, response, "/tayoschedule/schedule.jsp");
-		} else if ("newschedule".equals(act)) {
+		} else if ("newschedule".equals(act) || "modify".equals(act)) {
+			if ("newschedule".equals(act)) {
+				HttpSession session = request.getSession();
+				session.removeAttribute("TripBasicDTO");
+				session.removeAttribute("areaCodes");
+			}
+			
 			MoveURL.redirect(request, response, "/tayoschedule/scheduleDetail.jsp");
 		} else if ("overall".equals(act)) {
 			MoveURL.forward(request, response, "/tayoschedule/planOverall.jsp");
@@ -62,6 +68,10 @@ public class ScheduleController extends HttpServlet {
 			request.setAttribute("notice", notice);
 			
 			MoveURL.forward(request, response, "/tayoschedule/savePlanResult.jsp");
+		} else if ("modifyPlan".equals(act)) {
+			
+			
+			MoveURL.forward(request, response, "/tayoschedule/savePlanResult.jsp");
 		} else if ("searchPlan".equals(act)) {
 			String areaCodes = codeService.getResionCode();
 			request.setAttribute("areaCodes", areaCodes);
@@ -70,6 +80,18 @@ public class ScheduleController extends HttpServlet {
 			request.setAttribute("TripBasicDTO", list);
 			
 			MoveURL.forward(request, response, "/tayoschedule/searchPlanResult.jsp");
+		} else if ("deletePlan".equals(act)) {
+			int result = backendController.deletePlan(request, response);
+				String notice = "";
+			
+			if (result != 0) {
+				notice = "성공하였습니다.";
+			} else {
+				notice = "실패하였습니다.";
+			}
+			request.setAttribute("notice", notice);
+			
+			MoveURL.forward(request, response, "/tayoschedule/deletePlanResult.jsp");
 		} else if ("showDetail".equals(act)) {
 			String areaCodes = codeService.getResionCode();
 			TripBasicDTO basicDTO = backendController.findByTitle(request, response);

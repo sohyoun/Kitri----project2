@@ -15,11 +15,11 @@ $(function(){
 		var $url = $(this).attr("href");
 		console.log("${pageContext.request.contextPath}/"+$url);
 		$.ajax({
-			url : '${pageContext.request.contextPath}/'+$url,
+			url : '${pageContext.request.contextPath}/togetherplans',
 			method:'get',
-			data:'tripSeq=${tripSeq}&dd=${dd}&startDate=${startDate}&endDate=${endDate}',
+			data:'tripSeq=${tripSeq}&dd=${dd}&startDate=${startDate}&endDate=${endDate}&url='+$url,
 			success : function(result){
-				$("#Overall").html(result.trim());
+				$("div.container.tab-pane.dcontents").html(result.trim());
 			}
 		});
 		return false;
@@ -80,21 +80,21 @@ $(function(){
  		</ul>
 		</div>
 		<div class="tab-content">
-    		<div id="Overall" class="container tab-pane active"><br>
+    		<div id="togetheroverall" class="container tab-pane active dcontents"><br>
     				
     		</div>
-    		<div id="schedule" class="container tab-pane fade"><br>
+    		<div id="schedule" class="container tab-pane fade dcontents"><br>
       			
    	 		</div>
-    		<div id="map" class="container tab-pane fade"><br>
+    		<div id="map" class="container tab-pane fade dcontents"><br>
       			
     		</div>
-    		<div id="question" class="container tab-pane fade"><br>
+    		<div id="question" class="container tab-pane fade dcontents"><br>
       			
     		</div>
   		</div>
 	</div>
 	</div>
 </section>
-<div class="rrrrrrr">
+<div class="rrrrrrr" style="height: 2000px;">
 </div>

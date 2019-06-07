@@ -20,5 +20,7 @@ public class TogetherService {
 		return dao.selectPlanDetail(tripSeq);
 	}
 	
+
+	
 	
 }

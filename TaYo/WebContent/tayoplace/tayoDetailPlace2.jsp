@@ -126,6 +126,8 @@ $(function() {
 						var addr1 = $(this).find("addr1").text();
 						var addr2 = $(this).find("addr2").text();
 						var overview = $(this).find("overview").text();
+						var mapx = $(this).find("mapx").text();
+						var mapy = $(this).find("mapy").text();
 				
 					
 						if (prevTitle != title) {
@@ -134,7 +136,7 @@ $(function() {
 							var image2 = $(this).find("firstimage2").text();
 							
 										
-// 							<!-- 관광지 이름,주소부분 -
+// 							<!-- 관광지 이름,주소부분 -->
 // 							/* html += "<div class='spot'>"
 // 								html += "<div class='spot_name'>" + title +"<span> N Seoul Tower</span>"
 // 									html += "	<img class='spot_like_ico' src='/TaYo/images/heart.png'>"
@@ -144,14 +146,14 @@ $(function() {
 // 							<!-- 관광지 이름,주소부분 -->
 											
 									
-											
 
 							/* 관광지 이름,주소부분  */
 							$("div.spot>div.spot_name").html(title);
-							$("div.spot>div.spot_addr").html(addr1 + addr2);
+							$("div.spot>div.spot_addr").html(addr1 + addr2);						
 							$("div.spot").show();
-							<!-- 관광지 이름,주소부분  -->	
+							 /* 관광지 이름,주소부분 */
 							
+							 
 							
 							/*  html += "<tr><td><div id='carouselExampleControls' class='carousel slide' data-ride='carousel'>"
 							 html += "<div class='carousel-inner'>"
@@ -174,6 +176,14 @@ $(function() {
 							<!-- 관광지 설명부분-->
 							$("div.spot_tip>div.spot_overview").html(overview);							
 							<!-- 관광지 설명부분 -->
+							
+					
+							
+							<!-- 관광지 카테고리 및 설명부분-->
+							$("div.spot_info>table.spot_info_table>tbody>tr>td").html(mapx);							
+							//$("div.spot_info>table.spot_info_table>tbody>tr>th>td").html(mapx);							
+							$("categorybody>tr>td").html(mapx);							
+							<!-- 관광지 카테고리 및 설명부분 -->
 							
 							<!-- 관광지 카테고리 및 설명부분-->
 							/* <div class="spot_info">
@@ -252,7 +262,30 @@ $(function() {
 				<!-- 관광지 설명부분 -->
 
 
-
+				<!-- 관광지 카테고리 및 설명부분-->
+				<div class="spot_info">
+					<table class="spot_info_table" id="spot_info_default" width="100%">
+						<tbody id="categorybody">
+							<tr>
+								<th>카테고리</th>
+								<td></td>
+								<th>웹사이트</th>
+								<td><a href="http://www.airport.kr" target="_blank">www.airport.kr</a></td>
+							</tr>
+							<tr>
+								<th>가는방법</th>
+								<td colspan="3">[Line Airport Railroad(공항철도)]Incheon
+									International Airport(인천국제공항)역 인천국제공항역에 하차 또는 공항 리무진 버스 이용.</td>
+							</tr>
+							<tr>
+								<th>전화번호</th>
+								<td>82 1577-2600</td>
+								<td colspan="2">&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- 관광지 카테고리 및 설명부분-->
 
 
 
@@ -271,9 +304,9 @@ $(function() {
 		<div class="spot_addr">126 Namsangongwon-gil, Yongsan-gu, Seoul,
 			South Korea</div>
 	</div>
-	
-	
-	
+
+
+
 	<!-- 관광지 이름,주소부분  -->
 
 	<br>

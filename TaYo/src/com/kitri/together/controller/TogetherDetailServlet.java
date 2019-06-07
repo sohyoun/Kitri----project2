@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -36,7 +37,8 @@ public class TogetherDetailServlet extends HttpServlet {
 		String nowNum = request.getParameter("nowNum");						//2
 		String tripNum = request.getParameter("tripNum");					//10
 		String email = request.getParameter("email");						//gogo@naver.com
-
+		
+		System.out.println("tripSeq : " + tripSeq);
 		//여행 기간 구하기-----------------------------------
 //		String strTime = "2017-11-13 21:40:15"; 
 //		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
@@ -47,11 +49,22 @@ public class TogetherDetailServlet extends HttpServlet {
 			Date startD = transFormat.parse(startDate);
 			Date endD = transFormat.parse(endDate);
 			long day = endD.getTime()-startD.getTime();
-			Calendar
-			System.out.println(startD);
-			System.out.println(endD);
-			System.out.println(day/1000/60/60/24+1);
+			System.out.println("startD : "+startD);
+			System.out.println("endD : "+endD);
+			System.out.println("여행기간 : " + (day/1000/60/60/24+1));
 			dd = (int)day/1000/60/60/24+1;
+			
+			Calendar cal = Calendar.getInstance();
+	        cal.setTime(startD);
+	        cal.add(Calendar.DATE, 1);      //하루 더하기
+	        System.out.println(transFormat.format(cal.getTime()));
+
+
+//			Calendar cal = new GregorianCalendar();
+//			cal.setTime(startD);
+//			Calendar nextcal = new GregorianCalendar();
+//			nextcal.add(cal.DATE, 1);
+//			System.out.println("nextcal : " + nextcal.getTime().toString());
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

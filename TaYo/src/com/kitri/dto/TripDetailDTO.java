@@ -10,7 +10,7 @@ public class TripDetailDTO {
 	private int loc_id;				//지역코드
 	private String image;			//이미지
 	private String detail_title;	//세부제목
-	private Clob detail_content;	//세부내용
+	private String detail_content;	//세부내용
 	private float posX;				//x좌표
 	private float posY;				//y좌표
 	
@@ -26,7 +26,7 @@ public class TripDetailDTO {
 	}
 
 	public TripDetailDTO(int trip_order, int trip_day, int trip_seq, String place_name, int loc_id, String image,
-			String detail_title, Clob detail_content, float posX, float posY) {
+			String detail_title, String detail_content, float posX, float posY) {
 		super();
 		this.trip_order = trip_order;
 		this.trip_day = trip_day;
@@ -83,11 +83,11 @@ public class TripDetailDTO {
 		this.detail_title = detail_title;
 	}
 	
-	public Clob getDetail_content() {
+	public String getDetail_content() {
 		return detail_content;
 	}
 
-	public void setDetail_content(Clob detail_content) {
+	public void setDetail_content(String detail_content) {
 		this.detail_content = detail_content;
 	}
 
