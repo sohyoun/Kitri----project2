@@ -28,6 +28,7 @@ import com.kitri.util.MoveURL;
 public class RecomandServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	PageBean<TripBasicDTO> pagebean;
+	boolean isDebug= true;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -47,7 +48,7 @@ public class RecomandServlet extends HttpServlet {
 
 		JSONParser jsonParser = new JSONParser();
 		JSONObject jsonObj = null;
-		JSONArray jsonArray = new JSONArray();
+		
 		try {
 			jsonObj = (JSONObject) jsonParser.parse(jsonStr);
 						
@@ -55,7 +56,7 @@ public class RecomandServlet extends HttpServlet {
 			String season = (String) jsonObj.get("season");
 			String theme = (String) jsonObj.get("theme");
 			String city = (String) jsonObj.get("city");
-			System.out.println("RecomandServlet city: "+ city);
+			System.out.println("city: "+ city);
 			String s_length = (String) jsonObj.get("start_day");
 			String e_length = (String) jsonObj.get("end_day");
 
@@ -68,9 +69,8 @@ public class RecomandServlet extends HttpServlet {
 				end_length = Integer.parseInt(e_length);
 			}
 			//지역코드 맵
-
 			Map<String, Object> cityMap = (Map<String, Object>) jsonObj.get("cityMap");
-//			System.out.println("RecomandServlet" + cityMap.toString());
+			System.out.println("RecomandServlet" + cityMap.toString());
 			int loc_id=-1;
 			for(String key: cityMap.keySet()) {
 //				System.out.println("key: " + key);
@@ -81,12 +81,12 @@ public class RecomandServlet extends HttpServlet {
 			}
 //			cityMap.get(city);
 			
-//			System.out.println("RecomandServlet "+ season +" "+ theme+" "+city+" "+day);
+			System.out.println("RecomandServlet "+ season +" "+ theme+" "+city+" "+start_length+" "+end_length);
 			List<TripBasicDTO> basicList = TripBasicDao.getInstance().select(season, theme, loc_id, start_length, end_length);
-		
+			System.out.println("RecomandServlet basiclistSize():"+basicList.size());		
 			
 			
-			System.out.println("RecomandServlet basicList.size():" + basicList.size());
+
 			int cntPerPage = 2; // 한페이지당 표현할 아이템 개수
 			int totalCnt = basicList.size();// 총 목록 개수
 			int cntPerPageGroup = 4; // 표현할 그룹 개수
