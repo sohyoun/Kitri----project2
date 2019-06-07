@@ -46,7 +46,7 @@ public class TogetherPlansServlet extends HttpServlet {
 			List<String> daylist = new ArrayList<String>();
 //			String tripDay[] = new String[num];
 			for(int i =0; i<num; i++) {
-				cal.setTime(startD);
+				cal.setTime(startD);  
 				cal.add(Calendar.DATE, i);      //하루 더하기
 //				tripDay[i] = transFormat.format(cal.getTime());
 				daylist.add(transFormat.format(cal.getTime()));
