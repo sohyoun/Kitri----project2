@@ -2,9 +2,7 @@
 package com.kitri.admin.model.dao;
 import java.util.List;
 
-import com.kitri.dto.AdminDTO;
-import com.kitri.dto.MemberBoard;
-import com.kitri.dto.MemberDetailDTO;
+import com.kitri.dto.*;
 
 public interface AdminDAO {
 
@@ -13,6 +11,8 @@ public interface AdminDAO {
 	List<MemberBoard> selectAll();
 
 	List<MemberBoard> selectByRows(int startRow, int endRow);
+	
+	List<GonggiBoard> selectGonggi(int startRow, int endRow); 
 
 	int selectTotalCnt();
 
@@ -22,4 +22,6 @@ public interface AdminDAO {
 
 	List<MemberBoard> memberSearch(String searchType, String keyword);
 	
+	GonggiBoard insert(GonggiBoard gonggiBoard);
+
 }

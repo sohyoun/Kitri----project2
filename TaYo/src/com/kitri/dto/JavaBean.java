@@ -1,7 +1,7 @@
 package com.kitri.dto;
 
 
-public class MemberListDTO {
+public class JavaBean {
 	//자바빈 
 	//페이징 처리 하려면 필요한 DTO
 	private int cntPage = 10;// 페이지별 목록 수
@@ -48,11 +48,11 @@ public class MemberListDTO {
 	}
 
 	// 기본 생성자 호출
-	public MemberListDTO() {
+	public JavaBean() {
 
 	}
 	
-	public MemberListDTO(int cntPage, int totalCnt, int cntPerPageGroup,
+	public JavaBean(int cntPage, int totalCnt, int cntPerPageGroup,
 			String url, int currentPage) {
 		super();
 		this.cntPage = cntPage;

@@ -15,7 +15,7 @@ public class MemberBoard{
 	private Date outdate;
 	private String gender;
 	private int grade;
-	private MemberListDTO memberListDTO;
+	private JavaBean memberListDTO;
 
 	public MemberBoard() {
 		
@@ -137,12 +137,12 @@ public class MemberBoard{
 	}
 
 	
-	public MemberListDTO getMemberListDTO() {
+	public JavaBean getMemberListDTO() {
 		return memberListDTO;
 	}
 
 
-	public void setMemberListDTO(MemberListDTO memberListDTO) {
+	public void setMemberListDTO(JavaBean memberListDTO) {
 		this.memberListDTO = memberListDTO;
 	}
 

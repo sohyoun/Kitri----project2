@@ -6,7 +6,7 @@
 
 <c:set var="searchList" value="${requestScope.searchlist}" />
 <c:set var="joincount" value="${requestScope.joindateTotalCnt}" />
-<c:set var="blacklist" value="${requestScope.backTotalCnt}"/>
+<c:set var="blackcount" value="${requestScope.backTotalCnt}"/>
 <c:set var="pagination" value="${requestScope.pagination}" />
 <script>
 	$(function() {
@@ -16,12 +16,32 @@
 			var keyword = $("#keyword").val();
 
 		$.ajax({
-			url : '${pageContext.request.contextPath}/searchInfo',
+			url : '${pageContext.request.contextPath}/searchInfo?search=true',
 			method : 'get',
 			data : 'searchType=' + searchType + '&keyword=' + keyword,
+			dataType : 'json',
 			success : function(result) {
-				alert(result)
-			},
+				if(("all") == searchType){
+				} else{
+				var data = $("#memberlist > tbody").html("");
+				for(var i = 0; i < result.length; i ++){
+					var obj = result[i];
+					data += '<tr>';
+						data += '<td id="board_seq">' + obj.board_seq +'</td>';
+						data += '<td>'+ obj.email +'</td>';
+						data += '<td>'+ obj.name +'</td>';
+						data += '<td>$'+ obj.age +'</td>';
+						data += '<td>'+ obj.address +'</td>';
+						data += '<td>'+ obj.addressDetail +'</td>';
+						data += '<td>'+ obj.joindate +'</td>';
+						data += '<td>'+ obj.outdate +'</td>';
+						data += '<td>'+ obj.gender + '</td>';
+						data += '<td><img style=\"width: 25px; height: 25px;\"src=\"/TaYo/tayoadmin/images/'+ obj.grade +'.png\"></td>';
+					data += '</tr>';
+				}
+				$("#memberlist > div").html(data);
+			}
+		},
 			error : function(jqXHR, textStatus, errorThrown) {
 				console.log("jqXHR : " + jqXHR)
 				console.log("textStatus : " + textStatus)
@@ -39,9 +59,34 @@
 				url:'${pagination.url}',
 				method:'post',
 				data:'currentPage='+currentPage,
+				dataType : 'json',
 				success:function(result){
-					alert(result)
-					//$("table#memberlist").html(result.trim());
+					if(currentPage == 1){
+						var val = $("table#memberlist > tbody").val();
+						alert(val);
+						
+					} else{
+					var data = $("#memberlist > tbody").html("");
+					//alert(result)
+					alert(result.length);
+					for(var i = 0; i < result.length; i ++){
+						var obj = result[i];
+						data += '<tr>';
+							data += '<td id="board_seq">' + obj.board_seq +'</td>';
+							data += '<td>'+ obj.email +'</td>';
+							data += '<td>'+ obj.name +'</td>';
+							data += '<td>$'+ obj.age +'</td>';
+							data += '<td>'+ obj.address +'</td>';
+							data += '<td>'+ obj.addressDetail +'</td>';
+							data += '<td>'+ obj.joindate +'</td>';
+							data += '<td>'+ obj.outdate +'</td>';
+							data += '<td>'+ obj.gender + '</td>';
+							data += '<td><img style=\"width: 25px; height: 25px;\"src=\"/TaYo/tayoadmin/images/'+ obj.grade +'.png\"></td>';
+						data += '</tr>';
+					}
+					//var ap = $("#memberlist > tbody").append(data);
+				}
+					$("#memberlist > tbody").html(data);
 				},
 				error : function(){
 					console.log("에러")
@@ -55,7 +100,9 @@
 	 	
 	 	
 });
+	
 </script>
+
 <div class="row">
 	<!-- 유저 테이블 시작 -->
 	<div class="col-lg-1"></div>
@@ -70,13 +117,14 @@
 				class="form-control mr-sm-2" />
 			<button id="btSearch" class="btn btn-info">검색</button>
 			<ul class="list-group">
-				<li class="list-group-item"><span class="badge">${blacklist}</span>
+				<li class="list-group-item"><span class="badge">${blackcount}</span>
 					블랙 회원 수</li>
 				<li class="list-group-item"><span class="badge"></span> 탈퇴 회원 수</li>
 				<li class="list-group-item"><span class="badge">${joincount}</span>
 					가입 회원 수</li>
 			</ul>
 		</form>
+	<c:set var="list" value="${requestScope.boardlist}" />
 		<div class="table-responsive">
 			<table id="memberlist" class="table">
 				<thead>
@@ -93,9 +141,8 @@
 						<th>등급</th>
 					</tr>
 				</thead>
-					<tbody>
-			<c:set var="list" value="${requestScope.boardlist}" />
 				<c:forEach var="m" items="${list}">
+				 	<tbody>
 						<tr>
 							<td id="board_seq">${m.board_seq}</td>
 							<td>${m.email}</td>
@@ -109,8 +156,8 @@
 							<td><img style="width: 25px; height: 25px;"
 								src="/TaYo/tayoadmin/images/${m.grade}.png"></td>
 						</tr>
+					</tbody> 
 				</c:forEach>
-					</tbody>
 			</table>
 			<div class="col-lg-1"></div>
 		</div>
@@ -137,3 +184,13 @@
 	</div>
 </div>
 <!-- 유저 테이블 끗 -->
+
+
+
+
+
+
+
+
+
+

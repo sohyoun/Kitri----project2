@@ -28,6 +28,21 @@ $(document).ready(function() {
             maxHeight: null,             // set maximum height of editor
             focus: true                  // set focus to editable area after initializing summernote
     });
+    
+    $("div.container > form").submit(function(){
+    	console.log("gonggiwrite success!")
+    	$.ajax({
+    		url : '${pageContext.request.contextPath}/gonggi',
+    		method : 'post',
+    		data : $(this).serialize(),
+    		success : function(result){
+    			alert(result.trim());
+    		}
+    	});
+    	return false;
+    });
+    
+    
     $("#btBack").click(function(){
     	location.href = "${pageContext.request.contextPath}/tayoadmin/board.jsp";
     });
@@ -43,24 +58,33 @@ $(document).ready(function() {
 	<form action="/action_page.php" class="was-validated">
 		<div class="form-group">
 			<label for="title">제목</label> <input type="text" class="form-control"
-				id="title" placeholder="Title " name="title" required>
+				id="subject" placeholder="subject " name="subject" required>
 		</div>
 		
 		<div class="form-group">
 			<label for="option">분류</label> <input type="text"
-				class="form-control" id="pwd" placeholder="Group"
-				name="pswd" required>
+				class="form-control" id="group" placeholder="Group"
+				name="group" required>
 		</div>
+		
+		<div class="form-group">
+			<label for="option">작성자</label>
+			<input type="text"
+				class="form-control" id="writer" placeholder="writer"
+				name="writer" required>
+		</div>
+		
 		
 		<div class="form-group">
 			<label for="option">내용</label>
 			<div class="form-group">
-				<textarea name="content" id="summernote" ></textarea>
+				<textarea name="contents" id="summernote" ></textarea>
 			</div>
 		</div>
-	</form>
+		
 		 <div style = "margin-bottom: 5em;"class = "row text-center">
-				<button type="submit" class="btn btn-success">등록</button>
-				<button type="submit" id="btBack" class="btn btn-primary">뒤로 가기</button>
+				<button id="btInsert" class="btn btn-success">등록</button>
+				<button id="btBack" class="btn btn-primary">뒤로 가기</button>
 		</div>
+	</form>
 </div>

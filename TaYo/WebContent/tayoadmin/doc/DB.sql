@@ -98,21 +98,35 @@ FROM memberlist;
 
 //회원목록테이블 삽입
 INSERT INTO memberlist (board_seq, email, name, age, address, address_detail, outdate, grade, gender)
-VALUES (board_seq.nextval, '1', '2', 31, '3', '4', NULL, 0, 'M');
+VALUES (board_seq.nextval, '1', '이름', 31, '3', '4', NULL, 0, 'M');
 
 INSERT INTO memberlist (board_seq, email, name, age, address, address_detail, outdate, grade, gender)
-VALUES (board_seq.nextval, '2', '3', 28, '4', '5', NULL, 1, 'F');
+VALUES (board_seq.nextval, '2', '이름2', 28, '4', '5', NULL, 1, 'F');
 
 INSERT INTO memberlist (board_seq, email, name, age, address, address_detail, outdate, grade, gender)
-VALUES (board_seq.nextval, '3', '4', 25, '5', '6', NULL, 2, 'M');
+VALUES (board_seq.nextval, '3', '이름3', 25, '5', '6', NULL, 2, 'M');
 
 INSERT INTO memberlist (board_seq, email, name, age, address, address_detail, outdate, grade, gender)
-VALUES (board_seq.nextval, '4', '5', 31, '6', '7', NULL, 3, 'M');
+VALUES (board_seq.nextval, '4', '이름4', 31, '6', '7', NULL, 3, 'M');
+
+INSERT INTO memberlist (board_seq, email, name, age, address, address_detail, outdate, grade, gender)
+VALUES (board_seq.nextval, '4', '이름5', 36, '6', '7', NULL, 3, 'M');
 
 //회원목록테이블 삭제
 DROP TABLE memberlist;
 
+//공지게시판테이블 생성
+CREATE TABLE GONGGI(
+ GBOARD_SEQ              NUMBER(10)  primary key,
+ GBOARD_GROUP VARCHAR2(10), 
+ GBOARD_SUBJECT        VARCHAR2(255),
+ GBOARD_WRITER          VARCHAR2(100),
+ GBOARD_CONTENTS     VARCHAR2(4000),
+ GBOARD_DATE            TIMESTAMP(6),
+ GBOARD_VIEWCOUNT    NUMBER(6)
+);
 
+CREATE sequence gboard_seq;
 
 현재페이지//이전//시작페이지///끝페이지//다음 
 1	     X	     1		3	  O

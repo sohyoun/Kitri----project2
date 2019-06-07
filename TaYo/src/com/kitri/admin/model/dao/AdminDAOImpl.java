@@ -1,18 +1,12 @@
 package com.kitri.admin.model.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.TEST_DB.DBConnection;
-import com.kitri.dto.AdminDTO;
-import com.kitri.dto.MemberBoard;
-import com.kitri.dto.MemberDetailDTO;
+import com.kitri.dto.*;
 import com.kitri.util.DBClose;
-import com.sun.org.apache.bcel.internal.generic.BALOAD;
 
 public class AdminDAOImpl implements AdminDAO {
 
@@ -32,6 +26,7 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	// 로그인 정보
+	@Override
 	public AdminDTO selectByEmail(String admin_email) {
 		AdminDTO adminDTO = new AdminDTO();
 		Connection conn = null;
@@ -41,7 +36,7 @@ public class AdminDAOImpl implements AdminDAO {
 	// DB 연결
 		try {
 			
-			conn = com.kitri.util.DBConnection.makeConnection();
+			conn = DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 
@@ -81,7 +76,7 @@ public class AdminDAOImpl implements AdminDAO {
 		PreparedStatement pstmt = null;
 
 		try {
-			conn = com.TEST_DB.DBConnection.makeConnection();
+			conn = DBConnection.makeConnection();
 
 			StringBuffer sb = new StringBuffer();
 			sb.append("INSERT ALL \n");
@@ -153,7 +148,7 @@ public class AdminDAOImpl implements AdminDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = com.kitri.util.DBConnection.makeConnection();
+			conn = DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 			
@@ -201,7 +196,7 @@ public class AdminDAOImpl implements AdminDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = com.kitri.util.DBConnection.makeConnection();
+			conn = DBConnection.makeConnection();
 
 			StringBuffer sql = new StringBuffer();
 			
@@ -257,6 +252,7 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 	
 	//회원테이블 총
+	@Override
 	public int selectTotalCnt() {
 		int totalCnt = -1;
 		
@@ -265,7 +261,7 @@ public class AdminDAOImpl implements AdminDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = com.kitri.util.DBConnection.makeConnection();
+			conn = DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 			
@@ -289,6 +285,7 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 	
 	//회원가입한 회원 수 
+	@Override
 	public int joindateTotalCnt() {
 		int totalCnt = 0;
 		
@@ -297,7 +294,7 @@ public class AdminDAOImpl implements AdminDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = com.kitri.util.DBConnection.makeConnection();
+			conn = DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 			
@@ -321,6 +318,7 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 	
 	//블랙회원 수 
+	@Override
 	public int blackTotalCnt() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -329,7 +327,7 @@ public class AdminDAOImpl implements AdminDAO {
 		int blackTotalCnt = 0;
 		
 		try {
-			conn = com.kitri.util.DBConnection.makeConnection();
+			conn = DBConnection.makeConnection();
 			StringBuffer sql = new StringBuffer();
 			
 			sql.append("SELECT COUNT(*) " +
@@ -363,7 +361,7 @@ public class AdminDAOImpl implements AdminDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = com.kitri.util.DBConnection.makeConnection();
+			conn = DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 			
@@ -423,4 +421,99 @@ public class AdminDAOImpl implements AdminDAO {
 	return list;
 	
 	}
+	
+	@Override
+	public GonggiBoard insert(GonggiBoard gonggiBoard){
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBConnection.makeConnection();
+
+			String sql = "INSERT INTO gonggi("
+					+ "	GBOARD_SEQ, GBOARD_GROUP, GBOARD_SUBJECT, GBOARD_WRITER, GBOARD_CONTENTS, GBOARD_DATE, GBOARD_VIEWCOUNT) \n"
+					+ "	VALUES(board_seq.nextval, ?, ?, ?, ? , systimestamp, 0) \n";
+
+					pstmt = conn.prepareStatement(sql.toString());
+			
+					pstmt.setString(1, gonggiBoard.getGboard_group());
+					pstmt.setString(2, gonggiBoard.getGboard_subject());
+					pstmt.setString(3, gonggiBoard.getGboard_writer());
+					pstmt.setString(4, gonggiBoard.getGboard_subject());
+					
+					pstmt.executeUpdate();
+					
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}finally {
+			DBClose.close(conn, pstmt);
+		}
+		return gonggiBoard;
+	}
+	
+	@Override
+	public List<GonggiBoard> selectGonggi(int startRow, int endRow) {
+		
+		List<GonggiBoard> list = new ArrayList<GonggiBoard>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBConnection.makeConnection();
+
+			StringBuffer sql = new StringBuffer();
+			
+			/*
+			 * sql.append("SELECT * " + "FROM(SELECT rownum r, m.* \n" +
+			 * "		 FROM (SELECT * FROM memberlist \n" +
+			 * "				  ORDER BY board_seq DESC) m \n" +
+			 * "		 WHERE rownum <= ?) \n" + "WHERE r >= ? \n");
+			 */
+			
+			sql.append("SELECT *\n" + 
+							"FROM(SELECT rownum r, m.*\n" + 
+									 "FROM(SELECT * FROM gonggi ORDER BY gboard_seq DESC) m\n" + 
+									 "WHERE rownum <= ?)\n" + 
+							"WHERE r >= ? ");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			
+			pstmt.setInt(1, endRow);
+			pstmt.setInt(2, startRow);
+			
+			//System.out.println("startRow == " + startRow);
+			//System.out.println("endRow == " +endRow);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				GonggiBoard gonggiBoard = new GonggiBoard();
+				
+				gonggiBoard.setGboard_seq(rs.getInt("gboard_seq"));
+				gonggiBoard.setGboard_group(rs.getString("gboard_group"));
+				gonggiBoard.setGboard_subject(rs.getString("gboard_subject"));
+				gonggiBoard.setGboard_writer(rs.getString("writer"));
+				gonggiBoard.setGboard_contents(rs.getString("gboard_contents"));
+				gonggiBoard.setGboard_date(rs.getTimestamp("gboard_date"));
+				gonggiBoard.setGboard_viewcount(rs.getInt("gboard_viewcount"));
+			
+				list.add(gonggiBoard);
+			}
+			//System.out.println("size == " + list.size());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBClose.close(conn, pstmt, rs);
+		}
+		
+		return list;
+	}
+	
+	
 }

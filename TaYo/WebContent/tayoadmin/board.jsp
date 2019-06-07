@@ -64,17 +64,17 @@ th, td {
 			}
 		});
 
-		//게시판 목록에서 수정버튼을 클릭했을 때 나오는 화면
+		//게시판 목록에서 등록버튼을 클릭했을 때 나오는 화면
 		var arr = $("tbody > tr > td > button");
 		$(arr[0]).click(function() {
 			//console.log("click")
 			//alert("click")
-			location.href = '/TaYo/tayoadmin/boardListresult.jsp';
+			location.href = '/TaYo/tayoadmin/Gonggiwrite.jsp';
 		});
 
 		$(arr[1]).click(function() {
 			//	console.log("삭제")
-				alert("삭제")
+			alert("삭제")
 		});
 	});
 </script>
@@ -107,7 +107,7 @@ th, td {
       </div>
     </div>
   </div> -->
-
+<c:set var="g" value="${requestScope.goboard}" />
 <div class="row">
 	<div class="col-lg-1"></div>
 	<div class="col-lg-10">
@@ -121,13 +121,13 @@ th, td {
 				동시에 검색</strong> 할 수 있습니다. <strong>그룹검색 시 데이터가 많은 경우</strong> 느려질 수 있습니다.
 		</div>
 		<div class="btn-group">
-			<form action="" method = "get" class = "form-inline my-2 my-lg-0">
-				<select name ="" class = "form-control mx-1 mt-2">
-					<option value = "공지">공지</option> 
-					<option value = "신고">신고</option> 
-				</select>
-					<input type="text" name="search" placeholder="search" class="form-control mr-sm-2" />
-					<button id = "search" class="btn btn-info">검색</button>
+			<form action="" method="get" class="form-inline my-2 my-lg-0">
+				<select name="" class="form-control mx-1 mt-2">
+					<option value="공지">공지</option>
+					<option value="신고">신고</option>
+				</select> <input type="text" name="search" placeholder="search"
+					class="form-control mr-sm-2" />
+				<button id="search" class="btn btn-info">검색</button>
 			</form>
 		</div>
 	</div>
@@ -136,104 +136,48 @@ th, td {
 <div class="col-lg-1"></div>
 <br />
 
-<!-- 게시판 테이블 영역  -->
-<div id = "boardlist" class="row">
-<div class="col-lg-1"></div>
+<!-- 공지 테이블 영역  -->
+<div id="boardlist" class="row">
+	<div class="col-lg-1"></div>
 	<div class="col-lg-10">
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
 					<tr>
-						<th><input type="checkbox" name="chkInfo" id="selectallchkbox" value="" /></th>
-						<th>번호</th><th>그룹</th><th>게시판</th><th>제목</th><th>작성자</th><th>등록일</th><th>조회수</th><th>관리</th>
+						<th><input type="checkbox" name="chkInfo"
+							id="selectallchkbox" value="" /></th>
+						<th>번호</th>
+						<th>분류</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>등록일</th>
+						<th>조회수</th>
+						<th>관리</th>
 					</tr>
 				</thead>
-				
-				<tbody>
-					<tr>
-						<td><input class="bdchkbox" type="checkbox" name="chkInfo" id="check1" value="" /></td>
-						<td>1</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>
-							<button type="submit" class="btn btn-info">등록</button>
-							<button type="submit" id ="updateBtn" class="btn btn-info">수정</button>
-							<button type="submit" id="removeBtn" class="btn btn-info">삭제</button>
-						</td>
-					</tr>
-					<tr>
-						<td><input class="bdchkbox" type="checkbox" name="chkInfo"
-							id="check2" value="" /></td>
-						<td>2</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>
-							<button type="submit" class="btn btn-info">등록</button>
-							<button type="submit" id ="updateBtn" class="btn btn-info">수정</button>
-							<button type="submit" id="removeBtn" class="btn btn-info">삭제</button>
-						</td>
-					</tr>
-					<tr>
-						<td><input class="bdchkbox" type="checkbox" name="chkInfo"
-							id="check3" value="" /></td>
-						<td>3</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>
-							<button type="submit" class="btn btn-info">등록</button>
-							<button type="submit" id ="updateBtn" class="btn btn-info">수정</button>
-							<button type="submit" id="removeBtn" class="btn btn-info">삭제</button>
-						</td>
-					</tr>
-					<tr>
-						<td><input class="bdchkbox" type="checkbox" name="chkInfo"
-							id="check3" value="" /></td>
-						<td>4</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>
-							<button type="submit" class="btn btn-info">등록</button>
-							<button type="submit" id ="updateBtn" class="btn btn-info">수정</button>
-							<button type="submit" id="removeBtn" class="btn btn-info">삭제</button>
-						</td>
-					</tr>
-					<tr>
-						<td><input class="bdchkbox" type="checkbox" name="chkInfo"
-							id="check3" value="" /></td>
-						<td>5</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>Table cell</td>
-						<td>
-							<button type="submit" class="btn btn-info">등록</button>
-							<button type="submit" id ="updateBtn" class="btn btn-info">수정</button>
-							<button type="submit" id="removeBtn" class="btn btn-info">삭제</button>
-						</td>
-					</tr>
-				</tbody>
+			<%-- 	<c:forEach var="g" items="${gonggi}"> --%>
+					<tbody>
+						<tr>
+							<td><input class="bdchkbox" type="checkbox" name="chkInfo"
+								id="check1" value="" /></td>
+							<td>${g.gboard_seq}</td>
+							<td>${g.gboard_group}</td>
+							<td>${g.gboard_subject}</td>
+							<td>${g.gboard_writer}</td>
+							<td>${g.gboard_date}</td>
+							<td>${g.gboard_viewcount}</td>
+							<td>
+								<button type="submit" class="btn btn-info">등록</button>
+								<button type="submit" id="updateBtn" class="btn btn-info">수정</button>
+								<button type="submit" id="removeBtn" class="btn btn-info">삭제</button>
+							</td>
+						</tr>
+					</tbody>
+			<%-- 	</c:forEach> --%>
 			</table>
 		</div>
-	<div class="col-lg-1"></div>
-		
+		<div class="col-lg-1"></div>
+
 		<ul class="pagination">
 			<!--페이징 처리-->
 			<li class="disabled"><a href="#">&laquo;</a></li>
@@ -263,7 +207,7 @@ th, td {
 </div>
 
 <!-- 유저 테이블  여기서 보여주는거임 -->
-<div id = "memberlist" class="row"></div>
+<div id="memberlist" class="row"></div>
 
 <%-- <c:forEach var = "memberboard"  items = "${page.list}"> --%>
 
