@@ -192,4 +192,34 @@ public class TogetherDAO {
 		
 	}
 	
+	//likeCount 올리기
+		public void updateLikeCount(int tripSeq, int likeCount, int heart) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			try {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				
+				con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "project2", "project2");
+				
+				String updateViewCountSQL = "update trip_basic " + 
+						"set likeCount = ? " + 
+						"where trip_seq = ?";  
+				
+				pstmt = con.prepareStatement(updateViewCountSQL);
+				pstmt.setInt(1, (likeCount+heart));
+				pstmt.setInt(2, tripSeq);
+				
+				pstmt.executeUpdate();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBClose.close(con, pstmt);
+			}
+			
+		}
+	
 }
