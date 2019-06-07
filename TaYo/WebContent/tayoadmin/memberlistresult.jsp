@@ -45,6 +45,59 @@
 			//alert("버튼을 클릭했습니다.")
 			var searchType = $("#searchType").val();
 			var keyword = $("#keyword").val();
+			
+			$.ajax({
+				url : '${pageContext.request.contextPath}/searchInfo?search=true',
+				method : 'get',
+				data : 'searchType=' + searchType + '&keyword=' + keyword,
+				dataType : 'json',
+				success : function(result) {
+					if(("all") == searchType){
+					
+					} else{
+					var data = $("#memberlist > tbody").html("");
+		
+					for(var i = 0; i < result.length; i ++){
+						var obj = result[i];
+						data += '<tr>';
+							data += '<td id="board_seq">' + obj.board_seq +'</td>';
+							data += '<td>'+ obj.email +'</td>';
+							data += '<td>'+ obj.name +'</td>';
+							data += '<td>$'+ obj.age +'</td>';
+							data += '<td>'+ obj.address +'</td>';
+							data += '<td>'+ obj.addressDetail +'</td>';
+							data += '<td>'+ obj.joindate +'</td>';
+							data += '<td>'+ obj.outdate +'</td>';
+							data += '<td>'+ obj.gender + '</td>';
+							data += '<td><img style=\"width: 25px; height: 25px;\"src=\"/TaYo/tayoadmin/images/'+ obj.grade +'.png\"></td>';
+						data += '</tr>';
+					}
+					$("#memberlist > div").html(data);
+
+		$.ajax({
+			url : '${pageContext.request.contextPath}/searchInfo?search=true',
+			method : 'get',
+			data : 'searchType=' + searchType + '&keyword=' + keyword,
+			dataType : 'json',
+			success : function(result) {
+				if(("all") == searchType){
+					
+				} else{
+				var data = $("#memberlist > tbody").html("");
+				for(var i = 0; i < result.length; i ++){
+					var obj = result[i];
+					data += '<tr>';
+						data += '<td id="board_seq">' + obj.mboard_seq +'</td>';
+						data += '<td>'+ obj.member_email +'</td>';
+						data += '<td>'+ obj.member_name +'</td>';
+						data += '<td>'+ obj.member_age +'</td>';
+						data += '<td>'+ obj.member_address +'</td>';
+						data += '<td>'+ obj.member_addressDetail +'</td>';
+						data += '<td>'+ obj.member_joindate +'</td>';
+						data += '<td>'+ obj.member_outdate +'</td>';
+						data += '<td>'+ obj.member_gender + '</td>';
+						data += '<td><img style=\"width: 25px; height: 25px;\"src=\"/TaYo/tayoadmin/images/'+ obj.member_grade +'.png\"></td>';
+					data += '</tr>';
 
 		$.ajax({
 			url : '${pageContext.request.contextPath}/searchInfo?search=true',
@@ -89,6 +142,52 @@
 				data:'currentPage='+currentPage,
 				dataType : 'json',
 				success:function(result){
+<<<<<<< HEAD
+=======
+					if(currentPage == 1){
+						var val = $("table#memberlist > tbody").val();
+						alert(val);
+						
+					} else{
+					var data = $("#memberlist > tbody").remove();
+					console.log('result');
+					console.log(result);
+					console.log('result.length');
+					console.log(result.length);
+					
+						for(var i = 0; i < result.length; i ++){
+							var obj = result[i];
+							data += '<tr>';
+								data += '<td id="board_seq">' + obj.board_seq +'</td>';
+								data += '<td>'+ obj.email +'</td>';
+								data += '<td>'+ obj.name +'</td>';
+								data += '<td>$'+ obj.age +'</td>';
+								data += '<td>'+ obj.address +'</td>';
+								data += '<td>'+ obj.addressDetail +'</td>';
+								data += '<td>'+ obj.joindate +'</td>';
+								data += '<td>'+ obj.outdate +'</td>';
+								data += '<td>'+ obj.gender + '</td>';
+								data += '<td><img style=\"width: 25px; height: 25px;\"src=\"/TaYo/tayoadmin/images/'+ obj.grade +'.png\"></td>';
+							data += '</tr>';
+						}
+					//alert(result)
+					for(var i = 0; i < result.length; i ++){
+						var obj = result[i];
+						data += '<tr>';
+							data += '<td id="board_seq">' + obj.mboard_seq +'</td>';
+							data += '<td>'+ obj.member_email +'</td>';
+							data += '<td>'+ obj.member_name +'</td>';
+							data += '<td>'+ obj.member_age +'</td>';
+							data += '<td>'+ obj.member_address +'</td>';
+							data += '<td>'+ obj.member_addressDetail +'</td>';
+							data += '<td>'+ obj.member_joindate +'</td>';
+							data += '<td>'+ obj.member_outdate +'</td>';
+							data += '<td>'+ obj.member_gender + '</td>';
+							data += '<td><img style=\"width: 25px; height: 25px;\"src=\"/TaYo/tayoadmin/images/'+ obj.member_grade +'.png\"></td>';
+						data += '</tr>';
+						console.log(data)
+					}
+>>>>>>> branch 'master' of https://github.com/sohyoun/Kitri----project2.git
 					//alert(result)
 					for(var i = 0; i < result.length; i ++){
 						var obj = result[i];
@@ -155,8 +254,13 @@
 						<th>등급</th>
 					</tr>
 				</thead>
+<<<<<<< HEAD
 					<tbody>
 			<%-- 	<c:forEach var="m" items="${list}">
+=======
+				<c:forEach var="m" items="${list}">
+			<tbody>
+>>>>>>> branch 'master' of https://github.com/sohyoun/Kitri----project2.git
 						<tr>
 							<td id="board_seq">${m.mboard_seq}</td>
 							<td>${m.member_email}</td>

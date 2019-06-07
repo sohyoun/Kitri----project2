@@ -15,7 +15,7 @@ import com.google.gson.*;
 import com.kitri.admin.model.service.MemberListService;
 import com.kitri.dto.*;
 
-@WebServlet("/memberlist")
+@WebServlet("/adminmember")
 public class AdminMemberContoller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -65,7 +65,7 @@ public class AdminMemberContoller extends HttpServlet {
 
 		List<MemberBoardDTO> boardlist = memberListService.findByRows(javaBean.getStartRow(), javaBean.getEndRow());
 
-		// System.out.println("페이징처리할 리스트: " + boardlist);
+		 System.out.println("페이징처리할 리스트: " + boardlist.size());
 
 		request.setAttribute("boardlist", boardlist);
 		request.setAttribute("pagination", javaBean);
@@ -83,6 +83,7 @@ public class AdminMemberContoller extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 		out.write(bd);
+
 	}
 
 	@Override

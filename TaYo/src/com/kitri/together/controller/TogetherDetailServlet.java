@@ -38,6 +38,7 @@ public class TogetherDetailServlet extends HttpServlet {
 		String tripNum = request.getParameter("tripNum");					//10
 		String email = request.getParameter("email");						//gogo@naver.com
 		int viewCount = Integer.parseInt(request.getParameter("viewCount"));
+		String likeCount = request.getParameter("likeCount");	
 		service.updateViewCount(tripSeq, viewCount);
 		
 		System.out.println("tripSeq : " + tripSeq);
@@ -76,7 +77,7 @@ public class TogetherDetailServlet extends HttpServlet {
 		request.setAttribute("tripNum", tripNum);
 		request.setAttribute("email", email);
 		request.setAttribute("dd", dd);
-		
+		request.setAttribute("likeCount", likeCount);
 		String path = "/tayotogether/ttPlan.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);

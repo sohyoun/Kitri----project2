@@ -13,6 +13,7 @@ $(function(){
 		var tripNum = $(this).find("#tripNum").text();
 		var email = $(this).find("#email").text();
 		var viewCount = $(this).find("#tripViewCount").text();
+		var likeCount = $(this).find("#tripLikeCount").text();
 		console.log("${pageContext.request.contextPath}/togetherdetail");
 		$.ajax({
 			url : "${pageContext.request.contextPath}/togetherdetail",
@@ -25,7 +26,8 @@ $(function(){
 					nowNum : nowNum,
 					tripNum : tripNum,
 					email : email,
-					viewCount : viewCount
+					viewCount : viewCount,
+					likeCount : likeCount
 			},
 			success : function(result){
 				$("div.tayowithbody").html(result.trim());

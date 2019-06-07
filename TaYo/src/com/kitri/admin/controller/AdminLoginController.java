@@ -10,7 +10,7 @@ import javax.servlet.http.*;
 import com.kitri.admin.model.service.AdminService;
 import com.kitri.dto.AdminDTO;
 
-@WebServlet("/login")
+@WebServlet("/adminlogin")
 public class AdminLoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

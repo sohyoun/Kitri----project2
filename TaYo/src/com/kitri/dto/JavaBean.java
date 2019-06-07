@@ -16,8 +16,7 @@ public class JavaBean {
 	private String url;
 	private int currentPage; // 현재 페이지
 	private List<MemberBoardDTO> list;
-	
-	
+
 	public JavaBean(int cntPage, int startRow, int endRow, int totalPage, int totalCnt, int cntPerPageGroup,
 			int startPage, int endPage, String url, int currentPage, List<MemberBoardDTO> list) {
 		super();

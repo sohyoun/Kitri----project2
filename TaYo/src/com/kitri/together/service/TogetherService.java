@@ -24,6 +24,9 @@ public class TogetherService {
 		dao.updateViewCount(tripSeq,viewCount);
 	}
 	
+	public void updateLikeCount(int tripSeq, int likeCount, int heart) {
+		dao.updateLikeCount(tripSeq, likeCount, heart);
+	}
 
 	
 	
