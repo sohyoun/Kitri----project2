@@ -30,13 +30,15 @@ public class TogetherDetailServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//tripSeq, tripTitle, startDate, endDate, nowNum, tripNum, email
-		String tripSeq = request.getParameter("tripSeq");					//11
+		int tripSeq = Integer.parseInt(request.getParameter("tripSeq"));					//11
 		String tripTitle = request.getParameter("tripTitle");				//부산여행
 		String startDate = request.getParameter("startDate");				//2019-06-06
 		String endDate = request.getParameter("endDate"); 
 		String nowNum = request.getParameter("nowNum");						//2
 		String tripNum = request.getParameter("tripNum");					//10
 		String email = request.getParameter("email");						//gogo@naver.com
+		int viewCount = Integer.parseInt(request.getParameter("viewCount"));
+		service.updateViewCount(tripSeq, viewCount);
 		
 		System.out.println("tripSeq : " + tripSeq);
 		//여행 기간 구하기-----------------------------------
