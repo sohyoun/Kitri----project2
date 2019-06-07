@@ -28,6 +28,7 @@ import com.kitri.util.MoveURL;
 public class RecomandServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	PageBean<TripBasicDTO> pagebean;
+	boolean isDebug= true;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -47,7 +48,7 @@ public class RecomandServlet extends HttpServlet {
 
 		JSONParser jsonParser = new JSONParser();
 		JSONObject jsonObj = null;
-		JSONArray jsonArray = new JSONArray();
+		
 		try {
 			jsonObj = (JSONObject) jsonParser.parse(jsonStr);
 						
@@ -68,7 +69,6 @@ public class RecomandServlet extends HttpServlet {
 				end_length = Integer.parseInt(e_length);
 			}
 			//지역코드 맵
-
 			Map<String, Object> cityMap = (Map<String, Object>) jsonObj.get("cityMap");
 			System.out.println("RecomandServlet" + cityMap.toString());
 			int loc_id=-1;
@@ -81,9 +81,9 @@ public class RecomandServlet extends HttpServlet {
 			}
 //			cityMap.get(city);
 			
-//			System.out.println("RecomandServlet "+ season +" "+ theme+" "+city+" "+day);
+			System.out.println("RecomandServlet "+ season +" "+ theme+" "+city+" "+start_length+" "+end_length);
 			List<TripBasicDTO> basicList = TripBasicDao.getInstance().select(season, theme, loc_id, start_length, end_length);
-		
+			System.out.println("RecomandServlet basiclistSize():"+basicList.size());		
 			
 			
 
