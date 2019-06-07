@@ -15,7 +15,7 @@ import com.google.gson.*;
 import com.kitri.admin.model.service.MemberListService;
 import com.kitri.dto.*;
 
-@WebServlet("/memberlist")
+@WebServlet("/adminmember")
 public class AdminMemberContoller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -69,10 +69,13 @@ public class AdminMemberContoller extends HttpServlet {
 		List<MemberBoard> boardlist = memberListService.findByRows(javaBean.getStartRow(),
 				javaBean.getEndRow());
 
-		// System.out.println("페이징처리할 리스트: " + boardlist);
+		 System.out.println("페이징처리할 리스트: " + boardlist.size());
 
 		request.setAttribute("boardlist", boardlist);
 		request.setAttribute("pagination", javaBean);
+		
+		
+		
 
 		if ("true".equals(request.getParameter("forward"))) {
 			String path = "/tayoadmin/memberlistresult.jsp";
@@ -84,8 +87,10 @@ public class AdminMemberContoller extends HttpServlet {
 			JsonObject jsonObject = new JsonObject();
 			jsonObject.add("boardlist", gson.toJsonTree(boardlist));
 			jsonObject.add("pagination", gson.toJsonTree(javaBean));
+			
 			System.out.println("json == " + jsonObject);
-
+			System.out.println(javaBean.getStartRow() +" "+javaBean.getEndRow());
+			System.out.println(boardlist.size());
 			PrintWriter out = response.getWriter();
 			out.write(bd);
 		}

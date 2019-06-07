@@ -11,21 +11,22 @@ import com.kitri.util.DBClose;
 import com.kitri.util.DBConnection;
 
 public class MemberDao {
+	
 	private static MemberDao MemberDao;
 	static {
 		MemberDao = new MemberDao();
 	}
 
-	public MemberDao getInstance() {
+	public static MemberDao getInstance() {
 		return MemberDao;
 	}
 
-	public int insertMember(String name, String email, String pass, int age, int grade, String gender, String address,
+	
+	public String insertMember(String name, String email, String pass, int age, int grade, String gender, String address,
 			String address_detail, java.util.Date joindate, java.util.Date outdate) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int result = -1;
 		try {
 			conn = DBConnection.makeConnection();
 			String sql = "insert all "
@@ -45,9 +46,12 @@ public class MemberDao {
 			pstmt.setString(8, address);
 			pstmt.setString(9, address_detail);
 			pstmt.setDate(10, new java.sql.Date(joindate.getTime()));
-			pstmt.setDate(11, new java.sql.Date(outdate.getTime()));
+			pstmt.setDate(11, null);
 
-			result = pstmt.executeUpdate();
+			int result = pstmt.executeUpdate();
+			if( result ==1) {
+				return "1";
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -55,7 +59,7 @@ public class MemberDao {
 			DBClose.close(conn, pstmt, rs);
 		}
 
-		return result;
+		return "-1";
 	}
 	
 
@@ -97,15 +101,40 @@ public class MemberDao {
 	}
 
 
-	public int insert(Object obj) {
-		return -1;
-	}
-
-
-	public String select(Object id) {
-		return null;
-	}
+//	public String insert(MemberDTO dto) {
+//		
+//		Connection conn = null;
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		MemberDTO memberDto = null;
+//		List<MemberDTO> list = new ArrayList<MemberDTO>();
+//		try {
+//			conn = DBConnection.makeConnection();
+//			String sql = "insert into member (name, email, pass, age, grade, gender)\n" + 
+//					"values(?, ?, ? , ?, ?, ?)";
+//			
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, dto.getName());
+//			pstmt.setString(2, dto.getEmail());
+//			pstmt.setString(3, dto.getPass());
+//			pstmt.setInt(4, dto.getAge());
+//			pstmt.setInt(5, dto.getGrade());
+//			pstmt.setString(6, dto.getGender());
+//			int result =pstmt.executeUpdate();
+//			if(result ==1) {
+//				return "1";
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			DBClose.close(conn, pstmt, rs);
+//		}
+//		return "-1";
+		
 	
+//	}
+
+
 	public static void main(String[] args) {
 
 //		MemberDao.getInstance().insertMember("name1", "email1", "pass", 20, 1, "M", "address", "address_detail",new java.util.Date(), new java.util.Date());
@@ -117,6 +146,17 @@ public class MemberDao {
 		}
 
 	}
+
+	public MemberDTO selectById(String id) {
+		return null;
+	}
+
+
+	public String insertMember(String name, String email, String pass, int age, int grade) {
+		return "";
+	}
+
+
 
 
 

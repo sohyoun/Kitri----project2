@@ -61,13 +61,15 @@ INSERT ALL
 SELECT * FROM DUAL;
 
 
-//회원목록테이블 글번호 생성
-CREATE SEQUENCE board_seq;
+
 
 //회원목록테이블 글번호 삭제 
 DROP SEQUENCE board_seq;
 
-//회원목록테이블 생성
+//회원목록테이블 글번호 생성
+CREATE SEQUENCE board_seq;
+
+--회원목록테이블 생성
 CREATE TABLE memberlist (
 	board_seq number NOT NULL,
 	email VARCHAR2(35) NOT NULL,

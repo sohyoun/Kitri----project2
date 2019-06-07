@@ -15,6 +15,7 @@ public class JavaBean {
 	private String url;
 	private int currentPage; // 현재 페이지
 	
+	
 	public int getCntPage() {
 		return cntPage;
 	}

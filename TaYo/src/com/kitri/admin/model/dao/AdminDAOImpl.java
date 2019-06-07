@@ -4,9 +4,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.TEST_DB.DBConnection;
+
 import com.kitri.dto.*;
-import com.kitri.util.DBClose;
+import com.kitri.util.*;
+
+
 
 public class AdminDAOImpl implements AdminDAO {
 
@@ -36,7 +38,7 @@ public class AdminDAOImpl implements AdminDAO {
 	// DB 연결
 		try {
 			
-			conn = DBConnection.makeConnection();
+			conn = com.kitri.util.DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 
@@ -76,7 +78,7 @@ public class AdminDAOImpl implements AdminDAO {
 		PreparedStatement pstmt = null;
 
 		try {
-			conn = DBConnection.makeConnection();
+			conn = com.kitri.util.DBConnection.makeConnection();
 
 			StringBuffer sb = new StringBuffer();
 			sb.append("INSERT ALL \n");
@@ -148,7 +150,7 @@ public class AdminDAOImpl implements AdminDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = DBConnection.makeConnection();
+			conn = com.kitri.util.DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 			
@@ -196,7 +198,7 @@ public class AdminDAOImpl implements AdminDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = DBConnection.makeConnection();
+			conn = com.kitri.util.DBConnection.makeConnection();
 
 			StringBuffer sql = new StringBuffer();
 			
@@ -261,7 +263,7 @@ public class AdminDAOImpl implements AdminDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = DBConnection.makeConnection();
+			conn = com.kitri.util.DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 			
@@ -294,7 +296,7 @@ public class AdminDAOImpl implements AdminDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = DBConnection.makeConnection();
+			conn = com.kitri.util.DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 			
@@ -327,7 +329,7 @@ public class AdminDAOImpl implements AdminDAO {
 		int blackTotalCnt = 0;
 		
 		try {
-			conn = DBConnection.makeConnection();
+			conn = com.kitri.util.DBConnection.makeConnection();
 			StringBuffer sql = new StringBuffer();
 			
 			sql.append("SELECT COUNT(*) " +
@@ -361,7 +363,7 @@ public class AdminDAOImpl implements AdminDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = DBConnection.makeConnection();
+			conn = com.kitri.util.DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 			

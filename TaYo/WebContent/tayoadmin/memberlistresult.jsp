@@ -14,61 +14,18 @@
 			//alert("버튼을 클릭했습니다.")
 			var searchType = $("#searchType").val();
 			var keyword = $("#keyword").val();
-
-		$.ajax({
-			url : '${pageContext.request.contextPath}/searchInfo?search=true',
-			method : 'get',
-			data : 'searchType=' + searchType + '&keyword=' + keyword,
-			dataType : 'json',
-			success : function(result) {
-				if(("all") == searchType){
-				} else{
-				var data = $("#memberlist > tbody").html("");
-				for(var i = 0; i < result.length; i ++){
-					var obj = result[i];
-					data += '<tr>';
-						data += '<td id="board_seq">' + obj.board_seq +'</td>';
-						data += '<td>'+ obj.email +'</td>';
-						data += '<td>'+ obj.name +'</td>';
-						data += '<td>$'+ obj.age +'</td>';
-						data += '<td>'+ obj.address +'</td>';
-						data += '<td>'+ obj.addressDetail +'</td>';
-						data += '<td>'+ obj.joindate +'</td>';
-						data += '<td>'+ obj.outdate +'</td>';
-						data += '<td>'+ obj.gender + '</td>';
-						data += '<td><img style=\"width: 25px; height: 25px;\"src=\"/TaYo/tayoadmin/images/'+ obj.grade +'.png\"></td>';
-					data += '</tr>';
-				}
-				$("#memberlist > div").html(data);
-			}
-		},
-			error : function(jqXHR, textStatus, errorThrown) {
-				console.log("jqXHR : " + jqXHR)
-				console.log("textStatus : " + textStatus)
-				console.log("errorThrown : " + errorThrown)
-
-			}
-		});
-		return false;
-	});
-		
-	 	$("ul.pagination > li > a").click(function(){
-			var currentPage=$(this).attr("href");
-			alert(currentPage+"페이지를 보여줍니다.");
+			
 			$.ajax({
-				url:'${pagination.url}',
-				method:'post',
-				data:'currentPage='+currentPage,
+				url : '${pageContext.request.contextPath}/searchInfo?search=true',
+				method : 'get',
+				data : 'searchType=' + searchType + '&keyword=' + keyword,
 				dataType : 'json',
-				success:function(result){
-					if(currentPage == 1){
-						var val = $("table#memberlist > tbody").val();
-						alert(val);
-						
+				success : function(result) {
+					if(("all") == searchType){
+					
 					} else{
 					var data = $("#memberlist > tbody").html("");
-					//alert(result)
-					alert(result.length);
+		
 					for(var i = 0; i < result.length; i ++){
 						var obj = result[i];
 						data += '<tr>';
@@ -84,8 +41,57 @@
 							data += '<td><img style=\"width: 25px; height: 25px;\"src=\"/TaYo/tayoadmin/images/'+ obj.grade +'.png\"></td>';
 						data += '</tr>';
 					}
-					//var ap = $("#memberlist > tbody").append(data);
+					$("#memberlist > div").html(data);
 				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				console.log("jqXHR : " + jqXHR)
+				console.log("textStatus : " + textStatus)
+				console.log("errorThrown : " + errorThrown)
+
+			}
+		});
+		return false;
+	});
+		var calcount =1;
+	 	$("ul.pagination > li > a").click(function(){
+			var currentPage=$(this).attr("href");
+			console.log(calcount++);
+// 			alert(currentPage+"페이지를 보여줍니다.");
+			$.ajax({
+				url:'${pagination.url}',
+				method:'post',
+				data:'currentPage='+currentPage,
+				dataType : 'json',
+				success:function(result){
+					if(currentPage == 1){
+						var val = $("table#memberlist > tbody").val();
+						alert(val);
+						
+					} else{
+					var data = $("#memberlist > tbody").html("");
+					console.log('result');
+					console.log(result);
+					console.log('result.length');
+					console.log(result.length);
+					
+						for(var i = 0; i < result.length; i ++){
+							var obj = result[i];
+							data += '<tr>';
+								data += '<td id="board_seq">' + obj.board_seq +'</td>';
+								data += '<td>'+ obj.email +'</td>';
+								data += '<td>'+ obj.name +'</td>';
+								data += '<td>$'+ obj.age +'</td>';
+								data += '<td>'+ obj.address +'</td>';
+								data += '<td>'+ obj.addressDetail +'</td>';
+								data += '<td>'+ obj.joindate +'</td>';
+								data += '<td>'+ obj.outdate +'</td>';
+								data += '<td>'+ obj.gender + '</td>';
+								data += '<td><img style=\"width: 25px; height: 25px;\"src=\"/TaYo/tayoadmin/images/'+ obj.grade +'.png\"></td>';
+							data += '</tr>';
+						}
+					//var ap = $("#memberlist > tbody").append(data);
+					}	
 					$("#memberlist > tbody").html(data);
 				},
 				error : function(){
@@ -140,8 +146,11 @@
 						<th>성별</th>
 						<th>등급</th>
 					</tr>
+					
 				</thead>
-				<c:forEach var="m" items="${list}">
+				<tbody>
+				</tbody>
+			<%-- 	<c:forEach var="m" items="${list}">
 				 	<tbody>
 						<tr>
 							<td id="board_seq">${m.board_seq}</td>
@@ -157,7 +166,7 @@
 								src="/TaYo/tayoadmin/images/${m.grade}.png"></td>
 						</tr>
 					</tbody> 
-				</c:forEach>
+				</c:forEach> --%>
 			</table>
 			<div class="col-lg-1"></div>
 		</div>
