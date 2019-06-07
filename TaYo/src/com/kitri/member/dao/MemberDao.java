@@ -1,6 +1,5 @@
 package com.kitri.member.dao;
 
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,7 @@ import com.kitri.util.DBClose;
 import com.kitri.util.DBConnection;
 
 public class MemberDao {
-	
+
 	private static MemberDao MemberDao;
 	static {
 		MemberDao = new MemberDao();
@@ -21,16 +20,14 @@ public class MemberDao {
 		return MemberDao;
 	}
 
-	
-	public String insertMember(String name, String email, String pass, int age, int grade, String gender, String address,
-			String address_detail, java.util.Date joindate, java.util.Date outdate) {
+	public String insertMember(String name, String email, String pass, int age, int grade, String gender,
+			String address, String address_detail, java.util.Date joindate, java.util.Date outdate) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			conn = DBConnection.makeConnection();
-			String sql = "insert all "
-					+ "into member(name, email, pass, age, grade, gender) values (?, ?, ?, ?, ?, ?) "
+			String sql = "insert all " + "into member(name, email, pass, age, grade, gender) values (?, ?, ?, ?, ?, ?) "
 					+ "into member_detail (email, address, address_detail, joindate, outdate) values (?, ?, ?, ?, ?) "
 					+ "select * " + "from dual";
 			pstmt = conn.prepareStatement(sql);
@@ -49,7 +46,7 @@ public class MemberDao {
 			pstmt.setDate(11, null);
 
 			int result = pstmt.executeUpdate();
-			if( result ==1) {
+			if (result == 1) {
 				return "1";
 			}
 
@@ -61,7 +58,44 @@ public class MemberDao {
 
 		return "-1";
 	}
-	
+
+	public String insertMember(String name, String email, String pass, String gender) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBConnection.makeConnection();
+			String sql = "insert all " + "into member(name, email, pass, age, grade, gender) values (?, ?, ?, ?, ?, ?)\n "
+					+ "into member_detail (email, address, address_detail, joindate, outdate) values (?, ?, ?, ?, ?)\n "
+					+ "select * " + "from dual";
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			pstmt.setString(3, pass);
+			pstmt.setInt(4, -1);
+			pstmt.setInt(5, -1);
+			pstmt.setString(6, gender);
+
+			pstmt.setString(7, email);
+			pstmt.setString(8, null);
+			pstmt.setString(9, null);
+			pstmt.setDate(10, null);
+			pstmt.setDate(11, null);
+
+			int result = pstmt.executeUpdate();
+			if (result == 1) {
+				return "1";
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(conn, pstmt, rs);
+		}
+
+		return "-1";
+	}
 
 	public List<MemberDTO> selectAll() {
 		Connection conn = null;
@@ -72,7 +106,7 @@ public class MemberDao {
 		try {
 			conn = DBConnection.makeConnection();
 			String sql = "select name, email, pass, age, grade, gender, address, address_detail, joindate, outdate\n"
-					+ "from member JOIN member_detail using(email)";
+					+ "from member JOIN member_detail using(email)\n";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -100,40 +134,40 @@ public class MemberDao {
 		return list;
 	}
 
-
-//	public String insert(MemberDTO dto) {
-//		
-//		Connection conn = null;
-//		PreparedStatement pstmt = null;
-//		ResultSet rs = null;
-//		MemberDTO memberDto = null;
-//		List<MemberDTO> list = new ArrayList<MemberDTO>();
-//		try {
-//			conn = DBConnection.makeConnection();
-//			String sql = "insert into member (name, email, pass, age, grade, gender)\n" + 
-//					"values(?, ?, ? , ?, ?, ?)";
-//			
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, dto.getName());
-//			pstmt.setString(2, dto.getEmail());
-//			pstmt.setString(3, dto.getPass());
-//			pstmt.setInt(4, dto.getAge());
-//			pstmt.setInt(5, dto.getGrade());
-//			pstmt.setString(6, dto.getGender());
-//			int result =pstmt.executeUpdate();
-//			if(result ==1) {
-//				return "1";
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			DBClose.close(conn, pstmt, rs);
-//		}
-//		return "-1";
-		
-	
-//	}
-
+	public MemberDTO selectById(String email) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberDTO memberDto = null;
+		try {
+			conn = DBConnection.makeConnection();
+			String sql = "select name, email, pass, age, grade, gender, address, address_detail, joindate, outdate\n" + 
+					"    from member JOIN member_detail using (email)\n" + 
+					"    where email like ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				String name = rs.getString("name");
+				String pass = rs.getString("pass");
+				int age = rs.getInt("age");
+				int grade = rs.getInt("grade");
+				String gender = rs.getString("gender");
+				String address = rs.getString("address");
+				String addressDetail = rs.getString("address_detail");
+				Date joindate = rs.getDate("joindate");
+				Date outdate = rs.getDate("outdate");
+				MemberDetailDTO memberDetailDto = new MemberDetailDTO(email, address, addressDetail, joindate, outdate);
+				memberDto = new MemberDTO(email, name, pass, age, grade, gender, memberDetailDto);
+				return memberDto;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(conn, pstmt, rs);
+		}
+		return null;
+	}
 
 	public static void main(String[] args) {
 
@@ -142,23 +176,9 @@ public class MemberDao {
 		List<MemberDTO> list = MemberDao.getInstance().selectAll();
 		for (MemberDTO mem : list) {
 			System.out.println("MemberDao main:" + mem.toString());
-			
+
 		}
 
 	}
-
-	public MemberDTO selectById(String id) {
-		return null;
-	}
-
-
-	public String insertMember(String name, String email, String pass, int age, int grade) {
-		return "";
-	}
-
-
-
-
-
 
 }

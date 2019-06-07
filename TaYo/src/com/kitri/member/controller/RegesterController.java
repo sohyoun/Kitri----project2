@@ -11,32 +11,43 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kitri.member.service.MemberService;
 import com.kitri.util.DBClose;
 import com.kitri.util.DBConnection;
+import com.kitri.util.MoveURL;
 
 @WebServlet("/register")
 public class RegesterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	MemberService membService;
-	
-
-       
+	MemberService memberService;
  
-    public RegesterController() {
-        super();
- 
-    }
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	@Override
+	public void init() throws ServletException {
+		memberService = new MemberService();
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		System.out.println("RegesterController doPost.");
 
-		String name = request.getParameter("name");
-		String email = request.getParameter("id");
-		String pass = request.getParameter("pass");
-		//TODO
-		membService.register(name, email, pass, -1, -1, "");
+		String name = request.getParameter("usrname");
+		String email = request.getParameter("usremail");
+		String pass = request.getParameter("usrpwd");
+		String gender= request.getParameter("optradio");
+		System.out.println("RegesterController "+ name+" "+email+" "+pass+" "+gender);
+		
+		String result = memberService.register(name, email, pass, gender);
+		HttpSession session = request.getSession();
+		if(result == "1") { //회원가입 성공
+			session.setAttribute("loginInfo", email);
+			System.out.println("RegesterController 회원가입성공");
+		}else {//회원가입 실패
+			session.removeAttribute("loginInfo");
+		}
+		request.setAttribute("result", result);
+		String path = "/temp/registerresult.jsp";
+		MoveURL.forward(request,response, path);
+		
 	}
 
 }

@@ -14,7 +14,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <%@ include file="/temp/header_headimport.jsp" %>
 </head>
 
-<c:set var="email" value="${sessionScope.loginInfo}" />
+
 <%
 	String root = request.getContextPath();
 %>
@@ -33,26 +33,50 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				success : function(result){
 					//console.log(result)
 					//alert(result)
-					location.href = "${pageContext.request.contextPath}/tayoadmin/index.jsp";
+					if(result =='1'){
+						location.href = "${pageContext.request.contextPath}/index.jsp";						
+					}else if(result =='2'){
+	 					location.href = "${pageContext.request.contextPath}/tayoadmin/index.jsp";						
+					}else{
+						alert('로그인 실패');
+					}
 				},
 				error : function(jqXHR, textStatus, errorThrown){
-					alert(errorThrown);
+					console.log('error'+errorThrown);
 				}
 			});
+			return false;
 		}); 
-		
+		//로그아웃 버튼
+		$("#header_logout").click(function() {
+			$.ajax({
+				url : "${pageContext.request.contextPath}/logout",
+				method : 'post',
+				success : function(result){
+					location.href = "${pageContext.request.contextPath}/index.jsp";
+				},
+				error : function(jqXHR, textStatus, errorThrown){
+					console.log('error'+errorThrown);
+				}
+			});
+			return false;
+		});
 		//회원가입 버튼
 		$(function(){
 			$('#header_register_btn').click(function() {
+				console.log('header_register_btn');
 				$.ajax({
-					url : "${pageContext.request.contextPath}/member",
-					data : $("form.registerfrom").serialize(),
+					url : "${pageContext.request.contextPath}/register",
+					data : $("form.registerform").serialize(),
 					method : 'post',
 					success : function(result){
-						location.href = "${pageContext.request.contextPath}/tayoadmin/index.jsp";
+// 						location.href = "${pageContext.request.contextPath}/tayoadmin/index.jsp";
+						console.log('logininfo');
+						console.log('button#login ajax: ' +result.trim())
+						location.href = "${pageContext.request.contextPath}/index.jsp";
 					},
 					error : function(jqXHR, textStatus, errorThrown){
-						alert(errorThrown);
+						console.log('error'+errorThrown);
 					}
 				});
 			});
@@ -82,25 +106,33 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<li class="nav-item active"><a class="nav-link text-nowrap"
 						href="${pageContext.request.contextPath}/tayotogether/tayotogether.jsp">함께타요</a></li>
 					<li class="nav-item active">
-					<a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/schedule?act=schedule">일정만들기</a></li>
-					<li class="nav-item active"><a class="nav-link text-nowrap"
-						href="${pageContext.request.contextPath}/tayorecomand/recomand.jsp">여행일정추천</a></li>
+						<a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/schedule?act=schedule">일정만들기</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/tayorecomand/recomand.jsp">여행일정추천</a>
+					</li>
 				</ul>
 				
 				<%-- href="${pageContext.request.contextPath}/head_nav/?act=join" --%>
 				<%-- href="${pageContext.request.contextPath}/head_nav/?act=join" --%>
 				<ul class="navbar-nav ml-auto">
 					<c:choose>
-						<c:when test="${empty email}">
+						<c:when test="${empty sessionScope.loginInfo}">
 							<li class="nav-item active">
-								<a class="nav-link text-nowrap" data-target="#loginModal" data-toggle="modal" >로그인</a>
+								<a class="nav-link text-nowrap" data-target="#loginModal" data-toggle="modal" href="#">
+								로그인</a>
 							</li>
 							<li class="nav-item active">
-								<a class="nav-link text-nowrap" data-target="#registerModal" data-toggle="modal" href="#">회원가입</a>
+								<a class="nav-link text-nowrap" data-target="#registerModal" data-toggle="modal" href="#">
+								회원가입</a>
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="logout">로그아웃</a></li>
+							<li class="nav-item active">
+								<a class="nav-link text-nowrap " href="#" id="header_logout">
+								로그아웃</a>
+							</li>
+							
 						</c:otherwise>
 					</c:choose>
 					
@@ -136,8 +168,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</div>
 
 						<div class="modal-body">
-							<button type="button" class="btn">비밀번호 찾기</button>
-							|
+							<button type="button" class="btn">비밀번호 찾기</button>|
 							<button type="button" class="btn btn-link" >회원가입</button> 
 						</div>
 
@@ -161,25 +192,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</div>
 
 						<!-- Modal body -->
-						<form class ="registerfrom">
+						<form class ="registerform">
 							<div class="modal-body">
 									<label for="usrname">이름 : </label> 
-									<input type="text" class="form-control" id="usrname" placeholder="name"> 
+									<input type="text" class="form-control" id="usrname" name="usrname" placeholder="name"> 
 									<label for="usremail">이메일 주소 : </label> 
-									<input type="text" class="form-control" id="usremail" placeholder="example@email.com"> 
+									<input type="text" class="form-control" id="usremail" name="usremail" placeholder="example@email.com"> 
 									<label for="usrpwd">비밀번호 : </label> 
-									<input type="password" class="form-control" id="usrpwd" placeholder="password">
+									<input type="password" class="form-control" id="usrpwd" name="usrpwd" placeholder="password">
 									<div class="form-check-inline"> 
 										<label class="form-check-label"> 
-											<input type="radio" class="form-check-input" name="optradio"> 남 
+											<input type="radio" class="form-check-input" name="optradio" value="M"> 남 
 										</label>
 									</div>
 									<div class="form-check-inline">
 										<label class="form-check-label"> 
-											<input type="radio"	class="form-check-input" name="optradio">여
+											<input type="radio"	class="form-check-input" name="optradio" value="W">여
 										</label>
 									</div>
-								
 							</div>
 	
 							<!-- Modal footer -->
