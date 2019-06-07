@@ -51,7 +51,7 @@ public class TogetherDetailServlet extends HttpServlet {
 			Date startD = transFormat.parse(startDate);
 			Date endD = transFormat.parse(endDate);
 			long day = endD.getTime()-startD.getTime();
-			System.out.println("startD : "+startD);
+			System.out.println("startD :  "+startD);
 			System.out.println("endD : "+endD);
 			System.out.println("여행기간 : " + (day/1000/60/60/24+1));
 			dd = (int)day/1000/60/60/24+1;
