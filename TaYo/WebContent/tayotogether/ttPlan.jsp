@@ -17,7 +17,7 @@ $(function(){
 		$.ajax({
 			url : '${pageContext.request.contextPath}/togetherplans',
 			method:'get',
-			data:'tripSeq=${tripSeq}&dd=${dd}&startDate=${startDate}&endDate=${endDate}&url='+$url,
+			data:'tripSeq=${tripSeq}&dd=${dd}&startDate=${startDate}&url='+$url,
 			success : function(result){
 				$("div.container.tab-pane.dcontents").html(result.trim());
 			}

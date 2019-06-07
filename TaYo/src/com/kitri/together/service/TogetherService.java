@@ -20,6 +20,10 @@ public class TogetherService {
 		return dao.selectPlanDetail(tripSeq);
 	}
 	
+	public void updateViewCount(int tripSeq, int viewCount) {
+		dao.updateViewCount(tripSeq,viewCount);
+	}
+	
 
 	
 	

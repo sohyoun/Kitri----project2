@@ -41,8 +41,8 @@
 			<ul class="listing mt-3">
 				<fmt:parseDate var="startPlanDate" value="${basicDTO.startDate}" pattern="yyyy-MM-dd"/>
 				<fmt:parseDate var="endPlanDate" value="${basicDTO.endDate}" pattern="yyyy-MM-dd"/>
-				<fmt:parseNumber value="${startPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="startDate"></fmt:parseNumber>
-				<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber>
+				<fmt:parseNumber value="${startPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="startDate"/>
+				<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"/>
 				<li><span class="fa fa-clock-o mr-2"></span><span>${basicDTO.startDate} ~ ${basicDTO.endDate} (${endDate - startDate + 1})</span></li>
 			</ul>
 			<h6 class="mt-1"><span class="fa fa-user-circle"> ${basicDTO.email}</h6>

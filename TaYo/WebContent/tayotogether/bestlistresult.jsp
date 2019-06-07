@@ -12,6 +12,7 @@ $(function(){
 		var nowNum = $(this).find("#nowNum").text();
 		var tripNum = $(this).find("#tripNum").text();
 		var email = $(this).find("#email").text();
+		var viewCount = $(this).find("#tripViewCount").text();
 		console.log("${pageContext.request.contextPath}/togetherdetail");
 		$.ajax({
 			url : "${pageContext.request.contextPath}/togetherdetail",
@@ -23,7 +24,8 @@ $(function(){
 					endDate : endDate,
 					nowNum : nowNum,
 					tripNum : tripNum,
-					email : email
+					email : email,
+					viewCount : viewCount
 			},
 			success : function(result){
 				$("div.tayowithbody").html(result.trim());
@@ -41,7 +43,7 @@ $(function(){
 				<div class="image-tour position-relative">
 					<img src="/TaYo/images/p1.jpg" alt="" class="img-fluid" />
 					<p>
-						<span>${tb.likeCount} <span class="fa fa-thumbs-up"></span> | ${tb.viewCount} <span
+						<span><span id="tripLikeCount">${tb.likeCount}</span> <span class="fa fa-thumbs-up"></span> | <span id="tripViewCount">${tb.viewCount}</span> <span
 							class="fa fa-eye"></span></span>
 					</p>
 				</div>
