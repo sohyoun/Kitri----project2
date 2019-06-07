@@ -69,7 +69,15 @@ public class ScheduleController extends HttpServlet {
 			
 			MoveURL.forward(request, response, "/tayoschedule/savePlanResult.jsp");
 		} else if ("modifyPlan".equals(act)) {
+			int result = backendController.modifyPlan(request, response);
+			String notice = "";
 			
+			if (result != 0) {
+				notice = "성공하였습니다.";
+			} else {
+				notice = "실패하였습니다.";
+			}
+			request.setAttribute("notice", notice);
 			
 			MoveURL.forward(request, response, "/tayoschedule/savePlanResult.jsp");
 		} else if ("searchPlan".equals(act)) {

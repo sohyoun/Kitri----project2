@@ -162,7 +162,7 @@ $(function(){
 </script>
 
 <div id="planSaveModal" class="modal fade" role="dialog">
-	<h5 class="modal-title" id="myModalLabel">지역선택</h5>
+	<h5 class="modal-title" id="myModalLabel"></h5>
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header text-center">
