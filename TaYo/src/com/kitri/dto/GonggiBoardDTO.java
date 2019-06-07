@@ -2,7 +2,7 @@ package com.kitri.dto;
 
 import java.util.Date;
 
-public class GonggiBoard {
+public class GonggiBoardDTO {
 
 	private int gboard_seq;
 	private String gboard_subject;
@@ -12,7 +12,7 @@ public class GonggiBoard {
 	private String gboard_group; // 분류
 	private int gboard_viewcount;
 
-	public GonggiBoard() {
+	public GonggiBoardDTO() {
 
 	}
 
@@ -72,7 +72,7 @@ public class GonggiBoard {
 		this.gboard_viewcount = gboard_viewcount;
 	}
 
-	public GonggiBoard(int gboard_seq, String gboard_subject, String gboard_writer, String gboard_contents, Date gboard_date,
+	public GonggiBoardDTO(int gboard_seq, String gboard_subject, String gboard_writer, String gboard_contents, Date gboard_date,
 			String gboard_group, int gboard_viewcount) {
 		super();
 		this.gboard_seq = gboard_seq;

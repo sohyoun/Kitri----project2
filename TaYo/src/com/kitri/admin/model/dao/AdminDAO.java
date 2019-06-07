@@ -8,11 +8,11 @@ public interface AdminDAO {
 
 	AdminDTO selectByEmail(String email);
 	
-	List<MemberBoard> selectAll();
+	List<MemberBoardDTO> selectAll();
 
-	List<MemberBoard> selectByRows(int startRow, int endRow);
+	List<MemberBoardDTO> selectByRows(int startRow, int endRow);
 	
-	List<GonggiBoard> selectGonggi(int startRow, int endRow); 
+	List<GonggiBoardDTO> selectGonggi(int startRow, int endRow); 
 
 	int selectTotalCnt();
 
@@ -20,8 +20,8 @@ public interface AdminDAO {
 
 	int blackTotalCnt();
 
-	List<MemberBoard> memberSearch(String searchType, String keyword);
+	List<MemberBoardDTO> memberSearch(String searchType, String keyword);
 	
-	GonggiBoard insert(GonggiBoard gonggiBoard);
+	GonggiBoardDTO insert(GonggiBoardDTO gonggiBoard);
 
 }

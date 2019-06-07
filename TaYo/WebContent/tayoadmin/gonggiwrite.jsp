@@ -36,7 +36,8 @@ $(document).ready(function() {
     		method : 'post',
     		data : $(this).serialize(),
     		success : function(result){
-    			alert(result.trim());
+    			//alert(result.trim());
+    			// TODO 여기서부터 작업 
     		}
     	});
     	return false;

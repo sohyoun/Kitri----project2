@@ -69,12 +69,12 @@ th, td {
 		$(arr[0]).click(function() {
 			//console.log("click")
 			//alert("click")
-			location.href = '/TaYo/tayoadmin/Gonggiwrite.jsp';
+			location.href = '/TaYo/tayoadmin/gonggiwrite.jsp';
 		});
 
 		$(arr[1]).click(function() {
 			//	console.log("삭제")
-			alert("삭제")
+			//alert("삭제")
 		});
 	});
 </script>
