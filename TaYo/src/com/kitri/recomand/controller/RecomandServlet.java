@@ -83,9 +83,7 @@ public class RecomandServlet extends HttpServlet {
 			
 //			System.out.println("RecomandServlet "+ season +" "+ theme+" "+city+" "+day);
 			List<TripBasicDTO> basicList = TripBasicDao.getInstance().select(season, theme, loc_id, start_length, end_length);
-		
-			
-			
+
 
 			int cntPerPage = 2; // 한페이지당 표현할 아이템 개수
 			int totalCnt = basicList.size();// 총 목록 개수
