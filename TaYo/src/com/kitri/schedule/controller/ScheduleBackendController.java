@@ -72,7 +72,7 @@ public class ScheduleBackendController {
 			while (st.hasMoreTokens()) {
 				detailDTO.setTrip_day(Integer.parseInt(st.nextToken()));
 				detailDTO.setTrip_order(Integer.parseInt(st.nextToken()));
-				detailDTO.setPlace_name(st.nextToken());
+				detailDTO.setPlace_name(st.nextToken().replace("|", ","));
 				detailDTO.setLoc_id(Integer.parseInt(st.nextToken()));
 				detailDTO.setPosX(Float.parseFloat(st.nextToken()));
 				detailDTO.setPosY(Float.parseFloat(st.nextToken()));
@@ -156,7 +156,7 @@ public class ScheduleBackendController {
 			while (st.hasMoreTokens()) {
 				detailDTO.setTrip_day(Integer.parseInt(st.nextToken()));
 				detailDTO.setTrip_order(Integer.parseInt(st.nextToken()));
-				detailDTO.setPlace_name(st.nextToken());
+				detailDTO.setPlace_name(st.nextToken().replace("|", ","));
 				detailDTO.setLoc_id(Integer.parseInt(st.nextToken()));
 				detailDTO.setPosX(Float.parseFloat(st.nextToken()));
 				detailDTO.setPosY(Float.parseFloat(st.nextToken()));
