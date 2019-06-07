@@ -14,13 +14,13 @@ import com.kitri.dto.TripDetailDTO;
 import com.kitri.together.service.TogetherService;
 
 
-@WebServlet("/togetheroverall")
-public class TogetherOverallServlet extends HttpServlet {
+@WebServlet("/togetherplans")
+public class TogetherPlansServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private TogetherService service;
 	
-	public TogetherOverallServlet() {
+	public TogetherPlansServlet() {
 		service = new TogetherService();
 	}
     
@@ -30,6 +30,8 @@ public class TogetherOverallServlet extends HttpServlet {
 		String dd = request.getParameter("dd");
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
+		String url = request.getParameter("url");
+		System.out.println(url);
 		
 		List<TripDetailDTO> list = service.findTripDetail(tripSeq);
 		
@@ -39,7 +41,7 @@ public class TogetherOverallServlet extends HttpServlet {
 		request.setAttribute("dd", dd);
 		request.setAttribute("startDate", startDate);
 		request.setAttribute("endDate", endDate);
-		String path="/tayotogether/ttOverall.jsp";
+		String path="/tayotogether/"+url+".jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
 	}

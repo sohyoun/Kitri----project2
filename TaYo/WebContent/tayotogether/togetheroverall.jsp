@@ -99,7 +99,17 @@ $(function(){
 			<c:forEach begin="1" end="${dd}" var="i">	
 				<div class="daytitle">
       				<div class="daynum" id="day${i}">DAY<span id="tripDay">${i}</span></div>
-      				<div class="daytitlecontent"><div class="daydate">2015.08.09 (일)</div><div class="daycplace">서울,전주</div></div>
+      				<div class="daytitlecontent">
+      					<div class="daydate">2015.08.09 (일)</div>
+      					<div class="daycplace">
+      						<c:forEach var="td" items="${list}">
+      							<c:if test="${td.trip_day == i}">
+      								${td.loc_id},
+      							</c:if>
+      						</c:forEach>
+      						서울,전주
+      					</div>
+      				</div>
       			</div>
       			<div class = "daydetaillist">
       			<c:forEach var="td" items="${list}">
