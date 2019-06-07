@@ -54,17 +54,12 @@ public class TogetherDetailServlet extends HttpServlet {
 			System.out.println("여행기간 : " + (day/1000/60/60/24+1));
 			dd = (int)day/1000/60/60/24+1;
 			
-			Calendar cal = Calendar.getInstance();
-	        cal.setTime(startD);
-	        cal.add(Calendar.DATE, 1);      //하루 더하기
-	        System.out.println(transFormat.format(cal.getTime()));
+//			Calendar cal = Calendar.getInstance();
+//	        cal.setTime(startD);
+//	        cal.add(Calendar.DATE, 1);      //하루 더하기
+//	        System.out.println(transFormat.format(cal.getTime()));
 
 
-//			Calendar cal = new GregorianCalendar();
-//			cal.setTime(startD);
-//			Calendar nextcal = new GregorianCalendar();
-//			nextcal.add(cal.DATE, 1);
-//			System.out.println("nextcal : " + nextcal.getTime().toString());
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

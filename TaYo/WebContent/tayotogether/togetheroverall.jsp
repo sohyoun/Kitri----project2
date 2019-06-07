@@ -4,8 +4,8 @@
 <c:set var="list" value="${requestScope.list}"/>
 <c:set var="tripSeq" value="${requestScope.tripSeq}"/>
 <c:set var="dd" value="${requestScope.dd}"/>
-<c:set var="startDate" value="${requestScope.startDate}"/>
-<c:set var="endDate" value="${requestScope.endDate}"/>
+<c:set var="daylist" value="${requestScope.daylist}"/>
+
 
 <style>
 	.list-group-item {
@@ -100,7 +100,7 @@ $(function(){
 				<div class="daytitle">
       				<div class="daynum" id="day${i}">DAY<span id="tripDay">${i}</span></div>
       				<div class="daytitlecontent">
-      					<div class="daydate">2015.08.09 (일)</div>
+      					<div class="daydate">${daylist.get(i-1)}</div>
       					<div class="daycplace">
       						<c:forEach var="td" items="${list}">
       							<c:if test="${td.trip_day == i}">
