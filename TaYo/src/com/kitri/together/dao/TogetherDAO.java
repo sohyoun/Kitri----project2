@@ -205,7 +205,7 @@ public class TogetherDAO {
 						"set likeCount = ? " + 
 						"where trip_seq = ?";  
 				
-				pstmt = con.prepareStatement(updateViewCountSQL);
+				pstmt = con.prepareStatement(updateViewCountSQL); 
 				pstmt.setInt(1, (likeCount+heart));
 				pstmt.setInt(2, tripSeq);
 				
