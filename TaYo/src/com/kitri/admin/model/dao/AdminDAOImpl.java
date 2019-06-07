@@ -4,9 +4,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.TEST_DB.DBConnection;
 import com.kitri.dto.*;
 import com.kitri.util.DBClose;
-import com.kitri.util.DBConnection;
 
 public class AdminDAOImpl implements AdminDAO {
 
@@ -66,47 +66,6 @@ public class AdminDAOImpl implements AdminDAO {
 			DBClose.close(conn, pstmt, rs);
 		}
 		return adminDTO;
-	}
-
-	public int registerUser(MemberDetailDTO memberDetailDTO) {
-
-		int cnt = -1;
-
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-
-		try {
-			conn = DBConnection.makeConnection();
-
-			StringBuffer sb = new StringBuffer();
-			sb.append("INSERT ALL \n");
-			sb.append("INTO user_tayo (email, name, pass, age, grade, gender) ");
-			sb.append("VALUES (?, ?, ?, ?, 1, ?) ");
-			sb.append("INTO userdetail_tayo (email, address, address_detail, joindate, outdate) ");
-			sb.append("VALUES(?, ?, ?, sysdate, null) ");
-			sb.append("SELECT * FROM DUAL ");
-
-			pstmt = conn.prepareStatement(sb.toString());
-
-			int index = 0;
-
-			pstmt.setString(++index, memberDetailDTO.getEmail());
-			pstmt.setString(++index, memberDetailDTO.getName());
-			pstmt.setString(++index, memberDetailDTO.getPass());
-			pstmt.setInt(++index, memberDetailDTO.getAge());
-			pstmt.setString(++index, memberDetailDTO.getGender());
-			pstmt.setString(++index, memberDetailDTO.getAddress());
-			pstmt.setString(++index, memberDetailDTO.getAddressDetail());
-
-			cnt = pstmt.executeUpdate();
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-			DBClose.close(conn, pstmt);
-		}
-		return cnt;
 	}
 
 	public static void main(String[] args) {

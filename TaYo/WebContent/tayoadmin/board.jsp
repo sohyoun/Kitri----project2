@@ -43,7 +43,7 @@ th, td {
 <script>
 	$(function() {
 		$.ajax({
-			url : '${pageContext.request.contextPath}/memberlist?forward=true',
+			url : '${pageContext.request.contextPath}/adminmember',
 			method : 'post',
 			success : function(result) {
 				$("div#memberlist").html(result.trim());

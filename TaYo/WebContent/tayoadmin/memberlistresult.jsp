@@ -22,9 +22,6 @@
 			data : 'searchType=' + searchType + '&keyword=' + keyword,
 			dataType : 'json',
 			success : function(result) {
-				if(("all") == searchType){
-					
-				} else{
 				var data = $("#memberlist > tbody").html("");
 				for(var i = 0; i < result.length; i ++){
 					var obj = result[i];
@@ -40,9 +37,8 @@
 						data += '<td>'+ obj.member_gender + '</td>';
 						data += '<td><img style=\"width: 25px; height: 25px;\"src=\"/TaYo/tayoadmin/images/'+ obj.member_grade +'.png\"></td>';
 					data += '</tr>';
-				}
-				$("#memberlist > tbody").html(data);
 			}
+				$("#memberlist > tbody").html(data);
 		},
 			error : function(jqXHR, textStatus, errorThrown) {
 				console.log("jqXHR : " + jqXHR)
@@ -63,9 +59,6 @@
 				data:'currentPage='+currentPage,
 				dataType : 'json',
 				success:function(result){
-					if(currentPage == 1){
-						
-					} else{
 					var data = $("#memberlist > tbody").remove();
 					//alert(result)
 					for(var i = 0; i < result.length; i ++){
@@ -82,11 +75,8 @@
 							data += '<td>'+ obj.member_gender + '</td>';
 							data += '<td><img style=\"width: 25px; height: 25px;\"src=\"/TaYo/tayoadmin/images/'+ obj.member_grade +'.png\"></td>';
 						data += '</tr>';
-						console.log(data)
 					}
 					$("#memberlist > tbody").append(data);
-					//var ap = $("#memberlist > tbody").append(data);
-				}
 				},
 				error : function(){
 					console.log("에러")
