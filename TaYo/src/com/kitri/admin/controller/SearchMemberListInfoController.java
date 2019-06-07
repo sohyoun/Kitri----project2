@@ -34,6 +34,10 @@ public class SearchMemberListInfoController extends HttpServlet{
 		// 검색이라고 찍혀줘 제발
 		 //System.out.println("keyword == " + keyword);
 
+		keyword.replace("m", "M");
+		keyword.replace("f", "F");
+		
+		
 		List<MemberBoardDTO> list = memberListService.getMemberSearch(searchType, keyword);
 
 		HttpSession session = request.getSession();
@@ -51,9 +55,6 @@ public class SearchMemberListInfoController extends HttpServlet{
 				rd.forward(request, response);
 			} else {
 				session.setAttribute("searchlist", list);
-				keyword.replace("m", "M");
-				keyword.replace("f", "F");
-				
 				Gson gson = new Gson();
 				String ls = gson.toJson(list);
 				JsonObject jsonObject = new JsonObject();

@@ -9,33 +9,17 @@
 			var keyword = $("#keyword").val();
 
 		$.ajax({
-			url : '${pageContext.request.contextPath}/searchInfo?search=true',
+			url : '${pageContext.request.contextPath}/searchInfo',
 			method : 'get',
 			data : 'searchType=' + searchType + '&keyword=' + keyword,
-			dataType : 'json',
 			success : function(result) {
-				if(("all") == searchType){
-					
-				} else{
-				var data = $("#memberlist > tbody").html("");
-				for(var i = 0; i < result.length; i ++){
-					var obj = result[i];
-					data += '<tr>';
-						data += '<td id="board_seq">' + obj.mboard_seq +'</td>';
-						data += '<td>'+ obj.member_email +'</td>';
-						data += '<td>'+ obj.member_name +'</td>';
-						data += '<td>'+ obj.member_age +'</td>';
-						data += '<td>'+ obj.member_address +'</td>';
-						data += '<td>'+ obj.member_addressDetail +'</td>';
-						data += '<td>'+ obj.member_joindate +'</td>';
-						data += '<td>'+ obj.member_outdate +'</td>';
-						data += '<td>'+ obj.member_gender + '</td>';
-						data += '<td><img style=\"width: 25px; height: 25px;\"src=\"/TaYo/tayoadmin/images/'+ obj.member_grade +'.png\"></td>';
-					data += '</tr>';
-				}
-				$("#memberlist > tbody").html(data);
-			}
-		},
+				/* 	if(searchType == null || keyword == null){
+						alert("다시 입력 바랍니다용!")
+					}else{
+						$("#memberlist").html(result.trim());
+					} */
+				alert(result)
+			},
 			error : function(jqXHR, textStatus, errorThrown) {
 				console.log("jqXHR : " + jqXHR)
 				console.log("textStatus : " + textStatus)
@@ -43,7 +27,6 @@
 
 			}
 		});
-		return false;
 	});
 });
 </script>
@@ -58,9 +41,9 @@
 			<select name="searchType" id="searchType"
 				class="form-control mx-1 mt-2">
 				<option value="all">전체</option>
-				<option value="member_email">이메일</option>
-				<option value="member_name">이름</option>
-				<option value="member_gender">성별</option>
+				<option value="email">이메일</option>
+				<option value="name">이름</option>
+				<option value="gender">성별</option>
 			</select> <input type="text" name="keyword" id="keyword" placeholder="Search"
 				class="form-control mr-sm-2" />
 			<button id="btSearch" class="btn btn-info">검색</button>
@@ -88,8 +71,23 @@
 						<th>등급</th>
 					</tr>
 				</thead>
+				<c:forEach var="s" items="${searchList}">
 					<tbody>
+						<tr>
+							<td id="board_seq">${s.board_seq}</td>
+							<td>${s.email}</td>
+							<td>${s.name}</td>
+							<td>${s.age}</td>
+							<td>${s.address }</td>
+							<td>${s.addressDetail}</td>
+							<td>${s.joindate}</td>
+							<td>${s.outdate}</td>
+							<td>${s.gender }</td>
+							<td><img style="width: 25px; height: 25px;"
+								src="/TaYo/tayoadmin/images/${s.grade}.png"></td>
+						</tr>
 					</tbody>
+				</c:forEach>
 			</table>
 			<div class="col-lg-1"></div>
 		</div>

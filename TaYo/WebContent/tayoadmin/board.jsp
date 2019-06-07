@@ -73,7 +73,7 @@ th, td {
 		});
 
 		$(arr[1]).click(function() {
-			//console.log("삭제")
+			//	console.log("삭제")
 			//alert("삭제")
 		});
 	});
