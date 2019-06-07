@@ -21,7 +21,7 @@ CREATE TABLE Trip_Detail (
 	trip_order NUMBER NOT NULL, /* 순서 */
 	trip_day NUMBER NOT NULL, /* 일차 */
 	trip_seq NUMBER NOT NULL, /* 여행id */
-	place_name VARCHAR2(50) NOT NULL, /* 장소이름 */
+	place_name VARCHAR2(150) NOT NULL, /* 장소이름 */
 	loc_id NUMBER NOT NULL, /* 지역코드 */
 	image VARCHAR2(200), /* 이미지 */
 	detail_title VARCHAR2(50), /* 일정제목 */

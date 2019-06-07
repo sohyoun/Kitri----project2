@@ -116,10 +116,12 @@ $(function(){
 			
 			for(var j = 0; j < itemslength; j++) {
 				var tempArray = new Array();
-				
+				var changedPlace = $(items[j]).attr("value");
+				changedPlace = changedPlace.replace(/,/g, '|');
+				console.log(changedPlace);
 				tempArray.push(i + 1);
 				tempArray.push(j + 1);
-				tempArray.push($(items[j]).attr("value"));
+				tempArray.push(changedPlace);
 				tempArray.push($(items[j]).attr("areaCode"));
 				tempArray.push($(items[j]).attr("axisx"));
 				tempArray.push($(items[j]).attr("axisy"));
