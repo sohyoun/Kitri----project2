@@ -12,17 +12,12 @@ public class MemberListService {
 		
 	}
 	
-	//회원목록테이블 전체목록 출력
-	public List<MemberBoardDTO> memeberAll(){
-		return AdminDAOImpl.getAdminDAO().selectAll();
-	}
-	
-	//회원목록테이블 원하는 행 반환 
+	//회원목록테이블 페이징처리 
 	public List<MemberBoardDTO> findByRows(int startRow, int endRow){
 		return AdminDAOImpl.getAdminDAO().selectByRows(startRow, endRow);
 	}
 	
-	//회원목록테이블 페이징처리 
+	//회원목록테이블 전체 행 반환
 	public int getTotalCnt(){
 		return AdminDAOImpl.getAdminDAO().selectTotalCnt();
 	}

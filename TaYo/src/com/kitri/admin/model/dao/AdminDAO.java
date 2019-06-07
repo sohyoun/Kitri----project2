@@ -8,8 +8,6 @@ public interface AdminDAO {
 
 	AdminDTO selectByEmail(String email);
 	
-	List<MemberBoardDTO> selectAll();
-
 	List<MemberBoardDTO> selectByRows(int startRow, int endRow);
 	
 	List<GonggiBoardDTO> selectGonggi(int startRow, int endRow); 

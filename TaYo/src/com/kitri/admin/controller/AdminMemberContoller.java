@@ -59,33 +59,37 @@ public class AdminMemberContoller extends HttpServlet {
 		int totalCnt = memberListService.getTotalCnt();
 		int cntPerPageGroup = 5;
 
-		String url = "/TaYo/memberlist?forward=false";
+		String url = "/TaYo/memberlist?currentPage=" + currentPage;
 		JavaBean javaBean = new JavaBean(cntPage, totalCnt, cntPerPageGroup, url, currentPage);
 		// System.out.println("startPage " + memberListDTO.getStartPage());
 
-		List<MemberBoardDTO> boardlist = memberListService.findByRows(javaBean.getStartRow(),
-				javaBean.getEndRow());
+		List<MemberBoardDTO> boardlist = memberListService.findByRows(javaBean.getStartRow(), javaBean.getEndRow());
 
 		// System.out.println("페이징처리할 리스트: " + boardlist);
 
 		request.setAttribute("boardlist", boardlist);
 		request.setAttribute("pagination", javaBean);
 
-		if ("true".equals(request.getParameter("forward"))) {
-			String path = "/tayoadmin/memberlistresult.jsp";
-			RequestDispatcher rd = request.getRequestDispatcher(path);
-			rd.forward(request, response);
-		} else {
-			Gson gson = new Gson();
-			String bd = gson.toJson(boardlist);
-			JsonObject jsonObject = new JsonObject();
-			jsonObject.add("boardlist", gson.toJsonTree(boardlist));
-			jsonObject.add("pagination", gson.toJsonTree(javaBean));
-			System.out.println("json == " + jsonObject);
+		String path = "/tayoadmin/memberlistresult.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(path);
+		rd.forward(request, response);
+		
+		Gson gson = new Gson();
+		String bd = gson.toJson(boardlist);
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.add("boardlist", gson.toJsonTree(boardlist));
+		jsonObject.add("pagination", gson.toJsonTree(javaBean));
+		System.out.println("json == " + jsonObject);
 
-			PrintWriter out = response.getWriter();
-			out.write(bd);
-		}
-
+		PrintWriter out = response.getWriter();
+		out.write(bd);
 	}
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doGet(request, response);
+	}
+
 }

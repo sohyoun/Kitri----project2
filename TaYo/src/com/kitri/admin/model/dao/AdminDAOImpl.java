@@ -4,9 +4,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.TEST_DB.DBConnection;
 import com.kitri.dto.*;
 import com.kitri.util.DBClose;
-import com.kitri.util.DBConnection;
 
 public class AdminDAOImpl implements AdminDAO {
 
@@ -137,55 +137,6 @@ public class AdminDAOImpl implements AdminDAO {
 		
 	}
 	
-	// 회원관리 게시판 
-	@Override
-	public List<MemberBoardDTO> selectAll() {
-		
-		List<MemberBoardDTO> list = new ArrayList<MemberBoardDTO>();
-		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try {
-			conn = DBConnection.makeConnection();
-			
-			StringBuffer sql = new StringBuffer();
-			
-			sql.append("SELECT * \n");
-			sql.append("FROM memberboard \n");
-			
-			pstmt = conn.prepareStatement(sql.toString());
-			
-			rs = pstmt.executeQuery();
-			
-				while(rs.next()) {
-					
-				MemberBoardDTO memberBoard = new MemberBoardDTO();
-				
-				memberBoard.setMboard_seq(rs.getInt("mboard_seq"));
-				memberBoard.setMember_email(rs.getString("member_email"));
-				memberBoard.setMember_name(rs.getString("member_name"));
-				memberBoard.setMember_age(rs.getInt("member_age"));
-				memberBoard.setMember_address(rs.getString("member_address"));
-				memberBoard.setMember_addressDetail(rs.getString("member_address_detail"));
-				memberBoard.setMember_joindate(rs.getDate("member_joindate"));
-				memberBoard.setMember_outdate(rs.getDate("member_outdate"));
-				memberBoard.setMember_gender(rs.getString("member_gender"));
-				memberBoard.setMember_grade(rs.getInt("member_grade"));
-					
-				list.add(memberBoard);
-				}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			DBClose.close(conn, pstmt, rs);
-		}
-		return list;
-	}
-
-	
 	//회원목록 테이블 페이징처리 
 	@Override
 	public List<MemberBoardDTO> selectByRows(int startRow, int endRow) {
@@ -200,12 +151,7 @@ public class AdminDAOImpl implements AdminDAO {
 
 			StringBuffer sql = new StringBuffer();
 			
-			/*
-			 * sql.append("SELECT * " + "FROM(SELECT rownum r, m.* \n" +
-			 * "		 FROM (SELECT * FROM memberboard \n" +
-			 * "				  ORDER BY board_seq DESC) m \n" +
-			 * "		 WHERE rownum <= ?) \n" + "WHERE r >= ? \n");
-			 */
+			conn.setAutoCommit(false);
 			
 			sql.append("SELECT *\n" + 
 							"FROM(SELECT rownum r, m.*\n" + 
@@ -240,8 +186,15 @@ public class AdminDAOImpl implements AdminDAO {
 				
 				list.add(memberBoard);
 			}
+			conn.commit();
 			//System.out.println("size == " + list.size());
 		} catch (SQLException e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
@@ -465,6 +418,8 @@ public class AdminDAOImpl implements AdminDAO {
 		try {
 			conn = DBConnection.makeConnection();
 
+			conn.setAutoCommit(false);
+			
 			StringBuffer sql = new StringBuffer();
 			
 			/*
@@ -504,8 +459,15 @@ public class AdminDAOImpl implements AdminDAO {
 			
 				list.add(gonggiBoard);
 			}
+			conn.commit();
 			//System.out.println("size == " + list.size());
 		} catch (SQLException e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {

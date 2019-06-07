@@ -44,7 +44,7 @@ public class AdminLoginController extends HttpServlet {
 			
 		} else {
 			System.out.println("로그인 실패했으니 그대로 있으소 !");
-			String path = "/index.jsp";
+			String path = "/TaYo/index.jsp";
 			
 			RequestDispatcher rd = request.getRequestDispatcher(path);
 			rd.forward(request, response);

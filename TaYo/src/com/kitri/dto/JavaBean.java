@@ -1,5 +1,6 @@
 package com.kitri.dto;
 
+import java.util.List;
 
 public class JavaBean {
 	//자바빈 
@@ -14,7 +15,33 @@ public class JavaBean {
 	private int endPage;
 	private String url;
 	private int currentPage; // 현재 페이지
+	private List<MemberBoardDTO> list;
 	
+	
+	public JavaBean(int cntPage, int startRow, int endRow, int totalPage, int totalCnt, int cntPerPageGroup,
+			int startPage, int endPage, String url, int currentPage, List<MemberBoardDTO> list) {
+		super();
+		this.cntPage = cntPage;
+		this.startRow = startRow;
+		this.endRow = endRow;
+		this.totalPage = totalPage;
+		this.totalCnt = totalCnt;
+		this.cntPerPageGroup = cntPerPageGroup;
+		this.startPage = startPage;
+		this.endPage = endPage;
+		this.url = url;
+		this.currentPage = currentPage;
+		this.list = list;
+	}
+
+	public List<MemberBoardDTO> getList() {
+		return list;
+	}
+
+	public void setList(List<MemberBoardDTO> list) {
+		this.list = list;
+	}
+
 	public int getCntPage() {
 		return cntPage;
 	}
@@ -129,10 +156,10 @@ public class JavaBean {
 
 	@Override
 	public String toString() {
-		return "MemberListDTO [cntPage=" + cntPage + ", startRow=" + startRow + ", endRow=" + endRow
-				+ ", totalPage=" + totalPage + ", totalCnt=" + totalCnt + ", cntPerPageGroup=" + cntPerPageGroup
-				+ ", startPage=" + startPage + ", endPage=" + endPage + ", url=" + url + ", currentPage=" + currentPage
-				+ "]";
+		return "JavaBean [cntPage=" + cntPage + ", startRow=" + startRow + ", endRow=" + endRow + ", totalPage="
+				+ totalPage + ", totalCnt=" + totalCnt + ", cntPerPageGroup=" + cntPerPageGroup + ", startPage="
+				+ startPage + ", endPage=" + endPage + ", url=" + url + ", currentPage=" + currentPage + ", list="
+				+ list + "]";
 	}
 	
 	

@@ -1,7 +1,6 @@
 package com.kitri.admin.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -15,7 +14,7 @@ import com.kitri.admin.model.service.MemberListService;
 import com.kitri.dto.MemberBoardDTO;
 
 @WebServlet("/searchInfo")
-public class SearchMemberListInfoController extends HttpServlet {
+public class SearchMemberListInfoController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 	private MemberListService memberListService;
@@ -44,10 +43,10 @@ public class SearchMemberListInfoController extends HttpServlet {
 		if (("true").equals(request.getParameter("search"))) {
 				//System.out.println("여기까지 들어옴");
 			if (keyword.equals("")) {
-				System.out.println("빈값을 입력함");
+				System.out.println("빈 값을 입력함");
 				System.out.println("전체 리스트 " + list);
 
-				String path = "/tayoadmin/memberlistresult.jsp";
+				String path = "/tayoadmin/searchListresult.jsp";
 				RequestDispatcher rd = request.getRequestDispatcher(path);
 				rd.forward(request, response);
 			} else {
