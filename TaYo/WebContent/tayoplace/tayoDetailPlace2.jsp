@@ -149,10 +149,11 @@ $(function() {
 
 							/* 관광지 이름,주소부분  */
 							$("div.spot>div.spot_name").html(title);
-							$("div.spot>div.spot_addr").html(addr1 + addr2);
+							$("div.spot>div.spot_addr").html(addr1 + addr2);						
 							$("div.spot").show();
 							 /* 관광지 이름,주소부분 */
 							
+							 
 							
 							/*  html += "<tr><td><div id='carouselExampleControls' class='carousel slide' data-ride='carousel'>"
 							 html += "<div class='carousel-inner'>"

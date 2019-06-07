@@ -1,18 +1,12 @@
 package com.kitri.admin.model.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.TEST_DB.DBConnection;
-import com.kitri.dto.AdminDTO;
-import com.kitri.dto.MemberBoard;
-import com.kitri.dto.MemberDetailDTO;
+import com.kitri.dto.*;
 import com.kitri.util.DBClose;
-import com.sun.org.apache.bcel.internal.generic.BALOAD;
+import com.kitri.util.DBConnection;
 
 public class AdminDAOImpl implements AdminDAO {
 
@@ -32,6 +26,7 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	// 로그인 정보
+	@Override
 	public AdminDTO selectByEmail(String admin_email) {
 		AdminDTO adminDTO = new AdminDTO();
 		Connection conn = null;
@@ -41,7 +36,7 @@ public class AdminDAOImpl implements AdminDAO {
 	// DB 연결
 		try {
 			
-			conn = com.kitri.util.DBConnection.makeConnection();
+			conn = DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 
@@ -81,7 +76,7 @@ public class AdminDAOImpl implements AdminDAO {
 		PreparedStatement pstmt = null;
 
 		try {
-			conn = com.TEST_DB.DBConnection.makeConnection();
+			conn = DBConnection.makeConnection();
 
 			StringBuffer sb = new StringBuffer();
 			sb.append("INSERT ALL \n");
@@ -122,7 +117,7 @@ public class AdminDAOImpl implements AdminDAO {
 		
 		//회원목록테이블 SELECT ALL 
 		//AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
-		//System.out.println("memberlist == " +adminDAOImpl.selectAll());
+		//System.out.println("memberboard == " +adminDAOImpl.selectAll());
 
 		//회원목록테이블 가입 수 반환하기
 		//AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
@@ -144,21 +139,21 @@ public class AdminDAOImpl implements AdminDAO {
 	
 	// 회원관리 게시판 
 	@Override
-	public List<MemberBoard> selectAll() {
+	public List<MemberBoardDTO> selectAll() {
 		
-		List<MemberBoard> list = new ArrayList<MemberBoard>();
+		List<MemberBoardDTO> list = new ArrayList<MemberBoardDTO>();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-			conn = com.kitri.util.DBConnection.makeConnection();
+			conn = DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 			
 			sql.append("SELECT * \n");
-			sql.append("FROM memberlist \n");
+			sql.append("FROM memberboard \n");
 			
 			pstmt = conn.prepareStatement(sql.toString());
 			
@@ -166,18 +161,18 @@ public class AdminDAOImpl implements AdminDAO {
 			
 				while(rs.next()) {
 					
-				MemberBoard memberBoard = new MemberBoard();
+				MemberBoardDTO memberBoard = new MemberBoardDTO();
 				
-				memberBoard.setBoard_seq(rs.getInt("board_seq"));
-				memberBoard.setEmail(rs.getString("email"));
-				memberBoard.setName(rs.getString("name"));
-				memberBoard.setAge(rs.getInt("age"));
-				memberBoard.setAddress(rs.getString("address"));
-				memberBoard.setAddressDetail(rs.getString("address_detail"));
-				memberBoard.setJoindate(rs.getDate("joindate"));
-				memberBoard.setOutdate(rs.getDate("outdate"));
-				memberBoard.setGender(rs.getString("gender"));
-				memberBoard.setGrade(rs.getInt("grade"));
+				memberBoard.setMboard_seq(rs.getInt("mboard_seq"));
+				memberBoard.setMember_email(rs.getString("member_email"));
+				memberBoard.setMember_name(rs.getString("member_name"));
+				memberBoard.setMember_age(rs.getInt("member_age"));
+				memberBoard.setMember_address(rs.getString("member_address"));
+				memberBoard.setMember_addressDetail(rs.getString("member_address_detail"));
+				memberBoard.setMember_joindate(rs.getDate("member_joindate"));
+				memberBoard.setMember_outdate(rs.getDate("member_outdate"));
+				memberBoard.setMember_gender(rs.getString("member_gender"));
+				memberBoard.setMember_grade(rs.getInt("member_grade"));
 					
 				list.add(memberBoard);
 				}
@@ -193,28 +188,28 @@ public class AdminDAOImpl implements AdminDAO {
 	
 	//회원목록 테이블 페이징처리 
 	@Override
-	public List<MemberBoard> selectByRows(int startRow, int endRow) {
-		List<MemberBoard> list = new ArrayList<MemberBoard>();
+	public List<MemberBoardDTO> selectByRows(int startRow, int endRow) {
+		List<MemberBoardDTO> list = new ArrayList<MemberBoardDTO>();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-			conn = com.kitri.util.DBConnection.makeConnection();
+			conn = DBConnection.makeConnection();
 
 			StringBuffer sql = new StringBuffer();
 			
 			/*
 			 * sql.append("SELECT * " + "FROM(SELECT rownum r, m.* \n" +
-			 * "		 FROM (SELECT * FROM memberlist \n" +
+			 * "		 FROM (SELECT * FROM memberboard \n" +
 			 * "				  ORDER BY board_seq DESC) m \n" +
 			 * "		 WHERE rownum <= ?) \n" + "WHERE r >= ? \n");
 			 */
 			
 			sql.append("SELECT *\n" + 
 							"FROM(SELECT rownum r, m.*\n" + 
-									 "FROM(SELECT * FROM memberlist ORDER BY board_seq DESC) m\n" + 
+									 "FROM(SELECT * FROM memberboard ORDER BY mboard_seq DESC) m\n" + 
 									 "WHERE rownum <= ?)\n" + 
 							"WHERE r >= ? ");
 			
@@ -230,18 +225,18 @@ public class AdminDAOImpl implements AdminDAO {
 			
 			while(rs.next()) {
 				
-				MemberBoard memberBoard = new MemberBoard();
+				MemberBoardDTO memberBoard = new MemberBoardDTO();
 				
-				memberBoard.setBoard_seq(rs.getInt("board_seq"));
-				memberBoard.setEmail(rs.getString("email"));
-				memberBoard.setName(rs.getString("name"));
-				memberBoard.setAge(rs.getInt("age"));
-				memberBoard.setAddress(rs.getString("address"));
-				memberBoard.setAddressDetail(rs.getString("address_detail"));
-				memberBoard.setJoindate(rs.getDate("joindate"));
-				memberBoard.setOutdate(rs.getDate("outdate"));
-				memberBoard.setGender(rs.getString("gender"));
-				memberBoard.setGrade(rs.getInt("grade"));
+				memberBoard.setMboard_seq(rs.getInt("mboard_seq"));
+				memberBoard.setMember_email(rs.getString("member_email"));
+				memberBoard.setMember_name(rs.getString("member_name"));
+				memberBoard.setMember_age(rs.getInt("member_age"));
+				memberBoard.setMember_address(rs.getString("member_address"));
+				memberBoard.setMember_addressDetail(rs.getString("member_address_detail"));
+				memberBoard.setMember_joindate(rs.getDate("member_joindate"));
+				memberBoard.setMember_outdate(rs.getDate("member_outdate"));
+				memberBoard.setMember_gender(rs.getString("member_gender"));
+				memberBoard.setMember_grade(rs.getInt("member_grade"));
 				
 				list.add(memberBoard);
 			}
@@ -257,6 +252,7 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 	
 	//회원테이블 총
+	@Override
 	public int selectTotalCnt() {
 		int totalCnt = -1;
 		
@@ -265,12 +261,12 @@ public class AdminDAOImpl implements AdminDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = com.kitri.util.DBConnection.makeConnection();
+			conn = DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 			
 			sql.append("SELECT COUNT(*) \n" +
-					   "FROM memberlist \n");
+					   "FROM memberboard \n");
 			
 			pstmt = conn.prepareStatement(sql.toString());
 			
@@ -289,6 +285,7 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 	
 	//회원가입한 회원 수 
+	@Override
 	public int joindateTotalCnt() {
 		int totalCnt = 0;
 		
@@ -297,12 +294,12 @@ public class AdminDAOImpl implements AdminDAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = com.kitri.util.DBConnection.makeConnection();
+			conn = DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 			
-			sql.append("SELECT COUNT(joindate) " +
-					   "FROM memberlist ");
+			sql.append("SELECT COUNT(member_joindate) " +
+					   "FROM memberboard ");
 
 			pstmt = conn.prepareStatement(sql.toString());
 			
@@ -321,6 +318,7 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 	
 	//블랙회원 수 
+	@Override
 	public int blackTotalCnt() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -329,12 +327,12 @@ public class AdminDAOImpl implements AdminDAO {
 		int blackTotalCnt = 0;
 		
 		try {
-			conn = com.kitri.util.DBConnection.makeConnection();
+			conn = DBConnection.makeConnection();
 			StringBuffer sql = new StringBuffer();
 			
 			sql.append("SELECT COUNT(*) " +
-					   "FROM memberlist " +
-					   "WHERE grade = 0 ");
+					   "FROM memberboard " +
+					   "WHERE member_grade = 0 ");
 			
 			pstmt = conn.prepareStatement(sql.toString());
 			
@@ -354,42 +352,42 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
-	public List<MemberBoard> memberSearch(String searchType, String keyword) {
+	public List<MemberBoardDTO> memberSearch(String searchType, String keyword) {
 		
-		List<MemberBoard> list = new ArrayList<MemberBoard>();
+		List<MemberBoardDTO> list = new ArrayList<MemberBoardDTO>();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-			conn = com.kitri.util.DBConnection.makeConnection();
+			conn = DBConnection.makeConnection();
 			
 			StringBuffer sql = new StringBuffer();
 			
 			
 			
 			sql.append("SELECT * " +  
-					   "FROM memberlist ");  
+					   	   "FROM memberboard ");  
 			
-				if(searchType.equals("email")) {
+				if(searchType.equals("member_email")) {
 					System.out.println("이메일 == " + searchType);
 					sql.append("WHERE " + searchType + " like '%'||?||'%' ");
-				}else if(searchType.equals("name")) {
+				}else if(searchType.equals("member_name")) {
 					System.out.println("이름 == " + searchType);
 					sql.append("WHERE " + searchType + " like '%'||?||'%' ");
-				}else if(searchType.equals("gender")) {
+				}else if(searchType.equals("member_gender")) {
 					System.out.println("성별 == " + searchType);
 					sql.append("WHERE " + searchType + " like '%'||?||'%' ");
 				}
 				
 			pstmt = conn.prepareStatement(sql.toString());
 			
-			if(searchType.equals("email")) {
+			if(searchType.equals("member_email")) {
 				pstmt.setString(1, keyword);
-			}else if(searchType.equals("name")) {
+			}else if(searchType.equals("member_name")) {
 				pstmt.setString(1, keyword);
-			}else if(searchType.equals("gender")) {
+			}else if(searchType.equals("member_gender")) {
 				pstmt.setString(1, keyword);
 			}
 			//System.out.println("keyword == " + keyword);
@@ -398,18 +396,18 @@ public class AdminDAOImpl implements AdminDAO {
 			
 			while(rs.next()) {
 				
-				MemberBoard memberBoard = new MemberBoard();
+				MemberBoardDTO memberBoard = new MemberBoardDTO();
 				
-				memberBoard.setBoard_seq(rs.getInt("board_seq"));
-				memberBoard.setEmail(rs.getString("email"));
-				memberBoard.setName(rs.getString("name"));
-				memberBoard.setAge(rs.getInt("age"));
-				memberBoard.setAddress(rs.getString("address"));
-				memberBoard.setAddressDetail(rs.getString("address_detail"));
-				memberBoard.setJoindate(rs.getDate("joindate"));
-				memberBoard.setOutdate(rs.getDate("outdate"));
-				memberBoard.setGender(rs.getString("gender"));
-				memberBoard.setGrade(rs.getInt("grade"));
+				memberBoard.setMboard_seq(rs.getInt("mboard_seq"));
+				memberBoard.setMember_email(rs.getString("member_email"));
+				memberBoard.setMember_name(rs.getString("member_name"));
+				memberBoard.setMember_age(rs.getInt("member_age"));
+				memberBoard.setMember_address(rs.getString("member_address"));
+				memberBoard.setMember_addressDetail(rs.getString("member_address_detail"));
+				memberBoard.setMember_joindate(rs.getDate("member_joindate"));
+				memberBoard.setMember_outdate(rs.getDate("member_outdate"));
+				memberBoard.setMember_gender(rs.getString("member_gender"));
+				memberBoard.setMember_grade(rs.getInt("member_grade"));
 				
 				list.add(memberBoard);			
 			}
@@ -423,4 +421,98 @@ public class AdminDAOImpl implements AdminDAO {
 	return list;
 	
 	}
+	
+	@Override
+	public GonggiBoardDTO insert(GonggiBoardDTO gonggiBoard){
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBConnection.makeConnection();
+
+			String sql = "INSERT INTO gonggiboard("
+					+ "	GBOARD_SEQ, GBOARD_GROUP, GBOARD_SUBJECT, GBOARD_WRITER, GBOARD_CONTENTS, GBOARD_DATE, GBOARD_VIEWCOUNT) \n"
+					+ "	VALUES(gboard_seq.nextval, ?, ?, ?, ? , systimestamp, 0) \n";
+
+					pstmt = conn.prepareStatement(sql.toString());
+			
+					pstmt.setString(1, gonggiBoard.getGboard_group());
+					pstmt.setString(2, gonggiBoard.getGboard_subject());
+					pstmt.setString(3, gonggiBoard.getGboard_writer());
+					pstmt.setString(4, gonggiBoard.getGboard_subject());
+					
+					pstmt.executeUpdate();
+					
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}finally {
+			DBClose.close(conn, pstmt);
+		}
+		return gonggiBoard;
+	}
+	
+	@Override
+	public List<GonggiBoardDTO> selectGonggi(int startRow, int endRow) {
+		
+		List<GonggiBoardDTO> list = new ArrayList<GonggiBoardDTO>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBConnection.makeConnection();
+
+			StringBuffer sql = new StringBuffer();
+			
+			/*
+			 * sql.append("SELECT * " + "FROM(SELECT rownum r, m.* \n" +
+			 * "		 FROM (SELECT * FROM memberboard \n" +
+			 * "				  ORDER BY board_seq DESC) m \n" +
+			 * "		 WHERE rownum <= ?) \n" + "WHERE r >= ? \n");
+			 */
+			
+			sql.append("SELECT *\n" + 
+							"FROM(SELECT rownum r, m.*\n" + 
+									 "FROM(SELECT * FROM gonggi ORDER BY gboard_seq DESC) m\n" + 
+									 "WHERE rownum <= ?)\n" + 
+							"WHERE r >= ? ");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			
+			pstmt.setInt(1, endRow);
+			pstmt.setInt(2, startRow);
+			
+			//System.out.println("startRow == " + startRow);
+			//System.out.println("endRow == " +endRow);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				GonggiBoardDTO gonggiBoard = new GonggiBoardDTO();
+				
+				gonggiBoard.setGboard_seq(rs.getInt("gboard_seq"));
+				gonggiBoard.setGboard_group(rs.getString("gboard_group"));
+				gonggiBoard.setGboard_subject(rs.getString("gboard_subject"));
+				gonggiBoard.setGboard_writer(rs.getString("writer"));
+				gonggiBoard.setGboard_contents(rs.getString("gboard_contents"));
+				gonggiBoard.setGboard_date(rs.getTimestamp("gboard_date"));
+				gonggiBoard.setGboard_viewcount(rs.getInt("gboard_viewcount"));
+			
+				list.add(gonggiBoard);
+			}
+			//System.out.println("size == " + list.size());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBClose.close(conn, pstmt, rs);
+		}
+		
+		return list;
+	}
+	
 }

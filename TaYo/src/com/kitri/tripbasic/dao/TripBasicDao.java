@@ -156,14 +156,14 @@ public class TripBasicDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
+//		null null null 1 2147483647
 		List<TripBasicDTO> basiclist = new ArrayList<TripBasicDTO>();
 		try {
 			conn = DBConnection.makeConnection();
 			String sql = "select trip_seq, email, trip_title, trip_theme, trip_season, trip_num, start_date, end_date, viewCount, likeCount, lastupdate, isComplete,\n"
 					+ "										trip_seq, place_name, loc_id, trip_seq, trip_order, trip_day, image, detail_title, detail_content, posx, posy\n"
 					+ "										from trip_basic join trip_detail using(trip_seq)\n"
-					+ "										where trip_season = ? or trip_theme = ? and\n"
+					+ "										where trip_season = ? or trip_theme = ? or\n"
 					+ "										((end_date-start_date)>= ? and (end_date-start_date)<=?)";
 
 			pstmt = conn.prepareStatement(sql);
@@ -225,7 +225,7 @@ public class TripBasicDao {
 					+ "from (select rownum r ,trip_seq, email, trip_title, trip_theme, trip_season, trip_num, start_date, end_date, viewCount, likeCount, lastupdate, isComplete,\n"
 					+ "										 place_name, loc_id,  trip_order, trip_day, image, detail_title, detail_content, posx, posy\n"
 					+ "										from trip_basic join trip_detail using(trip_seq)\n"
-					+ "										where trip_season = ? or trip_theme = ? and\n"
+					+ "										where trip_season = ? or trip_theme = ? or\n"
 					+ "										((end_date-start_date)>= ? and (end_date-start_date)<=?))  \n"
 					+ "where r between ? and ?";
 

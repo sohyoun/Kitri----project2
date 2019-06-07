@@ -76,7 +76,7 @@ var myChart = new Chart(ctx, {
 				<i class="fa fa-calendar-o fa-2x"></i> 로그인 기록
 			</h5>
 			<ul class="news-list">
-				<li><i class="fa fa-user fa-4x pull-left"></i>
+				<li><i class="fa fa-user fa-3x pull-left"></i>
 					<div class="news-item-info">
 						<div class="name">
 							<a href="#">김</a>
@@ -84,7 +84,7 @@ var myChart = new Chart(ctx, {
 						<div class="position">Software Engineer</div>
 						<div class="time">Last logged-in: Mar 12, 11:11</div>
 					</div></li>
-				<li><i class="fa fa-user fa-4x pull-left"></i>
+				<li><i class="fa fa-user fa-3x pull-left"></i>
 					<div class="news-item-info">
 						<div class="name">
 							<a href="#">이</a>
@@ -92,7 +92,7 @@ var myChart = new Chart(ctx, {
 						<div class="position">Product Designer</div>
 						<div class="time">Last logged-in: Mar 12, 19:02</div>
 					</div></li>
-				<li><i class="fa fa-user fa-4x pull-left"></i>
+				<li><i class="fa fa-user fa-3x pull-left"></i>
 					<div class="news-item-info">
 						<div class="name">
 							<a href="#">형</a>
@@ -100,7 +100,7 @@ var myChart = new Chart(ctx, {
 						<div class="position">Chief Officer</div>
 						<div class="time">Last logged-in: Jun 16, 2:34</div>
 					</div></li>
-				<li><i class="fa fa-user fa-4x pull-left"></i>
+				<li><i class="fa fa-user fa-3x pull-left"></i>
 					<div class="news-item-info">
 						<div class="name">
 							<a href="#">박</a>
@@ -133,7 +133,6 @@ var myChart = new Chart(ctx, {
 		</div>
 	</div>
 
-
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-primary">
@@ -148,5 +147,4 @@ var myChart = new Chart(ctx, {
 		</div>
 	</div>
 </div>
-
 <%@ include file="/tayoadmin/templet/footer.jsp"%>

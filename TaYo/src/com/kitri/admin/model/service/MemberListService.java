@@ -3,7 +3,7 @@ package com.kitri.admin.model.service;
 import java.util.List;
 
 import com.kitri.admin.model.dao.AdminDAOImpl;
-import com.kitri.dto.MemberBoard;
+import com.kitri.dto.MemberBoardDTO;
 
 public class MemberListService {
 
@@ -13,12 +13,12 @@ public class MemberListService {
 	}
 	
 	//회원목록테이블 전체목록 출력
-	public List<MemberBoard> memeberAll(){
+	public List<MemberBoardDTO> memeberAll(){
 		return AdminDAOImpl.getAdminDAO().selectAll();
 	}
 	
 	//회원목록테이블 원하는 행 반환 
-	public List<MemberBoard> findByRows(int startRow, int endRow){
+	public List<MemberBoardDTO> findByRows(int startRow, int endRow){
 		return AdminDAOImpl.getAdminDAO().selectByRows(startRow, endRow);
 	}
 	
@@ -38,7 +38,7 @@ public class MemberListService {
 	}
 
 	//검색된 회원 테이블 출력 
-	public List<MemberBoard> getMemberSearch(String searchType, String keyword) {
+	public List<MemberBoardDTO> getMemberSearch(String searchType, String keyword) {
 		return AdminDAOImpl.getAdminDAO().memberSearch(searchType, keyword);
 		
 	}

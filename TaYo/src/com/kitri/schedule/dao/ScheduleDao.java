@@ -95,6 +95,156 @@ public class ScheduleDao {
 		
 		return result;
 	}
+	
+	public int modify(TripBasicDTO basicDTO, String oldTitle) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int result = 0;
+		
+		try {
+			conn = DBConnection.makeConnection();
+			conn.setAutoCommit(false);
+			
+			// Search Trip Sequence from Trip_Basic
+			StringBuffer searchSQL = new StringBuffer();
+			searchSQL.append("SELECT trip_seq ");
+			searchSQL.append("FROM trip_basic ");
+			searchSQL.append("WHERE email = ? and trip_title = ?");
+			
+			pstmt = conn.prepareStatement(searchSQL.toString());
+			
+			int idx = 1;
+			pstmt.setString(idx++, basicDTO.getEmail());
+			pstmt.setString(idx, oldTitle);
+			rs = pstmt.executeQuery();
+			
+			int seq = -1;
+			if (rs.next()) {
+				seq = rs.getInt(1);
+			} else {
+				result = 0;
+				conn.rollback();
+				return result;
+			}
+
+			rs.close();
+			pstmt.close();
+			
+			// Modify Trip_Basic
+			StringBuffer modifySQL = new StringBuffer();
+			modifySQL.append("UPDATE trip_basic ");
+			modifySQL.append("SET trip_title = ?, trip_theme = ?, trip_season = ?, trip_num = ?, start_date = ?, end_date = ?, lastupdate = sysdate, isComplete = ? ");
+			modifySQL.append("WHERE trip_seq = ?");
+			
+			pstmt = conn.prepareStatement(modifySQL.toString());
+			
+			idx = 1;
+			pstmt.setString(idx++, basicDTO.getTripTitle());
+			pstmt.setString(idx++, basicDTO.getTripTheme());
+			pstmt.setString(idx++, basicDTO.getTripSeason());
+			pstmt.setInt(idx++, basicDTO.getTripNum());
+			pstmt.setDate(idx++, new java.sql.Date(basicDTO.getStartDate().getTime()));
+			pstmt.setDate(idx++, new java.sql.Date(basicDTO.getEndDate().getTime()));
+			pstmt.setString(idx++, basicDTO.getIsComplete());
+			pstmt.setInt(idx, seq);
+			result += pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+			if (result != 1) {
+				result = 0;
+				conn.rollback();
+				return result;
+			}
+			
+			// Count Trip_Detail (already exists)
+			searchSQL.setLength(0);
+			searchSQL.append("SELECT count(*) ");
+			searchSQL.append("FROM trip_detail ");
+			searchSQL.append("WHERE trip_seq = ?");
+			
+			pstmt = conn.prepareStatement(searchSQL.toString());
+			pstmt.setInt(1, seq);
+			rs = pstmt.executeQuery();
+			
+			int count = -1;
+			if (rs.next()) {
+				count = rs.getInt(1);
+			} else {
+				result = 0;
+				conn.rollback();
+				return result;
+			}
+			
+			rs.close();
+			pstmt.close();
+			searchSQL = null;
+			
+			// Delete Trip_Detail (already exists)
+			int deleteCount = -1;
+			StringBuffer deleteSQL = new StringBuffer();
+			deleteSQL.append("DELETE FROM trip_detail ");
+			deleteSQL.append("WHERE trip_seq = ?");
+			
+			pstmt = conn.prepareStatement(deleteSQL.toString());
+			pstmt.setInt(1, seq);
+			deleteCount = pstmt.executeUpdate();
+			
+			if (deleteCount != count) {
+				result = 0;
+				conn.rollback();
+				return result;
+			}
+			
+			pstmt.close();
+			
+			// insert Trip_Detail (modified plan)
+			List<TripDetailDTO> list = basicDTO.getDetailList();
+			
+			for (TripDetailDTO tripDetailDTO : list) {
+				modifySQL.setLength(0);
+				modifySQL.append("INSERT INTO trip_detail (trip_seq, trip_day, trip_order, place_name, loc_id, posx, posy) ");
+				modifySQL.append("values (?, ?, ?, ?, ?, ?, ?)");
+				
+				pstmt = conn.prepareStatement(modifySQL.toString());
+				
+				idx = 1;
+				pstmt.setInt(idx++, seq);
+				pstmt.setInt(idx++, tripDetailDTO.getTrip_day());
+				pstmt.setInt(idx++, tripDetailDTO.getTrip_order());
+				pstmt.setString(idx++, tripDetailDTO.getPlace_name());
+				pstmt.setInt(idx++, tripDetailDTO.getLoc_id());
+				pstmt.setFloat(idx++, tripDetailDTO.getPosX());
+				pstmt.setFloat(idx, tripDetailDTO.getPosY());
+				result += pstmt.executeUpdate();
+				pstmt.close();
+			}
+			
+			if (result != (list.size() + 1)) {
+				result = 0;
+				conn.rollback();
+			} else {
+				conn.commit();
+			}
+		} catch (SQLException e) {
+			result = 0;
+			
+			e.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		} finally {
+			DBClose.close(conn, pstmt, rs);
+		}
+		
+		return result;
+	}
 
 	public List<TripBasicDTO> search(String email, String type) {
 		Connection conn = null;

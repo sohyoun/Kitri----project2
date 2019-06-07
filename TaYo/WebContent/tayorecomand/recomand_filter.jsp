@@ -27,8 +27,11 @@
 					cityMap[''+$(xmlData[i]).find("code").text()] = $(xmlData[i]).find("name").text();
 					
 				}
+		
 				console.log('citymap');
 				console.log(cityMap);
+				//필터 안의 값들 출력
+				outFilter();
 			},//end success
 			
 			error : function(err) {

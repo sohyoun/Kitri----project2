@@ -2,7 +2,9 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix ="x" uri ="http://java.sun.com/jsp/jstl/xml"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 
 <style>
 	.list-group-item {
@@ -108,58 +110,55 @@ $(function(){
 			</div>
 		</div>
 
-		<div class="col-sm-7" style="overflow-y: auto; height: 100rem;">
-				<div class="daytitle">
-      				<div class="daynum" id="day1">DAY1</div>
-      				<div class="daytitlecontent"><div class="daydate">2015.08.09 (일)</div><div class="daycplace">부산</div></div>
-      			</div>
-      			<div class="daydetail">
-      				<div class="daydetailnum"><span class="circle">1</span></div>
-      				<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
-      				<div class="daydetailcontent">서울역 모임<span class="badge">버스역</span></div>
-      				<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
-      				<div class="daydetailsub">[소요시간] 장안동에서 인천국제공항 공항철도까지 2시간 소요 -12:05 공항리무진</div>
-      				<div class="daydetailsub">[도착 예정시간] 14:00</div>
-      				<div class="daydetailsub">[예상비용]  15,000원</div>
-					<div class="daydetailsub">[체크리스트] </div>
-      			</div>
-      			<div><li class="btn-path"><button class="btn btn btn-light">경로 탐색</button></li></div>
-      			<div class="daydetail">
-      				<div class="daydetailnum"><span class="circle">2</span></div>
-      				<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
-      				<div class="daydetailcontent">부산역 도착<span class="badge">버스역</span></div>
-      				<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
-      				<div class="daydetailsub">[소요시간] 장안동에서 인천국제공항 공항철도까지 2시간 소요 -12:05 공항리무진</div>
-      				<div class="daydetailsub">[도착 예정시간] 14:00</div>
-      				<div class="daydetailsub">[예상비용] 점심 15,000원</div>
-					<div class="daydetailsub">[체크리스트] </div>
-      			</div>
-      			<div><li class="btn-path"><button class="btn btn btn-light">경로 탐색</button></li></div>
-      			<div class="daytitle">
-      				<div class="daynum" id="day2">DAY2</div>
-      				<div class="daytitlecontent"><div class="daydate">2015.08.10 (월)</div><div class="daycplace">부산</div></div>
-      			</div>
-      			<div class="daydetail">
-      				<div class="daydetailnum"><span class="circle">1</span></div>
-      				<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
-      				<div class="daydetailcontent">해운대<span class="badge">관광지</span></div>
-      				<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
-      				<div class="daydetailsub">[소요시간] 장안동에서 인천국제공항 공항철도까지 2시간 소요 -12:05 공항리무진</div>
-      				<div class="daydetailsub">[도착 예정시간] 14:00</div>
-      				<div class="daydetailsub">[예상비용] 점심 15,000원</div>
-					<div class="daydetailsub">[체크리스트] </div>
-      			</div>
-      			<div><li class="btn-path"><button class="btn btn btn-light">경로 탐색</button></li></div>
-      			<div class="daydetail">
-      				<div class="daydetailnum"><span class="circle">2</span></div>
-      				<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
-      				<div class="daydetailcontent">해운대카페거리<span class="badge">관광지</span></div>
-      				<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
-      				<div class="daydetailsub">[소요시간] 장안동에서 인천국제공항 공항철도까지 2시간 소요 -12:05 공항리무진</div>
-      				<div class="daydetailsub">[도착 예정시간] 14:00</div>
-      				<div class="daydetailsub">[예상비용] 점심 15,000원</div>
-					<div class="daydetailsub">[체크리스트] </div>
-      			</div>
+		<div class="col-sm-7" style="overflow-y: auto; height: 50rem;">
+			<c:set var="olddays" value="-1"/>
+			<c:set var="idx" value="1"/>
+			<c:set var="length" value="${fn:length(detailDTO)}"/>
+			<c:forEach var="tabledays" items="${detailDTO}">
+				<c:if test="${olddays != tabledays.trip_day}">
+					<c:set var="olddays" value="${tabledays.trip_day}"/>
+					<div class="daytitle">
+						<div class="daynum" id="day${tabledays.trip_day}">DAY${tabledays.trip_day}</div>
+						<jsp:useBean id="myDate" class="java.util.Date"/>
+						<fmt:parseDate var="startPlanDate" value="${basicDTO.startDate}" pattern="yyyy-MM-dd"/>
+						<fmt:parseNumber value="${startPlanDate.time + (tabledays.trip_day - 1)*(1000*60*60*24)}" integerOnly="true" var="startDate"/>
+						<c:set target="${myDate}" property="time" value="${startDate}"/>
+						<fmt:formatDate var="convertday" value="${myDate}" pattern="yyyy-MM-dd (E)"/>
+						<div class="daytitlecontent">
+							<div class="daydate">${convertday}</div>
+							<c:set var="flag" value="false"/>
+							<x:forEach var="areaCode" select="$area/response/body/items/item">
+								<c:if test="${not flag}">
+									<x:set var="codeValue" select="$areaCode/code"/>
+									<x:set var="locName" select="$areaCode/name"/>
+									<c:set var="loc" value="${tabledays.loc_id}"/>
+									<x:if select="$codeValue = $loc">
+										<div class="daycplace"><x:out select="$locName"/></div>
+										<c:set var="flag" value="true"/>
+									</x:if>
+								</c:if>
+							</x:forEach>
+						</div>
+					</div>
+					<c:set var="index" value="1"/>
+					<c:forEach var="places" items="${detailDTO}">
+						<c:if test="${olddays == places.trip_day}">
+							<div class="daydetail">
+								<div class="daydetailnum"><span class="circle">${index}</span></div>
+								<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
+								<div class="daydetailcontent">${places.place_name}<span class="badge">관광지</span></div>
+								<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
+								<div class="daydetailsub">${places.detail_content}</div>
+							</div>
+							<c:if test="${idx != length}">
+								<div><li class="btn-path"><button class="btn btn btn-light">경로 탐색</button></li></div>
+								<c:set var="idx" value="${idx + 1}"/>
+							</c:if>
+							<c:set var="index" value="${index + 1}"/>
+						</c:if>
+					</c:forEach>
+				</c:if>
+			</c:forEach>
 		</div>
 
 		<!-- Load Map dynamically -->

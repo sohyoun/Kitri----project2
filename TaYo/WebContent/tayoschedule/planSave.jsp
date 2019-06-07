@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <script>
 $(function(){
 	var start = $("#start");
 	var end = $("#end");
 	
 	$.datepicker.setDefaults({
-		dateFormat: 'yy.mm.dd',
+		dateFormat: 'yy-mm-dd',
 		showOtherMonths: true,
 		showMonthAfterYear:true,
 		buttonImageOnly: true,
@@ -28,11 +30,10 @@ $(function(){
 	});
 	
 	$(end).click(function(){
-		var sDate = $("#start").val().split('.');
+		var sDate = $("#start").val().split('-');
 		var newDate = new Date(sDate[0], sDate[1] - 1, sDate[2]);
-		console.log(newDate);
 		newDate.setDate(newDate.getDate() + ($(".list-group").length - 1));
-		console.log(newDate);
+		
 		var year = newDate.getFullYear();
 		var month = newDate.getMonth() + 1;
 		var currDay = newDate.getDate();
@@ -45,7 +46,7 @@ $(function(){
 			currDay = '0' + currDay;
 		}
 		
-		$(this).val(year + '.' + month + '.' + currDay);
+		$(this).val(year + '-' + month + '-' + currDay);
 	});
 	
 	$("input[name='theme']").click(function() {
@@ -70,7 +71,7 @@ $(function(){
 	});
 	
 	var daylists;
-	$("button[name='save']").click(function() {
+	$("button[name='save'], button[name='modify']").click(function() {
 		var savetype;
 		if ($(this).attr("value") == 'tempsave') {
 			savetype = 'N';
@@ -115,10 +116,12 @@ $(function(){
 			
 			for(var j = 0; j < itemslength; j++) {
 				var tempArray = new Array();
-				
+				var changedPlace = $(items[j]).attr("value");
+				changedPlace = changedPlace.replace(/,/g, '|');
+				console.log(changedPlace);
 				tempArray.push(i + 1);
 				tempArray.push(j + 1);
-				tempArray.push($(items[j]).attr("value"));
+				tempArray.push(changedPlace);
 				tempArray.push($(items[j]).attr("areaCode"));
 				tempArray.push($(items[j]).attr("axisx"));
 				tempArray.push($(items[j]).attr("axisy"));
@@ -130,10 +133,17 @@ $(function(){
 		for(var k = 0; k < plandata.length; k++) {
 			plandatastr += ('&plandata=' + plandata[k]);
 		}
-
+		
+		var dataformat = "";
+		if ($(this).attr("name") == 'save') {
+			dataformat = 'act=savePlan';
+		} else if ($(this).attr("name") == 'modify') {
+			dataformat = 'act=modifyPlan';
+		}
+		
 		$.ajax({
 			url: '${pageContext.request.contextPath}/schedule',
-			data: 'act=savePlan' + plandatastr + '&email=' + 'test@kitri.re.kr' + '&savetype=' + savetype + '&person=' + $("#person").val() + '&title=' + $("#planName").val() + '&theme=' + $("input[name='theme']:checked").val() + '&season=' + $("input[name='season']:checked").val() + '&start=' + $("#start").val() + '&end=' + $("#end").val(),
+			data: dataformat + plandatastr + '&email=' + 'test@kitri.re.kr' + '&savetype=' + savetype + '&person=' + $("#person").val() + '&title=' + $("#planName").val() + '&theme=' + $("input[name='theme']:checked").val() + '&season=' + $("input[name='season']:checked").val() + '&start=' + $("#start").val() + '&end=' + $("#end").val(),
 			method: 'post',
 			success: function(result) {
 				if (savetype == 'N') {
@@ -154,7 +164,7 @@ $(function(){
 </script>
 
 <div id="planSaveModal" class="modal fade" role="dialog">
-	<h5 class="modal-title" id="myModalLabel">지역선택</h5>
+	<h5 class="modal-title" id="myModalLabel"></h5>
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header text-center">
@@ -167,7 +177,12 @@ $(function(){
            			<label><strong>여행 이름</strong></label>
            		</div>
            		<div class="input-group" align="left">
-           			<input type="text" class="form-control" id="planName" name="planName" placeholder="기대되는 나의 여행.">
+           			<c:if test="${empty basicDTO}">
+           				<input type="text" class="form-control" id="planName" name="planName" placeholder="기대되는 나의 여행.">
+           			</c:if>
+           			<c:if test="${!empty basicDTO}">
+           				<input type="text" class="form-control" id="planName" name="planName" value="${basicDTO.tripTitle}" placeholder="기대되는 나의 여행.">
+           			</c:if>
            		</div>
            		<br>
            		<div align="center">
@@ -210,7 +225,12 @@ $(function(){
 						</div>
 					</div>
 					<div class="col-sm-2">
-						<label id="personlb">인원 : <input type="text" id="person" name="person" value="1" placeholder="1" size="2" style="text-align: center;"/> 명</label>
+						<c:if test="${empty basicDTO}">
+							<label id="personlb">인원 : <input type="text" id="person" name="person" value="1" placeholder="1" size="2" style="text-align: center;"/> 명</label>
+						</c:if>
+						<c:if test="${!empty basicDTO}">
+							<label id="personlb">인원 : <input type="text" id="person" name="person" value="${basicDTO.tripNum}" placeholder="1" size="2" style="text-align: center;"/> 명</label>
+						</c:if>
 					</div>
 				</div>
 				<br>
@@ -255,13 +275,23 @@ $(function(){
            			<div class="row" style="margin: auto;">
            				<div class="col-sm-5" style="margin: auto;">
            					<div class="d-inline-flex p-2 text-white">
-								<input type="text" class="form-control" id="start" name="start" placeholder="20XX.XX.XX" style="display: inline-block;" readonly="readonly">
+           						<c:if test="${empty basicDTO}">
+									<input type="text" class="form-control" id="start" name="start" placeholder="20XX.XX.XX" style="display: inline-block;" readonly="readonly">
+								</c:if>
+								<c:if test="${!empty basicDTO}">
+									<input type="text" class="form-control" id="start" name="start" value="${basicDTO.startDate}" placeholder="20XX.XX.XX" style="display: inline-block;" readonly="readonly">
+								</c:if>
 							</div>
        					</div>
         				<div class="col-sm-1" style="margin: auto;" align="center">~</div>
         				<div class="col-sm-5" style="margin: auto;">
 	        				<div class="d-inline-flex p-2 text-white">
-	        					<input type="text" class="form-control" id="end" name="end" placeholder="20XX.XX.XX" style="display: inline-block;" readonly="readonly">
+	        					<c:if test="${empty basicDTO}">
+	        						<input type="text" class="form-control" id="end" name="end" placeholder="20XX.XX.XX" style="display: inline-block;" readonly="readonly">
+	        					</c:if>
+	        					<c:if test="${!empty basicDTO}">
+	        						<input type="text" class="form-control" id="end" name="end" value="${basicDTO.endDate}" placeholder="20XX.XX.XX" style="display: inline-block;" readonly="readonly">
+	        					</c:if>
 							</div>
            				</div>
          			</div>
@@ -272,10 +302,20 @@ $(function(){
 						<button type="button" class="btn btn-warning btn-block" id="cancel">취소</button>           			
            			</div>
            			<div class="col-sm-4">
-           				<button type="button" class="btn btn-info btn-block" name="save" value="tempsave">임시 저장</button>
+           				<c:if test="${empty basicDTO}">
+           					<button type="button" class="btn btn-info btn-block" name="save" value="tempsave">임시 저장</button>
+           				</c:if>
+           				<c:if test="${!empty basicDTO}">
+           					<button type="button" class="btn btn-info btn-block" name="modify" value="tempsave">임시 저장</button>
+           				</c:if>
            			</div>
            			<div class="col-sm-4">
-           				<button type="button" class="btn btn-success btn-block" name="save" value="complete">완료</button>
+           				<c:if test="${empty basicDTO}">
+           					<button type="button" class="btn btn-success btn-block" name="save" value="complete">완료</button>
+        				</c:if>
+        				<c:if test="${!empty basicDTO}">
+        					<button type="button" class="btn btn-success btn-block" name="modify" value="complete">완료</button>
+        				</c:if>
            			</div>
            		</div>
             </div>

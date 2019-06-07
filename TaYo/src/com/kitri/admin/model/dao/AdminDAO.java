@@ -2,17 +2,17 @@
 package com.kitri.admin.model.dao;
 import java.util.List;
 
-import com.kitri.dto.AdminDTO;
-import com.kitri.dto.MemberBoard;
-import com.kitri.dto.MemberDetailDTO;
+import com.kitri.dto.*;
 
 public interface AdminDAO {
 
 	AdminDTO selectByEmail(String email);
 	
-	List<MemberBoard> selectAll();
+	List<MemberBoardDTO> selectAll();
 
-	List<MemberBoard> selectByRows(int startRow, int endRow);
+	List<MemberBoardDTO> selectByRows(int startRow, int endRow);
+	
+	List<GonggiBoardDTO> selectGonggi(int startRow, int endRow); 
 
 	int selectTotalCnt();
 
@@ -20,6 +20,8 @@ public interface AdminDAO {
 
 	int blackTotalCnt();
 
-	List<MemberBoard> memberSearch(String searchType, String keyword);
+	List<MemberBoardDTO> memberSearch(String searchType, String keyword);
 	
+	GonggiBoardDTO insert(GonggiBoardDTO gonggiBoard);
+
 }

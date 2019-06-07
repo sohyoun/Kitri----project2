@@ -76,4 +76,9 @@ public class ScheduleService {
 	public TripBasicDTO findByTitle(String email, String title) {
 		return dao.find(email, title);
 	}
+
+
+	public int modify(TripBasicDTO basicDTO, String oldTitle) {
+		return dao.modify(basicDTO, oldTitle);
+	}
 }
