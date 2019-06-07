@@ -10,6 +10,7 @@ import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kitri.dto.TripBasicDTO;
 import com.kitri.dto.TripDetailDTO;
@@ -71,7 +72,7 @@ public class ScheduleBackendController {
 			while (st.hasMoreTokens()) {
 				detailDTO.setTrip_day(Integer.parseInt(st.nextToken()));
 				detailDTO.setTrip_order(Integer.parseInt(st.nextToken()));
-				detailDTO.setPlace_name(st.nextToken());
+				detailDTO.setPlace_name(st.nextToken().replace("|", ","));
 				detailDTO.setLoc_id(Integer.parseInt(st.nextToken()));
 				detailDTO.setPosX(Float.parseFloat(st.nextToken()));
 				detailDTO.setPosY(Float.parseFloat(st.nextToken()));
@@ -104,5 +105,68 @@ public class ScheduleBackendController {
 		String title = request.getParameter("title");
 		
 		return service.findByTitle(email, title);
+	}
+
+
+	public int modifyPlan(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		TripBasicDTO sessionBasicDTO = (TripBasicDTO) session.getAttribute("TripBasicDTO");
+		String oldTitle = sessionBasicDTO.getTripTitle();
+		
+		StringTokenizer st;
+		List<TripDetailDTO> list = new ArrayList<TripDetailDTO>();
+		
+		Date start = null;
+		Date end = null;
+		int person = Integer.parseInt(request.getParameter("person"));
+		String email = request.getParameter("email");
+		String saveType = request.getParameter("savetype");
+		String title = request.getParameter("title");
+		String theme = request.getParameter("theme");
+		String season = request.getParameter("season");
+		String[] plandata = request.getParameterValues("plandata");
+		
+		if (oldTitle.trim().equals(title.trim())) {
+			return 0;
+		}
+		
+		try {
+			start = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("start"));
+			end = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("end"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		TripBasicDTO basicDTO = new TripBasicDTO();
+		basicDTO.setEmail(email);
+		basicDTO.setTripTitle(title);
+		basicDTO.setTripTheme(theme);
+		basicDTO.setTripSeason(season);
+		basicDTO.setTripNum(person);
+		basicDTO.setStartDate(start);
+		basicDTO.setEndDate(end);
+		basicDTO.setIsComplete(saveType);
+		
+		TripDetailDTO detailDTO = null;
+		
+		for (String plan : plandata) {
+			detailDTO = new TripDetailDTO();
+			st = new StringTokenizer(plan, ",");
+			
+			while (st.hasMoreTokens()) {
+				detailDTO.setTrip_day(Integer.parseInt(st.nextToken()));
+				detailDTO.setTrip_order(Integer.parseInt(st.nextToken()));
+				detailDTO.setPlace_name(st.nextToken().replace("|", ","));
+				detailDTO.setLoc_id(Integer.parseInt(st.nextToken()));
+				detailDTO.setPosX(Float.parseFloat(st.nextToken()));
+				detailDTO.setPosY(Float.parseFloat(st.nextToken()));
+			}
+			
+			list.add(detailDTO);
+		}
+		
+		basicDTO.setDetailList(list);
+		
+		return service.modify(basicDTO, oldTitle);
 	}
 }

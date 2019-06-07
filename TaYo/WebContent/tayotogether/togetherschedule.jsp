@@ -4,8 +4,7 @@
 <c:set var="list" value="${requestScope.list}"/>
 <c:set var="tripSeq" value="${requestScope.tripSeq}"/>
 <c:set var="dd" value="${requestScope.dd}"/>
-<c:set var="startDate" value="${requestScope.startDate}"/>
-<c:set var="endDate" value="${requestScope.endDate}"/>
+<c:set var="daylist" value="${requestScope.daylist}"/>
 
 <div class="container mb-4" data-spy="scroll" data-target="#dayinfo"
 	data-offset="10">
@@ -32,27 +31,27 @@
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach begin="1" end="${dd}" var="i">
 						<tr>
-							<td class="plancal">5월 15일 (수)<br><span>DAY1</span></td>
-							<td class="planplace">서울</td>
-							<td>1. 인사동<br>2. 광장시장<br>3. 명동<br>4. 청계천<br>5. 국회의사당<br>6. 한강공원</td>
+							<td class="plancal">${daylist.get(i-1)}<br><span>DAY${i}</span></td>
+							<td class="planplace">
+								<c:forEach var="td" items="${list}">
+      							<c:if test="${td.trip_day == i}">
+      								${td.loc_id},서울
+      							</c:if>
+      							</c:forEach>
+							</td>
+							<td>
+								<c:forEach var="td" items="${list}">
+      							<c:if test="${td.trip_day == i}">
+      								${td.place_name}<br>
+      							</c:if>
+      							</c:forEach>
+							</td>
 							<td></td>
 							<td></td>
 						</tr>
-						<tr>
-							<td class="plancal">5월 16일 (목)<br><span>DAY2</span></td>
-							<td class="planplace">부산</td>
-							<td>1. 해운대<br>2. 광안대교<br>3. 감천 문화마을</td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td class="plancal">5월 17일 (금)<br><span>DAY3</span></td>
-							<td class="planplace">대구</td>
-							<td>1. 대가야박물관<br>2. 수성못<br>3. 팔공산<br>4. 두류공원</td>
-							<td></td>
-							<td></td>
-						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>

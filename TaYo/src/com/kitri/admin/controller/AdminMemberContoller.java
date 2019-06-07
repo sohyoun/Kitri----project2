@@ -43,9 +43,6 @@ public class AdminMemberContoller extends HttpServlet {
 
 		request.setAttribute("backTotalCnt", backTotalCnt);
 
-		// 회원목록테이블
-//		List<MemberBoard> list = memberListService.memeberAll();
-//		request.setAttribute("memberlist", list);
 		// ==================================================
 
 		String cp = request.getParameter("currentPage");
@@ -66,7 +63,7 @@ public class AdminMemberContoller extends HttpServlet {
 		JavaBean javaBean = new JavaBean(cntPage, totalCnt, cntPerPageGroup, url, currentPage);
 		// System.out.println("startPage " + memberListDTO.getStartPage());
 
-		List<MemberBoard> boardlist = memberListService.findByRows(javaBean.getStartRow(),
+		List<MemberBoardDTO> boardlist = memberListService.findByRows(javaBean.getStartRow(),
 				javaBean.getEndRow());
 
 		 System.out.println("페이징처리할 리스트: " + boardlist.size());

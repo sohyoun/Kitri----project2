@@ -6,9 +6,8 @@ import java.util.List;
 
 
 import com.kitri.dto.*;
-import com.kitri.util.*;
-
-
+import com.kitri.util.DBClose;
+import com.kitri.util.DBConnection;
 
 public class AdminDAOImpl implements AdminDAO {
 
