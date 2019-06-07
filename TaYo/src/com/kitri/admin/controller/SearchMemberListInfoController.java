@@ -12,15 +12,15 @@ import javax.servlet.http.*;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.kitri.admin.model.service.MemberListService;
-import com.kitri.dto.MemberBoard;
+import com.kitri.dto.MemberBoardDTO;
 
 @WebServlet("/searchInfo")
-public class SearchMemberListInfo extends HttpServlet {
+public class SearchMemberListInfoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private MemberListService memberListService;
 
-	public SearchMemberListInfo() {
+	public SearchMemberListInfoController() {
 		memberListService = new MemberListService();
 	}
 
@@ -33,9 +33,9 @@ public class SearchMemberListInfo extends HttpServlet {
 		// 전체라고 찍어줘 제발
 		// System.out.println("searchType == " + searchType);
 		// 검색이라고 찍혀줘 제발
-		// System.out.println("keyword == " + keyword);
+		 //System.out.println("keyword == " + keyword);
 
-		List<MemberBoard> list = memberListService.getMemberSearch(searchType, keyword);
+		List<MemberBoardDTO> list = memberListService.getMemberSearch(searchType, keyword);
 
 		HttpSession session = request.getSession();
 
@@ -52,8 +52,9 @@ public class SearchMemberListInfo extends HttpServlet {
 				rd.forward(request, response);
 			} else {
 				session.setAttribute("searchlist", list);
-				searchType.replace("m", "M");
+				keyword.replace("m", "M");
 				keyword.replace("f", "F");
+				
 				Gson gson = new Gson();
 				String ls = gson.toJson(list);
 				JsonObject jsonObject = new JsonObject();
