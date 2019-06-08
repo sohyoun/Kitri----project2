@@ -1,8 +1,8 @@
-package com.kitri.admin.model.service;
+package com.kitri.admin.service;
 
 
 
-import com.kitri.admin.model.dao.AdminDAOImpl;
+import com.kitri.admin.dao.AdminDAOImpl;
 import com.kitri.dto.*;
 
 public class AdminService {

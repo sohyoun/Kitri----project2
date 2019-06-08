@@ -1,7 +1,6 @@
 package com.kitri.admin.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,17 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kitri.admin.model.service.GonggiService;
+import com.kitri.admin.service.GonggiService;
 import com.kitri.dto.GonggiBoardDTO;
 
 
-@WebServlet("/gonggi")
-public class GonggiContoller extends HttpServlet {
+@WebServlet("/gonggiread")
+public class WriteGonggiContoller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
   
 	private GonggiService gonggiService;
 	
-    public GonggiContoller() {
+    public WriteGonggiContoller() {
     	gonggiService = new GonggiService();
     }
 
@@ -41,11 +40,11 @@ public class GonggiContoller extends HttpServlet {
 		
 		GonggiBoardDTO goBoard = gonggiService.writer(gonggiBoard);
 
-		System.out.println("공지사항 글쓰기 목록 == " + goBoard);
+		//System.out.println("공지사항 글쓰기 목록 == " + goBoard);
 		
 		request.setAttribute("goboard", goBoard);
 		
-		String path = "/tayoadmin/gonggilistresult.jsp";
+		String path = "/tayoadmin/writergonggiresult.jsp";
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);

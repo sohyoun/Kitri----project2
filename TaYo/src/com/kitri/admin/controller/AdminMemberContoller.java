@@ -1,18 +1,14 @@
 package com.kitri.admin.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.gson.*;
-import com.kitri.admin.model.service.MemberListService;
+import com.kitri.admin.service.MemberListService;
 import com.kitri.dto.*;
 
 @WebServlet("/adminmember")
@@ -27,23 +23,9 @@ public class AdminMemberContoller extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// System.out.println("servlet == 들어옴");
+		//System.out.println("회원목록서블릿 들어옴");
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-
-		// 가입된 총 회원 수
-		int joindateTotalCnt = memberListService.getJoindateCnt();
-		// System.out.println(joindateTotalCnt);
-
-		request.setAttribute("joindateTotalCnt", joindateTotalCnt);
-
-		// 블랙리스트 회원 수
-		int backTotalCnt = memberListService.getBlackCnt();
-		// System.out.println("블랙회원 수 : " + backTotalCnt);
-
-		request.setAttribute("backTotalCnt", backTotalCnt);
-
-		// ==================================================
 
 		String cp = request.getParameter("currentPage");
 
@@ -59,30 +41,37 @@ public class AdminMemberContoller extends HttpServlet {
 		int totalCnt = memberListService.getTotalCnt();
 		int cntPerPageGroup = 5;
 
-		String url = "/TaYo/memberlist?currentPage=" + currentPage;
-		JavaBean javaBean = new JavaBean(cntPage, totalCnt, cntPerPageGroup, url, currentPage);
+		String url = "adminmember";
+		JavaBean javaBean = new JavaBean(cntPage, 
+										 totalCnt, 
+										 cntPerPageGroup, 
+										 url, 
+										 currentPage);
 		// System.out.println("startPage " + memberListDTO.getStartPage());
 
-		List<MemberBoardDTO> boardlist = memberListService.findByRows(javaBean.getStartRow(), javaBean.getEndRow());
+		List<MemberBoardDTO> mlist = memberListService.selectMember(javaBean.getStartRow(), 
+																	javaBean.getEndRow());
 
-		 System.out.println("페이징처리할 리스트: " + boardlist.size());
-
-		request.setAttribute("boardlist", boardlist);
-		request.setAttribute("pagination", javaBean);
-
-		String path = "/tayoadmin/memberlistresult.jsp";
+		javaBean.setMlist(mlist);
+		
+		request.setAttribute("mlist", javaBean.getMlist());
+		request.setAttribute("javaBean", javaBean);
+		
+		//System.out.println("자바빈 포함리스트:" + javaBean.getMlist());
+		//System.out.println("javaBean:" + javaBean);
+		String path = "/tayoadmin/mlistresult.jsp";
+		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
 		
-		Gson gson = new Gson();
-		String bd = gson.toJson(boardlist);
-		JsonObject jsonObject = new JsonObject();
-		jsonObject.add("boardlist", gson.toJsonTree(boardlist));
-		jsonObject.add("pagination", gson.toJsonTree(javaBean));
-		System.out.println("json == " + jsonObject);
-
-		PrintWriter out = response.getWriter();
-		out.write(bd);
+//		Gson gson = new Gson();
+//		String bd = gson.toJson(mlist);
+//		JsonObject jsonObject = new JsonObject();
+//		jsonObject.add("mlist", gson.toJsonTree(javaBean));
+//		//System.out.println("회원목록게시판 제이슨반환 == " + jsonObject);
+//
+//		PrintWriter out = response.getWriter();
+//		out.write(bd);
 
 	}
 

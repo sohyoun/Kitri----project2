@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import com.kitri.admin.controller.AdminLoginController;
-import com.kitri.admin.model.service.AdminService;
+import com.kitri.admin.service.AdminService;
 import com.kitri.dto.AdminDTO;
 import com.kitri.member.service.MemberService;
 import com.kitri.util.MoveURL;

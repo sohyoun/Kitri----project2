@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>	
 
-	<c:set var ="login" value = "${sessionScope.loginInfo}"></c:set>
+<c:set var ="login" value = "${sessionScope.loginInfo}"></c:set>
 	
 <%
 	String root = request.getContextPath();
@@ -21,15 +21,39 @@
 <script type = "../chart/chart.js"></script>
 <script type = "../chart/chart.min.js"></script>
 <script type = "../chart/utils.js"></script>
+
 <!-- you need to include the shieldui css and js assets in order for the charts to work -->
 <link id="gridcss" rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/dark-bootstrap/all.min.css" />
 <script type="text/javascript" src="resource/bootstrap/js/chart.js"></script> 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <style>
 body{
 	overflow-x:hidden;
 }
 </style>
 </head>
+<script>
+$(function(){
+	$("li#board").click(function(){
+		//alert("관리 클릭 들어옴?")
+		$.ajax({
+			url : '${pageContext.request.contextPath}/adminmembercnt',
+			method : 'get',
+			success : function(result){
+				console.log(result)
+				alert(result)
+			},
+			error : function(){
+				alert("정말 실패 ");
+			}
+			
+		});
+	});
+	return false;
+});
+
+</script>
+
 <body>
 	<div id="wrapper">
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -44,11 +68,9 @@ body{
 					class="navbar-brand" href="index.jsp">TayoTayo</a>
 			</div>
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
-
 				<ul id="active" class="nav navbar-nav side-nav">
-
-					<li class="selected"><a href="index.jsp"><i class="fa fa-bullseye"> </i>홈</a></li>
-					<li><a href="board.jsp"><i class="fa fa-list-ol"></i>관리</a></li>
+					<li><a href="index.jsp"><i class="fa fa-bullseye"></i>홈</a></li>
+					<li id ="board"><a href="board.jsp"><i class="fa fa-list-ol"></i>관리</a></li>
 					<li><a href="statistics.jsp"><i class="fa fa-table"></i>통계</a></li>
 				</ul>
 
@@ -73,10 +95,10 @@ body{
 						</ul></li>
 					<li class="dropdown user-dropdown"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"><i
-							class="fa fa-user"></i>관리자 : '${login}'님<b class="caret"></b></a>
+							class="fa fa-user"></i>관리자 : ${login} 님<b class="caret"></b></a>
 						<ul class="dropdown-menu"> 
 							<li class="divider"></li>
-							<li><a href="<%=root %>/index.jsp"><i class="fa fa-power-off"></i> Log Out</a></li>
+							<li><a href="<%=root%>/index.jsp"><i class="fa fa-power-off"></i>Log Out</a></li>
 
 						</ul></li>
 				</ul>

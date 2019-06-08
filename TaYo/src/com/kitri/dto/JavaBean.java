@@ -15,10 +15,21 @@ public class JavaBean {
 	private int endPage;
 	private String url;
 	private int currentPage; // 현재 페이지
-	private List<MemberBoardDTO> list;
+	private List<MemberBoardDTO> mlist;
+	private List<GonggiBoardDTO> glist;
+
+	
+	@Override
+	public String toString() {
+		return "JavaBean [cntPage=" + cntPage + ", startRow=" + startRow + ", endRow=" + endRow + ", totalPage="
+				+ totalPage + ", totalCnt=" + totalCnt + ", cntPerPageGroup=" + cntPerPageGroup + ", startPage="
+				+ startPage + ", endPage=" + endPage + ", url=" + url + ", currentPage=" + currentPage + ", mlist="
+				+ mlist + ", glist=" + glist + "]";
+	}
 
 	public JavaBean(int cntPage, int startRow, int endRow, int totalPage, int totalCnt, int cntPerPageGroup,
-			int startPage, int endPage, String url, int currentPage, List<MemberBoardDTO> list) {
+			int startPage, int endPage, String url, int currentPage, List<MemberBoardDTO> mlist,
+			List<GonggiBoardDTO> glist) {
 		super();
 		this.cntPage = cntPage;
 		this.startRow = startRow;
@@ -30,15 +41,24 @@ public class JavaBean {
 		this.endPage = endPage;
 		this.url = url;
 		this.currentPage = currentPage;
-		this.list = list;
+		this.mlist = mlist;
+		this.glist = glist;
 	}
 
-	public List<MemberBoardDTO> getList() {
-		return list;
+	public List<MemberBoardDTO> getMlist() {
+		return mlist;
 	}
 
-	public void setList(List<MemberBoardDTO> list) {
-		this.list = list;
+	public void setMlist(List<MemberBoardDTO> mlist) {
+		this.mlist = mlist;
+	}
+
+	public List<GonggiBoardDTO> getGlist() {
+		return glist;
+	}
+
+	public void setGlist(List<GonggiBoardDTO> glist) {
+		this.glist = glist;
 	}
 
 	public int getCntPage() {
@@ -153,13 +173,6 @@ public class JavaBean {
 		}
 	}
 
-	@Override
-	public String toString() {
-		return "JavaBean [cntPage=" + cntPage + ", startRow=" + startRow + ", endRow=" + endRow + ", totalPage="
-				+ totalPage + ", totalCnt=" + totalCnt + ", cntPerPageGroup=" + cntPerPageGroup + ", startPage="
-				+ startPage + ", endPage=" + endPage + ", url=" + url + ", currentPage=" + currentPage + ", list="
-				+ list + "]";
-	}
 	
 	
 }

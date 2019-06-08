@@ -1,8 +1,8 @@
-package com.kitri.admin.model.service;
+package com.kitri.admin.service;
 
 import java.util.List;
 
-import com.kitri.admin.model.dao.AdminDAOImpl;
+import com.kitri.admin.dao.AdminDAOImpl;
 import com.kitri.dto.MemberBoardDTO;
 
 public class MemberListService {
@@ -13,18 +13,18 @@ public class MemberListService {
 	}
 	
 	//회원목록테이블 페이징처리 
-	public List<MemberBoardDTO> findByRows(int startRow, int endRow){
-		return AdminDAOImpl.getAdminDAO().selectByRows(startRow, endRow);
+	public List<MemberBoardDTO> selectMember(int startRow, int endRow){
+		return AdminDAOImpl.getAdminDAO().selMember(startRow, endRow);
 	}
 	
 	//회원목록테이블 전체 행 반환
 	public int getTotalCnt(){
-		return AdminDAOImpl.getAdminDAO().selectTotalCnt();
+		return AdminDAOImpl.getAdminDAO().memberTotalCnt();
 	}
 	
 	//회원목록 가입일 기준 회원 수 반환 
-	public int getJoindateCnt() {
-		return AdminDAOImpl.getAdminDAO().joindateTotalCnt();
+	public int getJoinCnt() {
+		return AdminDAOImpl.getAdminDAO().joinTotalCnt();
 	}
 	
 	//블랙회원 수 

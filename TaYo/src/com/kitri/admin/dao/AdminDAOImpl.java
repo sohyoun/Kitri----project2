@@ -1,4 +1,4 @@
-package com.kitri.admin.model.dao;
+package com.kitri.admin.dao;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -92,13 +92,18 @@ public class AdminDAOImpl implements AdminDAO {
 //		AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
 //		int startRow = 1;
 //		int endRow = 10;
-//		System.out.println(adminDAOImpl.selectByRows(startRow, endRow));
+//		System.out.println("회원페이지 " + adminDAOImpl.selmember(startRow, endRow));
+		
+//		AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
+//		int startRow = 1;
+//		int endRow = 10;
+//		System.out.println("공지페이지 " + adminDAOImpl.selGonggi(startRow, endRow));
 		
 	}
 	
 	//회원목록 테이블 페이징처리 
 	@Override
-	public List<MemberBoardDTO> selectByRows(int startRow, int endRow) {
+	public List<MemberBoardDTO> selMember(int startRow, int endRow) {
 		List<MemberBoardDTO> list = new ArrayList<MemberBoardDTO>();
 		
 		Connection conn = null;
@@ -163,7 +168,7 @@ public class AdminDAOImpl implements AdminDAO {
 	
 	//회원테이블 총
 	@Override
-	public int selectTotalCnt() {
+	public int memberTotalCnt() {
 		int totalCnt = -1;
 		
 		Connection conn = null;
@@ -196,7 +201,7 @@ public class AdminDAOImpl implements AdminDAO {
 	
 	//회원가입한 회원 수 
 	@Override
-	public int joindateTotalCnt() {
+	public int joinTotalCnt() {
 		int totalCnt = 0;
 		
 		Connection conn = null;
@@ -364,7 +369,7 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 	
 	@Override
-	public List<GonggiBoardDTO> selectGonggi(int startRow, int endRow) {
+	public List<GonggiBoardDTO> selGonggi(int startRow, int endRow) {
 		
 		List<GonggiBoardDTO> list = new ArrayList<GonggiBoardDTO>();
 		
@@ -377,16 +382,9 @@ public class AdminDAOImpl implements AdminDAO {
 
 			StringBuffer sql = new StringBuffer();
 			
-			/*
-			 * sql.append("SELECT * " + "FROM(SELECT rownum r, m.* \n" +
-			 * "		 FROM (SELECT * FROM memberboard \n" +
-			 * "				  ORDER BY board_seq DESC) m \n" +
-			 * "		 WHERE rownum <= ?) \n" + "WHERE r >= ? \n");
-			 */
-			
 			sql.append("SELECT *\n" + 
 							"FROM(SELECT rownum r, m.*\n" + 
-									 "FROM(SELECT * FROM gonggi ORDER BY gboard_seq DESC) m\n" + 
+									 "FROM(SELECT * FROM gonggiboard ORDER BY gboard_seq DESC) m\n" + 
 									 "WHERE rownum <= ?)\n" + 
 							"WHERE r >= ? ");
 			
@@ -407,7 +405,7 @@ public class AdminDAOImpl implements AdminDAO {
 				gonggiBoard.setGboard_seq(rs.getInt("gboard_seq"));
 				gonggiBoard.setGboard_group(rs.getString("gboard_group"));
 				gonggiBoard.setGboard_subject(rs.getString("gboard_subject"));
-				gonggiBoard.setGboard_writer(rs.getString("writer"));
+				gonggiBoard.setGboard_writer(rs.getString("gboard_writer"));
 				gonggiBoard.setGboard_contents(rs.getString("gboard_contents"));
 				gonggiBoard.setGboard_date(rs.getTimestamp("gboard_date"));
 				gonggiBoard.setGboard_viewcount(rs.getInt("gboard_viewcount"));
@@ -416,13 +414,44 @@ public class AdminDAOImpl implements AdminDAO {
 			}
 			//System.out.println("size == " + list.size());
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			DBClose.close(conn, pstmt, rs);
 		}
 		
 		return list;
+	}
+	
+	@Override
+	public int gonggiTotalCnt() {
+		int totalCnt = -1;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBConnection.makeConnection();
+			
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("SELECT COUNT(*) \n" +
+					   "FROM gonggiboard \n");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				totalCnt = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBClose.close(conn, pstmt, rs);
+		}
+		return totalCnt;
 	}
 	
 }

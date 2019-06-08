@@ -43,10 +43,6 @@ FROM memberboard;
 //회원목록테이블 삭제
 DROP TABLE memberboard;
 
-
-
-
-
 현재페이지//이전//시작페이지///끝페이지//다음 
 1	     X	     1		3	  O
 4	     O       4		6	  O

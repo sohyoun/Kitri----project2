@@ -8,7 +8,7 @@
 
 <div class="row">
 	<div class="col-lg-12">
-		<h1><small>WellCome</small></h1>
+		<h1><small>관리자</small></h1>
 		<div class="alert alert-dismissable alert-warning">
 			<button data-dismiss="alert" class="close" type="button">&times;</button>
 				관리자 홈페이지 입니다. 
@@ -22,17 +22,17 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<i class="fa fa-bar-chart-o"></i> Visits Based on a 10 days data
+					<i class="fa fa-bar-chart-o"></i> 방문기록
 				</h3>
 			</div>
 			<div class="panel-body">
-				<canvas id="myChart" width="600" height="300"></canvas>
+				<canvas id="loginChart" width="600" height="300"></canvas>
 			</div>
 		</div>
 	</div>
 <script type="text/javascript">
-var ctx = $("#myChart");
-var myChart = new Chart(ctx, {
+var ctx = $("#loginChart");
+var loginChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -117,33 +117,6 @@ var myChart = new Chart(ctx, {
 						<div class="time">Last logged-in: Jun 18, 5:13</div>
 					</div></li>
 			</ul>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">
-						<i class="fa fa-bar-chart-o"></i> 방문자 기록
-					</h3>
-				</div>
-				<div class="panel-body">
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">
-						<i class="fa fa-bar-chart-o"></i> Logins per week
-					</h3>
-				</div>
-				<div class="panel-body">
-				</div>
-			</div>
 		</div>
 	</div>
 </div>

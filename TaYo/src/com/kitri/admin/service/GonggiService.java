@@ -1,8 +1,8 @@
-package com.kitri.admin.model.service;
+package com.kitri.admin.service;
 
 import java.util.List;
 
-import com.kitri.admin.model.dao.AdminDAOImpl;
+import com.kitri.admin.dao.AdminDAOImpl;
 import com.kitri.dto.GonggiBoardDTO;
 
 public class GonggiService {
@@ -19,7 +19,11 @@ public class GonggiService {
 	}
 	
 	public List<GonggiBoardDTO> selectGonggi(int startRow, int endRow) {
-		return AdminDAOImpl.getAdminDAO().selectGonggi(startRow, endRow);
+		return AdminDAOImpl.getAdminDAO().selGonggi(startRow, endRow);
+	}
+
+	public int getTotalCnt() {
+		return AdminDAOImpl.getAdminDAO().gonggiTotalCnt();
 	}
 	
 	

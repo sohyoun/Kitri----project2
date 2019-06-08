@@ -5,11 +5,11 @@ import java.util.Date;
 public class GonggiBoardDTO {
 
 	private int gboard_seq;
+	private String gboard_group; // 분류
 	private String gboard_subject;
 	private String gboard_writer; 
 	private String gboard_contents;
 	private Date gboard_date;
-	private String gboard_group; // 분류
 	private int gboard_viewcount;
 
 	public GonggiBoardDTO() {

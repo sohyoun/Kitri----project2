@@ -32,11 +32,11 @@ $(document).ready(function() {
     $("div.container > form").submit(function(){
     	console.log("gonggiwrite success!")
     	$.ajax({
-    		url : '${pageContext.request.contextPath}/gonggi',
+    		url : '${pageContext.request.contextPath}/gonggilist',
     		method : 'post',
     		data : $(this).serialize(),
     		success : function(result){
-    			//alert(result.trim());
+    			alert(result.trim());
     			// TODO 여기서부터 작업 
     		}
     	});
