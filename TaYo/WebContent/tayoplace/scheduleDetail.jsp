@@ -39,12 +39,13 @@ button[name="placebtn"], button[name="planbtn"], button[name="addplacebtn"]
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d388e7ffead01bfd5045bc218f8e8830"></script>
 <script type="text/javascript" src="<%=root%>/js/httpRequest.js"></script>
 <script type="text/javascript">
+
 $(function() {
 	// When press enter key
 	$("#place").keydown(function(key) {
 		if (key.keyCode == 13) {
 			$.ajax({
-				url: '${pageContext.request.contextPath}/schedule',
+				url: '${pageContext.request.contextPath}/api',
 				data: 'act=searchTour&location=' + $("#location").val() + '&place=' + $("#place").val(),
 				method: 'post',
 				success: function(xml) {
@@ -109,11 +110,14 @@ $(function() {
 								<option value="39">제주
 						</select></td>
 						<td><input type="text" class="form-control" id="place"
-							name="place" value="" placeholder=""></input></td>
+							name="place" value="" ></input></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
+		
+		
+		<!-- api가 들어올 위치  -->
 		<div id="placelist">
 			<table class="table table-bordered table-sm">
 				<tbody id="tablebody" align="center">
@@ -124,10 +128,7 @@ $(function() {
 	</div>
 </div>
 
-<div class="col-sm-5">
-	<div id="map"
-		style="width: 100%; height: 100%; min-width: 50%; min-height: 50%"></div>
-</div>
+
 </div>
 </div>
 </div>
