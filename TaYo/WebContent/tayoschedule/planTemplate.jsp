@@ -3,12 +3,14 @@
 
 <%@ include file="/temp/header.jsp" %>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <script>
 $(function() {
 	// Search complete tour plan by default 
 	$.ajax({
 		url: '${pageContext.request.contextPath}/schedule',
-		data: 'act=searchPlan' + '&type=Y' + '&email=' + 'test@kitri.re.kr',
+		data: 'act=searchPlan' + '&type=Y' + '&email=' + '${sessionScope.loginInfo}',
 		method: 'post',
 		success: function(result) {
 			$("div.row").html(result);
@@ -35,7 +37,7 @@ $(function() {
 		
 		$.ajax({
 			url: '${pageContext.request.contextPath}/schedule',
-			data: 'act=searchPlan' + '&type=' + type + '&email=' + 'test@kitri.re.kr',
+			data: 'act=searchPlan' + '&type=' + type + '&email=' + '${sessionScope.loginInfo}',
 			method: 'post',
 			success: function(result) {
 				$("div.row").html(result);

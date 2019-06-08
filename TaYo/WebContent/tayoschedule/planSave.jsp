@@ -143,7 +143,7 @@ $(function(){
 		
 		$.ajax({
 			url: '${pageContext.request.contextPath}/schedule',
-			data: dataformat + plandatastr + '&email=' + 'test@kitri.re.kr' + '&savetype=' + savetype + '&person=' + $("#person").val() + '&title=' + $("#planName").val() + '&theme=' + $("input[name='theme']:checked").val() + '&season=' + $("input[name='season']:checked").val() + '&start=' + $("#start").val() + '&end=' + $("#end").val(),
+			data: dataformat + plandatastr + '&email=' + '${sessionScope.loginInfo}' + '&savetype=' + savetype + '&person=' + $("#person").val() + '&title=' + $("#planName").val() + '&theme=' + $("input[name='theme']:checked").val() + '&season=' + $("input[name='season']:checked").val() + '&start=' + $("#start").val() + '&end=' + $("#end").val(),
 			method: 'post',
 			success: function(result) {
 				if (savetype == 'N') {

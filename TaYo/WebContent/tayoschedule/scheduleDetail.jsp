@@ -249,6 +249,7 @@ $(function() {
 </script>
 
 <!-- for modify plan -->
+<c:set var="loginInfo" value="${sessionScope.loginInfo}"/>
 <c:set var="basicDTO" value="${sessionScope.TripBasicDTO}"/>
 <c:set var="detailDTO" value="${basicDTO.detailList}"/>
 
@@ -259,7 +260,9 @@ $(function() {
 			<div class="w3layouts-banner-info" style="padding-top: 8rem;">
 				<h3 class="text-wh">'나만의 일정을 계획해보세요'</h3>
 				<div class="buttons mt-4">
-					<a class="btn pull-right" id="planSave">임시 저장 / 완료</a>
+					<c:if test="${!empty loginInfo}">
+						<a class="btn pull-right" id="planSave">임시 저장 / 완료</a>
+					</c:if>
 				</div>
 			</div>
 		</div>

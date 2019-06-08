@@ -3,6 +3,8 @@
     
 <%@ include file="/temp/header.jsp" %>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- banner -->
 <section class="banner_inner" id="home">
 	<div class="banner_inner_overlay">
@@ -11,7 +13,9 @@
 				<h3 class="text-wh">'쉽고 간단한 여행 일정 만들기'</h3>
 				<div class="buttons mt-4">
 					<a href="<%=root%>/schedule?act=newschedule" class="btn mr-2">새로운 일정</a>
-					<a href="<%=root%>/schedule?act=myschedule" class="btn">나의 일정</a>
+					<c:if test="${!empty sessionScope.loginInfo}">
+						<a href="<%=root%>/schedule?act=myschedule" class="btn">나의 일정</a>
+					</c:if>
 				</div>
 			</div>
 		</div>

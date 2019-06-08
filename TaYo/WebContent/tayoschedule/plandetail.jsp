@@ -46,7 +46,7 @@
 		$("#deleteBtn").click(function() {
 			$.ajax({
 				url: '${pageContext.request.contextPath}/schedule',
-				data: 'act=deletePlan' + '&email=' + 'test@kitri.re.kr' + '&title=' + $("div[class='pname']").text().trim(),
+				data: 'act=deletePlan' + '&email=' + '${sessionScope.loginInfo}' + '&title=' + $("div[class='pname']").text().trim(),
 				method: 'post',
 				success: function(result) {
 					alert("여행 일정 삭제가 " + result.trim());
