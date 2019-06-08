@@ -22,7 +22,7 @@
 <div class="container mb-4" data-spy="scroll" data-target="#dayinfo" data-offset="10">
 	<div class="row">
 		<div id="dayinfo" class="col-sm-1">
-			<div class="btn-group-vertical">
+			<div class="btn-group-vertical" style="position: sticky; top: 1rem">
 				<span class="fa fa-chevron-up"/>
 				<c:set var="olddays" value="-1"/>
 				<c:forEach var="tabledays" items="${detailDTO}">
