@@ -40,8 +40,6 @@ $(function(){
 				</thead>
 					<tbody>
 						<c:forEach var = "g" items ="${gong}">
-						번호 : ${g.gboard_seq} <br/> 그룹 : ${g.gboard_group}
-						
 						<tr>
 							<td><input class="bdchkbox" type="checkbox" name="chkInfo" id="check1" value="" /></td>
 								<td>${g.gboard_seq}</td>
