@@ -42,16 +42,20 @@ public class EmailService {
 				return new PasswordAuthentication(un, pw);
 			}
 		});
+		
 		session.setDebug(true);
 		Message mimeMessage = new MimeMessage(session);
 
-		mimeMessage.addFrom(new InternetAddress[] { new InternetAddress(senderMail, senderName) 
-				});
+		mimeMessage.addFrom(new InternetAddress[] { 
+				new InternetAddress(senderMail, senderName) 
+			});
 		mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
 
 		//한글깨짐 인코딩
+		mimeMessage.setSubject(MimeUtility.encodeText(subject, "EUC-KR","B"));
 		mimeMessage.setSubject(MimeUtility.encodeText(subject, "UTF-8", "B"));
 		mimeMessage.setContent(contents, "text/html; charset=UTF-8");
+		mimeMessage.setContent(contents, "text/html; charset=EUC-KR");
 		
 		Transport.send(mimeMessage);
 

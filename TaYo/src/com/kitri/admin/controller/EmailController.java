@@ -14,10 +14,10 @@ import com.kitri.dto.EmailDTO;
 public class EmailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	private EmailService emailService;
 	
     public EmailController() {
-        super();
-        // TODO Auto-generated constructor stub
+        emailService = new EmailService();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,8 +36,6 @@ public class EmailController extends HttpServlet {
 		emailDTO.setSubject(subject);
 		emailDTO.setMessage(message);
 		
-		EmailService emailService = new EmailService();
-		
 		try {
 			emailService.mailSender(emailDTO);
 		} catch(Exception e) {
@@ -48,6 +46,7 @@ public class EmailController extends HttpServlet {
 		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		doGet(request, response);
 	}
 
