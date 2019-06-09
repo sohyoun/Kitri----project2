@@ -1,6 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<style>
+/* bbsSearch */
+.tableWrap.searchWrap {
+	border-bottom: 1px solid #cecece;
+}
+
+.searchWrap {
+	border-left: 1px solid #cecece;
+	border-right: 1px solid #cecece;
+}
+
+.bbsSearch {
+	overflow: hidden;
+	width: 100%;
+}
+/* .bbsSearch tbody tr:first-child th,
+.bbsSearch tbody tr:first-child td { border-top:0px; } 2014.7.23 */
+.bbsSearch tbody th {
+	padding: 8px 0 8px 20px;
+	font-size: 13px;
+	color: #222;
+	text-align: left;
+	border-top: 1px solid #e9e9e9;
+	background-color: #f9f9f9;
+}
+
+.bbsSearch tbody td {
+	padding: 8px 0 8px 20px;
+	font-size: 12px;
+	border-top: 1px solid #e9e9e9;
+}
+
+.bbsSearch tbody td * {
+	vertical-align: middle;
+}
+
+.bbsSearch tbody td input[type=radio] {
+	margin-top: 0px;
+}
+
+.bbsSearch tbody th.last, .bbsSearch tbody td label {
+	margin-right: 5px;
+}
+
+.bbsSearch tbody td.last {
+	border-bottom: 0px;
+}
+
+.bbsSearch tbody td select {
+	padding: 5px;
+	height: 30px;
+	width: 163px;
+	border: 1px solid #e8e8e8;
+	font: 11px/1.5 "돋움", Dotum, Arial;
+	color: #666;
+}
+
+.bbsSearch tbody td input.input_txt {
+	padding: 5px;
+	height: 18px;
+	border: 1px solid #e8e8e8;
+	font: normal 12px/1.5 "나눔고딕", NanumGothic, NGNormal;
+	color: #666;
+}
+</style>
 <script>
 	var isfilter;
 	$(function() {
@@ -17,9 +82,36 @@
 				/* jquery*/
 				var xmlData = $(xml).find("item");//아이템 배열
 				
+				
+
+				var result = httpRequest.responseXML;
+				var item = result.getElementsByTagName("item");
+				
+				for(var i = 0; i < item.length; i++) {
+					var option = $("<option value='"+item[i].getElementsByTagName("orgCd")[0].firstChild.data+"'>"+item[i].getElementsByTagName("orgdownNm")[0].firstChild.data+"</option>");
+	                $('#sido').append(option);
+				}	
+				/* 
+				
 				for(var i =0;i<xmlData.length; i++){
-					$('#destinations > div > div.container.h-100.pt-3 > table > tbody > tr:nth-child(1) > td.filter_body.si > div.allways_show').append(
-							'<button class="btn btn-light"><div data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</span></button>');
+					$('#searchForm > fieldset > div > table > tbody > tr > td').append(
+							'<select name="arrange" id="arran" title="정렬방법"><option value="" selected="">지역선택</option><option data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</option></select>');
+					 */
+					
+					/* $('#searchForm > fieldset > div > table > tbody > tr > td').append(
+							'<button class="btn btn-light"><div data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</span></button>'); */
+					
+			/* 		<select name="arrange" id="arran" title="정렬방법">
+					<option value="" selected="">지역선택</option>
+					<option value="1">서울</option>
+			</select> */
+					
+/* 					$('#destinations > div > div.container.h-100.pt-3 > table > tbody > tr:nth-child(1) > td.filter_body.si > div.allways_show').append(
+							'<button class="btn btn-light"><div data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</span></button>'); */
+							
+							
+					/* #searchForm > fieldset > div > table > tbody > tr > td */
+					//#destinations > div > div.container.h-100.pt-3 > table > tbody > tr > td.filter_body.si > div.allways_show
 					
 				}
 			},//end success
@@ -110,27 +202,37 @@
 		
 	});//end onload
 </script>
+<form id="searchForm" method="post" action="/guide/inforArea.do">
+	<fieldset>
+		<!-- <legend>지역별 관광정보 검색</legend> -->
 
-<div class="container h-100 pt-3">
-	<!-- 필터 -->
-	<table class="table table-bordered ">
-		<tr>
-			<td class="filter_title">여행도시</td>
-			<td class="filter_body si">
-				<div class="allways_show"></div>
-				<div class="city_toggle collapse">
-					<!-- 버튼을 누르면 여기에 값이 나옵니다. -->
-				</div>
-			</td>
-			<td width="4%"><span class="fa fa-chevron-down"
-				data-toggle="collapse" data-target=".city_toggle"> <!-- 버튼 -->
-			</span></td>
-		</tr>
-	</table>
-	<!-- 필터 -->
+		<div class="tableWrap searchWrap mgNone">
+			<div id="selectArea"></div>
 
-	<!--내용 -->
-</div>
-<!-- container -->
 
+			<table class="bbsSearch">
+				<!-- <caption>검색 순서 1 – 관광데이터 검색을 위한 언어선택</caption> -->
+				<colgroup>
+					<col style="width: 95px;" />
+					<col style="width: 861px;" />
+				</colgroup>
+				<tbody>
+					<tr>
+<!-- 					#searchForm > fieldset > div > table > tbody > tr > td -->
+						<th class="wHacki8" scope="row">지역</th>
+						<td> <!-- <select name="arrange" id="arran" title="정렬방법">
+								<option value="" selected>지역선택</option>
+								<option value="1">서울</option>
+						</select> --></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</fieldset>
+	
+	
+	
+
+</form>
 

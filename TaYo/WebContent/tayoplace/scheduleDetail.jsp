@@ -45,7 +45,7 @@ $(function() {
 	$("#place").keydown(function(key) {
 		if (key.keyCode == 13) {
 			$.ajax({
-				url: '${pageContext.request.contextPath}/api',
+				url: '${pageContext.request.contextPath}/schedule',
 				data: 'act=searchTour&location=' + $("#location").val() + '&place=' + $("#place").val(),
 				method: 'post',
 				success: function(xml) {
