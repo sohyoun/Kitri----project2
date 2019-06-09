@@ -25,7 +25,7 @@ public class SearchMemberListInfoController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("검색 서블릿 들어오는거 성공!");
+		System.out.println("회원 검색 서블릿 들어오는거 성공!");
 		// request.setCharacterEncoding("UTF-8");
 
 		String searchType = request.getParameter("searchType");
@@ -35,13 +35,11 @@ public class SearchMemberListInfoController extends HttpServlet {
 		// 검색이라고 찍혀줘 제발
 		// System.out.println("keyword == " + keyword);
 
-		List<MemberBoardDTO> list = memberListService.getMemberSearch(searchType, keyword);
+		List<MemberBoardDTO> slist = memberListService.getMemberSearch(searchType, keyword);
 
-		request.setAttribute("slist", list);
+		request.setAttribute("slist", slist);
 
-		// System.out.println("여기까지 들어옴");
-		//System.out.println("빈 값을 입력함");
-		System.out.println("전체 리스트 " + list);
+		//System.out.println("전체 리스트 " + slist);
 
 		String path = "/tayoadmin/slistresult.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(path);

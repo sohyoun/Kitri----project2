@@ -194,6 +194,7 @@ public class TogetherDAO {
 	
 	//likeCount 올리기
 		public void updateLikeCount(int tripSeq, int likeCount, int heart) {
+			System.out.println("현재 likeCount : " + likeCount);
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			try {

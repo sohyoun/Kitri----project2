@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix = "c"	 uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 	<c:set var = "gong" value ="${requestScope.glist}"/>
+	<c:set var = "javaBean" value ="${requestScope.javaBean}"/>
 <script>
 $(function(){
 	/*Handler For SelectAll Checkbox*/
@@ -14,14 +15,6 @@ $(function(){
 		} else {
 			$("#selectallchkbox").prop("checked", false);
 		}
-	});
-	
-	//게시판 목록에서 등록버튼을 클릭했을 때 나오는 화면
-	var arr = $("tbody > tr > td > button");
-
-	$(arr[2]).click(function() {
-		//console.log("삭제")
-		alert("삭제")
 	});
 });
 
@@ -68,23 +61,23 @@ $(function(){
 		<div class="col-lg-1"></div>
 <!-- 페이징처리  -->
 		<ul class="pagination">
-				<c:if test="${pagination.startPage > 1}">
-					<li class="disabled"><a href="${pagination.startPage - 1}">&laquo;</a></li>
-				</c:if>
-				<c:forEach begin="${pagination.startPage}"
-					end="${pagination.endPage}" var="i">
-					<c:choose>
-						<c:when test="${pagination.currentPage == i}">
-							<li><a href="${i}">${i}</a></li>
-						</c:when>
-						<c:otherwise>
-							<li><a href="${i}">${i}</a></li>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-				<c:if test="${pagination.totalPage > pagination.endPage }">
-					<li><a href="${pagination.endPage + 1 }">&raquo;</a></li>
-				</c:if>
+			<c:if test="${javaBean.startPage > 1}">
+				<li class="disabled"><a href="${javaBean.startPage - 1}">&laquo;</a></li>
+			</c:if>
+			<c:forEach begin="${javaBean.startPage}"
+				end="${javaBean.endPage}" var="i">
+				<c:choose>
+					<c:when test="${javaBean.currentPage == i}">
+						<li><a href="${i}">${i}</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${i}">${i}</a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:if test="${javaBean.totalPage > javaBean.endPage }">
+				<li><a href="${javaBean.endPage + 1 }">&raquo;</a></li>
+			</c:if>
 		</ul> 
 	</div>
 </div>

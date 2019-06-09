@@ -87,7 +87,7 @@ $(function(){
 			</div>
 			<div class="plike">
 				<span id="disheart" style="display:block;"><img class="pheartimg" src="/TaYo/images/heart_2.png"></span>
-				<span id="fullheart" style="display:none;"><img class="pheartimg" src="/TaYo/images/disheart.png"></span>
+				<span id="fullheart" style="display:none;"><img class="pheartimg" src="/TaYo/images/heart_1.png"></span>
 			</div>
 		</div>
 		</div>

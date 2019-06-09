@@ -26,7 +26,6 @@ $(function(){
 
 </script>
 	
-	
 <div class="row">
 	<!-- 유저 테이블 시작 -->
 	<div class="col-lg-1"></div>
@@ -34,6 +33,9 @@ $(function(){
 	<div class="pageInfo"> 
 		<button type="button" class="btn btn-success">현재 페이지 <span class="badge">${javaBean.currentPage}</span></button>
 		<button type="button" class="btn btn-default">총 페이지 <span class="badge">${javaBean.totalPage}</span></button>
+			<c:forEach var ="i" begin="0" end="3">
+				<label>등급 : ${i} <img style="width: 25px; height: 25px;"src="/TaYo/tayoadmin/images/${i}.png"/></label>
+			</c:forEach>
 	</div>
 		<div class="table-responsive">
 			<table class="table">

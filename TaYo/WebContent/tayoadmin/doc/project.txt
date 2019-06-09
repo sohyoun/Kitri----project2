@@ -64,4 +64,14 @@ membermvc
 
    회원가입 >> 로그인 >> 로그아웃 >> 메인페이지 및 관리자 페이지로 이동 >> DB 구현 
    	>>
+   	
+   			/* $("#keyword")on.("keyup", function(){
+					//정규 표현식으로 영문소문자를 찾고 toUpperCase()함수를 이용 대문자 변환
+					var nKeyword = keyword.replace(/[a-z]/g,function(m){return m.toUpperCase();});
+					$(this).val(nKeyword);
+			});
+			 */
+			 
+	검색기능중 대문자 소문자 구분짓지 않고 검색이 가능해야한다.
+   	
     

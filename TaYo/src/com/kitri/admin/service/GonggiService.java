@@ -15,7 +15,7 @@ public class GonggiService {
 	
 	//공지사항 글 쓰기 
 	public GonggiBoardDTO writer(GonggiBoardDTO gonggiBoard) {
-		return AdminDAOImpl.getAdminDAO().insert(gonggiBoard);
+		return AdminDAOImpl.getAdminDAO().write(gonggiBoard);
 	}
 	
 	public List<GonggiBoardDTO> selectGonggi(int startRow, int endRow) {
@@ -24,6 +24,10 @@ public class GonggiService {
 
 	public int getTotalCnt() {
 		return AdminDAOImpl.getAdminDAO().gonggiTotalCnt();
+	}
+
+	public List<GonggiBoardDTO> getGonggiSearch(String gonggiSearch, String value) {
+		return AdminDAOImpl.getAdminDAO().gongiSearch(gonggiSearch, value);
 	}
 	
 	

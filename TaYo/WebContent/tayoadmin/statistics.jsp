@@ -20,7 +20,7 @@
 		<h1><small>Statistics</small></h1>
 		<div class="alert alert-dismissable alert-warning">
 			<button data-dismiss="alert" class="close" type="button">&times;</button>
-				Welcome to the admin dashboard! 
+				통계 페이지 입니다.
 			<br />  
 		</div>
 	</div>
