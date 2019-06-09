@@ -13,7 +13,7 @@ import com.kitri.admin.service.GonggiService;
 import com.kitri.dto.GonggiBoardDTO;
 
 
-@WebServlet("/gonggiread")
+@WebServlet("/writegongi")
 public class WriteGonggiContoller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
   
@@ -25,6 +25,7 @@ public class WriteGonggiContoller extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		System.out.println("공지 글쓰기 서블릿 ");
 		
 		String subject = request.getParameter("subject");
 		String object = request.getParameter("group");

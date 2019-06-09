@@ -15,14 +15,6 @@ $(function(){
 			$("#selectallchkbox").prop("checked", false);
 		}
 	});
-	
-	//게시판 목록에서 등록버튼을 클릭했을 때 나오는 화면
-	var arr = $("tbody > tr > td > button");
-
-	$(arr[2]).click(function() {
-		//console.log("삭제")
-		alert("삭제")
-	});
 });
 
 </script>

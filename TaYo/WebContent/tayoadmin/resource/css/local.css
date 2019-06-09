@@ -1678,8 +1678,10 @@ legend {
 }
 
 label {
-	display: inline-block;
+	float : right;
+	margin-top : 10px;
 	margin-bottom: 5px;
+	display: inline-block;
 	font-weight: bold;
 }
 

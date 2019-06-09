@@ -40,7 +40,7 @@ $(function(){
 			url : '${pageContext.request.contextPath}/adminmembercnt',
 			method : 'get',
 			success : function(result){
-				console.log(result)
+				//console.log(result)
 				alert(result)
 			},
 			error : function(){

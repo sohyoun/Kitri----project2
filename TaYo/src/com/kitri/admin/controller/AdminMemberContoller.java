@@ -23,7 +23,7 @@ public class AdminMemberContoller extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//System.out.println("회원목록서블릿 들어옴");
+		System.out.println("처음 회원목록서블릿 들어옴");
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 

@@ -18,10 +18,12 @@ public interface AdminDAO {
 
 	List<MemberBoardDTO> memberSearch(String searchType, String keyword);
 	
-	GonggiBoardDTO insert(GonggiBoardDTO gonggiBoard);
+	GonggiBoardDTO write(GonggiBoardDTO gonggiBoard);
 
 	int gonggiTotalCnt();
 	
 	int memberTotalCnt();
+
+	List<GonggiBoardDTO> gongiSearch(String gonggisearch , String search);
 
 }

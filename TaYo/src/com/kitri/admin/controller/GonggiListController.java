@@ -26,7 +26,7 @@ public class GonggiListController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//System.out.println("공지리스트 서블릿 들어옴 ");
+		System.out.println("처음 공지리스트 서블릿 들어옴 ");
 		String cp = request.getParameter("currentPage");
 
 		int currentPage = 1;
@@ -47,7 +47,7 @@ public class GonggiListController extends HttpServlet {
 		javaBean.setGlist(glist);
 		
 		request.setAttribute("glist", javaBean.getGlist());
-		//System.out.println("공지리스트 ==" + javaBean);
+		request.setAttribute("javaBean", javaBean);
 		
 		String path = "/tayoadmin/glistresult.jsp";
 		

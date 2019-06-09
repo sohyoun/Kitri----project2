@@ -157,7 +157,6 @@ public class AdminDAOImpl implements AdminDAO {
 			}
 			//System.out.println("size == " + list.size());
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			DBClose.close(conn, pstmt, rs);
@@ -191,7 +190,6 @@ public class AdminDAOImpl implements AdminDAO {
 				totalCnt = rs.getInt(1);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			DBClose.close(conn, pstmt, rs);
@@ -258,7 +256,6 @@ public class AdminDAOImpl implements AdminDAO {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			DBClose.close(conn, pstmt, rs);
@@ -283,16 +280,16 @@ public class AdminDAOImpl implements AdminDAO {
 			
 			
 			sql.append("SELECT * " +  
-					   	   "FROM memberboard ");  
+					   "FROM memberboard ");  
 			
 				if(searchType.equals("member_email")) {
-					System.out.println("이메일 == " + searchType);
+					//System.out.println("이메일 == " + searchType);
 					sql.append("WHERE " + searchType + " like '%'||?||'%' ");
 				}else if(searchType.equals("member_name")) {
-					System.out.println("이름 == " + searchType);
+					//System.out.println("이름 == " + searchType);
 					sql.append("WHERE " + searchType + " like '%'||?||'%' ");
 				}else if(searchType.equals("member_gender")) {
-					System.out.println("성별 == " + searchType);
+					//System.out.println("성별 == " + searchType);
 					sql.append("WHERE " + searchType + " like '%'||?||'%' ");
 				}
 				
@@ -338,7 +335,7 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 	
 	@Override
-	public GonggiBoardDTO insert(GonggiBoardDTO gonggiBoard){
+	public GonggiBoardDTO write(GonggiBoardDTO gonggiBoard){
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -347,8 +344,8 @@ public class AdminDAOImpl implements AdminDAO {
 			conn = DBConnection.makeConnection();
 
 			String sql = "INSERT INTO gonggiboard("
-					+ "	GBOARD_SEQ, GBOARD_GROUP, GBOARD_SUBJECT, GBOARD_WRITER, GBOARD_CONTENTS, GBOARD_DATE, GBOARD_VIEWCOUNT) \n"
-					+ "	VALUES(gboard_seq.nextval, ?, ?, ?, ? , systimestamp, 0) \n";
+					   + "	GBOARD_SEQ, GBOARD_GROUP, GBOARD_SUBJECT, GBOARD_WRITER, GBOARD_CONTENTS, GBOARD_DATE, GBOARD_VIEWCOUNT) \n"
+					   + "	VALUES(gboard_seq.nextval, ?, ?, ?, ? , systimestamp, 0) \n";
 
 					pstmt = conn.prepareStatement(sql.toString());
 			
@@ -359,14 +356,13 @@ public class AdminDAOImpl implements AdminDAO {
 					
 					pstmt.executeUpdate();
 					
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}finally {
-			DBClose.close(conn, pstmt);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}finally {
+				DBClose.close(conn, pstmt);
+			}
+			return gonggiBoard;
 		}
-		return gonggiBoard;
-	}
 	
 	@Override
 	public List<GonggiBoardDTO> selGonggi(int startRow, int endRow) {
@@ -392,9 +388,6 @@ public class AdminDAOImpl implements AdminDAO {
 			
 			pstmt.setInt(1, endRow);
 			pstmt.setInt(2, startRow);
-			
-			//System.out.println("startRow == " + startRow);
-			//System.out.println("endRow == " +endRow);
 			
 			rs = pstmt.executeQuery();
 			
@@ -446,12 +439,67 @@ public class AdminDAOImpl implements AdminDAO {
 				totalCnt = rs.getInt(1);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			DBClose.close(conn, pstmt, rs);
 		}
 		return totalCnt;
 	}
+
+	@Override
+	public List<GonggiBoardDTO> gongiSearch(String gonggisearch, String search) {
+		List<GonggiBoardDTO> list = new ArrayList<GonggiBoardDTO>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBConnection.makeConnection();
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("SELECT * " +  
+					   "FROM gonggiboard ");  
+			
+				if(gonggisearch.equals("gonggi")) {
+					sql.append("WHERE " + gonggisearch + " like '%'||?||'%' ");
+				}else if(gonggisearch.equals("singo")) {
+					//System.out.println("이름 == " + searchType);
+					sql.append("WHERE " + gonggisearch + " like '%'||?||'%' ");
+				}
+			pstmt = conn.prepareStatement(sql.toString());
+			
+			if(gonggisearch.equals("gonggi")) {
+				pstmt.setString(1, search);
+			}else if(gonggisearch.equals("singo")) {
+				pstmt.setString(1, search);
+			}
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				GonggiBoardDTO gonggiboard = new GonggiBoardDTO();
+				
+				gonggiboard.setGboard_seq(rs.getInt("gboard_seq"));
+				gonggiboard.setGboard_group(rs.getString("gboard_group"));
+				gonggiboard.setGboard_subject(rs.getString("gboard_subject"));
+				gonggiboard.setGboard_writer(rs.getString("gboard_writer"));
+				gonggiboard.setGboard_contents(rs.getString("gboard_contents"));
+				gonggiboard.setGboard_date(rs.getDate("gboard_date"));
+				gonggiboard.setGboard_viewcount(rs.getInt("gboard_viewcount"));
+				
+				list.add(gonggiboard);			
+			}
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBClose.close(conn, pstmt, rs);
+		}
+
+	return list;
+	
+	}
+	
 	
 }

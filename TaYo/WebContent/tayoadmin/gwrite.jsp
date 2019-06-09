@@ -28,7 +28,7 @@ $(document).ready(function() {
             focus: true                  // set focus to editable area after initializing summernote
     });
     
-    $("div.container > form").submit(function(){
+/*     $("div.container > form").submit(function(){
     	console.log("gonggiwrite success!")
     	$.ajax({
     		url : '${pageContext.request.contextPath}/gonggilist',
@@ -41,7 +41,7 @@ $(document).ready(function() {
     	});
     	return false;
     });
-    
+     */
     
     $("#btBack").click(function(){
     	location.href = "${pageContext.request.contextPath}/tayoadmin/board.jsp";

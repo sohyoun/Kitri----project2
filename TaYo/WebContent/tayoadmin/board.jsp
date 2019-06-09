@@ -53,7 +53,6 @@ th, td {
 			}
 		});
 		
-		
 		//공지 테이블
 		$.ajax({
 			url : '${pageContext.request.contextPath}/gonggilist',
@@ -66,7 +65,23 @@ th, td {
 			}
 		});
 		
-		//검색 클릭 시 테이블 비동기
+		//공지 & 신고 검색 클릭 시 테이블 비동기
+		$("form#boardInfo > button#search").click(function() {
+			alert("검색 눌렀습니다.")
+			var gonggisearch = $("#gonggisearch").val();
+			var search = $("input#search").val();
+			alert(search);
+				$.ajax({
+					url : '${pageContext.request.contextPath}/searchgongi',
+					data : 'gongisearch=' + gonggisearch + '&search=' + search,
+					method : 'get',
+					suceess :function(result){
+						$("div#glist").html(result);
+					}
+				});
+			});
+		
+		//회원 검색 클릭 시 테이블 비동기
 		$("form#memberInfo > button#btSearch").click(function() {
 				alert("검색버튼을 클릭했습니다.")
 				var searchType = $("#searchType").val();
@@ -106,9 +121,10 @@ th, td {
 			return false;
 		});
 		
+		//게시판 목록에서 등록버튼을 클릭했을 때 나오는 화면
 		$("button#insert").click(function() {
 			alert("게시글 등록버튼")
-			//location.href = '/TaYo/tayoadmin/gwrite.jsp';
+			location.href = '/TaYo/tayoadmin/gwrite.jsp';
 		});
 	});
 </script>
@@ -126,11 +142,11 @@ th, td {
 				동시에 검색</strong> 할 수 있습니다.<br/><strong>그룹검색 시 데이터가 많은 경우</strong>느려질 수 있습니다.
 		</div>
 		<div class="btn-group">
-			<form action="" method="get" class="form-inline my-2 my-lg-0">
-				<select name="" class="form-control mx-1 mt-2">
-					<option value="공지">공지</option>
-					<option value="신고">신고</option>
-				</select> <input type="text" name="search" placeholder="search"
+			<form id ="boardInfo" class="form-inline my-2 my-lg-0">
+				<select name="gonggisearch" class="form-control mx-1 mt-2">
+					<option value="gonggi">공지</option>
+					<option value="singo">신고</option>
+				</select> <input type="text" id="search" name="search" placeholder="search"
 					class="form-control mr-sm-2" />
 				<button id="search" class="btn btn-info">검색</button>
 				<button id="insert" class="btn btn-info">등록</button>
@@ -139,7 +155,7 @@ th, td {
 	</div>
 </div>
 <div class="col-lg-1"></div>
-<br />
+<br/>
 
 <div id="glist" class="row"></div>
 <!-- 공지테이블 끝 -->

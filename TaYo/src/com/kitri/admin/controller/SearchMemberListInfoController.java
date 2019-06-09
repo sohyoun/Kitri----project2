@@ -25,7 +25,7 @@ public class SearchMemberListInfoController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("검색 서블릿 들어오는거 성공!");
+		System.out.println("회원 검색 서블릿 들어오는거 성공!");
 		// request.setCharacterEncoding("UTF-8");
 
 		String searchType = request.getParameter("searchType");
