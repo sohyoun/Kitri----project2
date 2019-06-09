@@ -27,6 +27,7 @@ public class TogetherHeartServlet extends HttpServlet {
 		int heart = Integer.parseInt(request.getParameter("heart"));
 		System.out.println(heart);
 		service.updateLikeCount(tripSeq,likeCount,heart);
+		System.out.println("더하고뺀 후 likeCount : " + likeCount);
 	}
 
 	

@@ -14,7 +14,20 @@ $(function(){
 });
 
 </script>
+<style>
+.tayo-search {
+	background: #007bff;
+	color : #fff;
+	margin: 0px;
+	margin-left:5px;
+	padding: 0px;
+	padding-top : 3.5px;
+	width: 5%;
+	border-radius: 0.25rem;
+	text-align: center; 
+}
 
+</style>
 <div class="tayowithbody">
 <!-- banner -->
 <section class="banner_inner" id="home">
@@ -26,7 +39,7 @@ $(function(){
 				</h3>
 				<div class="input-group">
 					<input type="text" class="form-control" placeholder="도시명으로 검색">
-					<a href="" id="tayo-search"><span class="fa fa-search" id="tayo-search-icon"></span></a>
+					<a href="" class="tayo-search"><span class="fa fa-search" id="tayo-search-icon"></span></a>
 				</div>
 			</div>
 		</div>
