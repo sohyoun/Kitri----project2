@@ -107,7 +107,6 @@ public class ScheduleBackendController {
 		return service.findByTitle(email, title);
 	}
 
-
 	public int modifyPlan(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		TripBasicDTO sessionBasicDTO = (TripBasicDTO) session.getAttribute("TripBasicDTO");
@@ -167,6 +166,27 @@ public class ScheduleBackendController {
 		
 		basicDTO.setDetailList(list);
 		
-		return service.modify(basicDTO, oldTitle);
+		return service.modifyBasic(basicDTO, oldTitle);
+	}
+
+	public int modifyDetail(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		TripBasicDTO sessionBasicDTO = (TripBasicDTO) session.getAttribute("TripBasicDTO");
+		String title = sessionBasicDTO.getTripTitle();
+		String email = (String) session.getAttribute("loginInfo");
+		int day = Integer.parseInt(request.getParameter("day"));
+		int order = Integer.parseInt(request.getParameter("order"));
+		String detailTitle = request.getParameter("detailtitle");
+		String detailContent = request.getParameter("detailsub");
+		
+		int result =  service.modifyDetail(email, title, day, order, detailTitle, detailContent);
+		
+		if (session != null) {
+			TripBasicDTO basicDTO = service.findByTitle(email, title);
+			session.removeAttribute("TripBasicDTO");
+			session.setAttribute("TripBasicDTO", basicDTO);
+		}
+		
+		return result;
 	}
 }

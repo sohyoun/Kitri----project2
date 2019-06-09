@@ -78,7 +78,12 @@ public class ScheduleService {
 	}
 
 
-	public int modify(TripBasicDTO basicDTO, String oldTitle) {
-		return dao.modify(basicDTO, oldTitle);
+	public int modifyBasic(TripBasicDTO basicDTO, String oldTitle) {
+		return dao.modifyBasic(basicDTO, oldTitle);
+	}
+
+
+	public int modifyDetail(String email, String title, int day, int order, String detailTitle, String detailContent) {
+		return dao.modifyDetail(email, title, day, order, detailTitle, detailContent);
 	}
 }

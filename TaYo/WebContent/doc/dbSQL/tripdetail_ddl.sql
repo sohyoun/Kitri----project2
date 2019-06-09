@@ -25,7 +25,7 @@ CREATE TABLE Trip_Detail (
 	loc_id NUMBER NOT NULL, /* 지역코드 */
 	image VARCHAR2(200), /* 이미지 */
 	detail_title VARCHAR2(50), /* 일정제목 */
-	detail_content CLOB, /* 일정설명 */
+	detail_content VARCHAR2(400), /* 일정설명 */
 	posx FLOAT, /* x좌표 */
 	posy FLOAT /* y좌표 */
 );

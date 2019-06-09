@@ -109,6 +109,18 @@ public class ScheduleController extends HttpServlet {
 			session.setAttribute("areaCodes", areaCodes);
 			
 			MoveURL.forward(request, response, "/tayoschedule/plandetail.jsp");
+		} else if ("saveTitleContent".equals(act)) {
+			int result = backendController.modifyDetail(request, response);
+			String notice = "";
+			
+			if (result != 0) {
+				notice = "성공하였습니다.";
+			} else {
+				notice = "실패하였습니다.";
+			}
+			request.setAttribute("notice", notice);
+			
+			MoveURL.forward(request, response, "/tayoschedule/savePlanResult.jsp");
 		}
 	}
 	

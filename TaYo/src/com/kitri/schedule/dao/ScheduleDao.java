@@ -96,7 +96,7 @@ public class ScheduleDao {
 		return result;
 	}
 	
-	public int modify(TripBasicDTO basicDTO, String oldTitle) {
+	public int modifyBasic(TripBasicDTO basicDTO, String oldTitle) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -496,6 +496,83 @@ public class ScheduleDao {
 			result += pstmt.executeUpdate();
 
 			if (result != (count + 1)) {
+				result = 0;
+				conn.rollback();
+			} else {
+				conn.commit();
+			}
+		} catch (SQLException e) {
+			result = 0;
+			
+			e.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		} finally {
+			DBClose.close(conn, pstmt, rs);
+		}
+		
+		return result;
+	}
+
+	public int modifyDetail(String email, String title, int day, int order, String detailTitle, String detailContent) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		int result = 0;
+		
+		try {
+			conn = DBConnection.makeConnection();
+			conn.setAutoCommit(false);
+			
+			// Search Trip Sequence from Trip_Basic
+			StringBuffer searchSQL = new StringBuffer();
+			searchSQL.append("SELECT trip_seq ");
+			searchSQL.append("FROM trip_basic ");
+			searchSQL.append("WHERE email = ? and trip_title = ?");
+			
+			pstmt = conn.prepareStatement(searchSQL.toString());
+			
+			int idx = 1;
+			pstmt.setString(idx++, email);
+			pstmt.setString(idx, title);
+			rs = pstmt.executeQuery();
+			
+			int seq = -1;
+			if (rs.next()) {
+				seq = rs.getInt(1);
+			} else {
+				result = 0;
+				conn.rollback();
+				return result;
+			}
+
+			rs.close();
+			pstmt.close();
+			searchSQL = null;
+			
+			// Modify Trip_Basic
+			StringBuffer modifySQL = new StringBuffer();
+			modifySQL.append("UPDATE trip_detail ");
+			modifySQL.append("SET detail_title = ?, detail_content = ? ");
+			modifySQL.append("WHERE trip_seq = ? and trip_day = ? and trip_order = ?");
+
+			pstmt = conn.prepareStatement(modifySQL.toString());
+			
+			idx = 1;
+			pstmt.setString(idx++, detailTitle);
+			pstmt.setString(idx++, detailContent);
+			pstmt.setInt(idx++, seq);
+			pstmt.setInt(idx++, day);
+			pstmt.setInt(idx, order);
+			result += pstmt.executeUpdate();
+			
+			if (result != 1) {
 				result = 0;
 				conn.rollback();
 			} else {
