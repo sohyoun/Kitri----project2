@@ -194,8 +194,9 @@ $(function() {
 						</tr>
 					</tbody>
 				</table>
-				
-				
+
+
+
 				<table class="bbsSearch">
 					<colgroup>
 						<col style="width: 95px;" />
@@ -214,5 +215,11 @@ $(function() {
 			</div>
 		</fieldset>
 	</form>
+
+
+
+
+
+
 </body>
 </html>
