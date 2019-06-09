@@ -23,24 +23,24 @@
 						<th>등급</th>
 					</tr>
 				</thead>
-				<c:forEach var="se" items="${s}">
-					<tbody>
-						<tr>
-							<td id="board_seq">${se.mboard_seq}</td>
-							<td>${se.member_email}</td>
-							<td>${se.member_name}</td>
-							<td>${se.member_age}</td>
-							<td>${se.member_address }</td>
-							<td>${se.member_addressDetail}</td>
-							<td>${se.member_joindate}</td>
-							<td>${se.member_outdate}</td>
-							<td>${se.member_gender }</td>
-							<td><img style="width: 25px; height: 25px;"
-								src="/TaYo/tayoadmin/images/${se.member_grade}.png"></td>
-						</tr>
-					</tbody>
-				</c:forEach>
-			</table>
+					<c:forEach var="se" items="${s}">
+						<tbody>
+							<tr>
+								<td id="board_seq">${se.mboard_seq}</td>
+								<td>${se.member_email}</td>
+								<td>${se.member_name}</td>
+								<td>${se.member_age}</td>
+								<td>${se.member_address }</td>
+								<td>${se.member_addressDetail}</td>
+								<td>${se.member_joindate}</td>
+								<td>${se.member_outdate}</td>
+								<td>${se.member_gender }</td>
+								<td><img style="width: 25px; height: 25px;"
+									src="/TaYo/tayoadmin/images/${se.member_grade}.png"></td>
+							</tr>
+						</tbody>
+					</c:forEach>
+				</table>
 			<div class="col-lg-1"></div>
 		</div>
 	</div>

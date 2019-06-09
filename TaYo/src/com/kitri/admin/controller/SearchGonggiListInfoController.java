@@ -26,12 +26,12 @@ public class SearchGonggiListInfoController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("공지 & 신고 검색 서블릿 들어오는거 성공!");
 		
-		String gonggisearch = request.getParameter("gonggisearch");
-		String search = request.getParameter("search");
+		String gonggiSearch = request.getParameter("gonggiSearch");
+		String value = request.getParameter("value");
 		
-		List<GonggiBoardDTO> list = gonggiService.getGonggiSearch(gonggisearch, search);
+		List<GonggiBoardDTO> glist = gonggiService.getGonggiSearch(gonggiSearch, value);
 	
-		request.setAttribute("gslist", list);
+		request.setAttribute("gslist", glist);
 		
 		String path = "/tayoadmin/gslistresult.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(path);

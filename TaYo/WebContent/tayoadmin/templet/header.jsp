@@ -3,10 +3,6 @@
 <%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>	
 
 <c:set var ="login" value = "${sessionScope.loginInfo}"></c:set>
-	
-<%
-	String root = request.getContextPath();
-%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -40,8 +36,7 @@ $(function(){
 			url : '${pageContext.request.contextPath}/adminmembercnt',
 			method : 'get',
 			success : function(result){
-				//console.log(result)
-				alert(result)
+				
 			},
 			error : function(){
 				alert("정말 실패 ");
@@ -98,7 +93,7 @@ $(function(){
 							class="fa fa-user"></i>관리자 : ${login} 님<b class="caret"></b></a>
 						<ul class="dropdown-menu"> 
 							<li class="divider"></li>
-							<li><a href="<%=root%>/index.jsp"><i class="fa fa-power-off"></i>Log Out</a></li>
+							<li><a href="${pageContext.request.contextPath}/index.jsp"><i class="fa fa-power-off"></i>Log Out</a></li>
 
 						</ul></li>
 				</ul>

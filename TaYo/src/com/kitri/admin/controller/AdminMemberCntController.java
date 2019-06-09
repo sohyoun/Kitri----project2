@@ -29,7 +29,7 @@ public class AdminMemberCntController extends HttpServlet {
 		
 		// 가입 회원 수
 		int joinTotalCnt = memberListService.getJoinCnt();
-		System.out.println("가입 회원수 :" + joinTotalCnt);
+		System.out.println("가입회원 수 :" + joinTotalCnt);
 
 		// 블랙 회원 수
 		int blackTotalCnt = memberListService.getBlackCnt();
@@ -42,7 +42,7 @@ public class AdminMemberCntController extends HttpServlet {
 //		
 //		request.setAttribute("info", info);
 //		
-		request.setAttribute("joindateTotalCnt", joinTotalCnt);
+		request.setAttribute("joinTotalCnt", joinTotalCnt);
 		request.setAttribute("blackTotalCnt", blackTotalCnt);
 
 		// 탈퇴 회원 수 

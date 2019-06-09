@@ -28,12 +28,12 @@ $(document).ready(function() {
             focus: true                  // set focus to editable area after initializing summernote
     });
     
-/*     $("div.container > form").submit(function(){
-    	console.log("gonggiwrite success!")
+    $("div.container > form").submit(function(){
+    	//console.log("gonggiwrite success!")
     	$.ajax({
-    		url : '${pageContext.request.contextPath}/gonggilist',
+    		url : '${pageContext.request.contextPath}/writegongi',
     		method : 'post',
-    		data : $(this).serialize(),
+    		data : $("form.was-validated").serialize(),
     		success : function(result){
     			alert(result.trim());
     			// TODO 여기서부터 작업 
@@ -41,12 +41,10 @@ $(document).ready(function() {
     	});
     	return false;
     });
-     */
     
     $("#btBack").click(function(){
     	location.href = "${pageContext.request.contextPath}/tayoadmin/board.jsp";
     });
-    
     
 });
 </script>
@@ -55,36 +53,36 @@ $(document).ready(function() {
 <div class="container">
 	<h2>게시글 등록</h2>
 	<hr />
-	<form action="/action_page.php" class="was-validated">
+	<form autocomplete="off" class="was-validated">
 		<div class="form-group">
 			<label for="title">제목</label> <input type="text" class="form-control"
-				id="subject" placeholder="subject " name="subject" required>
+				id="gboard_subject" placeholder="subject " name="gboard_subject" required>
 		</div>
 		
 		<div class="form-group">
 			<label for="option">분류</label> <input type="text"
-				class="form-control" id="group" placeholder="Group"
-				name="group" required>
+				class="form-control" id="gboard_group" placeholder="Group"
+				name="gboard_group" required>
 		</div>
 		
 		<div class="form-group">
 			<label for="option">작성자</label>
 			<input type="text"
-				class="form-control" id="writer" placeholder="writer"
-				name="writer" required>
+				class="form-control" id="gboard_writer" placeholder="writer"
+				name="gboard_writer" required>
 		</div>
 		
 		
 		<div class="form-group">
 			<label for="option">내용</label>
 			<div class="form-group">
-				<textarea name="contents" id="summernote" ></textarea>
+				<textarea name="gboard_contents" id="summernote" ></textarea>
 			</div>
 		</div>
 		
 		 <div style = "margin-bottom: 5em;"class = "row text-center">
-				<button id="btInsert" class="btn btn-success">등록</button>
-				<button id="btBack" class="btn btn-primary">뒤로 가기</button>
+				<button class="btn btn-success">등록</button>
+				<button id = "btBack" class="btn btn-primary">뒤로 가기</button>
 		</div>
 	</form>
 </div>

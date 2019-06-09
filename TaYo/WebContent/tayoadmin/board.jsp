@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/tayoadmin/templet/header.jsp"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:out value="${info.key}" />
-
+<c:set var= "joinTotalCnt" value="${requestScope.joinTotalCnt}" />
+<%-- <c:set var= "blackTotalCnt" value="${requestScope.blackTotalCnt}"/> --%>
 <style>
 #title {
 	border-radius: 4px;
@@ -41,6 +41,31 @@ th, td {
 </style>
 <script>
 	$(function() {
+		$.ajax({
+			url : '${pageContext.request.contextPath}/gonggilist',
+			method : 'post',
+			success : function(result) {
+				$("div#glist").html(result.trim());
+			},
+			error : function(){
+				alert("실패");
+			}
+		});
+		
+		//게시판 목록에서 등록버튼을 클릭했을 때 나오는 화면
+		$("button#btInsert").click(function() {
+			alert("공지게시글 등록버튼")
+			location.href = '${pageContext.request.contextPath}/tayoadmin/gwrite.jsp';
+			   $.ajax({
+				url : '${pageContext.request.contextPath}/writegongi',
+				method : 'post',
+				success : function(result){
+					
+				} 
+			});
+			return false;
+		});
+		
 		//회원 테이블 
 		$.ajax({
 			url : '${pageContext.request.contextPath}/adminmember',
@@ -54,31 +79,28 @@ th, td {
 		});
 		
 		//공지 테이블
-		$.ajax({
-			url : '${pageContext.request.contextPath}/gonggilist',
-			method : 'post',
-			success : function(result) {
-				$("div#glist").html(result.trim());
-			},
-			error : function(){
-				alert("실패");
-			}
-		});
+	
 		
 		//공지 & 신고 검색 클릭 시 테이블 비동기
-		$("form#boardInfo > button#search").click(function() {
-			alert("검색 눌렀습니다.")
-			var gonggisearch = $("#gonggisearch").val();
-			var search = $("input#search").val();
-			alert(search);
-				$.ajax({
+		$("form#boardInfo > button#Search").click(function() {
+			var gonggiSearch = $("#gonggiSearch").val();
+			var value = $("input#value").val();
+				
+			$.ajax({
 					url : '${pageContext.request.contextPath}/searchgongi',
-					data : 'gongisearch=' + gonggisearch + '&search=' + search,
 					method : 'get',
+					data : 'gonggiSearch=' + gonggiSearch + '&value=' + value,
 					suceess :function(result){
 						$("div#glist").html(result);
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						console.log("jqXHR : " + jqXHR)
+						console.log("textStatus : " + textStatus)
+						console.log("errorThrown : " + errorThrown)
+		
 					}
 				});
+				return false;
 			});
 		
 		//회원 검색 클릭 시 테이블 비동기
@@ -95,20 +117,12 @@ th, td {
 							}
 						});
 					}else{
-				/* $("#keyword")on.("keyup", function(){
-					//정규 표현식으로 영문소문자를 찾고 toUpperCase()함수를 이용 대문자 변환
-					var nKeyword = keyword.replace(/[a-z]/g,function(m){return m.toUpperCase();});
-					$(this).val(nKeyword);
-			});
-			 */
 						$.ajax({
 							url : '${pageContext.request.contextPath}/searchInfo',
 							method : 'get',
 							data : 'searchType=' + searchType + '&keyword=' + keyword,
 							success : function(result) {
-								//alert(result)
 								$("div#mlist").html(result);
-							
 							},
 							error : function(jqXHR, textStatus, errorThrown) {
 								console.log("jqXHR : " + jqXHR)
@@ -119,12 +133,6 @@ th, td {
 						});
 					}
 			return false;
-		});
-		
-		//게시판 목록에서 등록버튼을 클릭했을 때 나오는 화면
-		$("button#insert").click(function() {
-			alert("게시글 등록버튼")
-			location.href = '/TaYo/tayoadmin/gwrite.jsp';
 		});
 	});
 </script>
@@ -143,13 +151,13 @@ th, td {
 		</div>
 		<div class="btn-group">
 			<form id ="boardInfo" class="form-inline my-2 my-lg-0">
-				<select name="gonggisearch" class="form-control mx-1 mt-2">
+				<select id = "gonggiSearch" name = "gonggiSearch" class="form-control mx-1 mt-2">
 					<option value="gboard_seq">공지</option>
 					<option value="singo">신고</option>
-				</select> <input type="text" id="search" name="search" placeholder="번호"
+				</select> <input type="text" id = "value" name = "value" placeholder = "번호"
 					class="form-control mr-sm-2" />
-				<button id="search" class="btn btn-info">검색</button>
-				<button id="insert" class="btn btn-info">등록</button>
+				<button id="Search" class="btn btn-info">검색</button>
+				<button id="btInsert" class="btn btn-info">등록</button>
 			</form>
 		</div>
 	</div>
@@ -182,9 +190,9 @@ th, td {
 					class="form-control mr-sm-2" />
 				<button id="btSearch" class="btn btn-info">검색</button>
 				<ul class="list-group">
-					<li class="list-group-item"><span class="badge">${blackcount}</span>블랙 회원 수</li>
+					<li class="list-group-item"><span class="badge">${blackTotalCnt}</span>블랙 회원 수</li>
 					<li class="list-group-item"><span class="badge"></span> 탈퇴 회원 수</li>
-					<li class="list-group-item"><span class="badge">${joincount}</span>가입 회원 수</li>
+					<li class="list-group-item"><span class="badge">${joinTotalCnt}</span>가입 회원 수</li>
 				</ul>
 			</form>
 	</div>

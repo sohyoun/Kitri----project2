@@ -43,12 +43,13 @@ public class GonggiListController extends HttpServlet {
 		JavaBean javaBean = new JavaBean(cntPage, totalCnt, cntPageGroup, url, currentPage);
 		
 		List<GonggiBoardDTO> glist = gonggiService.selectGonggi(javaBean.getStartRow(), javaBean.getEndRow());
-		
+		GonggiBoardDTO gonggiBoardDTO = new GonggiBoardDTO();
 		javaBean.setGlist(glist);
 		
 		request.setAttribute("glist", javaBean.getGlist());
 		request.setAttribute("javaBean", javaBean);
 		
+		System.out.println("그룹 : " + gonggiBoardDTO.getGboard_group());
 		String path = "/tayoadmin/glistresult.jsp";
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path);

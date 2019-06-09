@@ -68,39 +68,6 @@ public class AdminDAOImpl implements AdminDAO {
 		return adminDTO;
 	}
 
-	public static void main(String[] args) {
-		// 관리자 계정 로그인 SELECT TEST
-		//AdminDAOImpl adminDaoImpl = new AdminDAOImpl();
-		//String admin_email = "email";
-		//System.out.println(adminDaoImpl.selectByEmail(admin_email));
-		
-		//회원목록테이블 SELECT ALL 
-		//AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
-		//System.out.println("memberboard == " +adminDAOImpl.selectAll());
-
-		//회원목록테이블 가입 수 반환하기
-		//AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
-		//int result = adminDAOImpl.joindateTotalCnt();
-		//System.out.println(result);
-		
-		//회원목록 테이블 페이지 개수 반환하기
-		//AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
-		//int count = adminDAOImpl.selectTotalCnt();
-		//System.out.println(count);
-		
-		//회원목록테이블 페이징 개수 구하기 
-//		AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
-//		int startRow = 1;
-//		int endRow = 10;
-//		System.out.println("회원페이지 " + adminDAOImpl.selmember(startRow, endRow));
-		
-//		AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
-//		int startRow = 1;
-//		int endRow = 10;
-//		System.out.println("공지페이지 " + adminDAOImpl.selGonggi(startRow, endRow));
-		
-	}
-	
 	//회원목록 테이블 페이징처리 
 	@Override
 	public List<MemberBoardDTO> selMember(int startRow, int endRow) {
@@ -282,27 +249,23 @@ public class AdminDAOImpl implements AdminDAO {
 			sql.append("SELECT * " +  
 					   "FROM memberboard ");  
 			
-				if(searchType.equals("member_email")) {
-					//System.out.println("이메일 == " + searchType);
+				if(("member_email").equals(searchType)) {
 					sql.append("WHERE " + searchType + " like '%'||?||'%' ");
-				}else if(searchType.equals("member_name")) {
-					//System.out.println("이름 == " + searchType);
+				}else if(("member_name").equals(searchType)) {
 					sql.append("WHERE " + searchType + " like '%'||?||'%' ");
-				}else if(searchType.equals("member_gender")) {
-					//System.out.println("성별 == " + searchType);
+				}else if(("member_gender").equals(searchType)) {
 					sql.append("WHERE " + searchType + " like '%'||?||'%' ");
 				}
 				
 			pstmt = conn.prepareStatement(sql.toString());
 			
-			if(searchType.equals("member_email")) {
+			if(("member_email").equals(searchType)) {
 				pstmt.setString(1, keyword);
-			}else if(searchType.equals("member_name")) {
+			}else if(("member_name").equals(searchType)) {
 				pstmt.setString(1, keyword);
-			}else if(searchType.equals("member_gender")) {
+			}else if(("member_gender").equals(searchType)) {
 				pstmt.setString(1, keyword);
 			}
-			//System.out.println("keyword == " + keyword);
 			
 			rs = pstmt.executeQuery();
 			
@@ -352,7 +315,7 @@ public class AdminDAOImpl implements AdminDAO {
 					pstmt.setString(1, gonggiBoard.getGboard_group());
 					pstmt.setString(2, gonggiBoard.getGboard_subject());
 					pstmt.setString(3, gonggiBoard.getGboard_writer());
-					pstmt.setString(4, gonggiBoard.getGboard_subject());
+					pstmt.setString(4, gonggiBoard.getGboard_contents());
 					
 					pstmt.executeUpdate();
 					
@@ -447,7 +410,8 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
-	public List<GonggiBoardDTO> gongiSearch(String gonggisearch, String search) {
+	public List<GonggiBoardDTO> gongiSearch(String gonggiSearch, String value) {
+		
 		List<GonggiBoardDTO> list = new ArrayList<GonggiBoardDTO>();
 		
 		Connection conn = null;
@@ -461,19 +425,23 @@ public class AdminDAOImpl implements AdminDAO {
 			sql.append("SELECT * " +  
 					   "FROM gonggiboard ");  
 			
-				if(gonggisearch.equals("gboard_seq")) {
-					sql.append("WHERE " + gonggisearch + " like '%'||?||'%' ");
-				}else if(gonggisearch.equals("singo")) {
-					//System.out.println("이름 == " + searchType);
-					sql.append("WHERE " + gonggisearch + " like '%'||?||'%' ");
+				if(("gboard_seq").equals(gonggiSearch)) {
+					sql.append("WHERE " + gonggiSearch + " like '%'||?||'%' ");
 				}
+				
+			/*
+			 * else if(("singo").equals(gonggiSearch)) { sql.append("WHERE " + gonggiSearch
+			 * + " like '%'||?||'%' "); }
+			 */
 			pstmt = conn.prepareStatement(sql.toString());
 			
-			if(gonggisearch.equals("gonggi")) {
-				pstmt.setString(1, search);
-			}else if(gonggisearch.equals("singo")) {
-				pstmt.setString(1, search);
+			if(("gboard_seq").equals(gonggiSearch)) {
+				pstmt.setString(1, value);
 			}
+			
+			/*
+			 * else if(gonggiSearch.equals("singo")) { pstmt.setString(1, value); }
+			 */
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -501,5 +469,37 @@ public class AdminDAOImpl implements AdminDAO {
 	
 	}
 	
+	public static void main(String[] args) {
+		// 관리자 계정 로그인 SELECT TEST
+		//AdminDAOImpl adminDaoImpl = new AdminDAOImpl();
+		//String admin_email = "email";
+		//System.out.println(adminDaoImpl.selectByEmail(admin_email));
+		
+		//회원목록테이블 SELECT ALL 
+		//AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
+		//System.out.println("memberboard == " +adminDAOImpl.selectAll());
+
+		//회원목록테이블 가입 수 반환하기
+		//AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
+		//int result = adminDAOImpl.joindateTotalCnt();
+		//System.out.println(result);
+		
+		//회원목록 테이블 페이지 개수 반환하기
+		//AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
+		//int count = adminDAOImpl.selectTotalCnt();
+		//System.out.println(count);
+		
+		//회원목록테이블 페이징 개수 구하기 
+//		AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
+//		int startRow = 1;
+//		int endRow = 10;
+//		System.out.println("회원페이지 " + adminDAOImpl.selmember(startRow, endRow));
+		
+//		AdminDAOImpl adminDAOImpl = new AdminDAOImpl();
+//		int startRow = 1;
+//		int endRow = 10;
+//		System.out.println("공지페이지 " + adminDAOImpl.selGonggi(startRow, endRow));
+		
+	}
 	
 }

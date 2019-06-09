@@ -26,8 +26,8 @@ public class GonggiService {
 		return AdminDAOImpl.getAdminDAO().gonggiTotalCnt();
 	}
 
-	public List<GonggiBoardDTO> getGonggiSearch(String gonggisearch, String search) {
-		return AdminDAOImpl.getAdminDAO().gongiSearch(gonggisearch, search);
+	public List<GonggiBoardDTO> getGonggiSearch(String gonggiSearch, String value) {
+		return AdminDAOImpl.getAdminDAO().gongiSearch(gonggiSearch, value);
 	}
 	
 	

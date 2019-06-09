@@ -24,6 +24,6 @@ public interface AdminDAO {
 	
 	int memberTotalCnt();
 
-	List<GonggiBoardDTO> gongiSearch(String gonggisearch , String search);
+	List<GonggiBoardDTO> gongiSearch(String gonggisearch , String value);
 
 }

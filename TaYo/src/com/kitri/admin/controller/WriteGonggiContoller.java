@@ -24,29 +24,28 @@ public class WriteGonggiContoller extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		System.out.println("공지 글쓰기 서블릿 ");
+		request.setCharacterEncoding("UTF-8");
 		
-		String subject = request.getParameter("subject");
-		String object = request.getParameter("group");
-		String writer = request.getParameter("writer");
-		String contents = request.getParameter("contents");
+		String gboard_object = request.getParameter("gboard_group");
+		String gboard_subject = request.getParameter("gboard_subject");
+		String gboard_writer = request.getParameter("gboard_writer");
+		String gboard_contents = request.getParameter("gboard_contents");
 		
 		GonggiBoardDTO gonggiBoard = new GonggiBoardDTO();
 		
-		gonggiBoard.setGboard_subject(subject);
-		gonggiBoard.setGboard_group(object);
-		gonggiBoard.setGboard_writer(writer);
-		gonggiBoard.setGboard_contents(contents);
+		gonggiBoard.setGboard_subject(gboard_subject);
+		gonggiBoard.setGboard_group(gboard_object);
+		gonggiBoard.setGboard_writer(gboard_writer);
+		gonggiBoard.setGboard_contents(gboard_contents);
 		
-		GonggiBoardDTO goBoard = gonggiService.writer(gonggiBoard);
+		GonggiBoardDTO writegb = gonggiService.writer(gonggiBoard);
 
 		//System.out.println("공지사항 글쓰기 목록 == " + goBoard);
 		
-		request.setAttribute("goboard", goBoard);
+		request.setAttribute("writegb", writegb);
 		
 		String path = "/tayoadmin/writergonggiresult.jsp";
-		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
 	

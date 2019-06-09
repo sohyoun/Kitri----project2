@@ -26,7 +26,6 @@ $(function(){
 
 </script>
 	
-	
 <div class="row">
 	<!-- 유저 테이블 시작 -->
 	<div class="col-lg-1"></div>
