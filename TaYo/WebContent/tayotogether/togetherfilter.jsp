@@ -18,10 +18,10 @@
 				var xmlData = $(xml).find("item");//아이템 배열
 				for(var i =0; i < xmlData.length; i++){
 					if(i<5){ //항상보일 아이템  /* .h-100.pt-4 > table > tbody > tr:nth-child(2) > */
-						$('div.container > td.filter_body.si > div.allways_show').append(
+						$('div.allways_show').append(
 								'<button class="btn btn-light"><div data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</span></button>');
 					}else{ //토글에 넣을 아이템			/* .h-100.pt-4 > table > tbody > tr:nth-child(2) >  */			
-						$('div.container > td.filter_body.si > div.city_toggle.collapse').append(
+						$('div.city_toggle.collapse').append(
 								'<button class="btn btn-light"><div data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</span></button>');
 					}
 					cityMap[''+$(xmlData[i]).find("code").text()] = $(xmlData[i]).find("name").text();
@@ -51,14 +51,6 @@
 			addFilterBtn(this);//필터 버튼  추가
 		});
 		
-		//목차 버튼 추가
-		$(document).on("click", "div.mokcha > a", function() {
-			var mokcha = $(this).attr("href");
-			console.log(mokcha);
-			//필터 안의 값들 출력
-			outFilter(mokcha);
-			return false;
-		});
 		
 		//필터 버튼 추가
 		function addFilterBtn(item){	//부모 tr 안보이게
@@ -80,6 +72,15 @@
 			//필터 안의 값들 출력
 			outFilter();
 		}//end setFilterBtnEvent
+		
+		//목차 버튼 추가
+		$(document).on("click", "div.mokcha > a", function() {
+			var mokcha = $(this).attr("href");
+			console.log(mokcha);
+			//필터 안의 값들 출력
+			outFilter(mokcha);
+			return false;
+		});
 		
 		function outFilter(mokcha){
 			if(mokcha == undefined){
@@ -133,11 +134,6 @@
 
 <div class="container h-100 pt-4">
 	<!-- 필터 -->
-	<div class="row pb-3">
-		<div class="col-sm-2 text-nowrap heading">
-			<h3>여행자들의 일정보기</h3>
-		</div>
-	</div>
 	<table class="table table-bordered ">
 		<tr> <!-- style="display: none" -->
 			<td class="filter_title">필터</td>

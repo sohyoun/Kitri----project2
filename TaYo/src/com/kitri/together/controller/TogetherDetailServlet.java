@@ -39,9 +39,11 @@ public class TogetherDetailServlet extends HttpServlet {
 		String email = request.getParameter("email");						//gogo@naver.com
 		int viewCount = Integer.parseInt(request.getParameter("viewCount"));
 		String likeCount = request.getParameter("likeCount");	
-		service.updateViewCount(tripSeq, viewCount);
 		
-		System.out.println("tripSeq : " + tripSeq);
+		service.updateViewCount(tripSeq, viewCount);//viewCount 올리기
+		
+		//현재 user의 email, tripSeq 갖고 좋아하는 여행table에 해당 tripSeq 있나 확인
+
 		//여행 기간 구하기-----------------------------------
 //		String strTime = "2017-11-13 21:40:15"; 
 //		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
@@ -52,16 +54,7 @@ public class TogetherDetailServlet extends HttpServlet {
 			Date startD = transFormat.parse(startDate);
 			Date endD = transFormat.parse(endDate);
 			long day = endD.getTime()-startD.getTime();
-			System.out.println("startD :  "+startD);
-			System.out.println("endD : "+endD);
-			System.out.println("여행기간 : " + (day/1000/60/60/24+1));
-			dd = (int)day/1000/60/60/24+1;
-			
-//			Calendar cal = Calendar.getInstance();
-//	        cal.setTime(startD);
-//	        cal.add(Calendar.DATE, 1);      //하루 더하기
-//	        System.out.println(transFormat.format(cal.getTime()));
-
+			dd = (int)day/1000/60/60/24+1;	//여행기간
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -78,6 +71,7 @@ public class TogetherDetailServlet extends HttpServlet {
 		request.setAttribute("email", email);
 		request.setAttribute("dd", dd);
 		request.setAttribute("likeCount", likeCount);
+		
 		String path = "/tayotogether/ttPlan.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
