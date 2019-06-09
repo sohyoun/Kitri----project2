@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Bubbly - Boootstrap 4 Admin template by Bootstrapious.com</title>
-<%-- <%@ include file="/template/default_link.jsp" %> --%>
+<%@ include file="/template/default_link.jsp" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <script src="/plzdaengs/board/js/httpRequest.js"></script>
 <script src="/plzdaengs/board/js/bootstrap-datepicker.js"></script>
@@ -52,6 +52,7 @@ $(document).ready(function() {//
 	
 	
 });
+
 function getRecentDate(){
     var dt = new Date();
  
@@ -64,6 +65,7 @@ function getRecentDate(){
  
     return recentYear + "-" + recentMonth + "-" + recentDay;
 }
+
 function sidoResult(){
 	if(httpRequest.readyState == 4){
 		if(httpRequest.status == 200){
@@ -80,6 +82,8 @@ function sidoResult(){
 		}
 	}
 }
+
+
 function sidochage(){
 	if(httpRequest.readyState == 4){
 		if(httpRequest.status == 200){
@@ -98,6 +102,7 @@ function sidochage(){
 		}
 	}
 }
+
 function sigunguchage(){
 	if(httpRequest.readyState == 4){
 		if(httpRequest.status == 200){
@@ -115,6 +120,7 @@ function sigunguchage(){
 		}
 	}
 }
+
 function kinduchage(){
 	if(httpRequest.readyState == 4){
 		if(httpRequest.status == 200){
@@ -131,6 +137,7 @@ function kinduchage(){
 		}
 	}
 }
+
 function serchResult(){
 	if(httpRequest.readyState == 4){
 		if(httpRequest.status == 200){
@@ -177,7 +184,9 @@ function serchResult(){
 		}
 	}
 }
-function goDetail(idx){
+
+
+/* function goDetail(idx){
 	$('#desertionNo').val(eleTmep[idx].getElementsByTagName("desertionNo")[0].firstChild.data);
 	$('#popfile').val(eleTmep[idx].getElementsByTagName("popfile")[0].firstChild.data);
 	$('#happenDt').val(eleTmep[idx].getElementsByTagName("happenDt")[0].firstChild.data);
@@ -201,7 +210,8 @@ function goDetail(idx){
 	
 	document.getElementById("tmp").action = "/plzdaengs/yugidetail";
 	document.getElementById("tmp").submit();
-}
+} */
+
 function searchPage(pageNo, totalCount){
 	var page_scale = 10;
 	var block_scale = 10;
@@ -255,6 +265,7 @@ function searchPage(pageNo, totalCount){
 	
 	
 }
+
 function searchList(pageNo){
 	if(pageNo == "") pageNo = 1;
 	var params = "cmd=abandonmentPublic&bgnde="+$("#bgnde").val().replace(/-/g,"");
@@ -270,6 +281,7 @@ function searchList(pageNo){
 	sendRequest("/plzdaengs/yugi",params,serchResult,"GET");
 	
 }
+
 $(function(){
 	$('#sido').change(function(){
 		var params = "cmd=sigungu&upr_cd="+this.value;
@@ -290,6 +302,7 @@ $(function(){
 		searchList('');
 	});
 });
+
 </script>
 <body>
 	<!-- navbar-->
@@ -562,9 +575,9 @@ $(function(){
 				</section>
 				<!-- 게시판 뷰 끝 -->
 			</div>
-			
+			<%@ include file="/template/footer.jsp" %>
 		</div>
 	</div>
-	
+	<%@ include file="/template/default_js_link.jsp" %>
 </body>
 </html>

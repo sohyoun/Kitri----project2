@@ -57,7 +57,8 @@ public class TourResionCodeService {
 		return null;
 	}
 
-	public String getResionCodeGungu() throws IOException {
+	
+	public String getResionCodeGungu(String areaCode) throws IOException {
 		// 군구
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode"); /* URL */
@@ -71,7 +72,7 @@ public class TourResionCodeService {
 		urlBuilder.append("&" + URLEncoder.encode("MobileApp", "UTF-8") + "="
 				+ URLEncoder.encode("AppTest", "UTF-8")); /* 서비스명=어플명 */
 		urlBuilder.append(
-				"&" + URLEncoder.encode("areaCode", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /* 지역코드, 시군구코드 */ // 서울
+				"&" + URLEncoder.encode("areaCode", "UTF-8") + "=" + URLEncoder.encode(areaCode, "UTF-8")); /* 지역코드, 시군구코드 */ // 서울
 		URL url = new URL(urlBuilder.toString());
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");

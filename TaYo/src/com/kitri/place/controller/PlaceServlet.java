@@ -32,10 +32,7 @@ public class PlaceServlet extends HttpServlet {
 		if ("searchTour".equals(act)) {
 			String location = request.getParameter("location");
 			String place = request.getParameter("place");			
-			/*
-			 * String addr1 = request.getParameter("addr1"); String addr2 =
-			 * request.getParameter("addr2");
-			 */
+
 		
 			String result = service.getKeywordSearch(location, place);
 			request.setAttribute("result", result);

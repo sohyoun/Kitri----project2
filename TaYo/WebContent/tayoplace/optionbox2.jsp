@@ -82,37 +82,9 @@
 				/* jquery*/
 				var xmlData = $(xml).find("item");//아이템 배열
 				
-				
-
-				var result = httpRequest.responseXML;
-				var item = result.getElementsByTagName("item");
-				
-				for(var i = 0; i < item.length; i++) {
-					var option = $("<option value='"+item[i].getElementsByTagName("orgCd")[0].firstChild.data+"'>"+item[i].getElementsByTagName("orgdownNm")[0].firstChild.data+"</option>");
-	                $('#sido').append(option);
-				}	
-				/* 
-				
 				for(var i =0;i<xmlData.length; i++){
-					$('#searchForm > fieldset > div > table > tbody > tr > td').append(
-							'<select name="arrange" id="arran" title="정렬방법"><option value="" selected="">지역선택</option><option data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</option></select>');
-					 */
-					
-					/* $('#searchForm > fieldset > div > table > tbody > tr > td').append(
-							'<button class="btn btn-light"><div data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</span></button>'); */
-					
-			/* 		<select name="arrange" id="arran" title="정렬방법">
-					<option value="" selected="">지역선택</option>
-					<option value="1">서울</option>
-			</select> */
-					
-/* 					$('#destinations > div > div.container.h-100.pt-3 > table > tbody > tr:nth-child(1) > td.filter_body.si > div.allways_show').append(
-							'<button class="btn btn-light"><div data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</span></button>'); */
-							
-							
-					/* #searchForm > fieldset > div > table > tbody > tr > td */
-					//#destinations > div > div.container.h-100.pt-3 > table > tbody > tr > td.filter_body.si > div.allways_show
-					
+					$('#searchForm > fieldset > div > table > tbody > tr > td >  #arran').append(
+							'<option data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</option>');
 				}
 			},//end success
 			error : function(err) {
@@ -120,19 +92,12 @@
 			}//end error
 		});//end ajax 도시버튼 추가
 		
-		
-		
-		
+		/* #arran > option:nth-child(2) */
 		//도시버튼 클릭 이벤트 추가(동적)// > div.allways_show >
-		$(document).on("click", "#destinations > div > div.container.h-100.pt-3 > table > tbody > tr > td.filter_body.si  button",function() {
+//		$(document).on("click", "#destinations > div > div.container.h-100.pt-3 > table > tbody > tr > td.filter_body.si  button",function() {
+		$(document).on("click", "#searchForm > fieldset > div > table > tbody > tr > td > #arran > option:nth-child(2)",function() {
 			console.log(this);
-
-			
-			/*#destinations > div > div.container.h-100.pt-3 > table > tbody > tr > td.filter_body.si > div.allways_show > button:nth-child(1)
-			#destinations > div > div.container.h-100.pt-3 > table > tbody > tr > td.filter_body.si > div.allways_show
-			#destinations > div > div.container.h-100.pt-3 > table > tbody > tr > td.filter_body.si
-			#destinations > div > div.container.h-100.pt-3 > table > tbody > tr > td.filter_title */
-			
+			/* #arran > option:nth-child(2) */
 			var div= $(this).children();
 			var data_type = $(div).attr("data-type");
 			var data = $(div).attr("data");
@@ -178,12 +143,7 @@
 								html += "</div>"
 									html += "</div></td></tr>";	
 									
-									
-				/* 				
-					$("div.card>div.card-body>h5.card-title").html(title);
-					$("div.card>div.card-body>p.card-text").html(addr1); */
-						
-						
+							
 				
 					}
 				});
@@ -220,10 +180,9 @@
 					<tr>
 <!-- 					#searchForm > fieldset > div > table > tbody > tr > td -->
 						<th class="wHacki8" scope="row">지역</th>
-						<td> <!-- <select name="arrange" id="arran" title="정렬방법">
-								<option value="" selected>지역선택</option>
-								<option value="1">서울</option>
-						</select> --></td>
+						<td> <select name="arrange" id="arran" title="정렬방법">
+								<option value="">지역선택</option>
+						</select></td>
 					</tr>
 				</tbody>
 			</table>
