@@ -461,7 +461,7 @@ public class AdminDAOImpl implements AdminDAO {
 			sql.append("SELECT * " +  
 					   "FROM gonggiboard ");  
 			
-				if(gonggisearch.equals("gonggi")) {
+				if(gonggisearch.equals("gboard_seq")) {
 					sql.append("WHERE " + gonggisearch + " like '%'||?||'%' ");
 				}else if(gonggisearch.equals("singo")) {
 					//System.out.println("이름 == " + searchType);

@@ -144,9 +144,9 @@ th, td {
 		<div class="btn-group">
 			<form id ="boardInfo" class="form-inline my-2 my-lg-0">
 				<select name="gonggisearch" class="form-control mx-1 mt-2">
-					<option value="gonggi">공지</option>
+					<option value="gboard_seq">공지</option>
 					<option value="singo">신고</option>
-				</select> <input type="text" id="search" name="search" placeholder="search"
+				</select> <input type="text" id="search" name="search" placeholder="번호"
 					class="form-control mr-sm-2" />
 				<button id="search" class="btn btn-info">검색</button>
 				<button id="insert" class="btn btn-info">등록</button>
