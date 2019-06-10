@@ -121,8 +121,28 @@ $(function(){
 		return false;
 	});
 	
+	var pathBtn = $("button[class='btn btn btn-light']");
+	var pathBtnlen = $(pathBtn).length;
+	for(var i = 0; i < (pathBtnlen - 1); i++) {
+		var prev = $(pathBtn[i]).parent().parent().prev("div[class='daydetail']").find("span[class='circle']").attr("day");
+		var next = $(pathBtn[i + 1]).parent().parent().next("div[class='daydetail']").find("span[class='circle']").attr("day");
+		
+		if (prev != next) {
+			$(pathBtn[i + 1]).css("visibility", "hidden");
+			i++;
+		}
+	}
+	
 	// show path (do not using modal window)
 	$("button[class='btn btn btn-light']").click(function() {
+		var prev_place = $(this).parent().parent().prev("div[class='daydetail']").find("div[class='daydetailcontent']");
+		var next_place = $(this).parent().parent().next("div[class='daydetail']").find("div[class='daydetailcontent']");
+
+		var prev_place_posx = $(prev_place).attr("posx");
+		var prev_place_posy = $(prev_place).attr("posy");
+		var next_place_posx = $(next_place).attr("posx");
+		var next_place_posy = $(next_place).attr("posy");
+		
 // 		$("#pathModal").modal();
 
 // 		$("#pathModal").on('shown.bs.modal', function() {
@@ -196,7 +216,7 @@ $(function(){
 							<div class="daydetail">
 								<div class="daydetailnum"><span class="circle" day="${places.trip_day}">${index}</span></div>
 								<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
-								<div class="daydetailcontent">${places.place_name}<br><button class="btn btn-sm btn-link" name="pdinfo">제목&내용 수정</button></div>
+								<div class="daydetailcontent" posx="${places.posX}" posy="${places.posY}">${places.place_name}<br><button class="btn btn-sm btn-link" name="pdinfo">제목&내용 수정</button></div>
 								<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
 								<div class="daydetailtitle" name="title"><strong>${places.detail_title}</strong></div>
 								<div class="daydetailsub" name="detailsub" style="height: 4.5rem; overflow-y: auto; white-space: pre-line; word-wrap: break-word">${places.detail_content}</div>
