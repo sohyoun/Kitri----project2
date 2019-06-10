@@ -33,9 +33,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				success : function(result){
 					//console.log(result)
 					//alert(result)
-					if(result =='1'){
+					if(result =='1'){//회원가입성공
 						location.href = "${pageContext.request.contextPath}/index.jsp";						
-					}else if(result =='2'){
+					}else if(result =='2'){//관리자 페이지로
 	 					location.href = "${pageContext.request.contextPath}/tayoadmin/index.jsp";						
 					}else{
 						alert('로그인 실패');
@@ -61,8 +61,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			});
 			return false;
 		});
+		
+		
 		//회원가입 버튼
 		$(function(){
+			$('username')
 			$('#header_register_btn').click(function() {
 				console.log('header_register_btn');
 				$.ajax({

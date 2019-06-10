@@ -6,8 +6,6 @@ import java.sql.SQLException;
 
 
 public class DBConnection {
-
-
 	static {
 		try {
 			Class.forName(com.TEST_DB.SiteContance.DB_DRIVER);

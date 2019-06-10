@@ -29,35 +29,37 @@
 	<div class="row">
 	
 		
-		<c:forEach var="tripBasicDto" items="${requestScope.pagebean.list}" varStatus="status">
-			<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5">
-				<div class="image-tour position-relative" >
-					<img src="/TaYo/images/p4.jpg" alt="" class="img-fluid">
-					<p>
-						<span>${tripBasicDto.likeCount} <span class="fa fa-thumbs-up"> | ${tripBasicDto.viewCount} <span class="fa fa-eye"></span>
-					</span></span></p>
+		<c:forEach var="tripBasicDto" items="${bean.list}" varStatus="status" begin="${bean.startRow-1}" end="${ bean.endRow-1}">
+			<c:if test="${tripBasicDto !=null}">
+				<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5">
+					<div class="image-tour position-relative" >
+						<img src="/TaYo/images/p4.jpg" alt="" class="img-fluid">
+						<p>
+							<span>${tripBasicDto.likeCount} <span class="fa fa-thumbs-up"> | ${tripBasicDto.viewCount} <span class="fa fa-eye"></span>
+						</span></span></p>
+					</div>
+					<div class="package-info">
+						<h6 class="mt-1">						
+				 			<c:forEach var="loc_id" items="${tripBasicDto.loc_set}" >
+				 				<c:forEach var="cityMap" items="${requestScope.cityMap}" varStatus="num">
+									<c:if test="${cityMap.key == loc_id}">
+										${cityMap.value} 
+									</c:if>
+							 	</c:forEach> 	 
+				 			 </c:forEach>
+						</h6>
+						<h5 class="my-2">${tripBasicDto.tripTitle}</h5>
+						<p class="">${tripBasicDto.tripTheme}</p>
+						<ul class="listing mt-3">
+							<li><span class="fa fa-clock-o mr-2"></span><span>${tripBasicDto.startDate} ~ ${tripBasicDto.endDate}</span></li>
+						</ul>
+						<h6 class="mt-1">
+							<span class="fa fa-user-circle"> ${tripBasicDto.email}
+						</span></h6>
+					</div>
 				</div>
-				<div class="package-info">
-					<h6 class="mt-1">						
-			 			<c:forEach var="loc_id" items="${tripBasicDto.loc_set}" >
-			 				<c:forEach var="cityMap" items="${requestScope.cityMap}" varStatus="num">
-								<c:if test="${cityMap.key==loc_id}">
-									${cityMap.value} 
-								</c:if>
-						 	</c:forEach> 	 
-			 			 </c:forEach>
-					</h6>
-					<h5 class="my-2">${tripBasicDto.tripTitle}</h5>
-					<p class="">${tripBasicDto.tripTheme}</p>
-					<ul class="listing mt-3">
-						<li><span class="fa fa-clock-o mr-2"></span><span>${tripBasicDto.startDate} ~ ${tripBasicDto.endDate}</span></li>
-					</ul>
-					<h6 class="mt-1">
-						<span class="fa fa-user-circle"> ${tripBasicDto.email}
-					</span></h6>
-				</div>
-			</div>
-			</c:forEach><!-- end foreach-->
+			</c:if>
+		</c:forEach><!-- end foreach-->
 <%-- 		</c:forEach>  --%>
 	</div>
 </div>
