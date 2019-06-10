@@ -185,6 +185,7 @@
 				<button class="btn btn-light"><span  data-type="theme" data-value="나홀로">나홀로</span></button>
 				<button class="btn btn-light"><span  data-type="theme" data-value="친구">친구</span></button>
 				<button class="btn btn-light"><span  data-type="theme" data-value="커플">커플</span></button>
+				<button class="btn btn-light"><span  data-type="theme" data-value="가족">가족</span></button>
 				<button class="btn btn-light"><span  data-type="theme" data-value="함께타요">함께타요</span></button>
 			</td>
 		</tr>

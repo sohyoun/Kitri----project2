@@ -2,6 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
+<c:set var="bean" value="${requestScope.pagebean }"/>
 
 <c:forEach var="cityMap" items="${requestScope.cityMap}" varStatus="num">
 	<c:if test="${cityMap.key} eq ${loc_id}">
@@ -78,7 +79,7 @@
 </div>
 
 
-currentPage : ${requestScope.bean.currentPage}	
+currentPage : ${requestScope.pagebean.currentPage}	
 startRow :${requestScope.pagebean.startRow}
 endRow :${requestScope.pagebean.endRow}
 totalPage :${requestScope.pagebean.totalPage}

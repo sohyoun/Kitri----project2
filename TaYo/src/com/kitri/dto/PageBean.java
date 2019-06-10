@@ -142,4 +142,8 @@ public class PageBean<T> {
 				+ startPage + ", endPage=" + endPage + ", currentPage=" + currentPage + ", url=" + url + ",\n list="
 				+ list + "]";
 	}
+	public static void main(String[] args) {
+		PageBean<String> pagebean = new PageBean<String>(2, 1, 4, 1, "");
+		
+	}
 }

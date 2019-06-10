@@ -56,7 +56,7 @@ public class RecomandServlet extends HttpServlet {
 			String season = (String) jsonObj.get("season");
 			String theme = (String) jsonObj.get("theme");
 			String city = (String) jsonObj.get("city");
-			System.out.println("city: "+ city);
+//			System.out.println("city: "+ city);
 			String s_length = (String) jsonObj.get("start_day");
 			String e_length = (String) jsonObj.get("end_day");
 
@@ -70,7 +70,7 @@ public class RecomandServlet extends HttpServlet {
 			}
 			//지역코드 맵
 			Map<String, Object> cityMap = (Map<String, Object>) jsonObj.get("cityMap");
-			System.out.println("RecomandServlet" + cityMap.toString());
+//			System.out.println("RecomandServlet" + cityMap.toString());
 			int loc_id=-1;
 			for(String key: cityMap.keySet()) {
 //				System.out.println("key: " + key);
@@ -81,13 +81,10 @@ public class RecomandServlet extends HttpServlet {
 			}
 //			cityMap.get(city);
 			
-			System.out.println("RecomandServlet "+ season +" "+ theme+" "+city+" "+start_length+" "+end_length);
+			System.out.println("RecomandServlet 필터내용: 계절:"+ season +"\t테마:"+ theme+"\t도시: "+city+"\t시작길이: "+start_length+"\t끝길이"+end_length);
 			List<TripBasicDTO> basicList = TripBasicDao.getInstance().select(season, theme, loc_id, start_length, end_length);
-
-			System.out.println("RecomandServlet basiclistSize():"+basicList.size());		
-			
-			
-
+			System.out.println("RecomandServlet 필터결과: basiclistSize():"+basicList.size());		
+	
 
 			int cntPerPage = 2; // 한페이지당 표현할 아이템 개수
 			int totalCnt = basicList.size();// 총 목록 개수
@@ -95,41 +92,33 @@ public class RecomandServlet extends HttpServlet {
 			int currentPage = 1;
 			String curpage = (String) jsonObj.get("current_page");
 			if (curpage != null) {
-				System.out.println("curpage" + curpage);
 				currentPage = Integer.parseInt(curpage);
 			}
 			System.out.println("RecomandServlet currentPage:" + currentPage);
 			
 			String url = "/tayorecomand/recomand_filter_result.jsp";
+			//페이지빈 생성
 			pagebean = new PageBean<TripBasicDTO>(cntPerPage, totalCnt, cntPerPageGroup, currentPage, url);
-			basicList = TripBasicDao.getInstance().select(season, theme,loc_id, start_length, end_length,
-					pagebean.getStartRow(), pagebean.getEndRow());
+			//페이지빈 필터결과
+//			basicList = TripBasicDao.getInstance().select(season, theme,loc_id, start_length, end_length,
+//					pagebean.getStartRow(), pagebean.getEndRow());
 			
-			System.out.println("--------------------------------");
-			System.out.println(basicList.toString());
+			//상세지역코드들 집합으로 구현
+			StringBuffer sb = new StringBuffer();
 			for (int i = 0; i < basicList.size(); i++) {
 				Set<Integer> locSet=new TreeSet<Integer>();
 				List<TripDetailDTO> detailList = basicList.get(i).getDetailList();
 				for (int j = 0; j < detailList.size(); j++) {
 					locSet.add(detailList.get(j).getLoc_id());
-					System.out.println("발견 지역 코드: " +detailList.get(j).getLoc_id());
-					if(detailList.get(j).getLoc_id()==1) {
-						System.out.println("!!!!!!! 1 발견");
-					}
 				}
 				basicList.get(i).setLoc_set(locSet);
-				System.out.println("locSet:"+locSet.toString());
-				Iterator<Integer> itor= locSet.iterator();
-				while(itor.hasNext()) {
-					System.out.println("next: "+itor.next());
-				}
-				
+				System.out.println(Arrays.toString(locSet.toArray()));
 			}
-			
-			
 			pagebean.setList(basicList);
-//			System.out.println(basicList.size());
 
+			System.out.println("--------------------------------");
+			System.out.println("RecomandServlet 페이지빈: basiclistSize():"+basicList.size());
+			System.out.println(pagebean.toString());			
 			request.setAttribute("cityMap", cityMap);
 			request.setAttribute("pagebean", pagebean);
 //			request.setAttribute("jsonStr", jsonStr);

@@ -17,11 +17,9 @@ delete from member;
  commit;
  
  
-insert all
-    into trip_Basic (trip_seq, email, trip_title, trip_theme, trip_season, trip_num, start_date, end_date, viewCount, likeCount, lastupdate, isComplete) 
+insert into trip_Basic (trip_seq, email, trip_title, trip_theme, trip_season, trip_num, start_date, end_date, viewCount, likeCount, lastupdate, isComplete) 
     values (sq_tripbasic_tripseq.nextval, 'email1@day_length', 'title', '함께타요', '여름', 3, sysdate+1, sysdate+5, 0, 0, sysdate, 'N')
-select * from dual;
- commit;
+commit;
  
 insert all
     into trip_detail (trip_seq, place_name, loc_id , trip_order, trip_day, image, detail_title, detail_content, posx, posy)
