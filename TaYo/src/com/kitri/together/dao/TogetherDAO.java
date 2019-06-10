@@ -11,6 +11,7 @@ import java.util.List;
 import com.kitri.dto.TTLeaderDTO;
 import com.kitri.dto.TripDetailDTO;
 import com.kitri.util.DBClose;
+import com.kitri.util.DBConnection;
 
 public class TogetherDAO {
 	//함께타요 마감임박순 select
@@ -21,9 +22,8 @@ public class TogetherDAO {
 		ResultSet rs = null;
 		
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "project2", "project2");
+			con = DBConnection.makeConnection();
 			
 			String selectPlanSQL = "select tt.trip_seq, tt.now_num, tb.trip_num, tb.email, tb.trip_title, tb.start_date, tb.end_date, tb.viewCount, tb.likeCount " + 
 					"from tt_leader tt, trip_basic tb " + 
@@ -49,9 +49,6 @@ public class TogetherDAO {
 				
 				list.add(ttLeaderDTO);
 			}
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,9 +67,7 @@ public class TogetherDAO {
 		ResultSet rs = null; 
 		
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "project2", "project2");
+			con = DBConnection.makeConnection();
 			
 			String selectbestSQL = "select rownum, t.* " + 
 					"from(select tt.trip_seq, tt.now_num, tb.trip_num, tb.email, tb.trip_title, tb.start_date, tb.end_date, tb.viewCount, tb.likeCount " + 
@@ -101,9 +96,6 @@ public class TogetherDAO {
 				
 				list.add(ttLeaderDTO);
 			}
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -122,9 +114,7 @@ public class TogetherDAO {
 		ResultSet rs = null; 
 		
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "project2", "project2");
+			con = DBConnection.makeConnection();
 			
 			String selectPlanDetailSQL = "select * " + 
 					"from trip_detail " + 
@@ -149,9 +139,6 @@ public class TogetherDAO {
 				
 				list.add(tripDetailDTO);
 			}
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -167,9 +154,7 @@ public class TogetherDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "project2", "project2");
+			con = DBConnection.makeConnection();
 			
 			String updateViewCountSQL = "update trip_basic " + 
 					"set viewcount = ? " + 
@@ -180,9 +165,6 @@ public class TogetherDAO {
 			pstmt.setInt(2, tripSeq);
 			
 			pstmt.executeUpdate();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -198,9 +180,7 @@ public class TogetherDAO {
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			try {
-				Class.forName("oracle.jdbc.driver.OracleDriver");
-				
-				con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "project2", "project2");
+				con = DBConnection.makeConnection();
 				
 				String updateViewCountSQL = "update trip_basic " + 
 						"set likeCount = ? " + 
@@ -211,9 +191,6 @@ public class TogetherDAO {
 				pstmt.setInt(2, tripSeq);
 				
 				pstmt.executeUpdate();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

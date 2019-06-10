@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix ="x" uri ="http://java.sun.com/jsp/jstl/xml"%>
 <c:set var="list" value="${requestScope.list}"/>
 <c:set var="tripSeq" value="${requestScope.tripSeq}"/>
 <c:set var="dd" value="${requestScope.dd}"/>
 <c:set var="daylist" value="${requestScope.daylist}"/>
-
+<c:set var="areaCodes" value="${sessionScope.areaCodes}"/>
+<x:parse var="area" xml="${areaCodes}"/>
 
 <style>
 	.list-group-item {
@@ -102,12 +104,18 @@ $(function(){
       				<div class="daytitlecontent">
       					<div class="daydate">${daylist.get(i-1)}</div>
       					<div class="daycplace">
-      						<c:forEach var="td" items="${list}">
-      							<c:if test="${td.trip_day == i}">
-      								${td.loc_id},
-      							</c:if>
-      						</c:forEach>
-      						서울,전주
+      						<c:set var="flag" value="false"/>
+      						<x:forEach var="areaCode" select="$area/response/body/items/item">
+								<c:if test="${not flag}">
+									<x:set var="codeValue" select="$areaCode/code"/>
+									<x:set var="locName" select="$areaCode/name"/>
+									<c:set var="loc" value="${td.loc_id}"/>
+									<x:if select="$codeValue = $loc">
+										<div class="daycplace"><x:out select="$locName"/></div>
+										<c:set var="flag" value="true"/>
+									</x:if>
+								</c:if>
+							</x:forEach>
       					</div>
       				</div>
       			</div>
