@@ -84,9 +84,7 @@ $(function() {
 			var xmlData = $(xml).find("item");//아이템 배열
 
 			for (var i = 0; i < xmlData.length; i++) {
-				var option = $('<option data-type="city" data="'
-						+ $(xmlData[i]).find("code").text() + '">'
-						+ $(xmlData[i]).find("name").text() + '</option>');
+				var option = $('<option data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">'+ $(xmlData[i]).find("name").text() + '</option>');
 				$('#sido').append(option);
 
 				/* $('#searchForm > fieldset > div > table > tbody > tr > td >  #sido').append(
@@ -97,38 +95,75 @@ $(function() {
 			console.log(err);
 		}//end error
 	});//end ajax 도시버튼 추가
-
 	
-	$.ajax({
-		url : "${pageContext.request.contextPath}/tourresioncode",
+	//도시버튼 클릭 이벤트 추가(동적)// > div.allways_show >
+	$(document).on("select", "#searchForm > fieldset > div > table > tbody > tr > td > #sido > option:nth-child(2) ",function() {
+		console.log(this);
+		var div= $(this).children();
+		var data_type = $(div).attr("data-type");
+		var data = $(div).attr("data");
+		$.ajax({
+		url : "${pageContext.request.contextPath}/tourresion",
 		type : 'get',
+		data:{
+			city:data
+		},
 		success : function(xml) {
-			/* 콘솔확이용 xml 파싱*/
-			xmlParser = new DOMParser(); // DOMParser console 확인용 객체 생성.
-			xmlDoc = xmlParser.parseFromString(xml, "text/xml");
-			console.log('-xml 파시용 데이터-');
-			console.log(xml);
+		
+			parser = new DOMParser();
+			xmlDoc = parser.parseFromString(xml.trim(), "text/xml");
+			
+			var html;
+			var prevTitle = "";
+			
+			$("#tablebody").empty();
+			
+		
+			$(xml).find("item").each(function() {
+				var title = $(this).find("title").text();
+				var addr1 = $(this).find("addr1").text();
+				var addr2 = $(this).find("addr2").text();
+				var readcount = $(this).find("readcount").text();
+			
+				if (prevTitle != title) {
+					prevTitle = title;
+					var image = $(this).find("firstimage2").text();
+					
+					
+					/* html += "<tr><td width='100'><img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='80' height='40'/></td><td><ul class='placeclass'><li class='list-group-item' style='padding: 0.3rem;' value='" + title + "'>" + title + addr2 + readcount+ "<button class='btn btn-primary' name='placebtn'>+</button></li></ul></td></tr>"; */
+				 	
+				 html += "<tr><td><div class='card' style='width: 70rem; display: flex;'> "
+					if(image!=''){
+					html += "<img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png' style='width: 400px;height: 200px;'>"
+					}
+					html += "<div class='card-body' style='display: inline;'>"
+					html += "	<h5 class='card-title'>" + title + "</h5>"
+					html += "	<p class='card-text'>"+ addr2 +"</p>"
+						html += "	<p class='card-text'>" + readcount +"</p>"
+							html += "	<a href=''#' class='btn btn-primary'>상세보기</a>"
+							html += "</div>"
+								html += "</div></td></tr>";	
+								
+								
+			/* 				
+				$("div.card>div.card-body>h5.card-title").html(title);
+				$("div.card>div.card-body>p.card-text").html(addr1); */
+					
+					
+			
+				}
+			});
+			$("#tablebody").html(html);
+			console.log(xmlDoc);
 			/* jquery*/
-			var xmlData = $(xml).find("item");//아이템 배열
-
-			for (var i = 0; i < xmlData.length; i++) {
-				var option = $('<option data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">'+ $(xmlData[i]).find("name").text() + '</option>');
-				$('#sigungu').append(option);
-
-			}
+//				console.log(xml);
 		},//end success
 		error : function(err) {
 			console.log(err);
 		}//end error
 	});//end ajax 도시버튼 추가
-	
+	});	
 });//end onload
-
-
-
-
-
-
 </script>
 <!DOCTYPE html>
 <html>

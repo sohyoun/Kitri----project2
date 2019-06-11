@@ -66,69 +66,332 @@
 	color: #666;
 }
 </style>
-<script>
-	/* 
-	 var isfilter; */
-$(function() {
-	//도시버튼 추가 (글자, 이벤트)
-	$.ajax({
-		url : "${pageContext.request.contextPath}/tourresioncode",
-		type : 'get',
-		success : function(xml) {
-			/* 콘솔확이용 xml 파싱*/
-			xmlParser = new DOMParser(); // DOMParser console 확인용 객체 생성.
-			xmlDoc = xmlParser.parseFromString(xml, "text/xml");
-			console.log('-xml 파시용 데이터-');
-			console.log(xml);
-			/* jquery*/
-			var xmlData = $(xml).find("item");//아이템 배열
 
-			for (var i = 0; i < xmlData.length; i++) {
-				var option = $('<option data-type="city" data="'
-						+ $(xmlData[i]).find("code").text() + '">'
-						+ $(xmlData[i]).find("name").text() + '</option>');
-				$('#sido').append(option);
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 
-				/* $('#searchForm > fieldset > div > table > tbody > tr > td >  #sido').append(
-						'<option data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">' + $(xmlData[i]).find("name").text() + '</option>'); */
-			}
-		},//end success
-		error : function(err) {
-			console.log(err);
-		}//end error
-	});//end ajax 도시버튼 추가
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/TaYo/tayoplace/js/httpRequest.js"></script>
+
+
+
+<script type="text/javascript">
+	var eleTmep;
+	$(document).ready(function() {//
+
+		var params = "cmd=areaCode";
+		sendRequest("/TaYo/tayoapi", params, areaCodeResult, "GET");
+	});
 
 	
-	$.ajax({
-		url : "${pageContext.request.contextPath}/tourresioncode",
-		type : 'get',
-		success : function(xml) {
-			/* 콘솔확이용 xml 파싱*/
-			xmlParser = new DOMParser(); // DOMParser console 확인용 객체 생성.
-			xmlDoc = xmlParser.parseFromString(xml, "text/xml");
-			console.log('-xml 파시용 데이터-');
-			console.log(xml);
-			/* jquery*/
-			var xmlData = $(xml).find("item");//아이템 배열
+	//시도 코드 뽑아내기
+	function areaCodeResult() {
+		 if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
 
-			for (var i = 0; i < xmlData.length; i++) {
-				var option = $('<option data-type="city" data="'+ $(xmlData[i]).find("code").text() + '">'+ $(xmlData[i]).find("name").text() + '</option>');
-				$('#sigungu').append(option);
+				var result = httpRequest.responseXML;
+				var item = result.getElementsByTagName("item");
+
+				for (var i = 0; i < item.length; i++) {
+					var option = $("<option value='"
+							+ item[i].getElementsByTagName("code")[0].firstChild.data
+							+ "'>"
+							+ item[i].getElementsByTagName("name")[0].firstChild.data
+							+ "</option>");
+					$('#areaCode').append(option);
+				}
+
+				/* searchList(''); */
+			}
+	 	}
+	}
+
+	//시도코드 변경시 시군구 코드 뽑아내기
+	function areaCodechage() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+
+				var result = httpRequest.responseXML;
+				var item = result.getElementsByTagName("item");
+
+				$("select[id='sigungu'] option").remove();
+				$('#sigungu').append("<option value=''>시군구</option>");
+
+				for (var i = 0; i < item.length; i++) {
+					var option = $("<option value='"
+							+ item[i].getElementsByTagName("code")[0].firstChild.data
+							+ "'>"
+							+ item[i].getElementsByTagName("name")[0].firstChild.data
+							+ "</option>");
+					$('#sigungu').append(option);
+				}
 
 			}
-		},//end success
-		error : function(err) {
-			console.log(err);
-		}//end error
-	});//end ajax 도시버튼 추가
+		}
+	}
+
 	
-});//end onload
+	//카테고리 관광코드 선택 시 대분류 뽑아내기
+	function categoryCodechage() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+
+				var result = httpRequest.responseXML;
+				var item = result.getElementsByTagName("item");
+
+				$("select[id='cat1'] option").remove();
+				$('#cat1').append("<option value=''>대분류</option>");
+
+				for (var i = 0; i < item.length; i++) {
+					var option = $("<option value='"
+							+ item[i].getElementsByTagName("code")[0].firstChild.data
+							+ "'>"
+							+ item[i].getElementsByTagName("name")[0].firstChild.data
+							+ "</option>");
+					$('#cat1').append(option);
+				}
+
+			}
+		}
+	}
+	
+	
+	//대분류 선택 시 중분류 뽑아내기
+	function cat1chage() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+
+				var result = httpRequest.responseXML;
+				var item = result.getElementsByTagName("item");
+
+				$("select[id='cat2'] option").remove();
+				$('#cat2').append("<option value=''>중분류</option>");
+
+				for (var i = 0; i < item.length; i++) {
+					var option = $("<option value='"
+							+ item[i].getElementsByTagName("code")[0].firstChild.data
+							+ "'>"
+							+ item[i].getElementsByTagName("name")[0].firstChild.data
+							+ "</option>");
+					$('#cat2').append(option);
+				}
+
+			}
+		}
+	}
+	
+	
+	//중분류 선택 시 소분류 뽑아내기
+	function cat2chage() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+
+				var result = httpRequest.responseXML;
+				var item = result.getElementsByTagName("item");
+
+				$("select[id='cat3'] option").remove();
+				$('#cat3').append("<option value=''>소분류</option>");
+
+				for (var i = 0; i < item.length; i++) {
+					var option = $("<option value='"
+							+ item[i].getElementsByTagName("code")[0].firstChild.data
+							+ "'>"
+							+ item[i].getElementsByTagName("name")[0].firstChild.data
+							+ "</option>");
+					$('#cat3').append(option);
+				}
+
+			}
+		}
+	}
+	
+	///////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	function sigunguchage() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+
+				var result = httpRequest.responseXML;
+				var item = result.getElementsByTagName("item");
+				$("select[id='shelter'] option").remove();
+				$('#shelter').append("<option value=''>보호센터</option>");
+
+				for (var i = 0; i < item.length; i++) {
+					var option = $("<option value='"
+							+ item[i].getElementsByTagName("careRegNo")[0].firstChild.data
+							+ "'>"
+							+ item[i].getElementsByTagName("careNm")[0].firstChild.data
+							+ "</option>");
+					$('#shelter').append(option);
+				}
+
+			}
+		}
+	}
+
+	function kinduchage() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				var result = httpRequest.responseXML;
+				var item = result.getElementsByTagName("item");
+				$("select[id='kindDetail'] option").remove();
+				$('#kindDetail').append("<option value=''>품종(중)</option>");
+
+				for (var i = 0; i < item.length; i++) {
+					var option = $("<option value='"
+							+ item[i].getElementsByTagName("kindCd")[0].firstChild.data
+							+ "'>"
+							+ item[i].getElementsByTagName("KNm")[0].firstChild.data
+							+ "</option>");
+					$('#kindDetail').append(option);
+				}
+
+			}
+		}
+	}
+
+	function serchResult() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				var result = httpRequest.responseXML;
+				var item = result.getElementsByTagName("item");
+
+				var pageNo = result.getElementsByTagName("pageNo");
+				var totalCount = result.getElementsByTagName("totalCount");
+				eleTmep = item;
+
+				//yugiList
+				$("#yugiList").html('');
+
+				for (var i = 0; i < item.length; i++) {
+
+					var option = "<tr>";
+					option += "		<th style='width:50%;'>";
+					option += "			<img src='"
+							+ item[i].getElementsByTagName("filename")[0].firstChild.data
+							+ "' style='widows: 100%; max-height:10rem; max-width:7rem; height: 10rem; width:7rem; float: left; padding: 10px;'>";
+					option += "			<li><a  href='#' onClick='goDetail("
+							+ i
+							+ ")'>공고번호 : "
+							+ item[i].getElementsByTagName("noticeNo")[0].firstChild.data
+							+ "</a></li>";
+					option += "			<li>접 수 일  : "
+							+ item[i].getElementsByTagName("happenDt")[0].firstChild.data
+							+ "</li>";
+					option += "			<li>품     종  : "
+							+ item[i].getElementsByTagName("kindCd")[0].firstChild.data
+							+ "</li>";
+					option += "			<li>상     태  : "
+							+ item[i].getElementsByTagName("processState")[0].firstChild.data
+							+ "</li>";
+					option += "		</th>";
+
+					i = i + 1;
+
+					option += "		<th style='width:50%;'>";
+					option += "			<img src='"
+							+ item[i].getElementsByTagName("filename")[0].firstChild.data
+							+ "' style='widows: 100%; max-height:10rem; max-width:7rem; height: 10rem; width:7rem; float: left; padding: 10px;'>";
+					option += "			<li><a  href='#' onClick='goDetail("
+							+ i
+							+ ")'>공고번호 "
+							+ item[i].getElementsByTagName("noticeNo")[0].firstChild.data
+							+ "</a></li>";
+					option += "			<li>접 수 일  : "
+							+ item[i].getElementsByTagName("happenDt")[0].firstChild.data
+							+ "</li>";
+					option += "			<li>품     종  : "
+							+ item[i].getElementsByTagName("kindCd")[0].firstChild.data
+							+ "</li>";
+					option += "			<li>상     태  : "
+							+ item[i].getElementsByTagName("processState")[0].firstChild.data
+							+ "</li>";
+					option += "		</th>";
+					option += "</tr>"
+
+					$("#yugiList").append(option);
+
+				}
+
+				searchPage(pageNo[0].firstChild.data,
+						totalCount[0].firstChild.data);
+
+			}
+		}
+	}
 
 
+/* 	function searchList(pageNo) {
+		if (pageNo == "")
+			pageNo = 1;
+		var params = "cmd=abandonmentPublic&bgnde="
+				+ $("#bgnde").val().replace(/-/g, "");
+		params += "&endde=" + $("#endde").val().replace(/-/g, ""); //검색일자
+		params += "&upkind=" + $("#kind option:selected").val(); //축종코드 품종(대)
+		params += "&kind=" + $("#kindDetail option:selected").val(); //품종(중)
+		params += "&upr_cd=" + $("#sido option:selected").val(); //시도
+		params += "&org_cd=" + $("#sigungu option:selected").val(); ///시군구
+		params += "&care_reg_no=" + $("#shelter option:selected").val(); //보호센터
+		params += "&pageNo=" + pageNo;
 
+		sendRequest("/plzdaengs/yugi", params, serchResult, "GET");
 
+	}
+ */
 
-
+ 
+ 
+ 
+//////////////////////cmd코드 보내기///////////////////////////////////////////
+	
+	$(function(){
+		//시도를 바꿨을 때 시군구 목록들 추가 
+		$('#areaCode').change(function(){
+			var params = "cmd=sigunguCode&areaCode="+this.value;
+			sendRequest("/TaYo/tayoapi", params, areaCodechage, "GET");
+		});
+		
+		
+		$('#contentTypeId').change(function(){
+			var params = "cmd=categoryCode&contentTypeId="+this.value;
+			sendRequest("/TaYo/tayoapi", params, categoryCodechage, "GET");
+		});
+		
+		$('#cat1').change(function(){
+			var params = "cmd=categoryCode2&contentTypeId="+$('#contentTypeId option:selected').val()+"&cat1="+this.value;
+			sendRequest("/TaYo/tayoapi", params, cat1chage, "GET");
+		});
+		
+		$('#cat2').change(function(){
+			var params = "cmd=categoryCode3&contentTypeId="+$('#contentTypeId option:selected').val()
+			+ "&cat1="+$('#cat1 option:selected').val() +"&cat2="+this.value;
+			sendRequest("/TaYo/tayoapi", params, cat2chage, "GET");
+		});
+		
+		
+	/* 	$('#sigungu').change(function(){
+			var params = "cmd=shelter&upr_cd="+$('#sido option:selected').val()+"&org_cd="+this.value;
+			sendRequest("/plzdaengs/yugi",params,sigunguchage,"GET");
+		});
+		
+		$('#kind').change(function(){
+			var params = "cmd=kind&up_kind_cd="+this.value;
+			sendRequest("/plzdaengs/yugi",params,kinduchage,"GET");
+		});
+		
+		$('#btnSearch').click(function(){
+			searchList('');
+		}); */
+	});
+ 
+//////////////////////cmd코드 보내기///////////////////////////////////////////
+ 
+ 
 </script>
 <!DOCTYPE html>
 <html>
@@ -150,9 +413,16 @@ $(function() {
 					<tbody>
 						<tr>
 							<th class="wHacki8" scope="row">관광타입</th>
-							<td><select name="arrange" id="arran" title="관광타입"
-								onchange="document.getElementById('KeyWord').value= this.options[this.selectedIndex].value">
-									<option value="A">타입선택</option>
+							<td><select id="contentTypeId" name="arrange"  title="관광타입">
+									<option value="">타입선택</option>
+									<option value="12">관광지</option>
+									<option value="14">문화시설</option>
+									<option value="15">축제공연행사</option>
+									<option value="25">여행코스</option>
+									<option value="28">레포츠</option>
+									<option value="32">숙박</option>
+									<option value="38">쇼핑</option>
+									<option value="39">음식점</option>
 							</select></td>
 						</tr>
 					</tbody>
@@ -166,11 +436,11 @@ $(function() {
 					<tbody>
 						<tr>
 							<th class="wHacki8" scope="row">서비스분류</th>
-							<td><select name="arrange" id="arran" title="대분류">
+							<td><select id="cat1" name="arrange" id="arran" title="대분류">
 									<option value="A" selected>대분류</option>
-							</select> <select name="arrange" id="arran" title="중분류">
+							</select> <select id="cat2" name="arrange" id="arran" title="중분류">
 									<option value="A" selected>중분류</option>
-							</select> <select name="arrange" id="arran" title="정렬방법">
+							</select> <select id="cat3" name="arrange" id="arran" title="정렬방법">
 									<option value="A" selected>소분류</option>
 							</select></td>
 						</tr>
@@ -186,10 +456,10 @@ $(function() {
 					<tbody>
 						<tr>
 							<th class="wHacki8" scope="row">지역</th>
-							<td><select name="arrange" id="sido">
+							<td><select id="areaCode" name="arrange" id="areaCode">
 									<option value="">시도</option>
-							</select> <select name="arrange" id="sigungu">
-									<option value="A">시군구</option>
+							</select> <select id="sigungu" name="arrange" >
+									<option value="">시군구</option>
 							</select></td>
 						</tr>
 					</tbody>

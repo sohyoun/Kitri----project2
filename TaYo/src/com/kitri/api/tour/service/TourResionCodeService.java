@@ -18,7 +18,6 @@ public class TourResionCodeService {
 		try {
 			StringBuilder urlBuilder = new StringBuilder(
 					"http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode"); /* URL */
-
 			urlBuilder.append(
 					"?" + URLEncoder.encode("ServiceKey", "UTF-8") + "=" + SiteContance.KEY_TOUR_API); /* Service Key */
 //	        urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("인증키 (URL - Encode)", "UTF-8")); /*공공데이터포털에서 발급받은 인증키*/
