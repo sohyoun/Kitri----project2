@@ -30,11 +30,11 @@ public class PlaceServlet extends HttpServlet {
 		
 		
 		if ("searchTour".equals(act)) {
-			String location = request.getParameter("location");
-			String place = request.getParameter("place");			
+			String sido = request.getParameter("sido");
+			/* String place = request.getParameter("place"); */		
 
 		
-			String result = service.getKeywordSearch(location, place);
+			String result = service.getKeywordSearch(sido);
 			request.setAttribute("result", result);
 			
 			MoveURL.forward(request, response, "/tayoplace/searchPlaceResult.jsp");
