@@ -27,8 +27,6 @@
 <div class="container mt-3">
 	<h3 class="heading text-capitalize text-center">베스트 여행일정</h3>
 	<div class="row">
-	
-		
 		<c:forEach var="tripBasicDto" items="${bean.list}" varStatus="status" begin="${bean.startRow-1}" end="${ bean.endRow-1}">
 			<c:if test="${tripBasicDto !=null}">
 				<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5">

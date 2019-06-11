@@ -74,9 +74,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					method : 'post',
 					success : function(result){
 // 						location.href = "${pageContext.request.contextPath}/tayoadmin/index.jsp";
-						console.log('logininfo');
 						console.log('button#login ajax: ' +result.trim())
-						location.href = "${pageContext.request.contextPath}/index.jsp";
+						if(result.trim() ==1){
+							console.log('회원가입에 성공하였습니다.');
+							location.href = "${pageContext.request.contextPath}/index.jsp";
+						}else{
+							console.log('회원가입 실패.');
+						}
+						
+						
+						console.log('${sessionScope.logininfo}');
 					},
 					error : function(jqXHR, textStatus, errorThrown){
 						console.log('error'+errorThrown);

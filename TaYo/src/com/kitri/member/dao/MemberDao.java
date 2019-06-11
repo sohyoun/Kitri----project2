@@ -46,7 +46,7 @@ public class MemberDao {
 			pstmt.setDate(11, null);
 
 			int result = pstmt.executeUpdate();
-			if (result == 1) {
+			if (result == 2) {
 				return "1";
 			}
 
@@ -84,7 +84,8 @@ public class MemberDao {
 			pstmt.setDate(11, null);
 
 			int result = pstmt.executeUpdate();
-			if (result == 1) {
+			System.out.println("MemberDao insertMember result: "+ result);
+			if (result == 2) {
 				return "1";
 			}
 
