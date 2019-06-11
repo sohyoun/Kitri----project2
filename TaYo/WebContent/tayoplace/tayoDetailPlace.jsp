@@ -18,7 +18,6 @@
 	margin-bottom: 100px;
 }
 
-
 h1, h2, h3, h4, h5 {
 	margin: 0;
 	color: #323648;
@@ -94,14 +93,143 @@ h1, h2, h3, h4, h5 {
 	border-radius: 0.3rem;
 }
 
-.spot_like_ico{
-   float:right;
-   width: 60px;
-   height: 60px;
-   margin: inherit;
-   margin-top: 10px;
+.spot_like_ico {
+	float: right;
+	width: 60px;
+	height: 60px;
+	margin: inherit;
+	margin-top: 10px;
 }
 </style>
+
+
+<script>
+$(function() {	
+		$.ajax({          
+		  		url  : "${pageContext.request.contextPath}/tourexplorer",
+				type : 'get',
+				success : function(xml) {
+					$("body").append(xml.trim()); 
+					
+					parser = new DOMParser();
+					xmlDoc = parser.parseFromString(xml.trim(), "text/xml");
+					
+
+					var html;
+					var prevTitle = "";
+					
+					$("#tablebody").empty();
+					
+				
+					$(xml).find("item").each(function() {
+						var title = $(this).find("title").text();
+						var addr1 = $(this).find("addr1").text();
+						var addr2 = $(this).find("addr2").text();
+						var overview = $(this).find("overview").text();
+						var mapx = $(this).find("mapx").text();
+						var mapy = $(this).find("mapy").text();
+				
+					
+						if (prevTitle != title) {
+							prevTitle = title;
+							var image = $(this).find("firstimage").text();
+							var image2 = $(this).find("firstimage2").text();
+							
+										
+// 							<!-- 관광지 이름,주소부분 -->
+// 							/* html += "<div class='spot'>"
+// 								html += "<div class='spot_name'>" + title +"<span> N Seoul Tower</span>"
+// 									html += "	<img class='spot_like_ico' src='/TaYo/images/heart.png'>"
+// 										html += "</div>"
+// 											html += "<div class='spot_addr'>"+ addr1+ addr2 +"</div>"   
+// 											html += "</div>" */
+// 							<!-- 관광지 이름,주소부분 -->
+											
+									
+
+							/* 관광지 이름,주소부분  */
+							$("div.spot>div.spot_name").html(title);
+							$("div.spot>div.spot_addr").html(addr1 + addr2);						
+							$("div.spot").show();
+							 /* 관광지 이름,주소부분 */
+							
+							 
+							
+							/*  html += "<tr><td><div id='carouselExampleControls' class='carousel slide' data-ride='carousel'>"
+							 html += "<div class='carousel-inner'>"
+							 html += "<div class='carousel-item active'>"
+
+							 html += "<img class='img1' src='" + image + "'/ >"
+							 html += "</div>"
+								 html += "<div class='carousel-item'>"
+								 html += "	<img class='img2' src='" + image2 + "'/>"
+								 html += "</div>"
+									 html += "<div class='carousel-item'>"
+									 html += "	<img class='img3' src='" + image + "'/>"
+									 html += "</div>"
+										 html += "</div>"
+											 html += "</div></td></tr>" */
+							
+							
+							
+							
+							<!-- 관광지 설명부분-->
+							$("div.spot_tip>div.spot_overview").html(overview);							
+							<!-- 관광지 설명부분 -->
+							
+					
+							
+							<!-- 관광지 카테고리 및 설명부분-->
+							$("div.spot_info>table.spot_info_table>tbody>tr>td").html(mapx);							
+							//$("div.spot_info>table.spot_info_table>tbody>tr>th>td").html(mapx);							
+							$("categorybody>tr>td").html(mapx);							
+							<!-- 관광지 카테고리 및 설명부분 -->
+							
+							<!-- 관광지 카테고리 및 설명부분-->
+							/* <div class="spot_info">
+								<table class="spot_info_table" id="spot_info_default" width="100%">
+									<tbody>
+										<tr>
+											<th>카테고리</th>
+											<td>명소 &gt; 공항</td>
+											<th>웹사이트</th>
+											<td><a href="http://www.airport.kr" target="_blank">www.airport.kr</a></td>
+										</tr>
+										<tr>
+											<th>가는방법</th>
+											<td colspan="3">[Line Airport Railroad(공항철도)]Incheon
+												International Airport(인천국제공항)역 인천국제공항역에 하차 또는 공항 리무진 버스 이용.</td>
+										</tr>
+										<tr>
+											<th>전화번호</th>
+											<td>82 1577-2600</td>
+											<td colspan="2">&nbsp;</td>
+										</tr>
+									</tbody>
+								</table>
+							</div> */
+							<!-- 관광지 카테고리 및 설명부분-->
+
+							
+							
+							
+		}
+					});
+					//$("#tablebody").html(html);
+					console.log(xmlDoc);
+					/* jquery*/
+//	 				console.log(xml);
+				},//end success
+				error : function(err) {
+					console.log(err);
+				}//end error
+			});//end ajax 도시버튼 추가
+		
+			
+			
+			
+		});//end onload
+	</script>
 
 
 
@@ -109,15 +237,76 @@ h1, h2, h3, h4, h5 {
 <div class="container py-xl-5 py-lg-3">
 
 
+	<div id="placelist">
+		<table class="table table-bordered table-sm">
+			<tbody id="tablebody" align="center">
+
+
+				<!-- 관광지 이름,주소부분 -->
+				<div class="spot" style="display: none;">
+					<div class="spot_name">
+						<img class="spot_like_ico" src="/TaYo/images/heart.png">
+					</div>
+					<div class="spot_addr"></div>
+				</div>
+				<!-- 관광지 이름,주소부분 -->
+
+
+				<!-- 관광지 설명부분-->
+				<div class="spot_tip">
+					<div class="spot_name">
+						<img class="spot_info_ico" src="/TaYo/images/info_icon.png">
+					</div>
+					<div class="spot_overview"></div>
+				</div>
+				<!-- 관광지 설명부분 -->
+
+
+				<!-- 관광지 카테고리 및 설명부분-->
+				<div class="spot_info">
+					<table class="spot_info_table" id="spot_info_default" width="100%">
+						<tbody id="categorybody">
+							<tr>
+								<th>카테고리</th>
+								<td></td>
+								<th>웹사이트</th>
+								<td><a href="http://www.airport.kr" target="_blank">www.airport.kr</a></td>
+							</tr>
+							<tr>
+								<th>가는방법</th>
+								<td colspan="3">[Line Airport Railroad(공항철도)]Incheon
+									International Airport(인천국제공항)역 인천국제공항역에 하차 또는 공항 리무진 버스 이용.</td>
+							</tr>
+							<tr>
+								<th>전화번호</th>
+								<td>82 1577-2600</td>
+								<td colspan="2">&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- 관광지 카테고리 및 설명부분-->
+
+
+
+			</tbody>
+		</table>
+	</div>
+
+	<!-------------------------  샘플데이터    --------------------------------------------->
+
 	<!-- 관광지 이름,주소부분 -->
 	<div class="spot">
 		<div class="spot_name">
-			N 서울 타워 <span> N Seoul Tower</span>
-			<img class="spot_like_ico" src="/TaYo/images/heart.png">
+			N 서울 타워 <span> N Seoul Tower</span> <img class="spot_like_ico"
+				src="/TaYo/images/heart.png">
 		</div>
 		<div class="spot_addr">126 Namsangongwon-gil, Yongsan-gu, Seoul,
 			South Korea</div>
 	</div>
+
+
+
 	<!-- 관광지 이름,주소부분  -->
 
 	<br>
@@ -127,16 +316,13 @@ h1, h2, h3, h4, h5 {
 		data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img class="d-block w-100" src="/TaYo/images/tower2.jpg"
-					alt="First slide">
+				<img class="d-block w-100" src="/TaYo/images/tower2.jpg">
 			</div>
 			<div class="carousel-item">
-				<img class="d-block w-100" src="/TaYo/images/tower1.jpg"
-					alt="Second slide">
+				<img class="d-block w-100" src="/TaYo/images/tower1.jpg">
 			</div>
 			<div class="carousel-item">
-				<img class="d-block w-100" src="/TaYo/images/tower3.jpg"
-					alt="Third slide">
+				<img class="d-block w-100" src="/TaYo/images/tower3.jpg">
 			</div>
 		</div>
 		<a class="carousel-control-prev" href="#carouselExampleControls"
@@ -170,16 +356,10 @@ h1, h2, h3, h4, h5 {
 		<table class="spot_info_table" id="spot_info_default" width="100%">
 			<tbody>
 				<tr>
-					<th></th>
-					<td></td>
-					<th></th>
-					<td></td>
-				</tr>
-				<tr>
 					<th>카테고리</th>
 					<td>명소 &gt; 공항</td>
-					<!-- <th>웹사이트</th>
-					<td><a href="http://www.airport.kr" target="_blank">www.airport.kr</a></td> -->
+					<th>웹사이트</th>
+					<td><a href="http://www.airport.kr" target="_blank">www.airport.kr</a></td>
 				</tr>
 				<tr>
 					<th>가는방법</th>
@@ -196,6 +376,8 @@ h1, h2, h3, h4, h5 {
 	</div>
 	<!-- 관광지 카테고리 및 설명부분-->
 
+
+	<!------------------------------------여기까지가 api들어갈 공간 --------------------------------------------------->
 
 
 	<hr>

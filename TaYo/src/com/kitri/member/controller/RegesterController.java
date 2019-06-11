@@ -41,7 +41,7 @@ public class RegesterController extends HttpServlet {
 		if(result == "1") { //회원가입 성공
 			session.setAttribute("loginInfo", email);
 			System.out.println("RegesterController 회원가입성공");
-		}else {//회원가입 실패
+		}else {//회원가입 실패 -1
 			session.removeAttribute("loginInfo");
 		}
 		request.setAttribute("result", result);

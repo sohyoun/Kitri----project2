@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!--
 author: W3layouts
 author URL: http://w3layouts.com
@@ -33,9 +34,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				success : function(result){
 					//console.log(result)
 					//alert(result)
-					if(result =='1'){
+					if(result =='1'){//회원가입성공
 						location.href = "${pageContext.request.contextPath}/index.jsp";						
-					}else if(result =='2'){
+					}else if(result =='2'){//관리자 페이지로
 	 					location.href = "${pageContext.request.contextPath}/tayoadmin/index.jsp";						
 					}else{
 						alert('로그인 실패');
@@ -61,8 +62,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			});
 			return false;
 		});
+		
+		
 		//회원가입 버튼
 		$(function(){
+			$('username')
 			$('#header_register_btn').click(function() {
 				console.log('header_register_btn');
 				$.ajax({
@@ -71,9 +75,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					method : 'post',
 					success : function(result){
 // 						location.href = "${pageContext.request.contextPath}/tayoadmin/index.jsp";
-						console.log('logininfo');
 						console.log('button#login ajax: ' +result.trim())
-						location.href = "${pageContext.request.contextPath}/index.jsp";
+						if(result.trim() ==1){
+							console.log('회원가입에 성공하였습니다.');
+							location.href = "${pageContext.request.contextPath}/index.jsp";
+						}else{
+							console.log('회원가입 실패.');
+						}
+						
+						
+						console.log('${sessionScope.logininfo}');
 					},
 					error : function(jqXHR, textStatus, errorThrown){
 						console.log('error'+errorThrown);
@@ -129,8 +140,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</c:when>
 						<c:otherwise>
 							<li class="nav-item active">
-								<a class="nav-link text-nowrap " href="#" id="header_logout">
-								로그아웃</a>
+								<span>${fn:trim(sessionScope.loginInfo)}님 환영합니다. <a class="nav-link text-nowrap " href="#" id="header_logout" style="display:inline">로그아웃</a></span>
 							</li>
 							
 						</c:otherwise>

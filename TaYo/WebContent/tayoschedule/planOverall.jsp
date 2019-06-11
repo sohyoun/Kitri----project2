@@ -307,8 +307,6 @@ $(function(){
 		}
  */
 
- 
- 	
 	});
 });
 </script>
@@ -372,9 +370,11 @@ $(function(){
 								<div class="daydetailnum"><span class="circle" day="${places.trip_day}">${index}</span></div>
 								<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
 								<div class="daydetailcontent" posx="${places.posX}" posy="${places.posY}">${places.place_name}<br><button class="btn btn-sm btn-link" name="pdinfo">제목&내용 수정</button></div>
+
 								
 								<div class="daydetailfa" > <span class="fa fa-map-marker" posx="${places.posX}" posy="${places.posY}" style="cursor:pointer;"></span>  <span class="fa fa-info-circle" style="cursor:pointer;"></span></div>
 								
+
 								<div class="daydetailtitle" name="title"><strong>${places.detail_title}</strong></div>
 								<div class="daydetailsub" name="detailsub" style="height: 4.5rem; overflow-y: auto; white-space: pre-line; word-wrap: break-word">${places.detail_content}</div>
 								<div name="pdmenu" style="display: none;">
