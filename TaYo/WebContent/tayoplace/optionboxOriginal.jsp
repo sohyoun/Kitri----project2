@@ -104,10 +104,6 @@
 		//도시버튼 클릭 이벤트 추가(동적)// > div.allways_show >
 		$(document).on("click", "#searchForm > fieldset > div > table:nth-child(5) > tbody > button",function() {
 			console.log(this);
-	/* 		#destinations > div > div.container.h-100.pt-3 > table > tbody > tr > td.filter_body.si > div.allways_show > button:nth-child(1)
-			#destinations > div > div.container.h-100.pt-3 > table > tbody > tr > td.filter_body.si > div.allways_show
-			#destinations > div > div.container.h-100.pt-3 > table > tbody > tr > td.filter_body.si
-			#destinations > div > div.container.h-100.pt-3 > table > tbody > tr > td.filter_title */
 			var div= $(this).children();
 			var data_type = $(div).attr("data-type");
 			var data = $(div).attr("data");

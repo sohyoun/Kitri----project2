@@ -1,20 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Bubbly - Boootstrap 4 Admin template by Bootstrapious.com</title>
-
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
-
-
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="/TaYo/tayoplace/js/httpRequest.js"></script>
-
 
 <style>
 /* bbsSearch */
@@ -82,8 +67,16 @@
 }
 </style>
 
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 
-</head>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/TaYo/tayoplace/js/httpRequest.js"></script>
+
+
+
 <script type="text/javascript">
 	var eleTmep;
 	$(document).ready(function() {//
@@ -109,7 +102,7 @@
 					$('#areaCode').append(option);
 				}
 
-				searchList('');
+				/* searchList(''); */
 			}
 		}
 	}
@@ -210,18 +203,30 @@
 		}
 	}
 
+	//검색 버튼 클릭 시 searchList
+	function searchList(pageNo) {
+		if (pageNo == "")
+			pageNo = 1;
+		var params = "cmd=areaBasedList";
+		params += "&areaCode=" + $("#areaCode option:selected").val(); //시도 코드
+		params += "&sigunguCode=" + $("#sigungu option:selected").val(); //시군구 코드
+		params += "&contentTypeId=" + $("#contentTypeId option:selected").val(); //관광타입 
+		params += "&cat1=" + $("#cat1 option:selected").val(); ///대분류
+		params += "&cat2=" + $("#cat2 option:selected").val(); ///중분류
+		params += "&cat3=" + $("#cat3 option:selected").val(); ///소분류
+		params += "&pageNo=" + pageNo;
+
+		sendRequest("/TaYo/tayoapi", params, serchResult, "GET");
+
+	}
+
 	//검색 버튼 클릭 시 searchList 결과 출력
 	function serchResult() {
 		if (httpRequest.readyState == 4) {
 			if (httpRequest.status == 200) {
-
-				console.log(name);
 				var result = httpRequest.responseXML;
-				console.log("result: " + result);
 				var item = result.getElementsByTagName("item");
-				console.log("item: " + item);
 
-				
 				var pageNo = result.getElementsByTagName("pageNo");
 				var totalCount = result.getElementsByTagName("totalCount");
 				eleTmep = item;
@@ -231,7 +236,8 @@
 
 				for (var i = 0; i < item.length; i++) {
 
-					/* html += "<tr><td><div class='card' style='width: 70rem; display: flex;'> "
+					/* var html = "";
+					html += "<tr><td><div class='card' style='width: 70rem; display: flex;'> "
 					if (image != '') {
 						html += "<img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png' style='width: 400px;height: 200px;'>"
 					}
@@ -247,8 +253,7 @@
 
 					var option = "<tr>";
 					option += "		<th style='width:50%;'>";
-					option += "			<img src='"
-							+ item[i].getElementsByTagName("firstimage")[0].firstChild.data
+					option += "			<img src='"	+ item[i].getElementsByTagName("firstimage")[0].firstChild.data
 							+ "' style='widows: 100%; max-height:10rem; max-width:7rem; height: 10rem; width:7rem; float: left; padding: 10px;'>";
 					option += "			<li><a  href='#' onClick='goDetail("
 							+ i
@@ -266,30 +271,40 @@
 							+ "</li>";
 					option += "		</th>";
 
+					i = i + 1;
+
+					option += "		<th style='width:50%;'>";
+					option += "			<img src='"
+							+ item[i].getElementsByTagName("firstimage")[0].firstChild.data
+							+ "' style='widows: 100%; max-height:10rem; max-width:7rem; height: 10rem; width:7rem; float: left; padding: 10px;'>";
+					option += "			<li><a  href='#' onClick='goDetail("
+							+ i
+							+ ")'>공고번호 "
+							+ item[i].getElementsByTagName("title")[0].firstChild.data
+							+ "</a></li>";
+					option += "			<li>접 수 일  : "
+							+ item[i].getElementsByTagName("addr1")[0].firstChild.data
+							+ "</li>";
+					option += "			<li>품     종  : "
+							+ item[i].getElementsByTagName("addr2")[0].firstChild.data
+							+ "</li>";
+					option += "			<li>상     태  : "
+							+ item[i].getElementsByTagName("contentid")[0].firstChild.data
+							+ "</li>";
+					option += "		</th>";
+					option += "</tr>"
+
 					$("#yugiList").append(option);
 
 				}
+
+				searchPage(pageNo[0].firstChild.data,
+						totalCount[0].firstChild.data);
 
 			}
 		}
 	}
 
-	//검색 버튼 클릭 시 searchList
-	function searchList(pageNo) {
-		if (pageNo == "")
-			pageNo = 1;
-		var params = "cmd=areaBasedList";
-		params += "&areaCode=" + $("#areaCode option:selected").val(); //시도 코드
-		params += "&sigunguCode=" + $("#sigungu option:selected").val(); //시군구 코드
-		params += "&contentTypeId=" + $("#contentTypeId option:selected").val(); //관광타입 
-		params += "&cat1=" + $("#cat1 option:selected").val(); ///대분류
-		params += "&cat2=" + $("#cat2 option:selected").val(); ///중분류
-		params += "&cat3=" + $("#cat3 option:selected").val(); ///소분류
-		params += "&pageNo=" + pageNo;
-
-		sendRequest("/TaYo/tayoapi", params, serchResult, "GET");
-
-	}
 	///////////////////////////////////////////////////////////////////////////
 
 	//////////////////////cmd코드 보내기///////////////////////////////////////////
@@ -323,123 +338,121 @@
 					sendRequest("/TaYo/tayoapi", params, cat2chage, "GET");
 				});
 
-		$('#btnSearch').click(function() {
-			searchList('');
+		$('#btnSearch').click(
+				function() {
+				var params = "cmd=areaBasedList&areaCode=" + $('#contentTypeId option:selected').val() 				
+						+ "&sigunguCode=" + $('#sigunguCode option:selected').val() 
+						+ "&contentTypeId=" + $('#contentTypeId option:selected').val() 
+						+ "&cat1=" + $('#cat1 option:selected').val() 
+						+ "&cat2=" + $('#cat2 option:selected').val() 
+						+ "&cat3=" + $('#cat3 option:selected').val();
+				
+				
+				sendRequest("/TaYo/tayoapi", params, serchResult, "GET");
+			});
 		});
-	});
 
-	//////////////////////cmd코드 보내기///////////////////////////////////////////
+	//////////////////////cmd코드 보내기////////////sigunguCode///////////////////////////////
 </script>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
 <body>
-	<!-- 게시판뷰시작 -->
-	<section class="py-5" style="max-height: none;">
-		<div class="row">
-			<div class="col-xl-12 col-lg-auto">
-				<div class="card">
-					<div class="card-header">
-						<h6 class="text-uppercase mb-0">유기견 정보 게시판</h6>
-					</div>
-					<div class="card-body">
-						<form id="searchForm" method="post" action="/guide/inforArea.do">
-							<fieldset>
-								<div class="tableWrap searchWrap mgNone">
-									<div id="selectArea"></div>
+	<form id="searchForm" method="post" action="/guide/inforArea.do">
+		<fieldset>
+			<div class="tableWrap searchWrap mgNone">
+				<div id="selectArea"></div>
 
-									<table class="bbsSearch">
-										<colgroup>
-											<col style="width: 95px;" />
-											<col style="width: 861px;" />
-										</colgroup>
-										<tbody>
-											<tr>
-												<th class="wHacki8" scope="row">관광타입</th>
-												<td><select id="contentTypeId" name="arrange"
-													title="관광타입">
-														<option value="">타입선택</option>
-														<option value="12">관광지</option>
-														<option value="14">문화시설</option>
-														<option value="15">축제공연행사</option>
-														<option value="25">여행코스</option>
-														<option value="28">레포츠</option>
-														<option value="32">숙박</option>
-														<option value="38">쇼핑</option>
-														<option value="39">음식점</option>
-												</select></td>
-											</tr>
-										</tbody>
-									</table>
+				<table class="bbsSearch">
+					<colgroup>
+						<col style="width: 95px;" />
+						<col style="width: 861px;" />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th class="wHacki8" scope="row">관광타입</th>
+							<td><select id="contentTypeId" name="arrange" title="관광타입">
+									<option value="">타입선택</option>
+									<option value="12">관광지</option>
+									<option value="14">문화시설</option>
+									<option value="15">축제공연행사</option>
+									<option value="25">여행코스</option>
+									<option value="28">레포츠</option>
+									<option value="32">숙박</option>
+									<option value="38">쇼핑</option>
+									<option value="39">음식점</option>
+							</select></td>
+						</tr>
+					</tbody>
+				</table>
 
-									<table class="bbsSearch">
-										<colgroup>
-											<col style="width: 95px;" />
-											<col style="width: 861px;" />
-										</colgroup>
-										<tbody>
-											<tr>
-												<th class="wHacki8" scope="row">서비스분류</th>
-												<td><select id="cat1" name="arrange" id="arran"
-													title="대분류">
-														<option value="A" selected>대분류</option>
-												</select> <select id="cat2" name="arrange" id="arran" title="중분류">
-														<option value="A" selected>중분류</option>
-												</select> <select id="cat3" name="arrange" id="arran" title="정렬방법">
-														<option value="A" selected>소분류</option>
-												</select></td>
-											</tr>
-										</tbody>
-									</table>
+				<table class="bbsSearch">
+					<colgroup>
+						<col style="width: 95px;" />
+						<col style="width: 861px;" />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th class="wHacki8" scope="row">서비스분류</th>
+							<td><select id="cat1" name="arrange" id="arran" title="대분류">
+									<option value="A" selected>대분류</option>
+							</select> <select id="cat2" name="arrange" id="arran" title="중분류">
+									<option value="A" selected>중분류</option>
+							</select> <select id="cat3" name="arrange" id="arran" title="정렬방법">
+									<option value="A" selected>소분류</option>
+							</select></td>
+						</tr>
+					</tbody>
+				</table>
 
-									<table class="bbsSearch">
-										<!-- <caption>검색 순서 1 – 관광데이터 검색을 위한 언어선택</caption> -->
-										<colgroup>
-											<col style="width: 95px;" />
-											<col style="width: 861px;" />
-										</colgroup>
-										<tbody>
-											<tr>
-												<th class="wHacki8" scope="row">지역</th>
-												<td><select id="areaCode" name="arrange" id="areaCode">
-														<option value="">시도</option>
-												</select> <select id="sigungu" name="arrange">
-														<option value="">시군구</option>
-												</select></td>
-											</tr>
-										</tbody>
-									</table>
+				<table class="bbsSearch">
+					<!-- <caption>검색 순서 1 – 관광데이터 검색을 위한 언어선택</caption> -->
+					<colgroup>
+						<col style="width: 95px;" />
+						<col style="width: 861px;" />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th class="wHacki8" scope="row">지역</th>
+							<td><select id="areaCode" name="arrange" id="areaCode">
+									<option value="">시도</option>
+							</select> <select id="sigungu" name="arrange">
+									<option value="">시군구</option>
+							</select></td>
+						</tr>
+					</tbody>
+				</table>
 
 
-									<table class="bbsSearch">
-										<colgroup>
-											<col style="width: 95px;" />
-											<col style="width: 861px;" />
-										</colgroup>
-										<tbody>
-											<tr>
-												<th class="last wHacki8" scope="row">검색</th>
-												<td class="last">
-													<div>
-														<button id="btnSearch" type="button"
-															class="btn btn-primary">검색</button>
-													</div> <!-- <input type="hidden" name="mode" value="1">
-									<input type="image" id="btnSearch"src="/TaYo/images/btnSearch_Blue.gif" alt="검색" /></td> -->
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</fieldset>
-						</form>
-					</div>
-					<div class="card-body">
-						<table class="table card-text col-xl-auto">
-							<tbody id="yugiList">
-							</tbody>
-							<!-- 게시글목록끝 -->
-						</table>
-					</div>
-				</div>
+				<table class="bbsSearch">
+					<colgroup>
+						<col style="width: 95px;" />
+						<col style="width: 861px;" />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th class="last wHacki8" scope="row">검색</th>
+							<td class="last"><input type="hidden" name="mode" value="1">
+								<input type="image" id="btnSearch"
+								src="/TaYo/images/btnSearch_Blue.gif" alt="검색" /></td>
+						</tr>
+					</tbody>
+				</table>
+
+
+
 			</div>
-		</div>
-	</section>
-	<!-- 게시판 뷰 끝 -->
+		</fieldset>
+	</form>
+	<div class="card-body">
+		<table class="table card-text col-xl-auto">
+			<tbody id="yugiList">
+			</tbody>
+			<!-- 게시글목록끝 -->
+		</table>
+	</div>
 </body>
 </html>
