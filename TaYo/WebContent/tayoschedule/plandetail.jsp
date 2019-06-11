@@ -76,7 +76,9 @@
 					<div class="pdheaderdetailcontent">
 						<div class="pname">${basicDTO.tripTitle}</div>
 						<div class="ptime">${basicDTO.startDate} ~ ${basicDTO.endDate} (${endDate - startDate + 1})</div>
-						<div class="twppeople">정원 : ? / ${basicDTO.tripNum}</div>
+						<c:if test="${basicDTO.tripTheme eq '함께타요'}">
+							<div class="twppeople">정원 : ? / ${basicDTO.tripNum}</div>
+						</c:if>
 						<div class="pleader"><span class="fa fa-user-circle"> ${basicDTO.email}</span></div>
 					</div>
 				</div>
@@ -93,8 +95,13 @@
 		    			<a class="nav-link" data-toggle="tab" href="${pageContext.request.contextPath}/schedule?act=planMap">지도</a>
 		   			</li>
 		   		</ul>
-		   		<button id="deleteBtn" class="btn btn-link pull-right">삭제하기</button>
-		   		<button id="modifyBtn" class="btn btn-link pull-right">수정하기</button>
+		   		
+		   		
+		   		<c:if test="${sessionScope.loginInfo eq basicDTO.email}">
+		   			<button id="deleteBtn" class="btn btn-link pull-right">삭제하기</button>
+		   			<button id="modifyBtn" class="btn btn-link pull-right">수정하기</button>
+		   		</c:if>
+		   		
 			</div>
 		</div>
 	</div>
