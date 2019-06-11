@@ -50,7 +50,7 @@
       									<x:if select="$codeValue = $loc">
 											<div class="daycplace"><x:out select="$locName"/></div>
 											<c:set var="flag" value="true"/>
-											<c:set var="flagt" value="true"/>
+											<c:set var="flagt" value="true"/>  
 										</x:if>
       								</c:if>
       								</c:if>
