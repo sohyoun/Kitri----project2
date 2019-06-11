@@ -14,7 +14,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.kitri.api.tour.service.TourResionCodeService;
 import com.kitri.dto.TripDetailDTO;
 import com.kitri.together.service.TogetherService;
 
@@ -23,8 +25,10 @@ import com.kitri.together.service.TogetherService;
 public class TogetherDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private TogetherService service;
+
 	public TogetherDetailServlet() {
 		service = new TogetherService();
+		
 	}
 
 	
@@ -41,6 +45,9 @@ public class TogetherDetailServlet extends HttpServlet {
 		String likeCount = request.getParameter("likeCount");	
 		
 		service.updateViewCount(tripSeq, viewCount);//viewCount 올리기
+		
+		
+		
 		
 		//현재 user의 email, tripSeq 갖고 좋아하는 여행table에 해당 tripSeq 있나 확인
 
@@ -72,6 +79,8 @@ public class TogetherDetailServlet extends HttpServlet {
 		request.setAttribute("dd", dd);
 		request.setAttribute("likeCount", likeCount);
 		
+		
+
 		String path = "/tayotogether/ttPlan.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);

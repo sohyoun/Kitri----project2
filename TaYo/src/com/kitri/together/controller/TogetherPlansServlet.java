@@ -14,7 +14,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.kitri.api.tour.service.TourResionCodeService;
 import com.kitri.dto.TripDetailDTO;
 import com.kitri.together.service.TogetherService;
 
@@ -22,11 +24,12 @@ import com.kitri.together.service.TogetherService;
 @WebServlet("/togetherplans")
 public class TogetherPlansServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+	private TourResionCodeService codeService;
 	private TogetherService service;
 	
 	public TogetherPlansServlet() {
 		service = new TogetherService();
+		codeService = new TourResionCodeService();
 	}
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,6 +39,9 @@ public class TogetherPlansServlet extends HttpServlet {
 		String startDate = request.getParameter("startDate");
 		String url = request.getParameter("url");
 		System.out.println(url);
+		
+		//loc_id 
+		String areaCodes = codeService.getResionCode();
 		
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 		try {
@@ -64,6 +70,10 @@ public class TogetherPlansServlet extends HttpServlet {
 		request.setAttribute("list", list);
 		request.setAttribute("tripSeq", tripSeq);
 		request.setAttribute("dd", dd);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("areaCodes", areaCodes);
+		
 		String path="/tayotogether/"+url+".jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
