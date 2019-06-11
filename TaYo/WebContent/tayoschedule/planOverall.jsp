@@ -64,6 +64,28 @@
 <script>
 $(function(){
 	var map;
+	
+	// 지도 위치 표현하기 2019-06-11
+	$(document).on("click","div.daydetailfa > span.fa.fa-info-circle",function() {
+		console.log('정보표현하기');
+	});
+	
+	$(document).on("click","div.daydetailfa > span.fa.fa-map-marker",function() {
+		console.log('지도표현하기');
+		
+		var posx =$(this).attr('posx').trim();
+		var posy =$(this).attr('posy').trim();
+		console.log(posx);
+		console.log(posy);
+		var moveLatLon = new daum.maps.LatLng(posy, posx);
+		//var moveLatLon = new daum.maps.LatLng(33.450580, 126.574942);
+		//지도 부드럽게 이동시킵니다.
+		map.panTo(moveLatLon);
+		//지도이동시킵니다.
+		//map.setCenter(moveLatLon);
+	});
+	
+	
 	$.getScript('http://dapi.kakao.com/v2/maps/sdk.js?appkey=d388e7ffead01bfd5045bc218f8e8830&autoload=false', function () {
 		daum.maps.load(function() {
 			var container = document.getElementById('map');
@@ -348,7 +370,11 @@ $(function(){
 								<div class="daydetailnum"><span class="circle" day="${places.trip_day}">${index}</span></div>
 								<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
 								<div class="daydetailcontent" posx="${places.posX}" posy="${places.posY}">${places.place_name}<br><button class="btn btn-sm btn-link" name="pdinfo">제목&내용 수정</button></div>
-								<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
+
+								
+								<div class="daydetailfa" > <span class="fa fa-map-marker" posx="${places.posX}" posy="${places.posY}" style="cursor:pointer;"></span>  <span class="fa fa-info-circle" style="cursor:pointer;"></span></div>
+								
+
 								<div class="daydetailtitle" name="title"><strong>${places.detail_title}</strong></div>
 								<div class="daydetailsub" name="detailsub" style="height: 4.5rem; overflow-y: auto; white-space: pre-line; word-wrap: break-word">${places.detail_content}</div>
 								<div name="pdmenu" style="display: none;">
