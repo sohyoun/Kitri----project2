@@ -64,6 +64,28 @@
 <script>
 $(function(){
 	var map;
+	
+	// 지도 위치 표현하기 2019-06-11
+	$(document).on("click","div.daydetailfa > span.fa.fa-info-circle",function() {
+		console.log('정보표현하기');
+	});
+	
+	$(document).on("click","div.daydetailfa > span.fa.fa-map-marker",function() {
+		console.log('지도표현하기');
+		
+		var posx =$(this).attr('posx').trim();
+		var posy =$(this).attr('posy').trim();
+		console.log(posx);
+		console.log(posy);
+		var moveLatLon = new daum.maps.LatLng(posy, posx);
+		//var moveLatLon = new daum.maps.LatLng(33.450580, 126.574942);
+		//지도 부드럽게 이동시킵니다.
+		map.panTo(moveLatLon);
+		//지도이동시킵니다.
+		//map.setCenter(moveLatLon);
+	});
+	
+	
 	$.getScript('http://dapi.kakao.com/v2/maps/sdk.js?appkey=d388e7ffead01bfd5045bc218f8e8830&autoload=false', function () {
 		daum.maps.load(function() {
 			var container = document.getElementById('map');
@@ -121,19 +143,172 @@ $(function(){
 		return false;
 	});
 	
+	var pathBtn = $("button[class='btn btn btn-light']");
+	var pathBtnlen = $(pathBtn).length;
+	for(var i = 0; i < (pathBtnlen - 1); i++) {
+		var prev = $(pathBtn[i]).parent().parent().prev("div[class='daydetail']").find("span[class='circle']").attr("day");
+		var next = $(pathBtn[i + 1]).parent().parent().next("div[class='daydetail']").find("span[class='circle']").attr("day");
+		
+		if (prev != next) {
+			$(pathBtn[i + 1]).css("visibility", "hidden");
+			i++;
+		}
+	}
+	
 	// show path (do not using modal window)
 	$("button[class='btn btn btn-light']").click(function() {
-// 		$("#pathModal").modal();
+		var prev_place = $(this).parent().parent().prev("div[class='daydetail']").find("div[class='daydetailcontent']");
+		var next_place = $(this).parent().parent().next("div[class='daydetail']").find("div[class='daydetailcontent']");
 
-// 		$("#pathModal").on('shown.bs.modal', function() {
-// 			var container = document.getElementById('mapModal');
-// 			var options = {
-// 				center: new daum.maps.LatLng(37.485087, 126.898855),
-// 				level: 3
-// 			};
-	
-// 			var map = new daum.maps.Map(container, options);
-// 		});
+		var prev_place_posx = $(prev_place).attr("posx");
+		var prev_place_posy = $(prev_place).attr("posy");
+		var next_place_posx = $(next_place).attr("posx");
+		var next_place_posy = $(next_place).attr("posy");
+		
+		// Calculate BusLane
+		/*var site = "https://api.odsay.com/v1/api/";
+		var okey = "sIq59IU6tz/SecRuKDsmnGG0YOmNO2b8Xbv6HoKjAC0";
+		
+		var xhr = new XMLHttpRequest();
+		var url = site+"searchPubTransPath?apiKey="+okey+"&lang=0&SX="+prev_place_posx+"&SY="+prev_place_posy+"&EX="+next_place_posx+"&EY="+next_place_posy+"&OPT=0&SearchType=0&SearchPathType=2";
+		xhr.open("GET", url, true);
+		xhr.send();
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				var resultObj = JSON.parse(xhr.responseText);
+				var result = resultObj.result;
+				var str = "";
+				
+				if (result != null) {
+					str += "<div class='box'>";
+					str += "<p>검색 결과 구분 : " + result.searchType + "</p>";
+					str += "<p>직통 검색 결과 : " + ((result.outTrafficCheck == 0) ? "없음" : "있음") + "</p>";
+					str += "<p>버스 결과 수 : " + result.busCount + "</p>";
+					str += "<p>출발지 반경 : " + result.startRadius + "</p>";
+					str += "<p>도착지 반경 : " + result.endRadius + "</p>";
+					str += "<p>이동 거리 : " + result.pointDistance + "</p>";
+					
+					intermediatePath = Array(result.path.length);
+					
+					for (var i = 0; i < result.path.length; i++) {
+						str += "<p>---------------" + (i + 1) + "번째 경로---------------</p>"
+						str += "<p>" + (i + 1) + "번째 경로의 타입 : " + result.path[i].pathType + " (버스)</p>";
+						str += "<p>" + (i + 1) + "번째 경로의 총 이동거리(도보 제외) : " + result.path[i].info.trafficDistance + "</p>";
+						str += "<p>" + (i + 1) + "번째 경로의 총 도보 이동거리 : " + result.path[i].info.totalWalk + "</p>";
+						str += "<p>" + (i + 1) + "번째 경로의 총 거리 : " + result.path[i].info.totalDistance + "</p>";
+						str += "<p>" + (i + 1) + "번째 경로의 총 소요시간 : " + result.path[i].info.totalTime + "</p>";
+						str += "<p>" + (i + 1) + "번째 경로의 총 요금 : " + result.path[i].info.payment + "</p>";
+						str += "<p>" + (i + 1) + "번째 경로의 버스 환승 카운트 : " + result.path[i].info.busTransitCount + "</p>";
+						str += "<p>" + (i + 1) + "번째 경로의 출발 정류장 : " + result.path[i].info.firstStartStation + "</p>";
+						str += "<p>" + (i + 1) + "번째 경로의 도착 정류장 : " + result.path[i].info.lastEndStation + "</p>";
+						str += "<p>" + (i + 1) + "번째 경로의 총 정류장 수 : " + result.path[i].info.totalStationCount + "</p>";
+						str += "<p>" + (i + 1) + "번째 경로의 보정 값 : " + result.path[i].info.mapObj + "</p>";
+						
+						intermediatePath[i] = Array(result.path[i].subPath.length);
+						interj = 0;
+						
+						for (var j = 0; j < result.path[i].subPath.length; j++) {
+							str += "<p>+++++++++++++++세부 경로 : " + (j + 1) + "+++++++++++++++</p>"
+							str += "<p>이동거리 : " + result.path[i].subPath[j].distance + "</p>";
+							str += "<p>이동 소요시간 : " + result.path[i].subPath[j].sectionTime + "</p>";
+							str += "<p>이동 수단 : " + result.path[i].subPath[j].trafficType + "</p>";
+							
+							if (result.path[i].subPath[j].trafficType == 2) {
+								str += "<p>이동 정류장 수 : " + result.path[i].subPath[j].stationCount + "</p>";
+								str += "<p>출발 정류장 ID : " + result.path[i].subPath[j].startID + "</p>";
+								str += "<p>출발 정류장 이름 : " + result.path[i].subPath[j].startName + "</p>";
+								str += "<p>출발 정류장 X 좌표 : " + result.path[i].subPath[j].startX + "</p>";
+								str += "<p>출발 정류장 Y 좌표 : " + result.path[i].subPath[j].startY + "</p>";
+								str += "<p>도착 정류장 ID : " + result.path[i].subPath[j].endID + "</p>";
+								str += "<p>도착 정류장 이름 : " + result.path[i].subPath[j].endName + "</p>";
+								str += "<p>도착 정류장 X 좌표 : " + result.path[i].subPath[j].endX + "</p>";
+								str += "<p>도착 정류장 Y 좌표 : " + result.path[i].subPath[j].endY + "</p>";
+								
+								for (var k = 0; k < result.path[i].subPath[j].lane.length; k++) {
+									str += "<p>===============버스 정보 : " + (k + 1) + "===============</p>";
+									str += "<p>버스 ID : " + result.path[i].subPath[j].lane[k].busID + "</p>";
+									str += "<p>버스 번호 : " + result.path[i].subPath[j].lane[k].busNo + "</p>";
+									str += "<p>버스 타입 : " + result.path[i].subPath[j].lane[k].type + "</p>";
+								}
+								
+								intermediatePath[i][interj] = Array(result.path[i].subPath[j].passStopList.stations.length);
+								for (var k = 0; k < result.path[i].subPath[j].passStopList.stations.length; k++) {
+									str += "<p>***************경로 상세 : " + (k + 1) + "***************</p>";
+									str += "<p>순번 : " + (result.path[i].subPath[j].passStopList.stations[k].index + 1) + "</p>";
+									str += "<p>정류장 ID : " + result.path[i].subPath[j].passStopList.stations[k].stationID + "</p>";
+									str += "<p>정류장 이름 : " + result.path[i].subPath[j].passStopList.stations[k].stationName + "</p>";
+									str += "<p>정류장 X 좌표 : " + result.path[i].subPath[j].passStopList.stations[k].x + "</p>";
+									str += "<p>정류장 Y 좌표 : " + result.path[i].subPath[j].passStopList.stations[k].y + "</p>";
+									intermediatePath[i][interj][k] = new daum.maps.LatLng(result.path[i].subPath[j].passStopList.stations[k].y, result.path[i].subPath[j].passStopList.stations[k].x);
+								}
+								
+								interj++;
+							}
+						}
+					}
+				}
+				
+				// Show Daum Map
+				$.getScript('http://dapi.kakao.com/v2/maps/sdk.js?appkey=d388e7ffead01bfd5045bc218f8e8830&autoload=false', function () {
+					daum.maps.load(function() {
+						map.panTo(new daum.maps.LatLng(next_place_posy, next_place_posx));
+					}); 
+				});
+				
+				var isFirst = true;
+				var markers = new Array();
+				
+				if (isFirst != true) {
+					var lenMarker = markers.length;
+					for(var i = 0; i < lenMarker; i++) {
+						markers[i].setMap(null);
+					}
+					markers = null;
+					markers = new Array();
+				} else {
+					isFirst = false;
+				}
+				
+				var markerImage = new daum.maps.MarkerImage("http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png", new daum.maps.Size(24, 35));
+				
+				var marker = new daum.maps.Marker({
+					map: map,
+					position: new daum.maps.LatLng(prev_place_posy, prev_place_posx),
+					image : markerImage
+				});
+				markers.push(marker);
+				
+				var marker2 = new daum.maps.Marker({
+					map: map,
+				    position: new daum.maps.LatLng(next_place_posy, next_place_posx),
+				    image: markerImage
+				});
+				markers.push(marker);
+				
+				
+				// Show Line : (syVal, sxVal) -> (start station y-axis, start station x-axis) -> (intermediate station y-axis, intermediate station x-axis)
+				//             -> (destination station y-axis, destination station x-axis) -> (eyVal, exVal)
+				
+				var linePath = startPath.concat(intermediatePath[0][0]).concat(endPath);
+				
+				var polyline = new daum.maps.Polyline({
+				    path: linePath,
+				    strokeWeight: 5,
+				    strokeColor: '#FFAE00',
+				    strokeOpacity: 1,
+				    strokeStyle: 'solid'
+				});
+				
+				polyline.setMap(map);
+				
+				
+				console.log(intermediatePath);
+			}
+		}
+ */
+
+ 
+ 	
 	});
 });
 </script>
@@ -196,8 +371,10 @@ $(function(){
 							<div class="daydetail">
 								<div class="daydetailnum"><span class="circle" day="${places.trip_day}">${index}</span></div>
 								<div class="daydetailimg"><img src="/TaYo/images/p2.jpg"></div>
-								<div class="daydetailcontent">${places.place_name}<br><button class="btn btn-sm btn-link" name="pdinfo">제목&내용 수정</button></div>
-								<div class="daydetailfa"><span class="fa fa-map-marker">  <span class="fa fa-info-circle"></div>
+								<div class="daydetailcontent" posx="${places.posX}" posy="${places.posY}">${places.place_name}<br><button class="btn btn-sm btn-link" name="pdinfo">제목&내용 수정</button></div>
+								
+								<div class="daydetailfa" > <span class="fa fa-map-marker" posx="${places.posX}" posy="${places.posY}" style="cursor:pointer;"></span>  <span class="fa fa-info-circle" style="cursor:pointer;"></span></div>
+								
 								<div class="daydetailtitle" name="title"><strong>${places.detail_title}</strong></div>
 								<div class="daydetailsub" name="detailsub" style="height: 4.5rem; overflow-y: auto; white-space: pre-line; word-wrap: break-word">${places.detail_content}</div>
 								<div name="pdmenu" style="display: none;">
