@@ -8,7 +8,7 @@ http://localhost/TaYo/schedule?act=showDetail&email=title&title=email1@day_lengt
 $(document).on('click', ".row .content", function() {
 	var title= $(this).find('div.package-info > h5[datatype=title]').text().trim();
 	var email= $(this).find('div.package-info > h6 > span[datatype=email]').text().trim();
-	console.log(email+' '+title);
+	
  	location.href= "${pageContext.request.contextPath}/schedule?act=showDetail" + 
 			'&email=' + email+'&title=' + title;
 	return false;

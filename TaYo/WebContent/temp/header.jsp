@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!--
 author: W3layouts
 author URL: http://w3layouts.com
@@ -139,8 +140,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</c:when>
 						<c:otherwise>
 							<li class="nav-item active">
-								<a class="nav-link text-nowrap " href="#" id="header_logout">
-								로그아웃</a>
+								<span>${fn:trim(sessionScope.loginInfo)}님 환영합니다. <a class="nav-link text-nowrap " href="#" id="header_logout" style="display:inline">로그아웃</a></span>
 							</li>
 							
 						</c:otherwise>
