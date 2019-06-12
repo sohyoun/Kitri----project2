@@ -85,15 +85,7 @@ $(function(){
 		//지도이동시킵니다.
 		//map.setCenter(moveLatLon);
 	});
-	
-	// 마커가 표시될 위치입니다 
-	var markerPosition  = new daum.maps.LatLng(33.450701, 126.570667); 
-	// 마커를 생성합니다
-	var marker = new daum.maps.Marker({
-	    position: markerPosition
-	});
-	// 마커가 지도 위에 표시되도록 설정합니다
-	marker.setMap(map);
+
 
 	
 	
