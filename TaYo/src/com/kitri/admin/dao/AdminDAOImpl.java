@@ -230,6 +230,7 @@ public class AdminDAOImpl implements AdminDAO {
 		return blackTotalCnt;
 	}
 
+	//회원 검색 
 	@Override
 	public List<MemberBoardDTO> memberSearch(String searchType, String keyword) {
 		
@@ -247,7 +248,7 @@ public class AdminDAOImpl implements AdminDAO {
 			
 			
 			sql.append("SELECT * " +  
-					   "FROM memberboard ");  
+					       "FROM memberboard ");  
 			
 				if(("member_email").equals(searchType)) {
 					sql.append("WHERE " + searchType + " like '%'||?||'%' ");
@@ -264,7 +265,13 @@ public class AdminDAOImpl implements AdminDAO {
 			}else if(("member_name").equals(searchType)) {
 				pstmt.setString(1, keyword);
 			}else if(("member_gender").equals(searchType)) {
-				pstmt.setString(1, keyword);
+				if(("f").equals(keyword)){
+					String upKey = keyword.toUpperCase();
+					pstmt.setString(1, upKey);
+				} else if(("m").equals(keyword)) {
+					String upKey = keyword.toUpperCase();
+					pstmt.setString(1, upKey);
+				}
 			}
 			
 			rs = pstmt.executeQuery();

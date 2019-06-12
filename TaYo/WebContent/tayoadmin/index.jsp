@@ -126,7 +126,11 @@ var loginChart = new Chart(ctx, {
 <div class = "row">
 	<div class="col-xs-6">
 		<div class="panel panel-primary" style="height: 600px;">
-			<div class="panel-heading">연령별</div>
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<i class="fa fa-bar-chart-o"></i> 연령별
+				</h3>
+			</div>
 			<div id="ComboChart" class="charts"><!-- 차트 시작 영역  -->
 				<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
 					<canvas id="myChart" width="300" height="500"></canvas>
@@ -175,10 +179,12 @@ var loginChart = new Chart(ctx, {
 	});
 </script>
 <div class="col-xs-6">
-	<div class="panel panel-primary" style="height: 600px;;">
-		<div class="panel-heading">
-			<label>지역별 </label>
-		</div>
+	<div class="panel panel-primary" style="height: 600px;">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<i class="fa fa-bar-chart-o"></i> 지역별
+				</h3>
+			</div>
 			<div id="PieChart" class="charts"><!-- 차트 시작 영역  -->
 				<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
 					<canvas id = "lineChart" width = "300" height = "500"></canvas>
