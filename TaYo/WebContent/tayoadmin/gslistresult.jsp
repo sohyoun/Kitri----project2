@@ -3,8 +3,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="sg" value="${requestScope.gslist}" />
-
 <div class="row">
+<!-- 공지 테이블 시작 -->
 	<div class="col-lg-1"></div>
 	<div class="col-lg-10">
 		<div class="table-responsive">
@@ -32,7 +32,6 @@
 								<td>${so.gboard_writer}</td>
 								<td>${so.gboard_contents}</td>
 								<td>${so.gboard_date}</td>
-								<td>${so.gboard_viewcount}</td>
 								<td>
 									<button type="submit" id="updateBtn" class="btn btn-info">수정</button>
 									<button type="submit" id="removeBtn" class="btn btn-info">삭제</button>
@@ -41,7 +40,7 @@
 						</tbody>
 					</c:forEach>
 				</table>
-			</div>
-		<div class="col-lg-1"></div>
+			<div class="col-lg-1"></div>
+		</div>
 	</div>
 </div>

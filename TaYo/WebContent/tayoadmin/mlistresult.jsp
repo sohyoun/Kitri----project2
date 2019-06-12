@@ -3,7 +3,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<c:set var = "mem" value ="${requestScope.mlist}"/>
 	<c:set var = "page" value ="${requestScope.javaBean}"/>
-	
+	<c:set var= "joinTotalCnt" value="${requestScope.joinTotalCnt}" />
+	<c:set var= "blackTotalCnt" value="${requestScope.blackTotalCnt}"/>
+<style>
+
+</style>
+
+
 <script>
 $(function(){
 	$("ul#paging1 > li > a").click(function(){
@@ -11,7 +17,7 @@ $(function(){
 		alert(currentPage+"페이지를 보여줍니다.");
 			$("div#mlist").empty();
 		$.ajax({
-			url:'/TaYo/adminmember?currentPage='+ currentPage,
+			url:'${pageContext.request.contextPath}/adminmember?currentPage='+ currentPage,
 			method:'get',
 			success:function(result){
 				alert(result.trim());
@@ -30,13 +36,18 @@ $(function(){
 	<!-- 유저 테이블 시작 -->
 	<div class="col-lg-1"></div>
 	<div class="col-lg-10">
+				<ul class="list-group">
+					<li class="list-group-item"><span class="badge">${blackTotalCnt}</span>블랙 회원 수</li>
+					<li class="list-group-item"><span class="badge"></span> 탈퇴 회원 수</li>
+					<li class="list-group-item"><span class="badge">${joinTotalCnt}</span>가입 회원 수</li>
+				</ul>
 	<div class="pageInfo"> 
 		<button type="button" class="btn btn-success">현재 페이지 <span class="badge">${javaBean.currentPage}</span></button>
 		<button type="button" class="btn btn-default">총 페이지 <span class="badge">${javaBean.totalPage}</span></button>
-			<c:forEach var ="i" begin="0" end="3">
-				<label>등급 : ${i} <img style="width: 25px; height: 25px;"src="/TaYo/tayoadmin/images/${i}.png"/></label>
-			</c:forEach>
 	</div>
+			<c:forEach var ="i" begin="0" end="3">
+				<label>등급 <span class="badge">${i}</span><img style="width: 25px; height: 25px;"src="/TaYo/tayoadmin/images/${i}.png"/></label>
+			</c:forEach>
 		<div class="table-responsive">
 			<table class="table">
 				<thead>

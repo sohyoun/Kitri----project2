@@ -27,10 +27,10 @@ $(function(){
 		alert(currentPage+"페이지를 보여줍니다.");
 			$("div#glist").empty();
 		$.ajax({
-			url:'/TaYo/gonggilist?currentPage='+ currentPage,
+			url:'${pageContext.request.contextPath}/gonggilist?currentPage='+ currentPage,
 			method:'get',
 			success:function(result){
-				alert(result.trim());
+				//alert(result.trim());
 				$("div#glist").html(result);
 			},
 			error : function(){
@@ -41,7 +41,7 @@ $(function(){
 	});
 	
 	$("#removeBtn").click(function(){
-		alert("클릭")		
+		alert("삭제 클릭")		
 	});
 });
 </script>
