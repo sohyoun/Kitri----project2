@@ -236,7 +236,7 @@
 				var totalCount = result.getElementsByTagName("totalCount");
 				eleTmep = item;
 
-				//placeList
+				
 				$("#placeList").html('');
 
 				for (var i = 0; i < item.length; i++) {
@@ -259,20 +259,20 @@
 					var option = "<tr>";
 					option += "		<th style='width:50%;'>";
 					option += "			<img src='"+item[i].getElementsByTagName("firstimage")[0].firstChild.data+"' style='widows: 100%; max-height:10rem; max-width:7rem; height: 10rem; width:7rem; float: left; padding: 10px;'>";
-					option += "			<li><a  href='#' onClick='goDetail("+i+")'>공고번호 : "+item[i].getElementsByTagName("title")[0].firstChild.data+"</a></li>";
-					option += "			<li>접 수 일  : "+item[i].getElementsByTagName("title")[0].firstChild.data+"</li>";
-					option += "			<li>품     종  : "+item[i].getElementsByTagName("addr1")[0].firstChild.data+"</li>";
-					option += "			<li>상     태  : "+item[i].getElementsByTagName("addr2")[0].firstChild.data+"</li>";
+					option += "			<li><a  href='#' onClick='goDetail("+i+")'>타이틀 : "+item[i].getElementsByTagName("title")[0].firstChild.data+"</a></li>";
+					option += "			<li>타이틀  : "+item[i].getElementsByTagName("title")[0].firstChild.data+"</li>";
+					option += "			<li>주소1  : "+item[i].getElementsByTagName("addr1")[0].firstChild.data+"</li>";
+					option += "			<li>주소2  : "+item[i].getElementsByTagName("addr2")[0].firstChild.data+"</li>";
 					option += "		</th>";
 					
 					i = i + 1;
 					
 					option += "		<th style='width:50%;'>";
 					option += "			<img src='"+item[i].getElementsByTagName("firstimage")[0].firstChild.data+"' style='widows: 100%; max-height:10rem; max-width:7rem; height: 10rem; width:7rem; float: left; padding: 10px;'>";
-					option += "			<li><a  href='#' onClick='goDetail("+i+")'>공고번호 : "+item[i].getElementsByTagName("title")[0].firstChild.data+"</a></li>";
-					option += "			<li>접 수 일  : "+item[i].getElementsByTagName("title")[0].firstChild.data+"</li>";
-					option += "			<li>품     종  : "+item[i].getElementsByTagName("addr1")[0].firstChild.data+"</li>";
-					option += "			<li>상     태  : "+item[i].getElementsByTagName("addr2")[0].firstChild.data+"</li>";
+					option += "			<li><a  href='#' onClick='goDetail("+i+")'>타이틀 : "+item[i].getElementsByTagName("title")[0].firstChild.data+"</a></li>";
+					option += "			<li>타이틀  : "+item[i].getElementsByTagName("title")[0].firstChild.data+"</li>";
+					option += "			<li>주소1  : "+item[i].getElementsByTagName("addr1")[0].firstChild.data+"</li>";
+					option += "			<li>주소2   : "+item[i].getElementsByTagName("addr2")[0].firstChild.data+"</li>";
 					option += "		</th>";
 					option += "</tr>"
 					
