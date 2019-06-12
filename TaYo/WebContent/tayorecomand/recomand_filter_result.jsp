@@ -40,7 +40,8 @@ $(document).on('click', ".row .content", function() {
 
 <!-- 여행일정 -->
 <div class="container mt-3">
-	<h3 class="heading text-capitalize text-center">베스트 여행일정</h3>
+	<h3 class="heading text-capitalize text-center"> 여행일정</h3>
+	<br/>
 	<div class="row">
 
 		<c:forEach var="tripBasicDto" items="${requestScope.pagebean.list}" varStatus="status" begin="${requestScope.pagebean.startRow-1 }" end="${requestScope.pagebean.endRow-1}">
@@ -93,8 +94,8 @@ $(document).on('click', ".row .content", function() {
 		<a href="${bean.endPage+1}">▶</a>
 	</c:if>
 </div>
-currentPage : ${requestScope.pagebean.currentPage}	
+<%-- currentPage : ${requestScope.pagebean.currentPage}	
 startRow :${requestScope.pagebean.startRow}
 endRow :${requestScope.pagebean.endRow}
 totalPage :${requestScope.pagebean.totalPage}
-jsonStr :${requestScope.jsonStr}
+jsonStr :${requestScope.jsonStr} --%>
