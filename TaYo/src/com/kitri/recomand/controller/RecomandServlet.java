@@ -86,7 +86,7 @@ public class RecomandServlet extends HttpServlet {
 			System.out.println("RecomandServlet 필터결과: basiclistSize():"+basicList.size());		
 	
 
-			int cntPerPage = 2; // 한페이지당 표현할 아이템 개수
+			int cntPerPage = 8; // 한페이지당 표현할 아이템 개수
 			int totalCnt = basicList.size();// 총 목록 개수
 			int cntPerPageGroup = 4; // 표현할 그룹 개수
 			int currentPage = 1;
