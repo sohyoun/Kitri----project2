@@ -99,9 +99,7 @@
 			if (httpRequest.status == 200) {
 
 				var result = httpRequest.responseXML;
-				console.log("result: " + result);
 				var item = result.getElementsByTagName("item");
-				console.log("item: " + item);
 
 				for (var i = 0; i < item.length; i++) {
 					var option = $("<option value='"
@@ -112,7 +110,7 @@
 					$('#areaCode').append(option);
 				}
 
-				searchList('');
+				/* searchList(''); */
 			}
 		}
 	}
@@ -123,9 +121,7 @@
 			if (httpRequest.status == 200) {
 
 				var result = httpRequest.responseXML;
-				console.log("result: " + result);
 				var item = result.getElementsByTagName("item");
-				console.log("item: " + item);
 
 				$("select[id='sigunguCode'] option").remove();
 				$('#sigunguCode').append("<option value=''>시군구</option>");
@@ -149,10 +145,8 @@
 			if (httpRequest.status == 200) {
 
 				var result = httpRequest.responseXML;
-				console.log("result: " + result);
 				var item = result.getElementsByTagName("item");
-				console.log("item: " + item);
-				
+
 				$("select[id='cat1'] option").remove();
 				$('#cat1').append("<option value=''>대분류</option>");
 
@@ -173,11 +167,9 @@
 	function cat1chage() {
 		if (httpRequest.readyState == 4) {
 			if (httpRequest.status == 200) {
-				
+
 				var result = httpRequest.responseXML;
-				console.log("result: " + result);
 				var item = result.getElementsByTagName("item");
-				console.log("item: " + item);
 
 				$("select[id='cat2'] option").remove();
 				$('#cat2').append("<option value=''>중분류</option>");
@@ -201,9 +193,7 @@
 			if (httpRequest.status == 200) {
 
 				var result = httpRequest.responseXML;
-				console.log("result: " + result);
 				var item = result.getElementsByTagName("item");
-				console.log("item: " + item);
 
 				$("select[id='cat3'] option").remove();
 				$('#cat3').append("<option value=''>소분류</option>");
@@ -221,72 +211,69 @@
 		}
 	}
 
-	//검색 버튼 클릭 시 searchList 결과 출력
-	function serchResult() {
-		if (httpRequest.readyState == 4) {
-			if (httpRequest.status == 200) {
+// 	//검색 버튼 클릭 시 searchList 결과 출력
+// 	function serchResult() {
+// 		if (httpRequest.readyState == 4) {
+// 			if (httpRequest.status == 200) {
 
-				var result = httpRequest.responseXML;
-				console.log("result: " + result);
-				var item = result.getElementsByTagName("item");
-				console.log("item: " + item);			
-				
+// 				var result = httpRequest.responseXML;
+// 				console.log("result: " + result);
+// 				var item = result.getElementsByTagName("item");
+// 				console.log("item: " + item);
 
-				var pageNo = result.getElementsByTagName("pageNo");
-				var totalCount = result.getElementsByTagName("totalCount");
-				eleTmep = item;
+// 				var pageNo = result.getElementsByTagName("pageNo");
+// 				var totalCount = result.getElementsByTagName("totalCount");
+// 				eleTmep = item;
 
-				//placeList
-				$("#placeList").html('');
+// 				//yugiList
+// 				$("#yugiList").html('');
 
-				for (var i = 0; i < item.length; i++) {
+// 				for (var i = 0; i < item.length; i++) {
 
-					/* html += "<tr><td><div class='card' style='width: 70rem; display: flex;'> "
-					if (image != '') {
-						html += "<img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png' style='width: 400px;height: 200px;'>"
-					}
-					html += "<div class='card-body' style='display: inline;'>"
-					html += "	<h5 class='card-title'>" + title + "</h5>"
-					html += "	<p class='card-text'>" + addr2 + "</p>"
-					html += "	<p class='card-text'>" + readcount + "</p>"
-					html += "	<a href=''#' class='btn btn-primary'>상세보기</a>"
-					html += "</div>"
-					html += "</div></td></tr>";
+// 					/* html += "<tr><td><div class='card' style='width: 70rem; display: flex;'> "
+// 					if (image != '') {
+// 						html += "<img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png' style='width: 400px;height: 200px;'>"
+// 					}
+// 					html += "<div class='card-body' style='display: inline;'>"
+// 					html += "	<h5 class='card-title'>" + title + "</h5>"
+// 					html += "	<p class='card-text'>" + addr2 + "</p>"
+// 					html += "	<p class='card-text'>" + readcount + "</p>"
+// 					html += "	<a href=''#' class='btn btn-primary'>상세보기</a>"
+// 					html += "</div>"
+// 					html += "</div></td></tr>";
 
-					$("#yugiList").append(html); */
+// 					$("#yugiList").append(html); */
 
-					
-					var option = "<tr>";
-					option += "		<th style='width:50%;'>";
-					option += "			<img src='"+item[i].getElementsByTagName("firstimage")[0].firstChild.data+"' style='widows: 100%; max-height:10rem; max-width:7rem; height: 10rem; width:7rem; float: left; padding: 10px;'>";
-					option += "			<li><a  href='#' onClick='goDetail("+i+")'>공고번호 : "+item[i].getElementsByTagName("title")[0].firstChild.data+"</a></li>";
-					option += "			<li>접 수 일  : "+item[i].getElementsByTagName("title")[0].firstChild.data+"</li>";
-					option += "			<li>품     종  : "+item[i].getElementsByTagName("addr1")[0].firstChild.data+"</li>";
-					option += "			<li>상     태  : "+item[i].getElementsByTagName("addr2")[0].firstChild.data+"</li>";
-					option += "		</th>";
-					
-					i = i + 1;
-					
-					option += "		<th style='width:50%;'>";
-					option += "			<img src='"+item[i].getElementsByTagName("firstimage")[0].firstChild.data+"' style='widows: 100%; max-height:10rem; max-width:7rem; height: 10rem; width:7rem; float: left; padding: 10px;'>";
-					option += "			<li><a  href='#' onClick='goDetail("+i+")'>공고번호 : "+item[i].getElementsByTagName("title")[0].firstChild.data+"</a></li>";
-					option += "			<li>접 수 일  : "+item[i].getElementsByTagName("title")[0].firstChild.data+"</li>";
-					option += "			<li>품     종  : "+item[i].getElementsByTagName("addr1")[0].firstChild.data+"</li>";
-					option += "			<li>상     태  : "+item[i].getElementsByTagName("addr2")[0].firstChild.data+"</li>";
-					option += "		</th>";
-					option += "</tr>"
-					
-					
+// 					var option = "<tr>";
+// 					option += "		<th style='width:50%;'>";
+// 					option += "			<img src='"
+// 							+ item[i].getElementsByTagName("firstimage")[0].firstChild.data
+// 							+ "' style='widows: 100%; max-height:10rem; max-width:7rem; height: 10rem; width:7rem; float: left; padding: 10px;'>";
+// 					option += "			<li><a  href='#' onClick='goDetail("
+// 							+ i
+// 							+ ")'>제목 : "
+// 							+ item[i].getElementsByTagName("title")[0].firstChild.data
+// 							+ "</a></li>";
+// 					option += "			<li>주소1: "
+// 							+ item[i].getElementsByTagName("addr1")[0].firstChild.data
+// 							+ "</li>";
+// 					option += "			<li>주소2  : "
+// 							+ item[i].getElementsByTagName("addr2")[0].firstChild.data
+// 							+ "</li>";
+// 					option += "			<li>콘텐츠타입  : "
+// 							+ item[i].getElementsByTagName("contentid")[0].firstChild.data
+// 							+ "</li>";
+// 					option += "		</th>";
 
-					$("#placeList").append(option);
+// 					$("#yugiList").append(option);
 
-				}
+// 				}
 
-			}
-		}
-	}
+// 			}
+// 		}
+//	}
 
-	//검색 버튼 클릭 시 searchList
+/* 	//검색 버튼 클릭 시 searchList
 	function searchList(pageNo) {
 		if (pageNo == "")
 			pageNo = 1;
@@ -302,6 +289,84 @@
 		sendRequest("/TaYo/tayoapi", params, serchResult, "GET");
 
 	}
+	 */
+	
+	
+	
+	$(function() {
+
+
+		//도시버튼 클릭 이벤트 추가(동적)// > div.allways_show >
+/* 		#searchForm > fieldset > div > table:nth-child(5) > tbody > tr > td > div */
+		$(document).on("click", "#searchForm > fieldset > div > table:nth-child(5) > tbody > tr > td > div  button",function() {
+			console.log(this);
+			var div= $(this).children();
+			var data_type = $(div).attr("data-type");
+			var data = $(div).attr("data");
+			$.ajax({
+			url : "${pageContext.request.contextPath}/tayoapi",
+			data: 'cmd=areaBasedList&areaCode=' +  $("#areaCode option:selected").val()+ '&sigunguCode=' +$("#sigunguCode option:selected").val()
+			+ '&contentTypeId=' + $("#contentTypeId option:selected").val() + '&cat1=' + $("#cat1 option:selected").val() + '&cat2=' + $("#cat2 option:selected").val() + '&cat3=' + $("#cat3 option:selected").val(),
+			type : 'get',
+			success : function(xml) {
+			
+				parser = new DOMParser();
+				xmlDoc = parser.parseFromString(xml, "text/xml");
+				
+				var html;
+				var prevTitle = "";
+				
+				$("#yugiList").empty();
+				
+			
+				$(xml).find("item").each(function() {
+					var title = $(this).find("title").text();
+					var addr1 = $(this).find("addr1").text();
+					var addr2 = $(this).find("addr2").text();
+				
+					if (prevTitle != title) {
+						prevTitle = title;
+						var image = $(this).find("firstimage2").text();
+						
+						
+						/* html += "<tr><td width='100'><img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='80' height='40'/></td><td><ul class='placeclass'><li class='list-group-item' style='padding: 0.3rem;' value='" + title + "'>" + title + addr2 + readcount+ "<button class='btn btn-primary' name='placebtn'>+</button></li></ul></td></tr>"; */
+					 	
+					 html += "<tr><td><div class='card' style='width: 70rem; display: flex;'> "
+						if(image!=''){
+						html += "<img src='" + firstimage + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png' style='width: 400px;height: 200px;'>"
+						}
+						html += "<div class='card-body' style='display: inline;'>"
+						html += "	<h5 class='card-title'>" + title + "</h5>"
+						html += "	<p class='card-text'>"+ addr2 +"</p>"
+							html += "	<p class='card-text'>" + addr1 +"</p>"
+								html += "	<a href=''#' class='btn btn-primary'>상세보기</a>"
+								html += "</div>"
+									html += "</div></td></tr>";	
+									
+									
+				/* 				
+					$("div.card>div.card-body>h5.card-title").html(title);
+					$("div.card>div.card-body>p.card-text").html(addr1); */
+						
+						
+				
+					}
+				});
+				$("#yugiList").html(html);
+				console.log(xmlDoc);
+				/* jquery*/
+// 				console.log(xml);
+			},//end success
+			error : function(err) {
+				console.log(err);
+			}//end error
+		});//end ajax 도시버튼 추가
+		});
+		
+		
+		
+	});//end onload
+	
 	///////////////////////////////////////////////////////////////////////////
 
 	//////////////////////cmd코드 보내기///////////////////////////////////////////
@@ -335,9 +400,9 @@
 					sendRequest("/TaYo/tayoapi", params, cat2chage, "GET");
 				});
 
-		$('#btnSearch').click(function() {
+		/* $('#btnSearch').click(function() {
 			searchList('');
-		});
+		}); */
 	});
 
 	//////////////////////cmd코드 보내기///////////////////////////////////////////
@@ -430,7 +495,9 @@
 	</form>
 	<div class="card-body">
 		<table class="table card-text col-xl-auto">
-			<tbody id="placeList">
+			<tbody id="yugiList">
+			
+			
 			</tbody>
 			<!-- 게시글목록끝 -->
 		</table>

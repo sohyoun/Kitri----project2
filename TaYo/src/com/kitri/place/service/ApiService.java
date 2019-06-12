@@ -270,11 +270,12 @@ public class ApiService {
 		return sb.toString();
 	}
 
-	public String getSearch(String cmd, HttpServletRequest request) throws Exception {
-		StringBuilder strB = this.getUrl(cmd, "10");
-		
+	
+	public String getSearch1(String cmd, HttpServletRequest request) throws Exception {
+		StringBuilder strB = this.getUrl(cmd, "10"); 
+   
 		strB.append("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode(request.getParameter("areaCode"), "UTF-8"));/*지역코드*/
-		strB.append("&" + URLEncoder.encode("sigunguCode","UTF-8") + "=" + URLEncoder.encode(request.getParameter("sigunguCode"), "UTF-8")); /*시군구코드(areaCode 필수)*/
+		//strB.append("&" + URLEncoder.encode("sigunguCode","UTF-8") + "=" + URLEncoder.encode(request.getParameter("sigunguCode"), "UTF-8")); /*시군구코드(areaCode 필수)*/
 		strB.append("&" + URLEncoder.encode("contentTypeId","UTF-8") + "=" + URLEncoder.encode(request.getParameter("contentTypeId"), "UTF-8")); /*관광타입(관광지, 숙박 등) ID*/
 		strB.append("&" + URLEncoder.encode("cat1","UTF-8") + "=" + URLEncoder.encode(request.getParameter("cat1"), "UTF-8")); /*대분류 코드*/
 		strB.append("&" + URLEncoder.encode("cat2","UTF-8") + "=" + URLEncoder.encode(request.getParameter("cat2"), "UTF-8")); /*중분류 코드(cat1필수)*/
@@ -306,42 +307,41 @@ public class ApiService {
 		return sb.toString();
 	}
 	
+		
+	public String getSearch(String cmd,String areaCode, String contentTypeId, String cat1, String cat2, String cat3) throws Exception {
+		StringBuilder strB = this.getUrl(cmd, "10");
+		
+		strB.append("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode(areaCode, "UTF-8")); /*지역코드*/
+		//strB.append("&" + URLEncoder.encode("sigunguCode","UTF-8") + "=" + URLEncoder.encode(sigunguCode, "UTF-8")); /*시군구코드(areaCode 필수)*/
+		strB.append("&" + URLEncoder.encode("contentTypeId","UTF-8") + "=" + URLEncoder.encode(contentTypeId, "UTF-8")); /*관광타입(관광지, 숙박 등) ID*/
+		strB.append("&" + URLEncoder.encode("cat1","UTF-8") + "=" + URLEncoder.encode(cat1, "UTF-8")); /*대분류 코드*/
+		strB.append("&" + URLEncoder.encode("cat2","UTF-8") + "=" + URLEncoder.encode(cat2, "UTF-8")); /*중분류 코드(cat1필수)*/
+		strB.append("&" + URLEncoder.encode("cat3","UTF-8") + "=" + URLEncoder.encode(cat3, "UTF-8")); /*소분류 코드(cat1,cat2필수)*/
 	
-	
-//	public String getSearch(String cmd,String areaCode, String sigunguCode, String contentTypeId, String cat1, String cat2, String cat3) throws Exception {
-//		StringBuilder strB = this.getUrl(cmd, "10");
-//		
-//		strB.append("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode(areaCode, "UTF-8")); /*지역코드*/
-//		strB.append("&" + URLEncoder.encode("sigunguCode","UTF-8") + "=" + URLEncoder.encode(sigunguCode, "UTF-8")); /*시군구코드(areaCode 필수)*/
-//		strB.append("&" + URLEncoder.encode("contentTypeId","UTF-8") + "=" + URLEncoder.encode(contentTypeId, "UTF-8")); /*관광타입(관광지, 숙박 등) ID*/
-//		strB.append("&" + URLEncoder.encode("cat1","UTF-8") + "=" + URLEncoder.encode(cat1, "UTF-8")); /*대분류 코드*/
-//		strB.append("&" + URLEncoder.encode("cat2","UTF-8") + "=" + URLEncoder.encode(cat2, "UTF-8")); /*중분류 코드(cat1필수)*/
-//		strB.append("&" + URLEncoder.encode("cat3","UTF-8") + "=" + URLEncoder.encode(cat3, "UTF-8")); /*소분류 코드(cat1,cat2필수)*/
-//
-//		System.out.println(strB.toString());
-//		URL url = new URL(strB.toString());
-//		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//		conn.setRequestMethod("GET");
-//		conn.setRequestProperty("Content-type", "application/json");
-//		System.out.println("Response code: " + conn.getResponseCode());
-//		BufferedReader rd;
-//		if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
-//			rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//		} else {
-//			rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-//		}
-//		StringBuilder sb = new StringBuilder();
-//		String line;
-//		while ((line = rd.readLine()) != null) {
-//			sb.append(line);
-//		}
-//
-//		System.out.println(sb.toString());
-//		rd.close();
-//		conn.disconnect();
-//
-//		return sb.toString();
-//	}
+		System.out.println(strB.toString());
+		URL url = new URL(strB.toString());
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("Content-type", "application/json");
+		System.out.println("Response code: " + conn.getResponseCode());
+		BufferedReader rd;
+		if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+			rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		} else {
+			rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+		}
+		StringBuilder sb = new StringBuilder();
+		String line;
+		while ((line = rd.readLine()) != null) {
+			sb.append(line);
+		}
+
+		System.out.println(sb.toString());
+		rd.close();
+		conn.disconnect();
+
+		return sb.toString();
+	}
 	
 	
 	

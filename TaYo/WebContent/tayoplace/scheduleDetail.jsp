@@ -51,7 +51,6 @@ $(function() {
 				success: function(xml) {
 					parser = new DOMParser();
 					xmlDoc = parser.parseFromString(xml.trim(), "text/xml");
-
 					var html;
 					var prevTitle = "";
 					

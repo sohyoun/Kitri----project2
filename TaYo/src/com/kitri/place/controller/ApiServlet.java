@@ -97,14 +97,35 @@ public class ApiServlet extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if ("areaBasedList".equals(cmd)) {
+		}else if ("areaBasedList".equals(cmd)) {
+			response.setContentType("text/xml;charset=utf-8");
+			String areaCode = request.getParameter("areaCode");
+			String contentTypeId = request.getParameter("contentTypeId");
+			String cat1 = request.getParameter("cat1");
+			String cat2 = request.getParameter("cat2");
+			String cat3 = request.getParameter("cat3");
+			System.out.println("지경ㄱ코읃"+areaCode);
+			System.out.println("리스트뽑기1");
 			try {
 				System.out.println("여기는 리스트뽑기");
-				String resultXML = new ApiService().getSearch(cmd, request);
+				String resultXML = new ApiService().getSearch(cmd,areaCode, contentTypeId, cat1, cat2, cat3);
 				response.setContentType("text/xml;charset=utf-8");
 				System.out.println("여기는 리스트뽑기2");
 				PrintWriter out = response.getWriter();
 				out.print("xml결과: " + resultXML);
+				System.out.println("여기는 리스트뽑기3");
+				System.out.println("request결과: " + request);
+
+			} catch (Exception e) { // TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else if ("areaBasedList1".equals(cmd)) {
+			try {
+				System.out.println("여기는 리스트뽑기");
+				String resultXML = new ApiService().getSearch1(cmd, request);
+				response.setContentType("text/xml;charset=utf-8");
+				System.out.println("여기는 리스트뽑기2");
+				PrintWriter out = response.getWriter();
 				System.out.println("여기는 리스트뽑기3");
 				System.out.println("request결과: " + request);
 
