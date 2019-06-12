@@ -69,6 +69,8 @@
 	color: YELLOW;
 }
 
+
+.tourView .summary {clear:both;padding:25px 10px 0 10px;border-top:1px solid #000;}
 </style>
 
 
@@ -76,135 +78,95 @@
 
 
 <!-- 크기 맞춰주는 DIV -->
-	<div class="container py-xl-5 py-lg-3">
-		<!-- 이 div를 해줘야 크기가 맞춰짐 -->
-		<!-- 크기 맞춰주는 DIV -->
-		
-		
-		<h3 class="heading text-capitalize ">서울 Seoul</h3>
+<div class="container py-xl-5 py-lg-3">
+	<!-- 이 div를 해줘야 크기가 맞춰짐 -->
+	<!-- 크기 맞춰주는 DIV -->
 
-		<!-- 여행지 상세 선택 분류 -->
-		<div class="common_menu">
-			<a href="naver.com">관광명소</a> <a href="naver.com">음식점</a> <a
-				href="naver.com">여행 일정</a>
-		</div>
-		<!-- 여행지 상세 선택 분류  -->
-
-
-		<br>
-
-
-
-		<!-- 여행지 상세 선택 분류2 -->
-		<nav>
-			<div class="nav nav-tabs" id="nav-tab" role="tablist">
-				<a class="nav-item nav-link active" id="nav-home-tab"
-					data-toggle="tab" href="#nav-home" role="tab"
-					aria-controls="nav-home" aria-selected="true">전체</a> <a
-					class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
-					href="#nav-profile" role="tab" aria-controls="nav-profile"
-					aria-selected="false">관광지</a> <a class="nav-item nav-link"
-					id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
-					role="tab" aria-controls="nav-contact" aria-selected="false">액티비티</a>
-			</div>
-		</nav>
-		<div class="tab-content" id="nav-tabContent">
-			<div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-				aria-labelledby="nav-home-tab">내용</div>
-			<div class="tab-pane fade" id="nav-profile" role="tabpanel"
-				aria-labelledby="nav-profile-tab">내용</div>
-			<div class="tab-pane fade" id="nav-contact" role="tabpanel"
-				aria-labelledby="nav-contact-tab">내용</div>
-		</div>
-		<!-- 여행지 상세 선택 분류2 -->
-
-
-
-		<br> <br> <br>
-
-
-		<!-- 관광지  박스 -->
-		<div class="card" style="width: 70rem;">
-			<img class="card-img-top" src="/TaYo/images/tp2_2.jpg"
-				alt="Card image cap">
-			<div class="card-body" style="display: inline;">
-				<h5 class="card-title">인천국제공항</h5>
-				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South
-					Korea 지도보기</p>
-				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의
-					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p>
-				<a href="#" class="btn btn-primary">상세보기</a>
-			</div>
-		</div>
-		<br>
-		<!-- 관광지  박스 -->
-
-		<!-- 관광지  박스 -->
-		<div class="card" style="width: 70rem;">
-			<img class="card-img-top" src="/TaYo/images/tp1.jpg"
-				alt="Card image cap">
-			<div class="card-body" style="display: inline;">
-				<h5 class="card-title">인천국제공항</h5>
-				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South
-					Korea 지도보기</p>
-				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의
-					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p>
-				<a href="#" class="btn btn-primary">상세보기</a>
-			</div>
-		</div>
-		<!-- 관광지  박스 -->
-		<br>
-
-		<!-- 관광지  박스 -->
-		<div class="card" style="width: 70rem;">
-			<img class="card-img-top" src="/TaYo/images/tp3.jpg"
-				alt="Card image cap">
-			<div class="card-body" style="display: inline;">
-				<h5 class="card-title">인천국제공항</h5>
-				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South
-					Korea 지도보기</p>
-				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의
-					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p>
-				<a href="#" class="btn btn-primary">상세보기</a>
-			</div>
-		</div>
-		<!-- 관광지  박스 -->
-		<br>
-
-		<!-- 관광지  박스 -->
-		<div class="card" style="width: 70rem;">
-			<img class="card-img-top" src="/TaYo/images/tp4.jpg"
-				alt="Card image cap">
-			<div class="card-body" style="display: inline;">
-				<h5 class="card-title">인천국제공항</h5>
-				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South
-					Korea 지도보기</p>
-				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의
-					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p>
-				<a href="#" class="btn btn-primary">상세보기</a>
-			</div>
-		</div>
-		<!-- 관광지  박스 -->
-		<br>
-
-		<!-- 관광지  박스 -->
-		<div class="card" style="width: 70rem;">
-			<img class="card-img-top" src="/TaYo/images/tp2_2.jpg"
-				alt="Card image cap">
-			<div class="card-body" style="display: inline;">
-				<h5 class="card-title">인천국제공항</h5>
-				<p class="card-text">2851-19 Unseo-dong, Jung-gu, Incheon, South
-					Korea 지도보기</p>
-				<p class="card-text">인천국제공항은 대한민국 인천광역시 중구 운서동에 위치한 대한민국 최대 규모의
-					국제공항으로, 대한민국의 대부분 국제선이 이곳을 통해 운항된다. 인천국제공항은 2001년 3월 29일 개항과 동...</p>
-				<a href="#" class="btn btn-primary">상세보기</a>
-			</div>
-		</div>
-		<!-- 관광지  박스 -->
-		<br>
-
+	
+		<section id="content">
+			<div class="tourView">
+			<form id="backform" method="post"  action="/guide/inforArea.do">
+				<input type="hidden" name="langtype" value="KOR"/>
+				<input type="hidden" name="contenttypeid" value=""/>		
+		        <input type="hidden" name="cat1" value=""/>
+				<input type="hidden" name="cat2" value=""/>
+				<input type="hidden" name="cat3" value=""/>				
+				<input type="hidden" name="areacode" value=""/>
+				<input type="hidden" name="sigungucode" value=""/>		
+				<input type="hidden" name="arrange" value="A"/>
+				<input type="hidden" name="pageNo" value="1"/>
+				<input type="hidden" name="mode" value="listOk"/>
+				<input type="hidden" name="tSearchValue" value=""/>
+				<input type="hidden" name="tLangType" value=""/>
+				<input type="hidden" name="tSearchType" value=""/>
+				<input type="hidden" name="mapX" value=""/>
+				<input type="hidden" name="mapY" value=""/>
+				<input type="hidden" name="radius" value=""/>
+				<input type="hidden" name="searchtxt" value=""/>
+				<input type="hidden" name="eventStartDate" value=""/>
+				<input type="hidden" name="eventEndDate" value=""/>
+				<input type="hidden" name="stay" value=""/>
+		    </form>		
+			 <h3 class="heading text-capitalize ">서울 Seoul</h3>
+			 
+			 <!--  <div class="tabWrap  col3"> 
+			     <ul class="tabul">
+			     <li class="on"><a href="#common"><span>공통정보</span></a></li>        
+			          <li><a href="#intro"><span>소개정보</span></a></li>  
+			           <li><a href="#coinfo"><span>코스정보</span></a></li>
+			  </ul>
+			  </div> -->
+			  <!-- 여행지 상세 선택 분류  -->
+			  <div class="common_menu"> 
+			     <ul class="tabul">
+			     <li class="on"><a href="#common"><span>공통정보</span></a></li>        
+			          <li><a href="#intro"><span>소개정보</span></a></li>  
+			           <li><a href="#coinfo"><span>코스정보</span></a></li>
+			  </ul>
+			  </div>
+			  <!-- 여행지 상세 선택 분류  -->
+			  
+			  <br><br>
+			  
+			  <div id="common" class="tabGon">
+			  
+			  	
+		          	<p class="mainImg">
+        
+				         <img src="http://tong.visitkorea.or.kr/cms/resource/74/1998774_image2_1.jpg" alt="‘바다여행의 종합 세트’ 사천으로 가자 대표이미지">
+     
+				     </p>
+		         	<!-- //mainImg -->
+		         	    <div class="txtData">
+					       <ul class="txtCon" tabindex="0">
+	
+							   
+						       <form  name="dform" method="post" >
+						       <input type="hidden" name="mapX" value="128.0741699711">
+						       <input type="hidden" name="mapY" value="34.9247115162">  
+						       <input type="hidden" name="title" value="‘바다여행의 종합 세트’ 사천으로 가자">
+						       <input type="hidden" name="oper" value="area">
+						     </form>
+						    
+						</ul>
+					  </div>
+			
+					<br>
+				  <div class="summary">
+					<strong class="tit">개요</strong>
+						<p>
+				  	 사천의 삼천포항에 가면 바다에서 누릴 수 있는 모든 걸 경험할 수 있다. 우리나라 3대 어항의 하나인 삼천포항에서 비린내 나는 부둣가의 정취를, 주변 어시장에서 싱싱한 수산물을 구경할 수 있다. 바다를 향해 돌출한 언덕에 위치한 노산공원은 시원스레 펼쳐진 한려수도의 전망이 한눈에 들어온다. 일몰이 아름다운 실안해안도로를 따라 달리면 임진왜란 때 왜군이 쌓은 선진리왜성과 우리나라 항공우주산업의 면모를 알 수 있는 항공우주박물관이 있다.
+					</p>
+			  	 </div>
 	</div>
+	</section>
 
+
+
+
+<!-- 이 div를 해줘야 크기가 맞춰짐 -->
+</div>
+<!-- 이 div를 해줘야 크기가 맞춰짐 -->
 
 
 
