@@ -55,14 +55,9 @@ public class ApiServlet extends HttpServlet {
 		} else if ("categoryCode".equals(cmd)) {
 			response.setContentType("text/xml;charset=utf-8");
 			String contentTypeId = request.getParameter("contentTypeId");
-			System.out.println("여기는 대분류");
 			try {
-				System.out.println("여기는 대분류22");
-				System.out.println(cmd + "" + contentTypeId);
 				PrintWriter out = response.getWriter();
 				out.print(new ApiService().getcat1(cmd, contentTypeId));
-				System.out.println("여기는 대분류3란다");
-				System.out.println("cmd: " + cmd + " contentTypeId: " + contentTypeId);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -70,14 +65,11 @@ public class ApiServlet extends HttpServlet {
 			response.setContentType("text/xml;charset=utf-8");
 			String contentTypeId = request.getParameter("contentTypeId");
 			String cat1 = request.getParameter("cat1");
-			System.out.println("여기는 중분류");
+
 			try {
-				System.out.println("여기는 중분류22");
-				System.out.println(cmd + "" + contentTypeId + cat1);
 				PrintWriter out = response.getWriter();
 				out.print(new ApiService().getcat2(contentTypeId, cat1));
-				System.out.println("여기는 중분류3란다");
-				System.out.println("cmd: " + cmd + " contentTypeId: " + contentTypeId + " cat1 " + cat1);
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -86,29 +78,25 @@ public class ApiServlet extends HttpServlet {
 			String contentTypeId = request.getParameter("contentTypeId");
 			String cat1 = request.getParameter("cat1");
 			String cat2 = request.getParameter("cat2");
-			System.out.println("여기는 소분류");
 			try {
-				System.out.println("여기는 소분류22");
-				System.out.println(cmd + "" + contentTypeId);
 				PrintWriter out = response.getWriter();
 				out.print(new ApiService().getcat3(contentTypeId, cat1, cat2));
-				System.out.println("여기는 소분류3란다");
-				System.out.println("cmd: " + cmd + " contentTypeId: " + contentTypeId + " cat1" + cat1 + " cat2" + cat2);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if ("areaBasedList".equals(cmd)) {
+		}else if ("areaBasedList1".equals(cmd)) {
 			response.setContentType("text/xml;charset=utf-8");
 			String areaCode = request.getParameter("areaCode");
+			String sigunguCode = request.getParameter("sigunguCode");
 			String contentTypeId = request.getParameter("contentTypeId");
 			String cat1 = request.getParameter("cat1");
 			String cat2 = request.getParameter("cat2");
 			String cat3 = request.getParameter("cat3");
-			System.out.println("지경ㄱ코읃"+areaCode);
+			System.out.println("지역코드"+areaCode);
 			System.out.println("리스트뽑기1");
 			try {
 				System.out.println("여기는 리스트뽑기");
-				String resultXML = new ApiService().getSearch(cmd,areaCode, contentTypeId, cat1, cat2, cat3);
+				String resultXML = new ApiService().getSearch1(cmd,areaCode,sigunguCode,contentTypeId, cat1, cat2, cat3);
 				response.setContentType("text/xml;charset=utf-8");
 				System.out.println("여기는 리스트뽑기2");
 				PrintWriter out = response.getWriter();
@@ -119,14 +107,14 @@ public class ApiServlet extends HttpServlet {
 			} catch (Exception e) { // TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} else if ("areaBasedList1".equals(cmd)) {
+		} else if ("areaBasedList".equals(cmd)) {
 			try {
 				System.out.println("여기는 리스트뽑기");
-				String resultXML = new ApiService().getSearch1(cmd, request);
+				String resultXML = new ApiService().getSearch(cmd, request);
 				response.setContentType("text/xml;charset=utf-8");
 				System.out.println("여기는 리스트뽑기2");
 				PrintWriter out = response.getWriter();
-				System.out.println("여기는 리스트뽑기3");
+				out.print(resultXML); //이거 추가안해서 계속 null값 뜬 거였음
 				System.out.println("request결과: " + request);
 
 			} catch (Exception e) { // TODO Auto-generated catch block
@@ -137,29 +125,3 @@ public class ApiServlet extends HttpServlet {
 	}
 }
 
-
-
-//
-//else if ("areaBasedList".equals(cmd)) {
-//	response.setContentType("text/xml;charset=utf-8");
-//	String areaCode = request.getParameter("areaCode");
-//	String sigunguCode = request.getParameter("sigunguCode");
-//	String contentTypeId = request.getParameter("contentTypeId");
-//	String cat1 = request.getParameter("cat1");
-//	String cat2 = request.getParameter("cat2");
-//	String cat3 = request.getParameter("cat3");
-//	System.out.println("리스트뽑기1");
-//	try {
-//		System.out.println("여기는 리스트뽑기");
-//		String resultXML = new ApiService().getSearch(cmd, areaCode, sigunguCode, contentTypeId, cat1, cat2, cat3);
-//		response.setContentType("text/xml;charset=utf-8");
-//		System.out.println("여기는 리스트뽑기2");
-//		PrintWriter out = response.getWriter();
-//		out.print("xml결과: " + resultXML);
-//		System.out.println("여기는 리스트뽑기3");
-//		System.out.println("request결과: " + request);
-//
-//	} catch (Exception e) { // TODO Auto-generated catch block
-//		e.printStackTrace();
-//	}
-//}

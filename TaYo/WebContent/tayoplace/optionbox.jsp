@@ -81,6 +81,33 @@
 	font: normal 12px/1.5 "나눔고딕", NanumGothic, NGNormal;
 	color: #666;
 }
+
+
+.listWrap { border-top:2px solid #9b9b9b; }
+
+
+
+.galleryList { margin:40px 0 0 -39px !important; }
+.galleryList li { overflow:hidden; float:left; width:210px; margin-left:39px; }
+.galleryList li .selectCheck { display:block; }
+.galleryList li .selectCheck input { display:none; }
+.galleryList li img { width:250px; height:150px; }
+.galleryList li a {display:block;}
+.galleryList li p { height:40px; margin:20px 0 30px 0 !important; font-size:14px; color:#333; text-align:center; letter-spacing:-1px; }
+
+/* 글자 검정으로 클릭시 파랑으로 */
+a {
+  color: black;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+/* 글자 검정으로 클릭시 파랑으로 */
 </style>
 
 
@@ -152,7 +179,7 @@
 				console.log("result: " + result);
 				var item = result.getElementsByTagName("item");
 				console.log("item: " + item);
-				
+
 				$("select[id='cat1'] option").remove();
 				$('#cat1').append("<option value=''>대분류</option>");
 
@@ -173,7 +200,7 @@
 	function cat1chage() {
 		if (httpRequest.readyState == 4) {
 			if (httpRequest.status == 200) {
-				
+
 				var result = httpRequest.responseXML;
 				console.log("result: " + result);
 				var item = result.getElementsByTagName("item");
@@ -229,54 +256,32 @@
 				var result = httpRequest.responseXML;
 				console.log("result: " + result);
 				var item = result.getElementsByTagName("item");
-				console.log("item: " + item);			
-				
+				console.log("item: " + item);
 
 				var pageNo = result.getElementsByTagName("pageNo");
 				var totalCount = result.getElementsByTagName("totalCount");
 				eleTmep = item;
 
-				
 				$("#placeList").html('');
 
 				for (var i = 0; i < item.length; i++) {
 
-					/* html += "<tr><td><div class='card' style='width: 70rem; display: flex;'> "
-					if (image != '') {
-						html += "<img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png' style='width: 400px;height: 200px;'>"
-					}
-					html += "<div class='card-body' style='display: inline;'>"
-					html += "	<h5 class='card-title'>" + title + "</h5>"
-					html += "	<p class='card-text'>" + addr2 + "</p>"
-					html += "	<p class='card-text'>" + readcount + "</p>"
-					html += "	<a href=''#' class='btn btn-primary'>상세보기</a>"
-					html += "</div>"
-					html += "</div></td></tr>";
-
-					$("#yugiList").append(html); */
 
 					
-					var option = "<tr>";
-					option += "		<th style='width:50%;'>";
-					option += "			<img src='"+item[i].getElementsByTagName("firstimage")[0].firstChild.data+"' style='widows: 100%; max-height:10rem; max-width:7rem; height: 10rem; width:7rem; float: left; padding: 10px;'>";
-					option += "			<li><a  href='#' onClick='goDetail("+i+")'>타이틀 : "+item[i].getElementsByTagName("title")[0].firstChild.data+"</a></li>";
-					option += "			<li>타이틀  : "+item[i].getElementsByTagName("title")[0].firstChild.data+"</li>";
-					option += "			<li>주소1  : "+item[i].getElementsByTagName("addr1")[0].firstChild.data+"</li>";
-					option += "			<li>주소2  : "+item[i].getElementsByTagName("addr2")[0].firstChild.data+"</li>";
-					option += "		</th>";
+					var option = "<li>";
+					option += "<img src='"+item[i].getElementsByTagName("firstimage")[0].firstChild.data+"' style='width:250px; height:150px;'>";
+					option += "<p><a  href='#' onClick='goDetail("+i+")'> "+item[i].getElementsByTagName("title")[0].firstChild.data+"</a></p>";
+					option += "</a>";
+					option += "</li> ";
 					
-					i = i + 1;
-					
-					option += "		<th style='width:50%;'>";
-					option += "			<img src='"+item[i].getElementsByTagName("firstimage")[0].firstChild.data+"' style='widows: 100%; max-height:10rem; max-width:7rem; height: 10rem; width:7rem; float: left; padding: 10px;'>";
-					option += "			<li><a  href='#' onClick='goDetail("+i+")'>타이틀 : "+item[i].getElementsByTagName("title")[0].firstChild.data+"</a></li>";
-					option += "			<li>타이틀  : "+item[i].getElementsByTagName("title")[0].firstChild.data+"</li>";
-					option += "			<li>주소1  : "+item[i].getElementsByTagName("addr1")[0].firstChild.data+"</li>";
-					option += "			<li>주소2   : "+item[i].getElementsByTagName("addr2")[0].firstChild.data+"</li>";
-					option += "		</th>";
-					option += "</tr>"
-					
-					
+					/* 	<li>
+							<a href="/guide/tourDetail.do?contentId=2381406&amp;langtype=KOR&amp;typeid=25&amp;oper=area&amp;burl=&amp;contentTypeId=&amp;areaCode=&amp;sigunguCode=&amp;cat1=&amp;cat2=&amp;cat3=&amp;listYN=Y&amp;MobileOS=ETC&amp;MobileApp=TourAPI3.0_Guide&amp;arrange=A&amp;numOfRows=12&amp;pageNo=1">
+							<img src="http://tong.visitkorea.or.kr/cms/resource/74/1998774_image2_1.jpg" alt="">
+							<p>‘바다여행의 종합 세트’ 사천으로 가자</p>
+							</a>
+						</li>
+					 */
+			
 
 					$("#placeList").append(option);
 
@@ -380,11 +385,11 @@
 						<tr>
 							<th class="wHacki8" scope="row">서비스분류</th>
 							<td><select id="cat1" name="arrange" id="arran" title="대분류">
-									<option value="A" selected>대분류</option>
+									<option value="" selected>대분류</option>
 							</select> <select id="cat2" name="arrange" id="arran" title="중분류">
-									<option value="A" selected>중분류</option>
+									<option value="" selected>중분류</option>
 							</select> <select id="cat3" name="arrange" id="arran" title="정렬방법">
-									<option value="A" selected>소분류</option>
+									<option value="" selected>소분류</option>
 							</select></td>
 						</tr>
 					</tbody>
@@ -428,13 +433,14 @@
 			</div>
 		</fieldset>
 	</form>
-	<div class="card-body">
-		<table class="table card-text col-xl-auto">
-			<tbody id="placeList">
-			</tbody>
-			<!-- 게시글목록끝 -->
-		</table>
+	
+	<br><br>
+	
+	<div class="listWrap">
+		<ul id = "placeList" class="galleryList">
+			
+		</ul>
 	</div>
-	<!-- 게시판 뷰 끝 -->
+
 </body>
 </html>
