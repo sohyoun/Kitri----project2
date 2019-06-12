@@ -66,7 +66,6 @@ $(function(){
 				<ul id="active" class="nav navbar-nav side-nav">
 					<li><a href="index.jsp"><i class="fa fa-bullseye"></i>홈</a></li>
 					<li id ="board"><a href="board.jsp"><i class="fa fa-list-ol"></i>관리</a></li>
-					<li><a href="statistics.jsp"><i class="fa fa-table"></i>통계</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right navbar-user">

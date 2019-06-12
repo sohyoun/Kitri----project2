@@ -3,7 +3,7 @@
 <%@ include file="/tayoadmin/templet/header.jsp"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var= "joinTotalCnt" value="${requestScope.joinTotalCnt}" />
-<%-- <c:set var= "blackTotalCnt" value="${requestScope.blackTotalCnt}"/> --%>
+<c:set var= "blackTotalCnt" value="${requestScope.blackTotalCnt}"/>
 <style>
 #title {
 	border-radius: 4px;
@@ -57,16 +57,6 @@ th, td {
 		$("button#btInsert").click(function() {
 			alert("공지게시글 등록버튼")
 			location.href = '${pageContext.request.contextPath}/tayoadmin/gwrite.jsp';
-			
-			//TODO :등록버튼이 눌리는 순간 바로 게시판에 하나가 추가되는 현상..등록버튼 누를때 글쓰기서블릿1번 글쓰고 등록 누르면 1번 더 뒤로가면 1번 더 최종 3번 게시판엔 인서트 3번
-			//TODO : 2번으로 막았슴. 뒤로갔을 때 한번만 막으면 될 듯 (글을 다 쓰고 등록을 누른순간 페이지가 이동되게 구현해야 할듯 )
-			/*    $.ajax({
-				url : '${pageContext.request.contextPath}/writegongi',
-				method : 'post',
-				success : function(result){
-					
-				} 
-			}); */
 			return false;
 		});
 		

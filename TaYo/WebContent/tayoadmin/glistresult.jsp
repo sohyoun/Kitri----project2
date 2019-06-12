@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 	<c:set var = "gong" value ="${requestScope.glist}"/>
-	<c:set var = "javaBean" value ="${requestScope.javaBean}"/>
+	<c:set var = "page" value ="${requestScope.javaBean}"/>
 <script>
 $(function(){
 	/*Handler For SelectAll Checkbox*/
@@ -19,10 +19,40 @@ $(function(){
 });
 
 </script>
+
+<script>
+$(function(){
+	$("ul#paging2 > li > a").click(function(){
+		var currentPage=$(this).attr("href");
+		alert(currentPage+"페이지를 보여줍니다.");
+			$("div#glist").empty();
+		$.ajax({
+			url:'/TaYo/gonggilist?currentPage='+ currentPage,
+			method:'get',
+			success:function(result){
+				alert(result.trim());
+				$("div#glist").html(result);
+			},
+			error : function(){
+				alert("페이징처리 아직 실패")
+			}
+		}); 
+		return false;
+	});
+	
+	$("#removeBtn").click(function(){
+		alert("클릭")		
+	});
+});
+</script>
 <div class="row">
 	<div class="col-lg-1"></div>
 	<div class="col-lg-10">
-		<div class="table-responsive">
+	<div class= "pageInfo">
+	<button type="button" class="btn btn-success">현재 페이지 <span class="badge">${javaBean.currentPage}</span></button>
+		<button type="button" class="btn btn-default">총 페이지 <span class="badge">${javaBean.totalPage}</span></button>
+	</div>
+		<div id = "gonggilist" class="table-responsive">
 			<table class="table">
 				<thead>
 					<tr>
@@ -34,11 +64,10 @@ $(function(){
 						<th>작성자</th>
 						<th>내용</th>
 						<th>등록일</th>
-						<th>조회수</th>
 						<th>관리</th>
 					</tr>
 				</thead>
-					<tbody>
+					<tbody class = "gong">
 						<c:forEach var = "g" items ="${gong}">
 						<tr>
 							<td><input class="bdchkbox" type="checkbox" name="chkInfo" id="check1" value="" /></td>
@@ -48,7 +77,6 @@ $(function(){
 								<td>${g.gboard_writer}</td>
 								<td>${g.gboard_contents}</td>
 								<td>${g.gboard_date}</td>
-								<td>${g.gboard_viewcount}</td>
 							<td>
 								<button type="submit" id="updateBtn" class="btn btn-info">수정</button>
 								<button type="submit" id="removeBtn" class="btn btn-info">삭제</button>
@@ -59,26 +87,25 @@ $(function(){
 			</table>
 		</div>
 		<div class="col-lg-1"></div>
-<!-- 페이징처리  -->
-		<ul class="pagination">
-			<c:if test="${javaBean.startPage > 1}">
-				<li class="disabled"><a href="${javaBean.startPage - 1}">&laquo;</a></li>
-			</c:if>
-			<c:forEach begin="${javaBean.startPage}"
-				end="${javaBean.endPage}" var="i">
-				<c:choose>
-					<c:when test="${javaBean.currentPage == i}">
-						<li><a href="${i}">${i}</a></li>
-					</c:when>
-					<c:otherwise>
-						<li><a href="${i}">${i}</a></li>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-			<c:if test="${javaBean.totalPage > javaBean.endPage }">
-				<li><a href="${javaBean.endPage + 1 }">&raquo;</a></li>
-			</c:if>
-		</ul> 
-	</div>
+<!--페이징 처리-->
+			 <ul id ="paging2" class="pagination">
+				<c:if test="${page.startPage != 1}">
+					<li class="disabled"><a href="${page.startPage - 1}">&laquo;</a></li>
+				</c:if>
+				<c:forEach begin="${page.startPage}" end="${page.endPage}" var="i">
+					<c:choose>
+						<c:when test="${page.currentPage == i}">
+							<li><a href="${i}">${i}</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="${i}">${i}</a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:if test="${page.totalPage > page.endPage }">
+					<li><a href="${page.endPage + 1}">&raquo;</a></li>
+				</c:if>
+			</ul> 
+	</div> 
 </div>
-<!-- 공지 테이블 끗 -->
+<!-- 유저 테이블 끗 -->

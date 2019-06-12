@@ -4,9 +4,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.TEST_DB.DBConnection;
 import com.kitri.dto.*;
 import com.kitri.util.DBClose;
+import com.kitri.util.DBConnection;
 
 public class AdminDAOImpl implements AdminDAO {
 
@@ -307,8 +307,8 @@ public class AdminDAOImpl implements AdminDAO {
 			conn = DBConnection.makeConnection();
 
 			String sql = "INSERT INTO gonggiboard("
-					   + "	GBOARD_SEQ, GBOARD_GROUP, GBOARD_SUBJECT, GBOARD_WRITER, GBOARD_CONTENTS, GBOARD_DATE, GBOARD_VIEWCOUNT) \n"
-					   + "	VALUES(gboard_seq.nextval, ?, ?, ?, ? , systimestamp, 0) \n";
+					   + "	GBOARD_SEQ, GBOARD_GROUP, GBOARD_SUBJECT, GBOARD_WRITER, GBOARD_CONTENTS, GBOARD_DATE) \n"
+					   + "	VALUES(gboard_seq.nextval, ?, ?, ?, ? , systimestamp) \n";
 
 					pstmt = conn.prepareStatement(sql.toString());
 			
@@ -364,7 +364,6 @@ public class AdminDAOImpl implements AdminDAO {
 				gonggiBoard.setGboard_writer(rs.getString("gboard_writer"));
 				gonggiBoard.setGboard_contents(rs.getString("gboard_contents"));
 				gonggiBoard.setGboard_date(rs.getTimestamp("gboard_date"));
-				gonggiBoard.setGboard_viewcount(rs.getInt("gboard_viewcount"));
 			
 				list.add(gonggiBoard);
 			}
@@ -454,7 +453,6 @@ public class AdminDAOImpl implements AdminDAO {
 				gonggiboard.setGboard_writer(rs.getString("gboard_writer"));
 				gonggiboard.setGboard_contents(rs.getString("gboard_contents"));
 				gonggiboard.setGboard_date(rs.getDate("gboard_date"));
-				gonggiboard.setGboard_viewcount(rs.getInt("gboard_viewcount"));
 				
 				list.add(gonggiboard);			
 			}

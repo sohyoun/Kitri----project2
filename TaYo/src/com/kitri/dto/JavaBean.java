@@ -165,7 +165,7 @@ public class JavaBean {
 		startRow = (currentPage - 1) * cntPage + 1;
 		endRow = currentPage * cntPage;
 
-		startPage = (currentPage - 1) * cntPerPageGroup + 1;
+		startPage = ((currentPage - 1)/cntPerPageGroup) * cntPerPageGroup + 1;
 		endPage = startPage * cntPerPageGroup;
 
 		if (endPage > totalPage) {

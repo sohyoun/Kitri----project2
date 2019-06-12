@@ -6,15 +6,16 @@
 	
 <script>
 $(function(){
-	$("ul.pagination > li > a").click(function(){
+	$("ul#paging1 > li > a").click(function(){
 		var currentPage=$(this).attr("href");
 		alert(currentPage+"페이지를 보여줍니다.");
+			$("div#mlist").empty();
 		$.ajax({
-			url:'${javaBean.url}',
+			url:'/TaYo/adminmember?currentPage='+ currentPage,
 			method:'get',
-			data:'currentPage='+currentPage,
 			success:function(result){
-				alert(result)
+				alert(result.trim());
+				$("div#mlist").html(result.trim());
 			},
 			error : function(){
 				alert("페이징처리 아직 실패")
@@ -23,7 +24,6 @@ $(function(){
 		return false;
 	});
 });
-
 </script>
 	
 <div class="row">
@@ -54,7 +54,7 @@ $(function(){
 					</tr>
 				</thead>
 			<c:forEach var = "m" items ="${mem}">
-				<tbody>
+				<tbody class = "mem">
 					<tr>
 						<td>${m.mboard_seq}</td>
 						<td>${m.member_email}</td>
@@ -72,14 +72,12 @@ $(function(){
 			</table>
 			<div class="col-lg-1"></div>
 		</div>
-		<section></section>
 <!--페이징 처리-->
-			 <ul class="pagination">
+			 <ul id = "paging1" class="pagination">
 				<c:if test="${page.startPage > 1}">
 					<li class="disabled"><a href="${page.startPage - 1}">&laquo;</a></li>
 				</c:if>
-				<c:forEach begin="${page.startPage}"
-					end="${page.endPage}" var="i">
+				<c:forEach begin="${page.startPage}" end="${page.endPage}" var="i">
 					<c:choose>
 						<c:when test="${page.currentPage == i}">
 							<li><a href="${i}">${i}</a></li>
@@ -90,7 +88,7 @@ $(function(){
 					</c:choose>
 				</c:forEach>
 				<c:if test="${page.totalPage > page.endPage }">
-					<li><a href="${page.endPage + 1 }">&raquo;</a></li>
+					<li><a href="${page.endPage + 1}">&raquo;</a></li>
 				</c:if>
 			</ul> 
 	</div> 

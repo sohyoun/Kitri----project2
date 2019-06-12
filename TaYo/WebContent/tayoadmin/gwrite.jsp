@@ -33,10 +33,11 @@ $(document).ready(function() {
     	$.ajax({
     		url : '${pageContext.request.contextPath}/writegongi',
     		method : 'post',
-    		data : $("form.was-validated").serialize(),
+    		data : $(this).serialize(),
     		success : function(result){
     			alert(result.trim());
     			// TODO 여기서부터 작업 
+    			location.href = "${pageContext.request.contextPath}/tayoadmin/board.jsp";
     		}
     	});
     	return false;
@@ -60,9 +61,11 @@ $(document).ready(function() {
 		</div>
 		
 		<div class="form-group">
-			<label for="option">분류</label> <input type="text"
-				class="form-control" id="gboard_group" placeholder="Group"
-				name="gboard_group" required>
+			<label for="option">분류</label> 
+			<select id = "select" name = "gboard_group" class="form-control mx-1 mt-2">
+					<option value="공지">공지</option>
+					<option value="신고">신고</option>
+			</select>
 		</div>
 		
 		<div class="form-group">

@@ -15,10 +15,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <%@ include file="/temp/header_headimport.jsp" %>
 </head>
 
-
-<%
-	String root = request.getContextPath();
-%>
 <script>
 	$(function() {
 		 //alert("메인페이지 들어왔어!");
@@ -142,7 +138,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li class="nav-item active">
 								<span>${fn:trim(sessionScope.loginInfo)}님 환영합니다. <a class="nav-link text-nowrap " href="#" id="header_logout" style="display:inline">로그아웃</a></span>
 							</li>
-							
+							<li class="nav-item active">
+								<a class="nav-link text-nowrap" href="${pageContext.request.contextPath}/tayoadmin/email/emailwrite.jsp">신고하기</a>
+							</li>
 						</c:otherwise>
 					</c:choose>
 					

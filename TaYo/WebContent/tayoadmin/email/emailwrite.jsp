@@ -25,6 +25,9 @@ $(document).ready(function() {
     
 });
     
+    
+    
+    
 </script>
 </head>
 <body>  <!--  -->
@@ -32,22 +35,22 @@ $(document).ready(function() {
 	<h2>신고이메일보내기</h2>
 		<form class="was-validated" method = "post" action ="${pageContext.request.contextPath}/email">
 			<div class="form-group">
-			<label for="title">발신자 이름</label><input class="form-control" name = "senderName"><br/>
+				<label for="title">발신자 이름</label><input class="form-control" name = "senderName"><br/>
 			</div>
 			<div class="form-group">
-			<label for="title">발신자 이메일 주소</label><input class="form-control" name ="senderMail"><br/>
+				<label for="title">발신자 이메일 주소</label><input class="form-control" name ="senderMail"><br/>
 			</div>
 			<div class="form-group">
-			<label for="title">수신자 이메일 주소</label><input class="form-control" name ="receiveMail" value = "tayotayotest@gmail.com" disabled="disabled"><br/>
+				<label for="title">수신자 이메일 주소</label><input class="form-control" name ="receiveMail" value="tayotayotest@gmail.com"><br/>
 			</div>
 			<div class="form-group">
-			<label for="title">제목</label><input class="form-control" name = "subject"><br/>
+				<label for="title">제목</label><input class="form-control" name = "subject"><br/>
 			</div>
 			<div class="form-group">
-			<label for="title">내용</label><textarea id = "summernote" rows="5" cols="80" name = "message"></textarea><br/>
+				<label for="title">내용</label><textarea id = "summernote" rows="5" cols="80" name = "message"></textarea><br/>
 			</div>
 			<div style = "margin-bottom: 2em;"class = "row text-center">
-			<input class="btn btn-success" type = "submit" value="전송">
+				<input class="btn btn-success" type = "submit" value="전송">
 			</div>
 			<c:if test="${param.message == 'ok'}">
 				<span style="color : red;"> 이메일 발송이 완료 되었습니다.</span>
