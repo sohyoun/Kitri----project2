@@ -355,6 +355,7 @@
 					</colgroup>
 					<tbody>
 						<tr>
+						
 							<th class="wHacki8" scope="row">관광타입</th>
 							<td><select id="contentTypeId" name="arrange" title="관광타입">
 									<option value="">타입선택</option>
