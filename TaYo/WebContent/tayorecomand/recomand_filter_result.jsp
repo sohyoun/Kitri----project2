@@ -42,7 +42,8 @@ $(document).on('click', ".row .content", function() {
 <div class="container mt-3">
 	<h3 class="heading text-capitalize text-center">베스트 여행일정</h3>
 	<div class="row">
-		<c:forEach var="tripBasicDto" items="${requestScope.pagebean.list}" varStatus="status">
+
+		<c:forEach var="tripBasicDto" items="${requestScope.pagebean.list}" varStatus="status" begin="${requestScope.pagebean.startRow-1 }" end="${requestScope.pagebean.endRow-1}">
 		
 			<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5" >
 				<div class = "content" style="cursor:pointer">
@@ -73,8 +74,7 @@ $(document).on('click', ".row .content", function() {
 				</div>
 			
 			</div>
-			</c:forEach><!-- end foreach-->
-<%-- 		</c:forEach>  --%>
+			</c:forEach>
 	</div>
 </div>
 
