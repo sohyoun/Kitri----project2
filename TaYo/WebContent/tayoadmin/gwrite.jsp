@@ -35,9 +35,13 @@ $(document).ready(function() {
     		method : 'post',
     		data : $(this).serialize(),
     		success : function(result){
-    			alert(result.trim());
-    			// TODO 여기서부터 작업 
-    			location.href = "${pageContext.request.contextPath}/tayoadmin/board.jsp";
+    			var res = confirm("등록을 완료하시겠습니까?");
+    			if(res){
+        			alert(result.trim());
+        			location.href = "${pageContext.request.contextPath}/tayoadmin/board.jsp";
+    			}else{
+    				alert("등록을 취소합니다.");
+    			}
     		}
     	});
     	return false;

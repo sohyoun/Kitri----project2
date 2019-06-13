@@ -277,8 +277,11 @@ public class ApiService {
 		strB.append("&" + URLEncoder.encode("cat1","UTF-8") + "=" + URLEncoder.encode(request.getParameter("cat1"), "UTF-8")); /*대분류 코드*/
 		strB.append("&" + URLEncoder.encode("cat2","UTF-8") + "=" + URLEncoder.encode(request.getParameter("cat2"), "UTF-8")); /*중분류 코드(cat1필수)*/
 		strB.append("&" + URLEncoder.encode("cat3","UTF-8") + "=" + URLEncoder.encode(request.getParameter("cat3"), "UTF-8")); /*소분류 코드(cat1,cat2필수)*/
+		strB.append("&" + URLEncoder.encode("arrange","UTF-8") + "=" + URLEncoder.encode(request.getParameter("arrange"), "UTF-8")); /*(A=제목순, B=조회순, C=수정일순, D=생성일순) , 대표이미지가 반드시 있는 정렬 (O=제목순, P=조회순, Q=수정일순, R=생성일순)*/
 		strB.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode(request.getParameter("pageNo"), "UTF-8"));/*현재 페이지 번호*/
 
+		
+		
 		System.out.println(strB.toString());
 		URL url = new URL(strB.toString());
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();

@@ -82,13 +82,6 @@ public class AdminDAOImpl implements AdminDAO {
 
 			StringBuffer sql = new StringBuffer();
 			
-			/*
-			 * sql.append("SELECT * " + "FROM(SELECT rownum r, m.* \n" +
-			 * "		 FROM (SELECT * FROM memberboard \n" +
-			 * "				  ORDER BY board_seq DESC) m \n" +
-			 * "		 WHERE rownum <= ?) \n" + "WHERE r >= ? \n");
-			 */
-			
 			sql.append("SELECT *\n" + 
 							"FROM(SELECT rownum r, m.*\n" + 
 									 "FROM(SELECT * FROM memberboard ORDER BY mboard_seq DESC) m\n" + 
@@ -99,9 +92,6 @@ public class AdminDAOImpl implements AdminDAO {
 			
 			pstmt.setInt(1, endRow);
 			pstmt.setInt(2, startRow);
-			
-			//System.out.println("startRow == " + startRow);
-			//System.out.println("endRow == " +endRow);
 			
 			rs = pstmt.executeQuery();
 			
@@ -122,7 +112,6 @@ public class AdminDAOImpl implements AdminDAO {
 				
 				list.add(memberBoard);
 			}
-			//System.out.println("size == " + list.size());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -374,7 +363,6 @@ public class AdminDAOImpl implements AdminDAO {
 			
 				list.add(gonggiBoard);
 			}
-			//System.out.println("size == " + list.size());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -416,7 +404,7 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
-	public List<GonggiBoardDTO> gongiSearch(String gonggiSearch, String value) {
+	public List<GonggiBoardDTO> gonggiSearch(String search, String value) {
 		
 		List<GonggiBoardDTO> list = new ArrayList<GonggiBoardDTO>();
 		
@@ -431,23 +419,16 @@ public class AdminDAOImpl implements AdminDAO {
 			sql.append("SELECT * " +  
 					   "FROM gonggiboard ");  
 			
-				if(("gboard_seq").equals(gonggiSearch)) {
-					sql.append("WHERE " + gonggiSearch + " like '%'||?||'%' ");
+				if(("gonggi").equals(search)) {
+					sql.append("WHERE " + search + " like '%'||?||'%' ");
 				}
 				
-			/*
-			 * else if(("singo").equals(gonggiSearch)) { sql.append("WHERE " + gonggiSearch
-			 * + " like '%'||?||'%' "); }
-			 */
 			pstmt = conn.prepareStatement(sql.toString());
 			
-			if(("gboard_seq").equals(gonggiSearch)) {
+			if(("gonggi").equals(search)) {
 				pstmt.setString(1, value);
 			}
 			
-			/*
-			 * else if(gonggiSearch.equals("singo")) { pstmt.setString(1, value); }
-			 */
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -505,6 +486,40 @@ public class AdminDAOImpl implements AdminDAO {
 //		int endRow = 10;
 //		System.out.println("공지페이지 " + adminDAOImpl.selGonggi(startRow, endRow));
 		
+	}
+
+	@Override
+	public boolean gonggiDelete(int gboard_seq) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		try {
+			conn = DBConnection.makeConnection();
+			StringBuffer sql = new StringBuffer();
+			
+			// 게시물 번호를 통해 해당 게시물을 삭제하는 쿼리
+			sql.append("DELETE FROM gonggiboard " +
+					   "WHERE gboard_seq= ? \n");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, gboard_seq);
+			
+			result = pstmt.executeUpdate();
+
+			if(result == 0) {
+				return false;
+			} else {
+				return true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBClose.close(conn, pstmt);
+		}
+		return false;
 	}
 	
 }

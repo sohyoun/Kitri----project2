@@ -26,6 +26,8 @@
 .searchWrap {
 	border-left: 1px solid #cecece;
 	border-right: 1px solid #cecece;
+	border-bottom: 1px solid #cecece;
+	border-top: 1px solid #cecece;
 }
 
 .bbsSearch {
@@ -105,10 +107,15 @@
 	display: none;
 }
 
+/* /* 버튼박스 크기 조정 */
 .galleryList li img {
 	width: 250px;
-	height: 150px;
+	height: 200px;
 }
+/* 버튼박스 크기 조정 */
+* /
+
+
 
 .galleryList li a {
 	display: block;
@@ -136,6 +143,29 @@ a:hover {
 	text-decoration: underline;
 }
 /* 글자 검정으로 클릭시 파랑으로 */
+#btnSearch {
+	float: left;
+}
+
+#arrangeDiv {
+	float: right;
+	margin-bottom: 30px;
+}
+
+/* fieldset {
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+    border-width: 2px;
+    border-style: groove;
+    border-color: threedface;
+    border-image: initial;
+} */
 </style>
 
 
@@ -147,6 +177,10 @@ a:hover {
 		var params = "cmd=areaCode";
 		sendRequest("/TaYo/tayoapi", params, areaCodeResult, "GET");
 	});
+
+	/* 	$(document).on("click", "#linkDetail", function() {
+	
+	 }); */
 
 	//시도 코드 뽑아내기
 	function areaCodeResult() {
@@ -282,48 +316,137 @@ a:hover {
 			if (httpRequest.status == 200) {
 
 				var result = httpRequest.responseXML;
-				console.log("result: " + result);
-				var item = result.getElementsByTagName("item");
+				console.log("result: ");
+				console.log(result);
+
+				var items = $(result).find("item")
+
+				var pageNo = result.getElementsByTagName("pageNo");
+
+				var totalCount = result.getElementsByTagName("totalCount");
+
+				$("#placeList").html('');
+
+				for (var i = 0; i < items.length; i++) {
+					var contentid = $(items[i]).find('contentid').text()
+					console.log("contentid: " + contentid);
+					var firstimage = $(items[i]).find('firstimage').text()
+					console.log("firstimage: " + firstimage);
+					var title = $(items[i]).find('title').text()
+					console.log("title: " + title);
+
+					var option = "<li>";
+					option += "<img src='"+ firstimage + "'onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width:200px; height:200px;'  >";
+					//option += '<img src="'+ firstimage + 'onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png + " style = 'width:300px; height:200px;'>';
+					//"<img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='80' height='40'/>"
+					option += "<p><a contentid ="
+							+ contentid
+							+ " id = 'linkDetail' href='TaYo/tayoDetailapi?contentid='"
+							+ contentid + "' onClick='goDetail(" + i + ")'> "
+							+ title + "</a></p>";
+					option += "</a>";
+					option += "</li> ";
+
+					$("#placeList").append(option);
+
+				}
+
+				searchPage(pageNo[0].firstChild.data,
+						totalCount[0].firstChild.data);
+				/* var item = result.getElementsByTagName("item");
 				console.log("item: " + item);
 
 				var pageNo = result.getElementsByTagName("pageNo");
+				
 				var totalCount = result.getElementsByTagName("totalCount");
 				eleTmep = item;
 
 				$("#placeList").html('');
 
 				for (var i = 0; i < item.length; i++) {
-
 					var option = "<li>";
-					option += "<img src='"+ item[i].getElementsByTagName("firstimage")[0].firstChild.data + "' style='width:250px; height:150px;'>";
-					option += "<p><a id = 'linkDetail' href='#' onClick='goDetail("	+ i	+ ")'> " + item[i].getElementsByTagName("title")[0].firstChild.data	+ "</a></p>";
+					
+					option += "<img src='"+ item[i].getElementsByTagName("firstimage")[0].firstChild.data + "' style='width:250px; height:150px;'  >";
+					option += "<p><a contentid =" + item[i].getElementsByTagName("contentid")[0].firstChild.data +  " id = 'linkDetail' href='#' onClick='goDetail("	+ i	+ ")'> " + item[i].getElementsByTagName("title")[0].firstChild.data	+ "</a></p>";
 					option += "</a>";
 					option += "</li> ";
-
-					/* 	<li>
-							<a href="/guide/tourDetail.do?contentId=2381406&amp;langtype=KOR&amp;typeid=25&amp;oper=area&amp;burl=&amp;contentTypeId=&amp;areaCode=&amp;sigunguCode=&amp;cat1=&amp;cat2=&amp;cat3=&amp;listYN=Y&amp;MobileOS=ETC&amp;MobileApp=TourAPI3.0_Guide&amp;arrange=A&amp;numOfRows=12&amp;pageNo=1">
-							<img src="http://tong.visitkorea.or.kr/cms/resource/74/1998774_image2_1.jpg" alt="">
-							<p>‘바다여행의 종합 세트’ 사천으로 가자</p>
-							</a>
-						</li>
-					 */
-
-					$("#placeList").append(option);
-
-				}
+					
+					/* $("#placeList").append(option); */
 
 			}
+
 		}
 	}
 
 	function goDetail(idx) {
-		$('#contentId').val(eleTmep[idx].getElementsByTagName("contentId"));
+		$('#contentid').val(eleTmep[idx].getElementsByTagName("contentid"));
 
 		document.getElementById("tmp").action = "/TaYo/tayoDetailapi";
 		document.getElementById("tmp").submit();
 	}
 
-	
+	function searchPage(pageNo, totalCount) {
+		var page_scale = 10;
+		var block_scale = 10;
+		var curBlock = 1;
+		var curPage = pageNo;
+		var totalPage = parseInt(totalCount * 1.0 / page_scale);
+
+		var pageBegin = (curPage - 1) * page_scale + 1;
+		var pageEnd = pageBegin + page_scale - 1;
+
+		var totalBlock = parseInt(totalPage / page_scale);
+		curBlock = parseInt((curPage - 1) / block_scale + 1);
+		var blockBegin = (curBlock - 1) * block_scale + 1;
+		var blockEnd = blockBegin + block_scale - 1;
+
+		if (blockEnd > totalPage)
+			blockEnd = totalPage;
+
+		var prevPage = 1;
+
+		if (curPage != 1) {
+			prevPage = (curBlock - 1) * block_scale;
+		}
+
+		var nextPage = 0;
+		if (curBlock > totalBlock) {
+			nextPage = curBlock * block_scale;
+		} else {
+			nextPage = (curBlock * block_scale) + 1;
+		}
+
+		if (nextPage >= totalPage)
+			nextPage = totalPage;
+
+		//pageArea
+		$("#pageArea").html('');
+		if (curBlock > 1) {
+			$("#pageArea").append(
+					"<li class='page-item'><a class='page-link' href='#' onClick='searchList("
+							+ (blockBegin - 1) + ")'>Prev</a></li>");
+		}
+
+		for (var i = blockBegin; i <= blockEnd; i++) {
+			if (i == curPage) {
+				$("#pageArea").append(
+						"<li class='page-item'> <a class='page-link' onClick='searchList("
+								+ i + ")'>" + i + "</a> </li>");
+			} else {
+				$("#pageArea").append(
+						"<li class='page-item'><a class='page-link' href='#' onClick='searchList("
+								+ i + ")'>" + i + "</a></li>");
+			}
+		}
+
+		if (curBlock <= totalBlock) {
+			$("#pageArea").append(
+					"<li class='page-item'><a class='page-link' href='#' onClick='searchList("
+							+ (blockEnd + 1) + ")'>Next</a></li>");
+		}
+
+	}
+
 	//검색 버튼 클릭 시 searchList
 	function searchList(pageNo) {
 		if (pageNo == "")
@@ -335,11 +458,13 @@ a:hover {
 		params += "&cat1=" + $("#cat1 option:selected").val(); ///대분류
 		params += "&cat2=" + $("#cat2 option:selected").val(); ///중분류
 		params += "&cat3=" + $("#cat3 option:selected").val(); ///소분류
+		params += "&arrange=" + $("#arrange option:selected").val(); //정렬구분
 		params += "&pageNo=" + pageNo;
 
 		sendRequest("/TaYo/tayoapi", params, serchResult, "GET");
 
 	}
+
 	///////////////////////////////////////////////////////////////////////////
 
 	//////////////////////cmd코드 보내기///////////////////////////////////////////
@@ -374,16 +499,24 @@ a:hover {
 				});
 
 		$('#btnSearch').click(function() {
+			console.log($("#arrange option:selected").val());
 			searchList('');
 		});
-		
-		$('#linkDetail').click(function() {
-			var params = "cmd=detailCommon&contentid=" + $('contentid').text();
-		sendRequest("/TaYo/tayoDetailapi", params, cat2chage,"GET");
+
+		$('#arrangeSearch').click(function() {
+			console.log("버튼클릭");
+			console.log($("#arrange option:selected").val());
+			searchList('');
 		});
-		
-		
-	});
+
+		/* 		document.on("click" , '#linkDetail', function() {
+		 var contentid = $(this).attr("contentid");
+		 alert(contentid);
+		 var params = "cmd=detailCommon&contentid=" + contentid;
+		 sendRequest("/TaYo/tayoDetailapi", params, cat2chage,"GET");
+		 }); */
+
+	});       
 
 	//////////////////////cmd코드 보내기///////////////////////////////////////////
 </script>
@@ -401,7 +534,7 @@ a:hover {
 					<tbody>
 						<tr>
 							<th class="wHacki8" scope="row">관광타입</th>
-							<td><select id="contentTypeId" name="arrange" title="관광타입">
+							<td><select id="contentTypeId" name="" title="관광타입">
 									<option value="">타입선택</option>
 									<option value="12">관광지</option>
 									<option value="14">문화시설</option>
@@ -424,11 +557,11 @@ a:hover {
 					<tbody>
 						<tr>
 							<th class="wHacki8" scope="row">서비스분류</th>
-							<td><select id="cat1" name="arrange" id="arran" title="대분류">
+							<td><select id="cat1" name="" id="arran" title="대분류">
 									<option value="" selected>대분류</option>
-							</select> <select id="cat2" name="arrange" id="arran" title="중분류">
+							</select> <select id="cat2" name="" id="arran" title="중분류">
 									<option value="" selected>중분류</option>
-							</select> <select id="cat3" name="arrange" id="arran" title="정렬방법">
+							</select> <select id="cat3" name="" id="arran" title="정렬방법">
 									<option value="" selected>소분류</option>
 							</select></td>
 						</tr>
@@ -444,9 +577,9 @@ a:hover {
 					<tbody>
 						<tr>
 							<th class="wHacki8" scope="row">지역</th>
-							<td><select id="areaCode" name="arrange" id="areaCode">
+							<td><select id="areaCode" name="" id="areaCode">
 									<option value="">시도</option>
-							</select> <select id="sigunguCode" name="arrange">
+							</select> <select id="sigunguCode" name="">
 									<option value="">시군구</option>
 							</select></td>
 						</tr>
@@ -472,6 +605,25 @@ a:hover {
 				</table>
 			</div>
 		</fieldset>
+		<div class="searchUtill">
+			<!-- <p>
+			<strong>총 데이터 수</strong>13개
+		</p> -->
+			<div id="arrangeDiv">
+				<br> <select id="arrange" name="" title="정렬방법">
+					<option value="A">제목순</option>
+					<option value="B">인기순</option>
+					<option value="C">최근수정순</option>
+					<option value="D">등록순</option>
+					<option value="O">제목순(이미지)</option>
+					<option value="P">인기순(이미지)</option>
+					<option value="Q">최근수정순(이미지)</option>
+					<option value="R">등록순(이미지)</option>
+				</select>
+				<button id="arrangeSearch" type="button">검색</button>
+			</div>
+		</div>
+		<br>
 	</form>
 
 	<br>
@@ -483,12 +635,22 @@ a:hover {
 		</ul>
 	</div>
 
+	<!-- 페이징 처리 -->
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<nav>
+			<ul class="pagination" style="margin-left: 30%;" id="pageArea">
+			</ul>
+		</nav>
+	</div>
+	<!-- 페이징 처리 -->
+	
+	
+	<!-- 디테일로 보낼것들 -->
 	<form id="tmp" method="post" action="">
-		<input type="hidden" id="cmd" name="cmd" value="tayoDetail"> 
-		<input type="hidden" id="contentId" name="contentId">
-
+		<input type="hidden" id="cmd" name="cmd" value="tayoDetail"> <input
+			type="hidden" id="contentId" name="contentId">
 	</form>
-
+	<!-- 디테일로 보낼것들 -->
 
 </body>
 </html>

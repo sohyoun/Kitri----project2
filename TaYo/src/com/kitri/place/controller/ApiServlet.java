@@ -120,7 +120,6 @@ public class ApiServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-
 	}
 }
 

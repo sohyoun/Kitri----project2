@@ -23,7 +23,15 @@ public class TripBasicDTO {
 	private Date lastUpDate;		//최종수정일
 	private String isComplete;		//완료여부
 	List<TripDetailDTO> detailList;	//상세일정리스트
+	TTLeaderDTO ttLeaderDTO; //함께타요 leader
 	
+	public TTLeaderDTO getTtLeaderDTO() {
+		return ttLeaderDTO;
+	}
+
+	public void setTtLeaderDTO(TTLeaderDTO ttLeaderDTO) {
+		this.ttLeaderDTO = ttLeaderDTO;
+	}
 	//set test
 	private Set<Integer> loc_set;
 	
