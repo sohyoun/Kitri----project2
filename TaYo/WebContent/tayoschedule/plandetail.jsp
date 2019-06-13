@@ -77,7 +77,7 @@
 						<div class="pname">${basicDTO.tripTitle}</div>
 						<div class="ptime">${basicDTO.startDate} ~ ${basicDTO.endDate} (${endDate - startDate + 1})</div>
 						<c:if test="${basicDTO.tripTheme eq '함께타요'}">
-							<div class="twppeople">여행 인원 : ${basicDTO.tripNum}명</div>
+							<div class="twppeople">여행 인원 : ${basicDTO.tripNum}명 </div>
 						</c:if>
 						<div class="pleader"><span class="fa fa-user-circle"> ${basicDTO.email}</span></div>
 					</div>
