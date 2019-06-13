@@ -223,8 +223,8 @@ public class ScheduleDao {
 			
 			for (TripDetailDTO tripDetailDTO : list) {
 				modifySQL.setLength(0);
-				modifySQL.append("INSERT INTO trip_detail (trip_seq, trip_day, trip_order, place_name, loc_id, posx, posy) ");
-				modifySQL.append("values (?, ?, ?, ?, ?, ?, ?)");
+				modifySQL.append("INSERT INTO trip_detail (trip_seq, trip_day, trip_order, place_name, loc_id, posx, posy, content_id) ");
+				modifySQL.append("values (?, ?, ?, ?, ?, ?, ?, ?)");
 				
 				pstmt = conn.prepareStatement(modifySQL.toString());
 				
@@ -235,7 +235,8 @@ public class ScheduleDao {
 				pstmt.setString(idx++, tripDetailDTO.getPlace_name());
 				pstmt.setInt(idx++, tripDetailDTO.getLoc_id());
 				pstmt.setFloat(idx++, tripDetailDTO.getPosX());
-				pstmt.setFloat(idx, tripDetailDTO.getPosY());
+				pstmt.setFloat(idx++, tripDetailDTO.getPosY());
+				pstmt.setInt(idx, tripDetailDTO.getContent_id());
 				result += pstmt.executeUpdate();
 				pstmt.close();
 			}
@@ -331,8 +332,7 @@ public class ScheduleDao {
 					detailDTO.setPlace_name(rs.getString("place_name"));
 					detailDTO.setLoc_id(rs.getInt("loc_id"));
 					detailDTO.setPosX(rs.getFloat("posx"));
-					detailDTO.setPosY(rs.getFloat("posy"));
-					
+					detailDTO.setPosY(rs.getFloat("posy"));					
 					detailList.add(detailDTO);
 				}
 				
@@ -391,7 +391,7 @@ public class ScheduleDao {
 			
 			// Search Trip_Detail
 			findSQL.setLength(0);
-			findSQL.append("SELECT trip_seq, trip_day, trip_order, place_name, loc_id, posx, posy, detail_title, detail_content ");
+			findSQL.append("SELECT trip_seq, trip_day, trip_order, place_name, loc_id, posx, posy, detail_title, detail_content, content_id ");
 			findSQL.append("FROM trip_detail ");
 			findSQL.append("WHERE trip_seq = ? ");
 			findSQL.append("ORDER BY trip_day ASC, trip_order ASC");
@@ -414,6 +414,7 @@ public class ScheduleDao {
 				detailDTO.setPosY(rs.getFloat("posy"));
 				detailDTO.setDetail_title(rs.getString("detail_title"));
 				detailDTO.setDetail_content(rs.getString("detail_content"));
+				detailDTO.setContent_id(rs.getInt("content_id"));
 				
 				detailList.add(detailDTO);
 			}
