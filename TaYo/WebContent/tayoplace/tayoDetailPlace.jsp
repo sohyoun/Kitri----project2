@@ -122,7 +122,6 @@ h1, h2, h3, h4, h5 {
 	<div class="spot">
 		<div class="spot_name">
 			N 서울 타워 <span> N Seoul Tower</span>
-			<img class="spot_like_ico" src="/TaYo/images/heart.png">
 		</div>
 		<div class="spot_addr">126 Namsangongwon-gil, Yongsan-gu, Seoul,
 			South Korea</div>
