@@ -45,6 +45,7 @@ public class ScheduleBackendController {
 		String title = request.getParameter("title");
 		String theme = request.getParameter("theme");
 		String season = request.getParameter("season");
+		
 		String[] plandata = request.getParameterValues("plandata");
 		try {
 			start = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("start"));
@@ -63,6 +64,7 @@ public class ScheduleBackendController {
 		basicDTO.setEndDate(end);
 		basicDTO.setIsComplete(saveType);
 		
+		
 		TripDetailDTO detailDTO = null;
 		
 		for (String plan : plandata) {
@@ -76,6 +78,7 @@ public class ScheduleBackendController {
 				detailDTO.setLoc_id(Integer.parseInt(st.nextToken()));
 				detailDTO.setPosX(Float.parseFloat(st.nextToken()));
 				detailDTO.setPosY(Float.parseFloat(st.nextToken()));
+				detailDTO.setContent_id(Integer.parseInt(st.nextToken()));
 			}
 			
 			list.add(detailDTO);
@@ -159,6 +162,7 @@ public class ScheduleBackendController {
 				detailDTO.setLoc_id(Integer.parseInt(st.nextToken()));
 				detailDTO.setPosX(Float.parseFloat(st.nextToken()));
 				detailDTO.setPosY(Float.parseFloat(st.nextToken()));
+				detailDTO.setContent_id(Integer.parseInt(st.nextToken()));
 			}
 			
 			list.add(detailDTO);

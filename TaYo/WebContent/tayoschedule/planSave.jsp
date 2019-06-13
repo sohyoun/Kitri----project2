@@ -125,7 +125,8 @@ $(function(){
 				tempArray.push($(items[j]).attr("areaCode"));
 				tempArray.push($(items[j]).attr("axisx"));
 				tempArray.push($(items[j]).attr("axisy"));
-				
+				tempArray.push($(items[j]).attr("contentid"));
+					
 				plandata[idx++] = tempArray;
 			}
 		}

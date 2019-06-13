@@ -15,7 +15,6 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kitri.TestJson.JsonObject;
 import com.kitri.api.tour.service.TourResionCodeService;
 import com.kitri.dto.*;
 import com.kitri.tripbasic.dao.TripBasicDao;
@@ -112,7 +111,7 @@ public class RecomandServlet extends HttpServlet {
 					locSet.add(detailList.get(j).getLoc_id());
 				}
 				basicList.get(i).setLoc_set(locSet);
-				System.out.println(Arrays.toString(locSet.toArray()));
+//				System.out.println(Arrays.toString(locSet.toArray()));
 			}
 			pagebean.setList(basicList);
 

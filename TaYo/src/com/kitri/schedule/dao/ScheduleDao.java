@@ -56,8 +56,8 @@ public class ScheduleDao {
 			// Insert Trip_Detail
 			for (TripDetailDTO tripDetailDTO : list) {
 				insertSQL.setLength(0);
-				insertSQL.append("INSERT INTO trip_detail (trip_seq, trip_day, trip_order, place_name, loc_id, posx, posy) ");
-				insertSQL.append("values (sq_tripbasic_tripseq.currVal, ?, ?, ?, ?, ?, ?)");
+				insertSQL.append("INSERT INTO trip_detail (trip_seq, trip_day, trip_order, place_name, loc_id, posx, posy, content_id) ");
+				insertSQL.append("values (sq_tripbasic_tripseq.currVal, ?, ?, ?, ?, ?, ?, ?)");
 				
 				pstmt = conn.prepareStatement(insertSQL.toString());
 				
@@ -67,7 +67,8 @@ public class ScheduleDao {
 				pstmt.setString(idx++, tripDetailDTO.getPlace_name());
 				pstmt.setInt(idx++, tripDetailDTO.getLoc_id());
 				pstmt.setFloat(idx++, tripDetailDTO.getPosX());
-				pstmt.setFloat(idx, tripDetailDTO.getPosY());
+				pstmt.setFloat(idx++, tripDetailDTO.getPosY());
+				pstmt.setInt(idx, tripDetailDTO.getContent_id());
 				result += pstmt.executeUpdate();
 				pstmt.close();
 			}
