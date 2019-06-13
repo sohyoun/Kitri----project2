@@ -299,7 +299,8 @@ $(function() {
 									<li class="list-group-item-1" style="background-color:steelblue; color: white; padding: 0.3rem;">DAY${tabledays.trip_day}</li>
 									<c:forEach var="places" items="${detailDTO}">
 										<c:if test="${olddays == places.trip_day}">
-											<li class="list-group-item ui-sortable-handle" style="padding: 0.3rem;" value="${places.place_name}" axisx="${places.posX}" axisy="${places.posY}" areaCode="${places.loc_id}">${places.place_name}
+											<li class="list-group-item ui-sortable-handle" style="padding: 0.3rem;" value="${places.place_name}" axisx="${places.posX}" axisy="${places.posY}" areaCode="${places.loc_id}"
+											contentId ="${places.content_id}">${places.place_name}
 											<button class="btn btn-sm btn-secondary" name="planbtn">-</button></li>
 										</c:if>
 									</c:forEach>
