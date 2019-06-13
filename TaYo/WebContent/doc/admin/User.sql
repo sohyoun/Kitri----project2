@@ -1,5 +1,5 @@
 
-//유저기본테이블 생성 
+--유저기본테이블 생성 
 CREATE TABLE user_tayo (
 	email VARCHAR2(35) NOT NULL,
 	name VARCHAR2(5) NOT NULL,
@@ -11,10 +11,10 @@ CONSTRAINT email_pk PRIMARY KEY (email),
 CONSTRAINT grade_ck CHECK (grade <= 3)
 );
 
-//유저테이블 삭제
+--유저테이블 삭제
 DROP TABLE user_tayo;
 
-//유저상세테이블 생성
+--유저상세테이블 생성
 CREATE TABLE userdetail_tayo(
 	email VARCHAR2(35) NOT NULL,
 	address VARCHAR2(50),
@@ -24,7 +24,7 @@ CREATE TABLE userdetail_tayo(
 CONSTRAINT email_fk FOREIGN KEY (email) REFERENCES user_tayo(email)
 );
 
-//유저상세테이블 삭제
+--유저상세테이블 삭제
 DROP TABLE userdetail_tayo;
 
 유저 테이블 삽입

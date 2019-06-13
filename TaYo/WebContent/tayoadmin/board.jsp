@@ -53,7 +53,7 @@ th, td {
 		
 		//게시판 목록에서 등록버튼을 클릭했을 때 나오는 화면
 		$("button#btInsert").click(function() {
-			alert("공지게시글 등록버튼")
+			//alert("공지게시글 등록버튼")
 			location.href = '${pageContext.request.contextPath}/tayoadmin/gwrite.jsp';
 			return false;
 		});

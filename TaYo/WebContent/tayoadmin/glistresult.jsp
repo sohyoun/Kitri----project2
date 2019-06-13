@@ -16,12 +16,7 @@ $(function(){
 			$("#selectallchkbox").prop("checked", false);
 		}
 	});
-});
-
-</script>
-
-<script>
-$(function(){
+	
 	$("ul#paging2 > li > a").click(function(){
 		var currentPage=$(this).attr("href");
 		alert(currentPage+"페이지를 보여줍니다.");
@@ -41,7 +36,14 @@ $(function(){
 	});
 	
 	$("#removeBtn").click(function(){
-		alert("삭제 클릭")		
+		//alert("삭제 클릭")		
+		var result = confirm("정말로 삭제하시겠습니까?");
+		if(result){
+			alert("삭제되었습니다.")
+		}else{
+			alert("삭제가 취소되었습니다.")
+		}
+		
 	});
 });
 </script>
@@ -56,8 +58,7 @@ $(function(){
 			<table class="table">
 				<thead>
 					<tr>
-						<th><input type="checkbox" name="chkInfo"
-							id="selectallchkbox" value="" /></th>
+						<th><input type="checkbox" name="chkInfo" id="selectallchkbox" value="" /></th>
 						<th>번호</th>
 						<th>분류</th>
 						<th>제목</th>
@@ -70,7 +71,8 @@ $(function(){
 					<tbody class = "gong">
 						<c:forEach var = "g" items ="${gong}">
 						<tr>
-							<td><input class="bdchkbox" type="checkbox" name="chkInfo" id="check1" value="" /></td>
+							<td>
+								<input class="bdchkbox" type="checkbox" name="chkInfo" id="check" value="" /></td>
 								<td>${g.gboard_seq}</td>
 								<td>${g.gboard_group}</td>
 								<td>${g.gboard_subject}</td>
