@@ -404,7 +404,7 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
-	public List<GonggiBoardDTO> gongiSearch(String gonggiSearch, String value) {
+	public List<GonggiBoardDTO> gonggiSearch(String search, String value) {
 		
 		List<GonggiBoardDTO> list = new ArrayList<GonggiBoardDTO>();
 		
@@ -419,13 +419,13 @@ public class AdminDAOImpl implements AdminDAO {
 			sql.append("SELECT * " +  
 					   "FROM gonggiboard ");  
 			
-				if(("gboard_seq").equals(gonggiSearch)) {
-					sql.append("WHERE " + gonggiSearch + " like '%'||?||'%' ");
+				if(("gonggi").equals(search)) {
+					sql.append("WHERE " + search + " like '%'||?||'%' ");
 				}
 				
 			pstmt = conn.prepareStatement(sql.toString());
 			
-			if(("gboard_seq").equals(gonggiSearch)) {
+			if(("gonggi").equals(search)) {
 				pstmt.setString(1, value);
 			}
 			
@@ -486,6 +486,40 @@ public class AdminDAOImpl implements AdminDAO {
 //		int endRow = 10;
 //		System.out.println("공지페이지 " + adminDAOImpl.selGonggi(startRow, endRow));
 		
+	}
+
+	@Override
+	public boolean gonggiDelete(int gboard_seq) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		try {
+			conn = DBConnection.makeConnection();
+			StringBuffer sql = new StringBuffer();
+			
+			// 게시물 번호를 통해 해당 게시물을 삭제하는 쿼리
+			sql.append("DELETE FROM gonggiboard " +
+					   "WHERE gboard_seq= ? \n");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, gboard_seq);
+			
+			result = pstmt.executeUpdate();
+
+			if(result == 0) {
+				return false;
+			} else {
+				return true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBClose.close(conn, pstmt);
+		}
+		return false;
 	}
 	
 }

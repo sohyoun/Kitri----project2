@@ -26,7 +26,6 @@ public class WriteGonggiContoller extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("공지 글쓰기 서블릿 ");
 		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("text/html; charset=utf-8");
 		
 		String gboard_object = request.getParameter("gboard_group");
 		String gboard_subject = request.getParameter("gboard_subject");
