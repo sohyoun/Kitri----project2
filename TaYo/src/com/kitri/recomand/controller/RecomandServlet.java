@@ -111,7 +111,7 @@ public class RecomandServlet extends HttpServlet {
 					locSet.add(detailList.get(j).getLoc_id());
 				}
 				basicList.get(i).setLoc_set(locSet);
-				System.out.println(Arrays.toString(locSet.toArray()));
+//				System.out.println(Arrays.toString(locSet.toArray()));
 			}
 			pagebean.setList(basicList);
 

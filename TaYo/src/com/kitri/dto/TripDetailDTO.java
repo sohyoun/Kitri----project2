@@ -13,7 +13,17 @@ public class TripDetailDTO {
 	private String detail_content;	//세부내용
 	private float posX;				//x좌표
 	private float posY;				//y좌표
-	
+	private int content_id;			//관광지id
+
+
+	public int getContent_id() {
+		return content_id;
+	}
+
+	public void setContent_id(int content_id) {
+		this.content_id = content_id;
+	}
+
 	public TripDetailDTO() {
 		super();
 	}
@@ -103,7 +113,8 @@ public class TripDetailDTO {
 	public void setPosY(float posY) {
 		this.posY = posY;
 	}
-	
+
+
 
 	
 
