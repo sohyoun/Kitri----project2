@@ -11,6 +11,8 @@
 	
 <%@ include file="/temp/header.jsp"%>
 <%request.setCharacterEncoding("UTF-8");%>
+
+
 <style>
 .carouselExampleControls {
 	width: 50px;
@@ -121,11 +123,10 @@ h1, h2, h3, h4, h5 {
 	<!-- 관광지 이름,주소부분 -->
 	<div class="spot">
 		<div class="spot_name">
-			N 서울 타워 <span> N Seoul Tower</span>
+			<%=request.getParameter("title")%> <span><%=request.getParameter("contentId")%></span>
 			<img class="spot_like_ico" src="/TaYo/images/heart.png">
 		</div>
-		<div class="spot_addr">126 Namsangongwon-gil, Yongsan-gu, Seoul,
-			South Korea</div>
+		<div class="spot_addr"><%=request.getParameter("addr1")%><%=request.getParameter("addr2")%></div>
 	</div>
 	<!-- 관광지 이름,주소부분  -->
 

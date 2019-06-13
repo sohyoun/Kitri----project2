@@ -295,8 +295,14 @@ a:hover {
 				for (var i = 0; i < item.length; i++) {
 
 					var option = "<li>";
-					option += "<img src='"+ item[i].getElementsByTagName("firstimage")[0].firstChild.data + "' style='width:250px; height:150px;'>";
-					option += "<p><a id = 'linkDetail' href='#' onClick='goDetail("	+ i	+ ")'> " + item[i].getElementsByTagName("title")[0].firstChild.data	+ "</a></p>";
+					option += "<img src='"
+							+ item[i].getElementsByTagName("firstimage")[0].firstChild.data
+							+ "' style='width:250px; height:150px;'>";
+					option += "<p><a  href='#' onClick='goDetail("
+							+ i
+							+ ")'> "
+							+ item[i].getElementsByTagName("title")[0].firstChild.data
+							+ "</a></p>";
 					option += "</a>";
 					option += "</li> ";
 
@@ -318,12 +324,15 @@ a:hover {
 
 	function goDetail(idx) {
 		$('#contentId').val(eleTmep[idx].getElementsByTagName("contentId"));
+		$('#title').val(eleTmep[idx].getElementsByTagName("title")[0].firstChild.data);
+		$('#addr1').val(eleTmep[idx].getElementsByTagName("addr1")[0].firstChild.data);
+		$('#addr2').val(eleTmep[idx].getElementsByTagName("addr2")[0].firstChild.data);
+		
 
 		document.getElementById("tmp").action = "/TaYo/tayoDetailapi";
 		document.getElementById("tmp").submit();
 	}
 
-	
 	//검색 버튼 클릭 시 searchList
 	function searchList(pageNo) {
 		if (pageNo == "")
@@ -376,13 +385,6 @@ a:hover {
 		$('#btnSearch').click(function() {
 			searchList('');
 		});
-		
-		$('#linkDetail').click(function() {
-			var params = "cmd=detailCommon&contentId=" + $('#contentId option:selected').val();
-		sendRequest("/TaYo/tayoDetailapi", params, "GET");
-		});
-		
-		
 	});
 
 	//////////////////////cmd코드 보내기///////////////////////////////////////////
@@ -486,7 +488,10 @@ a:hover {
 	<form id="tmp" method="post" action="">
 		<input type="hidden" id="cmd" name="cmd" value="tayoDetail"> 
 		<input type="hidden" id="contentId" name="contentId">
-
+		<input type="hidden" id="title" name="title">
+		<input type="hidden" id="addr1" name="addr1">
+		<input type="hidden" id="addr2" name="addr2">
+		
 	</form>
 
 
