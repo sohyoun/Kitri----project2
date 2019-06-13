@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/tayoadmin/templet/header.jsp"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var= "joinTotalCnt" value="${requestScope.joinTotalCnt}" />
-<%-- <c:set var= "blackTotalCnt" value="${requestScope.blackTotalCnt}"/> --%>
 <style>
 #title {
 	border-radius: 4px;
@@ -57,16 +55,6 @@ th, td {
 		$("button#btInsert").click(function() {
 			alert("공지게시글 등록버튼")
 			location.href = '${pageContext.request.contextPath}/tayoadmin/gwrite.jsp';
-			
-			//TODO :등록버튼이 눌리는 순간 바로 게시판에 하나가 추가되는 현상..등록버튼 누를때 글쓰기서블릿1번 글쓰고 등록 누르면 1번 더 뒤로가면 1번 더 최종 3번 게시판엔 인서트 3번
-			//TODO : 2번으로 막았슴. 뒤로갔을 때 한번만 막으면 될 듯 (글을 다 쓰고 등록을 누른순간 페이지가 이동되게 구현해야 할듯 )
-			/*    $.ajax({
-				url : '${pageContext.request.contextPath}/writegongi',
-				method : 'post',
-				success : function(result){
-					
-				} 
-			}); */
 			return false;
 		});
 		
@@ -84,6 +72,7 @@ th, td {
 		
 		//공지 & 신고 검색 클릭 시 테이블 비동기
 		$("form#boardInfo > button#Search").click(function() {
+			alert("공지 검색버튼을 클릭했습니다.")
 			var gonggiSearch = $("#gonggiSearch").val();
 			var value = $("input#value").val();
 				
@@ -91,7 +80,8 @@ th, td {
 					url : '${pageContext.request.contextPath}/searchgongi',
 					method : 'get',
 					data : 'gonggiSearch=' + gonggiSearch + '&value=' + value,
-					suceess :function(result){
+					suceess : function(result){
+						alert(result)
 						$("div#glist").html(result);
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
@@ -101,12 +91,11 @@ th, td {
 		
 					}
 				});
-				return false;
+			return false;		
 			});
-		
 		//회원 검색 클릭 시 테이블 비동기
 		$("form#memberInfo > button#btSearch").click(function() {
-				alert("검색버튼을 클릭했습니다.")
+				alert("회원 검색버튼을 클릭했습니다.")
 				var searchType = $("#searchType").val();
 				var keyword = $("#keyword").val();
 					if(keyword == ("") && searchType == ("all")){
@@ -155,7 +144,7 @@ th, td {
 				<select id = "gonggiSearch" name = "gonggiSearch" class="form-control mx-1 mt-2">
 					<option value="gboard_seq">공지</option>
 					<option value="singo">신고</option>
-				</select> <input type="text" id = "value" name = "value" placeholder = "번호"
+				</select> <input autocomplete= "off" type="text" id = "value" name = "value" placeholder = "번호"
 					class="form-control mr-sm-2" />
 				<button id="Search" class="btn btn-info">검색</button>
 				<button id="btInsert" class="btn btn-info">등록</button>
@@ -187,16 +176,12 @@ th, td {
 					<option value="member_email">이메일</option>
 					<option value="member_name">이름</option>
 					<option value="member_gender">성별</option>
-				</select> <input type="text" name="keyword" id="keyword" placeholder="Search"
+				</select> 
+				<input  autocomplete= "off"  type="text" name="keyword" id="keyword" placeholder="Search"
 					class="form-control mr-sm-2" />
 				<button id="btSearch" class="btn btn-info">검색</button>
-				<ul class="list-group">
-					<li class="list-group-item"><span class="badge">${blackTotalCnt}</span>블랙 회원 수</li>
-					<li class="list-group-item"><span class="badge"></span> 탈퇴 회원 수</li>
-					<li class="list-group-item"><span class="badge">${joinTotalCnt}</span>가입 회원 수</li>
-				</ul>
 			</form>
-	</div>
+		</div>
 	<div class="col-lg-1"></div>
 </div>
 <div id="mlist" class="row"></div>

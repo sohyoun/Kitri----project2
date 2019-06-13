@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>	
 
+
+<c:set var="joinTotalCnt" value = "${requestScope.joinTotalCnt}" />
 <c:set var ="login" value = "${sessionScope.loginInfo}"></c:set>
 <!DOCTYPE html>
 <html lang="ko">
@@ -28,27 +30,6 @@ body{
 }
 </style>
 </head>
-<script>
-$(function(){
-	$("li#board").click(function(){
-		//alert("관리 클릭 들어옴?")
-		$.ajax({
-			url : '${pageContext.request.contextPath}/adminmembercnt',
-			method : 'get',
-			success : function(result){
-				
-			},
-			error : function(){
-				alert("정말 실패 ");
-			}
-			
-		});
-	});
-	return false;
-});
-
-</script>
-
 <body>
 	<div id="wrapper">
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -66,7 +47,6 @@ $(function(){
 				<ul id="active" class="nav navbar-nav side-nav">
 					<li><a href="index.jsp"><i class="fa fa-bullseye"></i>홈</a></li>
 					<li id ="board"><a href="board.jsp"><i class="fa fa-list-ol"></i>관리</a></li>
-					<li><a href="statistics.jsp"><i class="fa fa-table"></i>통계</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right navbar-user">

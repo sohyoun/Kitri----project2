@@ -37,7 +37,7 @@
 </style>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d388e7ffead01bfd5045bc218f8e8830"></script>
-<script type="text/javascript" src="<%=root%>/js/httpRequest.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/httpRequest.js"></script>
 <script type="text/javascript">
 $(function() {
 	// Map

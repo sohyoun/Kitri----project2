@@ -10,7 +10,6 @@ public class GonggiBoardDTO {
 	private String gboard_writer; 
 	private String gboard_contents;
 	private Date gboard_date;
-	private int gboard_viewcount;
 
 	public GonggiBoardDTO() {
 
@@ -64,16 +63,8 @@ public class GonggiBoardDTO {
 		this.gboard_group = gboard_group;
 	}
 
-	public int getGboard_viewcount() {
-		return gboard_viewcount;
-	}
-
-	public void setGboard_viewcount(int gboard_viewcount) {
-		this.gboard_viewcount = gboard_viewcount;
-	}
-
 	public GonggiBoardDTO(int gboard_seq, String gboard_subject, String gboard_writer, String gboard_contents, Date gboard_date,
-			String gboard_group, int gboard_viewcount) {
+			String gboard_group) {
 		super();
 		this.gboard_seq = gboard_seq;
 		this.gboard_subject = gboard_subject;
@@ -81,14 +72,12 @@ public class GonggiBoardDTO {
 		this.gboard_contents = gboard_contents;
 		this.gboard_date = gboard_date;
 		this.gboard_group = gboard_group;
-		this.gboard_viewcount = gboard_viewcount;
 	}
 
 	@Override
 	public String toString() {
 		return "GonggiBoard [gboard_seq=" + gboard_seq + ", gboard_subject=" + gboard_subject + ", gboard_contents="
-				+ gboard_contents + ", gboard_date=" + gboard_date + ", gboard_group=" + gboard_group
-				+ ", gboard_viewcount=" + gboard_viewcount + "]";
+				+ gboard_contents + ", gboard_date=" + gboard_date + ", gboard_group=" + gboard_group + "]";
 	}
 
 }

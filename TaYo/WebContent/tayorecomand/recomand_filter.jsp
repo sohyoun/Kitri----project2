@@ -135,7 +135,7 @@
 	<!-- 필터 -->
 	<div class="row pb-3">
 		<div class="col-sm-2 text-nowrap heading">
-			<h3>여행자들의 일정보기</h3>
+			<h3></h3>
 		</div>
 	</div>
 	<table class="table table-bordered ">

@@ -30,47 +30,8 @@
 			</div>
 		</div>
 	</div>
-<script type="text/javascript">
-var ctx = $("#loginChart");
-var loginChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-    	maintainAspectRatio : false,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
-</script>
-	<div class="body tab-content">
+	
+		<div class="body tab-content">
 		<div class="tab-pane clearfix active" id="stats">
 			<h5 class="tab-header">
 				<i class="fa fa-calendar-o fa-2x"></i> 로그인 기록
@@ -119,5 +80,157 @@ var loginChart = new Chart(ctx, {
 			</ul>
 		</div>
 	</div>
+<script type="text/javascript">
+var ctx = $("#loginChart");
+var loginChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+    	maintainAspectRatio : false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+
 </div>
+
+<div class = "row">
+	<div class="col-xs-6">
+		<div class="panel panel-primary" style="height: 600px;">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<i class="fa fa-bar-chart-o"></i> 연령별
+				</h3>
+			</div>
+			<div id="ComboChart" class="charts"><!-- 차트 시작 영역  -->
+				<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
+					<canvas id="myChart" width="300" height="500"></canvas>
+			</div>
+		</div><!-- 끝 영역 -->
+	</div>
+</div>
+<script type="text/javascript">
+	var ctx = $("#myChart");
+	var myChart = new Chart(ctx, {
+	    type: 'pie',
+	    data: {
+	        labels: ['10대', '20대', '30대', '40대'],
+	        datasets: [{
+	            label: '# of Votes',
+	            data: [12, 19, 3, 5,],
+	            backgroundColor: [
+	                'rgba(255, 99, 132, 0.2)',
+	                'rgba(54, 162, 235, 0.2)',
+	                'rgba(255, 206, 86, 0.2)',
+	                'rgba(75, 192, 192, 0.2)',
+	                'rgba(153, 102, 255, 0.2)',
+	                'rgba(255, 159, 64, 0.2)'
+	            ],
+	            borderColor: [
+	                'rgba(255, 99, 132, 1)',
+	                'rgba(54, 162, 235, 1)',
+	                'rgba(255, 206, 86, 1)',
+	                'rgba(75, 192, 192, 1)',
+	                'rgba(153, 102, 255, 1)',
+	                'rgba(255, 159, 64, 1)'
+	            ],
+	            borderWidth: 1
+	        }]
+	    },
+	    options: {
+	    	maintainAspectRatio : false,
+	        scales: {
+	            yAxes: [{
+	                ticks: {
+	                    beginAtZero: true
+	                }
+	            }]
+	        }
+	    }
+	});
+</script>
+<div class="col-xs-6">
+	<div class="panel panel-primary" style="height: 600px;">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<i class="fa fa-bar-chart-o"></i> 지역별
+				</h3>
+			</div>
+			<div id="PieChart" class="charts"><!-- 차트 시작 영역  -->
+				<div id="shielddw" class="shield-container" style="position: relative; overflow: hidden; line-height: normal; z-index: 0; font-size: 12px;">
+					<canvas id = "lineChart" width = "300" height = "500"></canvas>
+				</div>
+			</div><!-- 끝 영역 -->
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+var ctx = $("#lineChart");
+var mixedChart = new Chart(ctx, {
+    type: 'line',
+	    data: {
+	        labels: ['10대', '20대', '30대', '40대'],
+	        datasets: [{
+	            label: '# of Votes',
+	            data: [12, 19, 3, 5,],
+	            backgroundColor: [
+	                'rgba(255, 99, 132, 0.2)',
+	                'rgba(54, 162, 235, 0.2)',
+	                'rgba(255, 206, 86, 0.2)',
+	                'rgba(75, 192, 192, 0.2)',
+	                'rgba(153, 102, 255, 0.2)',
+	                'rgba(255, 159, 64, 0.2)'
+	            ],
+	            borderColor: [
+	                'rgba(255, 99, 132, 1)',
+	                'rgba(54, 162, 235, 1)',
+	                'rgba(255, 206, 86, 1)',
+	                'rgba(75, 192, 192, 1)',
+	                'rgba(153, 102, 255, 1)',
+	                'rgba(255, 159, 64, 1)'
+	            ],
+	            borderWidth: 1
+	        }]
+	    },
+	    options: {
+	    	maintainAspectRatio : false,
+	        scales: {
+	            yAxes: [{
+	                ticks: {
+	                    beginAtZero: true
+	                }
+	            }]
+	        }
+	    }
+	});
+</script>
 <%@ include file="/tayoadmin/templet/footer.jsp"%>

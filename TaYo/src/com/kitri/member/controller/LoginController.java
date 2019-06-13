@@ -33,10 +33,7 @@ public class LoginController extends HttpServlet {
 		
 		HttpSession session= request.getSession();
 		session.removeAttribute("loginInfo");
-
-		
 	
-		
 		AdminDTO adminDto = adminService.login(email, pass);
 		if(pass.equals(adminDto.getAdmin_pass())) {
 			System.out.println("관리자로 로그인!!");

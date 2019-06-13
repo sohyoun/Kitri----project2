@@ -28,10 +28,12 @@ public class SearchGonggiListInfoController extends HttpServlet {
 		
 		String gonggiSearch = request.getParameter("gonggiSearch");
 		String value = request.getParameter("value");
+
+		//System.out.println("gonggiSearch ==" + gonggiSearch);
 		
-		List<GonggiBoardDTO> glist = gonggiService.getGonggiSearch(gonggiSearch, value);
+		List<GonggiBoardDTO> gslist = gonggiService.getGonggiSearch(gonggiSearch, value);
 	
-		request.setAttribute("gslist", glist);
+		request.setAttribute("gslist", gslist);
 		
 		String path = "/tayoadmin/gslistresult.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(path);

@@ -35,6 +35,16 @@ public class AdminMemberContoller extends HttpServlet {
 		if (cp != null) {
 			currentPage = Integer.parseInt(cp);
 		}
+		// 가입 회원 수
+		int joinTotalCnt = memberListService.getJoinCnt();
+		System.out.println("가입회원 수 : " + joinTotalCnt);
+
+		// 블랙 회원 수
+		int blackTotalCnt = memberListService.getBlackCnt();
+		System.out.println("블랙회원 수 : " + blackTotalCnt);
+				
+		request.setAttribute("joinTotalCnt", joinTotalCnt);
+		request.setAttribute("blackTotalCnt", blackTotalCnt);
 
 		// System.out.println("cp == " + cp);
 		int cntPage = 10;
