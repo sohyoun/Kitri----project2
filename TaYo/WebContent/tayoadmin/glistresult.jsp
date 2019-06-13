@@ -3,13 +3,34 @@
 <%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 	<c:set var = "gong" value ="${requestScope.glist}"/>
 	<c:set var = "page" value ="${requestScope.javaBean}"/>
+	
 <script>
-$(function(){
+$(function(){		
+	
 	/*Handler For SelectAll Checkbox*/
 	$("#selectallchkbox").change(function() {
+		alert('체크 여러개 했을 때')
 		$('.bdchkbox').prop("checked", $(this).prop("checked"));
-	}); /*Handler For rest of the checkbox*/
+	}); 
+	/*Handler For rest of the checkbox*/
 	$('.bdchkbox').change(function() {
+		//alert('체크 하나 했을 때')
+		$("input[class=bdchkbox]:checked").each(function(){
+				var gboard_seq = $(this).val();
+				//alert(gboard_seq); // 체크한 글번호를 불러온다.
+				$.ajax({
+					url : '${pageContext.request.contextPath}/deletegonggi',
+					method : 'get',
+					data : 'gboard_seq=' + gboard_seq,
+					success : function(result){
+						alert("지우기 성공")
+					},
+					error : function(){
+						alert("지우기 실패")
+					}
+				});
+				
+		});
 		if ($('.bdchkbox').length == $('.bdchkboxchecked').length) {
 			$("#selectallchkbox").prop("checked", true);
 		} else {
@@ -19,7 +40,7 @@ $(function(){
 	
 	$("ul#paging2 > li > a").click(function(){
 		var currentPage=$(this).attr("href");
-		alert(currentPage+"페이지를 보여줍니다.");
+		//alert(currentPage+"페이지를 보여줍니다.");
 			$("div#glist").empty();
 		$.ajax({
 			url:'${pageContext.request.contextPath}/gonggilist?currentPage='+ currentPage,
@@ -33,17 +54,6 @@ $(function(){
 			}
 		}); 
 		return false;
-	});
-	
-	$("#removeBtn").click(function(){
-		//alert("삭제 클릭")		
-		var result = confirm("정말로 삭제하시겠습니까?");
-		if(result){
-			alert("삭제되었습니다.")
-		}else{
-			alert("삭제가 취소되었습니다.")
-		}
-		
 	});
 });
 </script>
@@ -72,7 +82,8 @@ $(function(){
 						<c:forEach var = "g" items ="${gong}">
 						<tr>
 							<td>
-								<input class="bdchkbox" type="checkbox" name="chkInfo" id="check" value="" /></td>
+								<input class="bdchkbox" type="checkbox" name="chkInfo" id="check" value="${g.gboard_seq}" />
+							</td>
 								<td>${g.gboard_seq}</td>
 								<td>${g.gboard_group}</td>
 								<td>${g.gboard_subject}</td>
@@ -81,7 +92,6 @@ $(function(){
 								<td>${g.gboard_date}</td>
 							<td>
 								<button type="submit" id="updateBtn" class="btn btn-info">수정</button>
-								<button type="submit" id="removeBtn" class="btn btn-info">삭제</button>
 							</td>
 						</tr>
 						</c:forEach> 

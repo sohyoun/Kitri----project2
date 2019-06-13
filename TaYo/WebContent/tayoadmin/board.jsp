@@ -50,7 +50,6 @@ th, td {
 				alert("실패");
 			}
 		});
-		
 		//게시판 목록에서 등록버튼을 클릭했을 때 나오는 화면
 		$("button#btInsert").click(function() {
 			//alert("공지게시글 등록버튼")
@@ -71,15 +70,14 @@ th, td {
 		});
 		
 		//공지 & 신고 검색 클릭 시 테이블 비동기
-		$("form#boardInfo > button#Search").click(function() {
+		$("form#boardInfo > button#Searchbt").click(function() {
 			alert("공지 검색버튼을 클릭했습니다.")
-			var gonggiSearch = $("#gonggiSearch").val();
-			var value = $("input#value").val();
-				
+			var gonggi = $("#Search").val();
+			var value = $("#value").val();
 			$.ajax({
 					url : '${pageContext.request.contextPath}/searchgongi',
 					method : 'get',
-					data : 'gonggiSearch=' + gonggiSearch + '&value=' + value,
+					data : 'search=' + gonggi + '&value=' + value,
 					suceess : function(result){
 						alert(result)
 						$("div#glist").html(result);
@@ -91,7 +89,7 @@ th, td {
 		
 					}
 				});
-			return false;		
+				return false;
 			});
 		//회원 검색 클릭 시 테이블 비동기
 		$("form#memberInfo > button#btSearch").click(function() {
@@ -124,6 +122,24 @@ th, td {
 					}
 			return false;
 		});
+		
+		$("#removeBtn").click(function(){
+			//alert("삭제 클릭")
+			var result = confirm("정말로 삭제하시겠습니까?");
+			if(result){
+				$.ajax({
+					url : '${pageContext.request.contextPath}/deleteGonggi',
+					method : 'get',
+					
+				});
+				alert("삭제되었습니다.")
+			}else{
+				alert("삭제가 취소되었습니다.")
+			}
+			return false;
+		});
+		
+		
 	});
 </script>
 <!-- 공지 & 신고 게시판 시작  -->
@@ -141,13 +157,15 @@ th, td {
 		</div>
 		<div class="btn-group">
 			<form id ="boardInfo" class="form-inline my-2 my-lg-0">
-				<select id = "gonggiSearch" name = "gonggiSearch" class="form-control mx-1 mt-2">
-					<option value="gboard_seq">공지</option>
+				<select id = "Search" name = "Search" class="form-control mx-1 mt-2">
+					<option value="gonggi">공지</option>
 					<option value="singo">신고</option>
-				</select> <input autocomplete= "off" type="text" id = "value" name = "value" placeholder = "번호"
+				</select> 
+				<input autocomplete= "off" type="text" id = "value" name = "value" placeholder = "번호"
 					class="form-control mr-sm-2" />
-				<button id="Search" class="btn btn-info">검색</button>
+				<button id="Searchbt" class="btn btn-info">검색</button>
 				<button id="btInsert" class="btn btn-info">등록</button>
+				<button id="removeBtn" class="btn btn-info">삭제</button>
 			</form>
 		</div>
 	</div>

@@ -40,7 +40,7 @@
 				<li><i class="fa fa-user fa-3x pull-left"></i>
 					<div class="news-item-info">
 						<div class="name">
-							<a href="#">김</a>
+							<a href="#">이재운</a>
 						</div>
 						<div class="position">Software Engineer</div>
 						<div class="time">Last logged-in: Mar 12, 11:11</div>
@@ -48,7 +48,7 @@
 				<li><i class="fa fa-user fa-3x pull-left"></i>
 					<div class="news-item-info">
 						<div class="name">
-							<a href="#">이</a>
+							<a href="#">김의연</a>
 						</div>
 						<div class="position">Product Designer</div>
 						<div class="time">Last logged-in: Mar 12, 19:02</div>
@@ -56,7 +56,7 @@
 				<li><i class="fa fa-user fa-3x pull-left"></i>
 					<div class="news-item-info">
 						<div class="name">
-							<a href="#">형</a>
+							<a href="#">형태희</a>
 						</div>
 						<div class="position">Chief Officer</div>
 						<div class="time">Last logged-in: Jun 16, 2:34</div>
@@ -64,7 +64,7 @@
 				<li><i class="fa fa-user fa-3x pull-left"></i>
 					<div class="news-item-info">
 						<div class="name">
-							<a href="#">박</a>
+							<a href="#">박소현</a>
 						</div>
 						<div class="position">Financial Assistant</div>
 						<div class="time">Last logged-in: Jun 18, 4:20</div>
@@ -72,7 +72,7 @@
 				<li><i class="fa fa-user fa-3x pull-left"></i>
 					<div class="news-item-info">
 						<div class="name">
-							<a href="#">고</a>
+							<a href="#">고세라</a>
 						</div>
 						<div class="position">Sales Manager</div>
 						<div class="time">Last logged-in: Jun 18, 5:13</div>

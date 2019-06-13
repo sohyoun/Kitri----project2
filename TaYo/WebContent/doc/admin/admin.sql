@@ -8,4 +8,4 @@ CONSTRAINT admin_email_pk PRIMARY KEY (admin_email)
 
 --관리자테이블 삽입
 INSERT INTO admin(admin_email, admin_name, admin_pass)
-VALUES ('email', '김', 1234);
+VALUES ('admin_email', 'admin_name', 1234);
