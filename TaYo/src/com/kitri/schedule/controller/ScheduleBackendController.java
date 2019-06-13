@@ -185,7 +185,7 @@ public class ScheduleBackendController {
 		
 		int result =  service.modifyDetail(email, title, day, order, detailTitle, detailContent);
 		
-		if (session != null) {
+		if (session != null) {  
 			TripBasicDTO basicDTO = service.findByTitle(email, title);
 			session.removeAttribute("TripBasicDTO");
 			session.setAttribute("TripBasicDTO", basicDTO);
