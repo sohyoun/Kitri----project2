@@ -4,6 +4,7 @@
 <c:set var="list" value="${requestScope.list}"/>
 <script>
 $(function(){
+	/*
 	$("div.col-lg-3.col-sm-6.twplan").click(function(){
 		var tripSeq = $(this).find("button.tripseq").val();
 		var triptitle = $(this).find("#tripTitle").text();
@@ -33,6 +34,13 @@ $(function(){
 				$("div.tayowithbody").html(result.trim());
 			}
 		});
+		return false;
+	});
+
+*/
+	//Show temp/complete tour plan
+	$("div.col-lg-3.col-sm-6.twplan").click(function(){
+		location.href= "${pageContext.request.contextPath}/schedule?act=showDetail" + '&email=' + $(this).find("#email").text().trim() + '&title=' + $(this).find("#tripTitle").text().trim();
 		return false;
 	});
 });
