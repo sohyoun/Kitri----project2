@@ -38,10 +38,10 @@ public class ApiDetailServlet extends HttpServlet {
 		if ("detailCommon".equals(cmd)) {
 			System.out.println("cmd까지는 왔다");
 			response.setContentType("text/xml;charset=utf-8");
-			String contentId = request.getParameter("contentId");
+			String contentid = request.getParameter("contentid");
 			try {
 				PrintWriter out = response.getWriter();
-				out.print(new ApiDetailService().getDetail(cmd, contentId));
+				out.print(new ApiDetailService().getDetail(cmd, contentid));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

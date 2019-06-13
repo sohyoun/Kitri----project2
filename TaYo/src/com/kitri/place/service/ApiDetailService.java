@@ -37,9 +37,9 @@ public class ApiDetailService {
 
 
 	//타입별 공통정보(제목, 연락처, 주소, 좌표, 개요정보 등)를 조회하는 기능
-	public String getDetail(String cmd, String contentId) throws Exception {
+	public String getDetail(String cmd, String contentid) throws Exception {
 		StringBuilder strB = this.getUrl(cmd, "20");
-		strB.append("&" + URLEncoder.encode("contentId","UTF-8") + "=" + URLEncoder.encode(contentId, "UTF-8")); /*콘텐츠ID*/
+		strB.append("&" + URLEncoder.encode("contentid","UTF-8") + "=" + URLEncoder.encode(contentid, "UTF-8")); /*콘텐츠ID*/
 		strB.append("&" + URLEncoder.encode("contentTypeId","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*관광타입(관광지, 숙박 등) ID*/
 		strB.append("&" + URLEncoder.encode("defaultYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8")); /*기본정보 조회여부*/
 		strB.append("&" + URLEncoder.encode("firstImageYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8")); /*원본, 썸네일 대표이미지 조회여부*/

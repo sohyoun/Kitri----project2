@@ -378,8 +378,8 @@ a:hover {
 		});
 		
 		$('#linkDetail').click(function() {
-			var params = "cmd=detailCommon&contentId=" + $('#contentId option:selected').val();
-		sendRequest("/TaYo/tayoDetailapi", params, "GET");
+			var params = "cmd=detailCommon&contentid=" + $('contentid').text();
+		sendRequest("/TaYo/tayoDetailapi", params, cat2chage,"GET");
 		});
 		
 		
