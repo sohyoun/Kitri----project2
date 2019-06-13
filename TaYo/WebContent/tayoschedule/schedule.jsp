@@ -12,9 +12,9 @@
 			<div class="w3layouts-banner-info" style="padding-top: 8rem;">
 				<h3 class="text-wh">'쉽고 간단한 여행 일정 만들기'</h3>
 				<div class="buttons mt-4">
-					<a href="<%=root%>/schedule?act=newschedule" class="btn mr-2">새로운 일정</a>
+					<a href="${pageContext.request.contextPath}/schedule?act=newschedule" class="btn mr-2">새로운 일정</a>
 					<c:if test="${!empty sessionScope.loginInfo}">
-						<a href="<%=root%>/schedule?act=myschedule" class="btn">나의 일정</a>
+						<a href="${pageContext.request.contextPath}/schedule?act=myschedule" class="btn">나의 일정</a>
 					</c:if>
 				</div>
 			</div>

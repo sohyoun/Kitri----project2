@@ -36,7 +36,7 @@
 </style>
 
 
-<script type="text/javascript" src="<%=root%>/js/httpRequest.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/httpRequest.js"></script>
 <script type="text/javascript">
 
 $(function() {
