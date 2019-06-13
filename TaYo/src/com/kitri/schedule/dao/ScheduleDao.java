@@ -81,8 +81,8 @@ public class ScheduleDao {
 			
 			// Insert TT_Leader
 			insertSQL.setLength(0);
-			insertSQL.append("INSERT INTO tt_leader (trip_seq, now_num, trip_num) ");
-			insertSQL.append("values (sq_tripbasic_tripseq.currVal, 0,"+basicDTO.getTripNum()+")");
+			insertSQL.append("INSERT INTO tt_leader (trip_seq, now_num) ");
+			insertSQL.append("values (sq_tripbasic_tripseq.currVal, 0)");
 			
 			pstmt = conn.prepareStatement(insertSQL.toString());
 			result += pstmt.executeUpdate();
