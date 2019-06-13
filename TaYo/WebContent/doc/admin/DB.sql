@@ -22,11 +22,11 @@ CONSTRAINT email_pk PRIMARY KEY (email),
 CONSTRAINT grade_ck CHECK (grade <= 3)
 );
 
-//유저테이블 삭제
+--유저테이블 삭제
 DROP TABLE user_tayo;
 
 유저상세테이블 생성
-//USERDETAIL_TAYO
+--USERDETAIL_TAYO
 CREATE TABLE userdetail_tayo(
 	email VARCHAR2(35) NOT NULL,
 	address VARCHAR2(50),
@@ -36,7 +36,7 @@ CREATE TABLE userdetail_tayo(
 CONSTRAINT email_fk FOREIGN KEY (email) REFERENCES user_tayo(email)
 );
 
-//유저상세테이블 삭제
+--유저상세테이블 삭제
 DROP TABLE userdetail_tayo;
 
 유저 테이블 삽입
@@ -61,13 +61,13 @@ SELECT * FROM DUAL;
 
 
 
-//회원목록테이블 글번호 생성
+--회원목록테이블 글번호 생성
 CREATE SEQUENCE mboard_seq;
 
-//회원목록테이블 글번호 삭제 
+--회원목록테이블 글번호 삭제 
 DROP SEQUENCE mboard_seq;
 
-//회원목록테이블 생성
+--회원목록테이블 생성
 CREATE TABLE MEMBERBOARD (
 	mboard_seq number NOT NULL,
 	member_email VARCHAR2(35) NOT NULL,
@@ -97,7 +97,7 @@ WHERE r BETWEEN ? AND ?;
 SELECT COUNT(joindate)
 FROM memberboard;
 
-//회원목록테이블 삽입
+--회원목록테이블 삽입
 INSERT INTO memberboard (mboard_seq, member_email, member_name, member_age, member_address, member_address_detail, member_outdate, member_grade, member_gender)
 VALUES (mboard_seq.nextval, '1', '이름', 31, '3', '4', NULL, 0, 'M');
 
@@ -113,10 +113,10 @@ VALUES (mboard_seq.nextval, '4', '이름4', 31, '6', '7', NULL, 3, 'M');
 INSERT INTO memberboard (mboard_seq, member_email, member_name, member_age, member_address, member_address_detail, member_outdate, member_grade, member_gender)
 VALUES (mboard_seq.nextval, '5', '이름5', 36, '7', '8', NULL, 0, 'M');
 
-//회원목록테이블 삭제
+--회원목록테이블 삭제
 DROP TABLE memberboard;
 
-//공지게시판테이블 생성
+--공지게시판테이블 생성
 CREATE TABLE GONGGIBOARD(
  GBOARD_SEQ              NUMBER(10)  primary key,
  GBOARD_GROUP VARCHAR2(10), 
@@ -129,7 +129,7 @@ CREATE TABLE GONGGIBOARD(
 
 CREATE sequence gboard_seq;
 
-현재페이지//이전//시작페이지///끝페이지//다음 
+현재페이지--이전--시작페이지--/끝페이지--다음 
 1	     X	     1		3	  O
 4	     O       4		6	  O
 7	     O       7		9      	  O
