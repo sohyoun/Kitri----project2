@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kitri.dto.TTLeaderDTO;
+import com.kitri.dto.TTPartyDTO;
 import com.kitri.dto.TripBasicDTO;
 import com.kitri.dto.TripDetailDTO;
 import com.kitri.util.DBClose;
@@ -357,7 +359,8 @@ public class ScheduleDao {
 		
 		TripBasicDTO basicDTO = null;
 		List<TripDetailDTO> detailList = null;
-
+		TTLeaderDTO ttLeaderDTO = null;
+		List<TTPartyDTO> ttPartyList = null;
 		try {
 			conn = DBConnection.makeConnection();
 			
@@ -388,6 +391,7 @@ public class ScheduleDao {
 			
 			rs.close();
 			pstmt.close();
+			
 			
 			// Search Trip_Detail
 			findSQL.setLength(0);
@@ -420,6 +424,56 @@ public class ScheduleDao {
 			}
 			
 			basicDTO.setDetailList(detailList);
+
+			//////////////////////////////////
+			
+			// Search TT_Leader
+			findSQL.setLength(0);
+			findSQL.append("select trip_seq, now_num ");
+			findSQL.append("from tt_leader ");
+			findSQL.append("where trip_seq = ?");
+						
+			pstmt = conn.prepareStatement(findSQL.toString());
+						
+			pstmt.setInt(1, basicDTO.getTripSeq());
+			rs = pstmt.executeQuery();
+						
+			
+			
+			if (rs.next()) {
+				ttLeaderDTO = new TTLeaderDTO();
+				ttLeaderDTO.setTripSeq(rs.getInt("trip_seq"));
+				ttLeaderDTO.setNowNum(rs.getInt("now_num"));
+			
+			}
+						
+			basicDTO.setTtLeaderDTO(ttLeaderDTO);
+			
+			///////////////////////////////
+			// Search Trip_Detail
+			findSQL.setLength(0);
+			findSQL.append("SELECT trip_seq, party_email, party_ok ");
+			findSQL.append("FROM tt_party ");
+			findSQL.append("WHERE trip_seq = ?");
+						
+			pstmt = conn.prepareStatement(findSQL.toString());
+						
+			pstmt.setInt(1, basicDTO.getTripSeq());
+			rs = pstmt.executeQuery();
+						
+			ttPartyList = new ArrayList<TTPartyDTO>();
+			TTPartyDTO ttPartyDTO = null;
+			while (rs.next()) {
+				ttPartyDTO = new TTPartyDTO();
+				ttPartyDTO.setTripSeq(rs.getInt("trip_seq"));
+				ttPartyDTO.setPartyEmail(rs.getString("party_email"));
+				ttPartyDTO.setPartyOK(rs.getInt("party_ok"));
+				ttPartyList.add(ttPartyDTO);
+
+			}
+			ttLeaderDTO.setTtPartyList(ttPartyList);
+			///////////////////////////////////////////
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

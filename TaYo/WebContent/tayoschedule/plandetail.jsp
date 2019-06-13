@@ -58,11 +58,46 @@
 			});
 			return false;
 		});
+		
+		// join tayo together
+		$("#joinBtn").click(function() {
+			$.ajax({
+				url: '${pageContext.request.contextPath}/schedule',
+				data: 'act=joinTT' + '&tripSeq=' + '${sessionScope.TripBasicDTO.tripSeq}',
+				method: 'post',
+				success: function(result) {
+					alert("함께타요에 가입되었습니다.");
+					location.href = '${pageContext.request.contextPath}/schedule?act=myschedule';
+				},
+				error: function(error) {
+					alert("함께타요에 가입하는 중 에러가 발생하였습니다.");
+				}
+			});
+			return false;
+		});
+		
+		// out tayo together
+		$("#outBtn").click(function() {
+			$.ajax({
+				url: '${pageContext.request.contextPath}/schedule',
+				data: 'act=outTT' + '&tripSeq=' + '${sessionScope.TripBasicDTO.tripSeq}',
+				method: 'post',
+				success: function(result) {
+					alert("함께타요에 탈퇴되었습니다.");
+					location.href = '${pageContext.request.contextPath}/schedule?act=myschedule';
+				},
+				error: function(error) {
+					alert("함께타요에 탈퇴하는 중 에러가 발생하였습니다.");
+				}
+			});
+			return false;
+		});
 	});
 </script>
 
 <!-- Todo -->
 <c:set var="basicDTO" value="${sessionScope.TripBasicDTO}"/>
+<c:set var="ttLeaderDTO" value="${basicDTO.ttLeaderDTO}"/>
 <fmt:parseDate var="startPlanDate" value="${basicDTO.startDate}" pattern="yyyy-MM-dd"/>
 <fmt:parseDate var="endPlanDate" value="${basicDTO.endDate}" pattern="yyyy-MM-dd"/>
 <fmt:parseNumber value="${startPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="startDate"/>
@@ -77,7 +112,7 @@
 						<div class="pname">${basicDTO.tripTitle}</div>
 						<div class="ptime">${basicDTO.startDate} ~ ${basicDTO.endDate} (${endDate - startDate + 1})</div>
 						<c:if test="${basicDTO.tripTheme eq '함께타요'}">
-							<div class="twppeople">여행 인원 : ${basicDTO.tripNum}명</div>
+							<div class="twppeople">여행 인원 : ${ttLeaderDTO.nowNum}/${basicDTO.tripNum}명</div>
 						</c:if>
 						<div class="pleader"><span class="fa fa-user-circle"> ${basicDTO.email}</span></div>
 					</div>
@@ -97,10 +132,37 @@
 		   		</ul>
 		   		
 		   		
-		   		<c:if test="${sessionScope.loginInfo eq basicDTO.email}">
+		   		<%-- <c:if test="${sessionScope.loginInfo eq basicDTO.email}">
 		   			<button id="deleteBtn" class="btn btn-link pull-right">삭제하기</button>
 		   			<button id="modifyBtn" class="btn btn-link pull-right">수정하기</button>
-		   		</c:if>
+		   		</c:if> --%>
+		   		
+		   		<%--내가 쓴 부분 --%>
+		   		<c:choose>
+		   			<c:when test="${sessionScope.loginInfo eq basicDTO.email}">
+		   				<button id="deleteBtn" class="btn btn-link pull-right">삭제하기</button>
+		   				<button id="modifyBtn" class="btn btn-link pull-right">수정하기</button>
+		   			</c:when>
+		   			<c:otherwise>
+		   				<c:if test="${basicDTO.tripTheme eq '함께타요'}">
+		   					<c:forEach var="partylist" items="${ttLeaderDTO.ttPartyList}">
+		   						여기 안들어옴!!
+		   						<c:choose>
+		   							<c:when test="${sessionScope.loginInfo eq partylist}">
+		   								<button id="outBtn" class="btn btn-link pull-right">탈퇴하기</button>
+		   							</c:when>
+		   							<c:otherwise>
+		   								<button id="joinBtn" class="btn btn-link pull-right">가입하기</button>
+		   							</c:otherwise>
+		   						</c:choose>
+							</c:forEach>
+							
+							<button id="outBtn" class="btn btn-link pull-right">탈퇴하기</button>
+							<button id="joinBtn" class="btn btn-link pull-right">가입하기</button>
+						</c:if>
+		   			</c:otherwise>
+		   		</c:choose>
+		   		<%--내가 쓴 부분 --%>
 		   		
 			</div>
 		</div>
