@@ -40,6 +40,7 @@ th, td {
 <script>
 	$(function() {
 		//공지 테이블
+		
 		$.ajax({
 			url : '${pageContext.request.contextPath}/gonggilist',
 			method : 'post',
@@ -122,24 +123,6 @@ th, td {
 					}
 			return false;
 		});
-		
-		$("#removeBtn").click(function(){
-			//alert("삭제 클릭")
-			var result = confirm("정말로 삭제하시겠습니까?");
-			if(result){
-				$.ajax({
-					url : '${pageContext.request.contextPath}/deleteGonggi',
-					method : 'get',
-					
-				});
-				alert("삭제되었습니다.")
-			}else{
-				alert("삭제가 취소되었습니다.")
-			}
-			return false;
-		});
-		
-		
 	});
 </script>
 <!-- 공지 & 신고 게시판 시작  -->

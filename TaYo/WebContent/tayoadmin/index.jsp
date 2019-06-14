@@ -85,9 +85,9 @@ var ctx = $("#loginChart");
 var loginChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
         datasets: [{
-            label: '# of Votes',
+            label: '월 별',
             data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -143,25 +143,21 @@ var loginChart = new Chart(ctx, {
 	var myChart = new Chart(ctx, {
 	    type: 'pie',
 	    data: {
-	        labels: ['10대', '20대', '30대', '40대'],
+	        labels: ['10대', '20대', '30대',],
 	        datasets: [{
 	            label: '# of Votes',
-	            data: [12, 19, 3, 5,],
+	            data: [12, 19, 3],
 	            backgroundColor: [
 	                'rgba(255, 99, 132, 0.2)',
 	                'rgba(54, 162, 235, 0.2)',
 	                'rgba(255, 206, 86, 0.2)',
 	                'rgba(75, 192, 192, 0.2)',
-	                'rgba(153, 102, 255, 0.2)',
-	                'rgba(255, 159, 64, 0.2)'
 	            ],
 	            borderColor: [
 	                'rgba(255, 99, 132, 1)',
 	                'rgba(54, 162, 235, 1)',
 	                'rgba(255, 206, 86, 1)',
 	                'rgba(75, 192, 192, 1)',
-	                'rgba(153, 102, 255, 1)',
-	                'rgba(255, 159, 64, 1)'
 	            ],
 	            borderWidth: 1
 	        }]
@@ -182,7 +178,7 @@ var loginChart = new Chart(ctx, {
 	<div class="panel panel-primary" style="height: 600px;">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<i class="fa fa-bar-chart-o"></i> 지역별
+					<i class="fa fa-bar-chart-o"></i> 연령별
 				</h3>
 			</div>
 			<div id="PieChart" class="charts"><!-- 차트 시작 영역  -->
@@ -198,25 +194,21 @@ var ctx = $("#lineChart");
 var mixedChart = new Chart(ctx, {
     type: 'line',
 	    data: {
-	        labels: ['10대', '20대', '30대', '40대'],
+	        labels: ['10대', '20대', '30대'],
 	        datasets: [{
 	            label: '# of Votes',
-	            data: [12, 19, 3, 5,],
+	            data: [12, 19, 3],
 	            backgroundColor: [
 	                'rgba(255, 99, 132, 0.2)',
 	                'rgba(54, 162, 235, 0.2)',
 	                'rgba(255, 206, 86, 0.2)',
 	                'rgba(75, 192, 192, 0.2)',
-	                'rgba(153, 102, 255, 0.2)',
-	                'rgba(255, 159, 64, 0.2)'
 	            ],
 	            borderColor: [
 	                'rgba(255, 99, 132, 1)',
 	                'rgba(54, 162, 235, 1)',
 	                'rgba(255, 206, 86, 1)',
 	                'rgba(75, 192, 192, 1)',
-	                'rgba(153, 102, 255, 1)',
-	                'rgba(255, 159, 64, 1)'
 	            ],
 	            borderWidth: 1
 	        }]

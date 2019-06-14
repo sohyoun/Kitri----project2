@@ -501,7 +501,7 @@ public class AdminDAOImpl implements AdminDAO {
 			
 			// 게시물 번호를 통해 해당 게시물을 삭제하는 쿼리
 			sql.append("DELETE FROM gonggiboard " +
-					   "WHERE gboard_seq= ? \n");
+					   	   "WHERE gboard_seq= ? \n");
 			
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setInt(1, gboard_seq);

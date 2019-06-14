@@ -9,33 +9,43 @@ $(function(){
 	
 	/*Handler For SelectAll Checkbox*/
 	$("#selectallchkbox").change(function() {
-		alert('체크 여러개 했을 때')
+		//alert('체크 여러개 했을 때')
 		$('.bdchkbox').prop("checked", $(this).prop("checked"));
 	}); 
 	/*Handler For rest of the checkbox*/
 	$('.bdchkbox').change(function() {
 		//alert('체크 하나 했을 때')
-		$("input[class=bdchkbox]:checked").each(function(){
+		$("#removeBtn").click(function(){
+			//alert("삭제 클릭")
+			$("input[class=bdchkbox]:checked").each(function(){
 				var gboard_seq = $(this).val();
-				//alert(gboard_seq); // 체크한 글번호를 불러온다.
-				$.ajax({
-					url : '${pageContext.request.contextPath}/deletegonggi',
-					method : 'get',
-					data : 'gboard_seq=' + gboard_seq,
-					success : function(result){
-						alert("지우기 성공")
-					},
-					error : function(){
-						alert("지우기 실패")
-					}
-				});
+				var result = confirm("정말로 삭제하시겠습니까?");
+				if(result){
+					$.ajax({
+						url : '${pageContext.request.contextPath}/deletegonggi',
+						method : 'get',
+						data : 'gboard_seq=' + gboard_seq,
+						success : function(result){
+							//alert("지우기 성공")
+							
+						},
+						error : function(){
+							//alert("지우기 실패")
+						}
+					});
+				}else{
+					alert("삭제가 취소되었습니다.")
+				}
 				
+				//alert(gboard_seq); // 체크한 글번호를 불러온다.
 		});
+	});
 		if ($('.bdchkbox').length == $('.bdchkboxchecked').length) {
 			$("#selectallchkbox").prop("checked", true);
 		} else {
 			$("#selectallchkbox").prop("checked", false);
 		}
+			return false;
 	});
 	
 	$("ul#paging2 > li > a").click(function(){

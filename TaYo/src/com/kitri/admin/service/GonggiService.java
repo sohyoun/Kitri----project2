@@ -57,4 +57,8 @@ public class GonggiService {
 		return AdminDAOImpl.getAdminDAO().gonggiSearch(search, value);
 	}
 
+	public boolean gonggiDelete(int gboard_seq) {
+		return AdminDAOImpl.getAdminDAO().gonggiDelete(gboard_seq);
+	}
+	
 }

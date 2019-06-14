@@ -22,19 +22,19 @@ CREATE TABLE MEMBERBOARD (
 
 --회원목록테이블 삽입
 INSERT INTO memberboard (mboard_seq, member_email, member_name, member_age, member_address, member_address_detail, member_outdate, member_grade, member_gender)
-VALUES (mboard_seq.nextval, '1', '이름', 31, '3', '4', NULL, 0, 'M');
+VALUES (mboard_seq.nextval, '1', '이재운', 31, '3', '4', NULL, 0, 'M');
 
 INSERT INTO memberboard (mboard_seq, member_email, member_name, member_age, member_address, member_address_detail, member_outdate, member_grade, member_gender)
-VALUES (mboard_seq.nextval, '2', '이름2', 28, '4', '5', NULL, 1, 'F');
+VALUES (mboard_seq.nextval, '2', '김의연', 28, '4', '5', NULL, 1, 'F');
 
 INSERT INTO memberboard (mboard_seq, member_email, member_name, member_age, member_address, member_address_detail, member_outdate, member_grade, member_gender)
-VALUES (mboard_seq.nextval, '3', '이름3', 25, '5', '6', NULL, 2, 'M');
+VALUES (mboard_seq.nextval, '3', '형태희', 25, '5', '6', NULL, 2, 'M');
 
 INSERT INTO memberboard (mboard_seq, member_email, member_name, member_age, member_address, member_address_detail, member_outdate, member_grade, member_gender)
-VALUES (mboard_seq.nextval, '4', '이름4', 31, '6', '7', NULL, 3, 'M');
+VALUES (mboard_seq.nextval, '4', '박소현', 31, '6', '7', NULL, 3, 'M');
 
 INSERT INTO memberboard (mboard_seq, member_email, member_name, member_age, member_address, member_address_detail, member_outdate, member_grade, member_gender)
-VALUES (mboard_seq.nextval, '5', '이름5', 36, '7', '8', NULL, 0, 'M');
+VALUES (mboard_seq.nextval, '5', '김의연', 36, '7', '8', NULL, 0, 'M');
 
 --회원목록테이블 가입일을 기준으로 가입 회원수 체크
 SELECT COUNT(joindate)
