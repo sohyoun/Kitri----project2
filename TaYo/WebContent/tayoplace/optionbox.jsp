@@ -328,7 +328,7 @@ a:hover {
 				$("#placeList").html('');
 
 				for (var i = 0; i < items.length; i++) {
-					var contentid = $(items[i]).find('contentid').text()
+					var contentid = $(items[i]).find('contentid').text().trim();
 					console.log("contentid: " + contentid);
 					var firstimage = $(items[i]).find('firstimage').text()
 					console.log("firstimage: " + firstimage);
@@ -339,16 +339,15 @@ a:hover {
 					option += "<img src='"+ firstimage + "'onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width:200px; height:200px;'  >";
 					//option += '<img src="'+ firstimage + 'onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png + " style = 'width:300px; height:200px;'>';
 					//"<img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='80' height='40'/>"
-					option += "<p><a contentid ="
-							+ contentid
-							+ " id = 'linkDetail' href='TaYo/tayoDetailapi?contentid='"
-							+ contentid + "' onClick='goDetail(" + i + ")'> "
+					option += "<p><a contentid ="+ contentid
+							+ " href='${pageContext.request.contextPath}/tayoplace/tayoDetailPlaceApi.jsp?contentid="+ contentid+"'"
+							+ " onClick='goDetail(" + i + ")'> "		
 							+ title + "</a></p>";
 					option += "</a>";
 					option += "</li> ";
 
 					$("#placeList").append(option);
-
+					/* + " id = 'linkDetail' href='TaYo/tayoDetailapi?contentid='"+ contentid + "' onClick='goDetail(" + i + ")'> " */
 				}
 
 				searchPage(pageNo[0].firstChild.data,
@@ -636,12 +635,12 @@ a:hover {
 	</div>
 
 	<!-- 페이징 처리 -->
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<nav>
 			<ul class="pagination" style="margin-left: 30%;" id="pageArea">
 			</ul>
 		</nav>
-	</div>
+	</div> -->
 	<!-- 페이징 처리 -->
 	
 	

@@ -105,130 +105,59 @@ h1, h2, h3, h4, h5 {
 
 <script>
 $(function() {	
-		$.ajax({          
-		  		url  : "${pageContext.request.contextPath}/tourexplorer",
-				type : 'get',
-				success : function(xml) {
-					$("body").append(xml.trim()); 
-					
-					parser = new DOMParser();
-					xmlDoc = parser.parseFromString(xml.trim(), "text/xml");
-					
-
-					var html;
-					var prevTitle = "";
-					
-					$("#tablebody").empty();
-					
-				
-					$(xml).find("item").each(function() {
-						var title = $(this).find("title").text();
-						var addr1 = $(this).find("addr1").text();
-						var addr2 = $(this).find("addr2").text();
-						var overview = $(this).find("overview").text();
-						var mapx = $(this).find("mapx").text();
-						var mapy = $(this).find("mapy").text();
-				
-					
-						if (prevTitle != title) {
-							prevTitle = title;
-							var image = $(this).find("firstimage").text();
-							var image2 = $(this).find("firstimage2").text();
-							
-										
-// 							<!-- 관광지 이름,주소부분 -->
-// 							/* html += "<div class='spot'>"
-// 								html += "<div class='spot_name'>" + title +"<span> N Seoul Tower</span>"
-// 									html += "	<img class='spot_like_ico' src='/TaYo/images/heart.png'>"
-// 										html += "</div>"
-// 											html += "<div class='spot_addr'>"+ addr1+ addr2 +"</div>"   
-// 											html += "</div>" */
-// 							<!-- 관광지 이름,주소부분 -->
-											
-									
-
-							/* 관광지 이름,주소부분  */
-							$("div.spot>div.spot_name").html(title);
-							$("div.spot>div.spot_addr").html(addr1 + addr2);						
-							$("div.spot").show();
-							 /* 관광지 이름,주소부분 */
-							
-							 
-							
-							/*  html += "<tr><td><div id='carouselExampleControls' class='carousel slide' data-ride='carousel'>"
-							 html += "<div class='carousel-inner'>"
-							 html += "<div class='carousel-item active'>"
-
-							 html += "<img class='img1' src='" + image + "'/ >"
-							 html += "</div>"
-								 html += "<div class='carousel-item'>"
-								 html += "	<img class='img2' src='" + image2 + "'/>"
-								 html += "</div>"
-									 html += "<div class='carousel-item'>"
-									 html += "	<img class='img3' src='" + image + "'/>"
-									 html += "</div>"
-										 html += "</div>"
-											 html += "</div></td></tr>" */
-							
-							
-							
-							
-							<!-- 관광지 설명부분-->
-							$("div.spot_tip>div.spot_overview").html(overview);							
-							<!-- 관광지 설명부분 -->
-							
-					
-							
-							<!-- 관광지 카테고리 및 설명부분-->
-							$("div.spot_info>table.spot_info_table>tbody>tr>td").html(mapx);							
-							//$("div.spot_info>table.spot_info_table>tbody>tr>th>td").html(mapx);							
-							$("categorybody>tr>td").html(mapx);							
-							<!-- 관광지 카테고리 및 설명부분 -->
-							
-							<!-- 관광지 카테고리 및 설명부분-->
-							/* <div class="spot_info">
-								<table class="spot_info_table" id="spot_info_default" width="100%">
-									<tbody>
-										<tr>
-											<th>카테고리</th>
-											<td>명소 &gt; 공항</td>
-											<th>웹사이트</th>
-											<td><a href="http://www.airport.kr" target="_blank">www.airport.kr</a></td>
-										</tr>
-										<tr>
-											<th>가는방법</th>
-											<td colspan="3">[Line Airport Railroad(공항철도)]Incheon
-												International Airport(인천국제공항)역 인천국제공항역에 하차 또는 공항 리무진 버스 이용.</td>
-										</tr>
-										<tr>
-											<th>전화번호</th>
-											<td>82 1577-2600</td>
-											<td colspan="2">&nbsp;</td>
-										</tr>
-									</tbody>
-								</table>
-							</div> */
-							<!-- 관광지 카테고리 및 설명부분-->
-
-							
-							
-							
-		}
-					});
-					//$("#tablebody").html(html);
-					console.log(xmlDoc);
-					/* jquery*/
-//	 				console.log(xml);
-				},//end success
-				error : function(err) {
-					console.log(err);
-				}//end error
-			});//end ajax 도시버튼 추가
+	var contentid = ${param.contentid} ;
+	console.log(contentid);
+	$.ajax({          
+  		url  : "${pageContext.request.contextPath}/tourexplorer",
+		type : 'get',
+		data : 'contentid=' + contentid,
+		success : function(xml) {
+			$("body").append(xml.trim()); 
+			parser = new DOMParser();
+			xmlDoc = parser.parseFromString(xml.trim(), "text/xml");
+			
+			var html;
+			var prevTitle = "";
+			
+			$("#tablebody").empty();
+			$(xml).find("item").each(function() {
+				var title = $(this).find("title").text();
+				var addr1 = $(this).find("addr1").text();
+				var addr2 = $(this).find("addr2").text();
+				var overview = $(this).find("overview").text();
+				var mapx = $(this).find("mapx").text();
+				var mapy = $(this).find("mapy").text();
 		
-			
-			
-			
-		});//end onload
+				if (prevTitle != title) {
+					prevTitle = title;
+					var image = $(this).find("firstimage").text();
+					var image2 = $(this).find("firstimage2").text();
+					/* 관광지 이름,주소부분  */
+					$("div.spot>div.spot_name").html(title);
+					$("div.spot>div.spot_addr").html(addr1 + addr2);			
+					
+					
+					$("div.spot_tip>div.spot_overview").html(overview);							
+					
+					
+					$("div.spot_info>table.spot_info_table>tbody>tr>td").html(mapx);								
+					$("categorybody>tr>td").html(mapx);				
+				}//end if 
+			//$("#tablebody").html(html);
+			console.log(xmlDoc);
+			/* jquery*/
+//				console.log(xml);
+			});//end find
+		},//end success
+			error : function(err) {
+			console.log(err);
+		}//end error
+	});//end ajax 도시버튼 추가
+	return false;
+});
+		
+		
+	
 	</script>
 
 
@@ -284,7 +213,7 @@ $(function() {
 							</tr>
 						</tbody>
 					</table>
-				</div>
+				<!-- </div> -->
 				<!-- 관광지 카테고리 및 설명부분-->
 
 

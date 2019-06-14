@@ -17,6 +17,7 @@ public class TourExplorerServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
+	
 	TourExplorerService toExplorerService;
     
     public TourExplorerServlet() {
@@ -25,8 +26,9 @@ public class TourExplorerServlet extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("toExplorerService doGet");
-		
-	    String result = toExplorerService.getExplorer();
+		String contentid= request.getParameter("contentid");
+		System.out.println(contentid);
+	    String result = toExplorerService.getExplorer(contentid);
 	    request.setAttribute("result",result);
 	    
 	    String path="/apitour/explorerresult.jsp";
