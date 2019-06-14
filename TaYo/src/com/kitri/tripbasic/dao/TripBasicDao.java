@@ -160,7 +160,7 @@ public class TripBasicDao {
 		List<TripBasicDTO> basiclist = new ArrayList<TripBasicDTO>();
 		try {
 			conn = DBConnection.makeConnection();
-			String sql = "select trip_seq, email, trip_title, trip_theme, trip_season, trip_num, start_date, end_date, viewCount, likeCount, lastupdate, isComplete\n"
+			String sql = "select trip_seq, email, trip_title, trip_theme, trip_season, trip_num, start_date, end_date, viewCount, likeCount, lastupdate, isComplete \n"
 					+ "										from trip_basic \n"
 					+ "										where trip_season like nvl(?, '%') and trip_theme like nvl(?, '%') and \n"
 					+ "										((end_date-start_date)>= ? and (end_date-start_date)<=?)";
@@ -169,7 +169,7 @@ public class TripBasicDao {
 			pstmt.setString(1, season);
 			pstmt.setString(2, theme);
 			pstmt.setInt(3, start_length);
-			pstmt.setInt(4, end_length);
+			pstmt.setInt(4, end_length); 
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -185,7 +185,7 @@ public class TripBasicDao {
 				int likeCount = rs.getInt("likecount");
 				Date lastUpDate = rs.getDate("lastUpDate");
 				String isComplete = rs.getString("isComplete");
-
+					
 				List<TripDetailDTO> detailList = TripDetailDao.getInstance().select(trip_seq);
 				boolean isExsistLocId = false;
 				for (int i = 0; i < detailList.size(); i++) {

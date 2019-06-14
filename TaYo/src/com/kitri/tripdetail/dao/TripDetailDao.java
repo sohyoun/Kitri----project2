@@ -32,7 +32,7 @@ public class TripDetailDao {
 		List<TripDetailDTO> detailList = new ArrayList<TripDetailDTO>();
 		try {
 			conn = DBConnection.makeConnection();
-			String sql = "select trip_seq, place_name, loc_id, trip_order, trip_day, image, detail_title, detail_content, posx, posy\n" + 
+			String sql = "select trip_seq, place_name, loc_id, trip_order, trip_day, image, detail_title, detail_content, posx, posy, content_id \n" + 
 					"from trip_detail "
 					+ "where trip_seq = ?";
 			pstmt = conn.prepareStatement(sql);
@@ -49,8 +49,9 @@ public class TripDetailDao {
 				String detail_content= rs.getString("detail_content");
 				float posX = rs.getFloat("posX");
 				float posY= rs.getFloat("posY");
+				int content_id = rs.getInt("content_id");
 				
-				TripDetailDTO dto = new TripDetailDTO(trip_order, trip_day, trip_seq, place_name, loc_id, image, detail_title, detail_content, posX, posY);
+				TripDetailDTO dto = new TripDetailDTO(trip_order, trip_day, trip_seq, place_name, loc_id, image, detail_title, detail_content, posX, posY, content_id);
 				detailList.add(dto);
 			}
 		} catch (SQLException e) {

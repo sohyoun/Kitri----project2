@@ -36,7 +36,7 @@ public class TripDetailDTO {
 	}
 
 	public TripDetailDTO(int trip_order, int trip_day, int trip_seq, String place_name, int loc_id, String image,
-			String detail_title, String detail_content, float posX, float posY) {
+			String detail_title, String detail_content, float posX, float posY,int content_id) {
 		super();
 		this.trip_order = trip_order;
 		this.trip_day = trip_day;
@@ -48,6 +48,7 @@ public class TripDetailDTO {
 		this.detail_content = detail_content;
 		this.posX = posX;
 		this.posY = posY;
+		this.content_id= content_id;
 	}
 	
 	public int getTrip_order() {

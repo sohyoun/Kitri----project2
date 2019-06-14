@@ -59,7 +59,7 @@ public class RecomandServlet extends HttpServlet {
 			String s_length = (String) jsonObj.get("start_day");
 			String e_length = (String) jsonObj.get("end_day");
 
-			int start_length = 1;
+			int start_length = 0;
 			int end_length = Integer.MAX_VALUE;
 			if (s_length != null) {
 				start_length = Integer.parseInt(s_length);
