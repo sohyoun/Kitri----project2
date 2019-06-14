@@ -143,12 +143,9 @@ $(function() {
 					
 					
 					//$("#carouselExampleControls > div > div:nth-child(2) > img src = ").html(firstimage);							
-					console.log(" <img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='3000' height='400'/>");
 					html += " <img src='" + firstimage + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='3000' height='400'/>"
 					
 				
-					
-					
 					
 				}//end if 
 			//$("#tablebody").html(html);

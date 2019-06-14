@@ -635,13 +635,14 @@ a:hover {
 	</div>
 
 	<!-- 페이징 처리 -->
-	<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		<nav>
-			<ul class="pagination" style="margin-left: 30%;" id="pageArea">
-			</ul>
-		</nav>
-	</div> -->
-	<!-- 페이징 처리 -->
+	
+	<nav>
+		<ul class="pagination" style="margin-left: 30%;" id="pageArea">
+		
+		</ul>
+	</nav>
+	
+	<!-- 페이징 처리
 	
 	
 	<!-- 디테일로 보낼것들 -->
