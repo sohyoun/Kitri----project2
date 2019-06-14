@@ -788,7 +788,7 @@ public class ScheduleDao {
 	public void join(String email, int tripSeq) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		
+		ResultSet rs = null;
 		
 		try {
 			TTPartyDTO ttPartyDTO = new TTPartyDTO();
@@ -810,6 +810,40 @@ public class ScheduleDao {
 			
 			pstmt.close();
 			
+			// Search Trip Sequence from Trip_Basic
+			StringBuffer searchSQL = new StringBuffer();
+			searchSQL.append("SELECT now_num ");
+			searchSQL.append("FROM tt_leader ");
+			searchSQL.append("WHERE trip_seq = ?");
+						
+			pstmt = conn.prepareStatement(searchSQL.toString());
+						
+			pstmt.setInt(1, tripSeq);
+			rs = pstmt.executeQuery();
+						
+			int seq = -1;
+			if (rs.next()) {
+				seq = rs.getInt(1);
+			}
+
+			rs.close();
+			pstmt.close();
+						
+			// Modify Trip_Basic
+			StringBuffer modifySQL = new StringBuffer();
+			modifySQL.append("UPDATE tt_leader ");
+			modifySQL.append("SET now_num = ? ");
+			modifySQL.append("WHERE trip_seq = ?");
+						
+			pstmt = conn.prepareStatement(modifySQL.toString());
+						
+						
+			pstmt.setInt(1, seq+1);
+			pstmt.setInt(2, tripSeq);
+			pstmt.executeUpdate();
+						
+			pstmt.close();
+			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -829,7 +863,7 @@ public class ScheduleDao {
 	public void out(String email, int tripSeq) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		
+		ResultSet rs = null;
 		
 		try {
 			TTPartyDTO ttPartyDTO = new TTPartyDTO();
@@ -850,6 +884,40 @@ public class ScheduleDao {
 			pstmt.executeUpdate();
 			
 			pstmt.close();
+			
+			// Search Trip Sequence from Trip_Basic
+						StringBuffer searchSQL = new StringBuffer();
+						searchSQL.append("SELECT now_num ");
+						searchSQL.append("FROM tt_leader ");
+						searchSQL.append("WHERE trip_seq = ?");
+									
+						pstmt = conn.prepareStatement(searchSQL.toString());
+									
+						pstmt.setInt(1, tripSeq);
+						rs = pstmt.executeQuery();
+									
+						int seq = -1;
+						if (rs.next()) {
+							seq = rs.getInt(1);
+						}
+
+						rs.close();
+						pstmt.close();
+									
+						// Modify Trip_Basic
+						StringBuffer modifySQL = new StringBuffer();
+						modifySQL.append("UPDATE tt_leader ");
+						modifySQL.append("SET now_num = ? ");
+						modifySQL.append("WHERE trip_seq = ?");
+									
+						pstmt = conn.prepareStatement(modifySQL.toString());
+									
+									
+						pstmt.setInt(1, seq-1);
+						pstmt.setInt(2, tripSeq);
+						pstmt.executeUpdate();
+									
+						pstmt.close();
 			
 		} catch (SQLException e) {
 			

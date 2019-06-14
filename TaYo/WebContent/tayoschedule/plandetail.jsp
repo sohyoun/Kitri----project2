@@ -63,7 +63,7 @@
 		$("#joinBtn").click(function() {
 			$.ajax({
 				url: '${pageContext.request.contextPath}/schedule',
-				data: 'act=joinTT' + '&tripSeq=' + '${sessionScope.TripBasicDTO.tripSeq}',
+				data: 'act=joinTT' + '&tripSeq=' + '${sessionScope.TripBasicDTO.tripSeq}'+ '&email=' + '${sessionScope.loginInfo}',
 				method: 'post',
 				success: function(result) {
 					alert("함께타요에 가입되었습니다.");
@@ -80,7 +80,7 @@
 		$("#outBtn").click(function() {
 			$.ajax({
 				url: '${pageContext.request.contextPath}/schedule',
-				data: 'act=outTT' + '&tripSeq=' + '${sessionScope.TripBasicDTO.tripSeq}',
+				data: 'act=outTT' + '&tripSeq=' + '${sessionScope.TripBasicDTO.tripSeq}'+ '&email=' + '${sessionScope.loginInfo}',
 				method: 'post',
 				success: function(result) {
 					alert("함께타요에 탈퇴되었습니다.");
@@ -104,7 +104,6 @@
 <fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"/>
 
 
-ttLeaderDTO: 뭘가${ttLeaderDTO.ttPartyList}
 <section class="packages py-5">
 	<div class="container py-lg-4 py-sm-3">
 		<div class="twplandetail">
@@ -147,21 +146,26 @@ ttLeaderDTO: 뭘가${ttLeaderDTO.ttPartyList}
 		   			</c:when>
 		   			<c:otherwise>
 		   				<c:if test="${basicDTO.tripTheme eq '함께타요'}">
-		   					<c:forEach var="partyItem" items="${ttLeaderDTO.ttPartyList}">
+		   					<c:choose>
+		   						<c:when test="${empty ttLeaderDTO.ttPartyList}">
+ 									<button id="joinBtn" class="btn btn-link pull-right">가입하기</button>
+		   						</c:when>
+		   						<c:otherwise>
+		   							<c:forEach var="partyItem" items="${ttLeaderDTO.ttPartyList}">
+		   								<c:choose>
+		   									<c:when test="${sessionScope.loginInfo eq partyItem}">
+		   										<button id="outBtn" class="btn btn-link pull-right">탈퇴하기</button>
+		   									</c:when>
+		   									<c:otherwise>
+		   										<button id="joinBtn" class="btn btn-link pull-right">가입하기</button>
+		   									</c:otherwise>
+		   								</c:choose>
+									</c:forEach>
+		   						</c:otherwise>
+		   					</c:choose>
 		   					
-		   						여기 안들어옴!!
-		   						<c:choose>
-		   							<c:when test="${sessionScope.loginInfo eq partyItem}">
-		   								<button id="outBtn" class="btn btn-link pull-right">탈퇴하기</button>
-		   							</c:when>
-		   							<c:otherwise>
-		   								<button id="joinBtn" class="btn btn-link pull-right">가입하기</button>
-		   							</c:otherwise>
-		   						</c:choose>
-							</c:forEach>
-							
-<!-- 							<button id="outBtn" class="btn btn-link pull-right">탈퇴하기</button> -->
-<!-- 							<button id="joinBtn" class="btn btn-link pull-right">가입하기</button> -->
+ 							
+
 						</c:if>
 		   			</c:otherwise>
 		   		</c:choose>
