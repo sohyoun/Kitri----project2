@@ -116,7 +116,7 @@ $(function() {
 			parser = new DOMParser();
 			xmlDoc = parser.parseFromString(xml.trim(), "text/xml");
 			
-			var html="";
+			var html;
 			var prevTitle = "";
 			
 			$("#tablebody").empty();
@@ -246,7 +246,8 @@ $(function() {
 	<br>
 
 	<!-- 사진 슬라이드 부분 -->
-	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+	<div id="carouselExampleControls" class="carousel slide"
+		data-ride="carousel">
 		<div class="carousel-inner">
 			<div id = "photolist" class="carousel-item active">
 				<!-- <img class="d-block w-100" src="/TaYo/images/tower2.jpg"> -->
@@ -509,7 +510,7 @@ $(function() {
 <!-- 				</h6> -->
 <!-- 			</div> -->
 <!-- 		</div> -->
-<!-- 	</div> -->
+<!-- 	</div> -->pagination
 	<!-- 함께타요 일정 -->
 
 
