@@ -784,4 +784,86 @@ public class ScheduleDao {
 		
 		return result;
 	}
+	///////////////////////////////////
+	public void join(String email, int tripSeq) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		
+		try {
+			TTPartyDTO ttPartyDTO = new TTPartyDTO();
+			
+			conn = DBConnection.makeConnection();
+			conn.setAutoCommit(false);
+			
+			// Insert Trip_Basic
+			StringBuffer insertSQL = new StringBuffer();
+			insertSQL.append("INSERT INTO tt_party (trip_seq, party_email, party_ok) ");
+			insertSQL.append("values (?,?,1)");
+			
+			pstmt = conn.prepareStatement(insertSQL.toString());
+			
+			pstmt.setInt(1, tripSeq);
+			pstmt.setString(2, email);
+
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		} finally {
+			DBClose.close(conn, pstmt);
+		}
+		
+	}
+	
+	public void out(String email, int tripSeq) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		
+		try {
+			TTPartyDTO ttPartyDTO = new TTPartyDTO();
+			
+			conn = DBConnection.makeConnection();
+			conn.setAutoCommit(false);
+			
+			// Insert Trip_Basic
+			StringBuffer deleteSQL = new StringBuffer();
+			deleteSQL.append("DELETE FROM tt_party ");
+			deleteSQL.append("WHERE trip_seq = ? ");
+			deleteSQL.append("AND party_email = ?");
+			pstmt = conn.prepareStatement(deleteSQL.toString());
+			
+			pstmt.setInt(1, tripSeq);
+			pstmt.setString(2, email);
+
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		} finally {
+			DBClose.close(conn, pstmt);
+		}
+		
+	}
 }
