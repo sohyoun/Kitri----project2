@@ -85,4 +85,12 @@ public class ScheduleService {
 	public int modifyDetail(String email, String title, int day, int order, String detailTitle, String detailContent) {
 		return dao.modifyDetail(email, title, day, order, detailTitle, detailContent);
 	}
+	
+	public void join(String email, int tripSeq) {
+		dao.join(email, tripSeq);
+	}
+	
+	public void out(String email, int tripSeq) {
+		dao.out(email, tripSeq);
+	}
 }
