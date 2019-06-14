@@ -314,7 +314,7 @@ public class ScheduleDao {
 			// Search Trip_Detail
 			for (TripBasicDTO basic : basicList) {
 				searchSQL.setLength(0);
-				searchSQL.append("SELECT trip_seq, trip_day, trip_order, place_name, loc_id, posx, posy ");
+				searchSQL.append("SELECT trip_seq, trip_day, trip_order, place_name, loc_id, posx, posy,content_id ");
 				searchSQL.append("FROM trip_detail ");
 				searchSQL.append("WHERE trip_seq = ? ");
 				searchSQL.append("ORDER BY trip_day ASC, trip_order ASC");
@@ -334,7 +334,8 @@ public class ScheduleDao {
 					detailDTO.setPlace_name(rs.getString("place_name"));
 					detailDTO.setLoc_id(rs.getInt("loc_id"));
 					detailDTO.setPosX(rs.getFloat("posx"));
-					detailDTO.setPosY(rs.getFloat("posy"));					
+					detailDTO.setPosY(rs.getFloat("posy"));
+					detailDTO.setContent_id(rs.getInt("content_id"));				
 					detailList.add(detailDTO);
 				}
 				

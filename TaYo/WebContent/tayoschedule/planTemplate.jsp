@@ -13,7 +13,7 @@ $(function() {
 		data: 'act=searchPlan' + '&type=Y' + '&email=' + '${sessionScope.loginInfo}',
 		method: 'post',
 		success: function(result) {
-			$("div.row").html(result);
+			$("div.rower").html(result);
 		},
 		error: function(error) {
 			alert(error);
@@ -40,7 +40,7 @@ $(function() {
 			data: 'act=searchPlan' + '&type=' + type + '&email=' + '${sessionScope.loginInfo}',
 			method: 'post',
 			success: function(result) {
-				$("div.row").html(result);
+				$("div[class='rower']").html(result);
 			},
 			error: function(error) {
 				alert(error);
@@ -70,7 +70,7 @@ $(function() {
 <!-- tour packages -->
 <section class="packages py-5">
 	<div class="container py-lg-4 py-sm-3">
-		<div class="row"></div>
+		<div class="rower"></div>
 	</div>
 </section>
 <!-- tour packages -->
