@@ -125,12 +125,14 @@ $(function() {
 				var addr1 = $(this).find("addr1").text();
 				var addr2 = $(this).find("addr2").text();
 				var overview = $(this).find("overview").text();
-				var firstimage = $(this).find("firstimage").text();
+				var mapx = $(this).find("mapx").text();
+				var mapy = $(this).find("mapy").text();
 		
 				
 				if (prevTitle != title) {
 					prevTitle = title;
-					//var image = $(this).find("firstimage").text();
+					var image = $(this).find("firstimage").text();
+					var image2 = $(this).find("firstimage2").text();
 					
 					
 					/* 관광지 이름,주소부분  */
@@ -139,14 +141,12 @@ $(function() {
 					
 					
 					/* 관광지 설명 부분 */				
-					$("#placelist > div.spot_tip").html(overview);
+					$("#placelist > div.spot_tip").html(overview);							
 					
 					
-					//$("#carouselExampleControls > div > div:nth-child(2) > img src = ").html(firstimage);							
-					console.log(" <img src='" + image + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='3000' height='400'/>");
-					html += " <img src='" + firstimage + "' onError=\"this.src='${pageContext.request.contextPath}/images/noImage.png'\" width='3000' height='400'/>"
 					
-				
+					//$("div.spot_info>table.spot_info_table>tbody>tr>td").html(mapx);								
+					$("categorybody>tr>td").html(mapx);
 					
 					
 					
@@ -156,7 +156,6 @@ $(function() {
 			/* jquery*/
 //				console.log(xml);
 			});//end find
-			$("#photolist").html(html);
 		},//end success
 			error : function(err) {
 			console.log(err);
@@ -252,8 +251,8 @@ $(function() {
 	<div id="carouselExampleControls" class="carousel slide"
 		data-ride="carousel">
 		<div class="carousel-inner">
-			<div id = "photolist" class="carousel-item active">
-				<!-- <img class="d-block w-100" src="/TaYo/images/tower2.jpg"> -->
+			<div class="carousel-item active">
+				<img class="d-block w-100" src="/TaYo/images/tower2.jpg">
 			</div>
 			<div class="carousel-item">
 				<img class="d-block w-100" src="/TaYo/images/tower1.jpg">
@@ -262,7 +261,7 @@ $(function() {
 				<img class="d-block w-100" src="/TaYo/images/tower3.jpg">
 			</div>
 		</div>
-	<!-- 	<a class="carousel-control-prev" href="#carouselExampleControls"
+		<a class="carousel-control-prev" href="#carouselExampleControls"
 			role="button" data-slide="prev"> <span
 			class="carousel-control-prev-icon" aria-hidden="true"></span> <span
 			class="sr-only">Previous</span>
@@ -270,7 +269,7 @@ $(function() {
 			role="button" data-slide="next"> <span
 			class="carousel-control-next-icon" aria-hidden="true"></span> <span
 			class="sr-only">Next</span>
-		</a> -->
+		</a>
 	</div>
 	<!-- 사진 슬라이드 부분 -->
 
@@ -290,28 +289,28 @@ $(function() {
 
 
 	<!-- 관광지 카테고리 및 설명부분-->
-<!-- 	<div class="spot_info"> -->
-<!-- 		<table class="spot_info_table" id="spot_info_default" width="100%"> -->
-<!-- 			<tbody> -->
-<!-- 				<tr> -->
-<!-- 					<th>카테고리</th> -->
-<!-- 					<td id = "td1">명소 &gt; 공항</td> -->
-<!-- 					<th>웹사이트</th> -->
-<!-- 					<td id = "td2"><a href="http://www.airport.kr" target="_blank">www.airport.kr</a></td> -->
-<!-- 				</tr> -->
-<!-- 				<tr> -->
-<!-- 					<th>가는방법</th> -->
-<!-- 					<td id = "td3" colspan="3">[Line Airport Railroad(공항철도)]Incheon -->
-<!-- 						International Airport(인천국제공항)역 인천국제공항역에 하차 또는 공항 리무진 버스 이용.</td> -->
-<!-- 				</tr> -->
-<!-- 				<tr> -->
-<!-- 					<th>전화번호</th> -->
-<!-- 					<td id = "td4">82 1577-2600</td> -->
-<!-- 					<td colspan="2">&nbsp;</td> -->
-<!-- 				</tr> -->
-<!-- 			</tbody> -->
-<!-- 		</table> -->
-<!-- 	</div> -->
+	<div class="spot_info">
+		<table class="spot_info_table" id="spot_info_default" width="100%">
+			<tbody>
+				<tr>
+					<th>카테고리</th>
+					<td id = "td1">명소 &gt; 공항</td>
+					<th>웹사이트</th>
+					<td id = "td2"><a href="http://www.airport.kr" target="_blank">www.airport.kr</a></td>
+				</tr>
+				<tr>
+					<th>가는방법</th>
+					<td id = "td3" colspan="3">[Line Airport Railroad(공항철도)]Incheon
+						International Airport(인천국제공항)역 인천국제공항역에 하차 또는 공항 리무진 버스 이용.</td>
+				</tr>
+				<tr>
+					<th>전화번호</th>
+					<td id = "td4">82 1577-2600</td>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 	<!-- 관광지 카테고리 및 설명부분-->
 </div>
 
@@ -321,7 +320,8 @@ $(function() {
 	<hr>
 	<br>
 	<!-- 인기여행지 best -->
-	<h4 class="heading text-capitalize text-bold">인기 여행지 BEST </h4>
+	<h4 class="heading text-capitalize text-bold">이 장소와 함께 일정에 포함된
+		인기장소</h4>
 	<br>
 	<div class="row inner-sec-w3layouts-w3pvt-lauinfo">
 		<div class="col-md-3 col-sm-6 col-6 destinations-grids text-center">
@@ -419,101 +419,101 @@ $(function() {
 	<hr>
 	<br>
 	<!-- 함께타요 일정 -->
-<!-- 	<h4 class="heading text-capitalize text-bold">타요 추천 여행일정!</h4> -->
-<!-- 	<div class="row" id="tayowith-schedule"> -->
-<!-- 		<div class="col-lg-3 col-sm-6"> -->
-<!-- 			<div class="image-tour position-relative"> -->
-<!-- 				<img src="/TaYo/images/p1.jpg" alt="" class="img-fluid" /> -->
-<!-- 				<p> -->
-<!-- 					<span>100 <span class="fa fa-thumbs-up"></span> | 12230 <span -->
-<!-- 						class="fa fa-eye"></span> | 19 <span class="fa fa-comment"></span> -->
-<!-- 				</p> -->
-<!-- 			</div> -->
-<!-- 			<div class="package-info"> -->
-<!-- 				<h6 class="mt-1"> -->
-<!-- 					<span class="fa fa-map-marker mr-2"></span>부산 -->
-<!-- 				</h6> -->
-<!-- 				<h5 class="my-2">모녀 부산여행</h5> -->
-<!-- 				<p class="">가족여행</p> -->
-<!-- 				<ul class="listing mt-3"> -->
-<!-- 					<li><span class="fa fa-clock-o mr-2"></span><span>2019.05.01~2019.05.03 -->
-<!-- 							(3)</span></li> -->
-<!-- 				</ul> -->
-<!-- 				<h6 class="mt-1"> -->
-<!-- 					<span class="fa fa-user-circle"> kkiruk  -->
-<!-- 				</h6> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 		<div class="col-lg-3 col-sm-6"> -->
-<!-- 			<div class="image-tour position-relative"> -->
-<!-- 				<img src="/TaYo/images/p2.jpg" alt="" class="img-fluid" /> -->
-<!-- 				<p> -->
-<!-- 					<span>98 <span class="fa fa-thumbs-up"> | 9917 <span -->
-<!-- 							class="fa fa-eye"> | 10 <span class="fa fa-comment"></span> -->
-<!-- 				</p> -->
-<!-- 			</div> -->
-<!-- 			<div class="package-info"> -->
-<!-- 				<h6 class="mt-1"> -->
-<!-- 					<span class="fa fa-map-marker mr-2"></span>전주, 여수 -->
-<!-- 				</h6> -->
-<!-- 				<h5 class="my-2">전라도 먹방 여행</h5> -->
-<!-- 				<p class="">우정여행</p> -->
-<!-- 				<ul class="listing mt-3"> -->
-<!-- 					<li><span class="fa fa-clock-o mr-2"></span><span>2019.04.03~2019.05.07 -->
-<!-- 							(5)</span></li> -->
-<!-- 				</ul> -->
-<!-- 				<h6 class="mt-1"> -->
-<!-- 					<span class="fa fa-user-circle"> GoGotpfk  -->
-<!-- 				</h6> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 		<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5"> -->
-<!-- 			<div class="image-tour position-relative"> -->
-<!-- 				<img src="/TaYo/images/p3.jpg" alt="" class="img-fluid" /> -->
-<!-- 				<p> -->
-<!-- 					<span>71 <span class="fa fa-thumbs-up"> | 5560 <span -->
-<!-- 							class="fa fa-eye"> | 9 <span class="fa fa-comment"></span> -->
-<!-- 				</p> -->
-<!-- 			</div> -->
-<!-- 			<div class="package-info"> -->
-<!-- 				<h6 class="mt-1"> -->
-<!-- 					<span class="fa fa-map-marker mr-2"></span>강릉 -->
-<!-- 				</h6> -->
-<!-- 				<h5 class="my-2">바다로 호캉스</h5> -->
-<!-- 				<p class="">커플여행</p> -->
-<!-- 				<ul class="listing mt-3"> -->
-<!-- 					<li><span class="fa fa-clock-o mr-2"></span><span>2019.04.21~2019.04.22 -->
-<!-- 							(2)</span></li> -->
-<!-- 				</ul> -->
-<!-- 				<h6 class="mt-1"> -->
-<!-- 					<span class="fa fa-user-circle"> sohyoun  -->
-<!-- 				</h6> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 		<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5"> -->
-<!-- 			<div class="image-tour position-relative"> -->
-<!-- 				<img src="/TaYo/images/p4.jpg" alt="" class="img-fluid" /> -->
-<!-- 				<p> -->
-<!-- 					<span>56 <span class="fa fa-thumbs-up"> | 3726 <span -->
-<!-- 							class="fa fa-eye"> | 3 <span class="fa fa-comment"></span> -->
-<!-- 				</p> -->
-<!-- 			</div> -->
-<!-- 			<div class="package-info"> -->
-<!-- 				<h6 class="mt-1"> -->
-<!-- 					<span class="fa fa-map-marker mr-2"></span>제천 -->
-<!-- 				</h6> -->
-<!-- 				<h5 class="my-2">생애 첫 패러글라이딩</h5> -->
-<!-- 				<p class="">나홀로여행</p> -->
-<!-- 				<ul class="listing mt-3"> -->
-<!-- 					<li><span class="fa fa-clock-o mr-2"></span><span>2019.04.19 -->
-<!-- 							(1)</span></li> -->
-<!-- 				</ul> -->
-<!-- 				<h6 class="mt-1"> -->
-<!-- 					<span class="fa fa-user-circle"> lovetayo  -->
-<!-- 				</h6> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+	<h4 class="heading text-capitalize text-bold">타요 추천 여행일정!</h4>
+	<div class="row" id="tayowith-schedule">
+		<div class="col-lg-3 col-sm-6">
+			<div class="image-tour position-relative">
+				<img src="/TaYo/images/p1.jpg" alt="" class="img-fluid" />
+				<p>
+					<span>100 <span class="fa fa-thumbs-up"></span> | 12230 <span
+						class="fa fa-eye"></span> | 19 <span class="fa fa-comment"></span>
+				</p>
+			</div>
+			<div class="package-info">
+				<h6 class="mt-1">
+					<span class="fa fa-map-marker mr-2"></span>부산
+				</h6>
+				<h5 class="my-2">모녀 부산여행</h5>
+				<p class="">가족여행</p>
+				<ul class="listing mt-3">
+					<li><span class="fa fa-clock-o mr-2"></span><span>2019.05.01~2019.05.03
+							(3)</span></li>
+				</ul>
+				<h6 class="mt-1">
+					<span class="fa fa-user-circle"> kkiruk 
+				</h6>
+			</div>
+		</div>
+		<div class="col-lg-3 col-sm-6">
+			<div class="image-tour position-relative">
+				<img src="/TaYo/images/p2.jpg" alt="" class="img-fluid" />
+				<p>
+					<span>98 <span class="fa fa-thumbs-up"> | 9917 <span
+							class="fa fa-eye"> | 10 <span class="fa fa-comment"></span>
+				</p>
+			</div>
+			<div class="package-info">
+				<h6 class="mt-1">
+					<span class="fa fa-map-marker mr-2"></span>전주, 여수
+				</h6>
+				<h5 class="my-2">전라도 먹방 여행</h5>
+				<p class="">우정여행</p>
+				<ul class="listing mt-3">
+					<li><span class="fa fa-clock-o mr-2"></span><span>2019.04.03~2019.05.07
+							(5)</span></li>
+				</ul>
+				<h6 class="mt-1">
+					<span class="fa fa-user-circle"> GoGotpfk 
+				</h6>
+			</div>
+		</div>
+		<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5">
+			<div class="image-tour position-relative">
+				<img src="/TaYo/images/p3.jpg" alt="" class="img-fluid" />
+				<p>
+					<span>71 <span class="fa fa-thumbs-up"> | 5560 <span
+							class="fa fa-eye"> | 9 <span class="fa fa-comment"></span>
+				</p>
+			</div>
+			<div class="package-info">
+				<h6 class="mt-1">
+					<span class="fa fa-map-marker mr-2"></span>강릉
+				</h6>
+				<h5 class="my-2">바다로 호캉스</h5>
+				<p class="">커플여행</p>
+				<ul class="listing mt-3">
+					<li><span class="fa fa-clock-o mr-2"></span><span>2019.04.21~2019.04.22
+							(2)</span></li>
+				</ul>
+				<h6 class="mt-1">
+					<span class="fa fa-user-circle"> sohyoun 
+				</h6>
+			</div>
+		</div>
+		<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5">
+			<div class="image-tour position-relative">
+				<img src="/TaYo/images/p4.jpg" alt="" class="img-fluid" />
+				<p>
+					<span>56 <span class="fa fa-thumbs-up"> | 3726 <span
+							class="fa fa-eye"> | 3 <span class="fa fa-comment"></span>
+				</p>
+			</div>
+			<div class="package-info">
+				<h6 class="mt-1">
+					<span class="fa fa-map-marker mr-2"></span>제천
+				</h6>
+				<h5 class="my-2">생애 첫 패러글라이딩</h5>
+				<p class="">나홀로여행</p>
+				<ul class="listing mt-3">
+					<li><span class="fa fa-clock-o mr-2"></span><span>2019.04.19
+							(1)</span></li>
+				</ul>
+				<h6 class="mt-1">
+					<span class="fa fa-user-circle"> lovetayo 
+				</h6>
+			</div>
+		</div>
+	</div>
 	<!-- 함께타요 일정 -->
 
 
