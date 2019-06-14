@@ -63,7 +63,7 @@
 		$("#joinBtn").click(function() {
 			$.ajax({
 				url: '${pageContext.request.contextPath}/schedule',
-				data: 'act=joinTT' + '&tripSeq=' + '${sessionScope.TripBasicDTO.tripSeq}',
+				data: 'act=joinTT' + '&tripSeq=' + '${sessionScope.TripBasicDTO.tripSeq}'+ '&email=' + '${sessionScope.loginInfo}',
 				method: 'post',
 				success: function(result) {
 					alert("함께타요에 가입되었습니다.");
@@ -80,7 +80,7 @@
 		$("#outBtn").click(function() {
 			$.ajax({
 				url: '${pageContext.request.contextPath}/schedule',
-				data: 'act=outTT' + '&tripSeq=' + '${sessionScope.TripBasicDTO.tripSeq}',
+				data: 'act=outTT' + '&tripSeq=' + '${sessionScope.TripBasicDTO.tripSeq}'+ '&email=' + '${sessionScope.loginInfo}',
 				method: 'post',
 				success: function(result) {
 					alert("함께타요에 탈퇴되었습니다.");
@@ -146,7 +146,6 @@
 		   			<c:otherwise>
 		   				<c:if test="${basicDTO.tripTheme eq '함께타요'}">
 		   					<c:forEach var="partylist" items="${ttLeaderDTO.ttPartyList}">
-		   						여기 안들어옴!!
 		   						<c:choose>
 		   							<c:when test="${sessionScope.loginInfo eq partylist}">
 		   								<button id="outBtn" class="btn btn-link pull-right">탈퇴하기</button>
@@ -157,8 +156,8 @@
 		   						</c:choose>
 							</c:forEach>
 							
-							<button id="outBtn" class="btn btn-link pull-right">탈퇴하기</button>
-							<button id="joinBtn" class="btn btn-link pull-right">가입하기</button>
+							<!-- <button id="outBtn" class="btn btn-link pull-right">탈퇴하기</button>
+							<button id="joinBtn" class="btn btn-link pull-right">가입하기</button> -->
 						</c:if>
 		   			</c:otherwise>
 		   		</c:choose>

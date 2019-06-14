@@ -197,7 +197,8 @@ public class ScheduleBackendController {
 	public void joinTT(HttpServletRequest request, HttpServletResponse response) {
 		String email = request.getParameter("email");
 		int tripSeq = Integer.parseInt(request.getParameter("tripSeq"));
-		
+		System.out.println(email);
+		System.out.println(tripSeq);
 		service.join(email, tripSeq);
 	}
 	
