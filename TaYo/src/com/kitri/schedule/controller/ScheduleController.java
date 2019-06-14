@@ -120,12 +120,11 @@ public class ScheduleController extends HttpServlet {
 				notice = "실패하였습니다.";
 			}
 			request.setAttribute("notice", notice);
-			
 			MoveURL.forward(request, response, "/tayoschedule/savePlanResult.jsp");
 		} else if ("joinTT".equals(act)) {
-			backendController.joinTT(request, response);
+//			backendController.joinTT(request, response);
 		} else if ("outTT".equals(act)) {
-			backendController.outTT(request, response);
+//			backendController.outTT(request, response);
 		}
 	}
 	

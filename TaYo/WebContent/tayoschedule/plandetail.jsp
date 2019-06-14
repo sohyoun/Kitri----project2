@@ -103,6 +103,8 @@
 <fmt:parseNumber value="${startPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="startDate"/>
 <fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"/>
 
+
+ttLeaderDTO: 뭘가${ttLeaderDTO.ttPartyList}
 <section class="packages py-5">
 	<div class="container py-lg-4 py-sm-3">
 		<div class="twplandetail">
@@ -145,9 +147,11 @@
 		   			</c:when>
 		   			<c:otherwise>
 		   				<c:if test="${basicDTO.tripTheme eq '함께타요'}">
-		   					<c:forEach var="partylist" items="${ttLeaderDTO.ttPartyList}">
+
+		   					<c:forEach var="partyItem" items="${ttLeaderDTO.ttPartyList}">
+	
 		   						<c:choose>
-		   							<c:when test="${sessionScope.loginInfo eq partylist}">
+		   							<c:when test="${sessionScope.loginInfo eq partyItem}">
 		   								<button id="outBtn" class="btn btn-link pull-right">탈퇴하기</button>
 		   							</c:when>
 		   							<c:otherwise>
@@ -155,9 +159,9 @@
 		   							</c:otherwise>
 		   						</c:choose>
 							</c:forEach>
-							
-							<!-- <button id="outBtn" class="btn btn-link pull-right">탈퇴하기</button>
-							<button id="joinBtn" class="btn btn-link pull-right">가입하기</button> -->
+<!-- 							<button id="outBtn" class="btn btn-link pull-right">탈퇴하기</button> -->
+<!-- 							<button id="joinBtn" class="btn btn-link pull-right">가입하기</button> -->
+
 						</c:if>
 		   			</c:otherwise>
 		   		</c:choose>
